@@ -325,42 +325,470 @@ public class SoftuniLists {
 	//---------------------------------------------------------------------------
 	
 	//8
-	//
+	//Train
 	//-----------------------------------------------------------------------------
+	static void trainWagons() {
+		String enterWagons = scan.nextLine();
+		ArrayList<Integer> wagons = parseLineList(enterWagons);
+		int maxCapacity = Integer.parseInt(scan.nextLine());
+		
+		String enterCommands;
 	
+		do {
+			enterCommands = scan.nextLine();
+			if(enterCommands.toLowerCase().contains("add")) {
+				addWagon(wagons, enterCommands);
+			}else {
+				
+			}
+		}while(!(enterCommands.equalsIgnoreCase("end")));
+	}
+	
+	static void addWagon(ArrayList<Integer> wagons, String command) {
+		String[] temp = command.split(" ");		//split the command into 2 parts
+		
+		wagons.add(Integer.parseInt(temp[1]));
+	}
+	
+	static void fitPassangersInFreeWagons(String numberPassangers, ArrayList<Integer> wagons ) {
+		int number = Integer.parseInt(numberPassangers);
+		for(int i =0;i<wagons.size();i++) {
+			if(wagons.get(i)<75) {
+				if(number>wagons.get(i)) {
+					int availableSpaces = 75-wagons.get(i);
+					if(availableSpaces==0) {
+						
+					}else {
+						wagons.set(i,(number-availableSpaces)+wagons.get(i));
+						number-=(number-availableSpaces);
+					}
+					
+				}else {
+					int availableSpace = 75-wagons.get(i);
+					if(availableSpace==0) {
+						
+					}else {
+						wagons.set(i,wagons.get(i)-availableSpace);
+						number-=number-availableSpace;
+					}
+					
+				}
+			}
+			
+		}
+			
+		
+	}
 	//-----------------------------------------------------------------------------
 	
 	//9
-		//
+		//DeleteOccurences
 		//-----------------------------------------------------------------------------
+		static void deleteOccurences() {
+			String enterElements =scan.nextLine();
+			String enteredElements = enterElements;
+			ArrayList<Integer> numbers = parseLineList(enteredElements);
+			
+			String givenCommand;
+			do {
+				givenCommand = scan.nextLine();
+				executeCommandsList(givenCommand, numbers);
+			}while(!(givenCommand).equalsIgnoreCase("end"));
+		}
 		
+		static void executeCommandsList(String command, ArrayList<Integer> numbers) {
+			String[] temp = command.split(" ");
+			
+			switch(temp[0].toLowerCase()) {
+			case "inser":
+				int element = Integer.valueOf(temp[1]);
+				int position = Integer.valueOf(temp[2]);
+				numbers.add(position,element);
+				break;
+			case "delete":
+				while(numbers.remove(Integer.valueOf(temp[1]))) {}
+				break;
+			}
+		}
 		//-----------------------------------------------------------------------------
 		
 	
 	
 	//10
-		//
+		//HouseParty
 		//-----------------------------------------------------------------------------
+		static void housePrty() {
+			int numberCommands = Integer.parseInt(scan.nextLine());
+			
+			ArrayList<String> guestList = new ArrayList<String>();
+			String enterGuest;
+			int count=0;
+			String name="";
+			do {
+				enterGuest = scan.nextLine();
+				String[] temp = enterGuest.split(" ");
+				name = temp[0];
+				if(enterGuest.contains("is going")) {
+			     	addGuest(guestList, name);
+				}else {
+					removeGuest(guestList,name);
+				}
+				count++;
+			}while(count<numberCommands);
+		}
 		
+		static void addGuest(ArrayList<String> guests, String name) {
+			
+			if(!checkGuest(guests,name)) {
+				guests.add(name);
+			}else {
+				System.out.println(name + "already in the list");
+			}
+		}
+		
+		static boolean checkGuest(ArrayList<String> guests, String name) {
+			boolean in = false;
+			for(int i =0;i<guests.size();i++) {
+				if(guests.get(i).equalsIgnoreCase(name)) {
+					in = true;
+				}
+			}
+			
+			return in;
+		}
+		
+		static void removeGuest(ArrayList<String> guests, String name) {
+			if(checkGuest(guests,name)) {
+				guests.remove(name);
+			}else {
+				System.out.println(name+" he i not in the list");
+			}
+		}
 		//-----------------------------------------------------------------------------
 		
 	
 	
 	
 	//11
-		//
+		//operations more
 		//-----------------------------------------------------------------------------
-		
+		static void moreOperations() {
+			String enterCommands = scan.nextLine();
+			ArrayList<Integer> numbers = parseLineList(enterCommands);
+			
+			String giveCommand;
+			do {
+				giveCommand = scan.nextLine();
+				executeCommandsLists(giveCommand,numbers);
+			}while(!(giveCommand.equalsIgnoreCase("end")));
+			
+		}
+		static void executeCommandsLists(String command, ArrayList<Integer> numbers) {
+			String[] array = command.split(" ");
+			int number;
+			
+			switch(array[0].toLowerCase()) {
+			case "add":
+			 number	= Integer.parseInt(array[1]);
+				numbers.add(number);
+				break;
+			case "insert":
+				number = Integer.parseInt(array[1]);
+				int index = Integer.parseInt(array[2]);
+				numbers.add(index,number);
+				break;
+			case "remove":
+				 number	= Integer.parseInt(array[1]);
+				numbers.remove(number);
+				break;
+			case"shift": 
+				 number	= Integer.parseInt(array[2]);
+				if(array[1].equalsIgnoreCase("right")) {
+					numbers.set(numbers.size()-1,numbers.get(0)*number);
+				}else {
+					numbers.set(numbers.get(0),numbers.get(numbers.size()-1)*number);
+				}
+			}
+		}
 		//-----------------------------------------------------------------------------
 		
 	
 	//12
-		//
+		//Bomb sequence
 		//-----------------------------------------------------------------------------
-		
+		static void bombSequence() {
+			String enterNumbers = scan.nextLine();
+			ArrayList<Integer> numbers = parseLineList(enterNumbers);
+			int specialNumber = Integer.parseInt(scan.nextLine());
+			int powerOfSpecialNumber = Integer.parseInt(scan.nextLine());
+			String trigerPositions ="";
+			for(int i =0;i<numbers.size();i++) {
+				if(numbers.get(i) ==specialNumber) {
+					detonateBombs(powerOfSpecialNumber, numbers, i);
+				}
+			}
+			
+			int count=0;
+			int sum = 0;
+			while(numbers.size()!=1) {
+				
+				 sum += numbers.get(count);
+			}
+			System.out.println(sum);
+		}
+		static void detonateBombs(int power, ArrayList<Integer> numbers, int index) {
+			
+			for(int i =0;i<=power;i++) {
+				if(i==0) {
+					numbers.remove(index+0);
+				}else {
+					numbers.remove(index+i);
+					numbers.remove(index-i);
+				}
+				
+			}
+			
+		}
 		//-----------------------------------------------------------------------------
 		
 	
+		//13
+				//CardGame
+				//-----------------------------------------------------------------------------
+				static void cardGame() {
+					String enterCardsPlayer1 = scan.nextLine();
+					ArrayList<Integer> player1  = parseLineList(enterCardsPlayer1);
+					
+					String enterCardsPlayer2 = scan.nextLine();
+					ArrayList<Integer> player2  = parseLineList(enterCardsPlayer2);
+					
+					if(sumOfDeck(player1)>sumOfDeck(player2)) {
+						System.out.println("player1 wins with"+sumOfDeck(player1)+sumOfDeck(player2));
+					}else {
+						System.out.println("player2 wins with"+sumOfDeck(player1)+sumOfDeck(player2));
+					}
+					
+					
+				}
+				
+				static int sumOfDeck(ArrayList<Integer> deck)  {
+					int sum=0;
+					for(int i =0;i<deck.size();i++) {
+						sum+=deck.get(i);
+					}
+					
+					return sum;
+				}
+				//-----------------------------------------------------------------------------
+				
+		
+		
+		//14
+				//AppendArrays
+				//-----------------------------------------------------------------------------
+				static void appendArrays() {
+					String enterArrays=scan.nextLine();
+					
+				ArrayList<Integer> listWithArrays = new ArrayList<Integer>();
+				enterElementsInList(getArray(enterArrays),listWithArrays);
+				
+					
+				}
+				static int[] getArray(String enteredValues) {
+					String withoutSpecial = enteredValues.replace("|"," ");		
+					int[] numbers = Arrays.stream(withoutSpecial.split(" ")).mapToInt(e ->Integer.parseInt(e)).toArray();
+					return numbers;
+				}
+				
+				static void enterElementsInList(int[] elems, ArrayList<Integer> list) {
+					for(int i =0;i<elems.length;i++) {
+						list.add(elems[i]);
+					}
+				}
+				//-----------------------------------------------------------------------------
+				
+		
+		
+		//15
+				//*Anonymous threat
+				//-----------------------------------------------------------------------------
+				static void anonynousThreat() {
+					String data = scan.nextLine();
+					ArrayList<String> listWithData = deliverStringData(data);
+					
+					String commands;
+					do {
+						commands = scan.nextLine();
+						if(commands.toLowerCase().equals("merge")) {
+							merge(commands,listWithData);
+						}else {
+							divide(commands, listWithData);
+						}
+						
+					}while(!(commands.equalsIgnoreCase("3:1")));
+					System.out.println(listWithData);
+				}
+				
+				static void merge(String command, ArrayList<String> list) {
+					String[] temp = command.split(" ");
+					int start = Integer.valueOf(temp[1]);
+					int end = Integer.valueOf(temp[2]);
+					
+					
+					int count=0;
+					for(int i =start;i<=list.size();i++) {
+						count++;
+					}
+					
+					list.set(start,mergeRange(list,start,count) );
+					
+					
+				}
+				static String mergeRange(ArrayList<String> list, int start, int end) {
+					String sum="";
+					for(int i =start;i<=end;i++) {
+						sum+=list.get(i);
+					}
+					return sum;
+				}
+				
+				static void divide(String command, ArrayList<String> list) {
+					String[] temp = command.split(" ");
+					int divideBy = Integer.valueOf(temp[2]);
+					
+					String getInstance = list.get(Integer.parseInt(temp[1]));
+					
+					if(getInstance.length()%2==0) {
+						String print="";
+						int count=0;
+						int start=0;
+						int finish =getInstance.length()/divideBy;
+						while(count<divideBy) {
+						print = getInstance.substring(start,finish);
+						start+=finish;
+						finish+=finish;
+						count++;
+						}
+					}else {
+						int range = getInstance.length()/divideBy;
+						double temporary = Math.ceil(range);
+						range = (int) temporary;
+						//to do substring the rest
+					}
+					
+				}
+				
+				static ArrayList<String> deliverStringData(String data) {
+					ArrayList<String> list = new ArrayList<String>();
+					String[] elems =data.split(" ");
+					for(int i =0;i<elems.length;i++) {
+						list.add(elems[i]);
+					}
+					return list;
+				}
+				//-----------------------------------------------------------------------------
+				
+		
+		//16
+				//pokemonDontGO
+				//-----------------------------------------------------------------------------
+				static void pokemonDontGo() {
+					String enterSequence = scan.nextLine();
+					ArrayList<Integer> sequence = parseLineList(enterSequence);
+					
+					
+					ArrayList<Integer> removedElements = new ArrayList<Integer>();
+					int giveIndexToRemove;
+					do {
+						giveIndexToRemove = Integer.parseInt(scan.nextLine());
+						if(giveIndexToRemove>sequence.get(sequence.size()-1)) {
+							sequence.set(sequence.get(sequence.size()-1), sequence.get(0));
+						}else if(giveIndexToRemove<=0) {
+							removedElements.add(sequence.get(0));
+							sequence.remove(0);
+							
+						}else {
+							int index = sequence.get(giveIndexToRemove);
+							removedElements.add(sequence.get(giveIndexToRemove));
+							sequence.remove(giveIndexToRemove);
+							increaseAndDecrease(sequence, index);
+						}
+					}while(sequence.size()!=0);
+					System.out.println(sumRemovedIndexes(removedElements));
+					
+					
+				}
+				static int sumRemovedIndexes(ArrayList<Integer>removed) {
+					int sum=0;
+					for(int i =0;i<removed.size();i++) {
+						sum+=removed.get(i);
+					}
+					return sum;
+				}
+				
+				static void increaseAndDecrease(ArrayList<Integer> list,int index) {
+					for(int i =0;i<list.size();i++) {
+						if(list.get(i)>index) {
+							list.set(i,list.get(i)-index );
+						}else {
+							list.set(i,list.get(i)+index );
+						}
+					}
+				}
+				//-----------------------------------------------------------------------------
+				
+				
+				//17
+				//Messaging
+				//---------------------------------------------------------
+				static void messaging() {
+					String enterNumbers = scan.nextLine();
+					ArrayList<String> numbers = deliverStringData(enterNumbers);
+					String text = scan.nextLine();
+					
+					for(int i =0;i<numbers.size();i++) {
+						int temp = sumDigits(numbers.get(i));
+						System.out.print(text.charAt(temp));
+					}
+				}
+				static int sumDigits(String text) {
+					int sum=0;
+					for(int i =0;i<text.length();i++) {
+						String c = String.valueOf(text.charAt(i));
+						sum+=Integer.parseInt(c);
+					}
+					return sum;
+				}
+				//----------------------------------------------------------
+	
+				//18
+				//DrumTest
+				//---------------------------------------------------------
+				static void drum() {
+					double savings = Double.parseDouble(scan.nextLine());
+					String integers = scan.nextLine();
+					ArrayList<Integer> drumSet = parseLineList(integers);
+					String power;
+					do {
+						power =scan.nextLine();
+						
+					}while(!(power.equalsIgnoreCase("hit it again,Gabsy!")));
+				}
+				//----------------------------------------------------------
+	
+				
+				//19
+				//
+				//---------------------------------------------------------
+				
+				//----------------------------------------------------------
+	
+				
+				//20
+				//
+				//---------------------------------------------------------
+				
+				//----------------------------------------------------------
 	
 	
 	

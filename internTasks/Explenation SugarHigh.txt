@@ -1,0 +1,21 @@
+
+
+
+
+CalorieIndex class
+it is used for storing the index which presents the clorie index(grams eaten).
+Also it stores the indexes with candies eaten(indexes-positions of the original array).
+and it prints the array ith index positions from the original one
+
+Main method logic and methods in it
+first I input the data in a string an split it in a string array then transfer it to a ArrayList.
+I am using an array lit as it is more flexible
+in the sugarHigh method i remove the indexes from the list which pass the treshold variable, as they wont be needed.
+after that in the for loops I sum the grams in the list until I get a sum which uprases the treshold and when I do that.
+I skip an iteration. Which absically means I am aimig to see which elements will not supass it and my goal is to achieve this with more elements from the list.
+when I am done with that I remove an elements from the list the first one and I start over until there are no more elements left to sum.
+every sum. is stored in an Calorei Index object and in an ArrayList of type Calorei index .
+after whih I coompare the elements.
+the problem wiht this is that the original array is not taken in consideration and I work on a trimed (the one with removed elemetns).
+
+after that I print the results from the  array with the best results.

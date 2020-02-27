@@ -1,15 +1,19 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Random;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
+	ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7));
+	list.parallelStream().filter(a -> a>1);
+	
+	for(int num:list) {
+		System.out.println(num);
+	}
+	
 	
 	}
 }

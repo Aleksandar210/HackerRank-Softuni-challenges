@@ -1,19 +1,25 @@
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-	ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7));
-	list.parallelStream().filter(a -> a>1);
 	
-	for(int num:list) {
-		System.out.println(num);
-	}
-	
-	
+		HashMap<String,ArrayList<String>> data = new HashMap<String,ArrayList<String>>();
+	    ArrayList<String> currentListData = new ArrayList<String>();
+	    currentListData.add("hello");
+	    data.put("Dave",currentListData);
+	    
+	    data.get("Dave").add("John");
+	    
+	    ArrayList<String> thisList = data.get("Dave");
+	    
+	    for(String word:thisList) {
+	    	System.out.println(word);
+	    }
 	}
 }

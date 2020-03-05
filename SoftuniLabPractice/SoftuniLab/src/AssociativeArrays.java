@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.Scanner;
 
@@ -346,6 +347,141 @@ static void studentGrades() {
 		
 	}
 }
+
+
+static void rankingExams() {
+	HashMap<String,String> contestData = new HashMap<String,String>();
+	
+	String enterContests;
+	String[] getContestAndPass;
+	do {
+		enterContests = scan.nextLine();
+		if(!enterContests.equalsIgnoreCase("end of constests")) {
+			getContestAndPass = enterContests.split(":");
+			contestData.put(getContestAndPass[0], getContestAndPass[1]);
+		}
+		
+	}while(!enterContests.equalsIgnoreCase("end of contests"));
+	
+	
+	String enterContestantSubmisions;
+	String[] contestantSubmisionsData;
+	HashMap<String,Integer> userData = new HashMap<String,Integer>();
+	
+	do {
+		enterContestantSubmisions = scan.nextLine();
+		if(!enterContestantSubmisions.equalsIgnoreCase("end of submisions")) {
+			contestantSubmisionsData = enterContestantSubmisions.split("=>");
+			enterUserSubmisionsInMap(contestantSubmisionsData,contestData,userData);
+			
+		}
+	}while(!enterContestantSubmisions.equalsIgnoreCase("end of submisions"));
+	System.out.println();
+	System.out.println("Best Canddate: "+displayBestCandidate(userData));
+	System.out.println("Rest of the ranking");
+	for(Entry<String,Integer> entry:userData.entrySet()) {
+		System.out.println(entry.getKey()+" "+entry.getValue());
+	}
+	
+}
+
+static void enterUserSubmisionsInMap(String[] submisionData, HashMap<String,String> contests,HashMap<String,Integer> userMap ) {
+	if(contests.containsKey(submisionData[0])) {
+		if(contests.get(submisionData[0]).equalsIgnoreCase(submisionData[1])) {
+			if(userMap.get(submisionData[2])==null) {
+				userMap.put(submisionData[2], Integer.parseInt(submisionData[3]));
+			}else {
+				if(Integer.parseInt(submisionData[3])>userMap.get(submisionData[2])) {
+					userMap.put(submisionData[2], Integer.parseInt(submisionData[3]));
+				}
+			}
+		}
+	}
+}
+
+static String displayBestCandidate(HashMap<String,Integer> map) {
+	   Optional<Entry<String, Integer>> maxEntry = map.entrySet()
+		        .stream().max((Entry<String,Integer> a,Entry<String,Integer> b)->Integer.compare(a.getValue(), b.getValue())).;
+	   String bestCandidate = maxEntry.toString();
+	   map.remove(maxEntry);
+	   return bestCandidate;
+}
+
+
+
+
+
+
+
+
+//---------------------------------
+static void judgeSystemPoints() {
+	String enter;
+	String contest;
+	String username;
+	String[] temp;
+	int points;
+	HashMap<String,Integer> userData = new HashMap<String,Integer>();
+	HashMap<String,HashMap<String,Integer>> contestsAndContestants = new HashMap<String,HashMap<String,Integer> >();
+	
+	
+	do {
+		enter = scan.nextLine();
+		if(!enter.equalsIgnoreCase("no more time")) {
+			temp = enter.split("->");
+			username = temp[0];
+			contest = temp[1];
+			points = Integer.parseInt(temp[2]);
+			if(contestsAndContestants.get(contest)==null) {
+				contestsAndContestants.put(contest,new HashMap<String,Integer>());
+				contestsAndContestants.get(contest).put(username,points);
+			}else {
+				if(contestsAndContestants.get(contest).get(username)<points) {
+					contestsAndContestants.get(contest).put(username,points);
+				}
+			}
+		}
+	}while(enter.equalsIgnoreCase("no more time"));
+	addAllPointsToContestants(userData,contestsAndContestants);
+	for(Entry<String,Integer> entry:userData.entrySet()) {
+		System.out.println(entry.getKey()+" "+entry.getValue());
+	}
+	
+}
+static void addAllPointsToContestants(HashMap<String,Integer> userData, HashMap<String,HashMap<String,Integer>> contestsData) {
+	
+	for(Entry<String,HashMap<String,Integer>>entry: contestsData.entrySet()) {
+		String contestant;
+		int currentPoints = 0;
+		for(Entry<String,Integer> entryContestantsPoint:entry.getValue().entrySet()) {
+			contestant = entryContestantsPoint.getKey();
+			currentPoints = entryContestantsPoint.getValue();
+			userData.put(contestant, currentPoints);
+		}
+	}
+	
+}
+//---------------------------------------------
+
+
+
+static void leagueOfLengends() {
+	String enter;
+	
+	String[] extractData;
+	HashMap<String,HashMap<String,Integer>> playerInfo = new HashMap<String,HashMap<String,Integer>>();
+	do {
+		enter = scan.nextLine();
+		if(!enter.equalsIgnoreCase("season is over")) {
+			extractData = enter.split("->");
+			
+		}
+	}while(!enter.equalsIgnoreCase("season is over"));
+}
+
+
+
+
 
 }
 

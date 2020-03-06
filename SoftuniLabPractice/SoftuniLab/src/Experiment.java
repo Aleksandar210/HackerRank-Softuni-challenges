@@ -12,15 +12,12 @@ public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 	
-		HashMap<String,Integer> map = new HashMap<String,Integer>();
-		map.put("Atanas", 23);
-		map.put("Jivko", 12);
-		 Optional<Entry<String, Integer>> maxEntry = map.entrySet()
-			        .stream().max((Entry<String,Integer> a,Entry<String,Integer> b)->Integer.compare(a.getValue(), b.getValue()));
-		 
-		 
-		 for(Entry<String,Integer> entry: map.entrySet()) {
-			 System.out.println(entry.getKey()+" "+entry.getValue());
+		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		ArrayList<Integer> numbers2 = new ArrayList<Integer>();
+		numbers2.add(1);
+		
+		numbers.addAll(numbers2);
+		System.out.println(numbers);
+			
 		 }
 	}
-}

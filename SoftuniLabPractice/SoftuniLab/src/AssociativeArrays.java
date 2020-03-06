@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -401,7 +402,7 @@ static void enterUserSubmisionsInMap(String[] submisionData, HashMap<String,Stri
 
 static String displayBestCandidate(HashMap<String,Integer> map) {
 	   Optional<Entry<String, Integer>> maxEntry = map.entrySet()
-		        .stream().max((Entry<String,Integer> a,Entry<String,Integer> b)->Integer.compare(a.getValue(), b.getValue())).;
+		        .stream().max((Entry<String,Integer> a,Entry<String,Integer> b)->Integer.compare(a.getValue(), b.getValue()));
 	   String bestCandidate = maxEntry.toString();
 	   map.remove(maxEntry);
 	   return bestCandidate;
@@ -470,18 +471,148 @@ static void leagueOfLengends() {
 	
 	String[] extractData;
 	HashMap<String,HashMap<String,Integer>> playerInfo = new HashMap<String,HashMap<String,Integer>>();
+	ArrayList<String> positionsEnteredDuringRuntime = new ArrayList<String>();
+	
+	
+	
+	
+	//entering part and action part
 	do {
 		enter = scan.nextLine();
 		if(!enter.equalsIgnoreCase("season is over")) {
 			extractData = enter.split("->");
+			if(playerInfo.get(extractData[0])==null) {
+				playerInfo.put(extractData[0],new HashMap<String,Integer>());
+				playerInfo.get(extractData[0]).put(extractData[1], Integer.parseInt(extractData[2]));
+			}else {
+				if(Integer.parseInt(extractData[2])>playerInfo.get(extractData[0]).get(extractData[1])) {
+					playerInfo.get(extractData[0]).put(extractData[1], Integer.parseInt(extractData[2]));
+				}
+			}
 			
+			if(!positionsEnteredDuringRuntime.contains(extractData[1])) {
+				positionsEnteredDuringRuntime.add(extractData[1]);
+			}
+			
+			
+		}else if(!enter.equalsIgnoreCase("season is over") && enter.contains("vs")) {
+			extractData = enter.split("vs");
+			commenseBattle(playerInfo,extractData[0],extractData[1],positionsEnteredDuringRuntime);
 		}
 	}while(!enter.equalsIgnoreCase("season is over"));
+	
+	
+	
+	
+	
+	//sorting part
+	
+ playerInfo.entrySet().stream().sorted(Map.Entry.comparingByKey());
+ for(Entry<String,HashMap<String,Integer>> entry:playerInfo.entrySet()) {
+	 playerInfo.get(entry.getKey()).entrySet().stream().sorted((a,b)-> Integer.compare(b.getValue(), a.getValue()));
+ }
+ 
+ 
+ for(Entry<String,HashMap<String,Integer>> entry: playerInfo.entrySet()) {
+	 System.out.println(entry.getKey());		//put new map with players and points total like the previous one. and sort only one map i think
+ }	
+}
+
+//method for battle between two players
+static void commenseBattle(HashMap<String,HashMap<String,Integer>> map,String player1,String player2,ArrayList<String> list) {
+	
+	while(list.size()>0) {
+		if(map.get(player1).containsKey(list.get(0)) && map.get(player2).containsKey(list.get(0))) {
+			if(map.get(player1).get(list.get(0))>map.get(player2).get(list.get(0))) {
+				map.remove(player2);
+				list.remove(0);
+				break;
+			}else if(map.get(player1).get(list.get(0))<map.get(player2).get(list.get(0))) {
+				map.remove(player1);
+				list.remove(0);
+				break;
+			}
+		}
+	}
 }
 
 
 
 
 
+
+
+
+
+
+
+
+
+static void dragonStatManager() {
+	String enterDragons;
+	int numberDragons = Integer.parseInt(scan.nextLine());
+	String[] extractData;
+	ArrayList<Integer> dragonStats = new ArrayList<Integer>();
+	HashMap<String,HashMap<String,ArrayList<Integer>>> dragonInfo = new HashMap<>();
+	
+	do {
+		enterDragons = scan.nextLine();
+		extractData = enterDragons.split(" ");
+		
+		if(dragonInfo.get(extractData[0])==null) {
+			fillDragonInfo(extractData,dragonStats,dragonInfo);
+		}else {
+			fillDragonInfo(extractData,dragonStats,dragonInfo);
+		}
+		numberDragons--;
+	}while(numberDragons>=0);
+	
+	displayStats(dragonInfo);
+	
+	
 }
+
+
+static void fillDragonInfo(String[] extractData,ArrayList<Integer> dragonStats,HashMap<String,HashMap<String,ArrayList<Integer>>> dragonInfo) {
+	switch(extractData.length) {
+	case 4:
+		dragonStats.add(Integer.parseInt(extractData[2]));
+		dragonStats.add(Integer.parseInt(extractData[3]));
+		dragonStats.add(null);
+		break;
+	case 3:
+		dragonStats.add(Integer.parseInt(extractData[2]));
+		dragonStats.add(null);
+		dragonStats.add(null);
+		break;
+		
+		default:
+			dragonStats.add(null);
+			dragonStats.add(null);
+			dragonStats.add(null);
+			break;
+	}
+	dragonInfo.put(extractData[0],new HashMap<String,ArrayList<Integer>>());
+	dragonInfo.get(extractData[0]).put(extractData[1], dragonStats);
+	
+}
+
+static void displayStats(HashMap<String,HashMap<String,ArrayList<Integer>>> dragonInfo){
+	ArrayList<Integer> dragonStats = new ArrayList<Integer>();
+	
+	for(Entry<String,HashMap<String,ArrayList<Integer>>> entry: dragonInfo.entrySet()) {
+		for(Entry<String, ArrayList<Integer>> innerEntry: entry.getValue().entrySet()) {
+			
+			dragonStats.addAll(innerEntry.getValue());
+			System.out.println("Damage"+" |"+" Health"+" |"+" Armour");
+			for(Integer stat: dragonStats) {
+				System.out.print(stat+"  ");
+			}
+		}
+	}
+}
+	
+}
+
+
 

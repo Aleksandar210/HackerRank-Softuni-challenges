@@ -13,9 +13,9 @@ import java.util.Map.Entry;
 public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		String letter = "1as2";
-		char c = letter.charAt(letter.length()-1);
-		System.out.println(c);
+		String morse = "--.";
+		int length = morse.length();
+		System.out.println(length);
 		
 		 }
 	}

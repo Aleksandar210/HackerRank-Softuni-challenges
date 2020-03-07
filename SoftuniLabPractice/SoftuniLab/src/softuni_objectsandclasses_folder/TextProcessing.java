@@ -19,8 +19,117 @@ public static void main(String[] args) {
 	//sumCharacterCodes();
 	//extractFile();
 	//lettersAndNumbers();
+	//winnignTicket()
 }
 
+static void morseCode() {
+	String enter = scan.nextLine();
+	enter = enter.replace("|", " ");
+	String[] words = enter.split(" ");
+	StringBuilder sb = new StringBuilder(words.length);
+	
+	for(String code : words) {
+		switch(code) {
+		case ".-":
+			sb.append("a");
+		break;
+		case "-...":
+			sb.append("b");
+			break;
+		}
+	}
+	//and so one adn then to string and print
+	
+}
+
+static void winningTicket() {
+ String enter = scan.nextLine();
+ String[] tickets = enter.split(",");
+ StringBuilder sb = getWinningTicketsOnly(tickets);
+ System.out.println(sb.toString());
+ 
+}
+
+static StringBuilder getWinningTicketsOnly(String[] tickets) {
+	StringBuilder sb = new StringBuilder(tickets.length);
+	
+	String s;
+	String p;
+	int countRight;
+	int countLeft;
+	
+	for(int i =0;i<tickets.length;i++) {
+		
+		if(tickets[i].length()==20) {
+			s = tickets[i].substring(0,10);
+			p = tickets[i].substring(10,20);
+			switch(checkCurrentChar(tickets[i])) {
+			case '$':
+				countRight =  s.length() -s.replaceAll("$","").length();
+				countLeft =  s.length() -s.replaceAll("$","").length();
+				if(checkTicket(countRight,countLeft)==true) {
+					sb.append(tickets[i]);
+				}
+				
+				break;
+			case '^':
+				countRight =  s.length() -s.replaceAll("^","").length();
+				countLeft =  s.length() -s.replaceAll("$","").length();
+				if(checkTicket(countRight,countLeft)==true) {
+					sb.append(tickets[i]);
+				}
+				break;
+			case '@':
+				countRight =  s.length() -s.replaceAll("@","").length();
+				countLeft =  s.length() -s.replaceAll("@","").length();
+				if(checkTicket(countRight,countLeft)==true) {
+					sb.append(tickets[i]);
+				}
+				break;
+			case '#':
+				countRight =  s.length() -s.replaceAll("#","").length();
+				countLeft =  s.length() -s.replaceAll("#","").length();
+				if(checkTicket(countRight,countLeft)==true) {
+					sb.append(tickets[i]);
+				}
+				break;
+				default:
+					System.out.println("No match");
+					break;
+						
+			}
+		}
+	}
+	return sb;
+}
+
+static char checkCurrentChar(String ticket) {
+	ticket = ticket.replaceAll("\\d","");
+	ticket= ticket.replaceAll("[0-9]","");
+	char c = ticket.charAt(0);
+	return c;
+}
+
+static boolean checkTicket(int a, int b) {
+	boolean win = false;
+	if(a==b && a==6) {
+		win = true;
+	}else if(a==b && a==10) {
+		win =true;
+	}
+	return win;
+}
+
+static void productOfStrings() {
+	String first = scan.nextLine();
+	String second = scan.nextLine();
+	
+}
+
+static void stringExplosion() {
+	String enter  = scan.nextLine();
+	
+}
 
 static void lettersAndNumbers() {
 	String etner = scan.nextLine();

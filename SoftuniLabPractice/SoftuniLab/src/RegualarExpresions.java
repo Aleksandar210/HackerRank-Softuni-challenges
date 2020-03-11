@@ -162,6 +162,7 @@ public class RegualarExpresions {
 		Pattern emailPattern = Pattern.compile(regex);
 		Matcher matcherMail = emailPattern.matcher(enter);
 		while(matcherMail.find()) {
+			
 			System.out.println(matcherMail.group());
 		}
 		

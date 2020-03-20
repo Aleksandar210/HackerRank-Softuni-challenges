@@ -16,24 +16,11 @@ import java.util.Map.Entry;
 public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		
-		String rgex = "([\\S\\w])+";
-		String name;
-		Pattern p = Pattern.compile(rgex);
-		Matcher m;
-		do {
-			name = scan.nextLine();
-			if(!name.equalsIgnoreCase("end")) {
-				m = p.matcher(name);
-				if(m.find()) {
-					System.out.println(m.group());
-				}
-			}
-		}while(!name.equalsIgnoreCase("end"));
-		
-		
-		
-		
-		
+			
+		String getCode= "!!afafagaga!!";
+		System.out.println(getCode.substring(getCode.indexOf("!!")+2,getCode.lastIndexOf("!!")));
  }
+	
+	
+	
 }

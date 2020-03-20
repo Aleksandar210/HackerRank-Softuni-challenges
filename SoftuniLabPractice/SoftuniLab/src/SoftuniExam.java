@@ -12,7 +12,65 @@ public class SoftuniExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		//concert();
+		//songEncryption();
 	}
+	
+	
+	
+	static void ttRacer() {
+		Pattern racerPattern= Pattern.compile("([\\#\\$\\%\\&])(?<name>[A-Za-z]+)\\1=(?<length>[0-9]+)!![\\w\\W\\d\\D]+[!!]*");
+		Matcher racerMatcher;
+		//input
+		ArrayList<String> foundRacers = new ArrayList<String>();
+		StringBuilder sb;
+		String enterCoordinates;
+		do {
+			
+			enterCoordinates = scan.nextLine();
+			racerMatcher = racerPattern.matcher(enterCoordinates);
+			if(!enterCoordinates.equalsIgnoreCase("stop") &&racerMatcher.find()) {
+				String geonoCode= racerMatcher.group().substring(racerMatcher.group().indexOf("!!")+2,racerMatcher.group().lastIndexOf("!!"));
+				
+				if(Integer.valueOf(racerMatcher.group("length"))==geonoCode.length()) {
+					sb = new StringBuilder(geonoCode);
+					decryptData(Integer.valueOf(racerMatcher.group("length")),sb);
+					foundRacers.add(racerMatcher.group("name")+"->"+sb.toString());
+				}else {
+					
+				}
+				
+			}
+			
+		}while(!enterCoordinates.equalsIgnoreCase("stop"));
+	}
+	
+	
+	
+	
+	static void decryptData( int length,StringBuilder currentEntered) {
+		int indexChar;
+		for(int i =0;i<currentEntered.capacity();i++) {
+		if(Integer.valueOf(currentEntered.charAt(i))+length>90 ) {
+			
+			 indexChar = Integer.valueOf(currentEntered.charAt(i))+length-90;
+			indexChar+=65;
+			currentEntered.setCharAt(i, (char)indexChar);
+			}else if(Integer.valueOf(currentEntered.charAt(i))+length>122) {
+				indexChar = Integer.valueOf(currentEntered.charAt(i))+length-122;
+				indexChar+=97;
+				currentEntered.setCharAt(i, (char)indexChar);
+			}else {
+				indexChar = Integer.valueOf(currentEntered.charAt(i))+length;
+				currentEntered.setCharAt(i, (char)indexChar);
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	static void songEncryption() {

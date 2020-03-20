@@ -3,13 +3,72 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Scanner;
+
 
 public class SoftuniExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		//concert();
 	}
+	
+	
+	static void songEncryption() {
+		ArrayList<String> listWithSongsEncrypted = new ArrayList<String>();
+		String regex = "(?<ArtistName>([A-Z][a-z\\'\\s]+)|([A-Z][a-z]+\\s[A-Za-z]+)):(?<SongName>[A-Z\\s]+)";
+		Matcher regexMatcher;
+		Pattern regexPattern = Pattern.compile(regex);
+		String enterArtistAndSong;
+		
+		int indexChar;
+		
+		StringBuilder currentEntered;
+		do {
+			enterArtistAndSong = scan.nextLine();
+			
+			regexMatcher = regexPattern.matcher(enterArtistAndSong);
+			
+			if(!enterArtistAndSong.equalsIgnoreCase("end")&&regexMatcher.find()) {
+				
+				enterArtistAndSong.replace(":", "@");
+				currentEntered = new StringBuilder(enterArtistAndSong);
+				
+				for(int i =0;i<enterArtistAndSong.length();i++) {
+					if(Character.isAlphabetic(enterArtistAndSong.charAt(i))) {
+						if(Integer.valueOf(enterArtistAndSong.charAt(i))+enterArtistAndSong.length()>90 ) {
+							
+						 indexChar = Integer.valueOf(enterArtistAndSong.charAt(i))+enterArtistAndSong.length()-90;
+						indexChar+=65;
+						currentEntered.setCharAt(i, (char)indexChar);
+						}else if(Integer.valueOf(enterArtistAndSong.charAt(i))+enterArtistAndSong.length()>122) {
+							indexChar = Integer.valueOf(enterArtistAndSong.charAt(i))+enterArtistAndSong.length()-122;
+							indexChar+=97;
+							currentEntered.setCharAt(i, (char)indexChar);
+						}else {
+							indexChar = Integer.valueOf(enterArtistAndSong.charAt(i))+enterArtistAndSong.length();
+							currentEntered.setCharAt(i, (char)indexChar);
+						}
+						listWithSongsEncrypted.add(currentEntered.toString());
+					}
+				}
+			}
+		}while(!enterArtistAndSong.equalsIgnoreCase("end"));
+		
+		System.out.println(" ");
+		System.out.println("Encrypted songs");
+		for(String song: listWithSongsEncrypted) {
+			System.out.println(song);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	static void concert() {
 		String enter;

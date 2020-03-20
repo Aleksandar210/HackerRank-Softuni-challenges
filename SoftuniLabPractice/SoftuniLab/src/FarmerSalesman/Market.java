@@ -36,7 +36,7 @@ public class Market {
 	}
 	
 	private void buyFromMarket() {
-		Storage selectedStorage = selectStorageSupplier();
+		//Storage selectedStorage = selectStorageSupplier();
 		
 		
 	}

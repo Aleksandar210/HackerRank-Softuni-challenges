@@ -1,4 +1,5 @@
 
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -16,14 +17,21 @@ public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		
-		
-		for(int i =0;i<3;i++) {
-			if(i==1) {
-				continue;
-			}else {
-				System.out.println(i);
+		String rgex = "([\\S\\w])+";
+		String name;
+		Pattern p = Pattern.compile(rgex);
+		Matcher m;
+		do {
+			name = scan.nextLine();
+			if(!name.equalsIgnoreCase("end")) {
+				m = p.matcher(name);
+				if(m.find()) {
+					System.out.println(m.group());
+				}
 			}
-		}
+		}while(!name.equalsIgnoreCase("end"));
+		
+		
 		
 		
 		

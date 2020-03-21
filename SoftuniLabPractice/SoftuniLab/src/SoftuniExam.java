@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.Scanner;
 import java.util.function.Predicate;
 import softuni_objectsandclasses_folder.GroupHuntingGame;
@@ -15,8 +16,74 @@ public class SoftuniExam {
 		//concert();
 		//songEncryption();
 		//ttRacer();
+		//huntingGames();
 		//fireFight();
+		//finalQuest();
 	}
+	
+	
+	static void finalQuest() {
+		String enterMessage = scan.nextLine();
+		ArrayList<String> words = new ArrayList<String>(Arrays.asList(enterMessage.split(" ")));
+		String giveCommand;
+		do {
+			giveCommand = scan.nextLine();
+			if(!giveCommand.equalsIgnoreCase("stop")) {
+				executeCommand(words,giveCommand);
+			}
+		}while(!giveCommand.equalsIgnoreCase("stop"));
+		
+		String message = String.join(" ",words);
+		System.out.println(message);
+	}
+	
+	
+	
+	static void executeCommand(ArrayList<String> words, String command) {
+		String[] commands = command.split(" ");
+		switch(commands[0].toLowerCase()) {
+		case "delete":
+			words.remove(Integer.parseInt(commands[1])+1);
+			break;
+			
+			
+		case "swap":
+			
+			if(words.contains(commands[1])&&words.contains(commands[2])) {
+				String temp = commands[1];
+				words.set(words.indexOf(commands[1]), commands[2]);
+				words.set(words.indexOf(commands[2]), temp);
+			}
+			break;
+			
+		case "put":
+			if(Integer.parseInt(commands[2])==0) {
+				words.add(commands[1]);
+			}else {
+				words.set(Integer.parseInt(commands[2])-1,commands[1] );
+			}
+			break;
+			
+		case "replace":
+			if(words.contains(commands[2])) {
+				words.set(words.indexOf(commands[2]), commands[1]);
+			}
+			break;
+			
+		case "sort":
+			words = (ArrayList<String>) words.stream().sorted((a,b)->b.compareTo(a)).collect(Collectors.toList());
+			break;
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	static void fireFight() {

@@ -15,7 +15,85 @@ public class SoftuniExam {
 		//concert();
 		//songEncryption();
 		//ttRacer();
+		//fireFight();
 	}
+	
+	
+	static void fireFight() {
+		HashMap<String,ArrayList<Integer>> fires = new HashMap<String,ArrayList<Integer>>();
+		String enterFires=scan.nextLine();
+		addFiresToMap(enterFires,fires);
+		int water = range(0,10000,Integer.parseInt(scan.nextLine()));
+		int totalFire=0;
+		int effort=0;
+		for(Entry<String,ArrayList<Integer>>entry:fires.entrySet()) {
+			for(int fireRange:entry.getValue()) {
+				if(isInRange(fireRange,entry.getKey())) {
+					water-=fireRange;
+					effort+=((25/100)*fireRange);
+					totalFire+=fireRange;
+				}
+			}
+		}
+		
+		System.out.println("TotalFire: "+totalFire+" Water: "+water+" Effort: "+effort);
+	}
+
+	
+	static void addFiresToMap(String fireEntered,HashMap<String,ArrayList<Integer>>fires) {
+		String[] fireDataCollected = fireEntered.split("[=\\s\\#]+");
+		for(int i =0;i<fireDataCollected.length-1;i+=2) {
+			if(fires.get(fireDataCollected[i])==null) {
+				fires.put(fireDataCollected[i], new ArrayList<Integer>(3));
+				fires.get(fireDataCollected[i]).add(Integer.parseInt(fireDataCollected[i+1]));
+			}else {
+				fires.get(fireDataCollected[i]).add(Integer.parseInt(fireDataCollected[i+1]));
+			}
+			
+		}
+	}
+	
+	
+	
+	static boolean isInRange(int currentRange,String type) {
+		switch(type.toLowerCase()) {
+		case "high":
+			if(currentRange>=81 && currentRange<=125) {
+				return true;
+			}else {
+				return false;
+			}
+		case "medium":
+			if(currentRange>=51 && currentRange<=80) {
+				return true;
+			}else {
+				return false;
+			}
+		case "low":
+			if(currentRange>=1 && currentRange<=50) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		}
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

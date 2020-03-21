@@ -17,7 +17,13 @@ public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 			
-	
+	String regex = "[=\\s\\#]+";
+	String data = "High = 89#Low = 28#Medium = 77#Low = 23";
+	String[] dataCollected = data.split(regex);
+	char c;
+	for(int i=0;i<dataCollected.length-1;i+=2) {
+		System.out.println(dataCollected[i]);
+	}
 	
  }
 	

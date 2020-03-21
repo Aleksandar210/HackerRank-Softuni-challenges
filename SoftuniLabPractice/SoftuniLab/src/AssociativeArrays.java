@@ -18,7 +18,7 @@ public static void main(String[] args) {
 	//wordSynonim();
 	//
 	//evenLength();
-	largestThreeInList();
+	//largestThreeInList();
 }
 
 static void numberCount() {

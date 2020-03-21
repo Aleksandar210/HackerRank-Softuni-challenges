@@ -17,8 +17,8 @@ public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 			
-		String getCode= "!!afafagaga!!";
-		System.out.println(getCode.substring(getCode.indexOf("!!")+2,getCode.lastIndexOf("!!")));
+	
+	
  }
 	
 	

@@ -6,14 +6,102 @@ import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Scanner;
-
+import java.util.function.Predicate;
+import softuni_objectsandclasses_folder.GroupHuntingGame;
 
 public class SoftuniExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		//concert();
 		//songEncryption();
+		//ttRacer();
 	}
+	
+	
+	
+	static void huntingGames() {
+		System.out.print("Enter number of days: ");
+		int days = range(0,100,Integer.parseInt(scan.nextLine()));
+		System.out.print("Enter number players: ");
+		int players = range(0,1000,Integer.parseInt(scan.nextLine()));
+		System.out.print("Enter energy: ");
+		double energy = range(0.0,1000.00,Double.parseDouble(scan.nextLine()));
+		System.out.print("Enter water: ");
+		double water = range(0.0,1000.00,Double.parseDouble(scan.nextLine()));
+		System.out.print("Enter food: ");
+		double food = range(0.0,1000.00,Double.parseDouble(scan.nextLine()));
+		System.out.print("Enter group name: ");
+		String name = scan.nextLine();
+		GroupHuntingGame group = new GroupHuntingGame(name,players,food,water,energy);
+		for(int i =0;i<days;i++) {
+			energyCalculations(group,i);
+		}
+		
+		group.checkGroupSurvival();
+		group.displayGroupData();
+	}
+	
+	
+	static void energyCalculations(GroupHuntingGame group, int day) {
+		double choppingWood = Double.parseDouble(scan.nextLine());
+		if(day%2==0) {
+			group.decreaseEnergy(choppingWood);
+			addPercentage(5,group.getEnergy(),group);
+			substractPercentage(30,group.getEnergy(),group);
+		}else if(day%3==0) {
+			group.decreaseEnergy(choppingWood);
+			group.decreaseFoodSupply(group.getPlayerCount());
+			addPercentage(10,group.getEnergy(),group);
+		}else {
+			group.decreaseEnergy(choppingWood);
+		}
+		
+	}
+	
+	
+	static void addPercentage(double percentage, double value,GroupHuntingGame group) {
+		double add = (percentage/100)*value;
+		group.increaseEnergy(add);
+	}
+	
+	static void substractPercentage(double percentage, double value, GroupHuntingGame group) {
+		double add = (percentage/100)*value;
+		group.increaseEnergy(add);
+	}
+	
+	
+	//input range
+	//--------------------------------------------------------------------
+	static int range(int start, int finish, int number) {
+		Predicate<Integer> range = a -> a<=finish || a>=start;
+		if(range.test(number)) {
+			return number;
+		}else {
+			System.out.println("Invalid  range of value.");
+			System.out.print("try again: ");
+			return range(start,finish,Integer.parseInt(scan.nextLine()));
+		}
+	}
+	
+	static double range(double start,double finish,double number) {
+		Predicate<Double> range = a -> a<=finish || a>=start;
+		if(range.test(number)) {
+			return number;
+		}else {
+			System.out.println("Invalid  range of value.");
+			System.out.print("try again: ");
+			return range(start,finish,Double.parseDouble(scan.nextLine()));
+		}
+	}
+	
+	//-----------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -65,6 +153,12 @@ public class SoftuniExam {
 			}
 		}
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

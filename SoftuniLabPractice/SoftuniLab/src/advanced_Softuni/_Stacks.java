@@ -21,7 +21,56 @@ public class _Stacks {
 		//queueSequence();
 		//truckTour(); //?
 		//balancedParan();
+		//recursiveFibonachi();
+		//stackFibonachi(); //?
+		
 	}
+	
+	//stack Fibonachi
+//--------------------------------------------------------------------------------
+	static void stackFibonachi() {
+	Stack<Integer> stack = new Stack<Integer>();
+	int number = Integer.parseInt(scan.nextLine());
+	
+	
+	for(int i =0;i<=number;i++) {
+		if(i>0) {
+		stack.push(stack.peek()+i);
+		}
+	}
+	System.out.println(stack);
+	}
+	
+	
+//--------------------------------------------------------------------------------
+	
+	
+	
+	//recursiveFibonachi
+//--------------------------------------------------------------------------------
+	static void recursiveFibonachi() {
+		Stack<Integer> stack = new Stack<Integer>();
+		
+		int n;
+		do {
+			n = Integer.parseInt(scan.nextLine());
+		}while(n<1 || n>49);
+		
+		for(int i =n;i>=1;i--) {
+			stack.push(getFibonachiResult(n));
+		}
+		
+		System.out.println(stack.pop());
+	}
+	
+	static int getFibonachiResult(int n) {
+		return (n-1)+(n-2);
+	}
+	
+//--------------------------------------------------------------------------------
+	
+	
+	
 	
 	//balanced Paranthesis
 //--------------------------------------------------------------------------------

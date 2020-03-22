@@ -20,8 +20,38 @@ public class _Stacks {
 		//queueOperations();
 		//queueSequence();
 		//truckTour(); //?
+		//balancedParan();
+	}
+	
+	//balanced Paranthesis
+//--------------------------------------------------------------------------------
+	static void balancedParan() {
+		ArrayDeque<String> paranth = new ArrayDeque<String>();
+		String enterParan= scan.nextLine();
+		for(int i =0;i<enterParan.length()-1;i++) {
+			paranth.add(enterParan.substring(i,i+1));
+		}
+		
+		boolean allGood = true;
+		String first;
+		String last;
+		for(int i =0;i<paranth.size()/2;i++) {
+			first = paranth.remove();
+			last = paranth.removeLast();
+			if(first.equalsIgnoreCase(last)) {
+				allGood=false;
+				break;
+			}
+		}
+		
+		
+			System.out.println(allGood);
 		
 	}
+	
+//--------------------------------------------------------------------------------
+	
+	
 	
 	//truckTour task
 //--------------------------------------------------------------------------------	
@@ -41,10 +71,7 @@ public class _Stacks {
 	}
 	
 	
-	
-	
-	
-	
+
 	
 	
 	static void reorderQueue(ArrayDeque<Station> stations, int indexOfStart) {
@@ -58,11 +85,7 @@ public class _Stacks {
 	}
 	
 	
-	
-	
-	
-	
-	
+
 	
 	
 	static void doTour(int indexOfStation,ArrayDeque<Station> stations) {
@@ -88,6 +111,11 @@ public class _Stacks {
 		
 	}
 //--------------------------------------------------------------------------------	
+	
+	
+	
+	
+	
 	
 	//Sequence
 //--------------------------------------------------------------------------------
@@ -117,6 +145,12 @@ public class _Stacks {
 		System.out.println(que);
 	}
 //--------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
 	
 	
 //Queue operations	
@@ -181,6 +215,12 @@ public class _Stacks {
 	
 	
 	
+	
+	
+	
+	
+	
+	
 	//stack operations
 //--------------------------------------------------------------------------------
 		static void stackOperations() {
@@ -242,6 +282,13 @@ public class _Stacks {
 	
 //--------------------------------------------------------------------------------
 		
+	
+	
+	
+	
+	
+	
+	
 	
 	//reverse
 	//--------------------------------------------------------------------------------

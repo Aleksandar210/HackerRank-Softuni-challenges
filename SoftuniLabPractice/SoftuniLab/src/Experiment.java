@@ -19,12 +19,8 @@ public class Experiment {
 	public static void main(String[] args) {
 			
 		ArrayDeque<Integer> stat = new ArrayDeque<Integer>();
-		for(int i =0;i<10;i++) {
-			stat.add(i+1);
-		}
-		
-		System.out.println(stat.size()-1);
-	
+		String temp = "{(())))";
+		System.out.println(temp.length());
  }
 	
 	static void reorderQueue(int from,ArrayDeque<Integer> que) {

@@ -13,6 +13,7 @@ public class _Stacks {
 	public static void main(String[] args) {
 		//stackCommandsTask();
 		//reverseStack();
+		//stackOperations();
 	}
 	
 	
@@ -26,14 +27,48 @@ public class _Stacks {
 			putInArray(enterValues,intValues);
 			
 			Stack<Integer> stack = new Stack<Integer>();
-			
+			stackOperations(stack,initInputCollect,intValues);
 			
 			
 		}
 	
 	
 	static void stackOperations(Stack<Integer> stack, String[] commands, Integer[] values) {
+		int minElement = Integer.MAX_VALUE;
+		//add n elements
+		if(values.length<Integer.parseInt(commands[0])) {
+			for(int i =0;i<values.length;i++) {
+				stack.push(values[i]);
+				if(values[i]<minElement) {
+					minElement = values[i];
+				}
+			}
+		}else {
+		for(int i =0;i<Integer.parseInt(commands[0]);i++) {
+			stack.push(values[i]);
+			if(values[i]<minElement) {
+				minElement = values[i];
+			}
+		}
+		}
+		//------------------------------------------------
 		
+		//removing n  elements from stack
+		while(Integer.parseInt(commands[1])>0) {
+			if(stack.size()<=0) {
+				break;
+			}else {
+				stack.pop();
+			}
+		}
+		//-----------------------------------------------
+		
+		//search for element if not there print min element in stack
+		if(stack.contains(Integer.parseInt(commands[2]))) {
+			System.out.println("Value is in stack!");
+		}else {
+			System.out.println("Min Eelement: "+ minElement );
+		}
 	}
 	
 	

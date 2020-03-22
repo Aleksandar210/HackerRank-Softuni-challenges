@@ -19,15 +19,12 @@ public class Experiment {
 	public static void main(String[] args) {
 			
 		ArrayDeque<Integer> stat = new ArrayDeque<Integer>();
-		String temp = "{(())))";
-		System.out.println(temp.length());
- }
-	
-	static void reorderQueue(int from,ArrayDeque<Integer> que) {
-		for(int i =0;i<from;i++) {
-		int removed=  que.remove();	
-		que.addLast(removed);
+		stat.add(1);
+		stat.add(2);
+		stat.add(3);
 		
+		for(Integer number:stat) {
+			System.out.println(number);
 		}
 	}
 	

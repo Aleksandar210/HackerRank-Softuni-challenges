@@ -1,6 +1,7 @@
 package advanced_Softuni;
 
 
+import java.awt.List;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -8,7 +9,9 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
+import softuni_objectsandclasses_folder.Plant;
 import softuni_objectsandclasses_folder.Station;
 
 public class _Stacks {
@@ -23,8 +26,93 @@ public class _Stacks {
 		//balancedParan();
 		//recursiveFibonachi();
 		//stackFibonachi(); //?
-		
+		//basicTextEditor();
+		//poisonousPlants();
 	}
+	
+	
+	//poisonousPlants
+	static void poisonousPlants() {
+		ArrayDeque<Plant> plants  = new ArrayDeque<Plant>();
+		String[] enterPlants =scan.nextLine().split("\\s");
+		
+		for(int i =0;i<enterPlants.length;i++) {
+			Plant plant = new Plant(i,Integer.parseInt(enterPlants[i]));
+			plants.add(plant);
+		}
+		
+		Plant removedPlant;
+		for(int i =0;i<enterPlants.length;i++) {
+			removedPlant=plants.remove();
+			if(plants.peek().getPesticide()>removedPlant.getPesticide()) {
+				plants.remove();
+				plants.push(removedPlant);
+			}else {
+				plants.addLast(removedPlant);
+			}
+		}
+	}
+	
+	
+	//---------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//--------------------------------------------------------------------------------
+	static void basicTextEditor() {
+		ArrayDeque<Character> text = new ArrayDeque<Character>();
+		ArrayDeque<Character> backUp = new ArrayDeque<Character>();
+		int numberOperations = Integer.parseInt(scan.nextLine());
+		while(numberOperations>0) {
+			String enterCommand = scan.nextLine();
+			String[] commands = enterCommand.split("\\s");
+			switch(Integer.parseInt(commands[0])) {
+			case 1:
+				backUp=text;
+				char[] c = commands[1].toCharArray();
+				appendText(c,text);
+				break;
+				
+				
+			case 2:
+				backUp=text;
+				for(int i =0;i<Integer.parseInt(commands[1]);i++) {
+					text.pop();
+				}
+				break;
+				
+				
+			case 3:
+				LinkedList<String> list = new LinkedList<String>(text);
+				list.get(Integer.valueOf(Integer.parseInt(commands[1])));
+				break;
+				
+				
+			case 4:
+				
+			break;
+			}
+		}
+	}
+	
+	static void appendText(char[] c, ArrayDeque<Character> text) {
+		for(int i =0;i<c.length;i++) {
+			text.push(c[i]);
+		}
+	}
+	
+//--------------------------------------------------------------------------------
+	
+	
+	
 	
 	//stack Fibonachi
 //--------------------------------------------------------------------------------

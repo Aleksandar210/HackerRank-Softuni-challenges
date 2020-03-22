@@ -1,10 +1,10 @@
 package advanced_Softuni;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -14,7 +14,69 @@ public class _Stacks {
 		//stackCommandsTask();
 		//reverseStack();
 		//stackOperations();
+		//queueOperations();
 	}
+	
+//Queue operations	
+//--------------------------------------------------------------------------------
+	static void queueOperations() {
+		String initialInput = scan.nextLine();
+		String[] initInputCollect = initialInput.split(" ");
+		String[] enterValues = scan.nextLine().split(" ");
+		Integer[] intValues = new Integer[enterValues.length];
+		putInArray(enterValues,intValues);
+		
+		Queue<Integer> stack = new LinkedList<Integer>();
+		queueOperations(stack,initInputCollect,intValues);
+		
+		
+	}
+	
+	static void queueOperations(Queue<Integer> que, String[] commands, Integer[] values) {
+		int minElement = Integer.MAX_VALUE;
+		//add n elements
+		if(values.length<Integer.parseInt(commands[0])) {
+			for(int i =0;i<values.length;i++) {
+				que.add(values[i]);
+				if(values[i]<minElement) {
+					minElement = values[i];
+				}
+			}
+		}else {
+		for(int i =0;i<Integer.parseInt(commands[0]);i++) {
+			que.add(values[i]);
+			if(values[i]<minElement) {
+				minElement = values[i];
+			}
+		}
+		}
+		//------------------------------------------------
+		
+		//removing n  elements from stack
+		while(Integer.parseInt(commands[1])>0) {
+			if(que.size()<=0) {
+				break;
+			}else {
+				que.remove();
+			}
+		}
+		//-----------------------------------------------
+		
+		//search for element if not there print min element in stack
+		if(que.contains(Integer.parseInt(commands[2]))) {
+			System.out.println("Value is in stack!");
+		}else {
+			System.out.println("Min Eelement: "+ minElement );
+		}
+	}
+	
+	
+	
+	
+	
+	
+//--------------------------------------------------------------------------------
+	
 	
 	
 	//stack operations

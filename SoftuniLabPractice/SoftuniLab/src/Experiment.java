@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -17,15 +18,22 @@ public class Experiment {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 			
-	String regex = "[=\\s\\#]+";
-	String data = "High = 89#Low = 28#Medium = 77#Low = 23";
-	String[] dataCollected = data.split(regex);
-	char c;
-	for(int i=0;i<dataCollected.length-1;i+=2) {
-		System.out.println(dataCollected[i]);
-	}
+		ArrayDeque<Integer> stat = new ArrayDeque<Integer>();
+		for(int i =0;i<10;i++) {
+			stat.add(i+1);
+		}
+		
+		System.out.println(stat.size()-1);
 	
  }
+	
+	static void reorderQueue(int from,ArrayDeque<Integer> que) {
+		for(int i =0;i<from;i++) {
+		int removed=  que.remove();	
+		que.addLast(removed);
+		
+		}
+	}
 	
 	
 	

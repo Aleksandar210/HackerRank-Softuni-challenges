@@ -1,12 +1,15 @@
 package advanced_Softuni;
 
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Optional;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
+
+import softuni_objectsandclasses_folder.Station;
 
 public class _Stacks {
 	static Scanner scan = new Scanner(System.in);
@@ -15,7 +18,106 @@ public class _Stacks {
 		//reverseStack();
 		//stackOperations();
 		//queueOperations();
+		//queueSequence();
+		//truckTour(); //?
+		
 	}
+	
+	//truckTour task
+//--------------------------------------------------------------------------------	
+	static void truckTour() {
+		int numberPumps = Integer.parseInt(scan.nextLine());
+		ArrayDeque<Station> stations = new ArrayDeque<Station>(numberPumps);
+		
+		
+		for(int i =0;i<numberPumps;i++) {
+			String[] enterPumps = scan.nextLine().split("\\s");
+			Station stat = new Station(Integer.parseInt(enterPumps[0]),Integer.parseInt(enterPumps[1]));
+			stations.add(stat);
+		}
+		
+
+		doTour(0,stations);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	static void reorderQueue(ArrayDeque<Station> stations, int indexOfStart) {
+		Station currentRemovedStation;
+	
+		for(int i =0;i<indexOfStart;i++) {
+			currentRemovedStation = stations.remove();	
+			stations.addLast(currentRemovedStation);
+			
+	      }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	static void doTour(int indexOfStation,ArrayDeque<Station> stations) {
+		Station stationStart=stations.peek();
+		reorderQueue(stations,indexOfStation);
+		int start = 0;
+		int tank = stationStart.get_Gas();
+		int currentPosition=0;
+		while(start<=stations.size()) {
+			
+			if(currentPosition==stations.size()-1) {
+				System.out.println(indexOfStation);
+			}
+			
+			if(tank>=stations.peek().get_Distance()) {
+				tank-=stations.peek().get_Distance();
+				tank+=stations.peek().get_Gas();
+				currentPosition++;
+			}else {
+				doTour(indexOfStation+1,stations);
+			}
+		}
+		
+	}
+//--------------------------------------------------------------------------------	
+	
+	//Sequence
+//--------------------------------------------------------------------------------
+	static void quueSequence() {
+		Queue<Integer> que =new ArrayDeque<Integer>();
+		int N = Integer.parseInt(scan.nextLine());
+		int sequenceTo3=1;
+		for(int i =1;i<=50;i++) {
+			switch(sequenceTo3) {
+			case 1:
+				que.add(N+1);
+				sequenceTo3++;
+				break;
+			case 2:
+				que.add(2*N+1);
+				sequenceTo3++;
+				break;
+				
+			case 3:
+				que.add(N+2);
+				sequenceTo3=1;
+				N+=1;
+				break;
+			}
+		}
+		
+		System.out.println(que);
+	}
+//--------------------------------------------------------------------------------
+	
 	
 //Queue operations	
 //--------------------------------------------------------------------------------

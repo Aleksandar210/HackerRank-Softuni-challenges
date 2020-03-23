@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.Stack;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +23,39 @@ public class Sets_Maps {
 		//periodicTable();
 		//occurence();
 		//phoneBook();
+		//getResources();
 	}
+	//----------------------------------------------------------------------
+	static void getResources() {
+		Map<String,Integer> resources = new HashMap<String,Integer>();
+		String enter;
+		int index =1;
+		
+		Stack<String> resourceEntered = new Stack<String>();
+		do {
+			enter = scan.nextLine();
+			if(index%2==0) {
+				if(resources.get(enter)==null) {
+					resources.put(resourceEntered.pop(),Integer.parseInt(enter));
+				}else {
+					resources.put(resourceEntered.peek(), resources.get(resourceEntered.pop())+Integer.parseInt(enter));
+				}
+			}else {
+				resourceEntered.push(enter);
+			}
+		}while("stop".equalsIgnoreCase(enter));
+		
+		for(Map.Entry<String,Integer> entry:resources.entrySet()) {
+			System.out.println(entry.getKey()+"-> "+entry.getValue());
+		}
+	}
+	
+	//----------------------------------------------------------------------
+	
+	
+	
+	
+	
 	
 	
 	//----------------------------------------------------------------------

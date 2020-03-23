@@ -23,9 +23,7 @@ public class Experiment {
 		stat.add(2);
 		stat.add(3);
 		
-		for(Integer number:stat) {
-			System.out.println(number);
-		}
+		
 	}
 	
 	

@@ -91,7 +91,7 @@ public class _Stacks {
 				
 				
 			case 3:
-				LinkedList<String> list = new LinkedList<String>(text);
+				LinkedList<Character> list = new LinkedList<Character>(text);
 				list.get(Integer.valueOf(Integer.parseInt(commands[1])));
 				break;
 				

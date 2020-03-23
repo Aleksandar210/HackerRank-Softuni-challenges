@@ -24,7 +24,55 @@ public class Sets_Maps {
 		//occurence();
 		//phoneBook();
 		//getResources();
+		//ficEmails();
 	}
+	
+	//----------------------------------------------------------------------
+	static void fixEmails() {
+		String enter;
+		String name="";
+		
+		Map<String,String> namesEmails = new HashMap<String,String>();
+		int indexLine=1;
+		String[] domains = new String[]{".uk",".us",".com"};
+		do {
+			enter = scan.nextLine();
+			if(indexLine%2!=0) {
+				name = enter;
+			}else {
+				
+				verifyInputMap(namesEmails,domains,enter,name);
+				name ="";
+			}
+			
+		}while("stop".equalsIgnoreCase(enter));
+		
+		for(Map.Entry<String, String> entry:namesEmails.entrySet()) {
+			System.out.println(entry.getKey()+" ->"+entry.getValue());
+		}
+	}
+	
+	static void verifyInputMap(Map<String,String>map, String[] domains,String currentDomain,String name) {
+		for(int i=0;i<domains.length;i++) {
+			if(currentDomain.contains(domains[i])) {
+				if(currentDomain.length() -  currentDomain.lastIndexOf(domains[i])==3) {
+					break;
+				}else {
+					continue;
+				}
+			}
+		}
+		
+		map.put(name, currentDomain);
+	}
+	//----------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
 	//----------------------------------------------------------------------
 	static void getResources() {
 		Map<String,Integer> resources = new HashMap<String,Integer>();

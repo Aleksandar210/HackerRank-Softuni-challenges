@@ -24,8 +24,144 @@ public class Sets_Maps {
 		//occurence();
 		//phoneBook();
 		//getResources();
-		//ficEmails();
+		//fixEmails();
+		//cardPoints() //! too much code.
 	}
+	
+	
+	
+	//card point starts here
+	//----------------------------------------------------------------------
+	static void cardPoints() {
+		String enter;
+	
+		Map<String,Set<String>> userSet = new HashMap<String,Set<String>>();
+		Map<String,Integer> userResult = new HashMap<String,Integer>();
+		
+		do {
+			enter = scan.nextLine();
+			
+			if(!"stop".equalsIgnoreCase(enter)) {
+			String[] nameAndDeck = enter.split(":");
+			addPointsAndDeck(userResult,userSet,nameAndDeck);
+			}
+			
+			
+		}while(!"stop".equalsIgnoreCase(enter));
+		
+		System.out.println(" ");
+		System.out.println("Results: ");
+		
+		for(Map.Entry<String,Integer> userr:userResult.entrySet()) {
+			System.out.print(userr.getKey()+" ->"+userr.getValue()+" points! with a deck: ");
+			System.out.print(userSet.get(userr.getKey()));
+			System.out.println();
+		}
+	}
+	
+	static void addPointsAndDeck(Map<String,Integer> user,Map<String,Set<String>> userSet,String[] data) {
+		String getHand = data[1];
+		
+		String[] cardsInHand = getHand.split(",\\s+");
+		
+		int currentPoints;
+		if(userSet.get(data[0])==null) {
+			currentPoints = calculatePoints(cardsInHand);
+			userSet.put(data[0], Arrays.stream(cardsInHand).collect(Collectors.toSet()));
+			user.put(data[0], currentPoints);
+		}else {
+			for(String currentCard:cardsInHand) {
+				userSet.get(data[0]).add(currentCard);
+				
+			}
+			
+			String[] currentHandSet = userSet.get(data[0]).toArray(new String[userSet.get(data[0]).size()]);
+			int addNewPoints = user.get(data[0])+calculatePoints(currentHandSet);
+			user.put(data[0],addNewPoints);
+			
+		}
+		
+	}
+	
+	static int calculatePoints(String[] cards) {
+		int points = 0;
+		for(String card:cards) {
+			try {
+				int number = Integer.parseInt(card.substring(0,1));
+				points+=number;
+				points+=addPointDueType( card, points);
+				
+			}catch(NumberFormatException exception) {
+				points+=addPointDueCard(card,points);
+			}
+			}
+		return points;
+		
+	}
+	
+	
+	
+	
+	
+	
+	static int addPointDueCard(String card,int points) {
+		
+		switch(card.substring(0,1).toLowerCase()) {
+		case "j":
+			points+=11;
+			points+=addPointDueType(card,points);
+			break;
+		case "q":
+			points+=12;
+			points+=addPointDueType(card,points);
+			break;
+			
+		case "k":
+			points+=13;
+			break;
+			
+		case"a":
+			points+=14;
+			points+=addPointDueType(card,points);
+			break;
+		}
+		return points;
+	}
+	
+	
+	
+	static int addPointDueType(String card,int points) {
+		switch(card.substring(1,2).toLowerCase()) {
+		case "d":
+			points+=2;
+			break;
+		case"s":
+			points+=4;
+			break;
+		case"h":
+			points+=3;
+			break;
+		case "c":
+			points+=1;
+			break;
+		}
+		return points;
+	}
+	//----------------------------------------------------------------------
+	
+	//card point ends here
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	//----------------------------------------------------------------------
 	static void fixEmails() {
@@ -53,17 +189,19 @@ public class Sets_Maps {
 	}
 	
 	static void verifyInputMap(Map<String,String>map, String[] domains,String currentDomain,String name) {
+		boolean invalid =false;
 		for(int i=0;i<domains.length;i++) {
 			if(currentDomain.contains(domains[i])) {
 				if(currentDomain.length() -  currentDomain.lastIndexOf(domains[i])==3) {
-					break;
+					invalid = true;
 				}else {
 					continue;
 				}
 			}
 		}
-		
+		if(!invalid) {
 		map.put(name, currentDomain);
+		}
 	}
 	//----------------------------------------------------------------------
 	

@@ -4,12 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AdvancedExperiments {
-@SuppressWarnings("deprecation")
+
 public static void main(String[] args) {
-	String temp = "afafkajfa.uk";
-	int index = temp.lastIndexOf(".uk");
-	System.out.println(index);
+	String temp = "JD";
+	System.out.println(temp.substring(1, 2));
 	
-	System.out.println(temp.length()-index);
 }
 }

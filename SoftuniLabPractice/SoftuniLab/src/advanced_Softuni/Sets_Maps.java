@@ -1,9 +1,11 @@
 package advanced_Softuni;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Sets_Maps {
 	static Scanner scan = new Scanner(System.in);
@@ -14,7 +16,32 @@ public class Sets_Maps {
 	}
 	
 	//----------------------------------------------------------------------
+	static void periodicTable() {
+		int numberElements = Integer.parseInt(scan.nextLine());
+		Set<String> elems= new HashSet<String>(numberElements);
+		while(numberElements>0) {
+			
+		String enterElements = scan.nextLine();
+		String[] dataCollected = enterElements.split("\\s");
+		
+		if(elems.isEmpty()) {
+			elems = Arrays.stream(dataCollected).collect(Collectors.toSet());
+		}else {
+			addToSetNoOvveride(elems,dataCollected);
+		}
+		
+		numberElements--;
+		
+		}
+		
+		System.out.println(elems);
+	}
 	
+	static void addToSetNoOvveride(Set<String> set, String[] arr) {
+		for(String elem:arr) {
+			set.add(elem);
+		}
+	}
 	
 	//----------------------------------------------------------------------
 	

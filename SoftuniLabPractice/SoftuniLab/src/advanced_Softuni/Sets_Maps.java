@@ -1,12 +1,15 @@
 package advanced_Softuni;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import com.sun.javafx.webkit.KeyCodeMap.Entry;
@@ -18,7 +21,44 @@ public class Sets_Maps {
 		//repetingNumbers();
 		//periodicTable();
 		//occurence();
+		//phoneBook();
 	}
+	
+	
+	//----------------------------------------------------------------------
+	static void phoneBook() {
+		String regex = "(?<name>[a-zA-Z])+([\\-\\s])(?<number>[0-9])+";
+		String enter;
+		Pattern enterPattern = Pattern.compile(regex);
+		Matcher enterMatcher;
+		
+		Map<String,Integer> names = new HashMap<String,Integer>();
+		
+		do {
+			enter = scan.nextLine();
+			if("search".equalsIgnoreCase(enter)||"stop".equalsIgnoreCase(enter)) {
+				enterMatcher = enterPattern.matcher(enter);
+				if(enterMatcher.find()) {
+					names.put(enterMatcher.group("name"),Integer.parseInt(enterMatcher.group("number")));
+					
+				}
+			}else if("search".equalsIgnoreCase(enter)) {
+				enter = scan.nextLine();
+				if(names.get(enter)==null) {
+					System.out.println("Contact doesnt exist");
+				}else {
+					System.out.println(enter+" ->"+names.get(enter));
+				}
+			}
+		}while("stop".equalsIgnoreCase(enter));
+	}
+	//----------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
 	
 	//----------------------------------------------------------------------
 	static void occurence() {

@@ -4,12 +4,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class AdvancedExperiments {
+@SuppressWarnings("deprecation")
 public static void main(String[] args) {
-	Set<Integer> set = new HashSet<Integer>();
-	set.add(1);
-	set.add(1);
-	System.out.println(set);
+	String temp = "Aleks Kuzmov";
+	char c;
+	StringBuilder sb = new StringBuilder(temp.length());
 	
+	for(int i =0;i<temp.length();i++) {
+		c = temp.charAt(i);
+		if(!Character.isSpace(c)) {
+			sb.append(c);
+		}
+	}
+	
+	System.out.println(sb.toString());
 	
 }
 }

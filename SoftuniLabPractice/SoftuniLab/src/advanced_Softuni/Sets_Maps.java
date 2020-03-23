@@ -2,10 +2,14 @@ package advanced_Softuni;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
+
+import com.sun.javafx.webkit.KeyCodeMap.Entry;
 
 public class Sets_Maps {
 	static Scanner scan = new Scanner(System.in);
@@ -13,7 +17,38 @@ public class Sets_Maps {
 		//usernameUnique();
 		//repetingNumbers();
 		//periodicTable();
+		//occurence();
 	}
+	
+	//----------------------------------------------------------------------
+	static void occurence() {
+		
+		Map<Character,Integer> map = new TreeMap<Character,Integer>();
+		enterSymbols(map,scan.nextLine());
+		for(Map.Entry<Character, Integer> entry: map.entrySet()) {
+			System.out.println(entry.getKey()+" ->"+entry.getValue());
+		}
+	}
+	
+	@SuppressWarnings("deprecation")
+	static void enterSymbols(Map<Character,Integer> map,String word) {
+		char c;
+		for(int i =0;i<word.length();i++) {
+			c = word.charAt(i);
+			if(!Character.isSpace(c)) {
+				Optional<Integer> opt = Optional.ofNullable(map.get(c)) ;
+				if(opt.isPresent()) {
+					map.put(c,map.get(c)+1);
+				}else {
+					map.put(c, 1);
+				}
+			}
+		}
+	}
+	//----------------------------------------------------------------------
+	
+	
+
 	
 	//----------------------------------------------------------------------
 	static void periodicTable() {

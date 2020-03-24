@@ -130,7 +130,7 @@ public class Sets_Maps {
 	
 	
 	
-	
+	//small function for searching by Type function (related/linked)
 	static void activateSearchByTypeMenue(Map<String,Map<String,Dragon>> dragons) {
 		 System.out.print("(enter -1 to cancel) Enter type: ");
 		 String type = scan.nextLine();
@@ -143,6 +143,27 @@ public class Sets_Maps {
 			 System.out.println("Invalid Type.");
 			 activateSearchByTypeMenue(dragons);
 		 }
+	}
+	
+	static void activateSearchByTypeName(Map<String,Map<String,Dragon>> dragons) {
+		System.out.print("(enter -1 to cancel) Tpye: ");
+		String type = scan.nextLine();
+		if("-1".equals(type)) {
+			return;
+		}else {
+			if(!dragons.containsKey(type)) {
+				System.out.println("No type found");
+				activateSearchByTypeName(dragons);
+			}else {
+			
+			System.out.print("(enter -1 to cancel) Name: ");
+			String name = scan.nextLine();
+			if("-1".equals(name)) {
+				return;
+			}
+				
+			}
+		}
 	}
 	 //--------------------------------------------------------------------------------------------------------------
 	

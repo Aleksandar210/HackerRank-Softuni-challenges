@@ -1,8 +1,10 @@
 package advanced_Softuni;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
@@ -28,7 +30,45 @@ public class Sets_Maps {
 		//cardPoints() //! too much code.
 		//partyList();
 		//userLogs();
+		//serbianUnleashed()
 	}
+	
+	 
+	static void serbianUnleashed() {
+		String regex = "(?<name>[a-zA-Z]+)\\s+\\b(?<venue>[@a-zA-Z]+)\\b\\s+(?<price>[0-9]*)\\s+(?<count>[0-9]*)";
+		String enter;
+		Pattern concertPattern = Pattern.compile(regex);
+		Matcher concertMatcher;
+		Map<String, Map<String, Integer>> singerByCity = new HashMap<String,Map<String,Integer>>();
+		Map<String,Integer> singerRevenue = new HashMap<String,Integer>();
+		while(true) {
+			enter = scan.nextLine();
+			if("end".equalsIgnoreCase(enter)) {
+				break;
+			}else {
+				
+				concertMatcher = concertPattern.matcher(enter);
+				
+				if(concertMatcher.find()) {
+					
+				}
+				
+			}
+		}
+			
+		
+	}
+	
+	static Map sortMap(LinkedHashMap<String,Integer> singerRevenue) {
+	
+		
+		Map<Object, Object> newMap=
+		singerRevenue.entrySet().stream().sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
+		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+		return newMap;
+	}
+	
+	
 	
 	
 	//----------------------------------------------------------------------

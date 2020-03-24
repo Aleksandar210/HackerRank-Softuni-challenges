@@ -15,7 +15,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import com.sun.javafx.webkit.KeyCodeMap.Entry;
+import softuni_objectsandclasses_folder.Dragon;
+
+
 
 public class Sets_Maps {
 	static Scanner scan = new Scanner(System.in);
@@ -31,9 +33,135 @@ public class Sets_Maps {
 		//partyList();
 		//userLogs();
 		//serbianUnleashed()
+		//heroesIII();
 	}
 	
-	 
+	 //--------------------------------------------------------------------------------------------------------------
+	static void heroesIII() {
+		int numberDragons =  Integer.parseInt(scan.nextLine());
+		Map<String,TreeMap<String,Dragon>> dragons = new LinkedHashMap<String,TreeMap<String,Dragon>>();
+		
+		String enterDragon;
+		Pattern dragonP = Pattern.compile("(?<type>[a-zA-Z]+)\\s+\\b(?<name>[a-zA-Z]+)\\b\\s+(?<damage>[0-9]*)\\s+(?<health>[0-9]*)\\s+(?<armour>[0-9]*)");
+		Matcher dragonM;
+		while(numberDragons>0) {
+			enterDragon = scan.nextLine();
+			dragonM = dragonP.matcher(enterDragon);
+			if(dragonM.find()) {
+				
+				if(dragons.get(dragonM.group("type"))==null) {
+					
+					if(dragons.get(dragonM.group("type")).get(dragonM.group("name"))==null) {
+						Dragon currentDragon = new Dragon(dragonM.group("name"),Integer.parseInt(dragonM.group("health")),Integer.parseInt(dragonM.group("damage")),Integer.parseInt(dragonM.group("armour")));
+						dragons.put(dragonM.group("type"), new TreeMap<String,Dragon>());
+						dragons.get(dragonM.group("type")).put(dragonM.group("name"), currentDragon);
+					}else {
+						Dragon currentDragon = new Dragon(dragonM.group("name"),Integer.parseInt(dragonM.group("health")),Integer.parseInt(dragonM.group("damage")),Integer.parseInt(dragonM.group("armour")));
+						dragons.get(dragonM.group("type")).put(dragonM.group("name"), currentDragon);
+					}
+				}
+				
+			}
+		}
+		
+		System.out.println();
+	}
+	static void dragonMenue(Map<String,Map<String,Dragon>> dragons) {
+		boolean exit = false;
+		while(!exit) {
+			int select;
+		do {
+		System.out.println("1|Display all dragons");
+		System.out.println("2|Display by type");
+		System.out.println("3|Search by type and name");
+		System.out.println("4|cancel");
+		System.out.println("Select: ");
+		 select = Integer.parseInt(scan.nextLine());
+		 
+		 switch(select) {
+		 case 1:
+			 displayAll(dragons);
+			 break;
+		 case 2:
+			 activateSearchByTypeMenue(dragons);
+			 break;
+		 case 3:
+			 
+			 break;
+		 case 4:
+			 exit =true;
+			 break;
+		 }
+		 
+		}while(select!=4);
+		
+		}
+	}
+	
+	//display all function activated when switch case 1!
+	
+	static void displayAll(Map<String,Map<String,Dragon>> dragons) {
+		for(Map.Entry<String, Map<String,Dragon>> mapster:dragons.entrySet()) {
+			System.out.println(mapster.getKey());
+			System.out.println("-----------------------");
+			for(Map.Entry<String, Dragon> currentDragon:mapster.getValue().entrySet()) {
+				System.out.println(currentDragon.getValue());
+			}
+			System.out.println("-------------------------");
+			System.out.println();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	//display by type activated when switch case 2
+	
+	static void displayType(Map<String,Map<String,Dragon>> dragons,String type) {
+		System.out.println();
+		System.out.println("Dragons of type: "+type);
+		for(Map.Entry<String, Dragon> mapster: dragons.get(type).entrySet()) {
+			System.out.println(mapster.getValue());
+		}
+	}
+	
+	
+	
+	
+	
+	static void activateSearchByTypeMenue(Map<String,Map<String,Dragon>> dragons) {
+		 System.out.print("(enter -1 to cancel) Enter type: ");
+		 String type = scan.nextLine();
+		 if("-1".equals(type)) {
+			 return;
+		 }
+		 if(dragons.containsKey(type)) {
+			 displayType(dragons,type);
+		 }else {
+			 System.out.println("Invalid Type.");
+			 activateSearchByTypeMenue(dragons);
+		 }
+	}
+	 //--------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 //--------------------------------------------------------------------------------------------------------------
 	static void serbianUnleashed() {
 		String regex = "(?<name>[a-zA-Z]+)\\s+\\b(?<venue>[@a-zA-Z]+)\\b\\s+(?<price>[0-9]*)\\s+(?<count>[0-9]*)";
 		String enter;
@@ -90,6 +218,22 @@ public class Sets_Maps {
 		return newMap;
 	}
 
+	 //--------------------------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

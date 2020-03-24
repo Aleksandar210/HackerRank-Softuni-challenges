@@ -27,12 +27,54 @@ public class Sets_Maps {
 		//fixEmails();
 		//cardPoints() //! too much code.
 		//partyList();
+		//userLogs();
 	}
 	
 	
 	//----------------------------------------------------------------------
-	static void taskName() {
+	static void userLogs() {
+	
+		String enterLog;
+		Map<String,Integer> duration = new HashMap<String,Integer>();
+		Map<String,Stack<String>> userIpUsed = new HashMap<String,Stack<String>>();
 		
+		String regex = "(?<ip>[0-9.]+)\\s+(?<name>[a-zA-Z]+)\\s+(?<duration>[0-9]+)";
+		Pattern verifyLog = Pattern.compile(regex);
+		Matcher matchLog;
+		
+		
+		while(true) {
+			enterLog = scan.nextLine();
+			if("report".equalsIgnoreCase(enterLog)) {
+				break;
+			}else {														//if not report
+				matchLog = verifyLog.matcher(enterLog);
+				if(matchLog.find()) {									//if entered is valid
+					
+					if(duration.get(matchLog.group("name"))==null){
+						duration.put(matchLog.group("name"), Integer.parseInt(matchLog.group("duration")));
+						userIpUsed.put(matchLog.group("name"),new Stack<String>());
+						userIpUsed.get(matchLog.group("name")).push(matchLog.group("ip"));
+					}else {
+						int addToDurationSum = Integer.parseInt(matchLog.group("duration"))+duration.get(matchLog.group("name"));
+						duration.put(matchLog.group("name"), addToDurationSum);
+						userIpUsed.get(matchLog.group("name")).push(matchLog.group("ip"));
+					}
+					
+					
+				}
+			}
+			
+			
+		}
+		
+		
+		System.out.println("Report results: ");
+		for(Map.Entry<String,Integer> user:duration.entrySet()) {
+			System.out.print(user.getKey()+" ->"+user.getValue()+" with IP's used: ");
+			System.out.print(" "+userIpUsed.get(user.getKey()));
+			System.out.println();
+		}
 	}
 	//----------------------------------------------------------------------
 	

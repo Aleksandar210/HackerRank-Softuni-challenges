@@ -6,8 +6,13 @@ import java.util.Set;
 public class AdvancedExperiments {
 
 public static void main(String[] args) {
-	String temp = "JD";
-	System.out.println(temp.substring(1, 2));
+	String temp = "123afasdghshsh";
+	if(temp.startsWith("[0-9]+")) {
+		System.out.println("number");
+	}else {
+		System.out.println("letter");
+	}
+	
 	
 }
 }

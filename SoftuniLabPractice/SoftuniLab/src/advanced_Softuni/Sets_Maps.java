@@ -26,7 +26,84 @@ public class Sets_Maps {
 		//getResources();
 		//fixEmails();
 		//cardPoints() //! too much code.
+		//partyList();
 	}
+	
+	
+	//----------------------------------------------------------------------
+	static void taskName() {
+		
+	}
+	//----------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//----------------------------------------------------------------------
+	static void partyList() {
+		String enterGuestsList;
+		Set<String> vip = new HashSet<String>();
+		Set<String> regular = new HashSet<String>();
+		
+		
+		
+		do {
+			enterGuestsList = scan.nextLine();
+			
+			if(!"party".equalsIgnoreCase(enterGuestsList)) {
+				if(Character.isDigit(enterGuestsList.charAt(0))) {
+					vip.add(enterGuestsList);
+				}else {
+					regular.add(enterGuestsList);
+				}
+				
+				
+			}
+		}while(!"party".equalsIgnoreCase(enterGuestsList));
+		
+		String checkGuests;
+		do {
+			checkGuests = scan.nextLine();
+			if(!"stop".equalsIgnoreCase(checkGuests)) {
+				if(Character.isDigit(checkGuests.charAt(0))) {
+					vip.remove(checkGuests);
+				}else {
+					regular.remove(checkGuests);
+				}
+			}
+		}while(!"stop".equalsIgnoreCase(checkGuests));
+		
+		Set<String> attend = new HashSet<String>(vip);
+		attend.addAll(regular);
+		
+		for(String attended:attend) {
+			System.out.println(attended);
+		}
+	}
+	
+	//----------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

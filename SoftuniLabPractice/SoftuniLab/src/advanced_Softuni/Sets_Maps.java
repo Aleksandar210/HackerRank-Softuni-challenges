@@ -39,7 +39,7 @@ public class Sets_Maps {
 	 //--------------------------------------------------------------------------------------------------------------
 	static void heroesIII() {
 		int numberDragons =  Integer.parseInt(scan.nextLine());
-		Map<String,TreeMap<String,Dragon>> dragons = new LinkedHashMap<String,TreeMap<String,Dragon>>();
+		Map<String,TreeMap<String,Dragon>> dragons = new HashMap<String,TreeMap<String,Dragon>>();
 		
 		String enterDragon;
 		Pattern dragonP = Pattern.compile("(?<type>[a-zA-Z]+)\\s+\\b(?<name>[a-zA-Z]+)\\b\\s+(?<damage>[0-9]*)\\s+(?<health>[0-9]*)\\s+(?<armour>[0-9]*)");
@@ -65,8 +65,9 @@ public class Sets_Maps {
 		}
 		
 		System.out.println();
+		dragonMenue(dragons);
 	}
-	static void dragonMenue(Map<String,Map<String,Dragon>> dragons) {
+	static void dragonMenue(Map<String,TreeMap<String,Dragon>> dragons) {
 		boolean exit = false;
 		while(!exit) {
 			int select;
@@ -102,8 +103,8 @@ public class Sets_Maps {
 	
 	//display all function activated when switch case 1!
 	
-	static void displayAll(Map<String,Map<String,Dragon>> dragons) {
-		for(Map.Entry<String, Map<String,Dragon>> mapster:dragons.entrySet()) {
+	static void displayAll(Map<String,TreeMap<String,Dragon>> dragons) {
+		for(Map.Entry<String, TreeMap<String,Dragon>> mapster:dragons.entrySet()) {
 			System.out.println(mapster.getKey());
 			System.out.println("-----------------------");
 			for(Map.Entry<String, Dragon> currentDragon:mapster.getValue().entrySet()) {
@@ -121,7 +122,7 @@ public class Sets_Maps {
 	
 	//display by type activated when switch case 2
 	
-	static void displayType(Map<String,Map<String,Dragon>> dragons,String type) {
+	static void displayType(Map<String,TreeMap<String,Dragon>> dragons,String type) {
 		System.out.println();
 		System.out.println("Dragons of type: "+type);
 		for(Map.Entry<String, Dragon> mapster: dragons.get(type).entrySet()) {
@@ -133,7 +134,7 @@ public class Sets_Maps {
 	
 	
 	//small function for searching by Type function (related/linked)
-	static void activateSearchByTypeMenue(Map<String,Map<String,Dragon>> dragons) {
+	static void activateSearchByTypeMenue(Map<String,TreeMap<String,Dragon>> dragons) {
 		 System.out.print("(enter -1 to cancel) Enter type: ");
 		 String type = scan.nextLine();
 		 if("-1".equals(type)) {
@@ -147,7 +148,7 @@ public class Sets_Maps {
 		 }
 	}
 	
-	static void activateSearchByTypeName(Map<String,Map<String,Dragon>> dragons) {
+	static void activateSearchByTypeName(Map<String,TreeMap<String,Dragon>> dragons) {
 		System.out.print("(enter -1 to cancel) Tpye: ");
 		String type = scan.nextLine();
 		if("-1".equals(type)) {
@@ -164,7 +165,7 @@ public class Sets_Maps {
 		}
 	}
 	
-	static void searchByName(Map<String,Map<String,Dragon>>dragons,String type) {
+	static void searchByName(Map<String,TreeMap<String,Dragon>>dragons,String type) {
 		System.out.print("(enter -1 to cancel) Name: ");
 		String name = scan.nextLine();
 		if("-1".equals(name)) {

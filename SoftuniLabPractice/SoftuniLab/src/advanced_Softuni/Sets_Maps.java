@@ -51,23 +51,45 @@ public class Sets_Maps {
 				
 				if(concertMatcher.find()) {
 					
+					if(singerByCity.get(concertMatcher.group("venue"))==null) {
+						singerByCity.put(concertMatcher.group("venue"), new LinkedHashMap<String,Integer>());
+						
+						int revenueValue = Integer.parseInt(concertMatcher.group("count"));
+						revenueValue*=Integer.parseInt(concertMatcher.group("price"));
+						singerRevenue.put(concertMatcher.group("name"),revenueValue );
+						singerByCity.put(concertMatcher.group("venue"), sortMap(singerRevenue));
+					}else {
+						int revenueValue = Integer.parseInt(concertMatcher.group("count"));
+						revenueValue*=Integer.parseInt(concertMatcher.group("price"));
+						singerRevenue.put(concertMatcher.group("name"),revenueValue );
+						singerByCity.put(concertMatcher.group("venue"), sortMap(singerRevenue));
+					}
+					
 				}
 				
 			}
 		}
 			
 		
+		System.out.println("Statistics. ");
+		for(Map.Entry<String, Map<String,Integer>> mapster: singerByCity.entrySet()) {
+			System.out.println(mapster.getKey());
+			for(Map.Entry<String, Integer> singerMapster:mapster.getValue().entrySet()) {
+				System.out.println(singerMapster.getKey()+" ->"+ singerMapster.getValue());
+			}
+		}
+		
 	}
 	
-	static Map sortMap(LinkedHashMap<String,Integer> singerRevenue) {
-	
+	static LinkedHashMap<String,Integer> sortMap(Map<String,Integer> singerRevenue) {
 		
-		Map<Object, Object> newMap=
+		
+		LinkedHashMap<String, Integer> newMap=
 		singerRevenue.entrySet().stream().sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
-		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+		.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(a,b)->a,LinkedHashMap::new));
 		return newMap;
 	}
-	
+
 	
 	
 	

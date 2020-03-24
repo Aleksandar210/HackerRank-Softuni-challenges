@@ -86,7 +86,7 @@ public class Sets_Maps {
 			 activateSearchByTypeMenue(dragons);
 			 break;
 		 case 3:
-			 
+			 activateSearchByTypeName(dragons);
 			 break;
 		 case 4:
 			 exit =true;
@@ -96,6 +96,8 @@ public class Sets_Maps {
 		}while(select!=4);
 		
 		}
+		System.out.println();
+		System.out.println("Goodbye World!");
 	}
 	
 	//display all function activated when switch case 1!
@@ -156,12 +158,24 @@ public class Sets_Maps {
 				activateSearchByTypeName(dragons);
 			}else {
 			
-			System.out.print("(enter -1 to cancel) Name: ");
-			String name = scan.nextLine();
-			if("-1".equals(name)) {
-				return;
-			}
+			searchByName(dragons,type);
 				
+			}
+		}
+	}
+	
+	static void searchByName(Map<String,Map<String,Dragon>>dragons,String type) {
+		System.out.print("(enter -1 to cancel) Name: ");
+		String name = scan.nextLine();
+		if("-1".equals(name)) {
+			return;
+		}else {
+			if(!dragons.get(type).containsKey(name)) {
+				System.out.println("No dragon found");
+				searchByName(dragons,type);
+			}else {
+				System.out.println("Dragon found: ");
+				System.out.println(dragons.get(type).get(name));
 			}
 		}
 	}

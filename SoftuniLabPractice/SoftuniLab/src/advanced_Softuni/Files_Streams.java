@@ -18,11 +18,48 @@ public class Files_Streams {
 	public static void main(String[] args) {
 		//displayFileInformation();
 		//transferDataBetween();
+		//transferBites();
 		//
 		//
-		//
-	//	transferModifiedData();
+	    //transferModifiedData();
 	}
+	
+	
+	
+	static void transferBites() {
+		String writeFile = "\\writeFile.txt";
+		String readFile = "\\readFile.txt";
+		
+		try (FileInputStream fis = new FileInputStream(path+readFile);
+				FileOutputStream fos = new FileOutputStream(path+writeFile)){
+			
+			int readB = fis.read();
+			while(readB>-1) {
+			if(readB == 10 || readB ==32) {
+				fos.write(readB);
+			}else {
+				String getDigits = String.valueOf(readB);
+				for(int i =0;i<getDigits.length();i++) {
+					fos.write(getDigits.charAt(i));
+				}
+			}
+			readB = fis.read();
+			}
+			
+		} catch (FileNotFoundException  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (IOException ioEx) {
+			ioEx.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	static void transferModifiedData() {

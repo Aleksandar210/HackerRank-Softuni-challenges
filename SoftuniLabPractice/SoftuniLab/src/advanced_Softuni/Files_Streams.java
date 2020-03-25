@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Scanner;
 
 import javafx.scene.shape.Path;
 
@@ -25,7 +26,47 @@ public class Files_Streams {
 		//readThirdLine()
 		//readThirdLine();
 	    //transferModifiedData();
+		//extractIntgers();
+		//extractIntegers()
+		//
+		//
+		
 	}
+	
+	
+	static void extractIntegers() {
+		String readFrom ="\\readFile.txt";
+		String writeFile = "\\writeFile.txt";
+		try(Scanner currentScan = new Scanner(new FileInputStream(path+readFrom));
+				PrintWriter pw = new PrintWriter(new FileOutputStream(path+writeFile))){
+			
+			while(currentScan.hasNext()) {
+				if(currentScan.hasNextInt()) {
+					pw.println(currentScan.nextInt());
+					
+				}
+				currentScan.next();
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (@SuppressWarnings("hiding") IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	static void readThirdLine() {

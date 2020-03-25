@@ -36,8 +36,34 @@ public class Files_Streams {
 		//sortTheContent()
 		//sumOfLine();
 		//sumOfLine();
+		//sumOfBytes();
+		//sumOfBytes();
 		
 	}
+	
+	
+	static void sumOfBytes() {
+		String readFrom = "\\readFile.txt";
+		java.nio.file.Path pathster = Paths.get(path+readFrom);
+		try {
+			
+			byte[] byteSum = Files.readAllBytes(pathster);
+			String temp = String.join("", String.valueOf(byteSum));
+			System.out.println(Long.parseLong(temp));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+	
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	static void sumOfLine() {
 		String readFile = "\\readFile.txt";
@@ -60,8 +86,8 @@ public class Files_Streams {
 		
 	}
 	
-	static int getSum(String line) {
-		int sum=0;
+	static long getSum(String line) {
+		 long sum=0;
 		for(int i =0;i<line.length();i++) {
 			sum+=line.charAt(i);
 		}

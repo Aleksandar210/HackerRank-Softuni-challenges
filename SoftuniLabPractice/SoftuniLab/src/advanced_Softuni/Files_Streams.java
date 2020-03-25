@@ -37,10 +37,26 @@ public class Files_Streams {
 		
 	}
 	
-	static void listFolders() {
 	
-		
+	
+	
+	//skeleton
+	/*static void listFolders() {
+		Path filePath = Paths.get(someStringWithPath);
+	File mainFile = new File();
+	PrintWriter pw = new PrintWriter(new FilOutputStream(stringPath)); //with blocks
+	Files[] filesListed mainFile.listFiles();
+	for(int i =0;i<filesListed.length;i++) {
+		if(!filesListed[i].isDirectory()) {
+			String printThis = String.valueOf(filesListed[i].length());
+			
+			pw.println(printThis);
+		}
 	}
+	}
+	*/
+		
+	
 	
 	
 	

@@ -34,8 +34,41 @@ public class Files_Streams {
 		//extractIntegers()
 		//printFodlerInfo();
 		//sortTheContent()
+		//sumOfLine();
+		//sumOfLine();
 		
 	}
+	
+	static void sumOfLine() {
+		String readFile = "\\readFile.txt";
+	
+		try(BufferedReader bfr = new BufferedReader(new FileReader(path+readFile))){
+			String line = bfr.readLine();
+			while(line !=null) {
+				System.out.println(line+" "+getSum(line));
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
+	}
+	
+	static int getSum(String line) {
+		int sum=0;
+		for(int i =0;i<line.length();i++) {
+			sum+=line.charAt(i);
+		}
+		return sum;
+	}
+
+	
 	
 	
 	

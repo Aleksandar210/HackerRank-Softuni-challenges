@@ -9,7 +9,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import javafx.scene.shape.Path;
 
 
 
@@ -19,10 +22,43 @@ public class Files_Streams {
 		//displayFileInformation();
 		//transferDataBetween();
 		//transferBites();
-		//
-		//
+		//readThirdLine()
+		//readThirdLine();
 	    //transferModifiedData();
 	}
+	
+	
+	static void readThirdLine() {
+		String writeFile = "\\writeFile.txt";
+		String readFile = "\\readFile.txt";
+		java.nio.file.Path readFrom = Paths.get(path+readFile);
+		java.nio.file.Path writeTo = Paths.get(path+writeFile);
+		
+		try(BufferedReader bfr =  Files.newBufferedReader(readFrom);
+				PrintWriter pw = new PrintWriter(Files.newBufferedWriter(writeTo))) {
+			String readLines = bfr.readLine();
+			int counter =1;
+			while(readLines !=null) {
+				if(counter%3==0) {
+					pw.println(readLines);
+				}
+				readLines = bfr.readLine();
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	

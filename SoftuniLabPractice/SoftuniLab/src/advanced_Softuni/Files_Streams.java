@@ -1,5 +1,6 @@
 package advanced_Softuni;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -11,7 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 import javafx.scene.shape.Path;
 
@@ -28,10 +32,44 @@ public class Files_Streams {
 	    //transferModifiedData();
 		//extractIntgers();
 		//extractIntegers()
-		//
-		//
+		//printFodlerInfo();
+		//sortTheContent()
 		
 	}
+	
+	static void listFolders() {
+	
+		
+	}
+	
+	
+	
+	
+
+
+	
+	
+	static void sortTheContent() {
+		String readFrom = "\\readFile.txt";
+		String writeTo = "\\writeFile.txt";
+		java.nio.file.Path pathster = Paths.get(path+readFrom);
+		java.nio.file.Path pathTo = Paths.get(path+writeTo);
+		
+		try {
+			java.util.List<String> content = Files.readAllLines(pathster);
+			content = content.stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+			Files.write(pathTo,content);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+	
+	
+	
+	}
+	
+	
 	
 	
 	static void extractIntegers() {

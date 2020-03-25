@@ -38,8 +38,43 @@ public class Files_Streams {
 		//sumOfLine();
 		//sumOfBytes();
 		//sumOfBytes();
+		//changeCase();
 		
 	}
+	
+	
+	
+	
+	
+	static void changeCase() {
+		String readFile = "\\fileRead.txt";
+		String writeFile = "\\fileWrite.txt";
+		
+		try(BufferedReader bfr = new BufferedReader(new FileReader(path+readFile));
+				PrintWriter pw = new PrintWriter(new FileWriter(path+writeFile))){
+			
+			String line = bfr.readLine();
+			while(line != null) {
+				line = line.toUpperCase();
+				pw.println(line);
+				line = bfr.readLine();
+				
+			}
+			
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
 	
 	
 	static void sumOfBytes() {

@@ -13,9 +13,26 @@ public class FunctionalProgramming {
 	public static void main(String[] args) {
 		sortEvenNumbers();
 		countUpperCase();
+		getSizeSum();
 		
 		
 	}
+	
+	//-------------------------------------------------------------------------------
+	static void getSizeSum() {
+		List<Integer> numbers = Arrays.stream(getString().split(", "))
+				.map(e ->Integer.parseInt(e)).collect(Collectors.toList());
+		int sum = numbers.stream().reduce(0, (a,b)->a+b);
+		System.out.println(numbers.size());
+		System.out.println(sum);
+	}
+	//-------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
 	//-------------------------------------------------------------------------------
 	static void countUpperCase() {
 		Predicate<String> isUpperCase = e -> e.startsWith("[A-Z]");

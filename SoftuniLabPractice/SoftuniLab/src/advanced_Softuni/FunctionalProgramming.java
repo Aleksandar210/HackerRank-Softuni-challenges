@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class FunctionalProgramming {
 	public static void main(String[] args) {
-		
+		sortEvenNumbers();
 		
 		
 		
@@ -15,7 +18,17 @@ public class FunctionalProgramming {
 	
 	//-------------------------------------------------------------------------------
 	static void sortEvenNumbers() {
+		String getNumbers = getString();
 		
+		
+		List<String> evenNumbers = Arrays.stream(getNumbers.split(", ")).map((e) -> Integer.parseInt(e))
+				.filter(e -> e%2==0).map(e -> String.valueOf(e)).collect(Collectors.toList());
+		
+		System.out.println(String.join(",",evenNumbers));
+		
+		evenNumbers = evenNumbers.stream().map(e-> Integer.parseInt(e)).sorted((a,b) ->a.compareTo(n))
+				.map(e ->String.valueOf(e)).collect(Collectors.toList());
+		System.out.println(String.join(",", evenNumbers));
 	}
 	//-------------------------------------------------------------------------------
 	

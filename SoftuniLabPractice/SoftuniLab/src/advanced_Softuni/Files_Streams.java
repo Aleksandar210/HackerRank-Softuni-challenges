@@ -39,9 +39,36 @@ public class Files_Streams {
 		//sumOfBytes();
 		//sumOfBytes();
 		//changeCase();
-		//
+		//lineNumbers();
 		//countCharacterTypes();
+		//
 	}
+	
+	static void lineNumbers() {
+		int counter = 1;
+		String readFile = path+"\\fileRead.txt";
+		try(BufferedReader bfr = new BufferedReader(new FileReader(readFile))){
+			
+			bfr.readLine();
+			while(bfr.readLine()!=null) {
+				System.out.println(counter);
+				counter++;
+				bfr.readLine();
+				
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 	
 	static void countCharacterTypes() {
 		String readFile = path+"\\fileRead.txt";

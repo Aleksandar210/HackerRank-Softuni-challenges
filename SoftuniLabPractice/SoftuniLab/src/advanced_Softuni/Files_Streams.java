@@ -39,8 +39,110 @@ public class Files_Streams {
 		//sumOfBytes();
 		//sumOfBytes();
 		//changeCase();
+		//
+		//countCharacterTypes();
+	}
+	
+	static void countCharacterTypes() {
+		String readFile = path+"\\fileRead.txt";
+		String writeFile = path+"\\fileWrite.txt";
+		
+		int volewsCount =0;
+		int punctCount =0;
+		int consonantCount =0;
+		
+		try(BufferedReader bfr = new BufferedReader(new FileReader(readFile))){
+			
+			int readChar  = bfr.read();
+			while(readChar >-1) {
+				char character = (char) readChar;
+				if(isVolew(character)) {
+					volewsCount++;
+				}else if(isPunctuation(character)) {
+					punctCount++;
+				}else if(isConsonant(character)) {
+					consonantCount++;
+				}
+			}
+			
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("punct: "+punctCount);
+		System.out.println("volews: "+volewsCount);
+		System.out.println("consonants: "+consonantCount);
+		
 		
 	}
+	
+	static boolean isVolew(char c) {
+		switch(Character.toLowerCase(c)) {
+		case 'a':
+		case 'e':
+		case 'i':
+		case 'o':
+		case 'u':
+			return true;
+			default: return false;
+			
+		}
+	}
+	
+	
+	static boolean isPunctuation(char c) {
+		switch(c){
+		case ',':
+			return true;
+			default: return false;
+		}
+	}
+	
+	
+	static boolean isConsonant(char c) {
+		switch(Character.toLowerCase(c)){
+		case 'b':
+		case 'c':
+		case 'd':
+		case 'f':
+		case 'g':
+		case 'h':
+		case 'j':
+		case 'k':
+		case 'l':
+		case 'm':
+		case 'n':
+		case 'p':
+		case 'q':
+		case 'r':
+		case 's':
+		case 't':
+		case 'v':
+		case 'w':
+		case 'x':
+		case 'y':
+		case 'z':
+			return true;
+		
+		default: return false;
+		
+	 
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -6,15 +6,28 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class FunctionalProgramming {
 	public static void main(String[] args) {
 		sortEvenNumbers();
-		
+		countUpperCase();
 		
 		
 	}
+	//-------------------------------------------------------------------------------
+	static void countUpperCase() {
+		Predicate<String> isUpperCase = e -> e.startsWith("[A-Z]");
+		List<String> getUpperCase = Arrays.stream(getString().split(" "))
+				.filter(isUpperCase).collect(Collectors.toList());
+		System.out.println(getUpperCase.size());
+		getUpperCase.forEach(e -> System.out.println());
+	}
+	//-------------------------------------------------------------------------------
+	
+	
+	
 	
 	//-------------------------------------------------------------------------------
 	static void sortEvenNumbers() {

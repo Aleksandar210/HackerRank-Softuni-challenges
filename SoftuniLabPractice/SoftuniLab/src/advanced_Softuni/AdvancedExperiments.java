@@ -1,5 +1,9 @@
 package advanced_Softuni;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -10,29 +14,20 @@ import java.util.stream.Collectors;
 public class AdvancedExperiments {
 
 public static void main(String[] args) {
+	 String path = "D:\\FileFolder";
+String readFrom = path+"\\readFile.txt";
+try(BufferedReader bfr = new BufferedReader(new FileReader(readFrom))){
 	
-	Map<String,Integer> map = new HashMap<String,Integer>();
 	
-	map.put("A", 1);
-	map.put("B", 2);
-	map.put("C", 3);
 	
-	Map<String,Integer> newMap = sortMap(map);
-	for(Map.Entry<String, Integer>mapster:newMap.entrySet()) {
-		System.out.println(mapster.getKey()+" "+mapster.getValue());
-	}
-	
+} catch (FileNotFoundException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
 }
 
-
-
-static LinkedHashMap<String,Integer> sortMap(Map<String,Integer> singerRevenue) {
-	
-	
-	LinkedHashMap<String, Integer> newMap=
-	singerRevenue.entrySet().stream().sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
-	.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(a,b)->a,LinkedHashMap::new));
-	return newMap;
-}
+ }
 
 }

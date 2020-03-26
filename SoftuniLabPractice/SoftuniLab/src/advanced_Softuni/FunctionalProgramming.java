@@ -26,7 +26,7 @@ public class FunctionalProgramming {
 		
 		System.out.println(String.join(",",evenNumbers));
 		
-		evenNumbers = evenNumbers.stream().map(e-> Integer.parseInt(e)).sorted((a,b) ->a.compareTo(n))
+		evenNumbers = evenNumbers.stream().map(e-> Integer.parseInt(e)).sorted((a,b) ->a.compareTo(b))
 				.map(e ->String.valueOf(e)).collect(Collectors.toList());
 		System.out.println(String.join(",", evenNumbers));
 	}

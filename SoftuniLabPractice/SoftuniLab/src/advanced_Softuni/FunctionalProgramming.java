@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
+
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -42,7 +42,108 @@ public class FunctionalProgramming {
 		//divisibleSequence();
 		
 		
+		
 	}
+	
+	
+	
+	//THIS TASK IS MAY NOT BE CORRECT AND THE APPROACH TO IT IS NOT GOOD OR CLEAR
+	//IT WAS MADE FOR FUN 
+	static void partyCommandsForFun() {
+		List<String> names = Arrays.stream(getString().split("\\s+"))
+				.collect(Collectors.toList());
+		
+		
+		Function<String,Integer> commandType = e -> {
+			if(e.contains("remove")) {
+				return 1;
+			}else if(e.contains("double")) {
+				return 2;
+			}
+			return -1;
+		};
+		
+		
+		
+		
+		
+		String currentCommand;
+		do {
+				final String enterCommand;
+				enterCommand = getString();
+				currentCommand = enterCommand;
+				
+				if(currentCommand.equalsIgnoreCase("party!")) {
+					break;
+				}
+				
+				final String[] details;
+				details = enterCommand.split("\\s+");
+				BiConsumer<Function<String,Integer>,List<String>> execute = (command,people) ->{
+					if(command.apply(enterCommand)==1) {
+						if(details[1].equalsIgnoreCase("startswith")) {
+							people = people.stream().filter(e -> !e.startsWith("P")).collect(Collectors.toList());
+							
+						}else if(details[1].equalsIgnoreCase("endsWith")) {
+							people = people.stream().filter(e -> !e.endsWith("P")).collect(Collectors.toList());
+						}else {
+							people = people.stream().filter(e -> e.length()!=Integer.parseInt(details[2])).collect(Collectors.toList());
+						}
+					}else if(command.apply(enterCommand)==2) {
+						if(details[1].equalsIgnoreCase("startswith")) {
+						
+									for(int i =0;i<people.size();i++) {
+										if(people.get(i).startsWith(details[2])) {
+											people.add(i, people.get(i));
+										}
+									}
+									
+						
+							
+						}else if(details[1].equalsIgnoreCase("endsWith")) {
+
+								
+						         for(int i =0;i<people.size();i++) {
+										if(people.get(i).endsWith(details[2])) {
+											people.add(i, people.get(i));
+										}
+						         }
+							
+							
+						}else {
+							   for(int i =0;i<people.size();i++) {
+									if(people.get(i).length()==Integer.parseInt(details[2])) {
+										people.add(i, people.get(i));
+									}
+					         }
+						
+						}
+					}else {
+						
+					}
+				} ;
+				
+				execute.accept(commandType,names );
+				
+				
+				
+			
+			
+		}while(!"party!".equalsIgnoreCase(currentCommand));
+		
+		
+		names.forEach(System.out::println);
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	//------------------------------------------------------------------------------------
+	
 	
 	
 	static void devisibleSequence() {

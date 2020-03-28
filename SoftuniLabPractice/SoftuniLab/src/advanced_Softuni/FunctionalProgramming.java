@@ -5,11 +5,15 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
+
 import java.util.stream.Collectors;
 
 import softuni_objectsandclasses_folder.Person;
@@ -23,14 +27,64 @@ public class FunctionalProgramming {
 		filterByAge();
 		vatCalculate();
 		evenOrOdd();
-		
+		filterByAgeOnlyLambdas();
 		
 		
 		
 	}
+	
+	
+	static void filterByAgeOnlyLambdas() {
+		int numberPeople = getInt();
+		HashMap<String,Integer> persons = new HashMap<String,Integer>(numberPeople);
+		
+		if(numberPeople<=0) {
+			return;
+		}
+		
+		while(numberPeople>0) {
+			String[] enterPersonNameAge = getString().split("\\s+");
+			persons.put(enterPersonNameAge[0], Integer.parseInt(enterPersonNameAge[1]));
+		}
+		String enterComparison =  getString();
+		int ageLimit = getInt();
+		String print = getString();
+		
+Predicate<Map.Entry<String,Integer>> isYounger = pers ->pers.getValue()<ageLimit;
+Predicate<Map.Entry<String,Integer>> isOlder = pers ->pers.getValue()>=ageLimit;
+
+Predicate<Map.Entry<String, Integer>> finalAgeComparison= isYounger;
+if(enterComparison.equalsIgnoreCase("older")) {
+	finalAgeComparison = isOlder;
+}
+
+Consumer<Map.Entry<String,Integer>> printResult = (pers) -> {
+	if("name".equalsIgnoreCase(print)) {
+		System.out.println(pers.getKey());
+	}else if("age".equalsIgnoreCase(print)) {
+		System.out.println(pers.getValue());
+	}else {
+		System.out.println(pers.getKey()+" "+pers.getValue());
+	}
+	
+};
+	
+
+persons.entrySet().stream().filter(finalAgeComparison).forEach(printResult);
+
+			
+		
+	}
+	
+	
+	
+	
+	
+	
+	
 	static void evenOrOdd() {
 		String enterRange = getString();
-		String[] temp = enterRange.split("\\s+");
+		String[] temp = enterRange.split(",\\s+");
 		Predicate<Integer> isEven = e -> e%2==0;
 		LinkedList<Integer> numbers = new LinkedList<Integer>();
 		String filterBy = getString();
@@ -63,7 +117,7 @@ public class FunctionalProgramming {
 		while(numberLines>0) {
 			
 			enterPersonData = getString();
-			String[] personDetails = enterPersonData.split("[\\s]+,");
+			String[] personDetails = enterPersonData.split("[,\\s]+");
 			people.add(new Person(personDetails[0],Integer.parseInt(personDetails[1])));
 		
 		}
@@ -125,7 +179,7 @@ public class FunctionalProgramming {
 	static void getOddEvenCount() {
 		
 		List<Integer> oddNumbers = new LinkedList<Integer>();
-		String[] numbersToManipulate = getString().split("[\\s,]+");
+		String[] numbersToManipulate = getString().split("[,\\s]+");
 		List<Integer> evenNumbers = Arrays.stream(numbersToManipulate)
 				.map(e ->Integer.parseInt(e))
 				.filter(number -> number%2==0)

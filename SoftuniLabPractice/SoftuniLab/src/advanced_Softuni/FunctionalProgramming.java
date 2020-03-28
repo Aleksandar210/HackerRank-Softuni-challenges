@@ -36,6 +36,19 @@ public class FunctionalProgramming {
 		smallest();
 		arithmetic();
 		reverseExclude();
+		predicateNames();
+		
+		
+	}
+	
+	static void predicateNames() {
+		int lengthName = getInt();
+		
+		Predicate<String> checkName = name ->name.length()<=lengthName;
+		List<String> names = Arrays.stream(getString().split("\\s+"))
+				.filter(checkName)
+				.collect(Collectors.toList());
+		names.forEach(System.out::println);
 		
 	}
 	

@@ -21,7 +21,26 @@ public class FunctionalProgramming {
 		
 		
 		
+		
 	}
+	
+	
+	//-------------------------------------------------------------------------------
+	static void vatCalculate() {
+		String enterNumbers = getString();
+		String[]  numbers = enterNumbers.split("[\\s]+[,]");
+		List<Double> results = Arrays.stream(numbers)
+				.map(e ->Double.parseDouble(e))
+				.map(num -> num*1.2)
+				.collect(Collectors.toList());
+		results.forEach( e-> System.out.println());
+				
+		
+	}
+	//-------------------------------------------------------------------------------
+	
+	
+	
 	
 	//-------------------------------------------------------------------------------
 	static void getOddEvenCount() {

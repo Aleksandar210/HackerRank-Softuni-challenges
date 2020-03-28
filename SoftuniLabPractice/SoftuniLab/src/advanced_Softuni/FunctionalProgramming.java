@@ -13,6 +13,7 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import java.util.stream.Collectors;
@@ -32,10 +33,51 @@ public class FunctionalProgramming {
 		printCollection();
 		knightHonor();
 		smallest();
-		
+		arithmetic();
 		
 		
 	}
+	
+	static void arithmetic() {
+		
+		Function<Integer,Integer> addOne = e -> e++;
+		Function<Integer,Integer> multiply = e->e*=2;
+		Function<Integer,Integer> substract = e->e--;
+		List<Integer> numbers = Arrays.stream(getString().split("\\s+"))
+				.map( e ->Integer.parseInt(e))
+				.collect(Collectors.toList());
+		String enterCommand;
+		
+		do {
+			enterCommand = getString();
+			if("end".equalsIgnoreCase(enterCommand)) {
+				break;
+			}else {
+				switch(enterCommand.toLowerCase()) {
+				case "add":
+					numbers.stream().map(addOne);
+					break;
+				case "substract":
+					numbers.parallelStream().map(substract);
+					break;
+				case "multiply":
+					numbers.stream().map(multiply);
+					break;
+					default:
+						numbers.forEach(System.out::println);
+						break;
+				}
+				
+				
+			}
+			
+		}while(!"end".equalsIgnoreCase(enterCommand));
+		
+	}
+	
+	
+	
+	
 	
 	static void smallest() {
 		

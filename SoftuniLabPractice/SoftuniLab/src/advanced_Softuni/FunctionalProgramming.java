@@ -5,8 +5,11 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 public class FunctionalProgramming {
@@ -14,9 +17,44 @@ public class FunctionalProgramming {
 		sortEvenNumbers();
 		countUpperCase();
 		getSizeSum();
+		getOddEvenCount();
+		
 		
 		
 	}
+	
+	//-------------------------------------------------------------------------------
+	static void getOddEvenCount() {
+		
+		List<Integer> oddNumbers = new LinkedList<Integer>();
+		String[] numbersToManipulate = getString().split("[\\s,]+");
+		List<Integer> evenNumbers = Arrays.stream(numbersToManipulate)
+				.map(e ->Integer.parseInt(e))
+				.filter(number -> number%2==0)
+				.collect(Collectors.toList());
+		
+		oddNumbers = Arrays.stream(numbersToManipulate)
+				.map(num ->Integer.parseInt(num))
+				.filter(e ->e%2!=0)
+				.collect(Collectors.toList());
+		
+		System.out.println("evenCount ->"+evenNumbers.size() + " "+ evenNumbers);
+		System.out.println("oddCount ->" + oddNumbers.size()+" "+oddNumbers);
+				
+				
+	}
+	
+	static void putInOdd(int number,Consumer<Integer> put) {
+		Predicate<Integer> isOdd = num -> num%2!=0;
+		
+		if(isOdd.test(number))
+			put.accept(number);
+	}
+	
+	
+	//-------------------------------------------------------------------------------
+	
+	
 	
 	//-------------------------------------------------------------------------------
 	static void getSizeSum() {

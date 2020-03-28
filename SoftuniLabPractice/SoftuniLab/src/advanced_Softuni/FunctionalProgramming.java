@@ -29,10 +29,20 @@ public class FunctionalProgramming {
 		evenOrOdd();
 		filterByAgeOnlyLambdas();
 		printCollection();
+		knightHonor();
 		
 		
 		
 	}
+	
+	
+	static void knightHonor() {
+		List<String> names = Arrays.stream(getString().split(" "))
+				.map(name -> "sir"+name)
+				.collect(Collectors.toList());
+		names.forEach(System.out::println);
+	}
+	
 	
 	static void printCollection() {
 		List<String> items = Arrays.stream(getString().split(" ")).collect(Collectors.toList());

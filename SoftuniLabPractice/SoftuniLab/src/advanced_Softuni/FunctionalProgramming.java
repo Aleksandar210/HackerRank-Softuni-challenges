@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,9 +35,21 @@ public class FunctionalProgramming {
 		knightHonor();
 		smallest();
 		arithmetic();
-		
+		reverseExclude();
 		
 	}
+	
+	
+	static void reverseExclude() {
+		List<Integer> numbers = Arrays.stream(getString().split("\\s+"))
+				.map(e ->Integer.parseInt(e))
+				.filter(e -> e/2!=0)
+				.sorted(Comparator.reverseOrder())
+				.collect(Collectors.toList());
+				
+				numbers.forEach(System.out::println);
+	}
+	
 	
 	static void arithmetic() {
 		

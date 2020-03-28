@@ -28,8 +28,15 @@ public class FunctionalProgramming {
 		vatCalculate();
 		evenOrOdd();
 		filterByAgeOnlyLambdas();
+		printCollection();
 		
 		
+		
+	}
+	
+	static void printCollection() {
+		List<String> items = Arrays.stream(getString().split(" ")).collect(Collectors.toList());
+		items.forEach(System.out::println);
 		
 	}
 	

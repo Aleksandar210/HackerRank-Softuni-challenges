@@ -39,10 +39,39 @@ public class FunctionalProgramming {
 		//predicateNames();
 		//getSmallestElement();
 		//sortEvensBeforeOdds();
-		
+		//divisibleSequence();
 		
 		
 	}
+	
+	
+	static void devisibleSequence() {
+		int range = getInt();
+		Integer[] sequence = (Integer[]) Arrays.stream(getString().split("\\s+")).map(e->Integer.parseInt(e))
+				.toArray();
+		Predicate<Integer> valid = e -> {
+			for(Integer number:sequence) {
+				if(e/number!=0) {
+					return false;
+				}
+			}
+			return true;
+		};
+		
+		List<Integer> numbers = new LinkedList<Integer>();
+		 addNumbers(range,numbers);
+		 
+		numbers = numbers.stream().filter(valid).collect(Collectors.toList());
+		numbers.forEach(System.out::println);
+		
+	}
+	static void addNumbers(int range,List<Integer> numbers) {
+		for(int i =1;i<=range;i++) {
+			numbers.add(i);
+		}
+	}
+	
+	
 	
 	static void sortEvensBeforeOdds() {
 		Predicate<Integer> isEven = e ->e %2==0;

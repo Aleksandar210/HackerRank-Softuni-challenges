@@ -12,15 +12,65 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
+import softuni_objectsandclasses_folder.Person;
+
 public class FunctionalProgramming {
 	public static void main(String[] args) {
 		sortEvenNumbers();
 		countUpperCase();
 		getSizeSum();
 		getOddEvenCount();
+		filterByAge();
+		vatCalculate();
 		
 		
 		
+		
+	}
+	
+	static void filterByAge() {
+		int numberLines = getInt();
+		List<Person> people = new LinkedList<Person>();
+		String enterPersonData;
+		while(numberLines>0) {
+			
+			enterPersonData = getString();
+			String[] personDetails = enterPersonData.split("[\\s]+,");
+			people.add(new Person(personDetails[0],Integer.parseInt(personDetails[1])));
+		
+		}
+		
+		String enterCondition = getString();
+		int enterAgeFilter = getInt();
+		switch(enterCondition.toLowerCase()) {
+		case "younger":
+			people = people.stream().filter(e -> e.getAge()<=enterAgeFilter).collect(Collectors.toList());
+			break;
+		case "odler":
+			people = people.stream().filter( e-> e.getAge()>=enterAgeFilter)
+			.collect(Collectors.toList());
+			break;
+			default :
+				System.out.println("Invalid condition");
+				break;
+		}
+		String presentBy = getString();
+		
+		switch(presentBy.toLowerCase()) {
+		case "name":
+			people.forEach(e -> System.out.println(e.getName()));
+			break;
+		case "age":
+			people.forEach(e -> System.out.println(e.getAge()));
+			break;
+		case "name age":
+			people.forEach(e ->System.out.println(e));
+			break;
+			default: System.out.println("invalid format");
+			break;
+		}
+		
+			
 		
 	}
 	

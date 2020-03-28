@@ -9,6 +9,14 @@ public class Person {
 		this.age = age;
 		
 	}
+	
+	public int getAge() {
+		return this.age;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
 
 	@Override
 	public String toString() {

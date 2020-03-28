@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
@@ -30,9 +31,22 @@ public class FunctionalProgramming {
 		filterByAgeOnlyLambdas();
 		printCollection();
 		knightHonor();
+		smallest();
 		
 		
 		
+	}
+	
+	static void smallest() {
+		
+		Optional<Integer> smallestNumber  = Arrays.stream(getString().split(",\\s+"))
+				.map(e ->Integer.parseInt(e))
+				
+				.reduce((a,b) -> a<b? a:b);
+				
+				smallestNumber.ifPresent(System.out::println);
+				
+				
 	}
 	
 	

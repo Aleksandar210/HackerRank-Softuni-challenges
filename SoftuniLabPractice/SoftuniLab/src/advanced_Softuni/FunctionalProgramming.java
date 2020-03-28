@@ -23,31 +23,52 @@ import softuni_objectsandclasses_folder.Person;
 
 public class FunctionalProgramming {
 	public static void main(String[] args) {
-		sortEvenNumbers();
-		countUpperCase();
-		getSizeSum();
-		getOddEvenCount();
-		filterByAge();
-		vatCalculate();
-		evenOrOdd();
-		filterByAgeOnlyLambdas();
-		printCollection();
-		knightHonor();
-		smallest();
-		arithmetic();
-		reverseExclude();
-		predicateNames();
-		getSmallestElement();
+		//sortEvenNumbers();
+		//countUpperCase();
+		//getSizeSum();
+		//getOddEvenCount();
+		//filterByAge();
+		//vatCalculate();
+		//evenOrOdd();
+		//filterByAgeOnlyLambdas();
+		//printCollection();
+		//knightHonor();
+		//smallest();
+		//arithmetic();
+		//reverseExclude();
+		//predicateNames();
+		//getSmallestElement();
+		//sortEvensBeforeOdds();
+		
 		
 		
 	}
+	
+	static void sortEvensBeforeOdds() {
+		Predicate<Integer> isEven = e ->e %2==0;
+		Predicate<Integer> isOdd = e ->e %2!=0;
+
+		List<Integer> numbers = Arrays.stream(getString().split("\\s+"))
+				.map(e -> Integer.parseInt(e))
+				.collect(Collectors.toList());
+		
+		List<Integer> evens = numbers.stream().filter(isEven)
+				.sorted(Comparator.naturalOrder())
+				.collect(Collectors.toList());
+		List<Integer> odds = numbers.stream().filter(isOdd)
+				.sorted(Comparator.naturalOrder())
+				.collect(Collectors.toList());
+		LinkedList<Integer> results = (LinkedList<Integer>) evens;
+		results.addAll(odds);
+		System.out.println(results);
+		}
 	
 	
 	static void getSmallestElement() {
 		Optional<Integer> getSmallest = Arrays.stream(getString().split("\\s+"))
 				.map(e ->Integer.parseInt(e))
 				.reduce((a,b)-> a<b? a :b);
-		System.out.println(getSmallest);
+		System.out.println(getSmallest.toString());
 	}
 	
 	

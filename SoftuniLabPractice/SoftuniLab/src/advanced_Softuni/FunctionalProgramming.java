@@ -22,10 +22,38 @@ public class FunctionalProgramming {
 		getOddEvenCount();
 		filterByAge();
 		vatCalculate();
+		evenOrOdd();
 		
 		
 		
 		
+	}
+	static void evenOrOdd() {
+		String enterRange = getString();
+		String[] temp = enterRange.split("\\s+");
+		Predicate<Integer> isEven = e -> e%2==0;
+		LinkedList<Integer> numbers = new LinkedList<Integer>();
+		String filterBy = getString();
+		switch(filterBy.toLowerCase()) {
+		case "even":
+			for(int i = Integer.parseInt(temp[0]);i<Integer.parseInt(temp[1]);i++) {
+			if(!isEven.test(i)) {
+				enter(i,e ->numbers.add(e));
+			}
+			}
+			break;
+			default:
+				for(int i = Integer.parseInt(temp[0]);i<Integer.parseInt(temp[1]);i++) {
+				if(isEven.test(i)) {
+					enter(i,e->numbers.add(e));
+				}
+				}
+		}
+		
+	}
+	
+	static void enter(int number, Consumer<Integer> sup) {
+		sup.accept(number);
 	}
 	
 	static void filterByAge() {

@@ -33,6 +33,7 @@ public class FunctionalProgramming {
 				.map(e ->Double.parseDouble(e))
 				.map(num -> num*1.2)
 				.collect(Collectors.toList());
+		System.out.println("Price with VAT");
 		results.forEach( e-> System.out.println());
 				
 		

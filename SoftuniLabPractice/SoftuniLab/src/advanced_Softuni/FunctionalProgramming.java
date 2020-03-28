@@ -40,10 +40,83 @@ public class FunctionalProgramming {
 		//getSmallestElement();
 		//sortEvensBeforeOdds();
 		//divisibleSequence();
-		
+		//filterModification();
 		
 		
 	}
+	
+	static void filterModification() {
+		List<String> names = Arrays.stream(getString().split("\\s+"))
+				.collect(Collectors.toList());
+		List<String> currentNamesList = names;
+		List<String> returnNames = null;
+		String enterCommand;
+		String[] commands;
+		
+		do {
+			enterCommand = getString();
+			if("print".equalsIgnoreCase(enterCommand)) {
+				break;
+			}else {
+				commands = enterCommand.split(";");
+				executeCommand(commands,currentNamesList,names,returnNames);
+			}
+			
+		}while(!"print".equalsIgnoreCase(enterCommand));
+		
+	}
+	
+	
+	static void executeCommand(String[] commands,List<String> currentNames,List<String> originalList,List<String> returnNames) {
+		switch(commands[0].toLowerCase()) {
+		case"add filter":
+			switch(commands[1].toLowerCase()) {
+			case "starts with":
+				currentNames = currentNames.stream().filter(e ->e.startsWith(commands[2]))
+				.collect(Collectors.toList());
+				break;
+			case "ends wtih":
+				currentNames = currentNames.stream().filter(e ->e.endsWith(commands[2]))
+				.collect(Collectors.toList());
+				break;
+				default:
+					currentNames = currentNames.stream().filter(e ->e.length()==Integer.parseInt(commands[2]))
+					.collect(Collectors.toList());
+					break;
+			}
+			break;
+			
+		case "remove filter":
+			
+			switch(commands[1].toLowerCase()) {
+			case "starts with":
+				returnNames = originalList.stream().filter(e -> e.startsWith(commands[2]))
+				.collect(Collectors.toList());
+				currentNames.addAll(returnNames);
+				break;
+			case "ends wtih":
+				returnNames = originalList.stream().filter(e -> e.endsWith(commands[2]))
+				.collect(Collectors.toList());
+				currentNames.addAll(returnNames);
+				break;
+				default:
+					returnNames = originalList.stream().filter(e -> e.length()==Integer.parseInt(commands[2]))
+					.collect(Collectors.toList());
+					currentNames.addAll(returnNames);
+					break;
+			}
+			
+			
+			
+			break;
+			default:
+				currentNames.forEach(System.out::println);
+				break;
+			
+		}
+	}
+	
+	
 	
 	
 	

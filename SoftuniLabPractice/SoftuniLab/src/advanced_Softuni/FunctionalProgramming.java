@@ -37,9 +37,20 @@ public class FunctionalProgramming {
 		arithmetic();
 		reverseExclude();
 		predicateNames();
+		getSmallestElement();
 		
 		
 	}
+	
+	
+	static void getSmallestElement() {
+		Optional<Integer> getSmallest = Arrays.stream(getString().split("\\s+"))
+				.map(e ->Integer.parseInt(e))
+				.reduce((a,b)-> a<b? a :b);
+		System.out.println(getSmallest);
+	}
+	
+	
 	
 	static void predicateNames() {
 		int lengthName = getInt();

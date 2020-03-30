@@ -27,4 +27,8 @@ public void deposit(double sum) {
 	this.balance+=sum;
 }
 
+public int getId() {
+	return this.id;
+}
+
 }

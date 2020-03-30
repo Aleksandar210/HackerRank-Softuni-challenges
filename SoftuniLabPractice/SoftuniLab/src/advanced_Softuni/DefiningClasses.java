@@ -14,7 +14,12 @@ public class DefiningClasses {
 	}
 	
 	static void bankAccountMethod() {
-		
+		String enterCommands;
+		String[] commands;
+		enterCommands = getString();
+		while(!"end".equalsIgnoreCase(enterCommands)) {
+			
+		}
 	}
 	
 	

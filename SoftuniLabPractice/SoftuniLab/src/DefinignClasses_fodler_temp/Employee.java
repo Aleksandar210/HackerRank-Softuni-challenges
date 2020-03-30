@@ -75,6 +75,15 @@ public class Employee {
 
 	
 	
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", age=" + age + ", positon=" + positon + ", department=" + department
+				+ ", salary=" + salary + ", email=" + email + "]";
+	}
+
+
+
+
 	public String getName() {
 		return name;
 	}

@@ -63,7 +63,6 @@ public class DefiningClasses {
 		}
 		
 		employeeMenue(empNames,depSalaries);
-		
 	}
 	
 	static void  employeeMenue(Map<String,Set<Employee>> list,Map<String,Double> averageSalaries) {
@@ -73,7 +72,7 @@ public class DefiningClasses {
 			do {
 		System.out.println("1| Display departmetn average-salary");
 		System.out.println("2| Display department with highest-salary");
-		System.out.println("3| search employee");
+		System.out.println("3| search employees");
 		System.out.println("4| exit");
 		System.out.print("Select: ");
 		 select = getInt();
@@ -85,10 +84,39 @@ public class DefiningClasses {
 		 highestAverageSalary(averageSalaries);
 		 break;
 		 case 3:
+			 searchEmployee(list);
+			 break;
+		 case 4:
+			 exit =true;
 			 break;
 		 }
 		}while(!exit);
 	}
+		
+	}
+	
+	static void searchEmployee(Map<String,Set<Employee>> emp) {
+		for(Map.Entry<String, Set<Employee>> entry: emp.entrySet()) {
+			entry.getKey();
+		}
+		String enter;
+		do {
+			
+		System.out.print("Enter Department: ");
+		enter = getString();
+		if(emp.containsKey(enter)) {
+			for(Employee empl:emp.get(enter)) {
+				System.out.println(empl);
+			}
+			return;
+		}else {
+			System.out.println("no department found.");
+			return;
+		}
+		
+		}while(!emp.containsKey(enter));
+			
+			
 		
 	}
 	

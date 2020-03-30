@@ -3,6 +3,8 @@ package advanced_Softuni;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
@@ -16,8 +18,18 @@ public class DefiningClasses {
 	static void bankAccountMethod() {
 		String enterCommands;
 		String[] commands;
+		Map<Integer,BankAccount> accounts = new HashMap<Integer,BankAccount>();
 		enterCommands = getString();
 		while(!"end".equalsIgnoreCase(enterCommands)) {
+			commands = enterCommands.split("\\s+");
+			switch(commands.length) {
+			case 1:
+				BankAccount currentBankAccount = new BankAccount();
+			break;
+			case 2:
+				
+				break;
+			}
 			
 		}
 	}

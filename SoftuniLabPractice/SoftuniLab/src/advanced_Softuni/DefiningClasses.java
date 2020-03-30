@@ -6,11 +6,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
+import DefinignClasses_fodler_temp.Employee;
 import DefinignClasses_fodler_temp.Person;
 public class DefiningClasses {
 	public static void main(String[] args) {
@@ -19,6 +21,33 @@ public class DefiningClasses {
 		//opinionPool();
 		//
 	}
+	
+	
+	
+	static void employee() {
+		int numberEmployees =getInt();
+		Map<String,List<Employee>> empData = new HashMap<String,List<Employee>>();
+		while(numberEmployees>0) {
+			
+		}
+	}
+	
+	static void  employeeMenue(Map<String,List<Employee>> list) {
+		boolean exit = false;
+		while(!exit) {
+		System.out.println("1| Display departmetn average-salary");
+		System.out.println("2| Display department with highest-salary");
+		System.out.println("3| search employee");
+		System.out.println("4| exit");
+		System.out.print("Select: ");
+		int select = getInt();
+		}
+	}
+		
+	
+	
+	
+	
 	
 	static void opinionPool() {
 		int numberPeople = getInt();

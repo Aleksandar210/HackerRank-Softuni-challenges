@@ -1,8 +1,9 @@
 package DefinignClasses_fodler_temp;
 
 public class BankAccount {
+	private static final double DEFAULT_RATE = 0.2d;
 public static  int idCounter=0;
-public static  double interestRate = 0.2d;
+public static  double interestRate = DEFAULT_RATE;
 private int id;
 private double balance;
 

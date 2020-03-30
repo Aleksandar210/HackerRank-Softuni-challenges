@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
@@ -13,6 +12,7 @@ import DefinignClasses_fodler_temp.Car;
 public class DefiningClasses {
 	public static void main(String[] args) {
 		//carClassDefine();
+		//bankAccountMethod();
 		
 	}
 	
@@ -53,7 +53,10 @@ public class DefiningClasses {
 					break;
 			}
 			
+			enterCommands = getString();
 		}
+		
+		
 	}
 	
 	

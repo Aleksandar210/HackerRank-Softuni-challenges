@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -29,9 +30,40 @@ public class DefiningClasses {
 		int numberEmployees =getInt();
 		Map<String,Set<Employee>> empNames = new HashMap<String,Set<Employee>>();
 		Map<String,Double> depSalaries = new HashMap<String,Double>();
+		String enterEmpData;
 		while(numberEmployees>0) {
-			
+			enterEmpData = getString();
+			String[] data = enterEmpData.split("\\s+");
+			if(data.length==4) {
+				
+				if(empNames.get(data[3])==null) {
+					empNames.put(data[3], new HashSet<Employee>());
+					Employee currentEmployee = new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3]);
+					empNames.get(data[3]).add(currentEmployee);
+					addAverage(depSalaries,currentEmployee);
+				}else {
+
+					Employee currentEmployee = new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3]);
+					empNames.get(data[3]).add(currentEmployee);
+				}
+				
+			}else {
+				if(empNames.get(data[3])==null) {
+					empNames.put(data[3], new HashSet<Employee>());
+					Employee currentEmployee = new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4]);
+					empNames.get(data[3]).add(currentEmployee);
+					addAverage(depSalaries,currentEmployee);
+				}else {
+
+					Employee currentEmployee = new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4]);
+					empNames.get(data[3]).add(currentEmployee);
+				}
+			}
+			numberEmployees--;
 		}
+		
+		employeeMenue(empNames,depSalaries);
+		
 	}
 	
 	static void  employeeMenue(Map<String,Set<Employee>> list,Map<String,Double> averageSalaries) {
@@ -106,7 +138,7 @@ public class DefiningClasses {
 	
 	
 	
-	static void getAverage(Map<String,Double> salaries,Employee emp) {
+	static void addAverage(Map<String,Double> salaries,Employee emp) {
 		if(salaries.get(emp.getDepartment())==null) {
 			salaries.put(emp.getDepartment(), emp.getSalary());
 		}else {

@@ -25,9 +25,15 @@ public class DefiningClasses {
 			switch(commands.length) {
 			case 1:
 				BankAccount currentBankAccount = new BankAccount();
+				accounts.put(currentBankAccount.getId(), currentBankAccount);
 			break;
 			case 2:
-				
+				BankAccount.interestRate = Double.parseDouble(commands[1]);
+				break;
+			case 3:
+				//if() {
+					
+			//	}
 				break;
 			}
 			

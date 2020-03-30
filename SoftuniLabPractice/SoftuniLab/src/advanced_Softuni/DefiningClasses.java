@@ -26,24 +26,77 @@ public class DefiningClasses {
 	
 	static void employee() {
 		int numberEmployees =getInt();
-		Map<String,List<Employee>> empData = new HashMap<String,List<Employee>>();
+		Map<String,List<Employee>> empNames = new HashMap<String,List<Employee>>();
+		Map<String,Double> depSalaries = new HashMap<String,Double>();
 		while(numberEmployees>0) {
 			
 		}
 	}
 	
-	static void  employeeMenue(Map<String,List<Employee>> list) {
+	static void  employeeMenue(Map<String,List<Employee>> list,Map<String,Double> averageSalaries) {
 		boolean exit = false;
+		int select;
 		while(!exit) {
+			do {
 		System.out.println("1| Display departmetn average-salary");
 		System.out.println("2| Display department with highest-salary");
 		System.out.println("3| search employee");
 		System.out.println("4| exit");
 		System.out.print("Select: ");
-		int select = getInt();
-		}
+		 select = getInt();
+		 switch(select) {
+		 case 1:
+			
+			 	int counter =1;
+				 System.out.println("Select Department:");
+				 for(Map.Entry<String,Double> entry:averageSalaries.entrySet()) {
+					 System.out.println(counter+": "+entry.getKey());
+					 counter++;
+				 }
+				 boolean back = false;
+				 do {
+					 System.out.print("Enter Department Name: ");
+					 String depName = getString();
+					 if(list.containsKey(depName)) {
+						 System.out.println("Department average Salary:");
+						 System.out.println(averageSalaries.get(depName));
+						 
+					 }else {
+						 System.out.println("No Department found!");
+						 back = true;
+						 
+						 
+					 }
+				 }while(!back);
+					 
+				 
+				
+				 
+			 
+			 
+			 break;
+		 }
+		}while(!exit);
 	}
 		
+	}
+	
+	
+	static void averageSalaryMenue(Map<String,Double> averageSalaries) {
+		
+	}
+	
+	
+	
+	
+	static void getAverage(Map<String,Double> salaries,Employee emp) {
+		if(salaries.get(emp.getDepartment())==null) {
+			salaries.put(emp.getDepartment(), emp.getSalary());
+		}else {
+			double tempSalary = salaries.get(emp.getDepartment());
+			salaries.put(emp.getDepartment(),emp.getSalary()+tempSalary);
+		}
+	}
 	
 	
 	

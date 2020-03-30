@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
@@ -31,9 +32,17 @@ public class DefiningClasses {
 				BankAccount.interestRate = Double.parseDouble(commands[1]);
 				break;
 			case 3:
-				//if() {
+				if("deposit".equalsIgnoreCase(commands[0])) {
+					if(accounts.get(Integer.parseInt(commands[1]))==null) {
+						System.out.println("Account doesnt exist");
+					}else {
+						
+					}
 					
-			//	}
+					
+				}else {
+					
+				}
 				break;
 			}
 			

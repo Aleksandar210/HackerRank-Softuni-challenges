@@ -1,20 +1,46 @@
 package advanced_Softuni;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
-
+import DefinignClasses_fodler_temp.Person;
 public class DefiningClasses {
 	public static void main(String[] args) {
 		//carClassDefine();
 		//bankAccountMethod();
+		//opinionPool();
+		//
+	}
+	
+	static void opinionPool() {
+		int numberPeople = getInt();
+		java.util.List<Person> people = new LinkedList<>();
+		do {
+			String enterPersonData = getString();
+			String[] data = enterPersonData.split("\\s+");
+			people.add(new Person(data[0],Integer.parseInt(data[1])));
+		}while(numberPeople>0);
+		people = people.stream().filter(e ->e.getAge()>30)
+				.sorted((a,b)->a.getName().compareTo(b.getName()))
+				.collect(Collectors.toList());
+		
+		people.forEach(System.out::println);
 		
 	}
+	
+	
+	
+	
+	
+	
 	
 	static void bankAccountMethod() {
 		String enterCommands;

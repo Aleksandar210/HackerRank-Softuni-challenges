@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Car;
 
 public class DefiningClasses {
@@ -11,6 +12,14 @@ public class DefiningClasses {
 		//carClassDefine();
 		
 	}
+	
+	static void bankAccountMethod() {
+		
+	}
+	
+	
+	
+	
 	
 	static void carClassDefine() {
 		Car car = new Car(getString(),getString(),getInt());

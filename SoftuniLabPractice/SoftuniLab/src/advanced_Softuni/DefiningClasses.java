@@ -32,18 +32,20 @@ public class DefiningClasses {
 				BankAccount.interestRate = Double.parseDouble(commands[1]);
 				break;
 			case 3:
+				
+				if(accounts.get(Integer.parseInt(commands[1]))==null) {
+					System.out.println("Account doesnt exist");
+					break;
+				}
+				BankAccount tempAccount = accounts.get(Integer.parseInt(commands[1]));
 				if("deposit".equalsIgnoreCase(commands[0])) {
-					if(accounts.get(Integer.parseInt(commands[1]))==null) {
-						System.out.println("Account doesnt exist");
+					
+					tempAccount.deposit(Double.parseDouble(commands[2]));
+					
 					}else {
-						accounts.get(Integer.parseInt(commands[1])).deposit(
-								Double.parseDouble(commands[2]));
+						
 					}
 					
-					
-				}else {
-					
-				}
 				break;
 			}
 			

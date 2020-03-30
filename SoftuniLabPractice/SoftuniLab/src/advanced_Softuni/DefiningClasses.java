@@ -48,6 +48,9 @@ public class DefiningClasses {
 					}
 					
 				break;
+				default:
+					System.out.println("Input ignored!");
+					break;
 			}
 			
 		}

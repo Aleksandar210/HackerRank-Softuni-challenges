@@ -36,7 +36,8 @@ public class DefiningClasses {
 					if(accounts.get(Integer.parseInt(commands[1]))==null) {
 						System.out.println("Account doesnt exist");
 					}else {
-						
+						accounts.get(Integer.parseInt(commands[1])).deposit(
+								Double.parseDouble(commands[2]));
 					}
 					
 					

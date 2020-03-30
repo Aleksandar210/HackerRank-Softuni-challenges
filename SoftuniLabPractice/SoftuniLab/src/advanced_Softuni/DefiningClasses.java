@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import DefinignClasses_fodler_temp.BankAccount;
@@ -26,14 +27,14 @@ public class DefiningClasses {
 	
 	static void employee() {
 		int numberEmployees =getInt();
-		Map<String,List<Employee>> empNames = new HashMap<String,List<Employee>>();
+		Map<String,Set<Employee>> empNames = new HashMap<String,Set<Employee>>();
 		Map<String,Double> depSalaries = new HashMap<String,Double>();
 		while(numberEmployees>0) {
 			
 		}
 	}
 	
-	static void  employeeMenue(Map<String,List<Employee>> list,Map<String,Double> averageSalaries) {
+	static void  employeeMenue(Map<String,Set<Employee>> list,Map<String,Double> averageSalaries) {
 		boolean exit = false;
 		int select;
 		while(!exit) {
@@ -46,34 +47,12 @@ public class DefiningClasses {
 		 select = getInt();
 		 switch(select) {
 		 case 1:
-			
-			 	int counter =1;
-				 System.out.println("Select Department:");
-				 for(Map.Entry<String,Double> entry:averageSalaries.entrySet()) {
-					 System.out.println(counter+": "+entry.getKey());
-					 counter++;
-				 }
-				 boolean back = false;
-				 do {
-					 System.out.print("Enter Department Name: ");
-					 String depName = getString();
-					 if(list.containsKey(depName)) {
-						 System.out.println("Department average Salary:");
-						 System.out.println(averageSalaries.get(depName));
-						 
-					 }else {
-						 System.out.println("No Department found!");
-						 back = true;
-						 
-						 
-					 }
-				 }while(!back);
-					 
-				 
-				
-				 
-			 
-			 
+			 averageSalaryMenue(averageSalaries);
+			 break;
+		 case 2:
+		 highestAverageSalary(averageSalaries);
+		 break;
+		 case 3:
 			 break;
 		 }
 		}while(!exit);
@@ -83,7 +62,45 @@ public class DefiningClasses {
 	
 	
 	static void averageSalaryMenue(Map<String,Double> averageSalaries) {
+		boolean back = false;
+		int select;
+		do {
+			System.out.println("1|Search department");
+			System.out.println("2|Back");
+			System.out.print("select: ");
+			select = getInt();
+			switch(select) {
+			case 1:
+				
+				int counter =1;
+				 System.out.println("Select Department:");
+				 for(Map.Entry<String,Double> entry:averageSalaries.entrySet()) {
+					 System.out.println(counter+": "+entry.getKey());
+					 counter++;
+				 }
+				 	 System.out.print("Enter Department Name: ");
+					 String depName = getString();
+					 if(averageSalaries.containsKey(depName)) {
+						 System.out.println("Department average Salary:");
+						 System.out.println(averageSalaries.get(depName));
+						 
+						 
+					 }else {
+						 System.out.println("No Department found!");
+					 }
+				
+				break;
+			case 2:
+				back =true;
+				break;
+			}
 		
+				 
+		}while(!back);	 
+			 
+		 
+		
+	 
 	}
 	
 	
@@ -99,6 +116,30 @@ public class DefiningClasses {
 	}
 	
 	
+	static void highestAverageSalary(Map<String,Double> salaries) {
+		double max = Double.MIN_NORMAL;
+		String depName=null;
+		for(Map.Entry<String, Double> entry:salaries.entrySet()) {
+			if(entry.getValue()>max) {
+				max = entry.getValue();
+				depName = entry.getKey();
+			}
+		}
+		
+		System.out.printf("%s -> %.2f",depName,max);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//-------------------------------------------------------------------------
 	
 	
 	

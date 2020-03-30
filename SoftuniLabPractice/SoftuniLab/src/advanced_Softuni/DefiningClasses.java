@@ -43,6 +43,7 @@ public class DefiningClasses {
 					tempAccount.deposit(Double.parseDouble(commands[2]));
 					
 					}else {
+						System.out.println(tempAccount.getInterest(Integer.parseInt(commands[2])));
 						
 					}
 					

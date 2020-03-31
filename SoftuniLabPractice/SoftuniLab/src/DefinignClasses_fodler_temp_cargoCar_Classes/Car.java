@@ -20,8 +20,10 @@ public class Car {
 		}
 	}
 	
-	public Car(String model) {
+	public Car(String model,Engine eng) {
 		setModel(model);
+		setEngine(eng);
+		
 	}
 	
 	

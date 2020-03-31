@@ -33,16 +33,36 @@ public class DefiningClasses {
 	
 	static void carSales() {
 		int numberEngines = getInt();
-		LinkedList<Engine> engines = new LinkedList<Engine>();
+		HashMap<String,Stack<Engine>> engines = new HashMap<String,Stack<Engine>>();
 		while(numberEngines>0) {
 			String enterEngine = getString();
 			String[] engineData = enterEngine.split("\\s+");
-			engines.add(new Engine(engineData[0],Integer.parseInt(engineData[1])));
+			if(engines.get(engineData[0])==null) {
+				engines.put(engineData[0],new Stack<Engine>());
+				engines.get(engineData[0]).add(new Engine(engineData[0],Integer.parseInt(engineData[1])));
+				
+			}else {
+				engines.get(engineData[0]).add(new Engine(engineData[0],Integer.parseInt(engineData[1])));
+			}
 			numberEngines--;
 		}
 		int numberCars = getInt();
+		
+		LinkedList<Car> cars = new LinkedList<Car>();
 		while(numberCars>0) {
+			String enterCarData = getString();
+			String[] carData = enterCarData.split("\\s+");
+			Engine getEngine = engines.get(carData[1]).pop();
+			cars.add(new Car(carData[0],getEngine));
 			
+			
+		}
+		
+		for(Car car: cars) {
+			System.out.println(car.getModel());
+			System.out.print(car.getEngine().getModel());
+			System.out.println(car.getEngine().getPower());
+			System.out.println();
 		}
 	}
 	
@@ -132,7 +152,7 @@ public class DefiningClasses {
 			String[] data = enterRacerData.split("\\s+");
 			
 			if(racers.get(data[0])==null) {
-				racers.put(data[0], new Car(data[0],Double.parseDouble(data[1]),Double.parseDouble(data[2])));
+		//		racers.put(data[0], new Car(data[0],Double.parseDouble(data[1]),Double.parseDouble(data[2])));
 			}
 			
 		}while(numberCars>0);
@@ -146,7 +166,7 @@ public class DefiningClasses {
 	    	}else  {
 	    		commands = enterCommand.split("\\s+");
 	    		if(racers.containsKey(commands[1])) {
-	    			racers.get(commands[1]).Drive(Integer.parseInt(commands[2]));
+	    //			racers.get(commands[1]).Drive(Integer.parseInt(commands[2]));
 	    		}else {
 	    			
 	    		}

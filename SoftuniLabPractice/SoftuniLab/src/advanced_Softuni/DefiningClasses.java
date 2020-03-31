@@ -31,7 +31,11 @@ public class DefiningClasses {
 	
 	static void cargoCar() {
 		int numberCars = getInt();
-		
+		String enter;
+		while(numberCars>0) {
+			enter = getString();
+			String[] data = 
+		}
 	}
 	
 	

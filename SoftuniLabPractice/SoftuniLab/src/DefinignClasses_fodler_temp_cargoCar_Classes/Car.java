@@ -7,6 +7,20 @@ public class Car {
 	private LinkedList<Tire> tires;
 	private Engine engine;
 	private Cargo cargo;
+	
+	public Car(String model,int speed,int power,int weight,String type,String[] tireData) {
+		setModel(model);
+		setEngine(new Engine(speed,power));
+		setCargo(new Cargo(weight,type));
+		tires = new LinkedList<Tire>();
+		for(int i =0;i<tireData.length-1;i+=2) {
+			int pressure = Integer.parseInt(tireData[i]);
+			int age = Integer.parseInt(tireData[i+1]);
+			tires.add(new Tire(pressure,age));
+		}
+	}
+	
+	
 	public String getModel() {
 		return model;
 	}

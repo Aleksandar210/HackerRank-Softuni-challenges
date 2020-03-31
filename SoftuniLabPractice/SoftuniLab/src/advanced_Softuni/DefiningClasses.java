@@ -22,6 +22,7 @@ public class DefiningClasses {
 		//bankAccountMethod();
 		//opinionPool();
 		//employee();
+		//racer();
 	}
 	
 	
@@ -42,12 +43,18 @@ public class DefiningClasses {
 		}while(numberCars>0);
 		
 	    String enterCommand;
+	    String[] commands;
 	    do {
 	    	enterCommand = getString();
 	    	if("end".equalsIgnoreCase(enterCommand)) {
 	    		break;
-	    	}else {
-	    		
+	    	}else  {
+	    		commands = enterCommand.split("\\s+");
+	    		if(racers.containsKey(commands[1])) {
+	    			racers.get(commands[1]).Drive(Integer.parseInt(commands[2]));
+	    		}else {
+	    			
+	    		}
 	    	}
 	    }while(!"end".equalsIgnoreCase(enterCommand));
 	}

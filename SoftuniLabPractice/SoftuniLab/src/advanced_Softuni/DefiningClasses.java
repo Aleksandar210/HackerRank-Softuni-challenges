@@ -4,6 +4,7 @@ package advanced_Softuni;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -20,6 +21,7 @@ import DefinignClasses_fodler_temp.Employee;
 import DefinignClasses_fodler_temp.Person;
 import DefinignClasses_fodler_temp_cargoCar_Classes.Car;
 import DefinignClasses_fodler_temp_cargoCar_Classes.Engine;
+import DefinignClasses_fodler_temp_cargoCar_Classes.Parent;
 public class DefiningClasses {
 	public static void main(String[] args) {
 		//carClassDefine();
@@ -29,7 +31,25 @@ public class DefiningClasses {
 		//racer();
 		//cargoCar();
 		//carSales();
+		//familyTree();
+		
 	}
+	
+	static void familyTree() {
+		List<Parent> tree = new ArrayList<Parent>();
+		String enterData;
+		do {
+			enterData = getString();
+			if("end".equalsIgnoreCase(enterData)) {
+				break;
+			}
+			
+			String[] data = enterData.split("\\s+");
+			
+		}while(!"end".equalsIgnoreCase(enterData));
+	}
+	
+	
 	
 	static void carSales() {
 		int numberEngines = getInt();

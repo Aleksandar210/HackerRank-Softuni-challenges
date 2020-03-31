@@ -26,6 +26,35 @@ public class DefiningClasses {
 	
 	
 	
+	static void racer() {
+		Map<String,Car> racers = new HashMap<String,Car>();
+		int numberCars = getInt();
+		String enterRacerData;
+		
+		do {
+			enterRacerData = getString();
+			String[] data = enterRacerData.split("\\s+");
+			
+			if(racers.get(data[0])==null) {
+				racers.put(data[0], new Car(data[0],Double.parseDouble(data[1]),Double.parseDouble(data[2])));
+			}
+			
+		}while(numberCars>0);
+		
+	    String enterCommand;
+	    do {
+	    	enterCommand = getString();
+	    	if("end".equalsIgnoreCase(enterCommand)) {
+	    		break;
+	    	}else {
+	    		
+	    	}
+	    }while(!"end".equalsIgnoreCase(enterCommand));
+	}
+	
+	
+	
+	
 	static void employee() {
 		int numberEmployees =getInt();
 		Map<String,Set<Employee>> empNames = new HashMap<String,Set<Employee>>();

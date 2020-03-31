@@ -6,16 +6,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 import java.util.stream.Collectors;
 
 import DefinignClasses_fodler_temp.BankAccount;
-import DefinignClasses_fodler_temp.Car;
+//import DefinignClasses_fodler_temp.Car;
 import DefinignClasses_fodler_temp.Employee;
 import DefinignClasses_fodler_temp.Person;
+import DefinignClasses_fodler_temp_cargoCar_Classes.Car;
 public class DefiningClasses {
 	public static void main(String[] args) {
 		//carClassDefine();
@@ -30,11 +33,42 @@ public class DefiningClasses {
 	
 	
 	static void cargoCar() {
+		
+		Map<String,LinkedList<Car>> carByType = new LinkedHashMap<String,LinkedList<Car>>();
 		int numberCars = getInt();
 		String enter;
 		while(numberCars>0) {
 			enter = getString();
-			String[] data = 
+			String[] data = enter.split("\\s+");
+			String tireData[] = new String[7];
+			transferTireDataArray(data,tireData);
+			
+			if(carByType.get(data[4])==null) {
+				
+				LinkedList<Car> cars =new LinkedList<Car>();
+				Car currentCar = new Car(data[0],Integer.parseInt(data[1]),
+						Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4],
+						tireData);
+				carByType.put(data[0], cars);
+			if(currentCar.getCargo().getType().equalsIgnoreCase("fragile")) {
+					for(int i =0;i<4;i++) {
+					if(currentCar.getTire(i).getPressure()<1) {
+						carByType.get(data[4]).add(currentCar);
+						break;
+					}
+					}
+				}else {
+					
+				}
+				
+			}
+		}
+	}
+	
+	 static void transferTireDataArray(String[] data, String[] tireData) {
+		for(int i=5;5<=10;i+=2) {
+			tireData[i] = data[i];
+			tireData[i+1] = data[i+1];
 		}
 	}
 	

@@ -4,6 +4,7 @@ public class Engine {
 	private int power;
 	private int speed;
 	
+	
 	public Engine(int power,int speed) {
 		setSpeed(speed);
 		setPower(power);

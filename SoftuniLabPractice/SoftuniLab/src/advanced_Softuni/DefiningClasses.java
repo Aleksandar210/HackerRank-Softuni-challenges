@@ -19,6 +19,7 @@ import DefinignClasses_fodler_temp.BankAccount;
 import DefinignClasses_fodler_temp.Employee;
 import DefinignClasses_fodler_temp.Person;
 import DefinignClasses_fodler_temp_cargoCar_Classes.Car;
+import DefinignClasses_fodler_temp_cargoCar_Classes.Engine;
 public class DefiningClasses {
 	public static void main(String[] args) {
 		//carClassDefine();
@@ -27,7 +28,22 @@ public class DefiningClasses {
 		//employee();
 		//racer();
 		//cargoCar();
-		//
+		//carSales();
+	}
+	
+	static void carSales() {
+		int numberEngines = getInt();
+		LinkedList<Engine> engines = new LinkedList<Engine>();
+		while(numberEngines>0) {
+			String enterEngine = getString();
+			String[] engineData = enterEngine.split("\\s+");
+			engines.add(new Engine(engineData[0],Integer.parseInt(engineData[1])));
+			numberEngines--;
+		}
+		int numberCars = getInt();
+		while(numberCars>0) {
+			
+		}
 	}
 	
 	

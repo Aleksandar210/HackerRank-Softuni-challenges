@@ -20,6 +20,10 @@ public class Car {
 		}
 	}
 	
+	public Car(String model) {
+		setModel(model);
+	}
+	
 	
 	@Override
 	public String toString() {

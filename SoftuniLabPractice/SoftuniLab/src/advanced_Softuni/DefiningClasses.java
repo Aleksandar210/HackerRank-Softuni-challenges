@@ -42,28 +42,54 @@ public class DefiningClasses {
 			String[] data = enter.split("\\s+");
 			String tireData[] = new String[7];
 			transferTireDataArray(data,tireData);
+			addCarToList(carByType,data,tireData);
+			numberCars--;
+		}
+	}
+	
+	
+	static void addCarToList(Map<String,LinkedList<Car>> carByType,String[]data,String[] tireData) {
+		if(carByType.get(data[4])==null) {
 			
-			if(carByType.get(data[4])==null) {
-				
-				LinkedList<Car> cars =new LinkedList<Car>();
-				Car currentCar = new Car(data[0],Integer.parseInt(data[1]),
-						Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4],
-						tireData);
-				carByType.put(data[0], cars);
-			if(currentCar.getCargo().getType().equalsIgnoreCase("fragile")) {
-					for(int i =0;i<4;i++) {
-					if(currentCar.getTire(i).getPressure()<1) {
-						carByType.get(data[4]).add(currentCar);
-						break;
-					}
-					}
-				}else {
-					
+			LinkedList<Car> cars =new LinkedList<Car>();
+			Car currentCar = new Car(data[0],Integer.parseInt(data[1]),
+					Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4],
+					tireData);
+			carByType.put(data[0], cars);
+		if(currentCar.getCargo().getType().equalsIgnoreCase("fragile")) {
+				for(int i =0;i<4;i++) {
+				if(currentCar.getTire(i).getPressure()<1) {
+					carByType.get(data[4]).add(currentCar);
+					break;
 				}
-				
+				}
+			}else {
+				if(currentCar.getEngine().getPower()>250) {
+					carByType.get(data[4]).add(currentCar);
+				}
+			}
+			
+		}else {
+			
+			Car currentCar = new Car(data[0],Integer.parseInt(data[1]),
+					Integer.parseInt(data[2]),Integer.parseInt(data[3]),data[4],
+					tireData);
+			
+			if(currentCar.getCargo().getType().equalsIgnoreCase("fragile")) {
+				for(int i =0;i<4;i++) {
+				if(currentCar.getTire(i).getPressure()<1) {
+					carByType.get(data[4]).add(currentCar);
+					break;
+				}
+				}
+			}else {
+				if(currentCar.getEngine().getPower()>250) {
+					carByType.get(data[4]).add(currentCar);
+				}
 			}
 		}
 	}
+	
 	
 	 static void transferTireDataArray(String[] data, String[] tireData) {
 		for(int i=5;5<=10;i+=2) {

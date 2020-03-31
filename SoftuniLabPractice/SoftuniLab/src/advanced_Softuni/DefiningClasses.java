@@ -45,6 +45,10 @@ public class DefiningClasses {
 			addCarToList(carByType,data,tireData);
 			numberCars--;
 		}
+		String display = getString();
+		for(Car currentCar:carByType.get(display)) {
+			System.out.println(currentCar.getModel());
+		}
 	}
 	
 	

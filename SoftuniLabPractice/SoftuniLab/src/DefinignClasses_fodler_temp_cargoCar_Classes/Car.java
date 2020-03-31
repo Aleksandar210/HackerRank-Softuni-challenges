@@ -21,6 +21,12 @@ public class Car {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Car [model=" + model + ", tires=" + tires + ", engine=" + engine + ", cargo=" + cargo + "]";
+	}
+
+
 	public String getModel() {
 		return model;
 	}

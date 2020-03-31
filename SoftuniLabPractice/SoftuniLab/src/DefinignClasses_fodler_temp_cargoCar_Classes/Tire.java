@@ -14,6 +14,12 @@ public class Tire {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Tire [tireNumber=" + tireNumber + ", age=" + age + ", pressure=" + pressure + "]";
+	}
+
+
 	public int getTireNumber() {
 		return tireNumber;
 	}

@@ -23,7 +23,18 @@ public class DefiningClasses {
 		//opinionPool();
 		//employee();
 		//racer();
+		//
+		//
 	}
+	
+	
+	
+	static void cargoCar() {
+		int numberCars = getInt();
+		
+	}
+	
+	
 	
 	
 	

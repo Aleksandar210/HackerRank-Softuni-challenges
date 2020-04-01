@@ -31,6 +31,15 @@ public class Person {
 		return this.children.peek();
 	}
 	
+	public void displayParents() {
+		Stack<Person> currentParents = new Stack<Person>();
+		currentParents = this.parents;
+		for(int i=0;i<currentParents.capacity();i++) {
+			Person temp = currentParents.pop();
+			System.out.println(temp.getBothNames()+" born: "+temp.birthday());
+		}
+	}
+	
 	
 	
 	public Person(int year, int month, int day,boolean isName,String[] childData) {

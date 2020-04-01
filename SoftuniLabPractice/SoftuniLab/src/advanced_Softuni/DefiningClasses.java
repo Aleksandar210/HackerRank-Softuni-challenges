@@ -42,10 +42,14 @@ public class DefiningClasses {
 		Map<String,Person> names = new LinkedHashMap<String,Person>();
 		Map<String,Person> dates = new LinkedHashMap<String,Person>();
 		Map<String,String> namesDate = new HashMap<String,String>();
-		boolean addedNameFirst;
+		boolean addedNameFirst=false;
+	
 		do {
+			if(!addedNameFirst) {
 			enterMember = getString();
-		    
+			firstName =  firstPerson(addedNameFirst,enterMember);
+			addedNameFirst = true;
+			}
 			
 			if(enterMember.contains("-")) {
 				String[] personData = enterMember.split("-");
@@ -100,9 +104,13 @@ public class DefiningClasses {
 			
 		}while(!"end".equalsIgnoreCase(enterMember));
 		
-		for(Map.Entry<String,Person> name:names.entrySet()) {
-			firstName =  name.getKey();
-			break;
+		
+		
+		if(Character.isAlphabetic(firstName.charAt(0))) {
+			System.out.println(names.get(firstName).getBothNames()+" Born on"+names.get(firstName).birthday());
+			names.get(firstName).displayParents();
+			names.get(firstName).
+			
 		}
 		
 		
@@ -110,11 +118,15 @@ public class DefiningClasses {
 	}
 	
 	static String firstPerson(boolean alreadyIn,String personData) {
+		if(!alreadyIn) {
 		if(personData.contains("-")) {
 			String[] data = personData.split("-");
 			return data[0];
 		}else {
 			String[] data = personData.split("\\s+");
+			return data[0]+" "+data[1];
+		}
+		}else {
 			
 		}
 	}

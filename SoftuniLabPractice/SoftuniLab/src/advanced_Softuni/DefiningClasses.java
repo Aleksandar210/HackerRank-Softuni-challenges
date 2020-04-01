@@ -35,16 +35,17 @@ public class DefiningClasses {
 		//familyTree();
 		
 	}
-	
+	static String firstName;
 	static void familyTree() {
 		Person firstPerson;
 		String enterMember;
-		boolean firstPersonAdded = false;
-		Map<String,Person> names = new HashMap<String,Person>();
-		Map<String,Person> dates = new HashMap<String,Person>();
+		Map<String,Person> names = new LinkedHashMap<String,Person>();
+		Map<String,Person> dates = new LinkedHashMap<String,Person>();
 		Map<String,String> namesDate = new HashMap<String,String>();
+		boolean addedNameFirst;
 		do {
 			enterMember = getString();
+		    
 			
 			if(enterMember.contains("-")) {
 				String[] personData = enterMember.split("-");
@@ -75,15 +76,47 @@ public class DefiningClasses {
 				}
 				
 			}else {
+				String[] personData = enterMember.split("\\s+");
+				String bothNames = personData[0]+" "+personData[1];
+				if(names.containsKey(bothNames)) {
+					names.get(bothNames).setYearBorn(Integer.parseInt(personData[2]));
+					names.get(bothNames).setMonth(Integer.parseInt(personData[3]));
+					names.get(bothNames).setDay(Integer.parseInt(personData[4]));
+					
+					
+					
+				}else if(dates.containsKey(personData[2]+"/"+personData[3]+"/"+personData[4])) {
+					dates.get(personData[2]+"/"+personData[3]+"/"+personData[4]).setFirstName(personData[0]);
+					dates.get(personData[2]+"/"+personData[3]+"/"+personData[4]).setSecondName(personData[1]);
+					
+				}else {
+				
+				}
 				
 			}
 			
 			
-			if(!firstPersonAdded) {
-				
-			}
+			
 			
 		}while(!"end".equalsIgnoreCase(enterMember));
+		
+		for(Map.Entry<String,Person> name:names.entrySet()) {
+			firstName =  name.getKey();
+			break;
+		}
+		
+		
+		
+	}
+	
+	static String firstPerson(boolean alreadyIn,String personData) {
+		if(personData.contains("-")) {
+			String[] data = personData.split("-");
+			return data[0];
+		}else {
+			String[] data = personData.split("\\s+");
+			
+		}
 	}
 	
 	

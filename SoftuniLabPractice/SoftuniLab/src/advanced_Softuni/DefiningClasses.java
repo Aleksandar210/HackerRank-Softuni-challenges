@@ -33,12 +33,17 @@ public class DefiningClasses {
 		//cargoCar();
 		//carSales();
 		//familyTree();
+		//familyTree();
+		//
+		//
+		//
+		
 		
 	}
 	static String firstName;
 	static void familyTree() {
 		Person firstPerson;
-		String enterMember;
+		String enterMember= null;
 		Map<String,Person> names = new LinkedHashMap<String,Person>();
 		Map<String,Person> dates = new LinkedHashMap<String,Person>();
 		Map<String,String> namesDate = new HashMap<String,String>();
@@ -127,8 +132,9 @@ public class DefiningClasses {
 			return data[0]+" "+data[1];
 		}
 		}else {
-			
+			return null;
 		}
+		
 	}
 	
 	
@@ -455,18 +461,18 @@ public class DefiningClasses {
 	//-------------------------------------------------------------------------
 	
 	
-	
+	//it needs to import the other person form the other package
 	static void opinionPool() {
 		int numberPeople = getInt();
 		java.util.List<Person> people = new LinkedList<>();
 		do {
 			String enterPersonData = getString();
 			String[] data = enterPersonData.split("\\s+");
-			people.add(new Person(data[0],Integer.parseInt(data[1])));
+		//	people.add(new Person(data[0],Integer.parseInt(data[1])));
 		}while(numberPeople>0);
-		people = people.stream().filter(e ->e.getAge()>30)
-				.sorted((a,b)->a.getName().compareTo(b.getName()))
-				.collect(Collectors.toList());
+	//	people = people.stream().filter(e ->e.getAge()>30)
+				//.sorted((a,b)->a.getName().compareTo(b.getName()))
+			//	.collect(Collectors.toList());
 		
 		people.forEach(System.out::println);
 		
@@ -526,8 +532,8 @@ public class DefiningClasses {
 	
 	
 	static void carClassDefine() {
-		Car car = new Car(getString(),getString(),getInt());
-		System.out.println(car);
+	//	Car car = new Car(getString(),getString(),getInt());
+	//	System.out.println(car);
 		
 	}
 	

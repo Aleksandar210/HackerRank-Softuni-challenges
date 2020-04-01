@@ -12,7 +12,7 @@ public class Person {
 	private Stack<Person>  children =  new Stack<Person>();
 	
 
-	public Person(String firstName,String secondName, int year, int month, int day,boolean isDate,
+	public Person(String firstName,String secondName,boolean isDate,
 			String[] childData) {
 		this(firstName,secondName);
 		
@@ -21,9 +21,14 @@ public class Person {
 			children.add(new Person(childData[0],childData[1]));
 			children.peek().parents.add(this);
 		}else {
-			children.add(new Person(year,month,day));
+			children.add(new Person(Integer.parseInt(childData[0]),Integer.parseInt(childData[1]),Integer.parseInt(childData[2])));
 			children.peek().parents.add(this);
 		}
+	}
+	
+	
+	public Person getChild() {
+		return this.children.peek();
 	}
 	
 	
@@ -63,6 +68,8 @@ public class Person {
 		String birthday = String.format("%d/%d/%d",getYearBorn(),getMonth(),getDay());
 		return birthday;
 	}
+	
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -104,4 +111,8 @@ public class Person {
 		this.secondName = secondName;
 	}
 
+	
+	public String getBothNames() {
+		return getFirstName()+getSecondName();
+	}
 }

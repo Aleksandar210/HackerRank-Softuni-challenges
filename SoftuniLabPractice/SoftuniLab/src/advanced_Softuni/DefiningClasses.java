@@ -37,10 +37,32 @@ public class DefiningClasses {
 	}
 	
 	static void familyTree() {
-		List<Person> tree = new ArrayList<Person>();
+		Person firstPerson;
 		String enterMember;
+		boolean firstPersonAdded = false;
+		Map<String,Person> names = new HashMap<String,Person>();
+		Map<String,Person> dates = new HashMap<String,Person>();
 		do {
 			enterMember = getString();
+			
+			if(enterMember.contains("-")) {
+				String[] personData = enterMember.split("-");
+				if(Character.isAlphabetic(personData[0].charAt(0)) && Character.isAlphabetic(personData[0].charAt(0))) {
+					String[] namesArray = personData[0].split("\\s+");
+					String[] childNames = personData[1].split("\\s+"); 
+					names.put(personData[0],new Person(namesArray[0],namesArray[1],true,childNames));
+					names.put(names.get(personData[0]).getBothNames(),names.get(personData[0]).getChild());
+					
+				}else if() {
+					
+				}
+			}
+			
+			
+			if(!firstPersonAdded) {
+				
+			}
+			
 		}while(!"end".equalsIgnoreCase(enterMember));
 	}
 	

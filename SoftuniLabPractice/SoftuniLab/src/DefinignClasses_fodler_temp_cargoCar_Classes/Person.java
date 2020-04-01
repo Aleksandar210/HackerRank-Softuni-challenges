@@ -40,6 +40,14 @@ public class Person {
 		}
 	}
 	
+	public void  displayChildren() {
+		Stack<Person> childs = new Stack<Person>();
+		childs = this.children;
+		for(Person ch:childs) {
+			System.out.println(ch.getBothNames()+" born: "+ch.birthday());
+		}
+	}
+	
 	
 	
 	public Person(int year, int month, int day,boolean isName,String[] childData) {

@@ -109,7 +109,7 @@ public class DefiningClasses {
 		if(Character.isAlphabetic(firstName.charAt(0))) {
 			System.out.println(names.get(firstName).getBothNames()+" Born on"+names.get(firstName).birthday());
 			names.get(firstName).displayParents();
-			names.get(firstName).
+			names.get(firstName).displayChildren();
 			
 		}
 		

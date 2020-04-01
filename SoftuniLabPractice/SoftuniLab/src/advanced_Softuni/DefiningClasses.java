@@ -42,20 +42,40 @@ public class DefiningClasses {
 		boolean firstPersonAdded = false;
 		Map<String,Person> names = new HashMap<String,Person>();
 		Map<String,Person> dates = new HashMap<String,Person>();
+		Map<String,String> namesDate = new HashMap<String,String>();
 		do {
 			enterMember = getString();
 			
 			if(enterMember.contains("-")) {
 				String[] personData = enterMember.split("-");
-				if(Character.isAlphabetic(personData[0].charAt(0)) && Character.isAlphabetic(personData[0].charAt(0))) {
+				if(Character.isAlphabetic(personData[0].charAt(0)) && Character.isAlphabetic(personData[1].charAt(0))) {
 					String[] namesArray = personData[0].split("\\s+");
 					String[] childNames = personData[1].split("\\s+"); 
 					names.put(personData[0],new Person(namesArray[0],namesArray[1],true,childNames));
 					names.put(names.get(personData[0]).getBothNames(),names.get(personData[0]).getChild());
 					
-				}else if() {
+				}else if(Character.isAlphabetic(personData[0].charAt(0)) && Character.isDigit(personData[1].charAt(0))) {
+					String[] namesArray = personData[0].split("\\s+");
+					String[] childDate = personData[1].split("/"); 
+					names.put(personData[0],new Person(namesArray[0],namesArray[1],false,childDate));
+					dates.put(names.get(personData[0]).getChild().birthday(),names.get(personData[0]).getChild());
+				}else if(Character.isDigit(personData[0].charAt(0)) && Character.isDigit(personData[1].charAt(0))) {
+					String[] parentDate = personData[0].split("/");
+					String[] childDate = personData[1].split("/"); 
+					dates.put(personData[0], new Person(Integer.parseInt(parentDate[0]),Integer.parseInt(parentDate[1]),Integer.parseInt(parentDate[2]),false,childDate));
+					dates.put(dates.get(personData[0]).getChild().birthday(),dates.get(personData[0]).getChild());
+					
+				}else if(Character.isDigit(personData[0].charAt(0)) &&  Character.isAlphabetic(personData[1].charAt(0))) {
+					String[] namesArray = personData[1].split("\\s+");
+					String[] childDate = personData[0].split("/"); 
+					
+					dates.put(personData[0],new Person(Integer.parseInt(childDate[0]),Integer.parseInt(childDate[1]),Integer.parseInt(childDate[2]),true,namesArray));
+					names.put(dates.get(personData[0]).getChild().getBothNames(), dates.get(personData[0]).getChild());
 					
 				}
+				
+			}else {
+				
 			}
 			
 			

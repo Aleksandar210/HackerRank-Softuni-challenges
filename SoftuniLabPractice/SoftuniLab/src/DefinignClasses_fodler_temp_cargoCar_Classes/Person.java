@@ -14,31 +14,29 @@ public class Person {
 
 	public Person(String firstName,String secondName, int year, int month, int day,boolean isDate,
 			String[] childData) {
-		setFirstName(firstName);
-		setSecondName(secondName);
-		setYearBorn(year);
-		setMonth(month);
-		setDay(day);
+		this(firstName,secondName);
 		
 		
 		if(!isDate) {
 			children.add(new Person(childData[0],childData[1]));
 			children.peek().parents.add(this);
 		}else {
-			children.add(new Person(Integer.parseInt(childData[0]),Integer.parseInt(childData[1]),Integer.parseInt(childData[2])));
+			children.add(new Person(year,month,day));
 			children.peek().parents.add(this);
 		}
 	}
 	
-	public Person(String firstName, Stirng secondName)
 	
-	public Person(int year, int month, int day,String[] childData) {
-		setYearBorn(year);
-		setMonth(month);
-		setDay(day);
+	
+	public Person(int year, int month, int day,boolean isName,String[] childData) {
+		this(year,month,day);
+		if(isName) {
+			children.add(new Person(childData[0],childData[1]));
+			children.peek().parents.add(this);
+		}else {
 			children.add(new Person(Integer.parseInt(childData[0]),Integer.parseInt(childData[1]),Integer.parseInt(childData[2])));
 			children.peek().parents.add(this);
-		
+		}
 		
 	}
 	public Person(int year, int month, int day) {
@@ -50,6 +48,15 @@ public class Person {
 	public Person(String firstName, String secondName) {
 	setFirstName(firstName);
 	setSecondName(secondName);
+	}
+	
+	
+	public Person(String firstName, String secondName,int year, int month, int day) {
+		setFirstName(firstName);
+		setSecondName(secondName);
+		setYearBorn(year);
+		setMonth(month);
+		setDay(day);
 	}
 
 	public String birthday() {

@@ -1,5 +1,7 @@
 package advanced_Softuni;
 
+import java.util.function.Consumer;
+
 public class SmartStack {
 	private static final int INITIAL_CAPACITY = 0;
 	
@@ -27,6 +29,14 @@ public void push(int element) {
 	}
 	
 	
+}
+
+public void foreach(Consumer<Integer> consumer) {
+	for(int i =0;i<getSize();i++) {
+		consumer = e->System.out.println(e);
+		consumer.accept(this.data[i]);
+		
+	}
 }
 
 public int pop() {

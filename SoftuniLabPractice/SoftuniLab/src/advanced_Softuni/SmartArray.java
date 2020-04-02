@@ -25,7 +25,48 @@ public class SmartArray {
 		setSize(getSize()+1);
 	}
 	
-	public void remove(int element) {
+	public int remove(int index) {
+		int removedElement;
+		int[] arrayToReturn;
+		if(index>=getSize()) {
+			throw new IndexOutOfBoundsException("Index beyond size!");
+		}else {
+			removedElement = this.data[index];
+		}
+		if(index==0) {
+			arrayToReturn = new int[this.data.length-1];
+			System.arraycopy(this.data,1, arrayToReturn, 0, getSize()-1);
+			this.data = arrayToReturn;
+			if(getSize()<=getCapacity()/4) {
+				setCapacity(getCapacity()/2);	
+				}
+				
+			return removedElement;
+		}else if(index==getSize()-1) {
+			arrayToReturn = new int[this.data.length-2];
+			System.arraycopy(this.data, 0, arrayToReturn, 0, getSize()-2);
+			this.data = arrayToReturn;
+			if(getSize()<=getCapacity()/4) {
+				setCapacity(getCapacity()/2);	
+				}
+				
+			return removedElement;
+			
+		}else {
+			arrayToReturn = new int[this.data.length-1];
+			
+			System.arraycopy(this.data, 0, arrayToReturn, 0, index);
+			System.arraycopy(this.data, index+1, arrayToReturn, index, (getSize()-1)-index);
+			this.data = arrayToReturn;
+			
+			if(getSize()<=getCapacity()/4) {
+			setCapacity(getCapacity()/2);	
+			}
+			
+			return removedElement;
+		}
+		
+		
 		
 	}
 

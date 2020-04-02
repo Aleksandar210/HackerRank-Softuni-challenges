@@ -14,6 +14,18 @@ public class ListNode {
 	
 	
 
+	@Override
+	public String toString() {
+		String currReturn = String.valueOf(getCurrentItem()); 
+		return  currReturn;
+	}
+	
+	
+
+
+
+
+
 	public int getCurrentItem() {
 		return currentItem;
 	}

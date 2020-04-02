@@ -1,5 +1,7 @@
 package advanced_Softuni;
 
+import java.util.function.Consumer;
+
 public class CustomDoublyLinkedList {
 	private static final int INIT_CAPACITY = 4;
 	private static final int INIT_SIZE = 0;
@@ -41,6 +43,13 @@ public class CustomDoublyLinkedList {
 			getData()[getSize()-1].setNext(getData()[getSize()]);
 		}
 		setSize(getSize()+1);
+	}
+	
+	public void foreach(Consumer<Integer> consumer) {
+		consumer = e -> System.out.println(e);
+		for(int i =0;i<getSize();i++) {
+			consumer.accept(getData()[i].getCurrentItem());
+		}
 	}
 	
 

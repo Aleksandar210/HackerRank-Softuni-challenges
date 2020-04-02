@@ -1,5 +1,7 @@
 package advanced_Softuni;
 
+import java.util.function.Consumer;
+
 public class SmartLinkedList {
 	private static final int INITIAL_CAPACITY = 4;
 	private static final int INITIAL_SIZE = 0;
@@ -32,6 +34,32 @@ public class SmartLinkedList {
 		getData()[getSize()] = element;
 		setSize(getSize()+1);
 		
+	}
+	public void foreach(Consumer<Integer> consumer) {
+		consumer = e->System.out.println(e);
+		for(int i =0;i<getSize();i++) {
+			consumer.accept(i);
+		}
+	}
+	
+	public int removeFirst() {
+		int[] temp = new int[getCapacity()];
+		int removedElement;
+		System.arraycopy(getData(), 1, temp, 0, getSize()-1);
+		setData(temp);
+		removedElement = getData()[0];
+		setSize(getSize()-1);
+		return removedElement;
+		
+	}
+	
+	public int removeLast() {
+		int[] temp = new int[getCapacity()];
+		int removedElement = getData()[getSize()-1];
+		System.arraycopy(getData(), 0, temp, 0, getSize()-2);
+		setData(temp);
+		setSize(getSize()-1);
+		return removedElement;
 	}
 
 	public int getCapacity() {

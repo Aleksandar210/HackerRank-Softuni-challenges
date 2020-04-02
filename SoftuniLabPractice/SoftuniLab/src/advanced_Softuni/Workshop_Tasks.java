@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class Workshop_Tasks {
 public static void main(String[] main) {
 	//smartArray();
-	//
+	//smartStack();
 	//
 	//
 	//
@@ -15,6 +15,10 @@ public static void main(String[] main) {
 
 static void smartArray() {
 	SmartArray  sa = new SmartArray();
+	
+}
+
+static void smartStack() {
 	
 }
 

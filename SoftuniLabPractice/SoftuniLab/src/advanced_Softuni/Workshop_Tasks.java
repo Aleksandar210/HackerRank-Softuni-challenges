@@ -8,7 +8,7 @@ public class Workshop_Tasks {
 public static void main(String[] main) {
 	//smartArray();
 	//smartStack();
-	//
+	//smartLinkedList();
 	//
 	//
 }
@@ -20,6 +20,10 @@ static void smartArray() {
 
 static void smartStack() {
 	SmartStack ss = new SmartStack();
+}
+
+public void smartLinkedList() {
+	SmartLinkedList sll = new SmartLinkedList();
 }
 
 

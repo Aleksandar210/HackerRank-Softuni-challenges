@@ -61,6 +61,10 @@ public class SmartLinkedList {
 		setSize(getSize()-1);
 		return removedElement;
 	}
+	
+	public int[] toArray() {
+		return getData();
+	}
 
 	public int getCapacity() {
 		return capacity;

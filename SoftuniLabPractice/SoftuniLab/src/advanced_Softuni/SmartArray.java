@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 
 public class SmartArray {
 	private static int count = 0;			//used for contains method to solve scope problem
+											//don't change the count variable at all;			
+	
 	private static int INITIAL_SIZE = 4;
 	private int size;
 	private int capacity;
@@ -15,8 +17,14 @@ public class SmartArray {
 		setSize(0);
 		this.data = new int[getCapacity()];
 		
-		
-		
+	}
+	
+	public void add(int atIndex,int elementToAdd) {
+		 if(atIndex==getSize()) {
+			add(atIndex);
+		}else {
+			
+		}
 	}
 	
 	public void foreach(Consumer<Integer> consumer) {
@@ -25,6 +33,15 @@ public class SmartArray {
 		}
 	}
 	
+	public int get(int index) {
+		if(index>getSize() || index<getSize()) {
+			throw new IndexOutOfBoundsException("Index beyond the size");
+		}else {
+			return this.data[index];
+		}
+	}
+	
+	@SuppressWarnings("static-access")
 	public boolean contains(int element) {
 		boolean containsElement = false;
 		
@@ -34,9 +51,12 @@ public class SmartArray {
 				.map(e ->{count++; return e;}).toArray();
 		if(count>0) {
 			containsElement=true;
+			this.count=0;
 		}
 		return containsElement;
 	}
+	
+	
 	
 	public void add(int element) {
 		if(getSize()>getCapacity()) {
@@ -51,7 +71,7 @@ public class SmartArray {
 	public int remove(int index) {
 		int removedElement;
 		int[] arrayToReturn;
-		if(index>=getSize()) {
+		if(index>=getSize()|| index<getSize()) {
 			throw new IndexOutOfBoundsException("Index beyond size!");
 		}else {
 			removedElement = this.data[index];

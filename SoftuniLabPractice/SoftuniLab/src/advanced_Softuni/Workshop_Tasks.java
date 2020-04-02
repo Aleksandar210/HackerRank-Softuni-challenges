@@ -6,11 +6,16 @@ import java.io.InputStreamReader;
 
 public class Workshop_Tasks {
 public static void main(String[] main) {
+	//smartArray();
 	//
 	//
 	//
 	//
-	//
+}
+
+static void smartArray() {
+	SmartArray  sa = new SmartArray();
+	
 }
 
 

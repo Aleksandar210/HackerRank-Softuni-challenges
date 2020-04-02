@@ -19,7 +19,7 @@ static void smartArray() {
 }
 
 static void smartStack() {
-	
+	SmartStack ss = new SmartStack();
 }
 
 

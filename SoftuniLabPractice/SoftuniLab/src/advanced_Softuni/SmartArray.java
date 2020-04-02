@@ -1,6 +1,10 @@
 package advanced_Softuni;
 
+import java.util.Arrays;
+import java.util.function.Consumer;
+
 public class SmartArray {
+	private static int count = 0;			//used for contains method to solve scope problem
 	private static int INITIAL_SIZE = 4;
 	private int size;
 	private int capacity;
@@ -13,6 +17,25 @@ public class SmartArray {
 		
 		
 		
+	}
+	
+	public void foreach(Consumer<Integer> consumer) {
+		for(int i =0;i<getSize();i++) {
+			consumer.accept(this.data[i]);
+		}
+	}
+	
+	public boolean contains(int element) {
+		boolean containsElement = false;
+		
+		int[] arrayToCheck = new int[getSize()];
+		System.arraycopy(this.data, 0, arrayToCheck, 0, getSize());
+		arrayToCheck = Arrays.stream(arrayToCheck).filter(e -> e==element)
+				.map(e ->{count++; return e;}).toArray();
+		if(count>0) {
+			containsElement=true;
+		}
+		return containsElement;
 	}
 	
 	public void add(int element) {

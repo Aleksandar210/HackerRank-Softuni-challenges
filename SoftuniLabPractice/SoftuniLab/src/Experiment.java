@@ -22,11 +22,22 @@ public class Experiment {
 		for(int i =0;i<5;i++) {
 			array1[i]=i+1;
 		}
-		int[] newArrayWithRemoved = removeElement(2,array1);
-		for(int i =0;i<newArrayWithRemoved.length;i++) {
-			System.out.println(newArrayWithRemoved[i]);
+		
+		
+		int[] array2=add(3,777,array1);
+		for(int i =0;i<array2.length;i++) {
+			System.out.println(array2[i]);
 		}
+		
+	}
 	
+	static int[] add(int atIndex, int elementToAdd,int[] array1) {
+		int[] temp = new int[array1.length+1];
+		System.arraycopy(array1, 0, temp, 0, atIndex);
+		temp[atIndex] = elementToAdd;
+		System.arraycopy(array1, atIndex+1, temp, atIndex+1, array1.length-atIndex);
+		int[] theRt = temp;
+		return theRt;
 		
 	}
 	

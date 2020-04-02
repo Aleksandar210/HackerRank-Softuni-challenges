@@ -22,8 +22,19 @@ public class SmartArray {
 	public void add(int atIndex,int elementToAdd) {
 		 if(atIndex==getSize()) {
 			add(atIndex);
+		}else if(atIndex==0) {
+			int[] tempArray = new int[getCapacity()]; 
+			System.arraycopy(this.data, 0, tempArray, 1, getSize());
+			tempArray[0] = elementToAdd;
+			setSize(getSize()+1);
+			this.data = tempArray;	
 		}else {
-			
+			int[] temp = new int[atIndex];
+			System.arraycopy(this.data, 0, temp, 0, atIndex);
+			temp[atIndex] = elementToAdd;
+			System.arraycopy(this.data, atIndex+1, temp, atIndex+1, getSize()-atIndex);
+			this.data = temp;
+			setSize(getSize()+1);
 		}
 	}
 	

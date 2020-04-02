@@ -52,6 +52,16 @@ public class CustomDoublyLinkedList {
 		}
 	}
 	
+	
+	public ListNode removeFirst() {
+		ListNode removedElement = getData()[0];
+		ListNode[] temp = new ListNode[getCapacity()];
+		System.arraycopy(getData(), 1, temp, 0, getSize()-1);
+		temp[0].setPrevious(null);
+		setData(temp);
+		setSize(getSize()-1);
+		return removedElement;
+	}
 
 	public int getCapacity() {
 		return capacity;

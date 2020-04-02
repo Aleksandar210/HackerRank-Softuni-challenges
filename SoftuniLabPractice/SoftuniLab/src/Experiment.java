@@ -24,20 +24,19 @@ public class Experiment {
 		}
 		
 		
-		int[] array2=add(3,777,array1);
-		for(int i =0;i<array2.length;i++) {
-			System.out.println(array2[i]);
-		}
+	add(3,777,array1);
 		
 	}
 	
-	static int[] add(int atIndex, int elementToAdd,int[] array1) {
+	static void add(int atIndex, int elementToAdd,int[] array1) {
 		int[] temp = new int[array1.length+1];
-		System.arraycopy(array1, 0, temp, 0, atIndex);
+		int getTempIndex =  array1[atIndex+1];
+		System.arraycopy(array1, 0, temp, 0, atIndex+1);
 		temp[atIndex] = elementToAdd;
-		System.arraycopy(array1, atIndex+1, temp, atIndex+1, array1.length-atIndex);
-		int[] theRt = temp;
-		return theRt;
+		System.arraycopy(array1, atIndex, temp, atIndex+1,array1.length-atIndex);
+		for(int i =0;i<temp.length;i++) {
+			System.out.println(temp[i]);
+		}
 		
 	}
 	

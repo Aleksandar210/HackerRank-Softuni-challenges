@@ -29,12 +29,14 @@ public class SmartArray {
 			setSize(getSize()+1);
 			this.data = tempArray;	
 		}else {
-			int[] temp = new int[atIndex];
-			System.arraycopy(this.data, 0, temp, 0, atIndex);
-			temp[atIndex] = elementToAdd;
-			System.arraycopy(this.data, atIndex+1, temp, atIndex+1, getSize()-atIndex);
-			this.data = temp;
+			int[] temp = new int[getCapacity()];
+			int holdCurrent;
+			System.arraycopy(this.data, 0, temp, 0, atIndex+1);
+			holdCurrent = this.data[atIndex+1];
+			temp[atIndex] =elementToAdd;
+			System.arraycopy(this.data, atIndex, temp, atIndex+1,getSize()-atIndex);
 			setSize(getSize()+1);
+			
 		}
 	}
 	

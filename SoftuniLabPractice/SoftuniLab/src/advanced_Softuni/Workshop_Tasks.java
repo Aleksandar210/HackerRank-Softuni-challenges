@@ -26,6 +26,10 @@ public void smartLinkedList() {
 	SmartLinkedList sll = new SmartLinkedList();
 }
 
+public void customDoublyLinkedList() {
+	CustomDoublyLinkedList cdll = new CustomDoublyLinkedList();
+}
+
 
 
 

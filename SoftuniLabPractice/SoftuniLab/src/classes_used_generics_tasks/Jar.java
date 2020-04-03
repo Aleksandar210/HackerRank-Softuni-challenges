@@ -12,6 +12,8 @@ public class Jar<E> {
 	  setElementsInJar(new Object[getCapacity()]);
   }
   
+  //work around with pre entered value(parameter) on add
+  
   public E removeLastAdded() {
 	  if(getSize()==0) {
 		  return null;

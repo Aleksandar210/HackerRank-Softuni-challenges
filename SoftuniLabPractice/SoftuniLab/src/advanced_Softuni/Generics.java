@@ -6,6 +6,7 @@ public class Generics {
 	}
 	
 	
+	
 	static void jarTask() {
 		//specify Type  Jar<> jar = new Jar<>();
 	}

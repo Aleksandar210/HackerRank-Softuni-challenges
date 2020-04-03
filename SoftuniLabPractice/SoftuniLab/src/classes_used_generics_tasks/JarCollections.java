@@ -4,33 +4,32 @@ package classes_used_generics_tasks;
 import java.util.LinkedList;
 
 public class JarCollections<E> {
-	private LinkedList<LinkedList<Class<E>>> jars;
+	private LinkedList<E> jars;
 	
 	public JarCollections() {
-		jars = new LinkedList<>();
+		setJars(new LinkedList<E>());
 	}
 	
 	public void add(E element) {
-		
+		getJars().add(element);
 	}
 	
-	public void addToLastCreatedCollection(E element) {
-		
+	public E getFirstElement() {
+		return getJars().getFirst();
 	}
 	
-	public void showCurrentJars() {
-		getJars().forEach(e ->System.out.println(e));
+	public void showCurrentJarContents() {
+		getJars().forEach(e ->System.out.print(e+" "));
 	}
 	
-	public void createJarCollection() {
-		getJars().add(new LinkedList<Class<E>>());
+	
+	public LinkedList<E> getJars() {
+		return this.jars;
 	}
+	
+	
 
-	public LinkedList<LinkedList<Class<E>>> getJars() {
-		return jars;
-	}
-
-	public void setJars(LinkedList<LinkedList<Class<E>>> jars) {
+	public void setJars(LinkedList<E> jars) {
 		this.jars = jars;
 	}
 	

@@ -16,12 +16,11 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-import DefinignClasses_fodler_temp.BankAccount;
-//import DefinignClasses_fodler_temp.Car;
-import DefinignClasses_fodler_temp.Employee;
-import DefinignClasses_fodler_temp_cargoCar_Classes.Car;
-import DefinignClasses_fodler_temp_cargoCar_Classes.Engine;
-import DefinignClasses_fodler_temp_cargoCar_Classes.Person;
+import DefinignClasses_folder_classes.BankAccount;
+import DefinignClasses_folder_classes.Employee;
+import DefinignClasses_folder_temp_additional_classes.Car;
+import DefinignClasses_folder_temp_additional_classes.Engine;
+import DefinignClasses_folder_temp_additional_classes.Person;
 
 public class DefiningClasses {
 	public static void main(String[] args) {

@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import classes_used_generics_tasks.ArrayCreator;
 import classes_used_generics_tasks.JarWithJars;
 import classes_used_generics_tasks.ListUtils;
 
 public class Generics {
 	public static void main(String[] args) {
 		//jarTask();
+		arrCreator();
 	}
 	
 	
@@ -36,6 +38,14 @@ public class Generics {
 		ListUtils<Integer> util = new ListUtils<Integer>(list);
 		System.out.println(util.getMax());
 		System.out.println(util.getMin());
+	}
+	
+	static void arrCreator() {
+		ArrayCreator arrCr = new ArrayCreator();
+		System.out.println(arrCr.create(Integer.class, 5, 0).length);
+		
+			
+		
 	}
 
 }

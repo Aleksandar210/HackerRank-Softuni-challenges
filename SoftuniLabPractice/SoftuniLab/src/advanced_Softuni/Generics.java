@@ -51,7 +51,16 @@ public class Generics {
 			
 		
 	}
-	
+	static void BoxTaskInteger() {
+		int numberElements =getInt();
+		List<Box<Integer>> list = new ArrayList<Box<Integer>>(numberElements);
+		while(numberElements-- >0) {
+			Box<Integer> boxInts = new Box<Integer>(getInt());
+			list.add(boxInts);
+		}
+		
+		list.forEach(e ->System.out.println(e));
+	}
 	 static void BoxTask() {
 		 int numberElements = getInt();
 		 List<Box<String>> boxes = new ArrayList<Box<String>>(numberElements);

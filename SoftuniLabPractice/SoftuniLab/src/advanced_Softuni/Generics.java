@@ -1,8 +1,11 @@
 package advanced_Softuni;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import classes_used_generics_tasks.JarWithJars;
+import classes_used_generics_tasks.ListUtils;
 
 public class Generics {
 	public static void main(String[] args) {
@@ -25,6 +28,14 @@ public class Generics {
 		jarCollections.getAccesToClassJarCollections().showCurrentJarContents();
 		
 			
+	}
+	
+	static void ListUtilsScales() {
+		List<Integer> list = new ArrayList<Integer>();
+		Collections.addAll(list, 1,2,3,4,5,6);
+		ListUtils<Integer> util = new ListUtils<Integer>(list);
+		System.out.println(util.getMax());
+		System.out.println(util.getMin());
 	}
 
 }

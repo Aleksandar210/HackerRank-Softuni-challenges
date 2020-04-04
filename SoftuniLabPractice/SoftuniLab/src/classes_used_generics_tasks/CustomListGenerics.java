@@ -92,6 +92,11 @@ public CustomListGenerics(List<E> list) {
 		return Collections.max(this.list);
 	}
 	
+	public  void sort() {
+		
+		Collections.sort(this.list);
+	}
+	
 
 	
 

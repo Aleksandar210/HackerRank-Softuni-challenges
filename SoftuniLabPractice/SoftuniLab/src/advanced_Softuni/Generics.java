@@ -1,10 +1,14 @@
 package advanced_Softuni;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import classes_used_generics_tasks.ArrayCreator;
+import classes_used_generics_tasks.Box;
 import classes_used_generics_tasks.JarWithJars;
 import classes_used_generics_tasks.ListUtils;
 
@@ -47,5 +51,40 @@ public class Generics {
 			
 		
 	}
+	
+	 static void BoxTask() {
+		 int numberElements = getInt();
+		 List<Box<String>> boxes = new ArrayList<Box<String>>(numberElements);
+		 
+		 while(numberElements-- >0) {
+			 boxes.add(new Box<String>(getString()));
+		 }
+		 
+		 for(int i =0;i<boxes.size();i++) {
+			 System.out.println(boxes.get(i));
+		 }
+	 }
+	 
+	 static int getInt() {
+		 try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			 return Integer.parseInt(br.readLine());
+			 
+		 } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 return -1;
+	 }
+	 
+	 static String getString() {
+		 try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
+			 return br.readLine();
+		 } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 return null;
+	 }
 
 }

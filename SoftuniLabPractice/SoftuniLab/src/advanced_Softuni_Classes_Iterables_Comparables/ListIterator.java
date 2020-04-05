@@ -10,9 +10,15 @@ public class ListIterator implements Iterable<String> {
 	private List<String> list;
 	private ListIter currentListIter;
 	
-	public ListIterator(String[] arr) {
-		this.list = new LinkedList<String>(Arrays.asList(arr));
+	public ListIterator() {
+		this.list = new LinkedList<String>();
 	}
+	
+	public void create(String[] arr) {
+		this.list.addAll(Arrays.asList(arr));
+	}
+	
+	
 	
 	public boolean hasNext() {
 		return this.iterator().hasNext();
@@ -23,8 +29,13 @@ public class ListIterator implements Iterable<String> {
 		
 	}
 	
-	public String next() {
-		return this.iterator().next();
+	public boolean move() {
+		if(this.iterator().next()==null) {
+			return false;
+		}else {
+			return true;
+		}
+		
 	}
 	
 	

@@ -6,17 +6,52 @@ import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
+import advanced_Softuni_Classes_Iterables_Comparables.ListIterator;
+
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 public class IterableAndComparableTasks {
 	static Scanner scan = new Scanner(System.in);
 public static void main(String[] args) {
-	libraryTask();
+	//libraryTask();
+	listIteratorCommands();
 }
 
 
 
 static void listIteratorCommands() {
+	String enterCommands;
+	ListIterator currentList = new ListIterator();
 	
+	boolean created = false;
+	do {
+		enterCommands = scan.nextLine();
+		if(!created) {
+	String[] contents = enterCommands.substring(enterCommands.indexOf("{")+1,enterCommands.indexOf("}"))
+					.split("\\s+");
+		created = true;
+		currentList.create(contents);
+		}
+		
+		executeData(enterCommands,currentList);
+	}while(!"end".equalsIgnoreCase(enterCommands));
+	
+	
+}
+
+static void executeData(String command,ListIterator currentIteratorList) {
+	switch(command) {
+	case "move":
+		System.out.println(currentIteratorList.move());
+		break;
+	case "hasnext":
+		System.out.println(currentIteratorList.hasNext());
+		break;
+	case "print":
+		currentIteratorList.print();
+		break;
+	}
 }
 
 
@@ -33,7 +68,7 @@ static void libraryTask() {
 
 static void showBooks(Library currentLib) {
 	currentLib.forEach(e ->System.out.println(e));
-	currentLib.h
+	
 }
 
 static Book addBookToLib() {

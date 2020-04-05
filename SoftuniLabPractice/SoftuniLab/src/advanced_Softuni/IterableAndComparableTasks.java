@@ -13,6 +13,13 @@ public static void main(String[] args) {
 	libraryTask();
 }
 
+
+
+static void sortBooksComparator() {
+	
+}
+
+
 static void libraryTask() {
 	Library lib = new Library();
 	System.out.print("Enter number of books to add: ");

@@ -2,7 +2,7 @@ package advanced_Softuni_Classes_Iterables_Comparables;
 
 import java.util.Arrays;
 
-public class Book {
+public class Book implements Comparable<Book>{
 	private String[] authors;
 	private String title;
 	private int year;
@@ -75,6 +75,30 @@ public class Book {
 
 	public void setPages(int pages) {
 		this.pages = pages;
+	}
+
+
+
+
+	@Override
+	public int compareTo(Book otherBook) {
+		if(this.title.length()==otherBook.title.length()) {
+			if(this.pages==otherBook.pages) {
+				if(this.year==otherBook.year) {
+					if(this.authors.length==otherBook.authors.length) {
+						return 0;
+					}else {
+						return this.authors.length - otherBook.authors.length;
+					}
+				}else {
+					return this.year - otherBook.year;
+				}
+			}else {
+				return this.pages-otherBook.pages;
+			}
+		}
+		return this.title.length()-otherBook.title.length();
+		
 	}
 	
 	

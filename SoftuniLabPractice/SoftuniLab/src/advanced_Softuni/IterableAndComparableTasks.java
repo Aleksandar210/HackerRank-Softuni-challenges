@@ -14,8 +14,12 @@ public static void main(String[] args) {
 
 static void LibraryTask() {
 	Library lib = new Library();
+	System.out.print("Enter number of books to add: ");
+	int numberBookAdd = getInt();
+	while(numberBookAdd-- >0) {
+		lib.addBook(addBookToLib());
+	}
 	
-	lib.addBook(addBookToLib());
 }
 
 static Book addBookToLib() {
@@ -29,6 +33,7 @@ static Book addBookToLib() {
 	System.out.print("Enter the names of the authors: ");
 	String[] names = getStringArr();
 	currentBookToAdd = new Book(title,year,pages,names);
+	System.out.println();
 	return currentBookToAdd;
 	
 }

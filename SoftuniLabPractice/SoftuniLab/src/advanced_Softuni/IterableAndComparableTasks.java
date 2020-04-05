@@ -15,7 +15,7 @@ public static void main(String[] args) {
 static void LibraryTask() {
 	Library lib = new Library();
 	
-	lib.addBook();
+	lib.addBook(addBookToLib());
 }
 
 static Book addBookToLib() {
@@ -26,6 +26,10 @@ static Book addBookToLib() {
 	int year = getInt();
 	System.out.print("Enter number of pages: ");
 	int pages = getInt();
+	System.out.print("Enter the names of the authors: ");
+	String[] names = getStringArr();
+	currentBookToAdd = new Book(title,year,pages,names);
+	return currentBookToAdd;
 	
 }
 static String[] getStringArr() {
@@ -45,12 +49,15 @@ static String[] getStringArr() {
 		names = currentNamesCopy;
 		}else {
 			
+		String[] currentNamesCopy = new String[names.length+1];
+		System.arraycopy(names, 0, currentNamesCopy, 0, names.length);
+		currentNamesCopy[index] = enterName;
+		names = currentNamesCopy;
 		}
 		}
-		
-		
-		names[index] = enterName;
 	}while(!"end".equalsIgnoreCase(enterName));
+	
+	return names;
 }
 
 static String getString() {

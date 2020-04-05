@@ -15,7 +15,7 @@ public static void main(String[] args) {
 
 
 
-static void sortBooksComparator() {
+static void listIteratorCommands() {
 	
 }
 
@@ -33,7 +33,7 @@ static void libraryTask() {
 
 static void showBooks(Library currentLib) {
 	currentLib.forEach(e ->System.out.println(e));
-	
+	currentLib.h
 }
 
 static Book addBookToLib() {

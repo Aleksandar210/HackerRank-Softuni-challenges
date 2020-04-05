@@ -37,10 +37,15 @@ static String[] getStringArr() {
 		enterName = getString();
 		if(enterName.equalsIgnoreCase("end")) {
 			break;
-		}
+		}else {
 		index+=1;
 		if(names.length==0) {
+		String[] currentNamesCopy = new String[names.length+1];
+		currentNamesCopy[index] = enterName;
+		names = currentNamesCopy;
+		}else {
 			
+		}
 		}
 		
 		

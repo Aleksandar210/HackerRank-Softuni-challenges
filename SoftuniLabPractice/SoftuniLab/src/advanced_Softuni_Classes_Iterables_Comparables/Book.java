@@ -1,5 +1,7 @@
 package advanced_Softuni_Classes_Iterables_Comparables;
 
+import java.util.Arrays;
+
 public class Book {
 	private String[] authors;
 	private String title;
@@ -21,6 +23,24 @@ public class Book {
 		
 		return authors;
 	}
+
+
+	@Override
+	public String toString() {
+		String bookInfo = String.format("%s: Writen by %s", this.title,displayAuthors());
+		return bookInfo;
+	}
+	
+	public String displayAuthors() {
+		StringBuilder sb = new StringBuilder(this.getAuthors().length);
+		for(String name:this.authors) {
+			sb.append(name);
+			sb.append(" ");
+		}
+		return sb.toString();
+	}
+
+
 
 
 	public void setAuthors(String...authors) {

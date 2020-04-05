@@ -6,30 +6,37 @@ import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
-
+import java.util.Scanner;
 public class IterableAndComparableTasks {
+	static Scanner scan = new Scanner(System.in);
 public static void main(String[] args) {
-	
+	libraryTask();
 }
 
-static void LibraryTask() {
+static void libraryTask() {
 	Library lib = new Library();
 	System.out.print("Enter number of books to add: ");
 	int numberBookAdd = getInt();
 	while(numberBookAdd-- >0) {
 		lib.addBook(addBookToLib());
 	}
+	showBooks(lib);
+	
+}
+
+static void showBooks(Library currentLib) {
+	currentLib.forEach(e ->System.out.println(e));
 	
 }
 
 static Book addBookToLib() {
 	Book currentBookToAdd;
 	System.out.print("Enter title: ");
-	String title =  getString();
+	String title =  scan.nextLine();
 	System.out.print("Enter year: ");
-	int year = getInt();
+	int year = Integer.parseInt(scan.nextLine());
 	System.out.print("Enter number of pages: ");
-	int pages = getInt();
+	int pages = Integer.parseInt(scan.nextLine());
 	System.out.print("Enter the names of the authors: ");
 	String[] names = getStringArr();
 	currentBookToAdd = new Book(title,year,pages,names);
@@ -43,7 +50,7 @@ static String[] getStringArr() {
 	int index = -1;
 	
 	do {
-		enterName = getString();
+		enterName = scan.nextLine();
 		if(enterName.equalsIgnoreCase("end")) {
 			break;
 		}else {
@@ -68,7 +75,7 @@ static String[] getStringArr() {
 static String getString() {
 	try(BufferedReader br = new BufferedReader(new InputStreamReader(System.in))){
 		return br.readLine();
-	} catch (IOException e) {
+	} catch (NumberFormatException |IOException e) {
 		e.printStackTrace();
 		
 	}
@@ -77,13 +84,16 @@ static String getString() {
 }
 
 static int getInt() {
-	try(BufferedReader br  = new BufferedReader(new InputStreamReader(System.in))){
-		 int num =  Integer.parseInt(br.readLine());
-		 return num;
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	return -1;
+	BufferedReader br  = new BufferedReader(new InputStreamReader(System.in));
+		 int num;
+		try {
+			num = Integer.parseInt(br.readLine());
+			 return num;
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return -1;
+		
 }
 }

@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
+import advanced_Softuni_Classes_Iterables_Comparables.ComapreByAge;
+import advanced_Softuni_Classes_Iterables_Comparables.ComparePersonByName;
 import advanced_Softuni_Classes_Iterables_Comparables.CustomIterableStack;
 import advanced_Softuni_Classes_Iterables_Comparables.Lake;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
@@ -18,6 +20,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 public class IterableAndComparableTasks {
 	static Scanner scan = new Scanner(System.in);
@@ -25,10 +29,30 @@ public class IterableAndComparableTasks {
 public static void main(String[] args) {
 	
 	//libraryTask();
-//	listIteratorCommands();
-	//customStackTask();		//finish later
-	//lakeNumbers();
+   //listIteratorCommands();
+  //customStackTask();		//finish later
+ //lakeNumbers();
 }
+
+static void personComparingTask() {
+	String enter = scan.nextLine();
+	Set<Person> orderedByAge = new TreeSet<Person>(new ComapreByAge());
+	Set<Person> orderedByName = new TreeSet<Person>(new ComparePersonByName());
+	while(!"end".equalsIgnoreCase(enter)) {
+		String[] personData = enter.split("\\s+");
+		Person pers = new Person(personData[0],Integer.parseInt(personData[1]));
+		orderedByAge.add(pers);
+		orderedByName.add(pers);
+	}
+	
+	System.out.println("By Name: ");
+	orderedByName.forEach(e ->System.out.println(e));
+	System.out.println();
+	System.out.println("OrderedByAge");
+	orderedByAge.forEach(e->System.out.println(e));
+}
+
+
 
 static void towns() {
 	HashMap<String, Town> towns = new HashMap<String,Town>();

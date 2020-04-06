@@ -11,6 +11,11 @@ public class Person implements Comparable<Person> {
 		setTown(town);
 	}
 	
+	public Person(String name,int age) {
+		setName(name);
+		setAge(age);
+	}
+	
 	
 	public String getName() {
 		return name;

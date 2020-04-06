@@ -34,6 +34,10 @@ public static void main(String[] args) {
  //lakeNumbers();
 }
 
+static void clinicsPets() {
+	
+}
+
 static void personComparingTask() {
 	String enter = scan.nextLine();
 	Set<Person> orderedByAge = new TreeSet<Person>(new ComapreByAge());

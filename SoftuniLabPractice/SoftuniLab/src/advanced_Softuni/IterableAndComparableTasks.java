@@ -6,19 +6,52 @@ import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
 import advanced_Softuni_Classes_Iterables_Comparables.CustomIterableStack;
+import advanced_Softuni_Classes_Iterables_Comparables.Lake;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
 import advanced_Softuni_Classes_Iterables_Comparables.ListIterator;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 public class IterableAndComparableTasks {
 	static Scanner scan = new Scanner(System.in);
+	private static int indexLake=0;
 public static void main(String[] args) {
+	
 	//libraryTask();
 //	listIteratorCommands();
-	customStackTask();
+	//customStackTask();		//finish later
+	newTask();
 }
+
+static void newTask() {
+	
+		
+	String[] enterNumbers = scan.nextLine().split("\\s+");
+	int[] numbers = new int[enterNumbers.length];
+	
+	 Arrays.stream(enterNumbers).map(e ->{
+		 int currentIndex = indexLake;
+		 numbers[currentIndex]=Integer.parseInt(e);
+		 indexLake++;
+		 return e;
+	 }).toArray();
+	
+	Lake lake = new Lake(numbers);
+	
+	lake.forEach(e -> {
+		if(e%2==0) {
+			System.out.print(e+" ");
+		}
+	});
+    
+}
+
+
+
+
 
 static void customStackTask() {
 	CustomIterableStack stack = new CustomIterableStack();

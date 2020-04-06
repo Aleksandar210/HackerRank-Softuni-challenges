@@ -38,6 +38,10 @@ public class ListIterator implements Iterable<String> {
 		
 	}
 	
+	public void printAll() {
+		this.currentListIter.printAll();
+	}
+	
 	
 	@Override
 	public Iterator<String> iterator() {
@@ -54,6 +58,10 @@ public class ListIterator implements Iterable<String> {
 			this.currentList=list;
 		}
 		
+		
+		public void printAll() {
+			this.currentList.forEach(e ->System.out.println(e));
+		}
 		
 		@Override
 		public boolean hasNext() {

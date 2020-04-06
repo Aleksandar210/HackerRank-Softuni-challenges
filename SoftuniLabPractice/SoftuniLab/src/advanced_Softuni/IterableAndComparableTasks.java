@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
+import advanced_Softuni_Classes_Iterables_Comparables.CustomIterableStack;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
 import advanced_Softuni_Classes_Iterables_Comparables.ListIterator;
 
@@ -15,7 +16,17 @@ public class IterableAndComparableTasks {
 	static Scanner scan = new Scanner(System.in);
 public static void main(String[] args) {
 	//libraryTask();
-	listIteratorCommands();
+//	listIteratorCommands();
+	customStackTask();
+}
+
+static void customStackTask() {
+	CustomIterableStack stack = new CustomIterableStack();
+	stack.push(23);
+	stack.push(14);
+	stack.push(141);
+	stack.forEach(e->System.out.print(e+ " "));
+	
 }
 
 

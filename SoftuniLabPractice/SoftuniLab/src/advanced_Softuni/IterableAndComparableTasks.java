@@ -9,10 +9,14 @@ import advanced_Softuni_Classes_Iterables_Comparables.CustomIterableStack;
 import advanced_Softuni_Classes_Iterables_Comparables.Lake;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
 import advanced_Softuni_Classes_Iterables_Comparables.ListIterator;
+import advanced_Softuni_Classes_Iterables_Comparables.Person;
+import advanced_Softuni_Classes_Iterables_Comparables.Town;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 public class IterableAndComparableTasks {
@@ -23,7 +27,31 @@ public static void main(String[] args) {
 	//libraryTask();
 //	listIteratorCommands();
 	//customStackTask();		//finish later
-	lakeNumbers();
+	//lakeNumbers();
+}
+
+static void towns() {
+	HashMap<String, Town> towns = new HashMap<String,Town>();
+	String enterData = scan.nextLine();
+	while(!"end".equalsIgnoreCase(enterData)) {
+		String[] personData = enterData.split("\\s+");
+		Person pers = new Person(personData[0],Integer.parseInt(personData[1]),personData[2]);
+		if(towns.get(personData[2])==null) {
+			towns.put(personData[2], new Town(personData[2]));
+			towns.get(personData[2]).add(pers);
+		}else {
+			towns.get(personData[2]).add(pers);
+		}
+	}
+	
+	for(Map.Entry<String, Town> entry: towns.entrySet()) {
+		System.out.println(entry.getKey()+" ->");
+		List<Person> currentPeopleList = entry.getValue().getPeople();
+	 currentPeopleList =  entry.getValue().getPeople().stream().sorted((a,b)->a.compareTo(b))
+		.collect(Collectors.toList());
+		entry.getValue().forEach(e ->System.out.println(e));
+		System.out.println();
+	}
 }
 
 static void lakeNumbers() {

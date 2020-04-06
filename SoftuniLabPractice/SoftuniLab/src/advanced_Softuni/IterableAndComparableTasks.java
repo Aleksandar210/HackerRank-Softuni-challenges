@@ -23,10 +23,10 @@ public static void main(String[] args) {
 	//libraryTask();
 //	listIteratorCommands();
 	//customStackTask();		//finish later
-	newTask();
+	lakeNumbers();
 }
 
-static void newTask() {
+static void lakeNumbers() {
 	
 		
 	String[] enterNumbers = scan.nextLine().split("\\s+");
@@ -40,12 +40,17 @@ static void newTask() {
 	 }).toArray();
 	
 	Lake lake = new Lake(numbers);
-	
+	StringBuilder sb = new StringBuilder();
 	lake.forEach(e -> {
 		if(e%2==0) {
 			System.out.print(e+" ");
+		}else {
+			sb.append(e+" ");
 		}
 	});
+	System.out.println(sb.toString());
+	
+	
     
 }
 

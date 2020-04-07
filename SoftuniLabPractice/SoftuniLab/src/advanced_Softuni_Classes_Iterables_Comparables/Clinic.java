@@ -7,17 +7,25 @@ public class Clinic implements Iterable<Pet> {
 	
 	
 	
-	private static final int CENTERED_INDEX = 3;
+	
+	private static  int CENTERED_INDEX;
 	private static int RIGHT=CENTERED_INDEX;
 	private static int LEFT = CENTERED_INDEX;
 	private Pet[] rooms;
 
 	
-	public Clinic(String name) {
-		setName(name);
-		this.rooms = new Pet[5];
+	public Clinic(String name, int roomsCount) {
+		assignRooms(roomsCount);
+			setName(name);
+			this.rooms = new Pet[5];
 		
 		
+		
+		
+	}
+	
+	static void assignRooms(int count) {
+			CENTERED_INDEX=count;
 	}
 	
 	@Override
@@ -45,6 +53,34 @@ public class Clinic implements Iterable<Pet> {
 		}else {
 			System.out.println("No Rooms in "+getName()+" CLINIC");
 		}
+	}
+	
+	public boolean release() {
+		boolean hasBeenRelease = false;
+		while(!hasBeenRelease) {
+			if(this.rooms.length==0) {
+			return false;
+			}else {
+				if(this.rooms[LEFT]!=null) {
+					this.rooms[LEFT]=null;
+					hasBeenRelease =true;
+					LEFT++;
+				}else {
+					LEFT+=1;
+					if(this.rooms[RIGHT]!=null) {
+						this.rooms[RIGHT]=null;
+						RIGHT--;
+						hasBeenRelease = true;
+					}else {
+						RIGHT--;
+					}
+				}
+			}
+		}
+		
+		return false;
+			
+		
 	}
 	
 	

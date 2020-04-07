@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
+import advanced_Softuni_Classes_Iterables_Comparables.Clinic;
 import advanced_Softuni_Classes_Iterables_Comparables.ComapreByAge;
 import advanced_Softuni_Classes_Iterables_Comparables.ComparePersonByName;
 import advanced_Softuni_Classes_Iterables_Comparables.CustomIterableStack;
@@ -12,10 +13,12 @@ import advanced_Softuni_Classes_Iterables_Comparables.Lake;
 import advanced_Softuni_Classes_Iterables_Comparables.Library;
 import advanced_Softuni_Classes_Iterables_Comparables.ListIterator;
 import advanced_Softuni_Classes_Iterables_Comparables.Person;
+import advanced_Softuni_Classes_Iterables_Comparables.Pet;
 import advanced_Softuni_Classes_Iterables_Comparables.Town;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +38,32 @@ public static void main(String[] args) {
 }
 
 static void clinicsPets() {
-	
+	Map<String,Clinic> clinics = new LinkedHashMap<String,Clinic>();
+	String enterCommands = scan.nextLine();
+	while(!"end".equalsIgnoreCase(enterCommands)) {
+		
+	}
+}
+
+static void executeCommand(String[] data, String createType,Map<String,Clinic> clinics) {
+	switch(data[0].toLowerCase()) {
+	case "create":
+		if(createType.equalsIgnoreCase("pet")) {
+			Pet currentPetCreated = new Pet(data[2],Integer.parseInt(data[3]),data[4]);
+		}else {
+			Clinic currentClinicCreated = new Clinic(data[2],Integer.parseInt(data[3]));
+			if(clinics.get(currentClinicCreated)==null) {
+				if(Integer.parseInt(data[3])%2!=0) {
+				clinics.put(data[2],currentClinicCreated);
+				}else {
+					
+				}
+			}
+		}
+		break;
+		
+		
+	}
 }
 
 static void personComparingTask() {

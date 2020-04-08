@@ -20,6 +20,7 @@ public Guild(String name, int capacity) {
 }
 
 public void addPlayer(Player currentPlayer) {
+	currentPlayer.setRank("Trial");
 	if(getSize()==getCapacity()) {
 		System.out.println("No more room");
 	}else {
@@ -29,8 +30,28 @@ public void addPlayer(Player currentPlayer) {
 }
 
 public void removePlayer(String name) {
+	Player[] temp = new Player[getCapacity()];
+	searchByNames.remove(name);
+	int counter =0;
+	for(Map.Entry<String, Integer> entry:searchByNames.entrySet()) {
+		temp[counter] =this.players[entry.getValue()];
+		counter++;
+	}
+	
+	this.players = temp;
+}
+
+
+public void promotePlayer(String playerName) {
+	this.players[searchByNames.get(playerName)].setRank("MEMBER");
 	
 }
+
+public void demotePlayer(String playerName) {
+	this.players[searchByNames.get(playerName)].setRank("TRIAL");
+}
+
+
 
 public int getCapacity() {
 	return this.players.length;

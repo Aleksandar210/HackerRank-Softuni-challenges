@@ -48,6 +48,14 @@ do {
 
 while(commandsCount-- >0) {
 	String enterCommand = scan.nextLine();
+	executeCommand(enterCommand,field);
+}
+
+for(int i =0;i<field.length;i++) {
+	for(int j =0;j<field[i].length;i++) {
+		System.out.print(field[i][j]+" ");
+	}
+	System.out.println();
 }
 
 	
@@ -94,7 +102,40 @@ static void executeCommand(String command, String[][] field) {
 		break;
 		
 	case "left":
+		field[rowPosPlayer][colPosPlayer] = "-";
+		colPosPlayer-=1;
+		if(colPosPlayer<0) {
+			colPosPlayer = field[rowPosPlayer].length-1;
+		}
 		
+		if(field[rowPosPlayer][colPosPlayer].equals("B")) {
+			executeCommand(command,field);
+		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
+			colPosPlayer+=1;
+		}else {
+			
+		}
+		
+		field[rowPosPlayer][colPosPlayer]="f";
+		break;
+		
+		
+	case "right":
+		field[rowPosPlayer][colPosPlayer] = "-";
+		colPosPlayer=+1;
+		if(colPosPlayer>field[rowPosPlayer].length-1) {
+			colPosPlayer = field[rowPosPlayer].length-1;
+		}
+		
+		if(field[rowPosPlayer][colPosPlayer].equals("B")) {
+			executeCommand(command,field);
+		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
+			colPosPlayer-=1;
+		}else {
+			
+		}
+		
+		field[rowPosPlayer][colPosPlayer]="f";
 		break;
 	}
 }

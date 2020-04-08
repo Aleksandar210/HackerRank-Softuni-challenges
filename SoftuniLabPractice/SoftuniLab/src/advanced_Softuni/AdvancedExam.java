@@ -2,18 +2,103 @@ package advanced_Softuni;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class AdvancedExam {
 	static Scanner scan = new Scanner(System.in);
+	static int rowPosPlayer;		//used for matrixGame
+	static int colPosPlayer;		//used  for matrixGame
+	
 public static void main(String[] args) {
-	lootBoxes();
+	//lootBoxes();
+	matrixGame();
+}
+
+
+static void matrixGame() {
+	
+	 
+int size = Integer.parseInt(scan.nextLine());
+int commandsCount = Integer.parseInt(scan.nextLine());
+String[][] field = new String[size][size];
+String enterRow;
+int count = 0;
+do {
+	enterRow = scan.nextLine();
+	if(enterRow.contains("f")) {
+		colPosPlayer = enterRow.indexOf("f");
+		rowPosPlayer = count;
+		
+	}
+	field[count] = enterRow.split("");
+	count++;
+	size--;
+	
+}while(size>0);
+
+
+
+while(commandsCount-- >0) {
+	String enterCommand = scan.nextLine();
+}
+
 	
 }
+
+static void executeCommand(String command, String[][] field) {
+	switch(command.toLowerCase()) {
+	case "up":
+		field[rowPosPlayer][colPosPlayer]="-";
+		rowPosPlayer-=1;
+		if(rowPosPlayer<0) {
+			rowPosPlayer = field.length-1;
+		}
+		if(field[rowPosPlayer][colPosPlayer].equals("B")) {
+			executeCommand(command,field);
+		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
+			rowPosPlayer+=1;
+		}else {
+			
+		}
+		
+		field[rowPosPlayer][colPosPlayer]="f";
+		
+		break;
+		
+	case "down":
+		
+		field[rowPosPlayer][colPosPlayer]="-";
+		rowPosPlayer+=1;
+		if(rowPosPlayer>field.length-1) {
+			rowPosPlayer = 0;
+		}
+		if(field[rowPosPlayer][colPosPlayer].equals("B")) {
+			executeCommand(command,field);
+		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
+			rowPosPlayer-=1;
+		}else {
+			
+		}
+		
+		field[rowPosPlayer][colPosPlayer]="f";
+		
+		
+		break;
+		
+	case "left":
+		
+		break;
+	}
+}
+
 
 static void lootBoxes() {
 

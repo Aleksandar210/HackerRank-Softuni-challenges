@@ -19,7 +19,11 @@ public class AdvancedExam {
 	
 public static void main(String[] args) {
 	//lootBoxes();
-	matrixGame();
+	//matrixGame();
+}
+
+static void guildTask() {
+	
 }
 
 

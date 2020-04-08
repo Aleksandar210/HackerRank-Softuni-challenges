@@ -98,7 +98,7 @@ public void report() {
 
 
 	@Override
-	public Iterator iterator() {
+	public Iterator<Player> iterator() {
 	
 		guildIterator gi = new guildIterator();
 		return gi;

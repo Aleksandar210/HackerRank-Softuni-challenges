@@ -12,6 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import advanced_Softuni_Classes_Iterables_Comparables.Guild;
+
 public class AdvancedExam {
 	static Scanner scan = new Scanner(System.in);
 	static int rowPosPlayer;		//used for matrixGame
@@ -20,9 +22,16 @@ public class AdvancedExam {
 public static void main(String[] args) {
 	//lootBoxes();
 	//matrixGame();
+	//guildTask();
 }
 
 static void guildTask() {
+	Guild win = new Guild("WIN",5);
+	//win.addPlayer(currentPlayer);
+	//win.removePlayer(name);
+	//win.promotePlayer(playerName);
+	//win.demotePlayer(playerName);
+	//win.kickPlayerByClass(clazz);
 	
 }
 

@@ -24,7 +24,7 @@ public static void main(String[] args) {
 
 
 static void matrixGame() {
-	
+	boolean hasWon = false;
 	 
 int size = Integer.parseInt(scan.nextLine());
 int commandsCount = Integer.parseInt(scan.nextLine());
@@ -48,9 +48,13 @@ do {
 
 while(commandsCount-- >0) {
 	String enterCommand = scan.nextLine();
-	executeCommand(enterCommand,field);
+	hasWon=executeCommand(enterCommand,field);
 }
-
+if(hasWon) {
+	System.out.println("Player Won!");
+}else{
+	System.out.println("Player has Lost!");
+}
 for(int i =0;i<field.length;i++) {
 	for(int j =0;j<field[i].length;i++) {
 		System.out.print(field[i][j]+" ");
@@ -61,7 +65,7 @@ for(int i =0;i<field.length;i++) {
 	
 }
 
-static void executeCommand(String command, String[][] field) {
+static boolean executeCommand(String command, String[][] field) {
 	switch(command.toLowerCase()) {
 	case "up":
 		field[rowPosPlayer][colPosPlayer]="-";
@@ -73,8 +77,8 @@ static void executeCommand(String command, String[][] field) {
 			executeCommand(command,field);
 		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
 			rowPosPlayer+=1;
-		}else {
-			
+		}else if(field[rowPosPlayer][colPosPlayer].equals("F")) {
+			return true;
 		}
 		
 		field[rowPosPlayer][colPosPlayer]="f";
@@ -92,8 +96,8 @@ static void executeCommand(String command, String[][] field) {
 			executeCommand(command,field);
 		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
 			rowPosPlayer-=1;
-		}else {
-			
+		}else if(field[rowPosPlayer][colPosPlayer].equals("F")) {
+			return true;
 		}
 		
 		field[rowPosPlayer][colPosPlayer]="f";
@@ -112,8 +116,8 @@ static void executeCommand(String command, String[][] field) {
 			executeCommand(command,field);
 		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
 			colPosPlayer+=1;
-		}else {
-			
+		}else if(field[rowPosPlayer][colPosPlayer].equals("F")) {
+			return true;
 		}
 		
 		field[rowPosPlayer][colPosPlayer]="f";
@@ -131,13 +135,15 @@ static void executeCommand(String command, String[][] field) {
 			executeCommand(command,field);
 		}else if(field[rowPosPlayer][colPosPlayer].equals("T")) {
 			colPosPlayer-=1;
-		}else {
-			
+		}else if(field[rowPosPlayer][colPosPlayer].equals("F")) {
+			return true;
 		}
 		
 		field[rowPosPlayer][colPosPlayer]="f";
 		break;
 	}
+	
+	return false;
 }
 
 

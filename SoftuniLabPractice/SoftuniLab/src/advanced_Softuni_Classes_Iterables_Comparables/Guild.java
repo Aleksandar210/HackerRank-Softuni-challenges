@@ -2,14 +2,15 @@ package advanced_Softuni_Classes_Iterables_Comparables;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+
 import java.util.Map;
 
 public class Guild implements Iterable<Player>{
-	private static final int DEF_INDEX =0;
+	private static final int DEF_SIZE =0;
 private Player[] players;
 private String name;
 private Map<String,Integer> searchByNames;
+private int size;
 
 
 public Guild(String name, int capacity) {
@@ -19,11 +20,28 @@ public Guild(String name, int capacity) {
 }
 
 public void addPlayer(Player currentPlayer) {
+	if(getSize()==getCapacity()) {
+		System.out.println("No more room");
+	}else {
+	this.players[getSize()] = currentPlayer;
+	setSize(getSize()+1);
+	}
+}
+
+public void removePlayer(String name) {
 	
 }
 
-public int getSize() {
+public int getCapacity() {
 	return this.players.length;
+}
+
+public void setSize(int a) {
+	this.size=a;
+}
+
+public int getSize() {
+	return this.size;
 }
 
 

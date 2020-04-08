@@ -11,7 +11,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Guild implements Iterable<Player>{
-	private static final int DEF_SIZE =0;
 private Player[] players;
 private String name;
 private Map<String,Integer> searchByNames;
@@ -90,6 +89,10 @@ public int getSize() {
 }
 
 
+public void report() {
+	System.out.println("players in the guild: "+ getName());
+	Arrays.stream(this.players).forEach(e ->System.out.println(e.getName()));
+}
 
 
 
@@ -97,7 +100,8 @@ public int getSize() {
 	@Override
 	public Iterator iterator() {
 	
-		
+		guildIterator gi = new guildIterator();
+		return gi;
 	}
 	
 	
@@ -107,6 +111,26 @@ public int getSize() {
 	
 	public String getName() {
 	return this.name;	
+	}
+	
+	private class guildIterator implements Iterator<Player>{
+		private int index=0;
+		@Override
+		public boolean hasNext() {
+			if(index<getCapacity()) {
+				return true;
+			}else {
+				return false;
+			}
+			
+		}
+
+		@Override
+		public Player next() {
+			
+			return players[index++];
+		}
+		
 	}
 	
 }

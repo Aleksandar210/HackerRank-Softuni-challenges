@@ -25,6 +25,21 @@ public static void main(String[] args) {
 	//guildTask();
 }
 
+static void datingApp() {
+	List<Integer> males = Arrays.stream(scan.nextLine().split("\\s+"))
+	.map(e ->Integer.parseInt(e))
+	.collect(Collectors.toList());
+	List<Integer> females = Arrays.stream(scan.nextLine().split("\\s+"))
+			.map(e ->Integer.parseInt(e))
+			.collect(Collectors.toList());
+	while(males.size()>0 || females.size()>0) {
+		
+	}
+	
+	
+}
+
+
 static void guildTask() {
 	Guild win = new Guild("WIN",5);
 	//win.addPlayer(currentPlayer);

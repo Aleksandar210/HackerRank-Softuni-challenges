@@ -33,6 +33,7 @@ static void worm() {
 	String initialString = scan.nextLine();
 	StringBuilder sb = new StringBuilder();
 	sb.append(initialString);
+	int initLength =  sb.length();
 	
 	int number = Integer.parseInt(scan.nextLine());
 	String[][] book = new String[number][number]; 
@@ -50,15 +51,127 @@ static void worm() {
 	}
 	
 	String enterCommand;
+	int numberCommand =0;
 	do {
 		enterCommand = scan.nextLine();
 		if("end".equalsIgnoreCase(enterCommand)) {
 			break;
 		}else {
-			
+			executeCommandWorm(enterCommand,book,sb,numberCommand,initLength);
+			numberCommand++;
 		}
 	}while(!"end".equalsIgnoreCase(enterCommand));
 	
+	
+	
+	
+}
+static void executeCommandWorm(String command, String[][]book,StringBuilder sb, int numberCommand,int initLength) {
+	String lastWord;
+	if(numberCommand==0) {
+		lastWord = sb.toString();
+	}
+
+	switch(command.toLowerCase()) {
+	
+	case "up":
+		if(rowWormPos-1<0) {
+			if(sb.length()>0 && numberCommand==0) {
+				sb.delete(0,sb.length());
+				lastWord="";
+				
+			}else if(sb.length()>0 && sb.length()!=initLength) {
+				sb.deleteCharAt(sb.length()-1);
+			}
+		}else {
+			book[rowWormPos][colWormPos] ="-";
+			rowWormPos-=1;
+			colWormPos-=1;
+			if(book[rowWormPos][colWormPos].equals("-")) {
+				
+			}else {
+				sb.append(book[rowWormPos][colWormPos]);
+				
+			}
+			book[rowWormPos][colWormPos] ="P";
+		}
+	break;
+	
+	case"down":
+		if(rowWormPos+1>book.length-1) {
+			if(sb.length()>0 && numberCommand==0) {
+				sb.delete(0,sb.length());
+				lastWord="";
+				
+			}else if(sb.length()>0 && sb.length()!=initLength) {
+				sb.deleteCharAt(sb.length()-1);
+			}
+		}else {
+			book[rowWormPos][colWormPos] ="-";
+			rowWormPos+=1;
+			colWormPos+=1;
+			if(book[rowWormPos][colWormPos].equals("-")) {
+				
+			}else {
+				sb.append(book[rowWormPos][colWormPos]);
+				
+			}
+			book[rowWormPos][colWormPos] ="P";
+		}
+		
+		break;
+		
+	case "left":
+		
+		if(colWormPos-1<0) {
+			if(sb.length()>0 && numberCommand==0) {
+				sb.delete(0,sb.length());
+				lastWord="";
+				
+			}else if(sb.length()>0 && sb.length()!=initLength) {
+				sb.deleteCharAt(sb.length()-1);
+			}
+		}else {
+			book[rowWormPos][colWormPos] ="-";
+			
+			colWormPos-=1;
+			if(book[rowWormPos][colWormPos].equals("-")) {
+				
+			}else {
+				sb.append(book[rowWormPos][colWormPos]);
+				
+			}
+			book[rowWormPos][colWormPos] ="P";
+		}
+		
+		
+		break;
+		
+	case"right":
+		
+		if(colWormPos+1>book[rowWormPos].length-1) {
+			if(sb.length()>0 && numberCommand==0) {
+				sb.delete(0,sb.length());
+				lastWord="";
+				
+			}else if(sb.length()>0 && sb.length()!=initLength) {
+				sb.deleteCharAt(sb.length()-1);
+			}
+		}else {
+			book[rowWormPos][colWormPos] ="-";
+			
+			colWormPos+=1;
+			if(book[rowWormPos][colWormPos].equals("-")) {
+				
+			}else {
+				sb.append(book[rowWormPos][colWormPos]);
+				
+			}
+			book[rowWormPos][colWormPos] ="P";
+		}
+		
+		break;
+	}
 }
 
 

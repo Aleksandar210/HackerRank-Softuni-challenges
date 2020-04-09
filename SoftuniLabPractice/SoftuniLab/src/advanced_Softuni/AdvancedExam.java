@@ -63,7 +63,13 @@ static void worm() {
 	}while(!"end".equalsIgnoreCase(enterCommand));
 	
 	
-	
+	System.out.println(sb.toString());
+	for(int i =0;i<book.length;i++) {
+		for(int j =0;j<book[i].length;j++) {
+			System.out.print(book[i][j]);
+		}
+		System.out.println();
+	}
 	
 }
 static void executeCommandWorm(String command, String[][]book,StringBuilder sb, int numberCommand,int initLength) {

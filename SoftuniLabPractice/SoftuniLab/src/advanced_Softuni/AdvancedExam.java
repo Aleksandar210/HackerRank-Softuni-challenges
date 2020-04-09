@@ -23,6 +23,7 @@ public static void main(String[] args) {
 	//lootBoxes();
 	//matrixGame();
 	//guildTask();
+	//datingApp();
 }
 
 static void datingApp() {
@@ -32,11 +33,43 @@ static void datingApp() {
 	List<Integer> females = Arrays.stream(scan.nextLine().split("\\s+"))
 			.map(e ->Integer.parseInt(e))
 			.collect(Collectors.toList());
+	int matches =0;
 	while(males.size()>0 || females.size()>0) {
+		if(25%males.get(0)==0) {
+			males.remove(0);
+			males.remove(0);
+			if(25%females.get(females.size()-1)==0) {
+				females.remove(females.size()-1);
+				females.remove(females.size()-1);
+			}
+		}
 		
+		if(males.get(0)==females.get(females.size()-1)) {
+			males.remove(0);
+			females.remove(females.size()-1);
+			matches++;
+		}else {
+			if(males.get(0)-2<0) {
+				males.remove(0);
+			}
+			females.remove(females.size()-1);
+		}
 	}
 	
+	System.out.println("Matches: "+  matches);
+	if(males.size()>0) {
+	System.out.print("Males left: ");
+	males.forEach(e ->System.out.print(e+" "));
+	}else {
+		System.out.println("Males: none");
+	}
 	
+	if(females.size()>0) {
+		System.out.print("Females left: ");
+		females.forEach(e ->System.out.println(e+ " "));
+	}else {
+		System.out.println("Females: none");
+	}
 }
 
 

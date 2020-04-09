@@ -18,13 +18,49 @@ public class AdvancedExam {
 	static Scanner scan = new Scanner(System.in);
 	static int rowPosPlayer;		//used for matrixGame
 	static int colPosPlayer;		//used  for matrixGame
+	static int rowWormPos;
+	static int colWormPos;
 	
 public static void main(String[] args) {
 	//lootBoxes();
 	//matrixGame();
 	//guildTask();
 	//datingApp();
+	worm();
 }
+
+static void worm() {
+	String initialString = scan.nextLine();
+	StringBuilder sb = new StringBuilder();
+	sb.append(initialString);
+	
+	int number = Integer.parseInt(scan.nextLine());
+	String[][] book = new String[number][number]; 
+	int row =0;
+	String enterRowData;
+	while(number-- >0) {
+		enterRowData = scan.nextLine();
+		book[row] = enterRowData.split("");
+		if(enterRowData.contains("P")) {
+			rowWormPos = row;
+			colWormPos = enterRowData.indexOf("P");
+			book[row] = enterRowData.split("");
+		}
+		
+	}
+	
+	String enterCommand;
+	do {
+		enterCommand = scan.nextLine();
+		if("end".equalsIgnoreCase(enterCommand)) {
+			break;
+		}else {
+			
+		}
+	}while(!"end".equalsIgnoreCase(enterCommand));
+	
+}
+
 
 static void datingApp() {
 	List<Integer> males = Arrays.stream(scan.nextLine().split("\\s+"))

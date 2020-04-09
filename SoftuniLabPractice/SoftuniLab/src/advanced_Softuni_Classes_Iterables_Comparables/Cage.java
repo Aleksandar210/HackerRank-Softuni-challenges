@@ -103,7 +103,29 @@ public void setRabbits(List<Rabbit> rabbits) {
 
 @Override
 public Iterator<Rabbit> iterator() {
-	// TODO Auto-generated method stub
-	return null;
+	cageIterator ci = new cageIterator();
+	return ci;
 }
+
+
+private class cageIterator implements Iterator<Rabbit>{
+int  index =0;
+	@Override
+	public boolean hasNext() {
+		if(index<getCapacity()) {
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+
+	@Override
+	public Rabbit next() {
+		return getRabbits().get(index++);
+		
+	}
+	
+}
+
 }

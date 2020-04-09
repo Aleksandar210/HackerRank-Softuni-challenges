@@ -48,10 +48,17 @@ public void addRabbit(Rabbit rabbit) {
 		getRabbits().add(rabbit);
 		
 	}
+	getRabbits().sort((a,b)->a.getSpecies().compareTo(b.getSpecies()));
 }
 
 public int count() {
 	return getRabbits().size();
+}
+
+public void report() {
+	
+	System.out.println("Cage contains: ");
+	getRabbits().forEach(e->System.out.println(e));
 }
 
 

@@ -26,8 +26,16 @@ public static void main(String[] args) {
 	//matrixGame();
 	//guildTask();
 	//datingApp();
-	worm();
+	//worm();
+	//rabit();
 }
+
+
+static void rabit() {
+	
+}
+
+
 
 static void worm() {
 	String initialString = scan.nextLine();

@@ -111,7 +111,11 @@ public class Player {
 	}
 	
 	public void setPlayerCurrency(double sum) {
-		this.currencyPlayerHas = sum;
+		if(this.bankAccount==null) {
+			System.out.println("Need to link BankAccount");
+		}else {
+			this.bankAccount.withdraw(sum);
+		}
 	}
 	
 	public double getPlayerCurrency() {

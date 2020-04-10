@@ -16,6 +16,7 @@ private String name;
 private Map<String,Integer> searchByNames;
 private Set<String> clazzezInGuild = new HashSet<String>();
 private int size;
+private int guildRP;
 
 
 public Guild(String name, int capacity) {
@@ -24,13 +25,20 @@ public Guild(String name, int capacity) {
 	searchByNames = new HashMap<String,Integer>();
 }
 
+
+public int guildTotalRp() {
+	return this.guildRP;
+}
+
 public void addPlayer(Player currentPlayer) {
 	currentPlayer.setRank("Trial");
-	this.clazzezInGuild.add(currentPlayer.getClazz());
+	
 	if(getSize()==getCapacity()) {
 		System.out.println("No more room");
 	}else {
+		this.clazzezInGuild.add(currentPlayer.getClazz());
 	this.players[getSize()] = currentPlayer;
+	this.guildRP+=currentPlayer.getRP();
 	setSize(getSize()+1);
 	}
 }

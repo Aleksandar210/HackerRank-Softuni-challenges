@@ -9,17 +9,46 @@ import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		LocalDate date = LocalDate.now();
-		System.out.println(date);
+		
 	}
 	
-	static void BankAccount() {
+	static void BankAccountTaskExtended() {
 		Map<Integer,BankAccount> accounts = new HashMap<Integer,BankAccount>();
-		int numberCommands = Integer.parseInt(scan.nextLine());
-		enterCommandsBankAccount(numberCommands,accounts);
+		Map<String,Player> playersWithoutGuild = new HashMap<String,Player>();
+		Map<String,Guild> guildAvailable = new HashMap<String,Guild>();
+		
+		
+		
 		
 		
 	}
+	
+	static void choseAction() {
+		int select;
+		do {
+		System.out.println("1| Execute BankAccounts commands");
+		System.out.println("2| Execute PlayerCreation commands");
+		System.out.println("3| Execute GuildCreationCommands");
+		System.out.println("4| Back");
+		System.out.print("Select: ");
+		select = Integer.parseInt(scan.nextLine());
+		}while(select<1 || select>4);
+		switch(select) {
+		case 1:
+			int numberCommands = Integer.parseInt(scan.nextLine());
+			enterCommandsBankAccount(numberCommands,accounts);
+			break;
+		case 2:
+			int numberPlayers = Integer.parseInt(scan.nextLine());
+			enterPlayerCommands(numberPlayers);
+			break;
+		case 3:
+			
+			break;
+		}
+
+	}
+	
 	static void enterCommandsBankAccount(int numberCommands,Map<Integer,BankAccount> accounts) {
 		String enterCommand;
 		while(numberCommands-- >0) {
@@ -27,6 +56,10 @@ public class OOP_Basics {
 			String[] commands = enterCommand.split("\\s+");
 			executeCommand(commands,accounts);
 		}
+	}
+	
+	static void enterPlayerCommands(int numberPlayers) {
+		
 	}
 	
 	static void executeCommand(String[]commands,Map<Integer,BankAccount> accounts) {

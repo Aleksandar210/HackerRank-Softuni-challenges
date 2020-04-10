@@ -9,8 +9,12 @@ import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		
+		BankAccountTaskExtended();
 	}
+	
+	
+	//BankAccount task Player task and Guild task connected in one (to finish action method)
+	//-------------------------------------------------------------------------------
 	
 	static void BankAccountTaskExtended() {
 		Map<Integer,BankAccount> accounts = new HashMap<Integer,BankAccount>();
@@ -93,6 +97,8 @@ public class OOP_Basics {
 		
 	
 	}
+	
+	//-------------------------------------------------------------------------------
 	
 
 }

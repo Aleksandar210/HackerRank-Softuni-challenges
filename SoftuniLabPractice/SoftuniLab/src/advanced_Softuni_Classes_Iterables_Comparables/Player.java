@@ -16,6 +16,7 @@ public class Player {
 	private String description;
 	private int rp;
 	private double currencyPlayerHas;
+	private BankAccount bankAccount;
 	
 	public Player(String name,String clazz) {
 		setName(name);

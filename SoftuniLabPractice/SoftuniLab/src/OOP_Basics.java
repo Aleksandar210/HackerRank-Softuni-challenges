@@ -35,7 +35,11 @@ public class OOP_Basics {
 			
 			break;
 		case "withdraw":
-			
+			if(!accounts.containsKey(Integer.parseInt(commands[1]))) {
+				System.out.println("Account not fouhnd");
+			}else {
+			accounts.get(Integer.parseInt(commands[1])).withdraw(Double.parseDouble(commands[2]));
+			}
 			break;
 		}
 	}

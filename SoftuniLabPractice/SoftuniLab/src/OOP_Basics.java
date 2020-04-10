@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
+import advanced_Softuni_Classes_Iterables_Comparables.Player;
+import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -12,14 +14,25 @@ public class OOP_Basics {
 	}
 	
 	static void BankAccount() {
-		Map<Integer,BankAccount> accaounts = new HashMap<Integer,BankAccount>();
-		String enterCommand = scan.nextLine();
-		while(!"end".equalsIgnoreCase(enterCommand)) {
+		Map<Integer,BankAccount> accounts = new HashMap<Integer,BankAccount>();
+		int numberCommands = Integer.parseInt(scan.nextLine());
+		enterCommandsBankAccount(numberCommands,accounts);
+		
+		
+	}
+	static void enterCommandsBankAccount(int numberCommands,Map<Integer,BankAccount> accounts) {
+		String enterCommand;
+		while(numberCommands-- >0) {
+			enterCommand = scan.nextLine();
 			String[] commands = enterCommand.split("\\s+");
-			
+			executeCommand(commands,accounts);
 		}
 	}
+	
 	static void executeCommand(String[]commands,Map<Integer,BankAccount> accounts) {
+		
+		
+		
 		switch(commands[0].toLowerCase()) {
 		case "create":
 			BankAccount acc = new BankAccount(commands[1]);
@@ -42,6 +55,10 @@ public class OOP_Basics {
 			}
 			break;
 		}
+		
+		
+		
+	
 	}
 	
 

@@ -61,6 +61,7 @@ public class Player {
 	public void buyRP() {
 		int select;
 		Scanner scan = new Scanner(System.in);
+		boolean confirmed = false;
 		do {
 		System.out.println("1| 5$ -> 1000RP");
 		System.out.println("2| 10$ -> 2000RP");
@@ -70,15 +71,32 @@ public class Player {
 		select = Integer.parseInt(scan.nextLine());
 		}while(select<0|| select>3);
 		
-		switch(select) {
+		confirmPurchase(select,scan);
+		scan.close();
+	}
+	
+	private  void confirmPurchase(int caseNumber,Scanner scan) {
+		boolean confirmed = false;
+		int rpAmmount=0;
+		switch(caseNumber) {
 		case 1:
-			boolean confirmed = false;
-			do {
+			rpAmmount =1000;
+			break;
+		case 2:
+			rpAmmount =2000;
+			break;
+		case 3:
+			rpAmmount = 2500;
+			break;
+		
+		}
+		
+		do {
 			System.out.println("Are you sure you want to proceed ?");
 			System.out.println("y/n");
 			char answer = scan.nextLine().charAt(0);
 			if(answer=='y') {
-				setRP(1000);
+				setRP(rpAmmount);
 				confirmed=true;
 			}else if(answer=='n') {
 				confirmed=true;
@@ -86,43 +104,10 @@ public class Player {
 				
 			}
 			}while(!confirmed);
-			break;
-			
-		case 2:
-			boolean confirmed2 = false;
-			do {
-			System.out.println("Are you sure you want to proceed ?");
-			System.out.println("y/n");
-			char answer = scan.nextLine().charAt(0);
-			if(answer=='y') {
-				setRP(2000);
-				confirmed=true;
-			}else if(answer=='n') {
-				confirmed=true;
-			}else {
-				
-			}
-			}while(!confirmed2);
-			break;
-			
-		case 3:
-			boolean confirmed3= false;
-			do {
-			System.out.println("Are you sure you want to proceed ?");
-			System.out.println("y/n");
-			char answer = scan.nextLine().charAt(0);
-			if(answer=='y') {
-				setRP(2500);
-				confirmed=true;
-			}else if(answer=='n') {
-				confirmed=true;
-			}else {
-				
-			}
-			}while(!confirmed3);
-			break;
-		}
-		scan.close();
+	}
+	
+	public void linkBankAccount(BankAccount currentAccount) {
+		this.bankAccount = currentAccount;
 	}
 	
 	public void setPlayerCurrency(double sum) {

@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class BankAccount {
 	private static int USER_ID = 0;
+	private static final double DEF_INTEREST_VALUE=0.0;
+	private static double interestRate;
 	private int id;
 private double balance;
 private String name;
@@ -19,6 +21,9 @@ public BankAccount(String name) {
 	setBalance(0);
 	setName(name);
 	historyDeposits = new LinkedHashMap<LocalDate,Map<LocalDateTime,Double>>();
+	setInterestRate(DEF_INTEREST_VALUE);
+	
+	
 }
 
 public void deposit(double sum) {
@@ -56,6 +61,15 @@ public void history() {
 	}
 }
 
+
+public void setInterestRate(double addedRate) {
+	interestRate = addedRate;
+}
+
+public double getInterestRate(int years) {
+	
+	return getBalance()*years * interestRate;
+}
 
 public int getId() {
 	return id;

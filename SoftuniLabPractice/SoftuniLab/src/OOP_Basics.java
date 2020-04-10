@@ -23,7 +23,7 @@ public class OOP_Basics {
 		
 	}
 	
-	static void choseAction() {
+	static void choseAction(Map<Integer,BankAccount> accounts,Map<String,Player>playersWithoutGuild,Map<String,Guild>guildsAvailable) {
 		int select;
 		do {
 		System.out.println("1| Execute BankAccounts commands");

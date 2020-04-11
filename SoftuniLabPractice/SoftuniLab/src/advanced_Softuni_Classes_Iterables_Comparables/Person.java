@@ -9,6 +9,8 @@ public class Person implements Comparable<Person> {
 	
 	private int age;
 	private String town;
+	private String firstName;
+	private String lastName;
 	private String mail;
 	private double salary;
 	private BankAccount bankAccount;
@@ -18,11 +20,17 @@ public class Person implements Comparable<Person> {
 		setName(name);
 		setAge(age);
 		setTown(town);
+		setSalary(DEFAULT_SALARY);
+		setFirstName();
+		setLastName();
 	}
 	
 	public Person(String name,int age) {
 		setName(name);
 		setAge(age);
+		setSalary(DEFAULT_SALARY);
+		setFirstName();
+		setLastName();
 	}
 	
 	
@@ -45,6 +53,23 @@ public class Person implements Comparable<Person> {
 		this.bankAccount = currentAcc;
 	}
 
+	
+	private void setFirstName() {
+		if(this.getName().contains("\\s+")) {
+		this.firstName = this.getName().split("\\s+")[0];
+		}else {
+			
+		}
+		
+	}
+	
+	public void setLastName() {
+		if(this.getName().contains("\\+s")) {
+			this.lastName = this.getName().split("\\s+")[1];
+		}else {
+			
+		}
+	}
 	
 	public void setMail(String mail) {
 		String regex = "[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@\r\n" + 

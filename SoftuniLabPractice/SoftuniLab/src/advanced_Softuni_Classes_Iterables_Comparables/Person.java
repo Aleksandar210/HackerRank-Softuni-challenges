@@ -1,10 +1,12 @@
 package advanced_Softuni_Classes_Iterables_Comparables;
 
+import java.util.Map;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Person implements Comparable<Person> {
-	private static final double DEFAULT_SALARY = 600;
+	private static final double DEFAULT_SALARY = 0;
 	private String name;
 	
 	private int age;
@@ -31,6 +33,45 @@ public class Person implements Comparable<Person> {
 		setSalary(DEFAULT_SALARY);
 		setFirstName();
 		setLastName();
+	}
+	
+	public void connectToBankAccount(Map<Integer,BankAccount> accounts) {
+		if(this.bankAccount == null) {
+			boolean confirmed =false;
+			int select;
+			Scanner scan = new Scanner(System.in);
+			do {
+				
+			System.out.println("Need to connect a Bank Account");
+			System.out.println("1| Connect: ");
+			System.out.println("2| Cancel");
+			System.out.println("Select: ");
+			select = Integer.parseInt(scan.nextLine());
+			}while(!confirmed);
+			switch(select) {
+			case 1:
+				System.out.println("Seelct Account Id: ");
+				for(Map.Entry<Integer, BankAccount> entry:accounts.entrySet()) {
+					System.out.println(entry.getKey()+" "+entry.getValue().getName());
+				}
+				boolean temp = false;
+				while(!temp) {
+				int pickAccount = Integer.parseInt(scan.nextLine());
+				if(accounts.get(pickAccount).getName().compareTo(this.getName())==0) {
+					temp=true;
+				}
+				}
+				break;
+				
+			case 2:
+				return;
+				
+			}
+		}else {
+			
+			
+		}
+		
 	}
 	
 	

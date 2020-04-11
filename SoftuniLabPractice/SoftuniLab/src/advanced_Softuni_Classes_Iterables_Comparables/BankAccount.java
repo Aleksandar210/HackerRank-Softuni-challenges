@@ -66,7 +66,7 @@ public void setInterestRate(double addedRate) {
 	interestRate = addedRate;
 }
 
-public double getInterestRate(int years) {
+public double getInterestRateYear(int years) {
 	
 	return getBalance()*years * interestRate;
 }

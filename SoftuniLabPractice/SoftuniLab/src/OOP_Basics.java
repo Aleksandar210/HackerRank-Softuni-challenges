@@ -1,4 +1,4 @@
-import java.time.LocalDate;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,7 +9,8 @@ import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-		BankAccountTaskExtended();
+		//BankAccountTaskExtended();
+	
 	}
 	
 	
@@ -21,7 +22,7 @@ public class OOP_Basics {
 		Map<String,Player> playersWithoutGuild = new HashMap<String,Player>();
 		Map<String,Guild> guildAvailable = new HashMap<String,Guild>();
 		
-		
+		choseAction(accounts,playersWithoutGuild,guildAvailable);
 		
 		
 		
@@ -44,7 +45,7 @@ public class OOP_Basics {
 			break;
 		case 2:
 			int numberPlayers = Integer.parseInt(scan.nextLine());
-			enterPlayerCommands(numberPlayers);
+			enterPlayerCommands(numberPlayers,playersWithoutGuild);
 			break;
 		case 3:
 			
@@ -62,7 +63,7 @@ public class OOP_Basics {
 		}
 	}
 	
-	static void enterPlayerCommands(int numberPlayers) {
+	static void enterPlayerCommands(int numberPlayers,Map<String,Player> players) {
 		
 	}
 	
@@ -92,10 +93,6 @@ public class OOP_Basics {
 			}
 			break;
 		}
-		
-		
-		
-	
 	}
 	
 	//-------------------------------------------------------------------------------

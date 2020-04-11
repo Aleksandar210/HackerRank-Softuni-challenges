@@ -48,6 +48,22 @@ public class Person implements Comparable<Person> {
 		
 	}
 	
+	public String getFirstName() {
+		if(this.firstName.isEmpty()) {
+			throw new NullPointerException("No first name found");
+		}else {
+			return this.firstName;
+		}
+	}
+	
+	public String getLastName() {
+		if(this.lastName.isEmpty()) {
+			throw new NullPointerException("No last name found");
+		}else {
+			return this.lastName;
+		}
+	}
+	
 	
 	public void setBankAccount(BankAccount currentAcc) {
 		this.bankAccount = currentAcc;

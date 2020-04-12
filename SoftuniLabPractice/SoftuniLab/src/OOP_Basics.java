@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
+import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
@@ -20,6 +21,22 @@ public class OOP_Basics {
 	
 //------------------------------------------------------------------------------
 	static void labTask() {
+		Map<String, Team> teams = new HashMap<String, Team>();
+		String enterPlayer;
+		String enterTeamName;
+		System.out.print("Number teams: ");
+		int numberTeams = Integer.parseInt(scan.nextLine());
+		while(numberTeams-- >0) {
+			Team currentTeam = new Team(scan.nextLine());
+			teams.put(currentTeam.getName(), currentTeam);
+			
+		}
+		
+		int numberPlayers = Integer.parseInt(scan.nextLine());
+		while(numberPlayers-- >0) {
+			enterPlayer = scan.nextLine();
+		}
+		
 		
 	}
 	//------------------------------------------------------------------------

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 public class Person implements Comparable<Person> {
 	private static final double DEFAULT_SALARY = 0;
+	private static final String DEFAULT_NAME = "N/A";
 	private String name;
 	
 	private int age;
@@ -21,6 +22,14 @@ public class Person implements Comparable<Person> {
 	private BankAccount bankAccount;
 	
 	
+	
+	
+	
+	
+	public Person() {
+		setName(DEFAULT_NAME);
+		setSalary(DEFAULT_SALARY);
+	}
 	
 	public Person(String name,int age, String town) {
 		this(name.split("\\s+")[0],name.split("\\s+")[1],age,town);

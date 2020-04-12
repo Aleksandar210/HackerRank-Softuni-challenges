@@ -55,6 +55,20 @@ public void addplayer(Person currentPlayer) {
 	}
 }
 
+public String getName() {
+	String returnThis = String.format("first squad has %d players %n reserve has %d players",
+			this.first.size(),this.reserve.size());
+	return returnThis;
+	
+}
+
+@Override
+public String toString() {
+	return "Team []";
+}
+
+
+
 @SuppressWarnings("unlikely-arg-type")
 public Person removeFirst(String name) {
 	Person removed = this.first.get(younger.remove(name));

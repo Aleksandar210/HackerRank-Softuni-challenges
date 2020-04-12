@@ -50,6 +50,13 @@ public class Person implements Comparable<Person> {
 		setLastName();
 	}
 	
+	
+	
+	
+	
+	
+	
+	
 	public void connectToBankAccount(Map<Integer,BankAccount> accounts) {
 		if(this.bankAccount == null) {
 			boolean confirmed =false;
@@ -168,6 +175,17 @@ public class Person implements Comparable<Person> {
 		
 	}
 	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getFirstName() {
 		if(this.firstName.isEmpty()) {
 			throw new NullPointerException("No first name found");
@@ -208,6 +226,9 @@ public class Person implements Comparable<Person> {
 	}
 
 	
+	
+	
+	
 	private void setFirstName() {
 		if(this.getName().contains("\\s+")) {
 		this.firstName = this.getName().split("\\s+")[0];
@@ -225,6 +246,17 @@ public class Person implements Comparable<Person> {
 		}
 	}
 	
+	
+	
+	
+	public String getMail() {
+		return this.mail;
+	}
+	public void setEmail(String mail) {
+		this.mail = mail;
+	}
+	
+	
 	public void setMail(String mail) {
 		String regex = "[_A-Za-z0-9-]+(\\\\.[_A-Za-z0-9-]+)*@\r\n" + 
 				"[A-Za-z0-9]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$";
@@ -236,11 +268,6 @@ public class Person implements Comparable<Person> {
 			throw new IllegalArgumentException("E-Mial is incorect format");
 		}
 	}
-	
-	public String getMail() {
-		return this.mail;
-	}
-	
 	
 	
 	public double getSalary() {
@@ -277,6 +304,10 @@ public class Person implements Comparable<Person> {
 		this.town = town;
 	}
 
+	
+	
+	//CompareTo
+	//---------------------------------------------------------------------------
 
 	@Override
 	public int compareTo(Person o) {
@@ -322,6 +353,8 @@ public class Person implements Comparable<Person> {
 		return 0;
 		
 		}
+	
+	//---------------------------------------------------------------------------------
 	}
 	
 	

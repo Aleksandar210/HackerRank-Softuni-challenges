@@ -1,5 +1,8 @@
 package advanced_Softuni_Classes_Iterables_Comparables;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -18,13 +21,25 @@ public class Person implements Comparable<Person> {
 	private BankAccount bankAccount;
 	
 	
+	
 	public Person(String name,int age, String town) {
-		setName(name);
-		setAge(age);
+		this(name.split("\\s+")[0],name.split("\\s+")[1],age,town);
+		
+	}
+	
+	public Person(String firstName, String lastName, int age, String town) {
+		this(firstName,lastName,age);
 		setTown(town);
 		setSalary(DEFAULT_SALARY);
-		setFirstName();
-		setLastName();
+	}
+	
+	public Person(String firstName,String lastName, int age) {
+		setName(firstName+" "+lastName);
+		setFirstName(firstName);
+		setLastName(lastName);
+		setAge(age);
+		setSalary(DEFAULT_SALARY);
+		
 	}
 	
 	public Person(String name,int age) {
@@ -64,25 +79,60 @@ public class Person implements Comparable<Person> {
 				break;
 				
 			case 2:
+				scan.close();
 				return;
 				
 			}
 		}else {
-			
+			boolean exit = false;
+			while(!exit) {
+				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				System.out.println("1|Withdraw funds");
+				System.out.println("2|Deposit money");
+				System.out.println("3|History");
+				System.out.print("Select: ");
+				int select=0;
+				try {
+					select = Integer.parseInt(br.readLine());
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				switch(select) {
+				case 1:
+					try {
+						double currentWithdrew =
+								this.bankAccount.withdraw(Double.parseDouble(br.readLine()));
+						setSalary(this.salary+=currentWithdrew);
+					} catch (NumberFormatException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				case 2:
+					
+					
+					break;
+				}
+			}
 			
 		}
 		
 	}
 	
 	
-	public void increaseSalary(double increaseBy) {
-		if(increaseBy<0) {
+	
+	public void increaseSalary(double bonus) {
+		if(bonus<0) {
 			return;
 		}else {
 			if(this.getAge()<30) {
-				this.setSalary(this.getSalary()+(increaseBy/=2));
+				this.salary+=this.salary*bonus/100;
 			}else {
-			this.setSalary(this.getSalary()+increaseBy);
+				this.salary+=this.salary*bonus/200;
 			}
 		}
 		
@@ -102,6 +152,24 @@ public class Person implements Comparable<Person> {
 			throw new NullPointerException("No last name found");
 		}else {
 			return this.lastName;
+		}
+	}
+	
+	public void setFirstName(String firstName) {
+		if(firstName.length()<3) {
+			throw new IllegalArgumentException("Invalid firstName");
+		}else {
+			
+		
+		this.firstName = firstName;
+		}
+	}
+	
+	public void setLastName(String lastName) {
+		if(lastName.length()<3) {
+			throw new IllegalArgumentException("Invalid lastName");
+		}else {
+		this.lastName = lastName;
 		}
 	}
 	

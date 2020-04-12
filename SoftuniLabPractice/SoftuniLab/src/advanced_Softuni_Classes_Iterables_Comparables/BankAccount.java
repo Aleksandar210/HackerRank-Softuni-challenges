@@ -42,10 +42,10 @@ public void deposit(double sum) {
 	}
 }
 
-public void withdraw(double sum) {
+public double withdraw(double sum) {
 	if(sum<=getBalance()) {
 		setBalance(getBalance()-sum);
-		
+		return sum;
 		
 	}else {
 		throw new IllegalStateException("Unsufficent funds");

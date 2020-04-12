@@ -1,5 +1,8 @@
 package advanced_Softuni_Classes_Iterables_Comparables;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -77,6 +80,29 @@ public void kickPlayerByClass(String clazz) {
 		
 	}
 }
+
+public void setPlayerDescription(String name) {
+	System.out.println("Write Description: ");
+	BufferedReader  br = new BufferedReader(new InputStreamReader(System.in));
+	StringBuilder sb = new StringBuilder();
+	String description="";
+	do {
+		try {
+			description = br.readLine();
+			sb.append(description);
+			sb.append(System.getProperty("line.separator"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}while(!"end".equalsIgnoreCase(description));
+	
+	players[searchByNames.get(name)].setDescription(description);
+}
+
+
+
 
 public int count() {
 	return getCapacity();

@@ -4,9 +4,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
+import advanced_Softuni_Classes_Iterables_Comparables.Box;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
+import advanced_Softuni_Classes_Iterables_Comparables.Person;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -17,13 +19,64 @@ public class OOP_Basics {
 	
 	
 	
-	//Person task
+	
+	
+	// Box task
+	static void box() {
+		double enter;
+		int counter =3;
+		int originalCounter = 3;
+		Box currentBox = null;
+		double[] attributesBox = new double[3];
+		while(counter-- >0) {
+			enter = Double.parseDouble(scan.nextLine());
+			attributesBox[originalCounter-counter] = enter;
+		}
+		currentBox = new Box(attributesBox[0],attributesBox[1],attributesBox[2]);
+		
+		System.out.println(currentBox);
+	}
 	
 //------------------------------------------------------------------------------
 	static void labTask() {
 		Map<String, Team> teams = new HashMap<String, Team>();
+		Map<String ,Person> people = new HashMap<String,Person>();
 		String enterPlayer;
 		String enterTeamName;
+		
+		System.out.print("Enter number of people: ");
+		int numberPlayers = Integer.parseInt(scan.nextLine());
+		while(numberPlayers-- >0) {
+			Person currentPlayer = null;
+			enterPlayer = scan.nextLine();
+			
+			String[] playerData  = enterPlayer.split("\\s+");
+			
+			if(playerData.length==4) {
+				
+				try {
+				double currentSalary = Double.parseDouble(playerData[3]);
+				currentPlayer = new Person(playerData[0],playerData[1],Integer.parseInt(playerData[2]),currentSalary);
+				
+				}catch(NumberFormatException ex) {
+					currentPlayer = new Person(playerData[0],playerData[1],Integer.parseInt(playerData[2]),playerData[3]); 
+				}
+				
+			}else if(playerData.length==3) {
+				currentPlayer = new Person(playerData[0],playerData[1],Integer.parseInt(playerData[2]));
+			}else if(playerData.length==2) {
+				currentPlayer = new Person(playerData[0],Integer.parseInt(playerData[1]));
+				
+			}else {
+				
+			}
+				
+			
+			
+		}
+		
+		
+		
 		System.out.print("Number teams: ");
 		int numberTeams = Integer.parseInt(scan.nextLine());
 		while(numberTeams-- >0) {
@@ -32,10 +85,8 @@ public class OOP_Basics {
 			
 		}
 		
-		int numberPlayers = Integer.parseInt(scan.nextLine());
-		while(numberPlayers-- >0) {
-			enterPlayer = scan.nextLine();
-		}
+		
+		
 		
 		
 	}

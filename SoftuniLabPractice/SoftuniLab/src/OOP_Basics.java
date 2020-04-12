@@ -14,6 +14,17 @@ public class OOP_Basics {
 	}
 	
 	
+	
+	
+	//Person task
+	
+//------------------------------------------------------------------------------
+	static void labTask() {
+		
+	}
+	//------------------------------------------------------------------------
+	
+	
 	//BankAccount task Player task and Guild task connected in one (to finish action method)
 	//-------------------------------------------------------------------------------
 	

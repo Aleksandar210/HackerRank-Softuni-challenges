@@ -38,13 +38,21 @@ public List<Person> getReserve(){
 	return Collections.unmodifiableList(this.reserve);
 }
 
-public void addFirst(Person current) {
+private void addFirst(Person current) {
 	this.first.add(current);
 }
 
-public void addReserve(Person current) {
+private void addReserve(Person current) {
 	this.reserve.add(current);
 	
+}
+
+public void addplayer(Person currentPlayer) {
+	if(currentPlayer.getAge()<40) {
+		addFirst(currentPlayer);
+	}else {
+		addReserve(currentPlayer);
+	}
 }
 
 @SuppressWarnings("unlikely-arg-type")

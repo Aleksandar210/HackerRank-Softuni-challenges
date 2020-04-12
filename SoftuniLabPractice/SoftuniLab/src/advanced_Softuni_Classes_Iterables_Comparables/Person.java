@@ -32,6 +32,10 @@ public class Person implements Comparable<Person> {
 		setTown(town);
 		setSalary(DEFAULT_SALARY);
 	}
+	public Person(String firstName, String secondName, int age, double salary) {
+		this(firstName,secondName,age);
+		this.salary=salary;
+	}
 	
 	public Person(String firstName,String lastName, int age) {
 		setName(firstName+" "+lastName);

@@ -90,6 +90,7 @@ public class Person implements Comparable<Person> {
 				System.out.println("1|Withdraw funds");
 				System.out.println("2|Deposit money");
 				System.out.println("3|History");
+				System.out.println("4|Exit");
 				System.out.print("Select: ");
 				int select=0;
 				try {
@@ -101,6 +102,22 @@ public class Person implements Comparable<Person> {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				
+				if(select<1 || select>4) {
+					do {
+						try {
+							select = Integer.parseInt(br.readLine());
+						} catch (NumberFormatException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						if(select>0 || select<5) {
+							break;
+						}
+					}while(false);
+				}
+				
 				switch(select) {
 				case 1:
 					try {
@@ -113,8 +130,20 @@ public class Person implements Comparable<Person> {
 					}
 					break;
 				case 2:
+					try {
+						this.bankAccount.deposit(Double.parseDouble(br.readLine()));
+					} catch (NumberFormatException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					
 					
+					
+					break;
+					
+				case 3:
+					System.out.println();
+					this.bankAccount.history();
 					break;
 				}
 			}
@@ -258,7 +287,7 @@ public class Person implements Comparable<Person> {
 			if(getName().compareTo(o.getName())==0) {
 			if(getAge()==o.getAge()) {
 				if(getTown().compareTo(o.getTown())==0) {
-					return 0;
+					return Double.compare(this.getSalary(), o.getSalary());
 				}else if(getTown().compareTo(o.getTown())<0) {
 					return -1;
 				}else {
@@ -280,7 +309,7 @@ public class Person implements Comparable<Person> {
 			if(this.getName().length()==o.getName().length()) {
 				if(this.getName().compareTo(o.getName())==0) {
 					if(this.getAge()==o.getAge()) {
-						return 0;
+						return Double.compare(this.getSalary(), this.getSalary());
 					}else {
 						return this.getAge()-o.getAge();
 					}

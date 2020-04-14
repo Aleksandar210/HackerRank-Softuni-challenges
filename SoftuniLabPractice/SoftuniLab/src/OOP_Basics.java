@@ -38,6 +38,29 @@ public class OOP_Basics {
 	static void executeCommandTeam(String[] commands,Map<String,FootballTeam> teams) {
 		switch(commands[0].toLowerCase()) {
 		case "team":
+			if(teams.containsKey(commands[1])) {
+				System.out.println("Team already exists");
+			}else {
+				FootballTeam currentTeam = new FootballTeam(commands[1]);
+				teams.put(commands[1], currentTeam);
+			}
+			break;
+		case "add":
+			if(teams.containsKey(commands[1])) {
+				teams.get(commands[1]).addPlayer(commands);
+			}else {
+				System.out.println("No such team found");
+			}
+			break;
+		case "remove":
+			if(teams.containsKey(commands[1])) {
+				teams.get(commands[1]).removePlayer(commands[2]);
+			}else {
+				System.out.println("No such team found");
+				
+			}
+			break;
+		case "rating":
 			
 			break;
 		}

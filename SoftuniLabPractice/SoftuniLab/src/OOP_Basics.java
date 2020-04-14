@@ -11,6 +11,7 @@ import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 import advanced_Softuni_Classes_Iterables_Comparables.Person;
+import advanced_Softuni_Classes_Iterables_Comparables.Pizza;
 public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
@@ -31,6 +32,13 @@ public class OOP_Basics {
 			}else {
 				sb.append(enterPizzaData[i]);
 			}
+		}
+		Pizza currentPizza = new Pizza(sb.toString());
+		String enterDoughData = scan.nextLine();
+		currentPizza.setDough(enterDoughData.split("\\s+"));
+		while(numberToppings-- >0) {
+			String enterToppingData = scan.nextLine();
+			currentPizza.addTopping(enterToppingData.split("\\s+"));
 		}
 		
 	}

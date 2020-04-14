@@ -53,7 +53,7 @@ public class Pizza {
 		String enter = scan.nextLine();
 		addTopping(enter.split("\\s+"));
 	}
-	private void setDough(String[] data) {
+	public void setDough(String[] data) {
 		Scanner scan = new Scanner(System.in);
 		Dough currentDough = null;
 		try {

@@ -21,7 +21,17 @@ public class OOP_Basics {
 	}
 	
 	static void pizzaTask() {
-		
+		String enterPizza = scan.nextLine();
+		String[] enterPizzaData = enterPizza.split("\\s+");
+		StringBuilder sb = new StringBuilder();
+		int numberToppings =0;
+		for(int i =0;i<enterPizzaData.length;i++) {
+			if(Character.isDigit(enterPizzaData[i].charAt(0))) {
+				numberToppings+=Integer.parseInt(enterPizzaData[i]);
+			}else {
+				sb.append(enterPizzaData[i]);
+			}
+		}
 	}
 	
 	

@@ -32,6 +32,10 @@ public class OOP_Basics {
 			
 		}
 	}
+	
+	static void executeCommand() {
+		
+	}
 	//----------------------------------------------------
 	
 	

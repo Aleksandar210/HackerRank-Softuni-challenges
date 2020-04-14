@@ -1,6 +1,7 @@
 package advanced_Softuni_Classes_Iterables_Comparables;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -10,7 +11,9 @@ public class FootballTeam {
 	private int teamRating;
 	
 	
-	public FootballTeam() {
+	public FootballTeam(String name) {
+		setName(name);
+		this.players = new LinkedHashMap<>();
 		
 	}
 	

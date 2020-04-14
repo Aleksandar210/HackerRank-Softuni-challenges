@@ -13,7 +13,7 @@ public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		//BankAccountTaskExtended();
-	
+		box();
 	}
 	
 	
@@ -25,16 +25,23 @@ public class OOP_Basics {
 	static void box() {
 		double enter;
 		int counter =3;
-		int originalCounter = 3;
+		int indexCounter =0;
 		Box currentBox = null;
 		double[] attributesBox = new double[3];
 		while(counter-- >0) {
 			enter = Double.parseDouble(scan.nextLine());
-			attributesBox[originalCounter-counter] = enter;
+			attributesBox[indexCounter] = enter;
+			indexCounter++;
 		}
+		try {
 		currentBox = new Box(attributesBox[0],attributesBox[1],attributesBox[2]);
+		}catch(IllegalArgumentException ex) {
+			System.out.println(ex.getMessage());
+		}finally {
+			System.out.println(currentBox);
+		}
 		
-		System.out.println(currentBox);
+		
 	}
 	
 //------------------------------------------------------------------------------

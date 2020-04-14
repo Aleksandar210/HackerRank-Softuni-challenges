@@ -41,6 +41,11 @@ public class OOP_Basics {
 			currentPizza.addTopping(enterToppingData.split("\\s+"));
 		}
 		
+		System.out.println("Pizza has "+currentPizza.getPizzaCalorie()+" calories");
+		
+		System.out.println("with ");
+		currentPizza.seePizzaToppings();
+		
 	}
 	
 	

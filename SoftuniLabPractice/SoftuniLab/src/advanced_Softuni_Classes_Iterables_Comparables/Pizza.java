@@ -86,7 +86,9 @@ public class Pizza {
 				
 	}
 	public void seePizzaToppings() {
-		
+		for(String toping: this.currentToppingsTypes) {
+			System.out.println(toping);
+		}
 	}
 	
 	public double getPizzaCalorie() {

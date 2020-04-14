@@ -13,13 +13,12 @@ public class Pizza {
 	private String name;
 	private Dough dough;
 	private Set<String> currentToppingsTypes;
-	private Map<String,List<Toping>> currentToppings;
 	private Map<String,Double> toppingsGrams;
 	private double pizzaCalorie;
 	
 	public Pizza(String name) {
 		setName(name);
-		this.currentToppings = new LinkedHashMap<String,List<Toping>>();
+		
 		this.toppingsGrams = new LinkedHashMap<String,Double>();
 		this.currentToppingsTypes = new HashSet<String>();
 		this.pizzaCalorie = DEFAULT_CALORIES;
@@ -36,11 +35,7 @@ public class Pizza {
 		}
 		
 		this.currentToppingsTypes.add(currentToping.getType());
-		if(currentToppings.get(currentToping.getType())==null) {
-			this.currentToppings.put(currentToping.getType(),new LinkedList<Toping>());
-		}else {
-			this.currentToppings.get(currentToping.getType()).add(currentToping);
-		}
+		
 		if(this.toppingsGrams.containsKey(currentToping.getType())) {
 			this.toppingsGrams.put(currentToping.getType(), this.toppingsGrams.get(currentToping.getType())+currentToping.getCaloriesToppings());
 			
@@ -80,7 +75,7 @@ public class Pizza {
 		setDough(enter.split("\\s+"));
 	}
 	
-	private void caluclateCaloriesOnPizza() {
+	public  void caluclateCaloriesOnPizza() {
 		this.pizzaCalorie
 		= this.toppingsGrams.entrySet().stream()
 				.map(e -> e.getValue())
@@ -89,6 +84,9 @@ public class Pizza {
 		this.pizzaCalorie+=this.dough.calculateDoughCalories();
 				
 				
+	}
+	public void seePizzaToppings() {
+		
 	}
 	
 	public double getPizzaCalorie() {

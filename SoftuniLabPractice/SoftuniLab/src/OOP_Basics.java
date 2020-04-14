@@ -61,7 +61,11 @@ public class OOP_Basics {
 			}
 			break;
 		case "rating":
-			
+			if(teams.containsKey(commands[1])) {
+				System.out.println(teams.get(commands[1]).getTeamRating());
+			}else {
+				System.out.println("No such team found");
+			}
 			break;
 		}
 	}

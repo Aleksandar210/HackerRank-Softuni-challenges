@@ -65,6 +65,9 @@ private double weight;
 		
 		return this.calories;
 	}
+	public String getType() {
+		return this.type;
+	}
 	
 	private void setCaloriesToppings(double temp) {
 		this.calories=temp;

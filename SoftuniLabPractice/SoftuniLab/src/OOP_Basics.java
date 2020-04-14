@@ -30,11 +30,17 @@ public class OOP_Basics {
 		String enterCommand = scan.nextLine();
 		while(!"end".equalsIgnoreCase(enterCommand)) {
 			
+			executeCommandTeam(enterCommand.split(";"),teams);
+			enterCommand = scan.nextLine();
 		}
 	}
 	
-	static void executeCommand() {
-		
+	static void executeCommandTeam(String[] commands,Map<String,FootballTeam> teams) {
+		switch(commands[0].toLowerCase()) {
+		case "team":
+			
+			break;
+		}
 	}
 	//----------------------------------------------------
 	

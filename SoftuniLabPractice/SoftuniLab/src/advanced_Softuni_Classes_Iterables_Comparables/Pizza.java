@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Pizza {
+	private static final double DEFAULT_CALORIES =0;
 	private String name;
 	private Dough dough;
 	private Set<String> currentToppingsTypes;
@@ -21,6 +22,7 @@ public class Pizza {
 		this.currentToppings = new LinkedHashMap<String,List<Toping>>();
 		this.toppingsGrams = new LinkedHashMap<String,Double>();
 		this.currentToppingsTypes = new HashSet<String>();
+		this.pizzaCalorie = DEFAULT_CALORIES;
 	}
 	
 	public void addTopping(String[] toppingData) {
@@ -79,7 +81,22 @@ public class Pizza {
 	}
 	
 	private void caluclateCaloriesOnPizza() {
-		this.toppingsGrams
+		this.pizzaCalorie
+		= this.toppingsGrams.entrySet().stream()
+				.map(e -> e.getValue())
+				.reduce((a,b)->a+b).get();
+				
+		this.pizzaCalorie+=this.dough.calculateDoughCalories();
+				
+				
+	}
+	
+	public double getPizzaCalorie() {
+		if(this.pizzaCalorie==0) {
+			return 0;
+		}else {
+		return this.pizzaCalorie;
+		}
 	}
 	
 	private void setName(String name) {

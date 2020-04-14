@@ -17,8 +17,11 @@ public class OOP_Basics {
 		//BankAccountTaskExtended();
 		//box();
 		//chickenFarm();
-		String name = " ";
-		System.out.println(name.length());
+		
+	}
+	
+	static void pizzaTask() {
+		
 	}
 	
 	
@@ -31,6 +34,8 @@ public class OOP_Basics {
 		do {
 			enterChickenData(scan.nextLine(),Integer.parseInt(scan.nextLine()));
 		}while(numberChickens-- >0);
+		
+		
 	}
 	
 	static Chicken enterChickenData(String name, int age) {

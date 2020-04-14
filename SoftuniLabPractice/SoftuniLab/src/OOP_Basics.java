@@ -7,6 +7,7 @@ import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
 import advanced_Softuni_Classes_Iterables_Comparables.Box;
 import advanced_Softuni_Classes_Iterables_Comparables.Chicken;
 import advanced_Softuni_Classes_Iterables_Comparables.ChickenFarm;
+import advanced_Softuni_Classes_Iterables_Comparables.FootballTeam;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
@@ -25,7 +26,11 @@ public class OOP_Basics {
 	}
 	//---------------------------------------------------
 	static void footballTeams() {
-		
+		Map<String, FootballTeam> teams = new HashMap<>();
+		String enterCommand = scan.nextLine();
+		while(!"end".equalsIgnoreCase(enterCommand)) {
+			
+		}
 	}
 	//----------------------------------------------------
 	

@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
 import advanced_Softuni_Classes_Iterables_Comparables.Box;
+import advanced_Softuni_Classes_Iterables_Comparables.Chicken;
+import advanced_Softuni_Classes_Iterables_Comparables.ChickenFarm;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
@@ -13,10 +15,76 @@ public class OOP_Basics {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 		//BankAccountTaskExtended();
-		box();
+		//box();
+		//chickenFarm();
+		String name = " ";
+		System.out.println(name.length());
 	}
 	
 	
+	
+	//----------------------
+	static void chickenFarm() {
+		ChickenFarm currentFarm = new ChickenFarm(10);
+		
+		int numberChickens = Integer.parseInt(scan.nextLine());
+		do {
+			enterChickenData(scan.nextLine(),Integer.parseInt(scan.nextLine()));
+		}while(numberChickens-- >0);
+	}
+	
+	static Chicken enterChickenData(String name, int age) {
+		Chicken current;
+		String currentMessage =" ";
+		String currentName = name;
+		int currentAge = age;
+		if(name.isEmpty() && age!=-1) {
+			do {
+			System.out.print("Enter valid name: ");
+			currentName = scan.nextLine();
+			}while(!name.isEmpty());
+			enterChickenData(currentName,currentAge);
+		}else if(!name.isEmpty() && age==-1) {
+			do {
+				System.out.print("Enter valid age: ");
+				currentAge = Integer.parseInt(scan.nextLine());
+				}while(currentAge>0 && currentAge <16);
+				enterChickenData(currentName,currentAge);
+		}else if(!name.isEmpty() && age!=-1) {
+			 Chicken currentChick = new Chicken(currentName,currentAge);
+			 return currentChick;
+		}else {
+			
+		
+		try {
+			System.out.print("Enter name: ");
+			currentName = scan.nextLine();
+			System.out.println("Enter age: ");
+			 currentAge= Integer.parseInt(scan.nextLine());
+			
+		 current = new Chicken(scan.nextLine(),Integer.parseInt(scan.nextLine()));
+		
+		}catch(IllegalArgumentException ex) {
+			currentMessage = ex.getMessage();
+		}finally {
+			if(currentMessage.contains("name")) {
+				if(currentAge<1 && currentAge>15) {
+					System.out.println("Invalid age");
+					System.out.println("Invalid name!");
+					enterChickenData(currentName,-1);
+				}else {
+					System.out.println("Invalid name!");
+					enterChickenData(currentName,currentAge);
+				}
+				
+			}else {
+				enterChickenData(currentName,-1);
+			}
+		}
+		}
+		return null;
+	}
+	//----------------------
 	
 	
 	
@@ -37,9 +105,8 @@ public class OOP_Basics {
 		currentBox = new Box(attributesBox[0],attributesBox[1],attributesBox[2]);
 		}catch(IllegalArgumentException ex) {
 			System.out.println(ex.getMessage());
-		}finally {
-			System.out.println(currentBox);
 		}
+		System.out.println(currentBox);
 		
 		
 	}

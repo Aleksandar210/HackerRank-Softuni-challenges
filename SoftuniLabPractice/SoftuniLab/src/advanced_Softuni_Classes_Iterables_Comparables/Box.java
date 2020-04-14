@@ -50,7 +50,7 @@ public class Box {
 
 	private void setLength(double length) {
 		if(length<=0) {
-			throw new IllegalArgumentException("Cannot be negatie or 0");
+			throw new IllegalArgumentException("Length cannot be negatie or 0");
 		}else {
 		this.length = length;
 		}
@@ -58,7 +58,7 @@ public class Box {
 	
 	private void setWidth(double width) {
 		if(width<=0) {
-			throw new IllegalArgumentException("Cannot be negative or zero");
+			throw new IllegalArgumentException("Width cannot be negative or zero");
 		}else {
 		this.width = width;
 		}
@@ -66,7 +66,7 @@ public class Box {
 	
 	private void setHeight(double height) {
 		if(height<=0) {
-			throw new IllegalArgumentException("Cannot be negative or 0");
+			throw new IllegalArgumentException("Height cannot be negative or 0");
 		}else {
 		this.height = height;
 		}

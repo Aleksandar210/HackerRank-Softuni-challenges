@@ -5,6 +5,14 @@ public class Child extends Person {
 	public Child(String name, int age) {
 		super(name,age);
 		setAge(age);
+		setName(name);
+		
+	}
+	
+	@Override
+	public String toString() {
+		String data = String.format("%s %d years old",super.getName(),super.getAge());
+		return data;
 		
 	}
 	

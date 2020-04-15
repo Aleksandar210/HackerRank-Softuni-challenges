@@ -30,6 +30,14 @@ public class OOP_Basics {
 		
 	}
 	
+	static void radioDataBase() {
+		
+	}
+	
+	static void Animals() {
+		
+	}
+	
 	static void books() {
 		try {
 		String author = scan.nextLine();

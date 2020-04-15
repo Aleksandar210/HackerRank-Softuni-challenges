@@ -7,8 +7,21 @@ public class Book implements Comparable<Book>{
 	private String title;
 	private int year;
 	private int pages;
+	private double price;
 	
 	
+	protected double getPrice() {
+		return price;
+	}
+
+	protected void setPrice(double price) {
+		if(price<=0) {
+			throw new IllegalArgumentException("Price is inavalid");
+		}else {
+		this.price = price;
+		}
+	}
+
 	public Book(String title, int year, int pages, String...authors) {
 		setTitle(title);
 		setYear(year);
@@ -16,6 +29,9 @@ public class Book implements Comparable<Book>{
 		setAuthors(authors);
 	}
 	
+	public Book(String author, String title, double price) {
+		
+	}
 	
 
 
@@ -44,6 +60,13 @@ public class Book implements Comparable<Book>{
 
 
 	public void setAuthors(String...authors) {
+		if(authors.length==1) {
+			if(authors[0].contains("\\s+")) {
+				if(Character.isDigit(authors[0].split("\\s+")[1].charAt(0))) {
+					throw new IllegalArgumentException("Invalid author");
+				}
+			}
+		}
 		this.authors = authors;
 	}
 

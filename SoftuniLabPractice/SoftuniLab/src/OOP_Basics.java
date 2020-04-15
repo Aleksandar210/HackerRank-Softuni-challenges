@@ -4,11 +4,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
+import advanced_Softuni_Classes_Iterables_Comparables.Book;
 import advanced_Softuni_Classes_Iterables_Comparables.Box;
 import advanced_Softuni_Classes_Iterables_Comparables.Chicken;
 import advanced_Softuni_Classes_Iterables_Comparables.ChickenFarm;
 import advanced_Softuni_Classes_Iterables_Comparables.Child;
 import advanced_Softuni_Classes_Iterables_Comparables.FootballTeam;
+import advanced_Softuni_Classes_Iterables_Comparables.GoldEditionBook;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
@@ -22,10 +24,25 @@ public class OOP_Basics {
 		//chickenFarm();
 		//pizzaTask();
 		//fooballTeams;
-		//
+		//childTask();
 		//
 		//
 		
+	}
+	
+	static void books() {
+		try {
+		String author = scan.nextLine();
+		String title = scan.nextLine();
+		int price = Integer.parseInt(scan.nextLine());
+		Book currentBook = new Book(author,title,price);
+		GoldEditionBook currentGolden = new GoldEditionBook(author,title,price);
+		System.out.println(currentBook);
+		System.out.println(currentGolden);
+		}catch(IllegalArgumentException ex) {
+			System.out.println(ex.getMessage());
+			books();
+		}
 	}
 	
 	static void childTask() {

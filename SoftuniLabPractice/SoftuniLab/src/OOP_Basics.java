@@ -12,6 +12,7 @@ import advanced_Softuni_Classes_Iterables_Comparables.Child;
 import advanced_Softuni_Classes_Iterables_Comparables.FootballTeam;
 import advanced_Softuni_Classes_Iterables_Comparables.GoldEditionBook;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
+import advanced_Softuni_Classes_Iterables_Comparables.RadioDataBase;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 import advanced_Softuni_Classes_Iterables_Comparables.Person;
@@ -31,7 +32,13 @@ public class OOP_Basics {
 	}
 	
 	static void radioDataBase() {
-		
+		int numberSongs = Integer.parseInt(scan.nextLine());
+		RadioDataBase currentRadio = new RadioDataBase();
+		while(numberSongs-- >0) {
+			String enterSong = scan.nextLine();
+			currentRadio.addSong(enterSong);
+		}
+		System.out.println(currentRadio.getLength());
 	}
 	
 	static void Animals() {

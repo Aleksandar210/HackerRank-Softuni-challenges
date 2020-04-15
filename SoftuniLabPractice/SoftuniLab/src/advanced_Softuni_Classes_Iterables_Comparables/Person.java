@@ -308,6 +308,9 @@ public class Person implements Comparable<Person> {
 		return this.age;
 	}
 	public void setAge(int age) {
+		if(getAge()<1) {
+			throw new IllegalArgumentException("Age cant be negative");
+		}
 		this.age = age;
 	}
 	public String getTown() {

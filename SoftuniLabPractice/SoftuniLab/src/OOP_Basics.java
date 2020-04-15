@@ -20,10 +20,15 @@ public class OOP_Basics {
 		//box();
 		//chickenFarm();
 		//pizzaTask();
+		//fooballTeams;
+		//
+		//
 		//
 		
-		
 	}
+	
+	//Encapsulation
+	//----------------------------------------------------------------------------
 	//---------------------------------------------------
 	static void footballTeams() {
 		Map<String, FootballTeam> teams = new HashMap<>();
@@ -33,6 +38,8 @@ public class OOP_Basics {
 			executeCommandTeam(enterCommand.split(";"),teams);
 			enterCommand = scan.nextLine();
 		}
+		
+		
 	}
 	
 	static void executeCommandTeam(String[] commands,Map<String,FootballTeam> teams) {
@@ -335,5 +342,15 @@ public class OOP_Basics {
 	
 	//-------------------------------------------------------------------------------
 	
-
+	//Encapsulation
+		//----------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	//Inheritance
+	//--------------------------------------------------------------------------
 }

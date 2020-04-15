@@ -7,6 +7,7 @@ import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
 import advanced_Softuni_Classes_Iterables_Comparables.Box;
 import advanced_Softuni_Classes_Iterables_Comparables.Chicken;
 import advanced_Softuni_Classes_Iterables_Comparables.ChickenFarm;
+import advanced_Softuni_Classes_Iterables_Comparables.Child;
 import advanced_Softuni_Classes_Iterables_Comparables.FootballTeam;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
@@ -26,6 +27,19 @@ public class OOP_Basics {
 		//
 		
 	}
+	
+	static void childTask() {
+		String name = scan.nextLine();
+		int age = Integer.parseInt(scan.nextLine());
+		try {
+		Child currentChild = new Child(name,age);
+		System.out.println(currentChild);
+		}catch(IllegalArgumentException ex){
+			System.out.println(ex.getMessage());
+		}
+		
+	}
+	
 	
 	//Encapsulation
 	//----------------------------------------------------------------------------

@@ -4,8 +4,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 import advanced_Softuni_Classes_Iterables_Comparables.BankAccount;
+import advanced_Softuni_Classes_Iterables_Comparables.Boat;
 import advanced_Softuni_Classes_Iterables_Comparables.Book;
 import advanced_Softuni_Classes_Iterables_Comparables.Box;
+import advanced_Softuni_Classes_Iterables_Comparables.Car;
 import advanced_Softuni_Classes_Iterables_Comparables.Chicken;
 import advanced_Softuni_Classes_Iterables_Comparables.ChickenFarm;
 import advanced_Softuni_Classes_Iterables_Comparables.Child;
@@ -14,6 +16,7 @@ import advanced_Softuni_Classes_Iterables_Comparables.GoldEditionBook;
 import advanced_Softuni_Classes_Iterables_Comparables.Player;
 import advanced_Softuni_Classes_Iterables_Comparables.RadioDataBase;
 import advanced_Softuni_Classes_Iterables_Comparables.Team;
+import advanced_Softuni_Classes_Iterables_Comparables.Vehicle;
 import advanced_Softuni_Classes_Iterables_Comparables.Guild;
 import advanced_Softuni_Classes_Iterables_Comparables.Person;
 import advanced_Softuni_Classes_Iterables_Comparables.Pizza;
@@ -28,6 +31,15 @@ public class OOP_Basics {
 		//childTask();
 		//
 		//
+		Vehicle currentCar = new Car("Nissan");
+		Vehicle currentBoat  = new Boat("Speeder");
+		
+		currentCar.getTypeOfVehicle();
+		currentBoat.getTypeOfVehicle();
+		
+		
+		Vehicle[] vh = new Vehicle[2];
+		vh[0] =
 		
 	}
 	

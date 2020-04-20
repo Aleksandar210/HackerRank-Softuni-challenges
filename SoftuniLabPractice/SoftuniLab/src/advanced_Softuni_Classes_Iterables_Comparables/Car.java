@@ -27,7 +27,7 @@ public class Car extends Vehicle{
 		System.out.println("Car");
 	}
 	
-	public void custom() {
+	public void customCarMethod() {
 		
 	}
 	

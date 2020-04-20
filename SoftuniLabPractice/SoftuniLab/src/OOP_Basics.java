@@ -31,15 +31,8 @@ public class OOP_Basics {
 		//childTask();
 		//
 		//
-		Vehicle currentCar = new Car("Nissan");
-		Vehicle currentBoat  = new Boat("Speeder");
+	
 		
-		currentCar.getTypeOfVehicle();
-		currentBoat.getTypeOfVehicle();
-		
-		
-		Vehicle[] vh = new Vehicle[2];
-		vh[0] =
 		
 	}
 	

@@ -22,12 +22,18 @@ public void addCell(String clusterId,String cellType,String cellid,
 		int health,int row, int cols, int additional) {
 	
 	if(this.clusterCollection.containsKey(clusterId)) {
-		Cell currentCell;
+					Cell currentCell;
 				switch(cellType.toLowerCase()) {
 				case "redbloodcell":
-					currentCell = new RedBloodCell(cellid,health,row,cols,additional);
+					  currentCell = new RedBloodCell(cellid,health,row,cols,additional);
 					break;
-				case 
+				case "whitebloodcell":
+					currentCell = new WhiteBloodCell(cellid,health,row,cols,additional);
+					break;
+					
+				case "fungi":
+					
+					break;
 				}
 				
 		this.clusterCollection.get(clusterId).addCellToBody(row, cols,);

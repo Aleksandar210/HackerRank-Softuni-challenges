@@ -6,4 +6,9 @@ public class WhiteBloodCell extends Cell {
 		super(id,health,positionRow,positionCol,size);
 		
 	}
+	
+	@Override
+	public int getEnergy() {
+		return (this.getHealth()+this.getAdditional())*2;
+	}
 }

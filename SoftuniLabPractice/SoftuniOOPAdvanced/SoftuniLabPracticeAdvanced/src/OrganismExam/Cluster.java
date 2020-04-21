@@ -59,7 +59,9 @@ public class Cluster {
 		return this.currentCells[row][col];
 	}
 	
-	
+	public void addCellToBody(int row, int col, Cell currentCell) {
+		this.currentCells[row][col] = currentCell;
+	}
 	
 	
 

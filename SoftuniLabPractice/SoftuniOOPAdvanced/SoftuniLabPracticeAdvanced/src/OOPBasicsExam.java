@@ -51,8 +51,14 @@ static void executeCommandOrganism(String[] commands,Map<String,Organism> org) {
 	}
 		break;
 	case "addcell":
-		
+		if(org.get(commands[1]).addCell(commands[2], commands[3], commands[4], Integer.parseInt(commands[5]), Integer.parseInt(commands[6]), Integer.parseInt(commands[7]), Integer.parseInt(commands[8]))) {
+			System.out.println("Organism: "+commands[1]+" Cluster: "+commands[2]+" added cell: "+commands[4]);
+		}else {
+			
+		}
 		break;
+		
+		
 	}
 }
 

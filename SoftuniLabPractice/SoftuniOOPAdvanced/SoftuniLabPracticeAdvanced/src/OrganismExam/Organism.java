@@ -16,6 +16,7 @@ public Organism(String name) {
 	setName(name);
 	this.cellCount=0;
 	this.clusterCount=0;
+	this.currentClustersInOrder = new LinkedList<Cluster>();
 	clusterCollection = new LinkedHashMap<String,Cluster>();
 	
 }
@@ -23,9 +24,15 @@ public Organism(String name) {
 public void addCluster(String id, int rows, int cols) {
 	if(!this.clusterCollection.containsKey(id)) {
 		this.clusterCount+=1;
+		Cluster currentCluster = new Cluster(id,rows,cols);
+		this.clusterCollection.putIfAbsent(currentCluster.getId(), currentCluster);
+		this.currentClustersInOrder.add(currentCluster);
 	}
-	Cluster currentCluster = new Cluster(id,rows,cols);
-	this.clusterCollection.putIfAbsent(currentCluster.getId(), currentCluster);
+	
+}
+
+public void activateCluster() {
+	
 }
 
 public boolean  addCell(String clusterId,String cellType,String cellid,

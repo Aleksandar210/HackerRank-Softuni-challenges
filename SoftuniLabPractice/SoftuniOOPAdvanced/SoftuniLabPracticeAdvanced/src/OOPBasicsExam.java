@@ -9,7 +9,13 @@ import OrganismExam.RedBloodCell;
 public class OOPBasicsExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
+	//organismTask();
+	}
 	
+	
+	
+	static void nfsTask() {
+		
 	}
 	
 	
@@ -27,7 +33,7 @@ static void organismTask() {
 			break;
 		}else {
 			String[] commands = enterCommand.split("\\s+");
-			
+			executeCommandOrganism(commands,organisms);
 		}
 	}while(!enterCommand.equalsIgnoreCase("Beer is coming"));
 }

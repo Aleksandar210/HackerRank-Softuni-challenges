@@ -45,7 +45,15 @@ private void scanPath(Cluster currentClusterActivated) {
 	
 	for(int i=row;i<currentClusterActivated.getRows();i++) {
 		for(int j=col;j<currentClusterActivated.getCols();j++) {
-			
+			if(j==currentClusterActivated.getCols()) {
+				j=0;
+				i-=1;
+			}else {
+			if(currentClusterActivated.getClusterBody()[i][j+1]!=null) {
+				Cell enemyCell = currentClusterActivated.getClusterBody()[i][j+1];
+				
+			}
+			}
 		}
 	}
 	

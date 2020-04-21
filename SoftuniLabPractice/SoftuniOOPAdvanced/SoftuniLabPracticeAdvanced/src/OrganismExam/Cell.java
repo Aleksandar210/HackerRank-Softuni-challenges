@@ -75,5 +75,9 @@ public abstract class Cell {
 		return coordinates;
 	}
 	
+	public void attack() {
+		
+	}
+	
 
 }

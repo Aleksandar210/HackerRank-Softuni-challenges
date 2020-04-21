@@ -29,6 +29,7 @@ public class Cluster {
 	
 	public void killCell(Cell killedCell) {
 		currentCells[killedCell.getRowPos()][killedCell.getColPos()]=null;
+		this.currentCellsInCluster.get(killedCell.getClass().getSimpleName()).remove(killedCell.getListPos());
 		
 	}
 	
@@ -65,13 +66,9 @@ public class Cluster {
 		return this.cols;
 	}
 	
-	public void setPosition(int p) {
-		this.clusterPosition = p;
-	}
 	
-	public int getPosition() {
-		return this.clusterPosition;
-	}
+	
+	
 	
 	public Cell[][] getClusterBody(){
 		return this.currentCells;

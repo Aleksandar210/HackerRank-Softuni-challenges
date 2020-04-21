@@ -52,6 +52,12 @@ private void scanPath(Cluster currentClusterActivated) {
 			if(currentClusterActivated.getClusterBody()[i][j+1]!=null) {
 				Cell enemyCell = currentClusterActivated.getClusterBody()[i][j+1];
 				currentStarterCell.attack(enemyCell);
+				if(currentStarterCell.getHealth()>0) {
+					
+				}else {
+					
+				}
+			}else {
 				
 			}
 			}

@@ -5,13 +5,14 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Cluster {
-	private int clusterPosition;
+	
 	private String id;
 	private int rows;
 	private  int cols;
 	private Cell[][] currentCells;
 	private Map<String,Integer> cellStats;
 	private Map<String,LinkedList<Cell>> currentCellsInCluster;
+	private static int listSize =0;
 	
 	
 	public Cluster(String id, int rows, int columns) {
@@ -23,6 +24,11 @@ public class Cluster {
 		setCols(cols);
 		setClusterBody();
 		
+		
+	}
+	
+	public void killCell(Cell killedCell) {
+		currentCells[killedCell.getRowPos()][killedCell.getColPos()]=null;
 		
 	}
 	
@@ -107,6 +113,8 @@ public class Cluster {
 		if(this.cellStats.containsKey(currentCell.getClass().getSimpleName())) {
 			this.cellStats.put(currentCell.getClass().getSimpleName(), this.cellStats.get(currentCell.getClass().getSimpleName())+1);
 			this.currentCellsInCluster.get(currentCell.getClass().getSimpleName()).add(currentCell);
+			currentCell.setPosList(this.listSize);
+			listSize+=1;
 		}else {
 			this.cellStats.put(currentCell.getClass().getSimpleName(),0);
 			this.currentCellsInCluster.put(currentCell.getClass().getSimpleName(), new LinkedList<Cell>());

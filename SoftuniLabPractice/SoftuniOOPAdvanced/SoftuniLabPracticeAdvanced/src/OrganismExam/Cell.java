@@ -6,6 +6,7 @@ public abstract class Cell {
 	protected Integer positionRow;
 	protected Integer positionCol;
 	protected int additionalProperty;
+	private int listPos;
 	
 	protected Cell(String id, int health, int positionRow,int positionCol,int addit) {
 		setId(id);
@@ -49,6 +50,14 @@ public abstract class Cell {
 	
 	private void setColPos(int pos) {
 		this.positionCol=pos;
+	}
+	
+	public void setPosList(int pos) {
+		this.listPos=pos;
+	}
+	
+	public int getListPos() {
+		return this.listPos;
 	}
 	
 	private void setAdditional(int add) {

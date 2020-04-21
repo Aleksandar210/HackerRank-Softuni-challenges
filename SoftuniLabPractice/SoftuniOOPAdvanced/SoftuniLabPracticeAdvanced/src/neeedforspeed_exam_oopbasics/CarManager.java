@@ -21,7 +21,11 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public String check(int id) {
-		
+		if(registeredCars.containsKey(id)) {
+			return this.registeredCars.get(id).toString();
+		}else {
+			return "No car found!";
+		}
 		
 	}
 

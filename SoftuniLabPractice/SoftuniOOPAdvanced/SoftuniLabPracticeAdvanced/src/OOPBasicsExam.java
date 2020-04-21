@@ -5,11 +5,17 @@ import java.util.Scanner;
 import OrganismExam.Cell;
 import OrganismExam.Organism;
 import OrganismExam.RedBloodCell;
+import neeedforspeed_exam_oopbasics.Car;
+import neeedforspeed_exam_oopbasics.PerformanceCar;
+import neeedforspeed_exam_oopbasics.ShowCar;
 
 public class OOPBasicsExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 	//organismTask();
+		Car[] currentCars = new Car[5];
+		currentCars[0] = new ShowCar("afaf","afa",1,4,5,6,1);
+		
 	}
 	
 	

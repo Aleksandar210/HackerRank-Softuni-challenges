@@ -13,5 +13,6 @@ public abstract class Microbe extends Cell {
 		return print;
 	}
 	
+	
 
 }

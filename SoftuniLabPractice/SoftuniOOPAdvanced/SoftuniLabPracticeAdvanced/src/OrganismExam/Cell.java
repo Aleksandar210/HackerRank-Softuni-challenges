@@ -29,9 +29,13 @@ public abstract class Cell {
 		return this.id;
 	}
 	
-	private void setHealth(int health) {
+	public void setHealth(int health) {
 		this.health = health;
 		
+	}
+	
+	public void Attacked(int energy) {
+		this.setHealth(this.getHealth()-energy);
 	}
 	
 	public int getHealth() {
@@ -75,9 +79,12 @@ public abstract class Cell {
 		return coordinates;
 	}
 	
-	public void attack() {
+	public void attack(Cell enemy) {
+		enemy.Attacked(this.getEnergy());
 		
 	}
+	
+	
 	
 
 }

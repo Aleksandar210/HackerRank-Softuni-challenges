@@ -6,7 +6,11 @@ public BloodCell(String id, int health, int positionRow, int positionCol,int add
 		super(id,health,positionRow,positionCol,additional);
 	}
 
-
+@Override
+public void attack(Cell enemy) {
+	this.setHealth(this.getHealth()+enemy.getHealth());
+	enemy.setHealth(0);
+}
 	
 	
 	

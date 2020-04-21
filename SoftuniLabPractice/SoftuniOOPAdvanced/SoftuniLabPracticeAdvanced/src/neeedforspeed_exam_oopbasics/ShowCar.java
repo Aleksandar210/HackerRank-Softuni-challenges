@@ -12,6 +12,14 @@ public class ShowCar extends Car {
 		
 	}
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(System.getProperty("line.separator"));
+		sb.append(this.stars+" *");
+		return sb.toString();
+	}
+	
 	
 
 }

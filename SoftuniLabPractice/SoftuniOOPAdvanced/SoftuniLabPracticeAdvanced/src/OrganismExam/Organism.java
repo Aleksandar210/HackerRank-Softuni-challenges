@@ -31,9 +31,22 @@ public void addCluster(String id, int rows, int cols) {
 	
 }
 
+
+//------------------------------------------------------------------------
 public void activateCluster() {
+	Cluster currentClusterActivated = this.currentClustersInOrder.get(0);
 	
 }
+
+private void scanPath() {
+	
+}
+
+private int[] currentCellLocation(Cluster cluster) {
+	Cell[][] currentClusterBody = cluster.getClusterBody();
+	for(int i =0;i<cluster.)
+}
+//------------------------------------------------------------------------
 
 public boolean  addCell(String clusterId,String cellType,String cellid,
 		int health,int row, int cols, int additional) {

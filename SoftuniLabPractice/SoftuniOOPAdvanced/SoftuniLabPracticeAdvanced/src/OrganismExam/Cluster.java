@@ -51,12 +51,24 @@ public class Cluster {
 		return this.id;
 	}
 	
+	public int getRows() {
+		return this.rows;
+	}
+	
+	public int getCols() {
+		return this.cols;
+	}
+	
 	public void setPosition(int p) {
 		this.clusterPosition = p;
 	}
 	
 	public int getPosition() {
 		return this.clusterPosition;
+	}
+	
+	public Cell[][] getClusterBody(){
+		return this.currentCells;
 	}
 	
 	

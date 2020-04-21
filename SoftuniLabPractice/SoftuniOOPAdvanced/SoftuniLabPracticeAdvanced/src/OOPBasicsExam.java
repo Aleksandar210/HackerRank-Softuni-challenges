@@ -9,7 +9,9 @@ import OrganismExam.RedBloodCell;
 public class OOPBasicsExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
-	
+	int[] curr = new int[5];
+	curr[3] = 1;
+	curr.g
 	}
 	
 	

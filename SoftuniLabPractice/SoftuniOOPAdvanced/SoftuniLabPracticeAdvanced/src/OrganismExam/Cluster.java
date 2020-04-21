@@ -30,7 +30,7 @@ public class Cluster {
 	public void killCell(Cell killedCell) {
 		currentCells[killedCell.getRowPos()][killedCell.getColPos()]=null;
 		this.currentCellsInCluster.get(killedCell.getClass().getSimpleName()).remove(killedCell.getListPos());
-		
+		this.cellStats.put(killedCell.getClass().getSimpleName(), this.cellStats.get(killedCell.getClass().getSimpleName())-1);
 	}
 	
 	private void setClusterBody() {

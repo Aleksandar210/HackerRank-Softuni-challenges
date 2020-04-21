@@ -6,9 +6,11 @@ import java.util.Map;
 public class CarManager implements CarManagable {
 
 	private Map<Integer,Car> registeredCars;
+	private Map<Integer,BaseRace> currentRaces;
 	
 	public CarManager() {
 		registeredCars = new LinkedHashMap<Integer,Car>();
+		currentRaces = new LinkedHashMap<Integer,BaseRace>();
 	}
 	
 	
@@ -31,7 +33,23 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public void open(int id, String type, int length, String route, int prizePool) {
-		// TODO Auto-generated method stub
+		BaseRace currentRace = null;
+		switch(type.toLowerCase()) {
+		case "dragrace":
+			currentRace = new DragRace(length,route,prizePool);
+			break;
+		case "casualrace":
+			currentRace = new CasualRace(length,route,prizePool);
+			break;
+		case "driftrace":
+			currentRace = new DriftRace(length,route,prizePool);
+			break;
+		}
+		
+		if(currentRace!=null) {
+			this.currentRaces.putIfAbsent(id, currentRace);
+		}
+		
 		
 	}
 

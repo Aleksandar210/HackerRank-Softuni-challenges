@@ -17,6 +17,15 @@ public class PerformanceCar extends Car {
 	}
 	
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder(super.toString());
+		sb.append(System.getProperty("line.separator"));
+		String currentAddOns = String.join(" ", this.addOns);
+		sb.append("Addons: "+currentAddOns);
+		 return sb.toString();
+		
+	}
 	
 	
 	

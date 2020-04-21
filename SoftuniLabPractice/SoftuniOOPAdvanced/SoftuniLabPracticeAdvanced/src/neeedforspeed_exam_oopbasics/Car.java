@@ -88,6 +88,19 @@ public void decreaseHorse(int by) {
 	this.setHorsePower(this.getHorsePower()-((100*by)-100));
 }
 
+
+
+@Override
+public String toString() {
+	StringBuilder sb = new StringBuilder();
+	sb.append("Brand: "+this.getBrand()+" Model: "+this.getModel()+" Year: "+this.getYearOfProduction());
+	sb.append(System.getProperty("line.separator"));
+	sb.append("HorsePower: "+this.getHorsePower()+" Acceleration: " +this.getAcceleration()+" Suspension "+this.getSuspension()
+	+" Durability: "+this.getDurability());
+	return sb.toString();
+}
+
+
 	
 
 

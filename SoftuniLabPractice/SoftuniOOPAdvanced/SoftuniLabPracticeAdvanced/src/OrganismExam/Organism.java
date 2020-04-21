@@ -77,7 +77,10 @@ public void checkCondition() {
 	System.out.println("Clusters: "+this.clusterCount);
 	System.out.println("Cells: "+this.cellCount);
 	
-	for(Map.Entry<, V>)
+	for(Map.Entry<String, Cluster> entry:this.clusterCollection.entrySet()) {
+		System.out.println(entry.getKey());
+		entry.getValue().showAllCells();
+	}
 	
 	
 }

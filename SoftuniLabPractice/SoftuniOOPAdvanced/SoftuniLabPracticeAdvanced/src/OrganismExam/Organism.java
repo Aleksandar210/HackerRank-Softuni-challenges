@@ -35,7 +35,7 @@ public void addCluster(String id, int rows, int cols) {
 //------------------------------------------------------------------------
 public void activateCluster() {
 	Cluster currentClusterActivated = this.currentClustersInOrder.get(0);
-	
+	scanPath(currentClusterActivated);
 }
 
 private void scanPath(Cluster currentClusterActivated) {
@@ -53,16 +53,21 @@ private void scanPath(Cluster currentClusterActivated) {
 				Cell enemyCell = currentClusterActivated.getClusterBody()[i][j+1];
 				currentStarterCell.attack(enemyCell);
 				if(currentStarterCell.getHealth()>0) {
-					
+					currentClusterActivated.killCell(currentStarterCell);
 				}else {
-					
+					currentClusterActivated.killCell(enemyCell);
 				}
 			}else {
 				
 			}
 			}
+			
 		}
+		row-=1;
+		col=0;
 	}
+	
+	
 	
 }
 

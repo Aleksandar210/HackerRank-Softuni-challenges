@@ -21,12 +21,15 @@ public Organism(String name) {
 	
 }
 
-public void addCluster(String id, int rows, int cols) {
+public boolean addCluster(String id, int rows, int cols) {
 	if(!this.clusterCollection.containsKey(id)) {
 		this.clusterCount+=1;
 		Cluster currentCluster = new Cluster(id,rows,cols);
 		this.clusterCollection.putIfAbsent(currentCluster.getId(), currentCluster);
 		this.currentClustersInOrder.add(currentCluster);
+		return true;
+	}else {
+		return false;
 	}
 	
 }

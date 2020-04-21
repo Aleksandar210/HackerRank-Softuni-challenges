@@ -55,7 +55,11 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public void participate(int carId, int raceId) {
-		// TODO Auto-generated method stub
+		if(this.currentRaces.containsKey(raceId) && this.registeredCars.containsKey(carId)) {
+			this.currentRaces.get(raceId).addParticipant(this.registeredCars.get(carId));
+		}else{
+			
+		}
 		
 	}
 

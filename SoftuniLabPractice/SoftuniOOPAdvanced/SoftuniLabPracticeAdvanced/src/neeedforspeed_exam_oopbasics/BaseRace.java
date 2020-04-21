@@ -39,4 +39,8 @@ public abstract class BaseRace {
 	protected void setPrizePool(int prizePool) {
 		this.prizePool = prizePool;
 	}
+	
+	public void addParticipant(Car part) {
+		this.participants.add(part);
+	}
 }

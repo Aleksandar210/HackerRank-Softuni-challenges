@@ -13,7 +13,8 @@ public class PerformanceCar extends Car {
 	
 	@Override
 	public void tune(Object... params) {
-	this.addOns.add(String.valueOf(params[0]));
+	this.addOns.add(String.valueOf(params[1]));
+	this.setHorsePower(this.getHorsePower()+Integer.parseInt(String.valueOf(params[0])));
 	}
 	
 	
@@ -26,6 +27,8 @@ public class PerformanceCar extends Car {
 		 return sb.toString();
 		
 	}
+	
+	
 	
 	
 	

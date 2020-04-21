@@ -21,5 +21,9 @@ public class Garage {
 		return this.parkedCars.remove(id);
 		
 	}
+	
+	public void tune() {
+		
+	}
 
 }

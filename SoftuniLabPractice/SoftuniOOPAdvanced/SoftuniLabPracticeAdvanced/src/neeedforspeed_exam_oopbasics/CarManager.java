@@ -7,10 +7,15 @@ public class CarManager implements CarManagable {
 
 	private Map<Integer,Car> registeredCars;
 	private Map<Integer,BaseRace> currentRaces;
+	private Map<Integer,Car> carsOnField;
+	
+	Garage currentGarage;
 	
 	public CarManager() {
 		registeredCars = new LinkedHashMap<Integer,Car>();
 		currentRaces = new LinkedHashMap<Integer,BaseRace>();
+		currentGarage = new Garage();
+		carsOnField = new LinkedHashMap<Integer,Car>();
 	}
 	
 	
@@ -18,6 +23,21 @@ public class CarManager implements CarManagable {
 	public void register(int id, String type, String brand, String model, int yearOfProduction, int horsepower,
 			int acceleration, int suspension, int durability) {
 		
+		Car currentCar  = null;
+		switch(type.toLowerCase()) {
+		case "performancecar":
+			currentCar = new PerformanceCar( brand,  model,  yearOfProduction,  horsepower,
+					 acceleration,  suspension, durability);
+			break;
+		case "showcar":
+			currentCar = new ShowCar( brand,  model,  yearOfProduction,  horsepower,
+					 acceleration,  suspension, durability);
+			break;
+		}
+		if(currentCar!=null) {
+			this.registeredCars.putIfAbsent(id, currentCar);
+			this.carsOnField.putIfAbsent(id, currentCar);
+		}
 		
 	}
 
@@ -55,7 +75,7 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public void participate(int carId, int raceId) {
-		if(this.currentRaces.containsKey(raceId) && this.registeredCars.containsKey(carId)) {
+		if(this.currentRaces.containsKey(raceId) && this.carsOnField.containsKey(carId)) {
 			this.currentRaces.get(raceId).addParticipant(this.registeredCars.get(carId));
 		}else{
 			
@@ -65,19 +85,23 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public String start(int id) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public void park(int id) {
-		// TODO Auto-generated method stub
+		if(this.carsOnField.containsKey(id)) {
+			currentGarage.parkCar(this.carsOnField.get(id), id);
+			this.carsOnField.remove(id);
+		}
+		
 		
 	}
 
 	@Override
 	public void unpark(int id) {
-		// TODO Auto-generated method stub
+		this.carsOnField.put(id, this.currentGarage.unparkCar(id)); 
 		
 	}
 

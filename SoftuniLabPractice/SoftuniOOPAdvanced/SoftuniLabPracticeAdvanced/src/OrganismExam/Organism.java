@@ -39,6 +39,8 @@ public boolean addCluster(String id, int rows, int cols) {
 public void activateCluster() {
 	Cluster currentClusterActivated = this.currentClustersInOrder.get(0);
 	scanPath(currentClusterActivated);
+	this.currentClustersInOrder.add(0, this.currentClustersInOrder.get(this.currentClustersInOrder.size()-1));
+	this.currentClustersInOrder.add(this.currentClustersInOrder.size()-1,currentClusterActivated);
 }
 
 private void scanPath(Cluster currentClusterActivated) {

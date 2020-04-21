@@ -13,6 +13,11 @@ public abstract class Microbe extends Cell {
 		return print;
 	}
 	
-	
+	@Override
+	public void attack(Cell enemyCell) {
+		while(!(enemyCell.getHealth()<=0) || !(this.getHealth()<=0)) {
+			
+		}
+	}
 
 }

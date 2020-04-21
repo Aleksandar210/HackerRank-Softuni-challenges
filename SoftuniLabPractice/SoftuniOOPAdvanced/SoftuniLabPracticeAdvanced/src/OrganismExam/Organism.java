@@ -51,9 +51,8 @@ private void scanPath(Cluster currentClusterActivated) {
 			}else {
 			if(currentClusterActivated.getClusterBody()[i][j+1]!=null) {
 				Cell enemyCell = currentClusterActivated.getClusterBody()[i][j+1];
-				if(currentStarterCell instanceof RedBloodCell || currentStarterCell instanceof WhiteBloodCell) {
-					
-				}
+				currentStarterCell.attack(enemyCell);
+				
 			}
 			}
 		}

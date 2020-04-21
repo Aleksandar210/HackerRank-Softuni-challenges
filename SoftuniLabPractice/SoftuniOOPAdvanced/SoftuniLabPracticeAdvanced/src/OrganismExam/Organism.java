@@ -19,10 +19,18 @@ public void addCluster(String id, int rows, int cols) {
 }
 
 public void addCell(String clusterId,String cellType,String cellid,
-		int health,int row, int cols, int addicitonal) {
+		int health,int row, int cols, int additional) {
 	
 	if(this.clusterCollection.containsKey(clusterId)) {
-		this.clusterCollection.get(clusterId).
+		Cell currentCell;
+				switch(cellType.toLowerCase()) {
+				case "redbloodcell":
+					currentCell = new RedBloodCell(cellid,health,row,cols,additional);
+					break;
+				case 
+				}
+				
+		this.clusterCollection.get(clusterId).addCellToBody(row, cols,);
 	}
 }
 

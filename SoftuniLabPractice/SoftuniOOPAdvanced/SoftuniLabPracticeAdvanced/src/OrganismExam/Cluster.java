@@ -55,6 +55,12 @@ public class Cluster {
 		
 	}
 	
+	public Cell getCell(int row, int col) {
+		return this.currentCells[row][col];
+	}
+	
+	
+	
 	
 
 }

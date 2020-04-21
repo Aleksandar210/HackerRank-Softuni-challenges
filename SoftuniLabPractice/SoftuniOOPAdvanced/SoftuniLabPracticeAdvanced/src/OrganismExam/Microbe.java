@@ -16,7 +16,12 @@ public abstract class Microbe extends Cell {
 	@Override
 	public void attack(Cell enemyCell) {
 		while(!(enemyCell.getHealth()<=0) || !(this.getHealth()<=0)) {
-			
+			enemyCell.Attacked(this.getEnergy());
+			if(enemyCell.getHealth()>0) {
+				this.Attacked(enemyCell.getEnergy());
+			}else {
+				break;
+			}
 		}
 	}
 

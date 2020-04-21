@@ -57,6 +57,10 @@ static void executeCommandOrganism(String[] commands,Map<String,Organism> org) {
 			
 		}
 		break;
+	case "activatecluster":
+		org.get(commands[1]).activateCluster();
+		
+		break;
 		
 		
 	}

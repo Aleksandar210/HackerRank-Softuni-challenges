@@ -43,6 +43,11 @@ private void scanPath(Cluster currentClusterActivated) {
 	int row = currentStarterCell.getRowPos();
 	int col = currentStarterCell.getColPos();
 	
+	for(int i=row;i<currentClusterActivated.getRows();i++) {
+		for(int j=col;j<currentClusterActivated.getCols();j++) {
+			
+		}
+	}
 	
 }
 

@@ -38,13 +38,24 @@ public void activateCluster() {
 	
 }
 
-private void scanPath() {
+private void scanPath(Cluster currentClusterActivated) {
+	Cell currentStarterCell = currentCellLocation(currentClusterActivated);
+	int row = currentStarterCell.getRowPos();
+	int col = currentStarterCell.getColPos();
+	
 	
 }
 
-private int[] currentCellLocation(Cluster cluster) {
+private Cell currentCellLocation(Cluster cluster) {
 	Cell[][] currentClusterBody = cluster.getClusterBody();
-	for(int i =0;i<cluster.)
+	for(int i =0;i<cluster.getRows();i++) {
+		for(int j=0;j<cluster.getCols();j++) {
+			if(currentClusterBody[i][j]!=null) {
+				return currentClusterBody[i][j];
+			}
+		}
+	}
+	return null;
 }
 //------------------------------------------------------------------------
 

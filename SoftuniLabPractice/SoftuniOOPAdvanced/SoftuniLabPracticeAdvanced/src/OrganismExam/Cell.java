@@ -51,6 +51,14 @@ public abstract class Cell {
 		this.additionalProperty = add;
 	}
 	
+	public int getRowPos() {
+		return this.positionRow;
+	}
+	
+	public int getColPos() {
+		return this.positionCol;
+	}
+	
 	public int getAdditional() {
 	return this.additionalProperty;	
 	}
@@ -58,6 +66,13 @@ public abstract class Cell {
 	
 	public int getEnergy() {
 		return this.getHealth()+getAdditional();
+	}
+	
+	public int[] getCoordinatedCell() {
+		int[] coordinates = new int[2];
+		coordinates[0] = this.getRowPos();
+		coordinates[1] = this.getColPos();
+		return coordinates;
 	}
 	
 

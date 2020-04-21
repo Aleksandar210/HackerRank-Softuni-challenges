@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Map;
 
 public class Cluster {
+	private int clusterPosition;
 	private String id;
 	private int rows;
 	private  int cols;
@@ -48,6 +49,14 @@ public class Cluster {
 	
 	public String getId() {
 		return this.id;
+	}
+	
+	public void setPosition(int p) {
+		this.clusterPosition = p;
+	}
+	
+	public int getPosition() {
+		return this.clusterPosition;
 	}
 	
 	

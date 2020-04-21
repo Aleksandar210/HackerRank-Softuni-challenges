@@ -1,11 +1,13 @@
 package OrganismExam;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 public class Organism {
 private String name;
 private Map<String,Cluster> clusterCollection;
+private LinkedList<Cluster> currentClustersInOrder;
 private int clusterCount;
 private int cellCount;
 

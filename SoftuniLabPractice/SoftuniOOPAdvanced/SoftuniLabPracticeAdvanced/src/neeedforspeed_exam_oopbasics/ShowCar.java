@@ -6,9 +6,12 @@ public class ShowCar extends Car {
 		super(brand, model, year, horse, accel, susp, dur);
 		stars = 0;
 	}
+	@Override
+	public void tune(Object... params) {
 	
-	public void setStars(int stars) {
-		this.stars = stars;
+		
 	}
+	
+	
 
 }

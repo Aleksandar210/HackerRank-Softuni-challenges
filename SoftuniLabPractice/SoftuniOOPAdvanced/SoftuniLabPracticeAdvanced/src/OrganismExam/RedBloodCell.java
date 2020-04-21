@@ -14,5 +14,11 @@ public class RedBloodCell extends BloodCell {
 	}
 	
 	
+	@Override
+	public String toString() {
+		String print = String.format("RBC:%s HEALTH: %d ENERGY: %d Velocity: %d",this.getId(),this.getHealth(),this.getEnergy(),this.getAdditional());
+		return print;
+	}
+	
 
 }

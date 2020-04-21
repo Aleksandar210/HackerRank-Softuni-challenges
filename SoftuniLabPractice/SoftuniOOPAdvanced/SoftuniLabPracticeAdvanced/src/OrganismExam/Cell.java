@@ -15,6 +15,12 @@ public abstract class Cell {
 		setAdditional(addit);
 	}
 	
+	@Override
+	public String toString() {
+		return "Cell [id=" + id + ", health=" + health + ", positionRow=" + positionRow + ", positionCol=" + positionCol
+				+ ", additionalProperty=" + additionalProperty + "]";
+	}
+
 	private void setId(String id) {
 		this.id  = id;
 	}

@@ -7,6 +7,11 @@ public abstract class Microbe extends Cell {
 		
 	}
 	
+	@Override
+	public String toString() {
+		String print = String.format("Microbe:%s HEALTH: %d ENERGY: %d VIRULANCE: %d",this.getId(),this.getHealth(),this.getEnergy(),this.getAdditional());
+		return print;
+	}
 	
 
 }

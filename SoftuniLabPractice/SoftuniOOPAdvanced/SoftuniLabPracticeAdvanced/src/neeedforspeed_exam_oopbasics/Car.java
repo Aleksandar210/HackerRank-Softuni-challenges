@@ -88,7 +88,19 @@ public void decreaseHorse(int by) {
 	this.setHorsePower(this.getHorsePower()-((100*by)-100));
 }
 
+public  int overallPerformance() {
+	int b =  this.getSuspension()+this.getDurability();
+	int a = this.getHorsePower()/this.getAcceleration();
+	return a+b;
+}
 
+public  int enginePerformance() {
+	return this.getHorsePower()/this.getAcceleration();
+}
+
+public  int suspensionPerformance() {
+	return this.getSuspension()+this.getDurability();
+}
 
 
 

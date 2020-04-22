@@ -22,11 +22,13 @@ public class OOPBasicsExam {
 	
 	
 	static void nfsTask() {
+		final String END_COMMAND = "Cops are here!";
 		CarManager currentManager = new CarManager();
 		String enterCommand;
 		do {
+			enterCommand = scan.nextLine();
 			
-		}while();
+		}while(!enterCommand.equals(END_COMMAND));
 	}
 	
 	

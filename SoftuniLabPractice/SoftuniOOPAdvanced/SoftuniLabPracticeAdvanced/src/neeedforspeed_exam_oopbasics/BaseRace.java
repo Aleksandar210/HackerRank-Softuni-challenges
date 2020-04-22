@@ -47,4 +47,8 @@ public abstract class BaseRace {
 	public Collection<Car> getParticipants() {
 		return this.participants;
 	}
+	
+	public abstract void getWinners() ;
+	
+	
 }

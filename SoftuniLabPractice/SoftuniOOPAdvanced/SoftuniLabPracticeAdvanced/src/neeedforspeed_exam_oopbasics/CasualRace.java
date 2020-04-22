@@ -7,4 +7,7 @@ public class CasualRace extends BaseRace {
 		
 	}
 
+	
+	
+
 }

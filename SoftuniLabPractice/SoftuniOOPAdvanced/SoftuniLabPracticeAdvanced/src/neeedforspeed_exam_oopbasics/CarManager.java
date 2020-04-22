@@ -107,7 +107,11 @@ public class CarManager implements CarManagable {
 
 	@Override
 	public void tune(int tuneIndex, String addOn) {
-		// TODO Auto-generated method stub
+		Object[] currentObject = new Object[2];
+		currentObject[0] = tuneIndex;
+		currentObject[1] = addOn;
+		this.currentGarage.tune(currentObject);
+		
 		
 	}
 

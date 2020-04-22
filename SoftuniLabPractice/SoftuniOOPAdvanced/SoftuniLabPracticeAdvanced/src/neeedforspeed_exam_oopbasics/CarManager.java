@@ -77,7 +77,7 @@ public class CarManager implements CarManagable {
 	public void participate(int carId, int raceId) {
 		if(this.currentRaces.containsKey(raceId) && this.carsOnField.containsKey(carId)) {
 			this.currentRaces.get(raceId).addParticipant(this.registeredCars.get(carId));
-			this.carsOnField.remove(carId);
+			
 		}else{
 			
 		}
@@ -93,6 +93,13 @@ public class CarManager implements CarManagable {
 	@Override
 	public void park(int id) {
 		if(this.carsOnField.containsKey(id)) {
+			for(Map.Entry<Integer, BaseRace> entry:this.currentRaces.entrySet()) {
+				if(entry.getValue().getParticipants().contains(this.carsOnField.get(id))) {
+					return;
+				}
+			}
+			
+			
 			currentGarage.parkCar(this.carsOnField.get(id), id);
 			this.carsOnField.remove(id);
 		}

@@ -43,4 +43,8 @@ public abstract class BaseRace {
 	public void addParticipant(Car part) {
 		this.participants.add(part);
 	}
+	
+	public Collection<Car> getParticipants() {
+		return this.participants;
+	}
 }

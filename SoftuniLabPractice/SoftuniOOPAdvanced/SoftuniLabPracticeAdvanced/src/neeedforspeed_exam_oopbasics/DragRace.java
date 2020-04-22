@@ -1,5 +1,6 @@
 package neeedforspeed_exam_oopbasics;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -8,7 +9,7 @@ private Map<Integer,Car> winners;
 	protected DragRace(int length, String route, int prizePool) {
 		super(length, route, prizePool);
 		// TODO Auto-generated constructor stub
-		this.winners = new TreeMap<Integer,Car>();
+		this.winners = new TreeMap<Integer,Car>(Collections.reverseOrder());
 	}
 	
 	

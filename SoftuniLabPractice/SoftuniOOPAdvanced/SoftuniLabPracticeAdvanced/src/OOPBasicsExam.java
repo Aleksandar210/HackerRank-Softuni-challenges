@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 import OrganismExam.Cell;
 import OrganismExam.Organism;
@@ -14,8 +15,12 @@ public class OOPBasicsExam {
 	static Scanner scan = new Scanner(System.in);
 	public static void main(String[] args) {
 	//organismTask();
-		Car[] currentCars = new Car[5];
-		currentCars[0] = new ShowCar("afaf","afa",1,4,5,6,1);
+		Map<Integer,String> current = new TreeMap<Integer,String>();
+		current.put(4, "afa");
+		current.put(1, "afaf");
+		for(Map.Entry<Integer, String> entry: current.entrySet()) {
+			System.out.println(entry.getKey()+" "+entry.getValue());
+		}
 		
 	}
 	

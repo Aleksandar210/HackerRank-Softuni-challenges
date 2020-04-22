@@ -9,7 +9,7 @@ public class ShowCar extends Car {
 	@Override
 	public void tune(Object... params) {
 	
-		
+		this.stars+=Integer.parseInt(String.valueOf(params[0]));
 	}
 	
 	@Override

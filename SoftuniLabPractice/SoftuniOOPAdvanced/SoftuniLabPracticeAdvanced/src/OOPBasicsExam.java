@@ -31,6 +31,12 @@ public class OOPBasicsExam {
 		}while(!enterCommand.equals(END_COMMAND));
 	}
 	
+	static void executeNfsCommand(CarManager currentCarManager, String[] commands) {
+		switch(commands[0].toLowerCase()) {
+		
+		}
+	}
+	
 	
 	
 	

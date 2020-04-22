@@ -87,7 +87,9 @@ public class CarManager implements CarManagable {
 	@Override
 	public String start(int id) {
 		
-		this.currentRaces.get(id).getWinners();
+		String returnRace =  this.currentRaces.get(id).getWinners();
+		this.currentRaces.remove(id);
+		return returnRace;
 		
 	}
 

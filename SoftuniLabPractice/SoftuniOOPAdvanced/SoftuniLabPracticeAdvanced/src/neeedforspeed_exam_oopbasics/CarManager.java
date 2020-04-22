@@ -77,6 +77,7 @@ public class CarManager implements CarManagable {
 	public void participate(int carId, int raceId) {
 		if(this.currentRaces.containsKey(raceId) && this.carsOnField.containsKey(carId)) {
 			this.currentRaces.get(raceId).addParticipant(this.registeredCars.get(carId));
+			this.carsOnField.remove(carId);
 		}else{
 			
 		}

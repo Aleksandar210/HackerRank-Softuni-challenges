@@ -87,7 +87,8 @@ public class CarManager implements CarManagable {
 	@Override
 	public String start(int id) {
 		
-		return null;
+		this.currentRaces.get(id).getWinners();
+		
 	}
 
 	@Override

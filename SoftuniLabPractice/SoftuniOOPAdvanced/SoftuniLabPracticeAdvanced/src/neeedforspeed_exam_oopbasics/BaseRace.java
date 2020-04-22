@@ -1,7 +1,8 @@
 package neeedforspeed_exam_oopbasics;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
+import java.util.LinkedList;
 
 public abstract class BaseRace {
 	private int length;
@@ -13,7 +14,7 @@ public abstract class BaseRace {
 		setLength(length);
 		setRoute(route);
 		setPrizePool(prizePool);
-		this.participants = new ArrayList<Car>();
+		this.participants = new LinkedList<Car>();
 	}
 
 	public int getLength() {
@@ -48,7 +49,7 @@ public abstract class BaseRace {
 		return this.participants;
 	}
 	
-	public abstract void getWinners() ;
+	public abstract String getWinners() ;
 	
 	
 }

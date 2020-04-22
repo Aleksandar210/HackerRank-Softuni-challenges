@@ -11,15 +11,19 @@ public class CasualRace extends BaseRace {
 	}
 
 	@Override
-	public void getWinners() {
+	public String getWinners() {
 		this.getParticipants().stream().map(e->{
 			this.winners.put(e.overallPerformance(), e);
 			return e;
 		});
 		int i=0;
+		StringBuilder sb = new StringBuilder();
 		for(Map.Entry<Integer, Car> entry:this.winners.entrySet()) {
-			System.out.println((i+1)+": "+entry.getValue());
+			sb.append((i+1)+": "+entry.getValue());
+			i+=1;
+			sb.append(System.getProperty("line.separator"));
 		}
+		return sb.toString();
 		
 	}
 

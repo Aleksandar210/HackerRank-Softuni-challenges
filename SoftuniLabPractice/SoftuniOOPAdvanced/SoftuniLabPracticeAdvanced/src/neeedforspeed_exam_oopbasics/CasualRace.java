@@ -9,11 +9,20 @@ public class CasualRace extends BaseRace {
 		super(length, route, prizePool);
 		this.winners = new TreeMap<Integer,Car>();
 	}
+	
+	private  int overallPerformance(Car current) {
+		int b =  current.getSuspension()+current.getDurability();
+		int a = current.getHorsePower()/current.getAcceleration();
+		return a+b;
+	}
+
+	
+
 
 	@Override
 	public String getWinners() {
 		this.getParticipants().stream().map(e->{
-			this.winners.put(e.overallPerformance(), e);
+			this.winners.put(overallPerformance(e), e);
 			return e;
 		});
 		int i=0;

@@ -12,10 +12,14 @@ public class DriftRace extends BaseRace {
 		this.winners = new TreeMap<Integer,Car>();
 	}
 	
+	public  int enginePerformance(Car current) {
+		return current.getHorsePower()/current.getAcceleration();
+	}
+	
 	@Override
 	public String getWinners() {
 		this.getParticipants().stream().map(e->{
-			this.winners.put(e.suspensionPerformance(), e);
+			this.winners.put(enginePerformance(e), e);
 			return e;
 		});
 		int i=0;

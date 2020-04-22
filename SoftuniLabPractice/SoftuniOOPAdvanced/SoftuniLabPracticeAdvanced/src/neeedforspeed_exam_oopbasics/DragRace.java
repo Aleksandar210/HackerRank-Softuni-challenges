@@ -11,10 +11,16 @@ private Map<Integer,Car> winners;
 		this.winners = new TreeMap<Integer,Car>();
 	}
 	
+	
+	private int suspensionPerformance(Car currentCar) {
+		return currentCar.getSuspension()+currentCar.getDurability();
+	}
+
+	
 	@Override
 	public String getWinners() {
 		this.getParticipants().stream().map(e->{
-			this.winners.put(e.enginePerformance(), e);
+			this.winners.put(suspensionPerformance(e), e);
 			return e;
 		});
 		int i=0;

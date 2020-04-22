@@ -6,6 +6,7 @@ import OrganismExam.Cell;
 import OrganismExam.Organism;
 import OrganismExam.RedBloodCell;
 import neeedforspeed_exam_oopbasics.Car;
+import neeedforspeed_exam_oopbasics.CarManager;
 import neeedforspeed_exam_oopbasics.PerformanceCar;
 import neeedforspeed_exam_oopbasics.ShowCar;
 
@@ -21,7 +22,11 @@ public class OOPBasicsExam {
 	
 	
 	static void nfsTask() {
-		
+		CarManager currentManager = new CarManager();
+		String enterCommand;
+		do {
+			
+		}while();
 	}
 	
 	

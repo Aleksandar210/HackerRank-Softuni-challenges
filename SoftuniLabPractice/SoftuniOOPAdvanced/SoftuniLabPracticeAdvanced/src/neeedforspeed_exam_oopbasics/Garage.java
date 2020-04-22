@@ -22,8 +22,10 @@ public class Garage {
 		
 	}
 	
-	public void tune() {
-		
+	public void tune(Object...params) {
+		for(Map.Entry<Integer, Car>entry:this.parkedCars.entrySet()) {
+			entry.getValue().tune(params);
+		}
 	}
 
 }

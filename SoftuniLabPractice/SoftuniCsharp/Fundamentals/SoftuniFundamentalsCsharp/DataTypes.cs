@@ -124,5 +124,25 @@ namespace SoftuniFundamentalsCsharp
                 Console.WriteLine("Balanced");
             }
         }
+
+        public void IntegerOperations()
+        {
+            int[] numbers = new int[4];
+            int res = 0;
+            for(int i = 0; i < 4; i++)
+            {
+                
+                numbers[i] = int.Parse(Console.ReadLine());
+                if (i == 1)
+                {
+                    res = numbers[i - 1] + numbers[i];
+                }else if (i == 2)
+                {
+                    res /= numbers[i];
+                }
+            }
+            Console.WriteLine("Result is {0}", res *= numbers[numbers.Length - 1]);
+
+        }
     }
 }

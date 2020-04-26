@@ -62,6 +62,22 @@ namespace SoftuniFundamentalsCsharp
         }
 
 
+        public void SortNumbers()
+        {
+            int[] numbers = new int[3];
+            for(int i = 0; i < 3; i++)
+            {
+                numbers.[i] = int.Parse(Console.ReadLine());
+            }
+            Array.Sort<int>(numbers, new Comparison<int>((a, b)=>a.CompareTo(b)));
+
+           foreach (int number in numbers)
+            {
+                Console.WriteLine(number);
+            }
+        }
+
+
 
 
     }

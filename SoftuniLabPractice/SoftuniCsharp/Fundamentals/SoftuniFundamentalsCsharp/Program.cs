@@ -7,9 +7,12 @@ namespace SoftuniFundamentalsCsharp
     {
         static void Main(string[] args)
         {
-            BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
-            currentTasks.TimeCalculator();
-            currentTasks.DivisibleByThree();
+              BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
+             currentTasks.TimeCalculator();
+             currentTasks.DivisibleByThree();
+            currentTasks.SortNumbers();
+          
+            
 
            
         }

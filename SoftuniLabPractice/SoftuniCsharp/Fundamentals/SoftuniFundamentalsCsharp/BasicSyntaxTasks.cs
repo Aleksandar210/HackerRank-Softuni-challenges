@@ -118,5 +118,13 @@ namespace SoftuniFundamentalsCsharp
             Console.WriteLine(lastNumber);
         }
 
+        public void Games()
+        {
+            Dictionary<String, double> currentGames = new Dictionary<string, double>();
+            currentGames.Add("CS: OG", 15.99);
+            currentGames.Add("OutFall4", 39.99);
+            currentGames.Add();
+        }
+
     }
 }

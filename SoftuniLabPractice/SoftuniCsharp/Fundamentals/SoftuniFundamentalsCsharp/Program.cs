@@ -11,7 +11,7 @@ namespace SoftuniFundamentalsCsharp
             // currentTasks.TimeCalculator();
             //  currentTasks.DivisibleByThree();
             // currentTasks.SortNumbers();
-            currentTasks.LastNumber();
+            //currentTasks.LastNumber();
           
             
 

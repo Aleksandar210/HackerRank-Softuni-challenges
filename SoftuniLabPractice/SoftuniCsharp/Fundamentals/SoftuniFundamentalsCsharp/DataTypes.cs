@@ -254,5 +254,34 @@ namespace SoftuniFundamentalsCsharp
             }
             Console.WriteLine($"Power {power} Count {count}");
         }
+
+        public void SnowBall()
+        {
+            int bestSnow=0;
+            int bestTime=0;
+            int bestValue=0;
+            int bestQuality = 0 ;
+
+            int numberSnowBalls = int.Parse(Console.ReadLine());
+            while(numberSnowBalls-- > 0)
+            {
+                int snow = int.Parse(Console.ReadLine());
+                int time = int.Parse(Console.ReadLine());
+                int quality = int.Parse(Console.ReadLine());
+                int volume = snow / time;
+                for(int i = 0; i < quality; i++)
+                {
+                    volume *= volume;
+                }
+                if (volume > bestValue)
+                {
+                    bestValue = volume;
+                    bestSnow = snow;
+                    bestTime = time;
+                    bestQuality = quality;
+                }
+            }
+            Console.WriteLine($"{bestSnow} : {bestTime} = {bestValue} ({bestQuality})");
+        }
     }
 }

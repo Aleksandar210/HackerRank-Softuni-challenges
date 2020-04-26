@@ -196,5 +196,38 @@ namespace SoftuniFundamentalsCsharp
             Console.WriteLine(biggestModel);
 
         }
+
+        public void SpiceFlow()
+        {
+            int sourceYield = int.Parse(Console.ReadLine());
+            int days = 1;
+            int spiceCollected = 0;
+            while (true)
+            {
+                if (sourceYield < 100)
+                {
+                    if (sourceYield > 26)
+                    {
+                        spiceCollected += 26;
+                        sourceYield -= 26;
+                    }else
+                    {
+                        spiceCollected += sourceYield;
+                        sourceYield = 0;
+                    }
+                    break;
+                }
+
+                if (sourceYield > 26)
+                {
+                    spiceCollected += 26;
+                    sourceYield -= 26;
+                    days++;
+                    sourceYield -= 10;
+                }
+            }
+            Console.WriteLine(days + "\n" + spiceCollected);
+
+        }
     }
 }

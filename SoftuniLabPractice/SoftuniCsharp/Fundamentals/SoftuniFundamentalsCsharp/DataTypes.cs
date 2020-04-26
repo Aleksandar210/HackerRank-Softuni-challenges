@@ -95,5 +95,34 @@ namespace SoftuniFundamentalsCsharp
 
             Console.WriteLine(sb.ToString());
         }
+
+        public void BalancedBrackets()
+        {
+            int numberCommands = int.Parse(Console.ReadLine());
+            int numberLeft = 0;
+            int numberRight = 0;
+            string entered;
+            while(numberCommands-- > 0)
+            {
+                entered = Console.ReadLine();
+                if (entered.Equals("("))
+                {
+                    numberLeft++;
+                }
+                else if (entered.Equals(")"))
+                {
+                    numberRight++;
+                }
+            }
+
+            if (numberLeft != numberRight)
+            {
+                Console.WriteLine("Unbalanced");
+            }
+            else
+            {
+                Console.WriteLine("Balanced");
+            }
+        }
     }
 }

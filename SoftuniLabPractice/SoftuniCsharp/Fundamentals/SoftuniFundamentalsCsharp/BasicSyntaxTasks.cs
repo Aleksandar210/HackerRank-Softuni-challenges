@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 
 namespace SoftuniFundamentalsCsharp
@@ -123,8 +124,40 @@ namespace SoftuniFundamentalsCsharp
             Dictionary<String, double> currentGames = new Dictionary<string, double>();
             currentGames.Add("CS: OG", 15.99);
             currentGames.Add("OutFall4", 39.99);
-            currentGames.Add();
+            currentGames.Add("Honored 2",59.99);
+            currentGames.Add("Zplinter Zell", 19.99);
+            currentGames.Add("RoverWatch", 29.99);
+            currentGames.Add("RoverWatch Origins Edition", currentGames["RoverWatch"] + 10);
+
+            double currentBalance = double.Parse(Console.ReadLine());
+            string enterCommand = "";
+            do
+            {
+                enterCommand = Console.ReadLine();
+
+                if(enterCommand.Equals("Game time!", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+                else
+                {
+                    if (currentGames.ContainsKey(enterCommand))
+                    {
+                        if (currentBalance >= currentGames[enterCommand])
+                        {
+                            currentBalance -= currentGames[enterCommand];
+                        }
+                    }
+                }
+
+            }
+            while (!enterCommand.Equals("Game time!", StringComparison.OrdinalIgnoreCase));
         }
+
+        
+        
+
+        
 
     }
 }

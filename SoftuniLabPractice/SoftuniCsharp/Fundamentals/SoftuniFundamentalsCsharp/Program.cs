@@ -14,6 +14,8 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.LastNumber();
             // currentTasks.Games();
             //currentTasks.ReverseString();
+            //currentTasks.PhoneTexts();
+
           
             
 

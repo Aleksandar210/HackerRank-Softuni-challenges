@@ -133,6 +133,10 @@ namespace SoftuniFundamentalsCsharp
             string enterCommand = "";
             do
             {
+                if (currentBalance <= 0)
+                {
+                    return;
+                }
                 enterCommand = Console.ReadLine();
 
                 if(enterCommand.Equals("Game time!", StringComparison.OrdinalIgnoreCase))
@@ -146,6 +150,11 @@ namespace SoftuniFundamentalsCsharp
                         if (currentBalance >= currentGames[enterCommand])
                         {
                             currentBalance -= currentGames[enterCommand];
+                            Console.WriteLine("Bought {0}", enterCommand);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Too Expensive!");
                         }
                     }
                 }

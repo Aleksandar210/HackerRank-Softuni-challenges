@@ -187,16 +187,84 @@ namespace SoftuniFundamentalsCsharp
             for(int i = 0; i <= 26; i++)
             {
 
+                if(i>=2 && i <= 9)
+                {
+                    FillPhoneDigits(i, 0, currentPhoneDigits);
+                }
+
                 char c = (char)startLetterAsci;
                 currentLetters.Add(i,c);
                 startLetterAsci++;
             }
+
+
+            int numberCommands = int.Parse(Console.ReadLine());
+            int enteredCommand = 0;
+            StringBuilder sb = new StringBuilder();
+            while(numberCommands-- > 0)
+            {
+                enteredCommand = int.Parse(Console.ReadLine());
+                sb.Append(currentLetters[currentPhoneDigits[enteredCommand]]);
+            }
+            Console.WriteLine(sb.ToString());
         }
 
         
         private void FillPhoneDigits(int digit, int times, Dictionary<int, int> currentPhoneDigits)
+            
         {
+            int from=0;
+            int to=0;
+            times = 3;
+            switch (digit)
+            {
+                case 2:
+                    from = 0;
+                    to = 2;
+                    
+                    break;
+                case 3:
+                    from =  3;
+                    to =  5;
+                    break;
+                case 4:
+                    from = 6;
+                    to = 8;
+                    break;
+                case 5:
+                    from = 9;
+                    to = 12;
+                    break;
+                case 6:
+                    from = 13;
+                    to = 15;
+                    break;
+                case 7:
+                    from = 16;
+                    to = 19;
+                    times = 4;
+                    break;
+                case 8:
+                    from = 20;
+                    to = 22;
+                    break;
+                case 9:
+                    from = 23;
+                    to = 26;
+                    times = 4;
+                    break;
+            }
 
+            int currentDigit = 0;
+            for(int i = 1; i <= times; i++)
+            {
+                currentDigit += digit;
+               for(int k = from; k < to; i++)
+                {
+                    currentPhoneDigits.Add(currentDigit, k);
+                }
+            }
+            
 
         }
 

@@ -16,6 +16,8 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.ReverseString();
             //currentTasks.PhoneTexts();
 
+            DataTypes currentDataTypes = new DataTypes();
+            //currentDataTypes.LeftToRight();
           
             
 

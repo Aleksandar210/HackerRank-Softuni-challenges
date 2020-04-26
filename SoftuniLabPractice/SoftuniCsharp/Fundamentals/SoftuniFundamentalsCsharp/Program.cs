@@ -18,6 +18,7 @@ namespace SoftuniFundamentalsCsharp
 
             DataTypes currentDataTypes = new DataTypes();
             //currentDataTypes.LeftToRight();
+            // currentDataTypes.CompareFlaots();
           
             
 

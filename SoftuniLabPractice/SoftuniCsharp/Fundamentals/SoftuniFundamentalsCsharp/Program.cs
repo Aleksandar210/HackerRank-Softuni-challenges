@@ -1,0 +1,17 @@
+﻿using System;
+using System.Linq;
+
+namespace SoftuniFundamentalsCsharp
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
+            currentTasks.TimeCalculator();
+            currentTasks.DivisibleByThree();
+
+           
+        }
+    }
+}

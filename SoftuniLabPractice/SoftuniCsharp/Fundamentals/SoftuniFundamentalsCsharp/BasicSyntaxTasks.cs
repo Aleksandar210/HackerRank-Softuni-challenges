@@ -135,6 +135,7 @@ namespace SoftuniFundamentalsCsharp
             {
                 if (currentBalance <= 0)
                 {
+                    Console.WriteLine("Out of money!");
                     return;
                 }
                 enterCommand = Console.ReadLine();
@@ -157,14 +158,47 @@ namespace SoftuniFundamentalsCsharp
                             Console.WriteLine("Too Expensive!");
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("Not found");
+                    }
                 }
 
             }
             while (!enterCommand.Equals("Game time!", StringComparison.OrdinalIgnoreCase));
         }
 
+        public void ReverseString()
+        {
+            string word = Console.ReadLine();
+            char[] currentLetters = word.ToCharArray();
+            string[] reversed = currentLetters.Select(c => c.ToString()).ToArray<string>();
+            Array.Reverse(reversed);
+            word = string.Join("",reversed);
+            Console.WriteLine(word);
+
+        }
+
+        public void PhoneText()
+        {
+            Dictionary<int, char> currentLetters = new Dictionary<int, char>();
+            Dictionary<int, int> currentPhoneDigits = new Dictionary<int, int>();
+            int startLetterAsci = 97;
+            for(int i = 0; i <= 26; i++)
+            {
+
+                char c = (char)startLetterAsci;
+                currentLetters.Add(i,c);
+                startLetterAsci++;
+            }
+        }
+
         
-        
+        private void FillPhoneDigits(int digit, int times, Dictionary<int, int> currentPhoneDigits)
+        {
+
+
+        }
 
         
 

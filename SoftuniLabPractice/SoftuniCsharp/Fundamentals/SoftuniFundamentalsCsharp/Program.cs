@@ -12,6 +12,8 @@ namespace SoftuniFundamentalsCsharp
             //  currentTasks.DivisibleByThree();
             // currentTasks.SortNumbers();
             //currentTasks.LastNumber();
+            // currentTasks.Games();
+            //currentTasks.ReverseString();
           
             
 

@@ -67,7 +67,7 @@ namespace SoftuniFundamentalsCsharp
             int[] numbers = new int[3];
             for(int i = 0; i < 3; i++)
             {
-                numbers.[i] = int.Parse(Console.ReadLine());
+                numbers[i] = int.Parse(Console.ReadLine());
             }
             Array.Sort<int>(numbers, new Comparison<int>((a, b)=>a.CompareTo(b)));
 
@@ -78,7 +78,45 @@ namespace SoftuniFundamentalsCsharp
         }
 
 
-
+        public void LastNumber()
+        {
+            int enterNumber = int.Parse(Console.ReadLine());
+            string lastNumber="";
+            switch (enterNumber.ToString().ElementAt(enterNumber.ToString().Length - 1))
+            {
+                case '0':
+                    lastNumber = "zero";
+                    break;
+                case '1':
+                    lastNumber = "one";
+                    break;
+                case '2':
+                    lastNumber = "two";
+                    break;
+                case '3':
+                    lastNumber = "three";
+                    break;
+                case '4':
+                    lastNumber = "four";
+                    break;
+                case '5':
+                    lastNumber = "five";
+                    break;
+                case '6':
+                    lastNumber = "six";
+                    break;
+                case '7':
+                    lastNumber = "seven";
+                    break;
+                case '8':
+                    lastNumber = "eight";
+                    break;
+                case '9':
+                    lastNumber = "nine";
+                    break;
+            }
+            Console.WriteLine(lastNumber);
+        }
 
     }
 }

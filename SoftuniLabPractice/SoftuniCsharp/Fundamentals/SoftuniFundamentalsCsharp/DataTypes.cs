@@ -173,5 +173,28 @@ namespace SoftuniFundamentalsCsharp
             }
             Console.WriteLine(currentFull);
         }
+
+        public void BeerKeg()
+        {
+            string biggestModel ="";
+
+            double currentVolume = 0;
+           for(int i = 0; i < 3; i++)
+            {
+                string model = Console.ReadLine();
+                int height = int.Parse(Console.ReadLine());
+                double radius = double.Parse(Console.ReadLine());
+                double volume = Math.PI * (radius * radius) * height;
+                if (volume > currentVolume)
+                {
+                    currentVolume = volume;
+                    biggestModel = model;
+                }
+
+            }
+
+            Console.WriteLine(biggestModel);
+
+        }
     }
 }

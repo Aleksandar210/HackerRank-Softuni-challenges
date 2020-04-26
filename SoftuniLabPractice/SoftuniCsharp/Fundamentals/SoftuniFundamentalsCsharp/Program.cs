@@ -20,7 +20,7 @@ namespace SoftuniFundamentalsCsharp
             //currentDataTypes.LeftToRight();
             // currentDataTypes.CompareFlaots();
             //
-            currentDataTypes.SumDigits();
+            //currentDataTypes.SumDigits();
           
             
 

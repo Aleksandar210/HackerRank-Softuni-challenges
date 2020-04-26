@@ -229,5 +229,30 @@ namespace SoftuniFundamentalsCsharp
             Console.WriteLine(days + "\n" + spiceCollected);
 
         }
+
+        public void PokeMon()
+        {
+            int power = int.Parse(Console.ReadLine());
+            int distance = int.Parse(Console.ReadLine());
+            int factor = int.Parse(Console.ReadLine());
+            int procentOfPower = (power / 100) * 50;
+            int count = 0;
+            while (power> distance)
+            {
+                if (power == procentOfPower && power>factor)
+                {
+                    power /= factor;
+                    
+                }
+
+                if (power > distance)
+                {
+                    power -= distance;
+                    count++;
+
+                }
+            }
+            Console.WriteLine($"Power {power} Count {count}");
+        }
     }
 }

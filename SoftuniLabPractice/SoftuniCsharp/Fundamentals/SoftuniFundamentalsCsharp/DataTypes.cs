@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SoftuniFundamentalsCsharp
@@ -77,6 +78,22 @@ namespace SoftuniFundamentalsCsharp
                     Console.WriteLine($"{i}->{false}");
                 }
             }
+        }
+
+        public void Decrpyt()
+        {
+            int key = int.Parse(Console.ReadLine());
+            int numberLines = int.Parse(Console.ReadLine());
+            StringBuilder sb = new StringBuilder();
+            while(numberLines-- > 0)
+                
+            {
+                char c = Console.ReadLine().ElementAt(0);
+                c += (char)((int)c+key);
+                sb.Append(c);
+            }
+
+            Console.WriteLine(sb.ToString());
         }
     }
 }

@@ -17,9 +17,10 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.PhoneTexts();
 
             DataTypes currentDataTypes = new DataTypes();
-              //currentDataTypes.LeftToRight();
-             // currentDataTypes.CompareFlaots();
+            //currentDataTypes.LeftToRight();
+            // currentDataTypes.CompareFlaots();
             //
+            currentDataTypes.SumDigits();
           
             
 

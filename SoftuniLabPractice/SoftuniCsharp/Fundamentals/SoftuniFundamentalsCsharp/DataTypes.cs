@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 
 namespace SoftuniFundamentalsCsharp
@@ -143,6 +144,34 @@ namespace SoftuniFundamentalsCsharp
             }
             Console.WriteLine("Result is {0}", res *= numbers[numbers.Length - 1]);
 
+        }
+
+        public void SumDigits()
+        {
+            int number = int.Parse(Console.ReadLine());
+            int sum = number.ToString().ToCharArray().Select(c => int.Parse(c.ToString())).Aggregate((a, b) => a + b);
+            Console.WriteLine(sum);
+        }
+
+        public void WaterOverflow()
+        {
+            const int CAPACITY = 255;
+            int currentFull = 0;
+            int numberCommands = int.Parse(Console.ReadLine());
+            while(numberCommands-- > 0)
+            {
+                int command = int.Parse(Console.ReadLine());
+                if (command + currentFull > CAPACITY)
+                {
+                    Console.WriteLine("Insufcient ammount");
+
+                }
+                else
+                {
+                    currentFull += command;
+                }
+            }
+            Console.WriteLine(currentFull);
         }
     }
 }

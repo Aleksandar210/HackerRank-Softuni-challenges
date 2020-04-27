@@ -7,7 +7,7 @@ namespace SoftuniFundamentalsCsharp
     {
         static void Main(string[] args)
         {
-              BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
+              //BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
             // currentTasks.TimeCalculator();
             //  currentTasks.DivisibleByThree();
             // currentTasks.SortNumbers();
@@ -16,12 +16,20 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.ReverseString();
             //currentTasks.PhoneTexts();
 
-            DataTypes currentDataTypes = new DataTypes();
-            //currentDataTypes.LeftToRight();
+          //  DataTypes currentDataTypes = new DataTypes();
+            // currentDataTypes.LeftToRight();
             // currentDataTypes.CompareFlaots();
+            //  currentDataTypes.PokeMon();
+            //  currentDataTypes.SumDigits();
+            //   currentDataTypes.BeerKeg();
+            //    currentDataTypes.Decrpyt()
             //
-            //currentDataTypes.SumDigits();
-          
+            //
+            //
+
+            ArraysMethodsAndLists currentTasks = new ArraysMethodsAndLists();
+            //currentTasks.EncrpytSortPrint();
+
             
 
            

@@ -6,11 +6,8 @@ namespace SoftuniFundamentals
     {
         static void Main(string[] args)
         {
-            string[] names = System.Text.RegularExpressions.Regex.Split(Console.ReadLine(),"\\s+");
-            
-            
-                Console.WriteLine(names[0]);
-            
+            ArraysMethodsLists currentTasks = new ArraysMethodsLists();
+            currentTasks.Rotation();
 
         }
     }

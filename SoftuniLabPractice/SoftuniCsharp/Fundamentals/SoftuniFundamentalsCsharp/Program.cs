@@ -31,7 +31,7 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.EncrpytSortPrint();
             //currentTasks.Train();
             //currentTasks.CommonElements();
-            currentTasks.Rotation();
+            currentTasks.RotationTask();
 
             
 

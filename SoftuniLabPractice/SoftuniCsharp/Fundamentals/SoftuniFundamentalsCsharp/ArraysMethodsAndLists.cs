@@ -86,7 +86,11 @@ namespace SoftuniFundamentalsCsharp
 
         public void RotationTask()
         {
-
+            string[] elements = Console.ReadLine().Split("\\s+");
+            foreach(string item in elements)
+            {
+                Console.WriteLine(item);
+            }
         }
        
     }

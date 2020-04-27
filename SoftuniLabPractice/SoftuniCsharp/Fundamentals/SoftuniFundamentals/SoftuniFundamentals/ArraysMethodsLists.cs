@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -25,6 +26,45 @@ namespace SoftuniFundamentals
             {
                 Console.Write(item+" ");
             }
+
+        }
+
+        public void EqualSums()
+        {
+            int[] numbers = Regex.Split(Console.ReadLine(), "\\s+").Select(e => int.Parse(e)).ToArray();
+            int leftSum = 0;
+            int rightSum = 0;
+            for(int i = 0; i < numbers.Length-1; i++)
+            {
+                if (i == 0)
+                {
+                    for (int l = i + 1; l < numbers.Length; l++)
+                    {
+                        rightSum += numbers[l];
+                    }
+
+                }
+                else
+                {
+                    for(int l = i + 1; l < numbers.Length; l++)
+                    {
+                        rightSum += numbers[l];
+                    }
+
+                    for(int k = 0; k < i; k++)
+                    {
+                        leftSum += numbers[k];
+                    }
+                }
+
+
+                if (leftSum == rightSum)
+                {
+                    Console.Write(numbers[i]+" ");
+                }
+            }
+
+           
 
         }
     }

@@ -5,7 +5,7 @@ namespace SoftuniFundamentalsCsharp
 {
     class Program
     {
-        static void Main(string[] args)
+        static public void Main(String[] args)
         {
               //BasicSyntaxTasks currentTasks = new BasicSyntaxTasks();
             // currentTasks.TimeCalculator();
@@ -31,7 +31,7 @@ namespace SoftuniFundamentalsCsharp
             //currentTasks.EncrpytSortPrint();
             //currentTasks.Train();
             //currentTasks.CommonElements();
-            currentTasks.RotationTask();
+              currentTasks.RotationTask();
 
             
 

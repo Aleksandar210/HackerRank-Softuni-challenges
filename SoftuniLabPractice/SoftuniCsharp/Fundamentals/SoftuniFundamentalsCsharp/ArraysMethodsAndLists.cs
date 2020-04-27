@@ -83,6 +83,8 @@ namespace SoftuniFundamentalsCsharp
             }
         }
 
+        
+
 
         public void RotationTask()
         {
@@ -91,6 +93,11 @@ namespace SoftuniFundamentalsCsharp
             {
                 Console.WriteLine(item);
             }
+        }
+
+        public void SomeTask()
+        {
+            Console.WriteLine("Hello World");
         }
        
     }

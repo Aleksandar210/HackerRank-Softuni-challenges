@@ -53,5 +53,23 @@ namespace SoftuniFundamentalsCsharp
         }
 
 
+        public void Train()
+        {
+            int numberWagons = int.Parse(Console.ReadLine());
+            int[] train = new int[numberWagons];
+            int counter = 0;
+            while(numberWagons-- > 0)
+            {
+                int numberPeople = int.Parse(Console.ReadLine());
+                train[counter] = numberPeople;
+                counter++;
+            }
+
+            List<int> temp = train.ToList();
+           int result =  temp.Aggregate((a, b) => a + b);
+            Console.WriteLine(result);
+                
+        }
+
     }
 }

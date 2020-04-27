@@ -29,6 +29,10 @@ namespace SoftuniFundamentalsCsharp
 
             ArraysMethodsAndLists currentTasks = new ArraysMethodsAndLists();
             //currentTasks.EncrpytSortPrint();
+            int[] arr = new int[2];
+            arr[0] = 50;
+            arr[1] = 100;
+            
 
             
 

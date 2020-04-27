@@ -77,7 +77,17 @@ namespace SoftuniFundamentalsCsharp
             List<string> elements =  Console.ReadLine().Split(" ").ToList();
             List<string> elements1 = Console.ReadLine().Split(" ").ToList();
            var commonElements = elements.Intersect(elements1);
-            Console.WriteLine(commonElements);
+            foreach(string item in commonElements)
+            {
+                Console.WriteLine(item);
+            }
         }
+
+
+        public void RotationTask()
+        {
+
+        }
+       
     }
 }

@@ -1,6 +1,7 @@
 package neeedforspeed_exam_oopbasics;
 
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,7 +10,7 @@ public class Garage {
 	Map<Integer,Car> parkedCars;
 	
 	public Garage() {
-		parkedCars = new LinkedHashMap<Integer,Car>();
+		parkedCars = new HashMap<Integer,Car>();
 	}
 	
 	public void parkCar(Car current, int id) {

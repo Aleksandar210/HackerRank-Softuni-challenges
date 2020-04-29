@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +67,48 @@ namespace SoftuniFundamentals
 
            
 
+        }
+
+        public void KaminoFactory()
+        {
+            List<string> sequences = new List<string>();
+            List<string> newSortedList;
+            string enterSequence;
+            do
+            {
+                enterSequence = Console.ReadLine();
+                if(enterSequence.Equals("Clone Them!", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+                else
+                {
+                    sequences.Add(string.Join("",Regex.Split(enterSequence, "\\s+")));
+                    
+                }
+
+
+            }
+            while (!enterSequence.Equals("Clone Them!", StringComparison.OrdinalIgnoreCase));
+
+            newSortedList = sequences.OrderByDescending(c => c).ToList();
+            int bestIndex = GetDnaPosition(sequences, newSortedList.First());
+            
+            Console.WriteLine("Best DNA is {0} -> {1}",bestIndex,newSortedList[bestIndex-1]);
+        }
+
+        private int GetDnaPosition(List<string> sequences, string bestSequence)
+        {
+            int bestIndex = 0;
+            for(int i = 0; i < sequences.Count; i++)
+            {
+                if (sequences[i].Equals(bestSequence))
+                {
+                    bestIndex = i + 1;
+                }
+            }
+
+            return bestIndex;
         }
     }
 }

@@ -7,7 +7,9 @@ namespace SoftuniFundamentals
         static void Main(string[] args)
         {
             ArraysMethodsLists currentTasks = new ArraysMethodsLists();
-            currentTasks.Rotation();
+            //currentTasks.Rotation();
+            //currentTasks.EqualSums();
+            currentTasks.KaminoFactory();
 
         }
     }

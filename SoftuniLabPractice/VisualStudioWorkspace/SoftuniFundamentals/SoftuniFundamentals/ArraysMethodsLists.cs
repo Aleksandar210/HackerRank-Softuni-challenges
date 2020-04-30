@@ -205,6 +205,36 @@ namespace SoftuniFundamentals
             return sum;
         }
 
+        public void CarRace()
+        {
+            int[] numbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            int leftTime = 0;
+            int rightTime = 0;
+            for(int i = 0, k=numbers[numbers.Length-1]; i < numbers.Length / 2; i++,k--)
+            {
+                if (numbers[i] == 0 )
+                {
+                    leftTime -= leftTime / 20;
+                }
+                if (numbers[k] == 0)
+                {
+                    rightTime -= rightTime / 20;
+                }
+
+                leftTime += numbers[i];
+                rightTime += numbers[k];
+
+            }
+
+            if (leftTime > rightTime)
+            {
+                Console.WriteLine($"Winner is Right Car with {rightTime} time");
+            }
+            else
+            {
+                Console.WriteLine($"Winner is Left Car with {leftTime} time");
+            }
+        }
 
     }
 }

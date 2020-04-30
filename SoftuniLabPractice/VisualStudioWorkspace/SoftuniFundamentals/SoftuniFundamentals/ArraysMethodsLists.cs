@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace SoftuniFundamentals
@@ -179,5 +180,31 @@ namespace SoftuniFundamentals
                 }
             }
         }
+
+
+        public void Messaging()
+        {
+            string enterNumbers = Console.ReadLine();
+            string[] indexes = enterNumbers.Split().ToArray(); 
+            string message = Console.ReadLine();
+
+            StringBuilder sb = new StringBuilder();
+
+            for(int i = 0; i < indexes.Length; i++)
+            {
+                sb.Append(message.ElementAt(GetSumDigits(indexes[i])));
+            }
+
+            Console.WriteLine(sb.ToString());
+
+        }
+
+        private int GetSumDigits(string digits)
+        {
+            int sum = digits.ToCharArray().Select(a=>int.Parse(a.ToString())).Aggregate((a,b)=>a+b);
+            return sum;
+        }
+
+
     }
 }

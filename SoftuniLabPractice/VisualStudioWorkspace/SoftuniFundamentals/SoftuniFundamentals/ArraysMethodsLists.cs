@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -234,6 +235,29 @@ namespace SoftuniFundamentals
             {
                 Console.WriteLine($"Winner is Left Car with {leftTime} time");
             }
+        }
+
+        public void SecretMessage()
+        {
+            List<string> currentMessage = new List<string>(Console.ReadLine().ToCharArray()
+                .Select(e => e.ToString()).ToArray().ToList());
+            // List<int> numbers = new List<int>(currentMessage.Where(e=> Regex.IsMatch(e, "[0-9]"))
+            //   .Select(e=> {
+            //      currentMessage.Remove(e);
+            //      return int.Parse(e);
+            //   }).ToList());
+
+            int[] numbers = (from t in currentMessage
+                              where char.IsDigit(char.Parse(t))
+                              select (int.Parse(t))).ToArray();
+
+
+            List<string> noWords = (from t in currentMessage
+                                    where !char.IsDigit(char.Parse(t))
+                                    select t).ToList();
+
+            noWords.ForEach(Console.Write);
+            
         }
 
     }

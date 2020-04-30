@@ -256,7 +256,19 @@ namespace SoftuniFundamentals
                                     where !char.IsDigit(char.Parse(t))
                                     select t).ToList();
 
-            noWords.ForEach(Console.Write);
+            List<int> skip = new List<int>();
+            List<int> take = new List<int>();
+           for(int i = 0; i < numbers.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    take.Add(numbers[i]);
+                }
+                else
+                {
+                    skip.Add(numbers[i]);
+                }
+            }
             
         }
 

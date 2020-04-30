@@ -258,6 +258,7 @@ namespace SoftuniFundamentals
 
             List<int> skip = new List<int>();
             List<int> take = new List<int>();
+            StringBuilder message = new StringBuilder();
            for(int i = 0; i < numbers.Length; i++)
             {
                 if (i % 2 == 0)
@@ -269,7 +270,36 @@ namespace SoftuniFundamentals
                     skip.Add(numbers[i]);
                 }
             }
-            
+
+            if (skip.Count > take.Count)
+            {
+                for (int i= 0; i < skip.Count; i++){
+                    if (i < take.Count)
+                    {
+                        message.Append(noWords.GetRange(0, take[i]));
+                        noWords.RemoveRange(0, take[i]);
+                        noWords.RemoveRange(0, skip[i]);
+                    }
+                }
+            }
+            else
+            {
+                for(int i = 0; i < take.Count; i++)
+                {
+                    if (i < skip.Count)
+                    {
+                        message.Append(noWords.GetRange(0, take[i]));
+                        noWords.RemoveRange(0, take[i]);
+                        noWords.RemoveRange(0, skip[i]);
+                    }
+                    else
+                    {
+                        message.Append(noWords.GetRange(0, take[i]));
+                        noWords.RemoveRange(0, take[i]);
+                    }
+                }
+            }
+            Console.WriteLine(message.ToString());
         }
 
     }

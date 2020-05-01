@@ -357,7 +357,8 @@ namespace SoftuniFundamentals
                 
                 int power = int.Parse(Console.ReadLine());
                 currentDrumSet.Select(e => e -= power);
-                
+                savings = ReplaceDrum(currentDrumSet, currentDrumSetOriginal, savings);
+                command = Console.ReadLine();
 
             }
 
@@ -370,14 +371,19 @@ namespace SoftuniFundamentals
                 {
                     if (currentSavings >= currentListOriginal[i] * 3)
                     {
-
+                        currentSavings -= currentListOriginal[i] * 3;
+                        currentList[i] = currentListOriginal[i];
+                        
                     }
                     else
                     {
-
+                        currentList.RemoveAt(i);
+                        currentListOriginal.RemoveAt(i);
                     }
                 }
             }
+
+            return currentSavings;
         }
 
         private int[] GetLastTwoElemsOfList(List<int> current)

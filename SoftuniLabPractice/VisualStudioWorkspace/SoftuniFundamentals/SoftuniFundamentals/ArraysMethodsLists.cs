@@ -341,6 +341,45 @@ namespace SoftuniFundamentals
 
 
         }
+
+
+        public void DrumSet()
+        {
+            double savings = double.Parse(Console.ReadLine());
+            List<int> currentDrumSetOriginal = Console.ReadLine().Split().Select(e => int.Parse(e)).ToList();
+            List<int> currentDrumSet = new List<int>(currentDrumSetOriginal.GetRange(0, currentDrumSetOriginal.Count - 1));
+
+            string command = Console.ReadLine();
+            currentDrumSet.Sort();
+           
+            while (!command.Equals("Hit them again!", StringComparison.OrdinalIgnoreCase))
+            {
+                
+                int power = int.Parse(Console.ReadLine());
+                currentDrumSet.Select(e => e -= power);
+                
+
+            }
+
+        }
+        private double ReplaceDrum(List<int> currentList,List<int> currentListOriginal,double currentSavings)
+        {
+            for(int i = 0; i < currentList.Count; i++)
+            {
+                if (currentList[i] <= 0)
+                {
+                    if (currentSavings >= currentListOriginal[i] * 3)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+        }
+
         private int[] GetLastTwoElemsOfList(List<int> current)
         {
             int[] a = new int[2];

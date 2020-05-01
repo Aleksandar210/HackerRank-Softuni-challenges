@@ -331,5 +331,18 @@ namespace SoftuniFundamentals
                     currentSongs[songData[0]].Add(currentSong);
                 }
         }
+
+           string searchBy =   Console.ReadLine();
+
+            if (currentSongs[searchBy] == null)
+            {
+
+            }
+            else
+            {
+                currentSongs[searchBy].ForEach(Console.WriteLine);
+            }
+                
+
     }
 }

@@ -7,9 +7,9 @@ namespace SoftuniFundamentals
     class Song
     {
         private string type {  get; set; }
-        private string Name
+        public string Name
         {
-            public get => this.Name;
+             get;
             private set;
         }
         private string duration {  get; set; }

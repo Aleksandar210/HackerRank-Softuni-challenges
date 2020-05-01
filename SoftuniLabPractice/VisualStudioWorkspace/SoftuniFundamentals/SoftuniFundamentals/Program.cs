@@ -12,8 +12,9 @@ namespace SoftuniFundamentals
             //currentTasks.EqualSums();
             //currentTasks.KaminoFactory();
             //currentTasks.LadyBug();
-           // currentTasks.SongTask();
+            // currentTasks.SongTask();
             //currentTasks.SecretMessage();
+            //currentTasks.MixingRules();
            
 
         }

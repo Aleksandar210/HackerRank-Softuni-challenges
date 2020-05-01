@@ -309,7 +309,45 @@ namespace SoftuniFundamentals
 
         public void MixingRules()
         {
+            List<int> firstList = Console.ReadLine().Split().Select(e=>int.Parse(e)).ToList();
+            List<int> secondList = Console.ReadLine().Split().Select(e=>int.Parse(e)).ToList();
+            int length = Math.Min(firstList.Count, secondList.Count);
+            List<int> currentList = new List<int>();
+
+            int from;
+            int to;
+            if (firstList.Count < secondList.Count)
+            {
+                from = GetLastTwoElemsOfList(secondList)[1];
+                to = GetLastTwoElemsOfList(secondList)[0];
+
+            }
+            else
+            {
+                from = GetLastTwoElemsOfList(firstList)[1];
+                to = GetLastTwoElemsOfList(firstList)[0];
+            }
             
+            for(int i = 0, k=secondList.Count-1; i < length; i++,k--)
+            {
+                currentList.Add(firstList[i]);
+                currentList.Add(secondList[k]);
+
+            }
+
+            currentList.Sort();
+            currentList.Where(e => e >= from || e <= to).ToList().ForEach(Console.WriteLine);
+
+
+
+        }
+        private int[] GetLastTwoElemsOfList(List<int> current)
+        {
+            int[] a = new int[2];
+            a[0] = current.Count - 1;
+            a[1] = current.Count - 2;
+            return a;
+
         }
 
         public void SongTask()

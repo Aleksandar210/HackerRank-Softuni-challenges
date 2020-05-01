@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -10,6 +11,9 @@ namespace SoftuniFundamentals
 {
     class ArraysMethodsLists
     {
+
+        
+
         public void Rotation()
         {
             string[] elements = Regex.Split(Console.ReadLine(), "\\s+");
@@ -302,5 +306,30 @@ namespace SoftuniFundamentals
             Console.WriteLine(message.ToString());
         }
 
+
+        public void MixingRules()
+        {
+            
+        }
+
+        public void SongTask()
+        {
+            Dictionary<string, List<Song>> currentSongs = new Dictionary<string, List<Song>>();
+            int numberSongs = int.Parse(Console.ReadLine());
+            while(numberSongs-- > 0)
+            {
+                string enterSong = Console.ReadLine();
+                string[] songData = enterSong.Split('-');
+                Song currentSong = new Song(songData[0], songData[1], songData[2]);
+                if (currentSongs[songData[0]] == null)
+                {
+                    currentSongs[songData[0]] = new List<Song>();
+                        currentSongs[songData[0]].Add(currentSong);
+                }
+                else
+                {
+                    currentSongs[songData[0]].Add(currentSong);
+                }
+        }
     }
 }

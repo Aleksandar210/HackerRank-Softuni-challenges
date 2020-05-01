@@ -343,6 +343,9 @@ namespace SoftuniFundamentals
         }
 
 
+
+
+
         public void DrumSet()
         {
             double savings = double.Parse(Console.ReadLine());
@@ -361,6 +364,8 @@ namespace SoftuniFundamentals
                 command = Console.ReadLine();
 
             }
+
+            Console.WriteLine($"Gabsy has {savings} with {string.Join(" ",currentDrumSet)}" );
 
         }
         private double ReplaceDrum(List<int> currentList,List<int> currentListOriginal,double currentSavings)
@@ -385,6 +390,10 @@ namespace SoftuniFundamentals
 
             return currentSavings;
         }
+
+
+
+
 
         private int[] GetLastTwoElemsOfList(List<int> current)
         {

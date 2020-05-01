@@ -316,7 +316,7 @@ namespace SoftuniFundamentals
         {
             Dictionary<string, List<Song>> currentSongs = new Dictionary<string, List<Song>>();
             int numberSongs = int.Parse(Console.ReadLine());
-            while(numberSongs-- > 0)
+            while (numberSongs-- > 0)
             {
                 string enterSong = Console.ReadLine();
                 string[] songData = enterSong.Split('-');
@@ -324,15 +324,15 @@ namespace SoftuniFundamentals
                 if (currentSongs[songData[0]] == null)
                 {
                     currentSongs[songData[0]] = new List<Song>();
-                        currentSongs[songData[0]].Add(currentSong);
+                    currentSongs[songData[0]].Add(currentSong);
                 }
                 else
                 {
                     currentSongs[songData[0]].Add(currentSong);
                 }
-        }
+            }
 
-           string searchBy =   Console.ReadLine();
+            string searchBy = Console.ReadLine();
 
             if (currentSongs[searchBy] == null)
             {
@@ -340,9 +340,9 @@ namespace SoftuniFundamentals
             }
             else
             {
-                currentSongs[searchBy].ForEach(Console.WriteLine);
+                currentSongs[searchBy].ForEach(e => Console.WriteLine(e.Name));
             }
-                
 
+        }
     }
 }

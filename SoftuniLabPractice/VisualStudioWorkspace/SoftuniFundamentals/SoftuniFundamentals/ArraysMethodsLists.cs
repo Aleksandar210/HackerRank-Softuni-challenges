@@ -553,7 +553,7 @@ namespace SoftuniFundamentals
             }
 
             int[] printThis = GetClosest(currentCoordinates);
-            Console.ReadLine(printThis[0] + "," + printThis[1]);
+            Console.WriteLine(printThis[0] + "," + printThis[1]);
         }
 
         private int[] GetClosest(int[,] coordinates)
@@ -577,6 +577,52 @@ namespace SoftuniFundamentals
             closestCoordinates[1] = allY.Min();
 
             return closestCoordinates;
+        }
+
+        public void Tribonachi()
+        {
+            int start = 1;
+            int enter = int.Parse(Console.ReadLine());
+            StringBuilder sb = new StringBuilder();
+            for(int i  = 1; i < enter - 1; i++)
+            {
+                sb.Append(i + (i - 1));
+            }
+
+            sb.Insert(0, start);
+
+            Console.WriteLine(sb.ToString());
+        }
+
+        public void Multiplication()
+        {
+            int numberNegative = 0;
+            int numberZeroes = 0;
+            for(int i = 0; i < 3; i++)
+            {
+                int enter = int.Parse(Console.ReadLine());
+                if (enter < 0)
+                {
+                    numberNegative++;
+                }
+                else if(enter==0)
+                {
+                    numberZeroes++;
+                }
+            }
+
+            if(numberZeroes>0)
+            {
+                Console.WriteLine("Zero");
+            }else if(numberNegative < 2 || numberNegative == 3)
+            {
+                Console.WriteLine("Negative");
+            }
+            else
+            {
+                Console.WriteLine("Positive");
+            }
+            
         }
 
     }

@@ -465,6 +465,15 @@ namespace SoftuniFundamentals
                     currentStack.Push(enterWord);
                 }
             }
+
+            foreach(var item in currentWordSynonims)
+            {
+                Console.WriteLine(item.Key + " -> ");
+                foreach(var currentSynonims in item.Value)
+                {
+                    Console.Write(currentSynonims + " ");
+                }
+            }
         }
     }
 }

@@ -640,5 +640,19 @@ namespace SoftuniFundamentals
             Console.WriteLine(matches.Count);
         }
 
+        public void CharactesInRange(char a, char b)
+        {
+            StringBuilder sb = new StringBuilder();
+            int from = (int)a;
+            int to = (int)b;
+            for(int i = from; i <=to; i++)
+            {
+                sb.Append((char)i);
+            }
+
+            Console.WriteLine(sb.ToString());
+
+        }
+
     }
 }

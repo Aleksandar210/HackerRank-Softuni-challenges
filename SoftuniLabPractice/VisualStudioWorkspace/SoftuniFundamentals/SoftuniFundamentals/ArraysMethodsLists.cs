@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
@@ -441,6 +442,7 @@ namespace SoftuniFundamentals
         {
             SortedDictionary<string, List<string>> currentWordSynonims = new SortedDictionary<string, List<string>>();
 
+            
             int numberWords = int.Parse(Console.ReadLine());
             numberWords *= 2;
             string enterWord;
@@ -458,12 +460,15 @@ namespace SoftuniFundamentals
                     else
                     {
                         currentWordSynonims.Add(currentStack.Peek(), new List<string>());
+                        currentWordSynonims[currentStack.Peek()].Add(enterWord);
+
                     }
                 }
                 else
                 {
                     currentStack.Push(enterWord);
                 }
+                counter++;
             }
 
             foreach(var item in currentWordSynonims)
@@ -472,6 +477,27 @@ namespace SoftuniFundamentals
                 foreach(var currentSynonims in item.Value)
                 {
                     Console.Write(currentSynonims + " ");
+                }
+            }
+        }
+        public void TopThree()
+        {
+            List<int> currentNumbers = Console.ReadLine().Split().Select(int.Parse)
+                .OrderByDescending(e => e).ToList();
+
+            if (currentNumbers.Count < 3)
+            {
+                foreach(var item in currentNumbers)
+                {
+                    Console.Write(item + " ");
+                }
+                
+            }
+            else
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    Console.Write(currentNumbers[i]+" ");
                 }
             }
         }

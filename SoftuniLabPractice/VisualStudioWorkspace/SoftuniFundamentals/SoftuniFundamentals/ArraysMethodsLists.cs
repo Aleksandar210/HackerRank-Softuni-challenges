@@ -501,5 +501,43 @@ namespace SoftuniFundamentals
                 }
             }
         }
+
+
+        public void DataTypes()
+        {
+            string enter = Console.ReadLine();
+            string enterData = Console.ReadLine();
+            if (enter.Equals("string", StringComparison.OrdinalIgnoreCase))
+            {
+                DataTypeMethod(enterData);
+            }
+            else if(enter.Equals("int", StringComparison.OrdinalIgnoreCase))
+            {
+                DataTypeMethod(int.Parse(enterData));
+            }
+            else
+            {
+                DataTypeMethod(double.Parse(enterData));
+            }
+        }
+
+        private void DataTypeMethod( int type)
+        {
+            Console.WriteLine(type * 2);
+
+        }
+
+        private void DataTypeMethod(double type)
+        {
+            Console.WriteLine("{0:2f}",type*1.5);
+
+        }
+
+        private void DataTypeMethod(string type)
+        {
+            Console.WriteLine("$" + type + "$");
+
+        }
+
     }
 }

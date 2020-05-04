@@ -19,6 +19,7 @@ namespace SoftuniFundamentals
             //currentTasks.DrumSet();
             // currentTasks.WordSynonims();
             // currentTasks.TopThree();
+            //currentTasks.DataTypes();
 
             
 

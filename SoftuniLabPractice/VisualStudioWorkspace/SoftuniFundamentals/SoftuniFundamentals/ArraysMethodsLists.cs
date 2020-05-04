@@ -654,5 +654,26 @@ namespace SoftuniFundamentals
 
         }
 
+        public void PasswordValidator()
+        {
+            Regex currentRegex = new Regex("^\\d{2,}\\w+$");
+            string enterPassword = Console.ReadLine();
+            if (enterPassword.Length>=6 || enterPassword.Length<11)
+            {
+                if (currentRegex.IsMatch(enterPassword))
+                {
+                    Console.WriteLine("Password Is Valid");
+                }
+                else
+                {
+                    Console.WriteLine("Password Is Invalid");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Password Is Invalid");
+            }
+        }
+
     }
 }

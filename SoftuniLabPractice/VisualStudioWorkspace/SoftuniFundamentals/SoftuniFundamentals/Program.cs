@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SoftuniFundamentals
 {
@@ -16,8 +17,10 @@ namespace SoftuniFundamentals
             //currentTasks.SecretMessage();
             //currentTasks.MixingRules();
             //currentTasks.DrumSet();
+           // currentTasks.WordSynonims();
+
             
-            
+
            
 
         }

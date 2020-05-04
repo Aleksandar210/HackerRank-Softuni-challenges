@@ -675,5 +675,26 @@ namespace SoftuniFundamentals
             }
         }
 
+        public void AddAndSubstract()
+        {
+            int[] currentNumbers = new int[3];
+            for(int i = 0; i < 3; i++)
+            {
+                currentNumbers[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine(Substract(Sum(currentNumbers), currentNumbers[2]));
+        }
+
+        private int Sum(int[] numbers)
+        {
+            return numbers[0] + numbers[1];
+        }
+
+        private int Substract(int num, int num1)
+        {
+            return num - num1;
+        }
+
     }
 }

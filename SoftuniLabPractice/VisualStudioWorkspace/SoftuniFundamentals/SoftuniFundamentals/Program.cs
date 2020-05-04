@@ -21,6 +21,11 @@ namespace SoftuniFundamentals
             // currentTasks.TopThree();
             //currentTasks.DataTypes();
             //currentTasks.CenterPoint();
+            //currentTasks.Tribonachi();
+            //currentTasks.AddAndSubstract();
+            //currentTasks.CharactesInRange('a','z');
+            //currentTasks.SmallestOfThree(Console.ReadLine().Split().Select(int.Parse).ToArray());
+
 
             
 

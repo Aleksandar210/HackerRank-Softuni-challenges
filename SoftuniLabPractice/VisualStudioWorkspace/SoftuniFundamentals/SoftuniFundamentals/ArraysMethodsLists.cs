@@ -625,5 +625,20 @@ namespace SoftuniFundamentals
             
         }
 
+        public int SmallestOfThree(int[] numbers)
+        {
+            
+            return numbers.Min();
+        }
+
+        public void VolewCount()
+        {
+            string pattern = "[a|A|E|e|i|I|o|O|u|U]";
+            string enter = Console.ReadLine();
+            MatchCollection matches = Regex.Matches(enter, pattern);
+
+            Console.WriteLine(matches.Count);
+        }
+
     }
 }

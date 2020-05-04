@@ -20,6 +20,7 @@ namespace SoftuniFundamentals
             // currentTasks.WordSynonims();
             // currentTasks.TopThree();
             //currentTasks.DataTypes();
+            //currentTasks.CenterPoint();
 
             
 

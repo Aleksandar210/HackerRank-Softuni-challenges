@@ -539,5 +539,45 @@ namespace SoftuniFundamentals
 
         }
 
+        public void CenterPoint()
+        {
+            int[,] currentCoordinates = new int[2, 2];
+            int enterX;
+            int enterY;
+            for(int i = 0; i < 2; i++)
+            {
+                enterX = int.Parse(Console.ReadLine());
+                enterY = int.Parse(Console.ReadLine());
+                currentCoordinates[i, 0] = enterX;
+                    currentCoordinates[i, 1] = enterY;
+            }
+
+            int[] printThis = GetClosest(currentCoordinates);
+            Console.ReadLine(printThis[0] + "," + printThis[1]);
+        }
+
+        private int[] GetClosest(int[,] coordinates)
+        {
+            
+            int[] allX = new int[coordinates.GetLength(0)];
+           for(int i = 0; i < coordinates.GetLength(0); i++)
+            {
+                allX[i] = coordinates[i, 0];
+            }
+
+            
+            int[] allY = new int[coordinates.GetLength(1)];
+            for(int i = 0; i < coordinates.GetLength(0); i++)
+            {
+                allY[i] = coordinates[i, 1];
+            }
+
+            int[] closestCoordinates = new int[2];
+            closestCoordinates[0] = allX.Min();
+            closestCoordinates[1] = allY.Min();
+
+            return closestCoordinates;
+        }
+
     }
 }

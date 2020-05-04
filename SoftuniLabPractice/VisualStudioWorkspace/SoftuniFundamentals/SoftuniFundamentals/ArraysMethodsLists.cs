@@ -436,5 +436,35 @@ namespace SoftuniFundamentals
             }
 
         }
+
+        public void WordSynonims()
+        {
+            SortedDictionary<string, List<string>> currentWordSynonims = new SortedDictionary<string, List<string>>();
+
+            int numberWords = int.Parse(Console.ReadLine());
+            numberWords *= 2;
+            string enterWord;
+            int counter = 1;
+            Stack<string> currentStack = new Stack<string>();
+            while(numberWords-- > 0)
+            {
+                enterWord = Console.ReadLine();
+                if (counter % 2 == 0)
+                {
+                    if (currentWordSynonims.ContainsKey(currentStack.Peek()))
+                    {
+                        currentWordSynonims[currentStack.Peek()].Add(enterWord);
+                    }
+                    else
+                    {
+                        currentWordSynonims.Add(currentStack.Peek(), new List<string>());
+                    }
+                }
+                else
+                {
+                    currentStack.Push(enterWord);
+                }
+            }
+        }
     }
 }

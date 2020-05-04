@@ -15,6 +15,9 @@ namespace SoftuniFundamentals
             // currentTasks.SongTask();
             //currentTasks.SecretMessage();
             //currentTasks.MixingRules();
+            //currentTasks.DrumSet();
+            
+            
            
 
         }

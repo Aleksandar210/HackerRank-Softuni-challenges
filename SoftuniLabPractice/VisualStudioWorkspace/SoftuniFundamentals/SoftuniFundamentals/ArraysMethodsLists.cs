@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
@@ -694,6 +695,25 @@ namespace SoftuniFundamentals
         private int Substract(int num, int num1)
         {
             return num - num1;
+        }
+
+        public void MiddleCharacters()
+        {
+            Console.WriteLine(GetMiddle(Console.ReadLine()));
+        }
+
+        private string GetMiddle(string word)
+        {
+            StringBuilder sb = new StringBuilder();
+            char[] letters = word.ToCharArray();
+            if (word.Length % 2 == 0)
+            {
+                sb.Append(letters[word.Length / 2]).Append(letters[(word.Length / 2) + 1]);
+                return sb.ToString();
+            }
+
+            sb.Append(letters[word.Length / 2]);
+            return sb.ToString();
         }
 
     }

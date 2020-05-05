@@ -971,7 +971,31 @@ namespace SoftuniFundamentals
 
 
             }
+           
         }
+        public void CountChars()
+        {
+            string[] enterText = Console.ReadLine().Split().ToArray() ;
+            char[] letters = String.Join("", enterText).ToCharArray();
 
+            Dictionary<char, int> currentLetterCount = new Dictionary<char, int>();
+
+            foreach(var item in letters)
+            {
+                if (currentLetterCount.ContainsKey(item))
+                {
+                    currentLetterCount[item] += 1;
+                }
+                else
+                {
+                    currentLetterCount.Add(item, 1);
+                }
+            }
+
+            foreach(KeyValuePair<char,int> items in currentLetterCount)
+            {
+                Console.WriteLine(items.Key + " ->" + items.Value);
+            }
+        }
     }
 }

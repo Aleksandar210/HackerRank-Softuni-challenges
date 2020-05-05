@@ -28,9 +28,11 @@ namespace SoftuniFundamentals
             //currentTasks.NxN(int.Parse(Console.ReadLine()));
             //currentTasks.Palindrom();
             //currentTasks.TopNumber();
+           // currentTasks.AddAndSubstract();
+           // currentTasks.ArrayManipulating();
 
-            string[] current = Console.ReadLine().Split('3').ToArray();
-            Console.WriteLine(current[0]);
+          
+            
 
 
 

@@ -1183,6 +1183,47 @@ namespace SoftuniFundamentals
         }
 
 
+        public void StudentGrades()
+        {
+            int numberPairs = int.Parse(Console.ReadLine());
+            Dictionary<string, List<double>> currentStudents = new Dictionary<string,List<double>>();
+            while(numberPairs-- > 0)
+            {
+                string enterName = Console.ReadLine();
+                double grade = double.Parse(Console.ReadLine());
+
+                if (currentStudents.ContainsKey(enterName))
+                {
+                    currentStudents[enterName].Add(grade);
+                }
+                else
+                {
+                    currentStudents.Add(enterName, new List<double>());
+                    currentStudents[enterName].Add(grade);
+                }
+
+            }
+
+            Dictionary<string, double> currentAverageGrades = new Dictionary<string, double>();
+
+            currentStudents = currentStudents.Where(e => e.Value.Aggregate((a, b) => a + b) / e.Value.Count >= 4.5)
+                .Select(e=>
+                {
+                    currentAverageGrades.Add(e.Key, e.Value.Aggregate((a, b) => a + b) / e.Value.Count);
+                    return e;
+                }
+                )
+                .ToDictionary(e=>e.Key,e=>e.Value);
+
+           currentAverageGrades =  currentAverageGrades.OrderByDescending(e => e.Value).ToDictionary(e => e.Key, e => e.Value);
+            foreach(var item in currentAverageGrades)
+            {
+                Console.WriteLine(item.Key + "-> " + item.Value);
+            }
+
+
+        }
+
     }
 
 

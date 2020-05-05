@@ -25,6 +25,8 @@ namespace SoftuniFundamentals
             //currentTasks.AddAndSubstract();
             //currentTasks.CharactesInRange('a','z');
             //currentTasks.SmallestOfThree(Console.ReadLine().Split().Select(int.Parse).ToArray());
+            //currentTasks.NxN(int.Parse(Console.ReadLine()));
+            currentTasks.Palindrom();
 
 
             

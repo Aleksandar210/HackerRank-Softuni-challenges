@@ -716,5 +716,56 @@ namespace SoftuniFundamentals
             return sb.ToString();
         }
 
+        public void NxN(int number)
+        {
+            for(int i =0;i < number; i++)
+            {
+                for(int j = 0; j < number; j++)
+                {
+                    Console.Write(number + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+
+        public void FactorialDivision()
+        {
+            int number = int.Parse(Console.ReadLine());
+            int secondNumber = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(GetFactorial(number) / GetFactorial(secondNumber));
+
+        }
+
+        private int GetFactorial(int number)
+        {
+            int[] current = Enumerable.Range(0, number).ToArray();
+            int result = current.Aggregate((a, b) => a + b);
+            return result;
+        }
+
+        public void Palindrom()
+        {
+            string enter;
+            char[] a;
+
+            do
+            {
+                enter = Console.ReadLine();
+                a = enter.ToCharArray();
+                if (String.Join("", a).Equals(String.Join("", a.Reverse()), StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine(true);
+                }
+                else
+                {
+                    Console.WriteLine(false);
+                }
+            }
+            while (!enter.Equals("End", StringComparison.OrdinalIgnoreCase));
+
+          
+        }
+
     }
 }

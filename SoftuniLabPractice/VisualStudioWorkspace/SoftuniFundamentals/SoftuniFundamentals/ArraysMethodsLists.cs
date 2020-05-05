@@ -1076,5 +1076,32 @@ namespace SoftuniFundamentals
                 Console.WriteLine(item.Key + "->"+item.Value);
             }
         }
+
+        public void Products()
+        {
+            string enter = Console.ReadLine();
+            string[] current;
+
+            Dictionary<string, double> currentProducts = new Dictionary<string, double>();
+            while (!enter.Equals("buy", StringComparison.OrdinalIgnoreCase))
+            {
+                current = enter.Split().ToArray();
+
+                if (currentProducts.ContainsKey(current[0]))
+                {
+                    currentProducts[current[0]] += (double.Parse(current[1]) * int.Parse(current[2]));
+                }
+                else
+                {
+                    currentProducts.Add(current[0], (double.Parse(current[1]) * int.Parse(current[2])));
+                }
+                enter = Console.ReadLine();
+            }
+
+            foreach(var item in currentProducts)
+            {
+                Console.WriteLine(item.Key + ":" + item.Value);
+            }
+        }
     }
 }

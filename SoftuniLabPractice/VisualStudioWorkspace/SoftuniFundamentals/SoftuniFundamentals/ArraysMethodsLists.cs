@@ -1151,6 +1151,37 @@ namespace SoftuniFundamentals
             }
         }
 
+        public void CoursesNames()
+        {
+            string enter = Console.ReadLine();
+            Dictionary<string, List<string>> currentCourses = new Dictionary<string, List<string>>();
+            char currentChars = ' ';
+            while (!enter.Equals("end", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] currentData = enter.Trim(currentChars).Split().ToArray();
+                if (currentCourses.ContainsKey(currentData[0]))
+                {
+                    currentCourses[currentData[0]].Add(currentData[1]);
+                }
+                else
+                {
+                    currentCourses.Add(currentData[0], new List<string>());
+                    currentCourses[currentData[1]].Add(currentData[1]);
+                }
+                enter = Console.ReadLine();
+            }
+
+            foreach(var items in currentCourses)
+            {
+                Console.WriteLine(items.Key + " " + items.Value.Count);
+                foreach(var people in items.Value)
+                {
+                    Console.WriteLine(people);
+                }
+            }
+                
+        }
+
 
     }
 

@@ -28,8 +28,13 @@ namespace SoftuniFundamentals
             //currentTasks.NxN(int.Parse(Console.ReadLine()));
             //currentTasks.Palindrom();
             //currentTasks.TopNumber();
-           // currentTasks.AddAndSubstract();
-           // currentTasks.ArrayManipulating();
+            // currentTasks.AddAndSubstract();
+            // currentTasks.ArrayManipulating();
+            //currentTasks.Resources();
+            //currentTasks.LegendaryFarming();
+            //currentTasks.Products();
+            //currentTasks.CarParking();
+            //currentTasks.CoursesNames();
 
           
             

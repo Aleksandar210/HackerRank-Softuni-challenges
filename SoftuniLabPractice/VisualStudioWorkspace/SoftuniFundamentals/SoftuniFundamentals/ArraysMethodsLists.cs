@@ -997,5 +997,83 @@ namespace SoftuniFundamentals
                 Console.WriteLine(items.Key + " ->" + items.Value);
             }
         }
+
+        public void Resources()
+        {
+            string enter = Console.ReadLine();
+            int counter = 1;
+            string lastEnteredResources="";
+            Dictionary<string, int> resources = new Dictionary<string, int>();
+            while (!enter.Equals("stop", StringComparison.OrdinalIgnoreCase))
+            {
+                if (counter % 2 != 0)
+                {
+                    lastEnteredResources = enter;
+                    if (!resources.ContainsKey(enter))
+                    {
+                        resources.Add(enter, 0);
+                    }
+                   
+                }
+                else
+                {
+                    resources[lastEnteredResources] += int.Parse(enter);
+                }
+                counter++;
+                enter = Console.ReadLine();
+            }
+
+            foreach(var item in resources)
+            {
+                Console.WriteLine(item.Key + "->" + item.Value);
+            }
+        }
+
+        public void LegendaryFarming()
+        {
+            string[] enterFarming = Console.ReadLine().Split().ToArray();
+
+
+            string material;
+            int quantity;
+
+            Dictionary<string, int> currentLoot = new Dictionary<string, int>();
+            Dictionary<string, string> items = new Dictionary<string, string>();
+            List<string> obtainedLoot = new List<string>();
+            items.Add("shards", "Shadowmourne");
+            items.Add("fragments", "Valanyr");
+            items.Add("motes", "Dragonwarth");
+
+
+            for(int i = 0; i < enterFarming.Length; i += 2)
+            {
+                quantity = int.Parse(enterFarming[i]);
+                material = enterFarming[i - 1];
+
+                if (currentLoot.ContainsKey(material))
+                {
+                    currentLoot[material] += quantity;
+                    if (currentLoot[material] >= 250)
+                    {
+                        obtainedLoot.Add(items[material]);
+                        currentLoot[material] -= 250;
+                    }
+                }
+                else
+                {
+                    currentLoot.Add(material, quantity);
+                }
+            }
+
+            foreach(var item in obtainedLoot)
+            {
+                Console.WriteLine("obtained " + item);
+            }
+
+            foreach(var item in currentLoot)
+            {
+                Console.WriteLine(item.Key + "->"+item.Value);
+            }
+        }
     }
 }

@@ -1070,6 +1070,7 @@ namespace SoftuniFundamentals
                 Console.WriteLine("obtained " + item);
             }
 
+            currentLoot.OrderByDescending(e => e.Value).ThenBy(e => e.Key);
             foreach(var item in currentLoot)
             {
                 Console.WriteLine(item.Key + "->"+item.Value);

@@ -14,25 +14,25 @@ namespace SoftuniFundamentals
     class ArraysMethodsLists
     {
 
-        
+
 
         public void Rotation()
         {
             string[] elements = Regex.Split(Console.ReadLine(), "\\s+");
             int numberRotations = int.Parse(Console.ReadLine());
-            while(numberRotations-- > 0)
+            while (numberRotations-- > 0)
             {
                 string firstElement = elements[0];
-                for(int i = 1; i < elements.Length; i++)
+                for (int i = 1; i < elements.Length; i++)
                 {
                     elements[i - 1] = elements[i];
                 }
                 elements[elements.Length - 1] = firstElement;
             }
 
-            foreach(string item in elements)
+            foreach (string item in elements)
             {
-                Console.Write(item+" ");
+                Console.Write(item + " ");
             }
 
         }
@@ -42,7 +42,7 @@ namespace SoftuniFundamentals
             int[] numbers = Regex.Split(Console.ReadLine(), "\\s+").Select(e => int.Parse(e)).ToArray();
             int leftSum = 0;
             int rightSum = 0;
-            for(int i = 0; i < numbers.Length-1; i++)
+            for (int i = 0; i < numbers.Length - 1; i++)
             {
                 if (i == 0)
                 {
@@ -54,12 +54,12 @@ namespace SoftuniFundamentals
                 }
                 else
                 {
-                    for(int l = i + 1; l < numbers.Length; l++)
+                    for (int l = i + 1; l < numbers.Length; l++)
                     {
                         rightSum += numbers[l];
                     }
 
-                    for(int k = 0; k < i; k++)
+                    for (int k = 0; k < i; k++)
                     {
                         leftSum += numbers[k];
                     }
@@ -68,11 +68,11 @@ namespace SoftuniFundamentals
 
                 if (leftSum == rightSum)
                 {
-                    Console.Write(numbers[i]+" ");
+                    Console.Write(numbers[i] + " ");
                 }
             }
 
-           
+
 
         }
 
@@ -84,14 +84,14 @@ namespace SoftuniFundamentals
             do
             {
                 enterSequence = Console.ReadLine();
-                if(enterSequence.Equals("Clone Them!", StringComparison.OrdinalIgnoreCase))
+                if (enterSequence.Equals("Clone Them!", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
                 else
                 {
-                    sequences.Add(string.Join("",Regex.Split(enterSequence, "\\s+")));
-                    
+                    sequences.Add(string.Join("", Regex.Split(enterSequence, "\\s+")));
+
                 }
 
 
@@ -100,14 +100,14 @@ namespace SoftuniFundamentals
 
             newSortedList = sequences.OrderByDescending(c => c).ToList();
             int bestIndex = GetDnaPosition(sequences, newSortedList.First());
-            
-            Console.WriteLine("Best DNA is {0} -> {1}",bestIndex,newSortedList[bestIndex-1]);
+
+            Console.WriteLine("Best DNA is {0} -> {1}", bestIndex, newSortedList[bestIndex - 1]);
         }
 
         private int GetDnaPosition(List<string> sequences, string bestSequence)
         {
             int bestIndex = 0;
-            for(int i = 0; i < sequences.Count; i++)
+            for (int i = 0; i < sequences.Count; i++)
             {
                 if (sequences[i].Equals(bestSequence))
                 {
@@ -121,34 +121,34 @@ namespace SoftuniFundamentals
         public void LadyBug()
         {
             int size = int.Parse(Console.ReadLine());
-            string[] enterLadyBugIndexex = Regex.Split(Console.ReadLine(),"\\s+");
-            
+            string[] enterLadyBugIndexex = Regex.Split(Console.ReadLine(), "\\s+");
+
             int[] field = new int[size];
             FillField(enterLadyBugIndexex.Select(e => int.Parse(e)).ToArray(), field);
             string enterCommand;
             do
             {
                 enterCommand = Console.ReadLine();
-                if(enterCommand.Equals("end", StringComparison.OrdinalIgnoreCase))
+                if (enterCommand.Equals("end", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
                 else
                 {
-                    int indexOfBug = int.Parse(Regex.Split(enterCommand,"\\s+")[0]);
+                    int indexOfBug = int.Parse(Regex.Split(enterCommand, "\\s+")[0]);
                     string command = Regex.Split(enterCommand, "\\s+")[1];
                     int length = int.Parse(Regex.Split(enterCommand, "\\s+")[2]);
 
                     indexOfBug += length;
-                    if((indexOfBug += length) > field.Length || (indexOfBug += length) < field.Length)
+                    if ((indexOfBug += length) > field.Length || (indexOfBug += length) < field.Length)
                     {
 
-                    }else 
+                    } else
                     {
                         if (field[indexOfBug] == 1)
                         {
                             indexOfBug += length;
-                            if((indexOfBug += length) > field.Length || (indexOfBug += length) < field.Length)
+                            if ((indexOfBug += length) > field.Length || (indexOfBug += length) < field.Length)
                             {
 
                             }
@@ -163,19 +163,19 @@ namespace SoftuniFundamentals
                         }
                     }
 
-                   
+
                 }
 
             }
-            while (!enterCommand.Equals("end" , StringComparison.OrdinalIgnoreCase));
+            while (!enterCommand.Equals("end", StringComparison.OrdinalIgnoreCase));
 
 
         }
 
-        private void FillField(int[] indexes,int[] field)
+        private void FillField(int[] indexes, int[] field)
         {
-            
-            for(int i = 0; i < field.Length; i++)
+
+            for (int i = 0; i < field.Length; i++)
             {
                 if (indexes.Contains(i))
                 {
@@ -192,12 +192,12 @@ namespace SoftuniFundamentals
         public void Messaging()
         {
             string enterNumbers = Console.ReadLine();
-            string[] indexes = enterNumbers.Split().ToArray(); 
+            string[] indexes = enterNumbers.Split().ToArray();
             string message = Console.ReadLine();
 
             StringBuilder sb = new StringBuilder();
 
-            for(int i = 0; i < indexes.Length; i++)
+            for (int i = 0; i < indexes.Length; i++)
             {
                 sb.Append(message.ElementAt(GetSumDigits(indexes[i])));
             }
@@ -208,7 +208,7 @@ namespace SoftuniFundamentals
 
         private int GetSumDigits(string digits)
         {
-            int sum = digits.ToCharArray().Select(a=>int.Parse(a.ToString())).Aggregate((a,b)=>a+b);
+            int sum = digits.ToCharArray().Select(a => int.Parse(a.ToString())).Aggregate((a, b) => a + b);
             return sum;
         }
 
@@ -217,9 +217,9 @@ namespace SoftuniFundamentals
             int[] numbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
             int leftTime = 0;
             int rightTime = 0;
-            for(int i = 0, k=numbers[numbers.Length-1]; i < numbers.Length / 2; i++,k--)
+            for (int i = 0, k = numbers[numbers.Length - 1]; i < numbers.Length / 2; i++, k--)
             {
-                if (numbers[i] == 0 )
+                if (numbers[i] == 0)
                 {
                     leftTime -= leftTime / 20;
                 }
@@ -254,8 +254,8 @@ namespace SoftuniFundamentals
             //   }).ToList());
 
             int[] numbers = (from t in currentMessage
-                              where char.IsDigit(char.Parse(t))
-                              select (int.Parse(t))).ToArray();
+                             where char.IsDigit(char.Parse(t))
+                             select (int.Parse(t))).ToArray();
 
 
             List<string> noWords = (from t in currentMessage
@@ -265,7 +265,7 @@ namespace SoftuniFundamentals
             List<int> skip = new List<int>();
             List<int> take = new List<int>();
             StringBuilder message = new StringBuilder();
-           for(int i = 0; i < numbers.Length; i++)
+            for (int i = 0; i < numbers.Length; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -279,7 +279,7 @@ namespace SoftuniFundamentals
 
             if (skip.Count > take.Count)
             {
-                for (int i= 0; i < skip.Count; i++){
+                for (int i = 0; i < skip.Count; i++) {
                     if (i < take.Count)
                     {
                         message.Append(noWords.GetRange(0, take[i]));
@@ -290,7 +290,7 @@ namespace SoftuniFundamentals
             }
             else
             {
-                for(int i = 0; i < take.Count; i++)
+                for (int i = 0; i < take.Count; i++)
                 {
                     if (i < skip.Count)
                     {
@@ -311,8 +311,8 @@ namespace SoftuniFundamentals
 
         public void MixingRules()
         {
-            List<int> firstList = Console.ReadLine().Split().Select(e=>int.Parse(e)).ToList();
-            List<int> secondList = Console.ReadLine().Split().Select(e=>int.Parse(e)).ToList();
+            List<int> firstList = Console.ReadLine().Split().Select(e => int.Parse(e)).ToList();
+            List<int> secondList = Console.ReadLine().Split().Select(e => int.Parse(e)).ToList();
             int length = Math.Min(firstList.Count, secondList.Count);
             List<int> currentList = new List<int>();
 
@@ -329,8 +329,8 @@ namespace SoftuniFundamentals
                 from = GetLastTwoElemsOfList(firstList)[1];
                 to = GetLastTwoElemsOfList(firstList)[0];
             }
-            
-            for(int i = 0, k=secondList.Count-1; i < length; i++,k--)
+
+            for (int i = 0, k = secondList.Count - 1; i < length; i++, k--)
             {
                 currentList.Add(firstList[i]);
                 currentList.Add(secondList[k]);
@@ -356,10 +356,10 @@ namespace SoftuniFundamentals
 
             string command = Console.ReadLine();
             currentDrumSet.Sort();
-           
+
             while (!command.Equals("Hit them again!", StringComparison.OrdinalIgnoreCase))
             {
-                
+
                 int power = int.Parse(Console.ReadLine());
                 currentDrumSet.Select(e => e -= power);
                 savings = ReplaceDrum(currentDrumSet, currentDrumSetOriginal, savings);
@@ -367,12 +367,12 @@ namespace SoftuniFundamentals
 
             }
 
-            Console.WriteLine($"Gabsy has {savings} with {string.Join(" ",currentDrumSet)}" );
+            Console.WriteLine($"Gabsy has {savings} with {string.Join(" ", currentDrumSet)}");
 
         }
-        private double ReplaceDrum(List<int> currentList,List<int> currentListOriginal,double currentSavings)
+        private double ReplaceDrum(List<int> currentList, List<int> currentListOriginal, double currentSavings)
         {
-            for(int i = 0; i < currentList.Count; i++)
+            for (int i = 0; i < currentList.Count; i++)
             {
                 if (currentList[i] <= 0)
                 {
@@ -380,7 +380,7 @@ namespace SoftuniFundamentals
                     {
                         currentSavings -= currentListOriginal[i] * 3;
                         currentList[i] = currentListOriginal[i];
-                        
+
                     }
                     else
                     {
@@ -443,13 +443,13 @@ namespace SoftuniFundamentals
         {
             SortedDictionary<string, List<string>> currentWordSynonims = new SortedDictionary<string, List<string>>();
 
-            
+
             int numberWords = int.Parse(Console.ReadLine());
             numberWords *= 2;
             string enterWord;
             int counter = 1;
             Stack<string> currentStack = new Stack<string>();
-            while(numberWords-- > 0)
+            while (numberWords-- > 0)
             {
                 enterWord = Console.ReadLine();
                 if (counter % 2 == 0)
@@ -472,10 +472,10 @@ namespace SoftuniFundamentals
                 counter++;
             }
 
-            foreach(var item in currentWordSynonims)
+            foreach (var item in currentWordSynonims)
             {
                 Console.WriteLine(item.Key + " -> ");
-                foreach(var currentSynonims in item.Value)
+                foreach (var currentSynonims in item.Value)
                 {
                     Console.Write(currentSynonims + " ");
                 }
@@ -488,17 +488,17 @@ namespace SoftuniFundamentals
 
             if (currentNumbers.Count < 3)
             {
-                foreach(var item in currentNumbers)
+                foreach (var item in currentNumbers)
                 {
                     Console.Write(item + " ");
                 }
-                
+
             }
             else
             {
-                for(int i = 0; i < 3; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    Console.Write(currentNumbers[i]+" ");
+                    Console.Write(currentNumbers[i] + " ");
                 }
             }
         }
@@ -512,7 +512,7 @@ namespace SoftuniFundamentals
             {
                 DataTypeMethod(enterData);
             }
-            else if(enter.Equals("int", StringComparison.OrdinalIgnoreCase))
+            else if (enter.Equals("int", StringComparison.OrdinalIgnoreCase))
             {
                 DataTypeMethod(int.Parse(enterData));
             }
@@ -522,7 +522,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void DataTypeMethod( int type)
+        private void DataTypeMethod(int type)
         {
             Console.WriteLine(type * 2);
 
@@ -530,7 +530,7 @@ namespace SoftuniFundamentals
 
         private void DataTypeMethod(double type)
         {
-            Console.WriteLine("{0:2f}",type*1.5);
+            Console.WriteLine("{0:2f}", type * 1.5);
 
         }
 
@@ -545,12 +545,12 @@ namespace SoftuniFundamentals
             int[,] currentCoordinates = new int[2, 2];
             int enterX;
             int enterY;
-            for(int i = 0; i < 2; i++)
+            for (int i = 0; i < 2; i++)
             {
                 enterX = int.Parse(Console.ReadLine());
                 enterY = int.Parse(Console.ReadLine());
                 currentCoordinates[i, 0] = enterX;
-                    currentCoordinates[i, 1] = enterY;
+                currentCoordinates[i, 1] = enterY;
             }
 
             int[] printThis = GetClosest(currentCoordinates);
@@ -559,16 +559,16 @@ namespace SoftuniFundamentals
 
         private int[] GetClosest(int[,] coordinates)
         {
-            
+
             int[] allX = new int[coordinates.GetLength(0)];
-           for(int i = 0; i < coordinates.GetLength(0); i++)
+            for (int i = 0; i < coordinates.GetLength(0); i++)
             {
                 allX[i] = coordinates[i, 0];
             }
 
-            
+
             int[] allY = new int[coordinates.GetLength(1)];
-            for(int i = 0; i < coordinates.GetLength(0); i++)
+            for (int i = 0; i < coordinates.GetLength(0); i++)
             {
                 allY[i] = coordinates[i, 1];
             }
@@ -585,7 +585,7 @@ namespace SoftuniFundamentals
             int start = 1;
             int enter = int.Parse(Console.ReadLine());
             StringBuilder sb = new StringBuilder();
-            for(int i  = 1; i < enter - 1; i++)
+            for (int i = 1; i < enter - 1; i++)
             {
                 sb.Append(i + (i - 1));
             }
@@ -599,23 +599,23 @@ namespace SoftuniFundamentals
         {
             int numberNegative = 0;
             int numberZeroes = 0;
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 int enter = int.Parse(Console.ReadLine());
                 if (enter < 0)
                 {
                     numberNegative++;
                 }
-                else if(enter==0)
+                else if (enter == 0)
                 {
                     numberZeroes++;
                 }
             }
 
-            if(numberZeroes>0)
+            if (numberZeroes > 0)
             {
                 Console.WriteLine("Zero");
-            }else if(numberNegative < 2 || numberNegative == 3)
+            } else if (numberNegative < 2 || numberNegative == 3)
             {
                 Console.WriteLine("Negative");
             }
@@ -623,12 +623,12 @@ namespace SoftuniFundamentals
             {
                 Console.WriteLine("Positive");
             }
-            
+
         }
 
         public int SmallestOfThree(int[] numbers)
         {
-            
+
             return numbers.Min();
         }
 
@@ -646,7 +646,7 @@ namespace SoftuniFundamentals
             StringBuilder sb = new StringBuilder();
             int from = (int)a;
             int to = (int)b;
-            for(int i = from; i <=to; i++)
+            for (int i = from; i <= to; i++)
             {
                 sb.Append((char)i);
             }
@@ -659,7 +659,7 @@ namespace SoftuniFundamentals
         {
             Regex currentRegex = new Regex("^\\d{2,}\\w+$");
             string enterPassword = Console.ReadLine();
-            if (enterPassword.Length>=6 || enterPassword.Length<11)
+            if (enterPassword.Length >= 6 || enterPassword.Length < 11)
             {
                 if (currentRegex.IsMatch(enterPassword))
                 {
@@ -679,7 +679,7 @@ namespace SoftuniFundamentals
         public void AddAndSubstract()
         {
             int[] currentNumbers = new int[3];
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 currentNumbers[i] = int.Parse(Console.ReadLine());
             }
@@ -718,9 +718,9 @@ namespace SoftuniFundamentals
 
         public void NxN(int number)
         {
-            for(int i =0;i < number; i++)
+            for (int i = 0; i < number; i++)
             {
-                for(int j = 0; j < number; j++)
+                for (int j = 0; j < number; j++)
                 {
                     Console.Write(number + " ");
                 }
@@ -764,14 +764,14 @@ namespace SoftuniFundamentals
             }
             while (!enter.Equals("End", StringComparison.OrdinalIgnoreCase));
 
-          
+
         }
 
         //Slow 
         public void TopNumber()
         {
             int enter = int.Parse(Console.ReadLine());
-            for(int i = 0; i < enter; i++)
+            for (int i = 0; i < enter; i++)
             {
                 if (CheckTopNumber(i.ToString()))
                 {
@@ -787,16 +787,16 @@ namespace SoftuniFundamentals
             int sum = 0;
 
 
-                number.ToCharArray().Select(a => {
-                    if (int.Parse(a.ToString()) % 2 != 0) {
-                        numberOdds++;
-                    }
-                    sum += int.Parse(a.ToString());
-                    return int.Parse(a.ToString());
+            number.ToCharArray().Select(a => {
+                if (int.Parse(a.ToString()) % 2 != 0) {
+                    numberOdds++;
                 }
-            );
+                sum += int.Parse(a.ToString());
+                return int.Parse(a.ToString());
+            }
+        );
 
-            if(sum%8==0 && numberOdds > 0)
+            if (sum % 8 == 0 && numberOdds > 0)
             {
                 return true;
             }
@@ -822,23 +822,23 @@ namespace SoftuniFundamentals
             {
                 case "exchange":
                     int index = int.Parse(command[1]);
-                    if(index<=0|| index > current.Length - 1)
+                    if (index <= 0 || index > current.Length - 1)
                     {
                         Console.WriteLine("Invalid Index");
                     }
                     else
                     {
-                       
+
                         index = int.Parse(Console.ReadLine());
-                      
-                            string theCenter = current[index];
-                            string partOne = String.Join(" ", current).Substring(0, index);
-                            string partTwo = String.Join(" ", current).Substring(index + 1, current.Length);
-                            string[] temp = new string[current.Length];
-                            temp = (partTwo + " " + partOne).Split().ToArray();
-                            temp[temp.Length - 1] = theCenter;
+
+                        string theCenter = current[index];
+                        string partOne = String.Join(" ", current).Substring(0, index);
+                        string partTwo = String.Join(" ", current).Substring(index + 1, current.Length);
+                        string[] temp = new string[current.Length];
+                        temp = (partTwo + " " + partOne).Split().ToArray();
+                        temp[temp.Length - 1] = theCenter;
                         current = temp;
-                        
+
                     }
                     break;
 
@@ -857,10 +857,10 @@ namespace SoftuniFundamentals
                                     maxIndex = indexCurrent;
                                 }
                                 indexCurrent++;
-                                
+
                             }
                             return e;
-                                });
+                        });
                     }
                     else
                     {
@@ -873,7 +873,7 @@ namespace SoftuniFundamentals
                                     currentEvenMax = e;
                                     maxIndex = indexCurrent;
                                 }
-                                
+
 
                             }
                             indexCurrent++;
@@ -894,12 +894,12 @@ namespace SoftuniFundamentals
                         temp.Select(e => {
                             if (e % 2 == 0)
                             {
-                                if (e >currentMinMax)
+                                if (e > currentMinMax)
                                 {
                                     currentMinMax = e;
                                     desiredIndex = currentIndex;
                                 }
-                                
+
 
                             }
                             currentIndex++;
@@ -926,7 +926,7 @@ namespace SoftuniFundamentals
                             });
                         }
                     }
-                    
+
                     break;
 
                 case "first":
@@ -937,7 +937,7 @@ namespace SoftuniFundamentals
                     }
                     else
                     {
-                       
+
 
                         if (command[2].Equals("even", StringComparison.OrdinalIgnoreCase))
                         {
@@ -960,27 +960,27 @@ namespace SoftuniFundamentals
                             }
                         }
                     }
-                    
 
-                    foreach(var item in numbers)
+
+                    foreach (var item in numbers)
                     {
                         Console.Write(item + " ");
                     }
-                   
+
                     break;
 
 
             }
-           
+
         }
         public void CountChars()
         {
-            string[] enterText = Console.ReadLine().Split().ToArray() ;
+            string[] enterText = Console.ReadLine().Split().ToArray();
             char[] letters = String.Join("", enterText).ToCharArray();
 
             Dictionary<char, int> currentLetterCount = new Dictionary<char, int>();
 
-            foreach(var item in letters)
+            foreach (var item in letters)
             {
                 if (currentLetterCount.ContainsKey(item))
                 {
@@ -992,7 +992,7 @@ namespace SoftuniFundamentals
                 }
             }
 
-            foreach(KeyValuePair<char,int> items in currentLetterCount)
+            foreach (KeyValuePair<char, int> items in currentLetterCount)
             {
                 Console.WriteLine(items.Key + " ->" + items.Value);
             }
@@ -1002,7 +1002,7 @@ namespace SoftuniFundamentals
         {
             string enter = Console.ReadLine();
             int counter = 1;
-            string lastEnteredResources="";
+            string lastEnteredResources = "";
             Dictionary<string, int> resources = new Dictionary<string, int>();
             while (!enter.Equals("stop", StringComparison.OrdinalIgnoreCase))
             {
@@ -1013,7 +1013,7 @@ namespace SoftuniFundamentals
                     {
                         resources.Add(enter, 0);
                     }
-                   
+
                 }
                 else
                 {
@@ -1023,7 +1023,7 @@ namespace SoftuniFundamentals
                 enter = Console.ReadLine();
             }
 
-            foreach(var item in resources)
+            foreach (var item in resources)
             {
                 Console.WriteLine(item.Key + "->" + item.Value);
             }
@@ -1045,7 +1045,7 @@ namespace SoftuniFundamentals
             items.Add("motes", "Dragonwarth");
 
 
-            for(int i = 0; i < enterFarming.Length; i += 2)
+            for (int i = 0; i < enterFarming.Length; i += 2)
             {
                 quantity = int.Parse(enterFarming[i]);
                 material = enterFarming[i - 1];
@@ -1065,15 +1065,15 @@ namespace SoftuniFundamentals
                 }
             }
 
-            foreach(var item in obtainedLoot)
+            foreach (var item in obtainedLoot)
             {
                 Console.WriteLine("obtained " + item);
             }
 
             currentLoot.OrderByDescending(e => e.Value).ThenBy(e => e.Key);
-            foreach(var item in currentLoot)
+            foreach (var item in currentLoot)
             {
-                Console.WriteLine(item.Key + "->"+item.Value);
+                Console.WriteLine(item.Key + "->" + item.Value);
             }
         }
 
@@ -1098,10 +1098,63 @@ namespace SoftuniFundamentals
                 enter = Console.ReadLine();
             }
 
-            foreach(var item in currentProducts)
+            foreach (var item in currentProducts)
             {
                 Console.WriteLine(item.Key + ":" + item.Value);
             }
         }
+
+        public void CarParking()
+        {
+            int numberCommands = int.Parse(Console.ReadLine());
+            string enterCommand;
+            Dictionary<string, string> currentRegisteredUsers = new Dictionary<string, string>();
+            while (numberCommands-- > 0)
+            {
+                enterCommand = Console.ReadLine();
+                ExecuteCommandParking(currentRegisteredUsers, enterCommand.Split().ToArray());
+
+            }
+
+            foreach(var item in currentRegisteredUsers)
+            {
+                Console.WriteLine(item.Key + "->" + item.Value);
+            }
+        }
+
+
+        private void ExecuteCommandParking(Dictionary<string, string> currentRegisteredUsers,params string[] commands)
+        {
+            switch (commands[0].ToLower())
+            {
+                case "register":
+                    if (currentRegisteredUsers.ContainsKey(commands[1]))
+                    {
+                        Console.WriteLine("Error User already registered");
+                    }
+                    else
+                    {
+                        currentRegisteredUsers.Add(commands[1], commands[2]);
+                    }
+                    break;
+
+                case "unregister":
+                    if (currentRegisteredUsers.ContainsKey(commands[1]))
+                    {
+                        currentRegisteredUsers.Remove(commands[1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error {1} not found", commands[1]);
+                    }
+                    break;
+            }
+        }
+
+
     }
+
+
 }
+   
+

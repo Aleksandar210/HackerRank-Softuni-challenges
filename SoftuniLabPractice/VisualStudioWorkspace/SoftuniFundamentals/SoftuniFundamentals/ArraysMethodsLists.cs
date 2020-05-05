@@ -767,5 +767,211 @@ namespace SoftuniFundamentals
           
         }
 
+        //Slow 
+        public void TopNumber()
+        {
+            int enter = int.Parse(Console.ReadLine());
+            for(int i = 0; i < enter; i++)
+            {
+                if (CheckTopNumber(i.ToString()))
+                {
+                    Console.WriteLine(i);
+                }
+            }
+        }
+        //
+
+        private bool CheckTopNumber(string number)
+        {
+            int numberOdds = 0;
+            int sum = 0;
+
+
+                number.ToCharArray().Select(a => {
+                    if (int.Parse(a.ToString()) % 2 != 0) {
+                        numberOdds++;
+                    }
+                    sum += int.Parse(a.ToString());
+                    return int.Parse(a.ToString());
+                }
+            );
+
+            if(sum%8==0 && numberOdds > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public void ArrayManipulating()
+        {
+            int[] array = Console.ReadLine().Split().Select(int.Parse).ToArray();
+            string enterCommand = Console.ReadLine();
+            while (!enterCommand.Equals("End", StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+
+        }
+
+        private void ExecuteCommand(string[] command, string[] current)
+        {
+            int[] temp = current.Select(int.Parse).ToArray();
+            switch (command[0].ToLower())
+            {
+                case "exchange":
+                    int index = int.Parse(command[1]);
+                    if(index<=0|| index > current.Length - 1)
+                    {
+                        Console.WriteLine("Invalid Index");
+                    }
+                    else
+                    {
+                       
+                        index = int.Parse(Console.ReadLine());
+                      
+                            string theCenter = current[index];
+                            string partOne = String.Join(" ", current).Substring(0, index);
+                            string partTwo = String.Join(" ", current).Substring(index + 1, current.Length);
+                            string[] temp = new string[current.Length];
+                            temp = (partTwo + " " + partOne).Split().ToArray();
+                            temp[temp.Length - 1] = theCenter;
+                        current = temp;
+                        
+                    }
+                    break;
+
+                case "max":
+                    int indexCurrent = 0;
+                    int maxIndex = 0;
+                    int currentEvenMax = 0;
+                    if (command[1].Equals("even"))
+                    {
+                        temp.Select(e => {
+                            if (e % 2 == 0)
+                            {
+                                if (e > currentEvenMax)
+                                {
+                                    currentEvenMax = e;
+                                    maxIndex = indexCurrent;
+                                }
+                                indexCurrent++;
+                                
+                            }
+                            return e;
+                                });
+                    }
+                    else
+                    {
+
+                        temp.Select(e => {
+                            if (e % 2 != 0)
+                            {
+                                if (e > currentEvenMax)
+                                {
+                                    currentEvenMax = e;
+                                    maxIndex = indexCurrent;
+                                }
+                                
+
+                            }
+                            indexCurrent++;
+                            return e;
+                        });
+
+                    }
+                    Console.WriteLine(maxIndex);
+                    break;
+
+                case "min":
+                    int currentIndex = 0;
+                    int desiredIndex = 0;
+                    int currentMinMax = 0;
+
+                    if (command[1].Equals("even"))
+                    {
+                        temp.Select(e => {
+                            if (e % 2 == 0)
+                            {
+                                if (e >currentMinMax)
+                                {
+                                    currentMinMax = e;
+                                    desiredIndex = currentIndex;
+                                }
+                                
+
+                            }
+                            currentIndex++;
+                            return e;
+                        });
+                    }
+                    else
+                    {
+                        if (command[1].Equals("odd"))
+                        {
+                            temp.Select(e => {
+                                if (e % 2 != 0)
+                                {
+                                    if (e > currentMinMax)
+                                    {
+                                        currentMinMax = e;
+                                        desiredIndex = currentIndex;
+                                    }
+
+
+                                }
+                                currentIndex++;
+                                return e;
+                            });
+                        }
+                    }
+                    
+                    break;
+
+                case "first":
+                    List<int> numbers = new List<int>();
+                    if (int.Parse(command[1]) > temp.Length - 1)
+                    {
+                        Console.WriteLine("Invalid Count");
+                    }
+                    else
+                    {
+                       
+
+                        if (command[2].Equals("even", StringComparison.OrdinalIgnoreCase))
+                        {
+                            for (int i = 0; i < int.Parse(command[1]); i++)
+                            {
+                                if (temp[i] % 2 == 0)
+                                {
+                                    numbers.Add(temp[i]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < int.Parse(command[1]); i++)
+                            {
+                                if (temp[i] % 2 != 0)
+                                {
+                                    numbers.Add(temp[i]);
+                                }
+                            }
+                        }
+                    }
+                    
+
+                    foreach(var item in numbers)
+                    {
+                        Console.Write(item + " ");
+                    }
+                   
+                    break;
+
+
+            }
+        }
+
     }
 }

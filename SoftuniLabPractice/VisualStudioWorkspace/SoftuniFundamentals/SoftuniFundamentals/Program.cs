@@ -35,6 +35,9 @@ namespace SoftuniFundamentals
             //currentTasks.Products();
             //currentTasks.CarParking();
             //currentTasks.CoursesNames();
+            //currentTasks.StudentGrades();
+            
+
 
           
             

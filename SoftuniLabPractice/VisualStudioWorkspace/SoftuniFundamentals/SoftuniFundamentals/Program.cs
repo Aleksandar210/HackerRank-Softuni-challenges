@@ -38,16 +38,10 @@ namespace SoftuniFundamentals
             //currentTasks.StudentGrades();
             
 
+        }
 
-          
-            
-
-
-
-
-            
-
-           
+        private static void TelericGSMTask()
+        {
 
         }
     }

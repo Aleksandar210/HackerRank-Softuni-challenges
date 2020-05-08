@@ -43,6 +43,32 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
+        public int Size
+        {
+            get
+            {
+                return this.size;
+
+            }
+
+            set
+            {
+                if (Validated(value))
+                {
+                    this.size = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Size");
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Size}-size and {this.NumberColors} number of colors";
+        }
+
         private bool Validated(int entered)
         {
             if (entered <= 0)

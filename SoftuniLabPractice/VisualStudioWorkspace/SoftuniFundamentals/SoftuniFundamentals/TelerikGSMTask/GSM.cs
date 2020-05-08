@@ -9,7 +9,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
 {
     class GSM
     {
-        private const double PRICE_DEFAULT = 0.0;
+        private const double PRICE_MINUTE = 0.37;
         private bool uknownBattery;
         private double price;
         private string owner;
@@ -17,18 +17,115 @@ namespace SoftuniFundamentals.TelerikGSMTask
         private string model;
         private Battery battery;
         private Display display;
+        private List<Call> currentMadeCalls;
+        private double currentPhoneBill;
+        private Call currentCallDialed;
+
+
+        public GSM(string model, string manufacturer, string owner, double price, string batteryType)
+        {
+            this.Price = price;
+            this.model = model;
+            this.manufacturer = manufacturer;
+            this.owner = owner;
+
+
+        }
+
+
+        public void AddCall(string[] info)
+        {
+            Call currentCall = new Call(PRICE_MINUTE);
+            currentCall.MakeCall(info);
+            this.currentCallDialed = currentCall;
+        }
+
+        
+
+        public void DeleteCall()
+        {
+            if (this.currentMadeCalls.Count == 0)
+            {
+                Console.WriteLine("Empty History");
+            }
+            else
+            {
+                int counter = 1;
+                foreach (var call in this.currentMadeCalls)
+                {
+                    Console.WriteLine(counter + " " + call);
+                    Console.WriteLine();
+                }
+                int select;
+                do
+                {
+                    select = int.Parse(Console.ReadLine());
+                    if (!(select < 1 || (select > counter)){
+                        this.currentMadeCalls.RemoveAt(select);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Call Index");
+                    }
+                }
+                while (select < 1 || select > counter);
+            }
+           
+
+        }
+
+        public void ClearHistory()
+        {
+            this.currentMadeCalls.Clear();
+        }
+
+        public void ShowHisotry()
+        {
+            foreach(var item in currentMadeCalls)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
+
+
+
+        private void CreateBatteryClass(string enteredType)
+        {
+            switch (enteredType.ToLower())
+            {
+                case "nimh":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.NiMH.ToString(),20,6);
+                    break;
+                case "lion":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.LiON.ToString(), 24, 10);
+                    break;
+                case "nicd":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.NiCD.ToString(), 30, 15);
+                    break;
+                default:
+                    this.battery = new Battery();
+                    this.uknownBattery = true;
+                    break;
+            }
+        }
+
 
 
 
 
         public double Price
-            {
-             get
+        {
+            get
             {
                 return this.price;
             }
 
-             set
+            set
             {
                 if (value <= 0)
                 {
@@ -40,9 +137,9 @@ namespace SoftuniFundamentals.TelerikGSMTask
                 }
             }
 
-            }
+        }
 
-        public bool IsStockBattery 
+        public bool IsStockBattery
         {
             get
             {
@@ -50,7 +147,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
-        public string OwnerName 
+        public string OwnerName
         {
             get
             {
@@ -95,15 +192,18 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
 
 
-        public GSM(string model, string manufacturer, string owner, double price,string batteryType)
-        {
-            this.Price = price;
-            this.model = model;
-            this.manufacturer = manufacturer;
-            this.owner = owner;
-            
 
+        private enum BatteryType
+        {
+            NiMH,
+            LiON,
+            NiCD
         }
+
+
+
+
+
 
         private bool ValidateOwnerName(string enteredName)
         {
@@ -135,40 +235,12 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
-        private void CreateBatteryClass(string enteredType)
-        {
-            switch (enteredType.ToLower())
-            {
-                case "nimh":
-                    this.uknownBattery = false;
-                    this.battery = new Battery(BatteryType.NiMH.ToString(),20,6);
-                    break;
-                case "lion":
-                    this.uknownBattery = false;
-                    this.battery = new Battery(BatteryType.LiON.ToString(), 24, 10);
-                    break;
-                case "nicd":
-                    this.uknownBattery = false;
-                    this.battery = new Battery(BatteryType.NiCD.ToString(), 30, 15);
-                    break;
-                default:
-                    this.battery = new Battery();
-                    this.uknownBattery = true;
-                    break;
-            }
-        }
-
-        private enum BatteryType
-        {
-            NiMH,
-            LiON,
-            NiCD
-        }
 
 
         public override string ToString()
         {
-            
+            return $"{this.Manufacturer}, {this.Model}- current Model, to -{this.OwnerName} {Environment.NewLine}" +
+                $"{this.battery} {Environment.NewLine} {this.display} ";
         }
 
     }

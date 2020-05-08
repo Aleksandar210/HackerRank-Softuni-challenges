@@ -27,6 +27,8 @@ namespace SoftuniFundamentals.TelerikGSMTask
         public Battery(string model, int talk, int idle)
         {
             this.IdleTime = idle;
+            this.TalkTime = talk;
+            this.Model = model;
             
         }
 
@@ -40,7 +42,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
             set
             {
-                if (ValidatedIdle(value))
+                if (ValidateHour(value))
                 {
                     this.hourIdle = value;
                 }
@@ -51,8 +53,29 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
+        public int TalkTime 
+        {
+            get
+            {
+                return this.hourTalk;
+            }
+            set
+            {
+                if (ValidateHour(value))
+                {
+                    this.hourTalk = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Talk");
+                }
+            }
+        }
 
-        private bool ValidatedIdle(int entered)
+        public string Model { get; set;  }
+
+
+        private bool ValidateHour(int entered)
         {
             if (entered <= 0)
             {
@@ -63,6 +86,13 @@ namespace SoftuniFundamentals.TelerikGSMTask
                 return true;
             }
         }
+
+        public override string ToString()
+        {
+            string current = $"{this.Model} with {this.IdleTime} idel time and {this.TalkTime} talking time";
+            return current;
+        }
+
 
     }
 

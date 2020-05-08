@@ -10,7 +10,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
     class GSM
     {
         private const double PRICE_DEFAULT = 0.0;
-
+        private bool uknownBattery;
         private double price;
         private string owner;
         private string manufacturer;
@@ -42,7 +42,13 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
             }
 
-
+        public bool IsStockBattery 
+        {
+            get
+            {
+                return this.uknownBattery;
+            }
+        }
 
         public string OwnerName 
         {
@@ -134,8 +140,20 @@ namespace SoftuniFundamentals.TelerikGSMTask
             switch (enteredType.ToLower())
             {
                 case "nimh":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.NiMH.ToString(),20,6);
+                    break;
+                case "lion":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.LiON.ToString(), 24, 10);
+                    break;
+                case "nicd":
+                    this.uknownBattery = false;
+                    this.battery = new Battery(BatteryType.NiCD.ToString(), 30, 15);
+                    break;
+                default:
                     this.battery = new Battery();
-
+                    this.uknownBattery = true;
                     break;
             }
         }
@@ -146,9 +164,12 @@ namespace SoftuniFundamentals.TelerikGSMTask
             LiON,
             NiCD
         }
+
+
+        public override string ToString()
+        {
             
+        }
 
-
-        
     }
 }

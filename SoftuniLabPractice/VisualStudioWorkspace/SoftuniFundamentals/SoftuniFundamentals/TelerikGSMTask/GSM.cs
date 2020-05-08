@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace SoftuniFundamentals.TelerikGSMTask
 {
@@ -31,7 +32,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             {
                 if (value <= 0)
                 {
-                    throw new ArgumentException("Price is not Valid");
+                    throw new ArgumentException("Invalid Price");
                 }
                 else
                 {
@@ -64,8 +65,31 @@ namespace SoftuniFundamentals.TelerikGSMTask
         }
 
 
+        public string Manufacturer
+        {
+            get
+            {
+                return this.manufacturer;
+            }
 
-        public GSM(string model, string manufacturer, string owner, double price)
+            set
+            {
+                if (ValidateManufacturer(value) == true)
+                {
+                    this.manufacturer = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Manufacturer");
+                }
+            }
+        }
+        public string Model { get; set; }
+
+
+
+
+        public GSM(string model, string manufacturer, string owner, double price,string batteryType)
         {
             this.Price = price;
             this.model = model;
@@ -91,9 +115,36 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
         }
 
-        private enum BatteryTypes
+        private bool ValidateManufacturer(string enterd)
         {
+            Regex current = new Regex("^[_A-z0-9]*((-|\\s)*[_A-z0-9])*$");
+            Match currentMatcher = current.Match(enterd);
+            if (currentMatcher.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
+        private void CreateBatteryClass(string enteredType)
+        {
+            switch (enteredType.ToLower())
+            {
+                case "nimh":
+                    this.battery = new Battery();
+
+                    break;
+            }
+        }
+
+        private enum BatteryType
+        {
+            NiMH,
+            LiON,
+            NiCD
         }
             
 

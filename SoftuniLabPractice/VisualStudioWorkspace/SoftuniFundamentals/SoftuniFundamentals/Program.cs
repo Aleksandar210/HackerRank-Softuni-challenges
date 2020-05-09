@@ -45,15 +45,21 @@ namespace SoftuniFundamentals
         private static void TelericGSMTask()
         {
             Dictionary<string,GSM> currentGSM = new Dictionary<string,GSM>();
+           
+
+        }
+
+        private void GSM_Creation(Dictionary<string,GSM> currentPhones)
+        {
+            Console.Clear();
             bool exit = false;
             GSM currentSelected = null;
-            while (exit==false)
+            while (exit == false)
             {
                 Console.Clear();
                 Console.WriteLine("1|Add GSM");
                 Console.WriteLine("2|Remove GSM");
-                Console.WriteLine("3|Select GSM");
-                Console.WriteLine("4|Exit");
+                Console.WriteLine("3|Exit");
                 Console.Write("Select: ");
                 int select = int.Parse(Console.ReadLine());
                 switch (select)
@@ -64,34 +70,18 @@ namespace SoftuniFundamentals
                     case 2:
                         RemoveCell(currentGSM);
                         break;
-                    case 3:
 
-                        break;
-                    case 4:
+                    case 3:
                         exit = true;
                         break;
 
                 }
-                
+
             }
 
         }
 
-        private static GSM SelectCell(Dictionary<string,GSM> currentPhones)
-        {
-            int counter = 1;
-
-
-            foreach(var item in currentPhones)
-            {
-                Console.WriteLine(counter);
-                Console.WriteLine("-----------------------");
-                Console.WriteLine(item);
-                Console.WriteLine("-----------------------");
-                counter++;
-
-            }
-        }
+      
 
         private static void RemoveCell(Dictionary<string,GSM> currentPhones)
         {

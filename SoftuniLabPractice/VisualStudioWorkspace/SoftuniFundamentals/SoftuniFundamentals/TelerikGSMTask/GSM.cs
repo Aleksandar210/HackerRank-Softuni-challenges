@@ -20,16 +20,22 @@ namespace SoftuniFundamentals.TelerikGSMTask
         private List<Call> currentMadeCalls;
         private double currentPhoneBill;
         private Call currentCallDialed;
+        private string phoneNumber;
 
 
-        public GSM(string model, string manufacturer, string owner, double price, string batteryType)
+        public GSM(string model, string manufacturer, string owner,string number ,double price, string batteryType)
         {
             this.Price = price;
             this.model = model;
             this.manufacturer = manufacturer;
             this.owner = owner;
+            currentMadeCalls = new List<Call>();
 
+        }
 
+        public GSM()
+        {
+            currentMadeCalls = new List<Call>();
         }
 
 
@@ -46,21 +52,22 @@ namespace SoftuniFundamentals.TelerikGSMTask
         {
             if (this.currentMadeCalls.Count == 0)
             {
-                Console.WriteLine("Empty History");
+                Console.WriteLine("Empty History!");
             }
             else
             {
                 int counter = 1;
                 foreach (var call in this.currentMadeCalls)
                 {
-                    Console.WriteLine(counter + " " + call);
+                    Console.WriteLine(counter + ": "  + call);
                     Console.WriteLine();
                 }
                 int select;
                 do
                 {
                     select = int.Parse(Console.ReadLine());
-                    if (!(select < 1 || (select > counter)){
+                    if (!(select < 1 || (select > counter)))
+                    {
                         this.currentMadeCalls.RemoveAt(select);
                     }
                     else
@@ -81,9 +88,10 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
         public void ShowHisotry()
         {
-            foreach(var item in currentMadeCalls)
+            foreach(Call item in currentMadeCalls)
             {
                 Console.WriteLine(item);
+                Console.WriteLine();
             }
         }
 
@@ -115,7 +123,26 @@ namespace SoftuniFundamentals.TelerikGSMTask
         }
 
 
+        public string CurrentNumber
+        {
+            get
+            {
+                return this.phoneNumber;
+            }
+            set
+            {
+                Regex regex = new Regex("^[0-9]{10}$");
+                if (regex.IsMatch(value))
+                {
+                    this.phoneNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid Phone");
+                }
 
+            }
+        }
 
 
         public double Price

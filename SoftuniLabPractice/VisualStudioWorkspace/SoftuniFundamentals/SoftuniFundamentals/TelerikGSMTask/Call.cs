@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -34,6 +35,16 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
            
         }
+
+        public string DateOfCall
+        {
+            get
+            {
+                string text = this.currentDateDialed.ToString("MM/dd/yyyy",CultureInfo.InvariantCulture);
+                return text;
+                               
+            }
+        } 
 
         public void MakeCall(params string[] information)
         {
@@ -69,9 +80,9 @@ namespace SoftuniFundamentals.TelerikGSMTask
         {
             if (this.nameAvailable)
             {
-                return $"{this.currentDateDialed.Date} {Environment.NewLine} {this.nameDialed} {Environment.NewLine} {this.minutes} duration";
+                return $"{this.DateOfCall} {Environment.NewLine} {this.nameDialed}-{this.phoneDialed} {Environment.NewLine} {this.minutes} duration";
             }
-            return $"{this.currentDateDialed.Date} {Environment.NewLine} {this.phoneDialed} {Environment.NewLine} {this.minutes} duration";
+            return $"{this.DateOfCall} {Environment.NewLine} {this.phoneDialed} {Environment.NewLine} {this.minutes} duration";
         }
     }
 }

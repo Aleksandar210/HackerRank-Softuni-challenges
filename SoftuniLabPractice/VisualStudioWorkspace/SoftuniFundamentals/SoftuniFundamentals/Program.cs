@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace SoftuniFundamentals
 {
@@ -38,18 +39,21 @@ namespace SoftuniFundamentals
             //currentTasks.CarParking();
             //currentTasks.CoursesNames();
             //currentTasks.StudentGrades();
-            
+            //TelericGSMTask();
 
         }
 
         private static void TelericGSMTask()
         {
+            Console.Write("Enter name: ");
+            string name = Console.ReadLine();
             Dictionary<string,GSM> currentGSM = new Dictionary<string,GSM>();
-           
 
+            GSM_Creation(currentGSM);
+            Console.WriteLine("Goodbye {0}", name);
         }
 
-        private void GSM_Creation(Dictionary<string,GSM> currentPhones)
+        private static void GSM_Creation(Dictionary<string,GSM> currentGSM)
         {
             Console.Clear();
             bool exit = false;
@@ -59,7 +63,9 @@ namespace SoftuniFundamentals
                 Console.Clear();
                 Console.WriteLine("1|Add GSM");
                 Console.WriteLine("2|Remove GSM");
-                Console.WriteLine("3|Exit");
+                Console.WriteLine("3|Enter Number");
+                Console.WriteLine("4|GSM Operations");
+                Console.WriteLine("5|Exit");
                 Console.Write("Select: ");
                 int select = int.Parse(Console.ReadLine());
                 switch (select)
@@ -70,8 +76,33 @@ namespace SoftuniFundamentals
                     case 2:
                         RemoveCell(currentGSM);
                         break;
-
                     case 3:
+                        do
+                        {
+                            Console.Clear();
+                            Console.Write("Enter Number: ");
+                            string enterCell = Console.ReadLine();
+                            if (currentGSM.ContainsKey(enterCell))
+                            {
+                                currentSelected = currentGSM[enterCell];
+                                break;
+                            }
+                        }
+                        while (true);
+                        break;
+                    case 4:
+                        if (currentSelected == null)
+                        {
+
+                        }
+                        else
+                        {
+                            GSM_Operations(currentSelected);
+                        }
+                        
+                        break;
+
+                    case 5:
                         exit = true;
                         break;
 
@@ -79,6 +110,104 @@ namespace SoftuniFundamentals
 
             }
 
+        }
+
+        private static void GSM_Operations(GSM currentPhone)
+        {
+            
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("1|Dial");
+                Console.WriteLine("2|Delete Calls");
+                Console.WriteLine("3|Show History");
+                Console.WriteLine("4|Exit");
+                Console.Write("   Select: ");
+                int select = int.Parse(Console.ReadLine());
+                switch (select)
+                {
+                    case 1:
+                        string entered="!";
+                        Console.Clear();
+              
+                            do
+                            {
+                            Console.Write("Number and (Name(otional)): ");
+
+                          
+                              string current = Console.ReadLine();
+
+                             if (ValidatedCall(current) == true)
+                             {
+                             entered = current;
+                             }
+                          
+                            }
+                            while (!entered.Equals("!"));
+                        
+                        currentPhone.AddCall(entered.Split());
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine("You are currently in a Call");
+                            Console.WriteLine("Press 0 to end the call");
+                            int enterNumber = int.Parse(Console.ReadLine());
+                            if (enterNumber == 0)
+                            {
+                                currentPhone.TerminateCall();
+                                
+                            }
+
+                        }
+                        while (currentPhone.InCall==true);
+                        break;
+                    case 2:
+                        Console.Clear();
+                        currentPhone.DeleteCall();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        currentPhone.ShowHisotry();
+                        break;
+                    case 4:
+                        return;
+                        
+                    default:
+
+                        break;
+                }
+            }
+        }
+
+        
+        private static bool ValidatedCall(
+            string entered)
+        {
+            Regex currentRegex = new Regex("[0-9]{10}");
+            if(entered.Contains(" "))
+            {
+                if (currentRegex.IsMatch(entered.Split()[0]))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if (currentRegex.IsMatch(entered))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            
         }
 
       
@@ -240,7 +369,7 @@ namespace SoftuniFundamentals
 
         }
 
-        private void ReEnter(string warningMessage,GSM currentPhone)
+        private static void ReEnter(string warningMessage,GSM currentPhone)
         {
             if (warningMessage.Equals("number"))
             {

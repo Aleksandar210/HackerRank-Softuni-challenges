@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Transactions;
@@ -21,6 +22,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
         private double currentPhoneBill;
         private Call currentCallDialed;
         private string phoneNumber;
+        private bool inCall = false;
 
 
         public GSM(string model, string manufacturer, string owner,string number ,double price, string batteryType)
@@ -44,6 +46,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             Call currentCall = new Call(PRICE_MINUTE);
             currentCall.MakeCall(info);
             this.currentCallDialed = currentCall;
+            this.inCall = true;
         }
 
         
@@ -95,6 +98,12 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
+        public void TerminateCall()
+        {
+            this.currentCallDialed.EndCall();
+            this.inCall = false;
+        }
+
 
 
 
@@ -143,6 +152,8 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
             }
         }
+
+        public bool InCall { get; };
 
 
         public double Price

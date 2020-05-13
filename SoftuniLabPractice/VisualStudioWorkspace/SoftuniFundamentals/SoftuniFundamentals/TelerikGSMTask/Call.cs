@@ -46,7 +46,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         } 
 
-        public void MakeCall(params string[] information)
+        public void MakeCall(string[] information)
         {
             if (information.Length > 1)
             {
@@ -80,9 +80,14 @@ namespace SoftuniFundamentals.TelerikGSMTask
         {
             if (this.nameAvailable)
             {
-                return $"{this.DateOfCall} {Environment.NewLine} {this.nameDialed}-{this.phoneDialed} {Environment.NewLine} {this.minutes} duration";
+                return $"{this.DateOfCall} : {this.nameDialed}-{this.phoneDialed}";
             }
-            return $"{this.DateOfCall} {Environment.NewLine} {this.phoneDialed} {Environment.NewLine} {this.minutes} duration";
+            else
+            {
+                
+                return this.DateOfCall+" "+this.phoneDialed;
+            }
+           
         }
     }
 }

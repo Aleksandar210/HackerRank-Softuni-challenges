@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace SoftuniFundamentals
 {
@@ -41,7 +42,22 @@ namespace SoftuniFundamentals
             //currentTasks.StudentGrades();
             //TelericGSMTask();
 
+           
+
+        
         }
+
+
+
+
+        
+
+
+
+
+
+        //Phone task
+        //-------------------------------------------------------------------------------------------------
 
         private static void TelericGSMTask()
         {
@@ -107,7 +123,7 @@ namespace SoftuniFundamentals
                         break;
 
                 }
-
+                
             }
 
         }
@@ -132,14 +148,16 @@ namespace SoftuniFundamentals
               
                             do
                             {
-                            Console.Write("Number and (Name(otional)): ");
+                            Console.Write("Person you are calling:  ");
 
                           
                               string current = Console.ReadLine();
+                            Console.Write("Phone number of  person: ");
+                            string dialNumber = Console.ReadLine();
 
-                             if (ValidatedCall(current) == true)
+                             if (ValidatedCall(dialNumber) == true)
                              {
-                             entered = current;
+                             entered = current+" "+dialNumber;
                              }
                           
                             }
@@ -168,6 +186,7 @@ namespace SoftuniFundamentals
                     case 3:
                         Console.Clear();
                         currentPhone.ShowHisotry();
+                        Console.ReadLine();
                         break;
                     case 4:
                         return;
@@ -221,11 +240,11 @@ namespace SoftuniFundamentals
             int counter = 1;
             foreach(var item in currentPhones)
             {
-                Console.WriteLine(counter + " ->");
-                Console.WriteLine(item);
+               
+                Console.WriteLine(counter+" "+item);
                 currentPhonesOrdered.Add(counter, item.Key);
                
-                counter++;
+                counter+=1;
             }
             Console.WriteLine((counter + 1)+" Cancel");
             int select;
@@ -318,7 +337,7 @@ namespace SoftuniFundamentals
             {
                 Console.Write("Manufacturer: ");
                 manufacturer = Console.ReadLine();
-                currentPhone.Model = manufacturer;
+                currentPhone.Manufacturer = manufacturer;
             }
             catch (ArgumentException argument)
             {
@@ -331,7 +350,7 @@ namespace SoftuniFundamentals
             {
                 Console.Write("Name: ");
                 name = Console.ReadLine();
-                currentPhone.Model = name;
+                currentPhone.OwnerName = name;
             }
             catch (ArgumentException argument)
             {
@@ -345,7 +364,7 @@ namespace SoftuniFundamentals
             {
                 Console.Write("Number :");
                 number = Console.ReadLine();
-                currentPhone.Model = number;
+                currentPhone.CurrentNumber = number;
                 if (currentPhones.ContainsKey(number))
                 {
                     Console.WriteLine("Phone already is regeistered!");
@@ -354,6 +373,7 @@ namespace SoftuniFundamentals
                     ReEnter("number", currentPhone);
 
                 }
+               
             }
             catch (ArgumentException argument)
             {
@@ -365,7 +385,7 @@ namespace SoftuniFundamentals
                 string enterBattery = Console.ReadLine();
 
 
-            
+            currentPhones.Add(currentPhone.CurrentNumber, currentPhone);
 
         }
 
@@ -422,5 +442,10 @@ namespace SoftuniFundamentals
 
             
         }
+        //-------------------------------------------------------------------------------------------------
+
+
+
+
     }
 }

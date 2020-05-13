@@ -834,10 +834,10 @@ namespace SoftuniFundamentals
                         string theCenter = current[index];
                         string partOne = String.Join(" ", current).Substring(0, index);
                         string partTwo = String.Join(" ", current).Substring(index + 1, current.Length);
-                        string[] temp = new string[current.Length];
-                        temp = (partTwo + " " + partOne).Split().ToArray();
-                        temp[temp.Length - 1] = theCenter;
-                        current = temp;
+                        string[] tempStringArray = new string[current.Length];
+                        tempStringArray = (partTwo + " " + partOne).Split().ToArray();
+                        tempStringArray[tempStringArray.Length - 1] = theCenter;
+                        current = tempStringArray;
 
                     }
                     break;
@@ -1223,6 +1223,9 @@ namespace SoftuniFundamentals
 
 
         }
+
+
+        public void 
 
     }
 

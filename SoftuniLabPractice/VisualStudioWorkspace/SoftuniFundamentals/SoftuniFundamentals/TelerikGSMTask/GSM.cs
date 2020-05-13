@@ -47,6 +47,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             currentCall.MakeCall(info);
             this.currentCallDialed = currentCall;
             this.inCall = true;
+            this.currentMadeCalls.Add(currentCall);
         }
 
         
@@ -71,7 +72,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
                     select = int.Parse(Console.ReadLine());
                     if (!(select < 1 || (select > counter)))
                     {
-                        this.currentMadeCalls.RemoveAt(select);
+                        this.currentMadeCalls.RemoveAt(select-1);
                     }
                     else
                     {
@@ -91,10 +92,9 @@ namespace SoftuniFundamentals.TelerikGSMTask
 
         public void ShowHisotry()
         {
-            foreach(Call item in currentMadeCalls)
+            for(int i = 0; i < this.currentMadeCalls.Count; i++)
             {
-                Console.WriteLine(item);
-                Console.WriteLine();
+                Console.WriteLine(this.currentMadeCalls[i]);
             }
         }
 
@@ -153,7 +153,7 @@ namespace SoftuniFundamentals.TelerikGSMTask
             }
         }
 
-        public bool InCall { get; };
+        public bool InCall { get; }
 
 
         public double Price

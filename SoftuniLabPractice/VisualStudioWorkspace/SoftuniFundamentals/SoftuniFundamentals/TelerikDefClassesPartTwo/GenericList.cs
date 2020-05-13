@@ -17,5 +17,24 @@ namespace SoftuniFundamentals.TelerikDefClassesPartTwo
             elements = new T[InitialCapacity];
         }
 
+        public void Add(T element)
+        {
+            
+            if (Count == this.elements.Length)
+            {
+                Expand();
+            }
+            elements[Count++] = element;
+
+
+        }
+
+        private void Expand()
+        {
+            T[] currentNewElementsArray = new T[this.elements.Length * 2];
+            Array.Copy(this.elements, currentNewElementsArray, Count);
+            this.elements = currentNewElementsArray;
+
+        }
     }
 }

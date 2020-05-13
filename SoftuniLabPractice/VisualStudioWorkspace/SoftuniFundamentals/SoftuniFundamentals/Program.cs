@@ -1,4 +1,5 @@
-﻿using SoftuniFundamentals.TelerikGSMTask;
+﻿using SoftuniFundamentals.TelerikDefClassesPartTwo;
+using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,30 +42,25 @@ namespace SoftuniFundamentals
             //currentTasks.CoursesNames();
             //currentTasks.StudentGrades();
             //TelericGSMTask();
+            //GenericListTask();
 
 
-
-            int[] current = new int[10];
-            for(int i = 0; i < current.Length; i++)
-            {
-                current[i] = i + 1;
-            }
-            int[] newCurrent = new int[current.Length - 1];
-            int index =int.Parse(Console.ReadLine());
-            int from = index + 1;
-
-            Array.Copy(current, 0, newCurrent, 0, index);
-            
-            for(int i = index + 1; i < current.Length; i++)
-            {
-              newCurrent[i - 1] = current[i];
-            }
             
 
         
         }
 
 
+        private static void GenericListTask()
+        {
+            GenericList<int> currentList = new GenericList<int>();
+            currentList.Add(4);
+            currentList.Add(5);
+            currentList.RemoveAll();
+            Console.WriteLine(currentList.Count);
+
+
+        }
 
 
         

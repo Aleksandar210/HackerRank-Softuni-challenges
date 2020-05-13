@@ -45,7 +45,17 @@ namespace SoftuniFundamentals.TelerikDefClassesPartTwo
 
         public void Remove(T element)
         {
-            
+            int index = 0;
+            for(int i = 0; i < this.elements.Length; i++)
+            {
+                if (this.elements[i].Equals(element))
+                {
+                    index = 0;
+                    break;
+                }
+            }
+
+            this.RemoveAt(index);
         }
 
         public void RemoveAll()
@@ -67,6 +77,14 @@ namespace SoftuniFundamentals.TelerikDefClassesPartTwo
             }
 
             return -1;
+        }
+
+        public void Print()
+        {
+            T[] displayArray = new T[Count];
+            Array.Copy(this.elements, displayArray, Count);
+            string current = String.Join(",", displayArray);
+            Console.WriteLine(current);
         }
 
         private void Expand()

@@ -12,7 +12,7 @@ namespace SoftuniFundamentals
     {
         static void Main(string[] args)
         {
-             ArraysMethodsLists currentTasks = new ArraysMethodsLists();
+            // ArraysMethodsLists currentTasks = new ArraysMethodsLists();
             //currentTasks.Rotation();
             //currentTasks.EqualSums();
             //currentTasks.KaminoFactory();
@@ -44,7 +44,22 @@ namespace SoftuniFundamentals
 
 
 
-           
+            int[] current = new int[10];
+            for(int i = 0; i < current.Length; i++)
+            {
+                current[i] = i + 1;
+            }
+            int[] newCurrent = new int[current.Length - 1];
+            int index =int.Parse(Console.ReadLine());
+            int from = index + 1;
+
+            Array.Copy(current, 0, newCurrent, 0, index);
+            
+            for(int i = index + 1; i < current.Length; i++)
+            {
+              newCurrent[i - 1] = current[i];
+            }
+            
 
         
         }

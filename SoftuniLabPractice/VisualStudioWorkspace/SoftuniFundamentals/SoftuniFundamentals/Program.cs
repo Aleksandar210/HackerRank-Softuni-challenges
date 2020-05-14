@@ -44,7 +44,7 @@ namespace SoftuniFundamentals
             //currentTasks.StudentGrades();
             //TelericGSMTask();
             //GenericListTask();
-            currentTasks.CompanyTask();
+            //currentTasks.CompanyTask();
             
 
         

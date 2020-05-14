@@ -1262,6 +1262,21 @@ namespace SoftuniFundamentals
             
         }
 
+        public void ForceUsers()
+        {
+            Dictionary<string,HashSet<string>> currentDataBase = new Dictionary<string,HashSet<string>>();
+            string enterData = Console.ReadLine();
+            while (!enterData.Equals("Lumpawaroo", StringComparison.OrdinalIgnoreCase)) 
+            {
+
+            }
+        }
+
+        private void AddUserToSide(Dictionary<string, HashSet<string>> currentDataBase,params string[] data)
+        {
+
+        }
+
 
     }
 

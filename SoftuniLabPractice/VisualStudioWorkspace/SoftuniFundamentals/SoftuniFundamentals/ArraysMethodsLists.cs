@@ -1225,6 +1225,43 @@ namespace SoftuniFundamentals
         }
 
 
+        public void CompanyTask()
+        {
+            Dictionary<string, HashSet<string>> currentEmployes = new Dictionary<string, HashSet<string>>();
+            string enterData;
+            do
+            {
+                enterData = Console.ReadLine();
+                AddEmployeeToBase(currentEmployes, enterData.Trim().Split("->"));
+
+            }
+            while (!enterData.Equals("End",StringComparison.OrdinalIgnoreCase));
+            currentEmployes = currentEmployes.OrderBy(e => e.Key).ToDictionary(e => e.Key, e => e.Value);
+
+            foreach(var item in currentEmployes)
+            {
+                Console.WriteLine(item.Key+"->");
+                foreach(var empl in item.Value)
+                {
+                    Console.WriteLine(empl);
+                }
+            }
+        }
+
+        private void AddEmployeeToBase(Dictionary<string,HashSet<string>> currentData,params string[] data)
+        {
+            if (currentData.ContainsKey(data[0]))
+            {
+                currentData[data[0]].Add(data[1]);
+            }
+            else
+            {
+                currentData.Add(data[0], new HashSet<string>());
+                currentData[data[0]].Add(data[1]);
+            }
+            
+        }
+
 
     }
 

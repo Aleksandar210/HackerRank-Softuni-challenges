@@ -2,6 +2,7 @@
 using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,7 +14,7 @@ namespace SoftuniFundamentals
     {
         static void Main(string[] args)
         {
-            // ArraysMethodsLists currentTasks = new ArraysMethodsLists();
+             ArraysMethodsLists currentTasks = new ArraysMethodsLists();
             //currentTasks.Rotation();
             //currentTasks.EqualSums();
             //currentTasks.KaminoFactory();
@@ -43,8 +44,7 @@ namespace SoftuniFundamentals
             //currentTasks.StudentGrades();
             //TelericGSMTask();
             //GenericListTask();
-
-
+            currentTasks.CompanyTask();
             
 
         
@@ -58,6 +58,8 @@ namespace SoftuniFundamentals
             currentList.Add(5);
             currentList.RemoveAll();
             Console.WriteLine(currentList.Count);
+
+
 
 
         }

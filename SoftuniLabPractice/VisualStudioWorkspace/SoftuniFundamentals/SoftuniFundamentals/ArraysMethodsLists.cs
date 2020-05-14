@@ -1265,11 +1265,39 @@ namespace SoftuniFundamentals
         public void ForceUsers()
         {
             Dictionary<string,HashSet<string>> currentDataBase = new Dictionary<string,HashSet<string>>();
+            HashSet<string> currentSides = new HashSet<string>();
             string enterData = Console.ReadLine();
             while (!enterData.Equals("Lumpawaroo", StringComparison.OrdinalIgnoreCase)) 
             {
+                string[] currentEnteredDataArray = enterData.Split();
+                switch (currentEnteredDataArray[1])
+                {
+                    case "->":
+                        currentSides.Add(currentEnteredDataArray[2]);
+                        break;
+                    case "|":
+                        currentSides.Add(currentEnteredDataArray[0]);
+                        break;
+                }
+
+                AddSides(currentDataBase, currentEnteredDataArray);
+
+                enterData = Console.ReadLine();
 
             }
+
+            var displayDataBase = currentDataBase.OrderBy(e => e.Value.OrderBy(a => a)).ToDictionary(e => e.Key, e => e.Value);
+
+            foreach(var item in displayDataBase)
+            {
+                Console.WriteLine(item.Key + " has " + item.Value.Count);
+                foreach(var people in item.Value)
+                {
+                    Console.WriteLine("!" + people);
+                }
+            }
+
+
         }
 
         private void AddUserToSide(Dictionary<string, HashSet<string>> currentDataBase,HashSet<string> sides,params string[] data)
@@ -1299,9 +1327,45 @@ namespace SoftuniFundamentals
 
                     break;
                 case "|":
+                    if (!currentDataBase[data[0]].Contains(data[2]))
+                    {
+                        currentDataBase[data[0]].Add(data[2]);
+                    }
+                   
 
+                    
                     break;
                 deafault:
+                    break;
+            }
+        }
+
+        private void AddSides(Dictionary<string,HashSet<string>> currentSides,string[] currentData)
+        {
+            switch (currentData[1])
+            {
+                case "->":
+                    if (currentSides.ContainsKey(currentData[2]))
+                    {
+                        AddUserToSide(currentSides, currentSides[currentData[2]], currentData);
+                    }
+                    else
+                    {
+                        currentSides.Add(currentData[2], new HashSet<string>());
+                        AddUserToSide(currentSides, currentSides[currentData[2]], currentData);
+                    }
+                    break;
+                case "|":
+                    if (currentSides.ContainsKey(currentData[0]))
+                    {
+                        AddUserToSide(currentSides, currentSides[currentData[0]], currentData);
+
+                    }
+                    else
+                    {
+                        currentSides.Add(currentData[0], new HashSet<string>());
+                        AddUserToSide(currentSides, currentSides[currentData[0]], currentData);
+                    }
                     break;
             }
         }

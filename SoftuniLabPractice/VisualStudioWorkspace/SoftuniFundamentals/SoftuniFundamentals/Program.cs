@@ -45,6 +45,8 @@ namespace SoftuniFundamentals
             //TelericGSMTask();
             //GenericListTask();
             //currentTasks.CompanyTask();
+            //currentTasks.ForceUsers();
+            //currentTasks.JudgeSubmisions();
             
 
         

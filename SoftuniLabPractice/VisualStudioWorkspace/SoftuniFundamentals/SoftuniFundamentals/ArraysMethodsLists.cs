@@ -1370,7 +1370,68 @@ namespace SoftuniFundamentals
             }
         }
 
+        public void JudgeSubmisions()
+        {
+            Dictionary<string, int> currentPoints = new Dictionary<string, int>();
+            Dictionary<string, int> currentLanguages = new Dictionary<string, int>();
 
+            string enterData = Console.ReadLine();
+            while (!enterData.Equals("exam finsihed", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] enteredDataArray = enterData.Split("->");
+                if (!currentPoints.ContainsKey(enteredDataArray[0]))
+                {
+                    currentPoints.Add(enteredDataArray[0], 0);
+                }
+                if (enteredDataArray.Length==3) 
+                { 
+                if (!currentLanguages.ContainsKey(enteredDataArray[1]))
+                {
+                    currentLanguages.Add(enteredDataArray[1], 1);
+                }
+                else
+                {
+                    currentLanguages[enteredDataArray[1]]++;
+                }
+            }
+                ExecuteJudgeCommand(currentPoints, enteredDataArray);
+                enterData = Console.ReadLine();
+            }
+            var currentOrderedPoints = currentPoints.OrderByDescending(e => e.Value).ThenBy(e => e.Key)
+                .ToDictionary(e => e.Key, e => e.Value);
+
+            var currentOrderedLanguages = currentLanguages.OrderByDescending(e => e.Value).ThenBy(e => e.Key)
+                .ToDictionary(e => e.Key, e => e.Value);
+
+
+            Console.Clear();
+            Console.WriteLine("Results:");
+            foreach(var item in currentOrderedPoints)
+            {
+                Console.WriteLine(item.Key + ":" + item.Value);
+            }
+
+            Console.WriteLine("Submisions:");
+            foreach(var item in currentOrderedLanguages)
+            {
+                Console.WriteLine(item.Key + " -> " + item.Value);
+            }
+        }
+
+        private void ExecuteJudgeCommand(Dictionary<string,int> currentParticipants,params string[] currentData)
+        {
+            switch (currentData.Length)
+            {
+                case 2:
+                    currentParticipants.Remove(currentData[0]);
+                    break;
+                case 3:
+                    currentParticipants[currentData[0]] += int.Parse(currentData[2]);
+
+                    break;
+            }
+
+        }
     }
 
 

@@ -1272,9 +1272,38 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void AddUserToSide(Dictionary<string, HashSet<string>> currentDataBase,params string[] data)
+        private void AddUserToSide(Dictionary<string, HashSet<string>> currentDataBase,HashSet<string> sides,params string[] data)
         {
+            bool exists = false;
+            switch (data[1])
+            {
+                case "->":
+                    foreach (var item in sides)
+                    {
+                     if (!item.Equals(data[2], StringComparison.OrdinalIgnoreCase))
+                    { 
+                        if (currentDataBase[item].Contains(data[0]))
+                        {
+                                exists = true;
+                                currentDataBase[item].Remove(data[0]);
+                                currentDataBase[data[2]].Add(data[0]);
+                        }
+                    }
 
+                    }
+
+                    if (exists == false)
+                    {
+                        currentDataBase[data[2]].Add(data[0]);
+                    }
+
+                    break;
+                case "|":
+
+                    break;
+                deafault:
+                    break;
+            }
         }
 
 

@@ -1467,7 +1467,7 @@ namespace SoftuniFundamentals
                         int scoreAddedOnInput = int.Parse(currentEnteredDataParticipants[3]);
                         if (currentScore < scoreAddedOnInput)
                         {
-                            currentParticipants[currentEnteredDataParticipants[0]][currentEnteredDataParticipants[2] = scoreAddedOnInput;
+                            currentParticipants[currentEnteredDataParticipants[0]][currentEnteredDataParticipants[2]] = scoreAddedOnInput;
                         }
                         else
                         {
@@ -1508,7 +1508,7 @@ namespace SoftuniFundamentals
             string[] data;
             while(enterData.Equals("no more time", StringComparison.OrdinalIgnoreCase))
             {
-                data = enterData.Trim().Split();
+                data = enterData.Trim().Split("->");
                 if (currentCourses.ContainsKey(data[1]))
                 {
                     if (currentCourses[data[1]].ContainsKey(data[0]))
@@ -1550,16 +1550,62 @@ namespace SoftuniFundamentals
 
         public void MobaPlayers()
         {
-            Dictionary<string, Dictionary<string, int>> currentPayers = new Dictionary<string, Dictionary<string, int>>();
-
+            Dictionary<string, Dictionary<string, int>> currentPlayers = new Dictionary<string, Dictionary<string, int>>();
+            HashSet<string> currentPositions = new HashSet<string>();
+            
             string enterData = Console.ReadLine();
+            string[] currentData;
             while(enterData.Equals("season is over", StringComparison.OrdinalIgnoreCase))
             {
+                if (!enterData.Contains("vs"))
+                {
+                    currentData = enterData.Trim().Split("->");
+                    currentPositions.Add(currentData[1]);
+                    if (currentPlayers.ContainsKey(currentData[0]))
+                    {
+                        if (currentPlayers[currentData[0]].ContainsKey(currentData[1]))
+                        {
+                            int currentScoreGiven = int.Parse(currentData[2]);
+                            int currentScoreHas = currentPlayers[currentData[0]][currentData[1]];
+                            if (currentScoreGiven > currentScoreHas)
+                            {
+                                currentPlayers[currentData[0]][currentData[1]] = currentScoreGiven;
+                            }
+                        }
+                        else
+                        {
+                            currentPlayers[currentData[0]].Add(currentData[1], int.Parse(currentData[2]));
+                            
+                        }
+                    }
+                    else
+                    {
+                        currentPlayers.Add(currentData[0], new Dictionary<string, int>());
+                        currentPlayers[currentData[0]].Add(currentData[1], int.Parse(currentData[2]));
 
+                    }
+                }
+                else
+                {
+                    currentData = enterData.Split(" vs ");
+                    string removePlayer = RemovePlayerLostDuel(currentPlayers, currentPositions, currentData[0], currentData[1]);
+                    if (!removePlayer.Equals("noone"))
+                    {
+                        currentPlayers.Remove(removePlayer);
+                    }
+                   
+
+                }
+                enterData = Console.ReadLine();
+               
+            }
+            foreach(var item in currentPlayers)
+            {
+                Console.WriteLine(item.Key);
             }
         }
 
-        private string RemovePlayerLostDuel(Dictionary<string,Dictionary<string,int>> currentPlayers,HashSet<string>positions,string[] players)
+        private string RemovePlayerLostDuel(Dictionary<string,Dictionary<string,int>> currentPlayers,HashSet<string>positions,params string[] players)
         {
             int rightPlayerTotal=0;
             int leftPlayerTotal=0;
@@ -1582,7 +1628,7 @@ namespace SoftuniFundamentals
             }
             else
             {
-                return players[1]
+                return players[1];
             }
         }
     }

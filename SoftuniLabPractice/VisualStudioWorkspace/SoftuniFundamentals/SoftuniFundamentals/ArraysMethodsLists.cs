@@ -1672,6 +1672,45 @@ namespace SoftuniFundamentals
                 }
             }
         }
+
+        public void DragonArmyHeroesIIIFundamentals()
+        {
+            Dictionary<string, Dictionary<string, Dragon>> currentDragons = new Dictionary<string, Dictionary<string, Dragon>>();
+
+            
+            int numberDragons = int.Parse(Console.ReadLine());
+            string enterDragon;
+            string[] dragonData;
+            for (int i = 0; i < numberDragons; i++)
+            {
+                enterDragon = Console.ReadLine();
+                dragonData = enterDragon.Split();
+
+
+            }
+        }
+
+        private struct Dragon
+        {
+           
+
+            public Dragon(int health, int damage, int armour)
+            {
+                this.Health = health;
+                this.Damage = damage;
+                this.Armour = armour;
+            }
+
+            public int Health { get;}
+            public int Damage { get; }
+            public int Armour { get; }
+
+            public override string ToString()
+            {
+                return $"{this.Health}-{this.Damage}-{this.Armour}";
+                
+            }
+        }
     }
 
 

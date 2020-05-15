@@ -1547,6 +1547,44 @@ namespace SoftuniFundamentals
             }
 
         }
+
+        public void MobaPlayers()
+        {
+            Dictionary<string, Dictionary<string, int>> currentPayers = new Dictionary<string, Dictionary<string, int>>();
+
+            string enterData = Console.ReadLine();
+            while(enterData.Equals("season is over", StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+        }
+
+        private string RemovePlayerLostDuel(Dictionary<string,Dictionary<string,int>> currentPlayers,HashSet<string>positions,string[] players)
+        {
+            int rightPlayerTotal=0;
+            int leftPlayerTotal=0;
+            foreach(var item in positions)
+            {
+                if(currentPlayers[players[0]].ContainsKey(item) && currentPlayers[players[1]].ContainsKey(item))
+                {
+                    rightPlayerTotal += currentPlayers[players[1]][item];
+                    leftPlayerTotal += currentPlayers[players[0]][item];
+                }
+            }
+
+            if (rightPlayerTotal == leftPlayerTotal)
+            {
+                return "noone";
+            }
+            else if (rightPlayerTotal > leftPlayerTotal)
+            {
+                return players[0];
+            }
+            else
+            {
+                return players[1]
+            }
+        }
     }
 
 

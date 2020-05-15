@@ -1369,7 +1369,7 @@ namespace SoftuniFundamentals
                     break;
             }
         }
-
+        
         public void JudgeSubmisions()
         {
             Dictionary<string, int> currentPoints = new Dictionary<string, int>();
@@ -1431,6 +1431,69 @@ namespace SoftuniFundamentals
                     break;
             }
 
+        }
+
+        public void RankingInterns()
+        {
+            Dictionary<string, string> currentContests = new Dictionary<string, string>();
+            Dictionary<string, Dictionary<string, int>> currentParticipants = new Dictionary<string, Dictionary<string, int>>();
+            Console.WriteLine("Enter Contests & Passwords!");
+
+            string enterPasswords = Console.ReadLine();
+            while (!enterPasswords.Equals("end of contests", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] dataContestsPasswords = enterPasswords.Split(':');
+                if (!currentContests.ContainsKey(dataContestsPasswords[0]))
+                {
+                    currentContests.Add(dataContestsPasswords[0], dataContestsPasswords[1]);
+                }
+                Console.Clear();
+                Console.WriteLine("Enter Contests & Passwords!");
+                enterPasswords = Console.ReadLine();
+            }
+            Console.Clear();
+            Console.WriteLine("Enter Contest-Password-Participant-Points!");
+            string enterParticipants = Console.ReadLine();
+            string[] currentEnteredDataParticipants;
+            while(!enterParticipants.Equals("end of submisions", StringComparison.OrdinalIgnoreCase))
+            {
+                currentEnteredDataParticipants = enterParticipants.Split("=>");
+                if (currentContests.ContainsKey(currentEnteredDataParticipants[0])&& currentEnteredDataParticipants[1].Equals(currentContests[currentEnteredDataParticipants[0]]))
+                {
+                    if (currentParticipants.ContainsKey(currentEnteredDataParticipants[0]))
+                    {
+                        int currentScore = currentParticipants[currentEnteredDataParticipants[0]][currentEnteredDataParticipants[2]];
+                        int scoreAddedOnInput = int.Parse(currentEnteredDataParticipants[3]);
+                        if (currentScore < scoreAddedOnInput)
+                        {
+                            currentParticipants[currentEnteredDataParticipants[0]][currentEnteredDataParticipants[2] = scoreAddedOnInput;
+                        }
+                        else
+                        {
+
+                        }
+
+                    }
+                    else
+                    {
+                        currentParticipants.Add(currentEnteredDataParticipants[0], new Dictionary<string, int>());
+                        currentParticipants[currentEnteredDataParticipants[0]][currentEnteredDataParticipants[2]]=int.Parse(currentEnteredDataParticipants[3]);
+
+                    }
+                }
+                Console.Clear();
+                Console.WriteLine("Enter Contest-Passwor-Participant-points!");
+                enterParticipants = Console.ReadLine();
+
+            }
+            foreach(var item in currentParticipants)
+            {
+                Console.WriteLine("#"+item.Key);
+                foreach(var currentPart in item.Value)
+                {
+                    Console.WriteLine(currentPart.Key + " : " + currentPart.Value);
+                }
+            }
         }
     }
 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.PortableExecutable;
@@ -1494,6 +1495,57 @@ namespace SoftuniFundamentals
                     Console.WriteLine(currentPart.Key + " : " + currentPart.Value);
                 }
             }
+        }
+
+        public void JudgeSyste()
+        {
+            Dictionary<string, Dictionary<string, int>> currentCourses = new Dictionary<string, Dictionary<string, int>>();
+            Dictionary<string, HashSet<string>> currentNumberParticipants = new Dictionary<string, HashSet<string>>();
+
+            
+
+            string enterData = Console.ReadLine();
+            string[] data;
+            while(enterData.Equals("no more time", StringComparison.OrdinalIgnoreCase))
+            {
+                data = enterData.Trim().Split();
+                if (currentCourses.ContainsKey(data[1]))
+                {
+                    if (currentCourses[data[1]].ContainsKey(data[0]))
+                    {
+                        int currentGivenScore = int.Parse(data[2]);
+                        int currentScore = currentCourses[data[1]][data[0]];
+                        if (currentGivenScore > currentScore)
+                        {
+                            currentCourses[data[1]][data[0]] = currentGivenScore;
+                        }
+                    }
+                    else
+                    {
+                        currentNumberParticipants[data[1]].Add(data[0]);
+                        currentCourses[data[1]].Add(data[0], int.Parse(data[2]));
+                    }
+                }
+                else
+                {
+                    currentCourses.Add(data[1], new Dictionary<string, int>());
+                    currentCourses[data[1]].Add(data[0], int.Parse(data[2]));
+                    currentNumberParticipants.Add(data[1], new HashSet<string>());
+                    currentNumberParticipants[data[1]].Add(data[0]);
+
+                }
+                enterData = Console.ReadLine();
+            }
+
+            foreach(var item in currentCourses)
+            {
+                Console.WriteLine(item.Key+": "+currentNumberParticipants[item.Key].Count);
+                foreach(var participant in item.Value)
+                {
+                    Console.WriteLine(participant.Key + "<::>" + participant.Value);
+                }
+            }
+
         }
     }
 

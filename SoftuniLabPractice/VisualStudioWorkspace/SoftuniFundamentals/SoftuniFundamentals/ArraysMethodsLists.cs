@@ -1589,7 +1589,7 @@ namespace SoftuniFundamentals
                 {
                     currentData = enterData.Split(" vs ");
                     string removePlayer = RemovePlayerLostDuel(currentPlayers, currentPositions, currentData[0], currentData[1]);
-                    if (!removePlayer.Equals("noone"))
+                    if (removePlayer!=null)
                     {
                         currentPlayers.Remove(removePlayer);
                     }
@@ -1620,7 +1620,7 @@ namespace SoftuniFundamentals
 
             if (rightPlayerTotal == leftPlayerTotal)
             {
-                return "noone";
+                return null;
             }
             else if (rightPlayerTotal > leftPlayerTotal)
             {
@@ -1629,6 +1629,47 @@ namespace SoftuniFundamentals
             else
             {
                 return players[1];
+            }
+        }
+
+        public void SnowWhite()
+        {
+            Dictionary<string, Dictionary<string, int>> dwarfs = new Dictionary<string, Dictionary<string, int>>();
+
+            string enterDwarf = Console.ReadLine();
+            while (!enterDwarf.Equals("once upona  time", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] currentData = enterDwarf.Split(" <::> ");
+                if (dwarfs.ContainsKey(currentData[1]))
+                {
+                    if (dwarfs[currentData[1]].ContainsKey(currentData[0]))
+                    {
+                        int givenPhysic = int.Parse(currentData[2]);
+                        int dwarfPhysiscs = dwarfs[currentData[1]][currentData[0]];
+                        if (givenPhysic > dwarfPhysiscs)
+                        {
+                            dwarfs[currentData[1]][currentData[0]] = givenPhysic;
+                        }
+                    }
+                }
+                else
+                {
+                    dwarfs.Add(currentData[1], new Dictionary<string, int>());
+                    dwarfs[currentData[1]].Add(currentData[0], int.Parse(currentData[2]));
+
+                }
+                enterDwarf = Console.ReadLine();
+
+            }
+
+            
+            foreach(var item in dwarfs)
+            {
+                Console.WriteLine(item.Key);
+                foreach(var itemNested in item.Value)
+                {
+                    Console.WriteLine(itemNested.Key+" with "+itemNested.Value+" physics");
+                }
             }
         }
     }

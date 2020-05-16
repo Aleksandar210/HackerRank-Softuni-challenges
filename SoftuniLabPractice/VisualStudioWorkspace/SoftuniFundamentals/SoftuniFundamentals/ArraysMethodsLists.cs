@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.PortableExecutable;
@@ -1675,39 +1676,145 @@ namespace SoftuniFundamentals
 
         public void DragonArmyHeroesIIIFundamentals()
         {
-            Dictionary<string, Dictionary<string, Dragon>> currentDragons = new Dictionary<string, Dictionary<string, Dragon>>();
-
+            Dictionary<string, Dictionary<string,Dragon>> currentDragons = new Dictionary<string, Dictionary<string,Dragon>>();
+            Dictionary<string, int[]> currentDragonTypeStats = new Dictionary<string, int[]>();
+            Dictionary<string, HashSet<string>> currentDragonNames = new Dictionary<string, HashSet<string>>();
             
             int numberDragons = int.Parse(Console.ReadLine());
             string enterDragon;
             string[] dragonData;
+            Dragon currentDragonEntered;
             for (int i = 0; i < numberDragons; i++)
             {
                 enterDragon = Console.ReadLine();
                 dragonData = enterDragon.Split();
+                currentDragonEntered = new Dragon(dragonData[1], TransformStatsDragon(dragonData[2], dragonData[3], dragonData[4]));
 
+                if (currentDragons.ContainsKey(dragonData[0]))
+                {
+                    if (currentDragonNames[dragonData[0]].Contains(dragonData[1]))
+                    {
+                        currentDragons[dragonData[0]][dragonData[1]].UpdateStats(TransformStatsDragon(dragonData[2], dragonData[3], dragonData[4]));
+
+
+                    }
+                    else
+                    {
+                        currentDragons[dragonData[0]].Add(dragonData[1], currentDragonEntered);
+                        currentDragonNames[dragonData[0]].Add(dragonData[1]);
+                    }
+                }
+                else
+                {
+                    currentDragons.Add(dragonData[0], new Dictionary<string, Dragon>());
+                    currentDragons[dragonData[0]].Add(dragonData[1],currentDragonEntered);
+                    currentDragonNames.Add(dragonData[0], new HashSet<string>());
+                    currentDragonNames[dragonData[0]].Add(dragonData[1]);
+                    
+                }
+                
 
             }
+
+            foreach(var item in currentDragons)
+            {
+                currentDragonTypeStats.Add(item.Key, new int[3]);
+                foreach(var name in item.Value)
+                {
+                    AddSumStats(currentDragonTypeStats, name.Key, name.Value.Stats);
+                }
+                Console.WriteLine(item.Key + ": " + ShowStats(currentDragonTypeStats[item.Key]));
+                foreach(var currentName in item.Value)
+                {
+                    Console.WriteLine(currentName.Key+":"+ currentDragons[item.Key][currentName.Key].ShowStats());
+                }
+                
+            }
+
+            
+        }
+        private void AddSumStats(Dictionary<string,int[]> current,string type,params int[] stats)
+        {
+            current[type][0] += stats[0];
+            current[type][1] += stats[1];
+            current[type][2] += stats[2];
+        }
+
+        private int[] TransformStatsDragon(params string[] stats)
+        {
+            int[] statsInArray = new int[3];
+            for(int i = 1; i <= stats.Length; i++)
+            {
+                if (stats[i - 1].Equals("null"))
+                {
+                    switch (i)
+                    {
+                        case 1:
+                            statsInArray[i - 1] = 250;
+                            break;
+                        case 2:
+                            statsInArray[i - 1] = 45;
+                            break;
+                        case 3:
+                            statsInArray[i - 1] = 10;
+                            break;
+                    }
+                }
+                else
+                {
+                    statsInArray[i - 1] = int.Parse(stats[i - 1]);
+                }
+            }
+
+            return statsInArray;
+        }
+        private string ShowStats(int[] Stats)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Stats[0]).Append("/" + Stats[1]).Append("/" + Stats[2]);
+            return sb.ToString();
         }
 
         private struct Dragon
         {
-           
+            
 
-            public Dragon(int health, int damage, int armour)
+            public Dragon(string name,params int[] currentDataEntered)
             {
-                this.Health = health;
-                this.Damage = damage;
-                this.Armour = armour;
+                this.Health = currentDataEntered[0];
+                this.Damage = currentDataEntered[1];
+                this.Armour = currentDataEntered[2];
+                Name = name;
+                Stats = currentDataEntered;
+                
+
             }
 
-            public int Health { get;}
-            public int Damage { get; }
-            public int Armour { get; }
+            public int Health { get; set; }
+            public int Damage { get; set; }
+            public int Armour { get; set; }
+            public string Name { get; set; }
+
+            public int[] Stats { get; private set; }
+
+            public void UpdateStats(params int[] currentNewStats)
+            {
+                this.Health = currentNewStats[0];
+                this.Damage = currentNewStats[1];
+                this.Armour = currentNewStats[2];
+                Stats = currentNewStats;
+            }
+
+            public string ShowStats()
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(this.Stats[0]).Append("/" + this.Stats[1]).Append("/" + this.Stats[2]);
+                return sb.ToString();
+            }
 
             public override string ToString()
             {
-                return $"{this.Health}-{this.Damage}-{this.Armour}";
+                return $"{this.Name}:{this.Health}-{this.Damage}-{this.Armour}";
                 
             }
         }

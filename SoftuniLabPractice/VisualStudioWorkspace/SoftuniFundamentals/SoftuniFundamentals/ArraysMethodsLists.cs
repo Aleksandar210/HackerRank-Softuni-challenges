@@ -1867,6 +1867,56 @@ namespace SoftuniFundamentals
                     break;
             }
         }
+
+        public void SpellingBee()
+        {
+            Dictionary<string,List<int>> pairs = new Dictionary<string, List<int>>();
+            Regex currentRegex = new Regex("([@|#])\\w+\\1");
+            string enterText = Console.ReadLine();
+            MatchCollection currentMatches = Regex.Matches(enterText, currentRegex.ToString());
+            
+            List<Match> currentList = currentMatches.ToList();
+            currentList.Sort();
+            
+
+        }
+
+        private Dictionary<string,List<int>> GetAllPairs(List<Match> found,Dictionary<string,List<int>> currentPairsStructure)
+        {
+            string wordInTheIndex;
+            string wordInIndexReversed;
+            
+            for(int i = 0; i < found.Count-1; i++)
+            {
+                
+
+                wordInTheIndex = found[i].Value;
+                wordInIndexReversed = String.Join("", wordInTheIndex.ToCharArray().Reverse());
+
+                if (!currentPairsStructure.ContainsKey(wordInTheIndex))
+                {
+                    currentPairsStructure.Add(wordInTheIndex, new List<int>());
+                    if (!currentPairsStructure.ContainsKey(wordInIndexReversed))
+                    {
+                        currentPairsStructure.Add(wordInIndexReversed,new List<int>());
+
+                    }
+                }
+
+                for (int j = i + 1; j < found.Count; j++)
+                {
+                    if(String.Join("", found[i].Value.ToCharArray().Reverse()).Equals(wordInIndexReversed))
+                    {
+                        currentPairsStructure[wordInIndexReversed].Add(i);
+                        currentPairsStructure[wordInTheIndex].Add(j);
+                    }
+                }
+            }
+
+            return currentPairsStructure;
+
+
+        }
     }
 
 

@@ -1824,7 +1824,7 @@ namespace SoftuniFundamentals
 
         }
 
-        private  void SecretChat()
+        public void SecretChat()
         {
             StringBuilder sb = new StringBuilder();
             string enterString = Console.ReadLine();
@@ -1877,6 +1877,14 @@ namespace SoftuniFundamentals
             
             List<Match> currentList = currentMatches.ToList();
             currentList.Sort();
+
+            pairs = GetAllPairs(currentList, pairs);
+
+            foreach(var item in pairs)
+            {
+                Console.WriteLine(item.Key + " is pair with items at index" + String.Join(",", item.Value));
+
+            }
             
 
         }

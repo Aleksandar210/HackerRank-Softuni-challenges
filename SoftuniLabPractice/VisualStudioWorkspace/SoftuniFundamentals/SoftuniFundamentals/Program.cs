@@ -15,16 +15,16 @@ namespace SoftuniFundamentals
         static void Main(string[] args)
         {
              ArraysMethodsLists currentTasks = new ArraysMethodsLists();
-            //currentTasks.Rotation();
+             //currentTasks.Rotation();
             //currentTasks.EqualSums();
-            //currentTasks.KaminoFactory();
-            //currentTasks.LadyBug();
-            // currentTasks.SongTask();
-            //currentTasks.SecretMessage();
+           //currentTasks.KaminoFactory();
+          //currentTasks.LadyBug();
+          //currentTasks.SongTask();
+         //currentTasks.SecretMessage();
             //currentTasks.MixingRules();
             //currentTasks.DrumSet();
-            // currentTasks.WordSynonims();
-            // currentTasks.TopThree();
+            //currentTasks.WordSynonims();
+            //currentTasks.TopThree();
             //currentTasks.DataTypes();
             //currentTasks.CenterPoint();
             //currentTasks.Tribonachi();
@@ -34,8 +34,8 @@ namespace SoftuniFundamentals
             //currentTasks.NxN(int.Parse(Console.ReadLine()));
             //currentTasks.Palindrom();
             //currentTasks.TopNumber();
-            // currentTasks.AddAndSubstract();
-            // currentTasks.ArrayManipulating();
+            //currentTasks.AddAndSubstract();
+            //currentTasks.ArrayManipulating();
             //currentTasks.Resources();
             //currentTasks.LegendaryFarming();
             //currentTasks.Products();
@@ -48,7 +48,8 @@ namespace SoftuniFundamentals
             //currentTasks.ForceUsers();
             //currentTasks.JudgeSubmisions();
             //currentTasks.DragonArmyHeroesIIIFundamentals();
-            string currentWord = "Koka";
+            //urrentTasks.SpellingBee();
+            //currentTasks.SecretChat();
            
             
 

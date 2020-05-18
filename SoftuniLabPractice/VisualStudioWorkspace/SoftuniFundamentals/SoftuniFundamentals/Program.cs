@@ -47,6 +47,9 @@ namespace SoftuniFundamentals
             //currentTasks.CompanyTask();
             //currentTasks.ForceUsers();
             //currentTasks.JudgeSubmisions();
+            //currentTasks.DragonArmyHeroesIIIFundamentals();
+            string currentWord = "Koka";
+           
             
 
         

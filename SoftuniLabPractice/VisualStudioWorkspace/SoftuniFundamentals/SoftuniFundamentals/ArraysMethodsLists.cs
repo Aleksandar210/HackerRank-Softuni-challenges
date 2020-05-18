@@ -1818,6 +1818,55 @@ namespace SoftuniFundamentals
                 
             }
         }
+
+        public void ExamApril()
+        {
+
+        }
+
+        private  void SecretChat()
+        {
+            StringBuilder sb = new StringBuilder();
+            string enterString = Console.ReadLine();
+            sb.Append(enterString);
+            Console.Clear();
+            string enterCommand = Console.ReadLine();
+            while (!enterCommand.Equals("Reveal", StringComparison.OrdinalIgnoreCase))
+            {
+
+                ExecuteSecretChatCommands(sb, enterCommand.Split(":|:"));
+                Console.WriteLine(sb.ToString());
+                enterCommand = Console.ReadLine();
+                Console.Clear();
+                
+            }
+        }
+        private void ExecuteSecretChatCommands(StringBuilder sb,params string[] commands)
+        {
+            switch (commands[0].ToLower())
+            {
+                case "changeall":
+                    sb.Replace(commands[2], commands[1]);
+                    break;
+                case "reverse":
+                    string currentString = sb.ToString();
+                    if (currentString.Contains(commands[1]))
+                    {
+                        int start = currentString.IndexOf(commands[1]);
+                        int length = commands[1].Length - 1;
+                        sb.Remove(start, length);
+                        sb.Append(commands[1].ToCharArray().Reverse().ToString());
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error");
+                    }
+                    break;
+                case "insertspace":
+                    sb.Insert(int.Parse(commands[1]), " ");
+                    break;
+            }
+        }
     }
 
 

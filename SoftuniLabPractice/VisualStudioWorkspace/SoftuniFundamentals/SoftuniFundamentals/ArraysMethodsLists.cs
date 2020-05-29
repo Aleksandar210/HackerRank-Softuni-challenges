@@ -10,6 +10,7 @@ using System.Reflection.PortableExecutable;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace SoftuniFundamentals
 {
@@ -1819,11 +1820,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        public void ExamApril()
-        {
-
-        }
-
+       
         public void SecretChat()
         {
             StringBuilder sb = new StringBuilder();
@@ -1913,9 +1910,12 @@ namespace SoftuniFundamentals
 
                 for (int j = i + 1; j < found.Count; j++)
                 {
-                    if(String.Join("", found[i].Value.ToCharArray().Reverse()).Equals(wordInIndexReversed))
+                    if(String.Join("", found[j].Value.ToCharArray().Reverse()).Equals(wordInTheIndex))
                     {
-                        currentPairsStructure[wordInIndexReversed].Add(i);
+                        if (!currentPairsStructure[wordInIndexReversed].Contains(i))
+                        {
+                            currentPairsStructure[wordInIndexReversed].Add(i);
+                        }
                         currentPairsStructure[wordInTheIndex].Add(j);
                     }
                 }
@@ -1925,7 +1925,209 @@ namespace SoftuniFundamentals
 
 
         }
-    }
+
+        public void NeefForSpeedExamTask()
+        {
+            int numberCars = int.Parse(Console.ReadLine());
+            string enterCarData;
+            Dictionary<string, int[]> currentCars = new Dictionary<string, int[]>();
+            string[] dataCollectedInput;
+            for(int i = 0; i < numberCars; i++)
+            {
+                enterCarData = Console.ReadLine();
+                dataCollectedInput = enterCarData.Split("|");
+
+
+                if (!currentCars.ContainsKey(dataCollectedInput[0]))
+                {
+                    currentCars.Add(dataCollectedInput[0], new int[2]);
+                    currentCars[dataCollectedInput[0]][0] = int.Parse(dataCollectedInput[1]);
+                    currentCars[dataCollectedInput[0]][1] = int.Parse(dataCollectedInput[2]);
+                }
+            }
+
+            string[] commandsCollected;
+            string enterCommands = Console.ReadLine();
+            while (!enterCommands.Equals("stop"))
+            {
+                commandsCollected = enterCommands.Split(":");
+                ExecuteCommandsNeedForSpeed(currentCars,commandsCollected);
+                enterCommands = Console.ReadLine();
+            }
+
+            currentCars = currentCars.OrderByDescending(e => e.Value[0]).ThenBy(e=>e.Key)
+                .ToDictionary(e => e.Key, e => e.Value);
+            foreach(var item in currentCars)
+            {
+                Console.WriteLine($"{item.Key} -> Mileage: {item.Value[0]} kms, Fuel in the tank: {item.Value[1]} lt.");
+
+            }
+        }
+
+
+        private void ExecuteCommandsNeedForSpeed(Dictionary<string, int[]> currentCars, string[] commands)
+        {
+           
+            switch (commands[0].ToLower())
+            {
+                case "drive":
+                    int fuel = int.Parse(commands[2]);
+                    int distance = int.Parse(commands[1]);
+                    if (fuel>currentCars[commands[0]][1])
+                    {
+                        Console.WriteLine("Not enough fuel to make that ride");
+
+                    }
+                    else if(fuel <= currentCars[commands[0]][1])
+                    {
+                        if (currentCars[commands[0]][0] + distance >= 100000)
+                        {
+                            Console.WriteLine("Time to sell {0}",commands[0]);
+                            currentCars.Remove(commands[0]);
+                            return;
+                        }
+
+                        currentCars[commands[0]][0] += distance;
+                        currentCars[commands[0]][1] -= fuel;
+                        Console.WriteLine($"{commands[0]} driven for {commands[1]} kilometers. {commands[2]} liters of fuel consumed.");
+                    }
+                    break;
+
+
+                case "refil":
+                    int fuelToRefil = int.Parse(commands[1]);
+                    if (currentCars[commands[0]][1] + fuelToRefil > 75)
+                    {
+                        int neededFule = 75 - currentCars[commands[0]][1];
+                        fuelToRefil -= neededFule;
+                        currentCars[commands[0]][1] += neededFule;
+                        Console.WriteLine($"{commands[0]} refueled with {neededFule} liters");
+                    }
+                    else if(currentCars[commands[0]][1] + fuelToRefil <= 75)
+                    {
+                        currentCars[commands[0]][1] += fuelToRefil;
+                        Console.WriteLine($"{commands[0]} refueled with {fuelToRefil} liters");
+                    }
+                    
+
+                    break;
+
+                case "revert":
+                    int revertWith = int.Parse(commands[1]);
+                    if(currentCars[commands[0]][0]-revertWith<=10000)
+                    {
+                        currentCars[commands[0]][0] = 10000;
+                    }
+                    else
+                    {
+                        currentCars[commands[0]][0] -= revertWith;
+                        Console.WriteLine($"{commands[0]} mileage decreased by {revertWith} kilometers");
+                    }
+                    break;
+            }
+        }
+
+        public void ShopingListTask()
+        {
+            LinkedList<string> currentList = new LinkedList<string>(Console.ReadLine().Split("!"));
+            HashSet<string> itemsInListPresent = new HashSet<string>();
+            foreach (var item in currentList)
+            {
+                itemsInListPresent.Add(item);
+            }
+
+            string enterCommand = Console.ReadLine();
+            string[] commands;
+            while(!enterCommand.Equals("Go Shopping!"))
+            {
+                commands = enterCommand.Split();
+                ExecuteCommandListShop(commands, currentList, itemsInListPresent);
+                enterCommand = Console.ReadLine();
+
+            }
+
+            string itemsInTheListPrint = String.Join(",", currentList);
+            Console.WriteLine(itemsInTheListPrint);
+
+          
+           
+        }
+
+        private void ExecuteCommandListShop(string[] commands,LinkedList<string> currentList,HashSet<string> currentPresentItems)
+        {
+            switch (commands[0].ToLower())
+            {
+                case "urgent":
+
+                    if (!currentPresentItems.Contains(commands[1]))
+                    {
+                        currentList.AddFirst(commands[1]);
+
+                    }
+                    break;
+
+
+                case "unnecessary":
+                    LinkedListNode<string> toRemove = currentList.Find(commands[1]);
+                    currentList.Remove(toRemove);
+                    currentPresentItems.Remove(commands[1]);
+                    break;
+
+
+                case "correct":
+                    currentList.Find(commands[1]).Value = commands[2];
+                    break;
+
+                case "rearange":
+                    LinkedListNode<string> currentNode = null;
+                    currentNode = currentList.Find(commands[1]);
+
+                    if (currentNode != null)
+                    {
+                        currentList.Remove(currentNode);
+                        currentList.AddLast(commands[1]);
+                    }
+                    break;
+                    
+            }
+        }
+
+        public void NationalCourt()
+        {
+            int[] numberPeoplePerHour = new int[3];
+            for(int i = 0; i < 3; i++)
+            {
+                numberPeoplePerHour[i] = int.Parse(Console.ReadLine());
+            }
+
+            int numberOfPeople = int.Parse(Console.ReadLine());
+            int counter = 1;
+            while (numberOfPeople>0)
+            {
+                if (counter % 4 == 0)
+                {
+                    counter++;
+                }
+                else 
+                {
+                    if (numberPeoplePerHour.Sum() >= numberOfPeople)
+                    {
+                        Console.WriteLine($"Time needed {counter}h");
+                    }
+                    else if (numberPeoplePerHour.Sum() < numberOfPeople)
+                    {
+                        numberOfPeople -= numberPeoplePerHour.Sum();
+                        counter++;
+                    }
+
+                }
+                
+
+            }
+        }
+
+
+}
 
 
 }

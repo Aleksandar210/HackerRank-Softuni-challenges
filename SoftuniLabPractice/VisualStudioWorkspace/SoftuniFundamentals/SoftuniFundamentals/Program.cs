@@ -15,12 +15,12 @@ namespace SoftuniFundamentals
         static void Main(string[] args)
         {
              ArraysMethodsLists currentTasks = new ArraysMethodsLists();
-             //currentTasks.Rotation();
+            //currentTasks.Rotation();
             //currentTasks.EqualSums();
-           //currentTasks.KaminoFactory();
-          //currentTasks.LadyBug();
-          //currentTasks.SongTask();
-         //currentTasks.SecretMessage();
+            //currentTasks.KaminoFactory();
+            //currentTasks.LadyBug();
+            //currentTasks.SongTask();
+            //currentTasks.SecretMessage();
             //currentTasks.MixingRules();
             //currentTasks.DrumSet();
             //currentTasks.WordSynonims();
@@ -50,6 +50,30 @@ namespace SoftuniFundamentals
             //currentTasks.DragonArmyHeroesIIIFundamentals();
             //urrentTasks.SpellingBee();
             //currentTasks.SecretChat();
+            //currentTasks.NeefForSpeedExamTask();
+            //currentTasks.NationalCourt();
+            //currentTasks.ShopingListTask();
+
+            LinkedList<string> currentList = new LinkedList<string>(Console.ReadLine().Split());
+            LinkedListNode<string> toRemove = null;
+
+            toRemove = currentList.Find("apple");
+            if (toRemove != null)
+            {
+                currentList.Remove(toRemove);
+                foreach (var item in currentList)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nothing Happened");
+            }
+
+          
+
+
            
             
 

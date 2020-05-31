@@ -2126,6 +2126,51 @@ namespace SoftuniFundamentals
             }
         }
 
+        public void HearthDelviery()
+        {
+            int[] houses = Console.ReadLine().Split("@").Select(e => int.Parse(e)).ToArray();
+            string enterCommand = Console.ReadLine();
+            int cupidPosition = 0;
+            int lengthJump = 0;
+            while (!enterCommand.Equals("Love!"))
+            {
+                lengthJump = int.Parse(enterCommand.Split()[1]);
+                if (cupidPosition + lengthJump > houses.Length)
+                {
+                    if (houses[0] == 0)
+                    {
+                        Console.WriteLine($"Place {0} already had Valentine's day.");
+                    }
+                    else
+                    {
+                        houses[0] -= 2;
+                        Console.WriteLine($"Place {cupidPosition + lengthJump} has Valentine's day.");
+                        if (houses[0] < 0)
+                        {
+                            houses[0] = 0;
+                        }
+                    }
+                }
+                else
+                {
+                    if(houses[cupidPosition + lengthJump] == 0)
+                    {
+                        Console.WriteLine($"Place {0} already had Valentine's day.");
+                    }
+                    else
+                    {
+                        houses[cupidPosition + lengthJump] -= 2;
+                        Console.WriteLine($"Place {cupidPosition + lengthJump} has Valentine's day.");
+                        if(houses[cupidPosition + lengthJump] < 0)
+                        {
+                            houses[cupidPosition + lengthJump] = 0;
+                        }
+                    }
+                }
+                enterCommand = Console.ReadLine();
+            }
+        }
+
 
 }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Transactions;
@@ -53,32 +54,117 @@ namespace SoftuniFundamentals
             //currentTasks.NeefForSpeedExamTask();
             //currentTasks.NationalCourt();
             //currentTasks.ShopingListTask();
+            //currentTasks.HearthDelviery();
 
-            LinkedList<string> currentList = new LinkedList<string>(Console.ReadLine().Split());
-            LinkedListNode<string> toRemove = null;
-
-            toRemove = currentList.Find("apple");
-            if (toRemove != null)
+            string enterData = Console.ReadLine();
+            StringBuilder sb = new StringBuilder(enterData);
+            for(int i = 0; i < enterData.Length; i++)
             {
-                currentList.Remove(toRemove);
-                foreach (var item in currentList)
+                if(enterData[1].Equals(" "))
                 {
-                    Console.WriteLine(item);
+                    if (!Char.IsDigit(enterData[i + 1]))
+                    {
+                        sb[i] = '!';
+                    }
                 }
             }
-            else
+
+            enterData = sb.ToString();
+            string[] data= enterData.Split("!");
+            foreach(var item in data)
             {
-                Console.WriteLine("Nothing Happened");
+                Console.WriteLine(item);
             }
 
-          
+
+           // coordinates = data[1].Trim(trimBy).Split().ToArray().Select(e => int.Parse(e)).ToArray();
+           //Console.WriteLine("{0} {1}", coordinates[0], coordinates[1]);
 
 
-           
-            
 
-        
+
+
+
+
+
+
         }
+
+
+        private void SoftuniadaStarClsuterTask()
+        {
+            int numberStarClusters = int.Parse(Console.ReadLine());
+            Dictionary<string, Cluster> currentClusters = new Dictionary<string, Cluster>();
+            AddClusterData(currentClusters, numberStarClusters);
+
+            LinkedList<int[]> currentStarsEntered = new LinkedList<int[]>();
+
+            string enterStarData = Console.ReadLine();
+            StringBuilder sb = new StringBuilder();
+
+
+            string[] allStarCoordinates;
+            int[] coordinatesOfStar;
+
+
+           while (!enterStarData.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                sb.Append(enterStarData);
+                ReplaceInputSpacesWithSemicolon(sb);
+                allStarCoordinates = sb.ToString().Split("!");
+                foreach(var item in allStarCoordinates)
+                {
+                    coordinatesOfStar = item.Trim(new char[] { '(', ')' }).Replace(",", "").Split().Select(e => int.Parse(e))
+                        .ToArray();
+                    currentStarsEntered.AddFirst(coordinatesOfStar);
+                }
+                sb.Clear();
+                enterStarData = Console.ReadLine();
+                   
+            }
+
+
+        }
+
+        private void ReplaceInputSpacesWithSemicolon(StringBuilder sb)
+        {
+            for(int i = 0; i < sb.Length; i++)
+            {
+                if (Char.IsWhiteSpace(sb[i]))
+                {
+                    if (!Char.IsDigit(sb[i + 1]))
+                    {
+                        sb[i] = '!';
+                    }
+                }
+            }
+        }
+
+        private void AddClusterData(Dictionary<string,Cluster> currentClusters,int numberClusters)
+        {
+            string enterClusterData;
+            string[] collectClusterData;
+            
+            Cluster currentCluster = null;
+            int[] clusterCoordinates;
+            char[] trimBy =  { '(', ')' };
+            for(int i = 0; i < numberClusters; i++)
+            {
+                enterClusterData = Console.ReadLine();
+                collectClusterData = enterClusterData.Split(new char[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                
+                if (!currentClusters.ContainsKey(collectClusterData[0]))
+                {
+                    clusterCoordinates = collectClusterData[1].Trim(trimBy).Replace(",", "").Split().Select(e => int.Parse(e)).ToArray();
+                    currentCluster = new Cluster(collectClusterData[0], clusterCoordinates);
+                    currentClusters.Add(collectClusterData[0], currentCluster);
+                }
+
+            }
+
+
+        }
+
 
 
         private static void GenericListTask()
@@ -490,6 +576,41 @@ namespace SoftuniFundamentals
         //-------------------------------------------------------------------------------------------------
 
 
+
+
+    }
+    public class Cluster
+    {
+        
+        private int[] coordinates;
+        private LinkedList<int[]> currentStarsInCluster;
+
+        public Cluster(string name,params int[] coordiantes)
+        {
+
+            this.Name = name;
+           
+        }
+        private void setCoordinates(int[] currentCoordinates)
+        {
+            this.coordinates[0] = currentCoordinates[0];
+            this.coordinates[1] = currentCoordinates[1];
+
+        }
+        public void AddStar()
+        {
+
+        }
+
+        public string Name { get; private set; }
+
+        public int[] Coordinates
+        {
+            get
+            {
+                return this.coordinates;
+            }
+        }
 
 
     }

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "/iKB583c6/ay9hDyrqhQVLtv8sMu8lU1xUfKrsZe/SrcM/+ooNliU/AqyeN4BcE6S7tqaTIlZVdweDqNkcQfxA==",
+  "dgSpecHash": "PJouNOGMNBUsqBbH6SRh1JvuNIucOcekTdsXN2LaIqITgvBSc+GpSSrhjQe6W0rIL1AzeondsLeKzcyPkprWyg==",
   "success": true,
   "projectFilePath": "D:\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\PC\\.nuget\\packages\\morelinq\\3.3.2\\morelinq.3.3.2.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
     "C:\\Users\\PC\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",

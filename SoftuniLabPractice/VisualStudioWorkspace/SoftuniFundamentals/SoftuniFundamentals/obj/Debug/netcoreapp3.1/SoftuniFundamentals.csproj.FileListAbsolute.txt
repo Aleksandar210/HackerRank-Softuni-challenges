@@ -10,4 +10,6 @@ D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netco
 D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.dll
 D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.pdb
 D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.genruntimeconfig.cache
+D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\MoreLinq.dll
 D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csproj.CoreCompileInputs.cache
+D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csproj.CopyComplete

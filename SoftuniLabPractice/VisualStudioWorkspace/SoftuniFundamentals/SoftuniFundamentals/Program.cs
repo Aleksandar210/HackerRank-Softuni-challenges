@@ -1,7 +1,10 @@
-﻿using SoftuniFundamentals.TelerikDefClassesPartTwo;
+﻿using MoreLinq;
+using MoreLinq.Extensions;
+using SoftuniFundamentals.TelerikDefClassesPartTwo;
 using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.PortableExecutable;
@@ -55,35 +58,15 @@ namespace SoftuniFundamentals
             //currentTasks.NationalCourt();
             //currentTasks.ShopingListTask();
             //currentTasks.HearthDelviery();
+            //SoftuniFundamentals()
 
-            string enterData = Console.ReadLine();
-            StringBuilder sb = new StringBuilder(enterData);
-            for(int i = 0; i < enterData.Length; i++)
-            {
-                if(enterData[1].Equals(" "))
-                {
-                    if (!Char.IsDigit(enterData[i + 1]))
-                    {
-                        sb[i] = '!';
-                    }
-                }
-            }
+           
 
-            enterData = sb.ToString();
-            string[] data= enterData.Split("!");
-            foreach(var item in data)
-            {
-                Console.WriteLine(item);
-            }
-
-
-           // coordinates = data[1].Trim(trimBy).Split().ToArray().Select(e => int.Parse(e)).ToArray();
-           //Console.WriteLine("{0} {1}", coordinates[0], coordinates[1]);
+            
 
 
 
-
-
+            
 
 
 
@@ -95,9 +78,10 @@ namespace SoftuniFundamentals
         {
             int numberStarClusters = int.Parse(Console.ReadLine());
             Dictionary<string, Cluster> currentClusters = new Dictionary<string, Cluster>();
+            
             AddClusterData(currentClusters, numberStarClusters);
 
-            LinkedList<int[]> currentStarsEntered = new LinkedList<int[]>();
+            LinkedList<Star> currentStarsEntered = new LinkedList<Star>();
 
             string enterStarData = Console.ReadLine();
             StringBuilder sb = new StringBuilder();
@@ -116,12 +100,27 @@ namespace SoftuniFundamentals
                 {
                     coordinatesOfStar = item.Trim(new char[] { '(', ')' }).Replace(",", "").Split().Select(e => int.Parse(e))
                         .ToArray();
-                    currentStarsEntered.AddFirst(coordinatesOfStar);
+                    currentStarsEntered.AddFirst(new Star(coordinatesOfStar));
                 }
                 sb.Clear();
                 enterStarData = Console.ReadLine();
                    
             }
+
+           //Place Stars to theri closest cluster
+           
+           foreach(var item in currentStarsEntered)
+            {
+                item.CalculateDistanceFromGivenClusters(currentClusters);
+                currentClusters[item.ClusterBelongsTo].AddStar(item);
+            }
+
+           foreach(var item in currentClusters)
+            {
+                Console.WriteLine($"{item.Key} with center {item.Value.CenterOfCluster} and with {item.Value.CountOfStars}");
+
+            }
+
 
 
         }
@@ -583,7 +582,7 @@ namespace SoftuniFundamentals
     {
         
         private int[] coordinates;
-        private LinkedList<int[]> currentStarsInCluster;
+        private LinkedList<Star> currentStarsInCluster;
 
         public Cluster(string name,params int[] coordiantes)
         {
@@ -597,10 +596,31 @@ namespace SoftuniFundamentals
             this.coordinates[1] = currentCoordinates[1];
 
         }
-        public void AddStar()
+        public void AddStar(Star star)
         {
+            this.currentStarsInCluster.AddFirst(star);
 
         }
+
+        private void CaclulateCenter()
+        {
+            int x=0;
+            int y=0;
+            foreach(var item in this.currentStarsInCluster)
+            {
+                x+=item.Coordinates[0];
+                y += item.Coordinates[1];
+            }
+
+            x /= this.currentStarsInCluster.Count;
+            y /= this.currentStarsInCluster.Count;
+            this.CenterOfCluster = new int[] { x, y };
+
+        }
+
+        public int[] CenterOfCluster { get; private set; }
+
+
 
         public string Name { get; private set; }
 
@@ -612,6 +632,48 @@ namespace SoftuniFundamentals
             }
         }
 
+        public int CountOfStars
+        {
+            get
+            {
+                return this.currentStarsInCluster.Count;
+            }
+        }
 
+    }
+
+    public class Star
+    {
+       
+        private Dictionary<string, double> distanceFromClusters;
+      
+
+
+        public Star(int[] coordinates)
+        {
+            this.Coordinates = new int[]{ coordinates[0],coordinates[1]};
+            
+            distanceFromClusters = new Dictionary<string, double>();
+        }
+
+        public void CalculateDistanceFromGivenClusters(Dictionary<string,Cluster> currentClusters)
+        {
+            foreach(var item in currentClusters)
+            {
+                this.distanceFromClusters.Add(item.Key, Math.Sqrt(Math.Pow(this.Coordinates[0] - item.Value.Coordinates[0], 2) + Math.Pow(this.Coordinates[1] - item.Value.Coordinates[1], 2)));
+                   
+            }
+
+            this.distanceFromClusters = this.distanceFromClusters.OrderBy(e => e.Value).ToDictionary(e => e.Key, e => e.Value);
+            foreach(var item in this.distanceFromClusters)
+            {
+                this.ClusterBelongsTo = item.Key;
+                break;
+            }
+            
+        }
+        public int[] Coordinates { get; private set; }
+
+        public string ClusterBelongsTo { get;  private set; }
     }
 }

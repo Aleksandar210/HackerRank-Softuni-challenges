@@ -1,5 +1,4 @@
-﻿using MoreLinq;
-using MoreLinq.Extensions;
+﻿
 using SoftuniFundamentals.TelerikDefClassesPartTwo;
 using SoftuniFundamentals.TelerikGSMTask;
 using System;
@@ -8,6 +7,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.PortableExecutable;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Transactions;
@@ -18,7 +18,7 @@ namespace SoftuniFundamentals
     {
         static void Main(string[] args)
         {
-             ArraysMethodsLists currentTasks = new ArraysMethodsLists();
+             SoftuniTasks currentTasks = new SoftuniTasks();
             //currentTasks.Rotation();
             //currentTasks.EqualSums();
             //currentTasks.KaminoFactory();
@@ -58,23 +58,50 @@ namespace SoftuniFundamentals
             //currentTasks.NationalCourt();
             //currentTasks.ShopingListTask();
             //currentTasks.HearthDelviery();
-            //SoftuniFundamentals()
+            //SoftuniadaStarClusterTask();
+            //SimpleStackCalc();
 
-           
+            int[] currentArray = new int[] { 1, 2, 3, 4, 5, 7 };
+            for(int i = 1; i < currentArray.Length; i++)
+            {
+                Console.WriteLine(currentArray[i]);
+            }
 
-            
-
-
-
-            
-
-
-
-
+          
         }
 
+        static void SimpleStackCalc()
+        {
+            string enterEquation = Console.ReadLine();
+            Stack<string> currentStack = new Stack<string>(enterEquation.Split().Reverse());
 
-        private void SoftuniadaStarClsuterTask()
+            var result = int.Parse(currentStack.Pop());
+            string currentSymbol="";
+
+            while (currentStack.Any())
+            {
+                currentSymbol = currentStack.Pop();
+                if(currentSymbol.Equals("+")|| currentSymbol.Equals("-"))
+                {
+                    switch (currentSymbol)
+                    {
+                        case "+":
+                            result += int.Parse(currentStack.Pop());
+                            break;
+                        case "-":
+                            result -= int.Parse(currentStack.Pop());
+                            break;
+                    }
+                }
+            }
+
+            Console.WriteLine(result);
+           
+        }
+        
+
+
+         static void SoftuniadaStarClsuterTask()
         {
             int numberStarClusters = int.Parse(Console.ReadLine());
             Dictionary<string, Cluster> currentClusters = new Dictionary<string, Cluster>();
@@ -125,7 +152,7 @@ namespace SoftuniFundamentals
 
         }
 
-        private void ReplaceInputSpacesWithSemicolon(StringBuilder sb)
+        private static void ReplaceInputSpacesWithSemicolon(StringBuilder sb)
         {
             for(int i = 0; i < sb.Length; i++)
             {
@@ -139,7 +166,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void AddClusterData(Dictionary<string,Cluster> currentClusters,int numberClusters)
+        private static void AddClusterData(Dictionary<string,Cluster> currentClusters,int numberClusters)
         {
             string enterClusterData;
             string[] collectClusterData;
@@ -645,7 +672,7 @@ namespace SoftuniFundamentals
     public class Star
     {
        
-        private Dictionary<string, double> distanceFromClusters;
+        
       
 
 
@@ -653,24 +680,26 @@ namespace SoftuniFundamentals
         {
             this.Coordinates = new int[]{ coordinates[0],coordinates[1]};
             
-            distanceFromClusters = new Dictionary<string, double>();
+            
         }
 
         public void CalculateDistanceFromGivenClusters(Dictionary<string,Cluster> currentClusters)
         {
+            double minDistanceToCluster= double.MaxValue;
+            string nameOfClusterMinDistance=" ";
+
+            double currentDistance;
             foreach(var item in currentClusters)
             {
-                this.distanceFromClusters.Add(item.Key, Math.Sqrt(Math.Pow(this.Coordinates[0] - item.Value.Coordinates[0], 2) + Math.Pow(this.Coordinates[1] - item.Value.Coordinates[1], 2)));
-                   
+                currentDistance = Math.Sqrt(Math.Pow(this.Coordinates[0] - item.Value.Coordinates[0], 2) + Math.Pow(this.Coordinates[1] - item.Value.Coordinates[1], 2));
+                if (currentDistance<minDistanceToCluster)
+                {
+                    minDistanceToCluster = currentDistance;
+                    nameOfClusterMinDistance = item.Value.Name;
+                }
             }
 
-            this.distanceFromClusters = this.distanceFromClusters.OrderBy(e => e.Value).ToDictionary(e => e.Key, e => e.Value);
-            foreach(var item in this.distanceFromClusters)
-            {
-                this.ClusterBelongsTo = item.Key;
-                break;
-            }
-            
+            ClusterBelongsTo = nameOfClusterMinDistance;
         }
         public int[] Coordinates { get; private set; }
 

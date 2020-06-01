@@ -8,8 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "SoftuniFundamentals/1.0.0": {
         "dependencies": {
-          "System.Collections.NonGeneric": "4.3.0",
-          "morelinq": "3.3.2"
+          "System.Collections.NonGeneric": "4.3.0"
         },
         "runtime": {
           "SoftuniFundamentals.dll": {}
@@ -17,14 +16,6 @@
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
-      "morelinq/3.3.2": {
-        "runtime": {
-          "lib/netstandard2.0/MoreLinq.dll": {
-            "assemblyVersion": "3.3.2.0",
-            "fileVersion": "3.3.2.0"
-          }
-        }
-      },
       "System.Collections.NonGeneric/4.3.0": {
         "dependencies": {
           "System.Diagnostics.Debug": "4.3.0",
@@ -137,13 +128,6 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
-    },
-    "morelinq/3.3.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-MQc8GppZJLmjvcpEdf3EkC6ovsp7gRWt2e5mC7dcIOrgwSc+yjFd3JQ0iRqr3XrUT6rb/phv0IkEmBtbfVA7AQ==",
-      "path": "morelinq/3.3.2",
-      "hashPath": "morelinq.3.3.2.nupkg.sha512"
     },
     "System.Collections.NonGeneric/4.3.0": {
       "type": "package",

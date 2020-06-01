@@ -61,7 +61,11 @@ namespace SoftuniFundamentals
             //SoftuniadaStarClusterTask();
             //SimpleStackCalc();
             //currentTasks.StackSum();
+            //currentTasks.GetBracketContents();
 
+
+
+            //-------------------------------------------------------------------
            // string currentInput = Console.ReadLine();
           //  Regex currentRegex = new Regex("\\(");
 
@@ -80,10 +84,10 @@ namespace SoftuniFundamentals
           //  }
           //  currentClosingBraketsIndexes.Reverse();
 
-            string input = Console.ReadLine();
-            int start = input.IndexOf("(");
-            int end = input.IndexOf(")");
-            Console.WriteLine(input.Substring(start, end+1));
+           // string input = Console.ReadLine();
+          //  int start = input.IndexOf("(");
+           // int end = input.IndexOf(")");
+           // Console.WriteLine(input.Substring(start, end+1));
           
         }
 

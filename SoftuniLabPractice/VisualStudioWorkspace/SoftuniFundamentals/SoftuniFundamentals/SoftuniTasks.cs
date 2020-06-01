@@ -18,6 +18,38 @@ namespace SoftuniFundamentals
     {
 
 
+
+        public void GetBracketContents()
+        {
+            Stack<string> currentStackWithContents = new Stack<string>();
+            string enterData = Console.ReadLine();
+
+            
+            Stack<int> currentIndexesOfClosingB = new Stack<int>();
+            foreach (Match item in Regex.Matches(enterData, "\\)")) 
+            {
+                currentIndexesOfClosingB.Push(item.Index);
+            }
+            currentIndexesOfClosingB.Reverse();
+
+            Stack<int> currentIndexesOfOpeningB = new Stack<int>();
+            foreach(Match item in Regex.Matches(enterData, "\\("))
+            {
+                currentIndexesOfOpeningB.Push(item.Index);
+            }
+
+            for(int i = 0; i < currentIndexesOfClosingB.Count; i++)
+            {
+                currentStackWithContents.Push(enterData.Substring(currentIndexesOfOpeningB.Pop(), currentIndexesOfClosingB.Pop() + 1));
+
+            }
+
+            foreach(var item in currentStackWithContents)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
         public void StackSum()
         {
             int[] currentInput = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();

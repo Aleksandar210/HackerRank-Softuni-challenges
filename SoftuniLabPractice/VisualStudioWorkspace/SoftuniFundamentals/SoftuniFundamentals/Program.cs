@@ -60,13 +60,30 @@ namespace SoftuniFundamentals
             //currentTasks.HearthDelviery();
             //SoftuniadaStarClusterTask();
             //SimpleStackCalc();
+            //currentTasks.StackSum();
 
-            int[] currentArray = new int[] { 1, 2, 3, 4, 5, 7 };
-            for(int i = 1; i < currentArray.Length; i++)
-            {
-                Console.WriteLine(currentArray[i]);
-            }
+           // string currentInput = Console.ReadLine();
+          //  Regex currentRegex = new Regex("\\(");
 
+          //  Stack<int> currentOpeningBracketsIndexes = new Stack<int>();
+          //  Stack<int> currentClosingBraketsIndexes = new Stack<int>();
+            
+           // foreach(Match item in currentRegex.Matches(currentInput))
+           // {
+           //     currentOpeningBracketsIndexes.Push(item.Index);
+
+          //  }
+
+          //  foreach(Match item in currentRegex.Matches("\\)"))
+           // {
+           //     currentClosingBraketsIndexes.Push(item.Index);
+          //  }
+          //  currentClosingBraketsIndexes.Reverse();
+
+            string input = Console.ReadLine();
+            int start = input.IndexOf("(");
+            int end = input.IndexOf(")");
+            Console.WriteLine(input.Substring(start, end+1));
           
         }
 

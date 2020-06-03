@@ -18,6 +18,65 @@ namespace SoftuniFundamentals
     {
 
 
+        public void HotPotatoQueue()
+        {
+            string enterData = Console.ReadLine();
+            Queue<string> currentKids = new Queue<string>(enterData.Split());
+            int n = int.Parse(Console.ReadLine());
+
+            int counter=1;
+            while (currentKids.Count > 1)
+            {
+                
+                var child = currentKids.Dequeue();
+
+                if (counter % n == 0)
+                {
+                    Console.WriteLine(child);
+                }
+                else
+                {
+                    currentKids.Enqueue(child);
+                }
+
+
+            }
+
+            Console.WriteLine("Last child is {0}", currentKids.Dequeue());
+
+        }
+
+
+        public void TraficLightCar()
+        {
+            Queue<string> currentCars = new Queue<string>();
+            int numberCarsLeave = int.Parse(Console.ReadLine());
+            string enterCommand = Console.ReadLine();
+            while (!enterCommand.Equals("end"))
+            {
+                TraficLightCommands(currentCars, enterCommand, numberCarsLeave);
+                enterCommand = Console.ReadLine();
+            }
+        }
+
+        private void TraficLightCommands(Queue<string> currentCars, string command, int number)
+        {
+            switch (command)
+            {
+                case "green":
+                    for(int i = 0; i < number; i++)
+                    {
+                        currentCars.Dequeue();
+                    }
+                    break;
+
+                default:
+                    currentCars.Enqueue(command);
+                    break;
+            }
+
+        }
+
 
         public void GetBracketContents()
         {

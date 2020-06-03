@@ -17,6 +17,47 @@ namespace SoftuniFundamentals
     class SoftuniTasks
     {
 
+        public void MinMaxStack()
+        {
+            int numberCommands = int.Parse(Console.ReadLine());
+            Stack<int> currentStack = new Stack<int>();
+            string command;
+            
+            for(int i = 0; i < numberCommands; i++)
+            {
+                command = Console.ReadLine();
+                if(command.Contains(" "))
+                {
+                    currentStack.Push(int.Parse(command.Split()[1]));
+                }
+                else
+                {
+                    switch (int.Parse(command))
+                    {
+                        case 2:
+                            currentStack.Pop();
+                           break;
+
+
+                        case 3:
+                            Console.WriteLine(currentStack.Max());
+                            break;
+                        case 4:
+                            Console.WriteLine(currentStack.Min());
+                            break;
+                    }
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in currentStack)
+            {
+                sb.Append(item + " ");
+            }
+            Console.WriteLine(sb.ToString());
+
+        }
+
 
         public void HotPotatoQueue()
         {
@@ -50,23 +91,25 @@ namespace SoftuniFundamentals
         public void TraficLightCar()
         {
             Queue<string> currentCars = new Queue<string>();
+            StringBuilder sb = new StringBuilder();
+
             int numberCarsLeave = int.Parse(Console.ReadLine());
             string enterCommand = Console.ReadLine();
             while (!enterCommand.Equals("end"))
             {
-                TraficLightCommands(currentCars, enterCommand, numberCarsLeave);
+                TraficLightCommands(currentCars, enterCommand, numberCarsLeave,sb);
                 enterCommand = Console.ReadLine();
             }
         }
 
-        private void TraficLightCommands(Queue<string> currentCars, string command, int number)
+        private void TraficLightCommands(Queue<string> currentCars, string command, int number,StringBuilder sb)
         {
             switch (command)
             {
                 case "green":
                     for(int i = 0; i < number; i++)
                     {
-                        currentCars.Dequeue();
+                        sb.AppendLine(currentCars.Dequeue() + " passed!");
                     }
                     break;
 
@@ -74,6 +117,8 @@ namespace SoftuniFundamentals
                     currentCars.Enqueue(command);
                     break;
             }
+
+            Console.WriteLine(sb.ToString());
 
         }
 

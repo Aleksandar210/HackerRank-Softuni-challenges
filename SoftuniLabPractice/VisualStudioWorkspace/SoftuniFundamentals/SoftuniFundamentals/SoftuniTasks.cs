@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.PortableExecutable;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,6 +17,428 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+
+        public void CrossroadsSam()
+        {
+            int greenLight =   int.Parse(Console.ReadLine());
+            int window = int.Parse(Console.ReadLine());
+            string enterCommands = Console.ReadLine();
+
+            Queue<char> currentPath = new Queue<char>();
+            
+            
+            
+            while (!enterCommands.Equals("END",StringComparison.OrdinalIgnoreCase))
+            {
+                ExecuteCrossroadsSam(enterCommands,currentPath, greenLight, window);
+            }
+
+        }
+        private void ExecuteCrossroadsSam(string command,Queue<char> currentPath,int green, int window)
+        {
+
+            StringBuilder sb;
+            bool hasPassed=true;
+            
+            switch (command)
+            {
+                case "green":
+                    sb = new StringBuilder();
+                    for(int i = 0; i < green; i++)
+                    {
+                        if (currentPath.Peek().Equals('!'))
+                        {
+                            currentPath.Dequeue();
+                           
+                            sb.Clear();
+                            sb.Append(currentPath.Dequeue());
+                        }
+                        else
+                        {
+                            sb.Append(currentPath.Dequeue());
+                        }
+                       
+                    }
+
+                    if (sb.Capacity != 0)
+                    {
+                         hasPassed = true;
+                        for(int i = 0; i < window; i++)
+                        {
+                            if (currentPath.Peek().Equals('!'))
+                            {
+                                currentPath.Dequeue();
+                                
+                                sb.Clear();
+                                break;
+                            }
+                            else
+                            {
+                                sb.Append(currentPath.Dequeue());
+                            }
+                            
+                        }
+                    }
+
+
+                    if (hasPassed==false)
+                    {
+                        while (!currentPath.Peek().Equals('!'))
+                        {
+                            sb.Append(currentPath.Dequeue());
+                        }
+                        Console.WriteLine("A crash has happened " + sb.ToString());
+                       
+                        sb.Clear();
+                        
+                    }
+                  
+                    break;
+                default:
+                    currentCars.Add(command);
+                    char[] currentCarEntered = command.ToCharArray();
+                    currentCarEntered.Reverse();
+                    for (int i=0; i < currentCarEntered.Length; i++)
+                    {
+                        currentPath.Enqueue(currentCarEntered[i]);
+                    }
+                    currentPath.Enqueue('!');
+                    break;
+            }
+        }
+
+        public void SelectionSort()
+        {
+            int[] currentArray = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            int minElement;     //min element is the i elem
+            int minPos = -1;
+
+            int temp = 0;       //used for swaping
+            for(int i = 0; i < currentArray.Length-1; i++)
+            {
+                minElement = currentArray[i];   //currentMin element
+                for(int j = i + 1; j < currentArray.Length; j++)
+                {
+                    if (currentArray[j] < minElement)  //we search for the smallest element and we switch it with 
+                                                       //then we repeat
+                    {
+                        minElement = currentArray[j];
+                        minPos = j;
+                    }
+                }
+                temp = currentArray[i];
+                currentArray[i] = currentArray[minPos];
+                currentArray[minPos] = temp;
+
+            }
+
+            foreach(var item in currentArray)
+            {
+                Console.Write(item + " ");
+            }
+
+        }
+
+
+
+        private void SwapItems(int[] array, int smallestElement, int biggerElement)
+        {
+            int temp = array[smallestElement];
+            array[smallestElement] = array[biggerElement];
+            array[biggerElement] = temp;
+
+            
+        }
+
+       
+        public void WaterTask()
+        {
+            int[] enterCups = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            int[] enterBottes = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+
+            Stack<int> bottles = new Stack<int>(enterBottes.Reverse());
+
+            Stack<int> cups = new Stack<int>(enterCups);
+
+            List<int> currentFilledCups = new List<int>();
+
+            int wastedWater = 0;
+            int currentCup;
+            while (bottles.Any())
+            {
+               
+                currentCup = cups.Pop();
+                if (bottles.Peek() < currentCup)
+                {
+                    currentCup -= bottles.Pop();
+                }
+                else if(bottles.Peek()==currentCup)
+                {
+                    currentFilledCups.Add(currentCup);
+                    bottles.Pop();
+                }
+                else
+                {
+                    currentFilledCups.Add(currentCup);
+                    wastedWater += bottles.Pop() - currentCup;
+                }
+            }
+
+            Console.WriteLine($"Remaining bottles {bottles.Count} water wasted {wastedWater}");
+
+        }
+
+        public void SimpleTextEditior()
+        {
+            Stack<char> editor = new Stack<char>();
+            Queue<string> currentChangesMade = new Queue<string>();
+            int numberCommands = int.Parse(Console.ReadLine());
+            string enterCommand;
+
+            
+
+
+            while(numberCommands-- > 0)
+            {
+                enterCommand = Console.ReadLine();
+                if(enterCommand.Contains(" "))
+                {
+                    if (enterCommand.Contains(" "))
+                    {
+                        TextEditiorCommandsExecute(editor, currentChangesMade, enterCommand.Split());
+                    }
+                    else
+                    {
+                        TextEditiorCommandsExecute(editor, currentChangesMade, enterCommand);
+                    }
+                }
+            }
+        }
+
+       
+
+        private void TextEditiorCommandsExecute(Stack<char> editor,Queue<string> changesMade,params string[] command)
+        {
+            
+            switch (int.Parse(command[0]))
+            {
+                case 1:
+                    if (editor.Count == 0)
+                    {
+                        changesMade.Enqueue(" ");
+                    }
+                    else
+                    {
+                        changesMade.Enqueue(String.Join("",editor.ToArray()));
+
+                    }
+
+
+                    var currentContent = command[1].ToCharArray().Reverse();
+                    
+                    foreach(var item in currentContent)
+                    {
+                        editor.Push(item);
+                    }
+                    break;
+                case 2:
+                    if (editor.Count == 0)
+                    {
+                        changesMade.Enqueue(" ");
+                    }
+                    else
+                    {
+                        changesMade.Enqueue(String.Join("", editor.ToArray()));
+                    }
+                    for(int i =0; i < int.Parse(command[1]); i++)
+                    {
+                        editor.Pop();
+                    }
+
+                    break;
+
+                case 3:
+                    Console.WriteLine(editor.ElementAt(int.Parse(command[1])));
+                    break;
+
+                case 4:
+                    editor.Clear();
+                    editor = new Stack<char>(changesMade.Dequeue().ToCharArray().Reverse());
+                    break;
+            }
+        }
+
+        public void BalancedParanthesis()
+        {
+            string enterParanthesis = Console.ReadLine();
+            string[] array = enterParanthesis.Split();
+            Stack<string> left = new Stack<string>();
+            Stack<string> right = new Stack<string>();
+
+            if (array.Length % 2 != 0)
+            {
+                Console.WriteLine("No");
+            }
+            else
+            {
+
+                int last = array.Length - 1;
+                for(int i = 0; i < array.Length/2; i++)
+                {
+                    left.Push(array[i]);
+                    right.Push(array[last]);
+                    last--;
+                }
+                bool isEqual = true;
+                while(left.Any() && right.Any())
+                {
+                    if (!left.Pop().Equals(right.Pop()))
+                    {
+                        Console.WriteLine("No");
+                        isEqual = false;
+                        break;
+                    }
+                }
+                if (isEqual == true)
+                {
+                    Console.WriteLine("Yes");
+                }
+            }
+        }
+
+        public void CarServiceTask()
+        {
+            StringBuilder sb = new StringBuilder();
+            string enterCars = Console.ReadLine();
+            Queue<string> currentCarQueue = new Queue<string>(enterCars.Split());
+            LinkedList<string> currentServicedCars = new LinkedList<string>();
+            string enterCommands = Console.ReadLine();
+            
+            while (!enterCommands.Equals("end"))
+            {
+                if (enterCommands.Contains("-"))
+                {
+                    ExecuteServiceCar(currentCarQueue,sb ,currentServicedCars, enterCommands.Split("-"));
+                }
+                else
+                {
+                    ExecuteServiceCar(currentCarQueue, sb,currentServicedCars, enterCommands);
+                }
+
+                enterCommands = Console.ReadLine();
+               
+            }
+
+        }
+        private void ExecuteServiceCar(Queue<string> currentCars, StringBuilder sb,LinkedList<string> servedCars, params string[] command)
+        {
+           
+            switch (command[0].ToLower())
+            {
+                case "service":
+                    servedCars.AddFirst(currentCars.Dequeue());
+
+                    break;
+
+                case "carinfo":
+                    if (servedCars.Contains(command[1]))
+                    {
+                        Console.WriteLine("Served");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Awaiting service");
+                    }
+
+                    break;
+
+                case "history":
+                    Console.WriteLine("Served Cars");
+                    foreach(var item in servedCars)
+                    {
+                        sb.Append(item + " ");
+                    }
+                    Console.WriteLine(sb.ToString());
+                    sb.Clear();
+
+                    Console.WriteLine("Cars awaiting service");
+                    foreach(var item in currentCars)
+                    {
+                        sb.Append(item + " ");
+
+                    }
+                    Console.WriteLine(sb.ToString());
+                    sb.Clear();
+                    break;
+            }
+        }
+
+        public void BotiqueTask()
+        {
+            Stack<int> clothes = new Stack<int>(Console.ReadLine().Split().Select(e=>int.Parse(e)).ToArray());
+            int numberClothes = int.Parse(Console.ReadLine());
+
+            int current = 0;
+            int numberRacksUsed = 1;
+
+            while (clothes.Count() != 0)
+            {
+                foreach(var item in clothes)
+                {
+                    if(current+item > numberClothes)
+                    {
+                        break;
+                    }
+                    else if (current + item == numberClothes)
+                    {
+                        clothes.Pop();
+                        break;
+                    }
+                    else 
+                    {
+                        current += clothes.Pop();
+                    }
+                }
+                current = 0;
+                numberRacksUsed++;
+            }
+            Console.WriteLine(numberRacksUsed);
+
+        }
+
+        public void FastFoodQueue()
+        {
+            int food = int.Parse(Console.ReadLine());
+            string enterOrders = Console.ReadLine();
+            Queue<int> currentOrders = new Queue<int>(enterOrders.Split().Select(e=>int.Parse(e)).ToArray());
+
+            foreach(var item in currentOrders)
+            {
+                if (food - item >= 0)
+                {
+                    currentOrders.Dequeue();
+                }
+                else
+                {
+                    var orderToBeReEntered = currentOrders.Dequeue();
+                    currentOrders.Enqueue(orderToBeReEntered);
+                }
+            }
+
+            if (currentOrders.Count() != 0)
+            {
+                Console.WriteLine("Orders left: ");
+                foreach(var item in currentOrders)
+                {
+                    Console.Write(item + " ");
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("All orders complete");
+            }
+        }
 
         public void MinMaxStack()
         {

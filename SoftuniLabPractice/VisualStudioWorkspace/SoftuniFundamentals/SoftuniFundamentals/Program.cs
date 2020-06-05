@@ -66,28 +66,34 @@ namespace SoftuniFundamentals
 
 
             //-------------------------------------------------------------------
-           // string currentInput = Console.ReadLine();
-          //  Regex currentRegex = new Regex("\\(");
+            // string currentInput = Console.ReadLine();
+            //  Regex currentRegex = new Regex("\\(");
 
-          //  Stack<int> currentOpeningBracketsIndexes = new Stack<int>();
-          //  Stack<int> currentClosingBraketsIndexes = new Stack<int>();
-            
-           // foreach(Match item in currentRegex.Matches(currentInput))
-           // {
-           //     currentOpeningBracketsIndexes.Push(item.Index);
+            //  Stack<int> currentOpeningBracketsIndexes = new Stack<int>();
+            //  Stack<int> currentClosingBraketsIndexes = new Stack<int>();
 
-          //  }
+            // foreach(Match item in currentRegex.Matches(currentInput))
+            // {
+            //     currentOpeningBracketsIndexes.Push(item.Index);
 
-          //  foreach(Match item in currentRegex.Matches("\\)"))
-           // {
-           //     currentClosingBraketsIndexes.Push(item.Index);
-          //  }
-          //  currentClosingBraketsIndexes.Reverse();
+            //  }
 
-           // string input = Console.ReadLine();
-          //  int start = input.IndexOf("(");
-           // int end = input.IndexOf(")");
-           // Console.WriteLine(input.Substring(start, end+1));
+            //  foreach(Match item in currentRegex.Matches("\\)"))
+            // {
+            //     currentClosingBraketsIndexes.Push(item.Index);
+            //  }
+            //  currentClosingBraketsIndexes.Reverse();
+
+            // string input = Console.ReadLine();
+            //  int start = input.IndexOf("(");
+            // int end = input.IndexOf(")");
+            // Console.WriteLine(input.Substring(start, end+1));
+
+            //1
+            //currentTasks.SelectionSort();
+
+
+
           
         }
 

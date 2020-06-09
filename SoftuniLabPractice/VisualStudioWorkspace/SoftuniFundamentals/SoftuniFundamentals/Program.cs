@@ -92,9 +92,12 @@ namespace SoftuniFundamentals
             //1
             //currentTasks.SelectionSort();
 
+            currentTasks.Best2x2Matrix();
+           
+            
 
 
-          
+
         }
 
         static void SimpleStackCalc()

@@ -17,6 +17,148 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+        public void Best2x2Matrix()
+        {
+                 
+            int[] matrixDetails = EnterMatrixDetails(-42,-42);     //used for storing the rows and cols values
+            int[,] matrix = new int[matrixDetails[0], matrixDetails[1]];
+            EnterNumbersInMatrix(matrix);
+            for(int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j]+" ");
+                }
+            }
+
+
+
+        }
+
+        private void EnterNumbersInMatrix(int[,] currentMatrix)
+        {
+            
+
+            int end = currentMatrix.GetLength(0);
+            for(int i = 0; i < end; i++)
+            {
+                ValidateNumbers(i, currentMatrix);
+            }
+            
+           
+        }
+        private void  ValidateNumbers(int counter,int[,] currentMatrix)
+        {
+            Console.Write("Row {0}: ", counter);
+            int[] currentNumbers;
+            string numbers;
+            try
+            {
+                numbers = Console.ReadLine();
+                currentNumbers = numbers.Split().Select(e => int.Parse(e)).ToArray();
+                if(currentNumbers.Length!= currentMatrix.GetLength(1))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Numbers have to be exactly {0}", currentMatrix.GetLength(0));
+                    Console.WriteLine("Press Enter");
+                    Console.ReadLine();
+                    Console.Clear();
+                    ValidateNumbers(counter, currentMatrix);
+                }
+                else
+                {
+                    for(int i = 0; i < currentMatrix.GetLength(1); i++)
+                    {
+                        currentMatrix[counter, i] = currentNumbers[i];
+                    }
+                }
+            }
+            catch(FormatException exc)
+            {
+                Console.Clear(); 
+                Console.WriteLine("Must all be numbers without deciaml point");
+                Console.WriteLine("Press Enter");
+                Console.ReadLine();
+                Console.Clear();
+                ValidateNumbers(counter, currentMatrix);
+            }
+        }
+
+        private int[] EnterMatrixDetails(params int[] currentEnteredData)
+        {
+            int numberRows=0;
+            int numberColumns=0;
+            int[] currentDetaislEntered = new int[2];
+
+            if (currentEnteredData[0] == -42 && currentEnteredData[1]!=-42)
+            {
+                Console.Write("Enter number rows: ");
+                 numberRows = int.Parse(Console.ReadLine());
+                currentDetaislEntered[0] = numberRows;
+                Console.Clear();
+            }
+            else if (currentEnteredData[1] == -42 && currentEnteredData[0]!=-42)
+            {
+                Console.Write("Enter number columns: ");
+                 numberColumns = int.Parse(Console.ReadLine());
+                currentDetaislEntered[1] = numberColumns;
+                Console.Clear();
+            }
+            else if(currentEnteredData[0]==-42 && currentEnteredData[1]==-42)
+            {
+                Console.Write("Enter number rows: ");
+                numberRows = int.Parse(Console.ReadLine());
+                Console.Clear();
+                Console.Write("Enter number columns: ");
+                numberColumns = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+            }
+
+
+           
+            if (numberRows < 2 && numberColumns>=3)
+            {
+                Console.WriteLine("Rows must be at least 2");
+                Console.WriteLine("Press Enter!");
+                Console.ReadLine();
+                currentDetaislEntered[0] = -42;
+                currentDetaislEntered[1] = numberColumns;
+                EnterMatrixDetails(currentDetaislEntered);
+            }
+            else if(numberRows>=2 && numberColumns < 3)
+            {
+                Console.WriteLine("Columns must be at least 3");
+                Console.WriteLine("Press Enter!");
+                Console.ReadLine();
+                currentDetaislEntered[1] = -42;
+                currentDetaislEntered[0] = numberRows;
+                EnterMatrixDetails(currentDetaislEntered);
+            }
+            else if(numberRows<2 && numberColumns<3)
+            {
+                Console.WriteLine("Rows must be at least 2");
+                Console.WriteLine("Columns must be at least 3");
+                Console.WriteLine("Press Enter");
+                Console.ReadLine();
+                currentDetaislEntered[0] =- 42;
+                currentDetaislEntered[1] = -42;
+                EnterMatrixDetails(currentDetaislEntered);
+            }
+
+
+            currentDetaislEntered[0] = numberRows;
+            currentDetaislEntered[1] = numberColumns;
+            return currentDetaislEntered;
+        }
+
+
+
+
+
+
+
+        //-----------------------------------------------------------
 
         public void CrossroadsSam()
         {
@@ -95,7 +237,7 @@ namespace SoftuniFundamentals
                   
                     break;
                 default:
-                    currentCars.Add(command);
+                    
                     char[] currentCarEntered = command.ToCharArray();
                     currentCarEntered.Reverse();
                     for (int i=0; i < currentCarEntered.Length; i++)

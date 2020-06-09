@@ -20,19 +20,62 @@ namespace SoftuniFundamentals
         public void Best2x2Matrix()
         {
                  
-            int[] matrixDetails = EnterMatrixDetails(-42,-42);     //used for storing the rows and cols values
-            int[,] matrix = new int[matrixDetails[0], matrixDetails[1]];
-            EnterNumbersInMatrix(matrix);
-            for(int i = 0; i < matrix.GetLength(0); i++)
+            int[] matrixDetails = EnterMatrixDetails(-42,-42);              //used for storing the rows and cols values
+            int[,] matrix = new int[matrixDetails[0], matrixDetails[1]];    //create the matrix
+            EnterNumbersInMatrix(matrix);                             //fill the matrix with data(numbers)
+
+            int[,] bestMatrix = ReturnBest2x2Matrix(matrix);        //finding the best matirx
+
+
+            //displaying matrix data
+            for(int i = 0; i < bestMatrix.GetLength(0); i++)
             {
-                for(int j = 0; j < matrix.GetLength(1); j++)
+                for(int j = 0; j < bestMatrix.GetLength(1); j++)
                 {
-                    Console.Write(matrix[i, j]+" ");
+                    Console.Write(bestMatrix[i, j] + " ");
                 }
+                Console.WriteLine();
             }
 
 
 
+        }
+
+        private int[,] ReturnBest2x2Matrix(int[,] currentMatrix)
+        {
+            int[,] currentBestMatrix = new int[2,2];
+            int defaultMatrixSum = int.MinValue;
+
+            int currentLargestSum = defaultMatrixSum;
+            int currentSum = 0;
+            for(int i = 0; i < currentMatrix.GetLength(0)-1; i ++)
+            {
+                for(int j = 0; j < currentMatrix.GetLength(1)-1; j++)
+                {
+                    currentSum = (currentMatrix[i, j] + currentMatrix[i, j + 1]) + (currentMatrix[i + 1, j] + currentMatrix[i + 1, j + 1]);
+
+                    if (currentSum > currentLargestSum)
+                    {
+                        currentLargestSum = currentSum;
+                        currentBestMatrix = FillDataInBestMatrix(currentMatrix[i, j], currentMatrix[i, j + 1], currentMatrix[i + 1, j], currentMatrix[i + 1, j + 1])
+                    }
+
+                }
+
+            }
+
+            return currentBestMatrix;
+
+        }
+
+        private int[,] FillDataInBestMatrix(params int[] currentData)
+        {
+            int[,] temp = new int[2, 2];
+            temp[0, 0] = currentData[0];
+            temp[0, 1] = currentData[1];
+            temp[1, 0] = currentData[2];
+            temp[1, 1] = currentData[3];
+            return temp;
         }
 
         private void EnterNumbersInMatrix(int[,] currentMatrix)

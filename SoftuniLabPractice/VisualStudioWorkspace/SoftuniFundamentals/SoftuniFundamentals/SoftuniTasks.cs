@@ -26,7 +26,8 @@ namespace SoftuniFundamentals
 
             int[,] bestMatrix = ReturnBest2x2Matrix(matrix);        //finding the best matirx
 
-
+            Console.Clear();
+            Console.WriteLine("Best Matrix:");
             //displaying matrix data
             for(int i = 0; i < bestMatrix.GetLength(0); i++)
             {
@@ -57,7 +58,7 @@ namespace SoftuniFundamentals
                     if (currentSum > currentLargestSum)
                     {
                         currentLargestSum = currentSum;
-                        currentBestMatrix = FillDataInBestMatrix(currentMatrix[i, j], currentMatrix[i, j + 1], currentMatrix[i + 1, j], currentMatrix[i + 1, j + 1])
+                        currentBestMatrix = FillDataInBestMatrix(currentMatrix[i, j], currentMatrix[i, j + 1], currentMatrix[i + 1, j], currentMatrix[i + 1, j + 1]);
                     }
 
                 }

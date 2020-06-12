@@ -42,6 +42,45 @@ namespace SoftuniFundamentals
 
         }
 
+        public void EarlisestSorteCharArray()
+        {
+            string enterFirstLetters = Console.ReadLine();
+            char[] firstLetterArray = enterFirstLetters.Split(" ").Select(e => e[0]).ToArray();
+
+            string enterSecondLetters = Console.ReadLine();
+            char[] secondLetterArray = enterSecondLetters.Split().Select(e => e[0]).OrderBy(e => e).ToArray();
+
+            int firstLetterArraySym =firstLetterArray.Select(e=>(int)e).ToArray().Sum();
+
+            int secondLetterArraySum = secondLetterArray.Select(e => (int)e).ToArray().Sum();
+
+
+            if (firstLetterArraySym > secondLetterArraySum)
+            {
+                Console.WriteLine("Earleist lexigraph array is: ");
+                foreach(var item in firstLetterArray)
+                {
+                    Console.Write(item + ",");
+                }
+            }
+            else if(firstLetterArraySym < secondLetterArraySum)
+            {
+                Console.WriteLine("Earleist lexigraph array is: ");
+                foreach (var item in secondLetterArray)
+                {
+                    Console.Write(item + ",");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Both arrays are sorted equally.");
+            }
+            
+
+        } 
+
+        
+
         private int[,] ReturnBest2x2Matrix(int[,] currentMatrix)
         {
             int[,] currentBestMatrix = new int[2,2];

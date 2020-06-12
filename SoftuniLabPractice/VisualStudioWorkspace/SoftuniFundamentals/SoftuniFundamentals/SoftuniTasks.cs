@@ -110,13 +110,42 @@ namespace SoftuniFundamentals
             int[] numbers = new int[enterLength];
             for(int i = 0; i < enterLength; i++)
             {
-                Console.Write("Enter elem {0}: ", i);
+                Console.Write("Enter elem {0}: ", i+1);
                 numbers[i] = int.Parse(Console.ReadLine());
                 Console.Clear();
 
             }
 
+            Dictionary<string, int> currentSequencesAndSums = new Dictionary<string, int>();
 
+            
+            int currentSum = 0;
+           
+            StringBuilder sb = new StringBuilder();
+            
+            for(int i = 0; i < numbers.Length-(enterNumberOfElements-1); i++)
+            {
+                for(int j = i; j <= enterNumberOfElements - 1; j++)
+                {
+                    currentSum += numbers[j];
+                    sb.Append(numbers[j] + " ");
+                }
+
+                if (!currentSequencesAndSums.ContainsKey(sb.ToString().Trim()))
+                {
+                    currentSequencesAndSums.Add(sb.ToString().Trim(), currentSum);
+                }
+    
+                currentSum = 0;
+                sb.Clear();
+            }
+
+
+            currentSequencesAndSums = currentSequencesAndSums.OrderByDescending(e => e.Value)
+                .ToDictionary(e => e.Key, e => e.Value);
+
+            var desiredSequence = currentSequencesAndSums.First();
+            Console.WriteLine(desiredSequence.Key);
 
             
 

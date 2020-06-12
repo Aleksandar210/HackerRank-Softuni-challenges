@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,109 @@ namespace SoftuniFundamentals
 
 
         }
+
+        public void UnorderedSequence()
+        {
+            string enterNumbers = Console.ReadLine();
+            int[] numbers = enterNumbers.Split().Select(e => int.Parse(e)).ToArray();
+            
+            List<int> currentSequence = new List<int>();
+
+            //finding the smallest
+            int minValue = numbers.Min();
+            int indexOfMin = Array.IndexOf(numbers,minValue);
+            currentSequence.Add(minValue);
+
+
+            
+            
+            
+
+            FindNextMin(numbers,indexOfMin,currentSequence);
+
+            foreach(var item in currentSequence)
+            {
+                Console.Write(item + ",");
+            }
+
+
+        }
+
+        private void FindNextMin(int[] numbers, int indexOfMin,List<int> currentSequence)
+        {
+            bool found = false;
+            int nextTempMinIndex=0;
+
+            for (int i = indexOfMin; i < numbers.Length - 1; i++)
+            {
+                if (numbers[i + 1] > numbers[i])
+                {
+                    nextTempMinIndex = i + 1;
+                    found = true;
+                }
+            }
+
+            if (found == true)
+            {
+                currentSequence.Add(numbers[nextTempMinIndex]);
+                FindNextMin(numbers, nextTempMinIndex, currentSequence);
+            }
+            
+
+            
+        }
+
+        public void LongestEqualElemesInArray()
+        {
+            string enterArrayNumbers = Console.ReadLine();
+
+            int[] numbersArray = enterArrayNumbers.Split().Select(e => int.Parse(e)).ToArray();
+
+            List<int[]> currentSequencesFound = new List<int[]>();
+             foreach(var item in SearchSequences(numbersArray))
+            {
+                Console.Write(item + " ");
+            }
+
+        }
+
+        private int[] SearchSequences(int[] numbersArray)
+        {
+            int bestCount = 0;
+            int currentCount=0;
+            int element=0;
+            
+            for(int i = 0; i < numbersArray.Length - 1; i++)
+            {
+                if (numbersArray[i] == numbersArray[i + 1])
+                {
+                    currentCount++;
+                    
+
+                    if (currentCount > bestCount)
+                    {
+                        bestCount = currentCount;
+                        element = numbersArray[i];
+                    }
+                }
+                else
+                {
+                    currentCount = 0;
+
+                }
+             
+            }
+
+            int[] sequence = new int[bestCount];
+            for(int i = 0; i < bestCount; i++)
+            {
+                sequence[i] = element;
+            }
+
+            return sequence;
+           
+        }
+
 
         public void EarlisestSorteCharArray()
         {

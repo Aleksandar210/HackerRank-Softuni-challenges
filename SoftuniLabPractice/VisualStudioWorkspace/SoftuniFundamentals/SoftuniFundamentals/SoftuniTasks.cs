@@ -100,6 +100,62 @@ namespace SoftuniFundamentals
             
         }
         
+        public void SequenceWithSumEquals()
+        {
+            int[] numbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            int sumResult = int.Parse(Console.ReadLine());
+
+            int start = 0;
+            int end;
+           int currentSum = 0;
+
+            List<int[]> currentSequences = new List<int[]>();
+            int counter = -1;
+            for(int i = 0; i < numbers.Length-1; i++)
+            {
+                currentSum += numbers[i];
+                start = i;
+                if (currentSum >= sumResult)
+                {
+                    currentSum = 0;
+                    
+                    continue;
+                }
+               
+                for(int j = i + 1; j < numbers.Length; j++)
+                {
+                    if ((currentSum + numbers[j]) ==sumResult)
+                    {
+                        end = j;
+                        counter += 1;
+                        currentSequences.Add(new int[2]);
+                        currentSequences[counter][0] = start;
+                        currentSequences[counter][1] = end;
+
+                        
+                    }
+                    
+                }
+            }
+
+            foreach(var item in currentSequences)
+            {
+                DisplaySeucence(item, numbers);
+                Console.WriteLine();
+            }
+
+        }
+
+        private void DisplaySeucence(int[] sequeneData, int[] numbers)
+        {
+            for(int i = sequeneData[0]; i< sequeneData[1]; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+        }
+
+
+
         public void CommonElementInArray()
         {
             string enterNumbers = Console.ReadLine();

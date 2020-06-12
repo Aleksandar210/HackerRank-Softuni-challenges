@@ -68,7 +68,13 @@ namespace SoftuniFundamentals
             }
 
 
+
+           
+
         }
+
+
+
 
         private void FindNextMin(int[] numbers, int indexOfMin,List<int> currentSequence)
         {
@@ -92,6 +98,28 @@ namespace SoftuniFundamentals
             
 
             
+        }
+        
+
+
+        public void FindKSequenceMaxSum()
+        {
+            int enterLength = int.Parse(Console.ReadLine());
+            int enterNumberOfElements = int.Parse(Console.ReadLine());
+
+            int[] numbers = new int[enterLength];
+            for(int i = 0; i < enterLength; i++)
+            {
+                Console.Write("Enter elem {0}: ", i);
+                numbers[i] = int.Parse(Console.ReadLine());
+                Console.Clear();
+
+            }
+
+
+
+            
+
         }
 
         public void LongestEqualElemesInArray()

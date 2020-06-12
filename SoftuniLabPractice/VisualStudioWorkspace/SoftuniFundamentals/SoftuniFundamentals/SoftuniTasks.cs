@@ -146,6 +146,32 @@ namespace SoftuniFundamentals
 
         }
 
+
+
+        public void LongestSequenceInMatrix()
+        {
+            int row = int.Parse(Console.ReadLine());
+            int column = int.Parse(Console.ReadLine());
+            int[,] currentMatrix = new int[row, column];
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+
+            }
+        }
+
+        private void EnterDataInMatrix(int[,]currentMatrix)
+        {
+            Console.WriteLine("Enter elements:");
+            string enterElems = Console.ReadLine();
+            string[] temp = enterElems.Split();
+            if (temp.Length < currentMatrix.GetLength(1))
+            {
+
+            }
+        }
+
+
+
         private void DisplaySeucence(int[] sequeneData, int[] numbers)
         {
             for(int i = sequeneData[0]; i< sequeneData[1]; i++)

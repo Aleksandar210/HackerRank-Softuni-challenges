@@ -65,6 +65,7 @@ namespace SoftuniFundamentals
 
 
 
+            //some algorithm 
             //-------------------------------------------------------------------
             // string currentInput = Console.ReadLine();
             //  Regex currentRegex = new Regex("\\(");
@@ -88,17 +89,22 @@ namespace SoftuniFundamentals
             //  int start = input.IndexOf("(");
             // int end = input.IndexOf(")");
             // Console.WriteLine(input.Substring(start, end+1));
+            //--------------------------------------------------------------------
+
+
 
             //1
             //currentTasks.SelectionSort();
 
-            currentTasks.Best2x2Matrix();
+            //currentTasks.Best2x2Matrix();
            
-            
+          
 
 
 
         }
+
+
 
         static void SimpleStackCalc()
         {

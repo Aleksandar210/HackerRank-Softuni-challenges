@@ -97,9 +97,30 @@ namespace SoftuniFundamentals
             //currentTasks.SelectionSort();
 
             //currentTasks.Best2x2Matrix();
-           
-          
 
+
+           // string enterNumbers = Console.ReadLine();
+           // int[] numbers = enterNumbers.Trim().Split().Select(e => int.Parse(e)).ToArray();
+           // List<int> allNumbersOnce = new List<int>();
+           //
+           // for(int i = 0; i < numbers.Length; i++)
+           // {
+             //   if (allNumbersOnce.Count != 0)
+             //   {
+               //     if (!allNumbersOnce.Contains(numbers[i]))
+               //     {
+                  //      allNumbersOnce.Add(numbers[i]);
+                //    }
+              //  }
+               // else
+              //  {
+               //     allNumbersOnce.Add(numbers[i]);
+               // }
+           // } 
+          
+            
+
+         
 
 
         }

@@ -100,7 +100,48 @@ namespace SoftuniFundamentals
             
         }
         
+        public void CommonElementInArray()
+        {
+            string enterNumbers = Console.ReadLine();
+            int[] numbers = enterNumbers.Trim().Split().Select(e => int.Parse(e)).ToArray();
+            List<int> allNumbersOnce = new List<int>();
 
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (allNumbersOnce.Count != 0)
+                {
+                    if (!allNumbersOnce.Contains(numbers[i]))
+                    {
+                        allNumbersOnce.Add(numbers[i]);
+                    }
+                }
+                else
+                {
+                    allNumbersOnce.Add(numbers[i]);
+                }
+            }
+            int bestCommonCount = int.MinValue;
+            int element=0;
+            int count;
+            for(int i = 0; i < allNumbersOnce.Count; i++)
+            {
+                count = 0;
+                for(int j = 0; j < numbers.Length; j++)
+                {
+                    if (numbers[j] == allNumbersOnce[i])
+                    {
+                        count++;
+                    }
+                }
+                if (count > bestCommonCount)
+                {
+                    bestCommonCount = count;
+                    element = allNumbersOnce[i];
+                }
+            }
+
+            Console.WriteLine(element);
+        }
 
         public void FindKSequenceMaxSum()
         {

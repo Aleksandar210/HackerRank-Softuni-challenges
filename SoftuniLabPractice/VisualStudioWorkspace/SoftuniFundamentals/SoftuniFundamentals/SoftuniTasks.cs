@@ -19,6 +19,66 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+
+        //Bombs*
+        //--------------------------------------------------------------------------------
+        public void Bombs()
+        {
+            int enterDimensions = int.Parse(Console.ReadLine());
+            int[,] currentMatrix = new int[3, 3];
+
+
+            int counter = currentMatrix.GetLength(0);
+            int currentRowOn = 0;
+            while (counter-- > 0)
+            {
+                EnterNumbersAndBombsInMatrix(currentMatrix, currentRowOn);
+                currentRowOn++;
+            }
+
+            int[,] currentBombCoordinates;
+            string[] enterBombCoordinate = Console.ReadLine().Split();
+            currentBombCoordinates = new int[enterBombCoordinate.Length, 2];
+            EnterBombCoordinatesInBombMatrix(currentBombCoordinates, enterBombCoordinate);
+
+        }
+
+        private void EnterBombCoordinatesInBombMatrix(int[,] currentBombMatrix, string[] bombs)
+        {
+            int[] currentBombCoordinatesPerElementString;
+            for(int i = 0; i < currentBombMatrix.GetLength(0); i++)
+            {
+                currentBombCoordinatesPerElementString = bombs[0].Split(",").Select(e => int.Parse(e)).ToArray();
+                for(int j = 0; j < currentBombMatrix.GetLength(1); j++)
+                {
+                    currentBombMatrix[i,j] = currentBombCoordinatesPerElementString[j];
+                }
+            }
+        }
+
+        private void EnterNumbersAndBombsInMatrix(int[,] currentMatrix,int row)
+        {
+            Console.Clear();
+            Console.WriteLine("Enter {1} numbers for row {0}: ", currentMatrix.GetLength(1), row);
+            string enterNumbers = Console.ReadLine();
+            if (enterNumbers.Split().Length != currentMatrix.GetLength(1))
+            {
+                EnterColumnDataForMatrix3x3(currentMatrix, row);
+            }
+            else
+            {
+                int[] currentNumbersEntered = enterNumbers.Split().Select(e => int.Parse(e)).ToArray();
+                for (int i = 0; i < currentMatrix.GetLength(1); i++)
+                {
+                    currentMatrix[row, i] = currentNumbersEntered[i];
+                }
+            }
+        }
+
+
+            //End of Bombs----------------------------------------------------------------------
+
+        //---------------------------------------------------------------------------------
         public void SumMatrixMax3x3()
         {
             int row;        //entering rows
@@ -164,6 +224,12 @@ namespace SoftuniFundamentals
                 sb.Clear();
             }
         }
+
+        //--------------------------------------------------------------------------------------------
+
+
+
+
 
 
 

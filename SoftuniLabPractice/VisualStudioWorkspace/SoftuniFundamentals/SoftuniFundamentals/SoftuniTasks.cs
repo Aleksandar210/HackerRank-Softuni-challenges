@@ -55,7 +55,7 @@ namespace SoftuniFundamentals
            int[,] currentMaxSum3x3Matrix  = GetMaxSum3x3Matrix(currentMatrix);
 
             Console.WriteLine("Max sum : {0}",GetCurrent3x3MatrixSum(currentMaxSum3x3Matrix));
-
+            DisplayCurrent3x3Matrix(currentMaxSum3x3Matrix);
 
             
 
@@ -160,6 +160,8 @@ namespace SoftuniFundamentals
                     sb.Append(current3x3Matrix[i, j] + ",");
 
                 }
+                Console.WriteLine(sb.ToString().Trim(','));
+                sb.Clear();
             }
         }
 

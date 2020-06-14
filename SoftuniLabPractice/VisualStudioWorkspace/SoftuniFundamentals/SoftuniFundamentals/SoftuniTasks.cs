@@ -75,7 +75,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void ExplodeBombsInMatrix(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
+        private void DetonateBombsInMatrix(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
         {
             for(int i=0;i< currentBombCoordinateMatrix.GetLength(0); i++)
             {
@@ -86,7 +86,88 @@ namespace SoftuniFundamentals
             }
         }
 
-            //End of Bombs----------------------------------------------------------------------
+        private void ExplodeBomb(int[,] currentMatrix, int[] bombLocation)
+        {
+
+            if ((bombLocation[0] > 0 && bombLocation[0] < currentMatrix.GetLength(0))
+                && (bombLocation[1]>0 && bombLocation[1] < currentMatrix.GetLength(1)))
+            {
+                UpperLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                UpperRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                DownLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+            }
+            else if()
+        }
+
+
+
+        private  void UpperRightDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]--;
+                currentLocation[1]++;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != 0 && currentLocation[1] != currentMatrix.GetLength(1));
+        }
+
+
+
+        private  void UpperLeftDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]--;
+                currentLocation[1]--;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != 0 && currentLocation[1] != 0);
+
+        }
+
+
+
+        private  void DownRightDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]++;
+                currentLocation[1]++;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != currentMatrix.GetLength(1));
+        }
+
+
+
+        private  void DownLeftDiagonalExplosion(int[,] currentMatrix, int[] location,int decreasyBy)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]++;
+                currentLocation[1]--;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != 0);
+        }
+
+
+
+        //End of Bombs----------------------------------------------------------------------
 
         //---------------------------------------------------------------------------------
         public void SumMatrixMax3x3()

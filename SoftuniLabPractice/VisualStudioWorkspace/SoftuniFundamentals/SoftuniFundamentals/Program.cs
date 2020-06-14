@@ -118,15 +118,119 @@ namespace SoftuniFundamentals
             // }
             // } 
 
-
-            int[,] currentMatrix = new int[,] { { 1, 2, 3, 4, 5 }, { 2, 3, 4, 5, 6  }, { 1, 1, 1, 1, 1  }, { 2, 2, 2, 2, 2 } };
             
+           // int[,] currentMatrix = new int[,]       // the Matrix
+           // {
+             //   { 1, 2, 3, 4, 5 },
+             //   { 2, 3, 4, 5, 6 },
+             //   { 1, 1, 1, 1, 1 },
+             //   { 2, 2, 2, 2, 2 } 
+           // };
+
+
+            //int[] currentIndexLocation = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+
+
+           // if((currentIndexLocation[0]>0 && currentIndexLocation[0]<currentMatrix.GetLength(0)) 
+           //     && (currentIndexLocation[1]>0 && currentIndexLocation[1] < currentMatrix.GetLength(1)))
+           // {
+               // UpperRightDiagonal(currentMatrix, currentIndexLocation);
+              //  UpperLeftDiagonal(currentMatrix, currentIndexLocation);
+             //   DownLeftDiagonal(currentMatrix, currentIndexLocation);
+             //   DownRightDiagonal(currentMatrix, currentIndexLocation);
+            //}
+          //  else if(currentIndexLocation[0]==0 && currentIndexLocation[1] < currentMatrix.GetLength(1))
+          //  {
+          //      DownRightDiagonal(currentMatrix, currentIndexLocation);
+          //  }
+           // else if (currentIndexLocation[0]== currentMatrix.GetLength(0) && currentIndexLocation[1]!=currentMatrix.GetLength(1))
+           // {
+           //     UpperRightDiagonal(currentMatrix, currentIndexLocation);
+           // }
+           // else if((currentIndexLocation[0]!=0 && currentIndexLocation[0]!=currentMatrix.GetLength(0)) 
+            //    && currentIndexLocation[1] == 0)
+           // {
+            //    UpperRightDiagonal(currentMatrix, currentIndexLocation);
+            //    DownRightDiagonal(currentMatrix, currentIndexLocation);
+           // }
+           // else
+           // {
+
+            //}
+
 
 
         }
 
 
+        private static void UpperRightDiagonal(int[,] currentMatrix, int[] location)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
 
+            do
+            {
+                currentLocation[0]--;
+                currentLocation[1]++;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0]!= 0 && currentLocation[1]!= currentMatrix.GetLength(1));
+        }
+
+
+        private static void UpperLeftDiagonal(int[,] currentMatrix, int[] location)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]--;
+                currentLocation[1]--;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != 0 && currentLocation[1] != 0);
+
+        }
+
+
+
+        private static void DownRightDiagonal(int[,] currentMatrix, int[] location)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]++;
+                currentLocation[1]++;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != currentMatrix.GetLength(1));
+        }
+
+       
+
+        private static void DownLeftDiagonal(int[,] currentMatrix, int[] location)
+        {
+            int[] currentLocation = new int[2];
+            currentLocation[0] = location[0];
+            currentLocation[1] = location[1];
+
+            do
+            {
+                currentLocation[0]++;
+                currentLocation[1]--;
+                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+            } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != 0);
+        }
+
+
+
+
+
+        //Calculator task
+        //------------------------------------------------------------
         static void SimpleStackCalc()
         {
             string enterEquation = Console.ReadLine();

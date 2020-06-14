@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Dynamic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net.Http.Headers;
 using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices;
@@ -18,6 +19,63 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+        public void SumMatrixMax3x3()
+        {
+            int row;        //entering rows
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Enter row");
+                row = int.Parse(Console.ReadLine());
+            }
+            while (row < 3);
+
+
+            int col;            //entering columns
+            do
+            {
+
+                Console.Clear();
+                Console.WriteLine("Enter col");
+                col = int.Parse(Console.ReadLine());
+            }
+            while (col < 3);
+
+            int[,] currentMatrix = new int[row, col];       //creating matrix
+
+            int counter = row;
+            int currentRowOn = 0;
+            while(counter-- > 0)
+            {
+
+            }
+
+            
+
+        }
+        private void EnterColumnDataForMatrix3x3(int[,] currentMatrix, int row)
+        {
+            Console.Clear();
+            Console.WriteLine("Enter {1} numbers for row {0}: ",currentMatrix.GetLength(1) ,row);
+            string enterNumbers = Console.ReadLine();
+            if (enterNumbers.Split().Length != currentMatrix.GetLength(1))
+            {
+                EnterColumnDataForMatrix3x3(currentMatrix, row);
+            }
+            else
+            {
+                int[] currentNumbersEntered = enterNumbers.Split().Select(e => int.Parse(e)).ToArray();
+                for(int i = 0; i < currentMatrix.GetLength(1); i++)
+                {
+
+                }
+            }
+
+        }
+
+
+
+
         public void Best2x2Matrix()
         {
                  
@@ -159,15 +217,42 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void EnterDataInMatrix(int[,]currentMatrix)
+        private void EnterDataInMatrix(int[,]currentMatrix,int index)
         {
             Console.WriteLine("Enter elements:");
             string enterElems = Console.ReadLine();
-            string[] temp = enterElems.Split();
+            int[] temp = enterElems.Split().Select(e=>int.Parse(e)).ToArray();
+           
             if (temp.Length < currentMatrix.GetLength(1))
             {
 
             }
+         //   else if()
+          //  {
+
+         //   }
+        }
+
+        private string[] ReEnteredElements(int numberNeeded)
+        {
+            Console.WriteLine("You need {0} elements", numberNeeded);
+            Console.WriteLine("Enter the rest elements:");
+            string[] enterElements = Console.ReadLine().Split();
+            if (enterElements.Length < numberNeeded)
+            {
+                ReEnteredElements(numberNeeded);
+            }else if (enterElements.Length > numberNeeded)
+            {
+                string[] currentNeededElements = new string[numberNeeded];
+                Array.Copy(enterElements, currentNeededElements, numberNeeded);
+                return currentNeededElements;
+            }
+            else
+            {
+                return enterElements;
+            }
+
+            return null;
         }
 
 

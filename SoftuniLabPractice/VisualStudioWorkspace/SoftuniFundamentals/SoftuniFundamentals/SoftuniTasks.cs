@@ -41,6 +41,19 @@ namespace SoftuniFundamentals
             currentBombCoordinates = new int[enterBombCoordinate.Length, 2];
             EnterBombCoordinatesInBombMatrix(currentBombCoordinates, enterBombCoordinate);
             DetonateBombsInMatrix(currentMatrix, currentBombCoordinates);      //Decreas all elems with bobm value
+            Console.WriteLine("Current Alive Cells: {0}",GetSurvivorCells(currentMatrix));
+            Console.WriteLine("Matrix: ");
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentMatrix.GetLength(1); j++)
+                {
+                    sb.Append(currentMatrix[i, j]+","];
+
+                }
+                Console.WriteLine(sb.ToString().Trim(','));
+                sb.Clear();
+            }
 
 
         }
@@ -134,6 +147,23 @@ namespace SoftuniFundamentals
             
         }
 
+
+        private int GetSurvivorCells(int[,] currentMatrix)
+        {
+            int survivors = 0;
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentMatrix.GetLength(1); j++)
+                {
+                    if (currentMatrix[i, j] != 0)
+                    {
+                        survivors++;
+                    }
+                }
+            }
+            return survivors;
+
+        }
 
 
         private  void UpperRightDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)

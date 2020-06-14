@@ -63,7 +63,7 @@ namespace SoftuniFundamentals
             //currentTasks.StackSum();
             //currentTasks.GetBracketContents();
 
-
+           // currentTasks.Bombs();
 
             //some algorithm 
             //-------------------------------------------------------------------

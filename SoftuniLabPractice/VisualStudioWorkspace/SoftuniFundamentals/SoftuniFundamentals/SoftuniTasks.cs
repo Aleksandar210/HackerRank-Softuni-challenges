@@ -75,6 +75,16 @@ namespace SoftuniFundamentals
             }
         }
 
+        private void ExplodeBombsInMatrix(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
+        {
+            for(int i=0;i< currentBombCoordinateMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentBombCoordinateMatrix.GetLength(1); j++)
+                {
+
+                }
+            }
+        }
 
             //End of Bombs----------------------------------------------------------------------
 

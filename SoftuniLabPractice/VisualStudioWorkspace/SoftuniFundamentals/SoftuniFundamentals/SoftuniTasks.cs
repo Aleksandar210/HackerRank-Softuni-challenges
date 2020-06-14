@@ -40,6 +40,8 @@ namespace SoftuniFundamentals
             string[] enterBombCoordinate = Console.ReadLine().Split();
             currentBombCoordinates = new int[enterBombCoordinate.Length, 2];
             EnterBombCoordinatesInBombMatrix(currentBombCoordinates, enterBombCoordinate);
+            DetonateBombsInMatrix(currentMatrix, currentBombCoordinates);      //Decreas all elems with bobm value
+
 
         }
 
@@ -77,16 +79,18 @@ namespace SoftuniFundamentals
 
         private void DetonateBombsInMatrix(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
         {
+            int[] currentCoordinatesOfCurrentBomb = new int[2];
             for(int i=0;i< currentBombCoordinateMatrix.GetLength(0); i++)
             {
                 for(int j = 0; j < currentBombCoordinateMatrix.GetLength(1); j++)
                 {
-
+                    currentCoordinatesOfCurrentBomb[j] = currentBombCoordinateMatrix[i, j];
                 }
+                ExplodeBomb(currentMatrix, currentCoordinatesOfCurrentBomb);
             }
         }
 
-        private void ExplodeBomb(int[,] currentMatrix, int[] bombLocation)
+        private void ExplodeBomb(int[,] currentMatrix, params int[] bombLocation)
         {
 
             if ((bombLocation[0] > 0 && bombLocation[0] < currentMatrix.GetLength(0))
@@ -101,13 +105,45 @@ namespace SoftuniFundamentals
             {
                 DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
             }
+            else if (bombLocation[0] == currentMatrix.GetLength(0) && bombLocation[1] != currentMatrix.GetLength(1))
+            {
+                UpperRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+            }
+            else if ((bombLocation[0] != 0 && bombLocation[0] != currentMatrix.GetLength(0))
+                && bombLocation[1] == 0)
+             {
+                UpperRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+             }
+            else if (bombLocation[0] == 0 && (bombLocation[1] < currentMatrix.GetLength(1) && bombLocation[1] != 0))
+            {
+                DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                DownLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
 
+            }
+            else if (bombLocation[0] == currentMatrix.GetLength(0) &&( bombLocation[1] != currentMatrix.GetLength(1) && bombLocation[1] != 0))
+            {
+                UpperRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                UpperLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+            }
+            else
+            {
+                UpperLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+                DownLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+            }
+            
         }
 
 
 
         private  void UpperRightDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
         {
+            if (decreaseBy == 0)
+            {
+                return;
+            }
+            
+
             int[] currentLocation = new int[2];
             currentLocation[0] = location[0];
             currentLocation[1] = location[1];
@@ -116,7 +152,19 @@ namespace SoftuniFundamentals
             {
                 currentLocation[0]--;
                 currentLocation[1]++;
-                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+                if (currentMatrix[currentLocation[0], currentLocation[1]] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    currentMatrix[currentLocation[0], currentLocation[1]] -= decreaseBy;
+                    if(currentMatrix[currentLocation[0], currentLocation[1]] <= 0)
+                    {
+                        currentMatrix[currentLocation[0], currentLocation[1]] = 0;
+                    }
+                }
+                
             } while (currentLocation[0] != 0 && currentLocation[1] != currentMatrix.GetLength(1));
         }
 
@@ -124,6 +172,12 @@ namespace SoftuniFundamentals
 
         private  void UpperLeftDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
         {
+            if (decreaseBy == 0)
+            {
+                return;
+            }
+
+
             int[] currentLocation = new int[2];
             currentLocation[0] = location[0];
             currentLocation[1] = location[1];
@@ -132,7 +186,18 @@ namespace SoftuniFundamentals
             {
                 currentLocation[0]--;
                 currentLocation[1]--;
-                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+                if (currentMatrix[currentLocation[0], currentLocation[1]] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    currentMatrix[currentLocation[0], currentLocation[1]] -= decreaseBy;
+                    if (currentMatrix[currentLocation[0], currentLocation[1]] <= 0)
+                    {
+                        currentMatrix[currentLocation[0], currentLocation[1]] = 0;
+                    }
+                }
             } while (currentLocation[0] != 0 && currentLocation[1] != 0);
 
         }
@@ -141,6 +206,11 @@ namespace SoftuniFundamentals
 
         private  void DownRightDiagonalExplosion(int[,] currentMatrix, int[] location, int decreaseBy)
         {
+            if (decreaseBy == 0)
+            {
+                return;
+            }
+
             int[] currentLocation = new int[2];
             currentLocation[0] = location[0];
             currentLocation[1] = location[1];
@@ -149,14 +219,30 @@ namespace SoftuniFundamentals
             {
                 currentLocation[0]++;
                 currentLocation[1]++;
-                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+                if (currentMatrix[currentLocation[0], currentLocation[1]] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    currentMatrix[currentLocation[0], currentLocation[1]] -= decreaseBy;
+                    if (currentMatrix[currentLocation[0], currentLocation[1]] <= 0)
+                    {
+                        currentMatrix[currentLocation[0], currentLocation[1]] = 0;
+                    }
+                }
             } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != currentMatrix.GetLength(1));
         }
 
 
 
-        private  void DownLeftDiagonalExplosion(int[,] currentMatrix, int[] location,int decreasyBy)
+        private  void DownLeftDiagonalExplosion(int[,] currentMatrix, int[] location,int decreaseBy)
         {
+            if (decreaseBy == 0)
+            {
+                return;
+            }
+
             int[] currentLocation = new int[2];
             currentLocation[0] = location[0];
             currentLocation[1] = location[1];
@@ -165,7 +251,18 @@ namespace SoftuniFundamentals
             {
                 currentLocation[0]++;
                 currentLocation[1]--;
-                Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
+                if (currentMatrix[currentLocation[0], currentLocation[1]] == 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    currentMatrix[currentLocation[0], currentLocation[1]] -= decreaseBy;
+                    if (currentMatrix[currentLocation[0], currentLocation[1]] <= 0)
+                    {
+                        currentMatrix[currentLocation[0], currentLocation[1]] = 0;
+                    }
+                }
             } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != 0);
         }
 

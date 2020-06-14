@@ -40,15 +40,17 @@ namespace SoftuniFundamentals
             string[] enterBombCoordinate = Console.ReadLine().Split();
             currentBombCoordinates = new int[enterBombCoordinate.Length, 2];
             EnterBombCoordinatesInBombMatrix(currentBombCoordinates, enterBombCoordinate);
-            DetonateBombsInMatrix(currentMatrix, currentBombCoordinates);      //Decreas all elems with bobm value
-            Console.WriteLine("Current Alive Cells: {0}",GetSurvivorCells(currentMatrix));
+            DetonateBombsInMatrixDiagonaly(currentMatrix, currentBombCoordinates);      //Decreas all elems with bobm value
+            int[] currentMatrixurvSum = GetSurvivorCells(currentMatrix);
+            Console.WriteLine("Current Alive Cells: {0}",currentMatrixurvSum[0]);
+            Console.WriteLine("Current Sum {0}", currentMatrixurvSum[1]);
             Console.WriteLine("Matrix: ");
             StringBuilder sb = new StringBuilder();
             for(int i = 0; i < currentMatrix.GetLength(0); i++)
             {
                 for(int j = 0; j < currentMatrix.GetLength(1); j++)
                 {
-                    sb.Append(currentMatrix[i, j]+","];
+                    sb.Append(currentMatrix[i, j]+",");
 
                 }
                 Console.WriteLine(sb.ToString().Trim(','));
@@ -90,7 +92,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void DetonateBombsInMatrix(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
+        private void DetonateBombsInMatrixDiagonaly(int[,] currentMatrix, int[,] currentBombCoordinateMatrix)
         {
             int[] currentCoordinatesOfCurrentBomb = new int[2];
             for(int i=0;i< currentBombCoordinateMatrix.GetLength(0); i++)
@@ -102,6 +104,8 @@ namespace SoftuniFundamentals
                 ExplodeBomb(currentMatrix, currentCoordinatesOfCurrentBomb);
             }
         }
+
+       
 
         private void ExplodeBomb(int[,] currentMatrix, params int[] bombLocation)
         {
@@ -148,9 +152,11 @@ namespace SoftuniFundamentals
         }
 
 
-        private int GetSurvivorCells(int[,] currentMatrix)
+        private int[] GetSurvivorCells(int[,] currentMatrix)
         {
             int survivors = 0;
+            int sum = 0;
+            int[] data = new int[2];
             for(int i = 0; i < currentMatrix.GetLength(0); i++)
             {
                 for(int j = 0; j < currentMatrix.GetLength(1); j++)
@@ -158,10 +164,13 @@ namespace SoftuniFundamentals
                     if (currentMatrix[i, j] != 0)
                     {
                         survivors++;
+                        sum += currentMatrix[i, j];
                     }
                 }
             }
-            return survivors;
+            data[0] = survivors;
+            data[1] = sum;
+            return data;
 
         }
 

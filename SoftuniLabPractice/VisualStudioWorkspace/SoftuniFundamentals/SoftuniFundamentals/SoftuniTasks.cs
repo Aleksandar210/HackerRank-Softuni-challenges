@@ -43,16 +43,24 @@ namespace SoftuniFundamentals
 
             int[,] currentMatrix = new int[row, col];       //creating matrix
 
-            int counter = row;
-            int currentRowOn = 0;
-            while(counter-- > 0)
+            int counter = row;          // counter for the while loop below
+            int currentRowOn = 0;       // current row to enter numbers
+            while(counter-- > 0)        // loop to enter numbers for each row
             {
+                EnterColumnDataForMatrix3x3(currentMatrix, currentRowOn);       //enters numbers on a line separated with space
+                currentRowOn++;
 
             }
+
+
+
 
             
 
         }
+
+        
+
         private void EnterColumnDataForMatrix3x3(int[,] currentMatrix, int row)
         {
             Console.Clear();
@@ -67,10 +75,76 @@ namespace SoftuniFundamentals
                 int[] currentNumbersEntered = enterNumbers.Split().Select(e => int.Parse(e)).ToArray();
                 for(int i = 0; i < currentMatrix.GetLength(1); i++)
                 {
+                    currentMatrix[row, i] = currentNumbersEntered[i];
+                }
+            }
+
+        }
+
+
+        private int[,] GetMaxSum3x3Matrix(int[,] currentMatrix)
+        {
+            int[,] maxSumMatrix = new int[3, 3];
+            int currentMaxSum = 0;
+
+
+
+            int rowLimit = currentMatrix.GetLength(0) - 2;
+            int colLimit = currentMatrix.GetLength(1) - 2;
+
+            
+
+            int[,] current3x3Matrix = new int[3,3];
+            int currentSum = int.MinValue;
+
+            for(int i = 0; i < rowLimit; i++)
+            {
+                for(int j = 0; j < colLimit; j++)
+                {
+                  FillCurrent3x3Matrix(currentMatrix, current3x3Matrix, i, j);  //fills the current3x3Matrix with numbers
+                    currentSum = GetCurrent3x3MatrixSum(current3x3Matrix);      // gets the sum of all numbers in the current3x3Matrix
+                    if (currentMaxSum>currentSum)   
+                    {
+                        currentMaxSum = currentSum;
+                        maxSumMatrix = current3x3Matrix;
+                    }
 
                 }
             }
 
+
+            return maxSumMatrix;
+        }
+        private void FillCurrent3x3Matrix(int[,]currentMatrix, int[,] current3x3Matrix,int indexRow, int indexCol)
+        {
+            current3x3Matrix[0, 0] = currentMatrix[indexRow, indexCol];         //first row 
+            current3x3Matrix[0, 1] = currentMatrix[indexRow, indexCol + 1];
+            current3x3Matrix[0, 1] = currentMatrix[indexRow, indexCol + 2];
+
+
+            current3x3Matrix[1, 0] = currentMatrix[indexRow+1, indexCol];           //second row
+            current3x3Matrix[1, 1] = currentMatrix[indexRow+1, indexCol + 1];
+            current3x3Matrix[1, 1] = currentMatrix[indexRow+1, indexCol + 2];
+
+            current3x3Matrix[2, 0] = currentMatrix[indexRow+2, indexCol];              //third row
+            current3x3Matrix[2, 1] = currentMatrix[indexRow+2, indexCol + 1];
+            current3x3Matrix[2, 1] = currentMatrix[indexRow+2, indexCol + 2];
+
+
+        }
+
+        private int GetCurrent3x3MatrixSum(int[,]current3x3Matrix)
+        {
+            int sum = 0;
+            for(int i = 0; i < current3x3Matrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < current3x3Matrix.GetLength(1); j++)
+                {
+                    sum += current3x3Matrix[i, j];
+                }
+            }
+
+            return sum;
         }
 
 

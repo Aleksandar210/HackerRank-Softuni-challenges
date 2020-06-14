@@ -97,7 +97,11 @@ namespace SoftuniFundamentals
                 DownLeftDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
                 DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
             }
-            else if()
+            else if (bombLocation[0] == 0 && bombLocation[1] < currentMatrix.GetLength(1))
+            {
+                DownRightDiagonalExplosion(currentMatrix, bombLocation, currentMatrix[bombLocation[0], bombLocation[1]]);
+            }
+
         }
 
 

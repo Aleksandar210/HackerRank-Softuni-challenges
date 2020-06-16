@@ -21,6 +21,25 @@ namespace SoftuniFundamentals
     class SoftuniTasks
     {
 
+        public void LabirinthData()
+        {
+            int enterDimensions = int.Parse(Console.ReadLine());
+            int[,] currentMatrirx = new int[enterDimensions, enterDimensions];
+            for(int i = 0; i < currentMatrirx.GetLength(0))
+            {
+
+            }
+        }
+        private void AddMazeData(int row,int[,] currentMatirx)
+        {
+            Console.WriteLine($"Enter {currentMatirx.GetLength(1)} numbers separated by space: ");
+            int[] enterData = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            if (enterData.Length != currentMatirx.GetLength(1))
+            {
+
+            }
+        }
+
         public void MajorantValuesArray()
         {
             int[] array = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();

@@ -25,18 +25,27 @@ namespace SoftuniFundamentals
         {
             int enterDimensions = int.Parse(Console.ReadLine());
             int[,] currentMatrirx = new int[enterDimensions, enterDimensions];
-            for(int i = 0; i < currentMatrirx.GetLength(0))
+            for(int i = 0; i < currentMatrirx.GetLength(0);i++)
             {
 
+                Console.Clear();
             }
         }
-        private void AddMazeData(int row,int[,] currentMatirx)
+        private void AddMazeData(int row,int[,] currentMatrix)
         {
-            Console.WriteLine($"Enter {currentMatirx.GetLength(1)} numbers separated by space: ");
+            Console.WriteLine($"Enter {currentMatrix.GetLength(1)} numbers separated by space: ");
             int[] enterData = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
-            if (enterData.Length != currentMatirx.GetLength(1))
+            if (enterData.Length != currentMatrix.GetLength(1))
             {
-
+                AddMazeData(row, currentMatrix);
+            }
+            else
+            {
+                int counter = 0;
+                foreach(var item in enterData)
+                {
+                
+                }
             }
         }
 

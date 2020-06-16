@@ -24,17 +24,36 @@ namespace SoftuniFundamentals
         public void LabirinthData()
         {
             int enterDimensions = int.Parse(Console.ReadLine());
-            int[,] currentMatrix = new int[enterDimensions, enterDimensions];
+            char[,] currentMatrix = new char[enterDimensions, enterDimensions];
+
+
             for(int i = 0; i < currentMatrix.GetLength(0);i++)
             {
                 AddMazeData(i, currentMatrix);
                 Console.Clear();
             }
+
+            int[] startPositon = new int[2];
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentMatrix.GetLength(1); j++)
+                {
+                    switch (currentMatrix[i, j])
+                    {
+                        case '*':
+                            startPositon[0] = i;
+                            startPositon[1] = j;
+                            break;
+                    }
+                }
+            }
+
+
         }
-        private void AddMazeData(int row,int[,] currentMatrix)
+        private void AddMazeData(int row,char[,] currentMatrix)
         {
             Console.WriteLine($"Enter {currentMatrix.GetLength(1)} numbers separated by space: ");
-            int[] enterData = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            char[] enterData = Console.ReadLine().Split().Select(e => e[0]).ToArray();
             if (enterData.Length != currentMatrix.GetLength(1))
             {
                 AddMazeData(row, currentMatrix);
@@ -48,6 +67,13 @@ namespace SoftuniFundamentals
                 }
             }
         }
+
+        private void FillAllPaths()
+        {
+
+        }
+
+        //-------------------------------------------------------------------------------------
 
         public void MajorantValuesArray()
         {

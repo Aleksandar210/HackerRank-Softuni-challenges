@@ -31,6 +31,40 @@ namespace SoftuniFundamentals
 
         }
 
+        public void CountOfItmes()
+        {
+            int[] currentArrayWithItems = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+
+
+            HashSet<int> currentItemsInArray = new HashSet<int>();      // items in array
+
+            foreach(var item in currentArrayWithItems)
+            {
+                switch (currentItemsInArray.Count)
+                {
+                    case 0:
+                        currentItemsInArray.Add(item);
+                        break;
+                    default:
+                        if (!currentItemsInArray.Contains(item))
+                        {
+                            currentItemsInArray.Add(item);
+                        }
+                        break;
+                }
+            }
+
+            int[,] currentItemCount = new int[currentItemsInArray.Count, 2];
+
+        }
+
+        private void AddCountOfItemIMatrix(int[,] currentCountMatirx,int counter,int item,int[] array)
+        {
+            int[] count = array.Where(e => e == item).ToArray();
+            currentCountMatirx[counter, 0] = item;
+            currentCountMatirx[counter, 1] = count.Length;
+
+        }
 
 
         //Bombs*

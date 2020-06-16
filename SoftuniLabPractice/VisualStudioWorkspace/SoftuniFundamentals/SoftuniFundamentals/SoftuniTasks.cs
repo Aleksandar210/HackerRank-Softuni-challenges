@@ -62,6 +62,7 @@ namespace SoftuniFundamentals
                 AddCountOfItemIMatrix(currentItemCount, i, currentItemsInArray[i], currentArrayWithItems);
             }
             StringBuilder sb = new StringBuilder();
+            Console.WriteLine("Count of Items in array: ");
             for(int i = 0; i < currentItemCount.GetLength(0); i++)
             {
                 for(int j = 0; j < currentItemCount.GetLength(1); j++)
@@ -71,6 +72,21 @@ namespace SoftuniFundamentals
                 Console.WriteLine(sb.ToString().Trim('-'));
                 sb.Clear();
             }
+
+
+            List<int> oddCountItems = new List<int>();
+            for (int i = 0; i < currentItemCount.GetLength(0); i++)
+            {
+
+                if (currentItemCount[i, 1] % 2 != 0)
+                {
+                    oddCountItems.Add(currentItemCount[i, 0]);
+                }
+            }
+            Console.WriteLine("Items that are odd count");
+            Console.WriteLine(String.Join(",", oddCountItems));
+
+
 
         }
 

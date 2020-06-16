@@ -19,6 +19,19 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+        public void PositiveOnly()
+        {
+            int[] array = Console.ReadLine().Split().Select(e => int.Parse(e)).Where(e => e > -1).ToArray();
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in array)
+            {
+                sb.Append(item + " ");
+            }
+            Console.WriteLine(sb.ToString().Trim());
+
+        }
+
+
 
         //Bombs*
         //--------------------------------------------------------------------------------

@@ -36,7 +36,7 @@ namespace SoftuniFundamentals
             int[] currentArrayWithItems = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
 
 
-            HashSet<int> currentItemsInArray = new HashSet<int>();      // items in array
+            List<int> currentItemsInArray = new List<int>();      // items in array
 
             foreach(var item in currentArrayWithItems)
             {
@@ -56,14 +56,29 @@ namespace SoftuniFundamentals
 
             int[,] currentItemCount = new int[currentItemsInArray.Count, 2];
 
+
+            for (int i = 0; i < currentItemsInArray.Count; i++)
+            {
+                AddCountOfItemIMatrix(currentItemCount, i, currentItemsInArray[i], currentArrayWithItems);
+            }
+            StringBuilder sb = new StringBuilder();
+            for(int i = 0; i < currentItemCount.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentItemCount.GetLength(1); j++)
+                {
+                    sb.Append(currentItemCount[i, j] + "->");
+                }
+                Console.WriteLine(sb.ToString().Trim('-'));
+                sb.Clear();
+            }
+
         }
 
         private void AddCountOfItemIMatrix(int[,] currentCountMatirx,int counter,int item,int[] array)
         {
             int[] count = array.Where(e => e == item).ToArray();
             currentCountMatirx[counter, 0] = item;
-            currentCountMatirx[counter, 1] = count.Length;
-
+            currentCountMatirx[counter,1] = count.Length;
         }
 
 

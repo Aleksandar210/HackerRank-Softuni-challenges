@@ -24,10 +24,10 @@ namespace SoftuniFundamentals
         public void LabirinthData()
         {
             int enterDimensions = int.Parse(Console.ReadLine());
-            int[,] currentMatrirx = new int[enterDimensions, enterDimensions];
-            for(int i = 0; i < currentMatrirx.GetLength(0);i++)
+            int[,] currentMatrix = new int[enterDimensions, enterDimensions];
+            for(int i = 0; i < currentMatrix.GetLength(0);i++)
             {
-
+                AddMazeData(i, currentMatrix);
                 Console.Clear();
             }
         }
@@ -44,7 +44,7 @@ namespace SoftuniFundamentals
                 int counter = 0;
                 foreach(var item in enterData)
                 {
-                
+                    currentMatrix[row, counter] = item;
                 }
             }
         }

@@ -63,7 +63,7 @@ namespace SoftuniFundamentals
             //currentTasks.StackSum();
             //currentTasks.GetBracketContents();
 
-           // currentTasks.Bombs();
+            // currentTasks.Bombs();
 
             //some algorithm 
             //-------------------------------------------------------------------
@@ -118,47 +118,70 @@ namespace SoftuniFundamentals
             // }
             // } 
 
-            
-           // int[,] currentMatrix = new int[,]       // the Matrix
-           // {
-             //   { 1, 2, 3, 4, 5 },
-             //   { 2, 3, 4, 5, 6 },
-             //   { 1, 1, 1, 1, 1 },
-             //   { 2, 2, 2, 2, 2 } 
-           // };
+
+            // int[,] currentMatrix = new int[,]       // the Matrix
+            // {
+            //   { 1, 2, 3, 4, 5 },
+            //   { 2, 3, 4, 5, 6 },
+            //   { 1, 1, 1, 1, 1 },
+            //   { 2, 2, 2, 2, 2 } 
+            // };
 
 
             //int[] currentIndexLocation = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
 
 
-           // if((currentIndexLocation[0]>0 && currentIndexLocation[0]<currentMatrix.GetLength(0)) 
-           //     && (currentIndexLocation[1]>0 && currentIndexLocation[1] < currentMatrix.GetLength(1)))
-           // {
-               // UpperRightDiagonal(currentMatrix, currentIndexLocation);
-              //  UpperLeftDiagonal(currentMatrix, currentIndexLocation);
-             //   DownLeftDiagonal(currentMatrix, currentIndexLocation);
-             //   DownRightDiagonal(currentMatrix, currentIndexLocation);
+            // if((currentIndexLocation[0]>0 && currentIndexLocation[0]<currentMatrix.GetLength(0)) 
+            //     && (currentIndexLocation[1]>0 && currentIndexLocation[1] < currentMatrix.GetLength(1)))
+            // {
+            // UpperRightDiagonal(currentMatrix, currentIndexLocation);
+            //  UpperLeftDiagonal(currentMatrix, currentIndexLocation);
+            //   DownLeftDiagonal(currentMatrix, currentIndexLocation);
+            //   DownRightDiagonal(currentMatrix, currentIndexLocation);
             //}
-          //  else if(currentIndexLocation[0]==0 && currentIndexLocation[1] < currentMatrix.GetLength(1))
-          //  {
-          //      DownRightDiagonal(currentMatrix, currentIndexLocation);
-          //  }
-           // else if (currentIndexLocation[0]== currentMatrix.GetLength(0) && currentIndexLocation[1]!=currentMatrix.GetLength(1))
-           // {
-           //     UpperRightDiagonal(currentMatrix, currentIndexLocation);
-           // }
-           // else if((currentIndexLocation[0]!=0 && currentIndexLocation[0]!=currentMatrix.GetLength(0)) 
+            //  else if(currentIndexLocation[0]==0 && currentIndexLocation[1] < currentMatrix.GetLength(1))
+            //  {
+            //      DownRightDiagonal(currentMatrix, currentIndexLocation);
+            //  }
+            // else if (currentIndexLocation[0]== currentMatrix.GetLength(0) && currentIndexLocation[1]!=currentMatrix.GetLength(1))
+            // {
+            //     UpperRightDiagonal(currentMatrix, currentIndexLocation);
+            // }
+            // else if((currentIndexLocation[0]!=0 && currentIndexLocation[0]!=currentMatrix.GetLength(0)) 
             //    && currentIndexLocation[1] == 0)
-           // {
+            // {
             //    UpperRightDiagonal(currentMatrix, currentIndexLocation);
             //    DownRightDiagonal(currentMatrix, currentIndexLocation);
-           // }
-           // else
-           // {
+            // }
+            // else
+            // {
 
             //}
+            Console.WriteLine("Enter size: ");
+            int enterDimensions = int.Parse(Console.ReadLine());
+            
+            Console.Clear();
+            char[,] currentMatrix = new char[enterDimensions,enterDimensions];
+          
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                Console.Write("Enter {0} chars (x/o): ", currentMatrix.GetLength(1));
+                char[] currentChars = Console.ReadLine().Split(" ").Select(e => e[0]).ToArray();
+                for(int z = 0; z < currentMatrix.GetLength(1); z++)
+                {
+                    currentMatrix[i, z] = currentChars[z];
+                }
+                Console.Clear();
+            }
 
-
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < currentMatrix.GetLength(1); j++)
+                {
+                    Console.Write(currentMatrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
 
         }
 

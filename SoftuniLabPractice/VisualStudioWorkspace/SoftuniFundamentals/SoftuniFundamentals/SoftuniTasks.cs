@@ -49,6 +49,8 @@ namespace SoftuniFundamentals
             }
 
 
+
+
         }
         private void AddMazeData(int row,char[,] currentMatrix)
         {
@@ -68,10 +70,16 @@ namespace SoftuniFundamentals
             }
         }
 
-        private void FillAllPaths()
-        {
 
+        //to do
+        private void FillAllPaths(int[] startPositon,char[,] currentMatrix)
+        {
+           
         }
+
+       
+
+       
 
         //-------------------------------------------------------------------------------------
 

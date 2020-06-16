@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.CompilerServices;
+using System;
 using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,6 +20,53 @@ namespace SoftuniFundamentals
 {
     class SoftuniTasks
     {
+
+        public void MajorantValuesArray()
+        {
+            int[] array = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            
+            int majorantValue = (array.Length / 2)+1;
+           
+
+            HashSet<int> currentItemsInArray = new HashSet<int>();
+           
+            foreach(var item in array)
+            {
+                currentItemsInArray.Add(item);
+            }
+
+            int[,] currentItemsCount = new int[currentItemsInArray.Count, 2];
+            int counter=0;
+            foreach(var item in currentItemsInArray)
+            {
+                AddCountOfItemIMatrix(currentItemsCount,counter,item,array);
+                counter++;
+            }
+
+            List<int> majorantItems = new List<int>();
+            for(int i = 0; i < currentItemsCount.GetLength(0); i++)
+            {
+
+                if (currentItemsCount[i, 1] == majorantValue)
+                {
+                    majorantItems.Add(currentItemsCount[i, 0]);
+                }
+                
+            }
+
+            if (majorantItems.Count == 0)
+            {
+                Console.WriteLine("No Majorant values");
+
+            }
+            else
+            {
+                Console.WriteLine($"Majorant values: {String.Join(',', majorantItems)}");
+            }
+
+
+            
+        }
         public void PositiveOnly()
         {
             int[] array = Console.ReadLine().Split().Select(e => int.Parse(e)).Where(e => e > -1).ToArray();

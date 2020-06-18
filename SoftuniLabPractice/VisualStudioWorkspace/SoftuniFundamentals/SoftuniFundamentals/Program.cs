@@ -157,33 +157,117 @@ namespace SoftuniFundamentals
             // {
 
             //}
-            Console.WriteLine("Enter size: ");
-            int enterDimensions = int.Parse(Console.ReadLine());
-            
-            Console.Clear();
-            char[,] currentMatrix = new char[enterDimensions,enterDimensions];
-          
-            for(int i = 0; i < currentMatrix.GetLength(0); i++)
-            {
-                Console.Write("Enter {0} chars (x/o): ", currentMatrix.GetLength(1));
-                char[] currentChars = Console.ReadLine().Split(" ").Select(e => e[0]).ToArray();
-                for(int z = 0; z < currentMatrix.GetLength(1); z++)
-                {
-                    currentMatrix[i, z] = currentChars[z];
-                }
-                Console.Clear();
-            }
+            //  Console.WriteLine("Enter size: ");
+            //  int enterDimensions = int.Parse(Console.ReadLine());
+            // 
+            //  Console.Clear();
+            //  char[,] currentMatrix = new char[enterDimensions,enterDimensions];
+            //
+            //  for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            //  {
+            //      Console.Write("Enter {0} chars (x/o): ", currentMatrix.GetLength(1));
+            //     char[] currentChars = Console.ReadLine().Split(" ").Select(e => e[0]).ToArray();
+            //     for(int z = 0; z < currentMatrix.GetLength(1); z++)
+            //    {
+            //       currentMatrix[i, z] = currentChars[z];
+            //   }
+            //    Console.Clear();
+            //}
 
-            for(int i = 0; i < currentMatrix.GetLength(0); i++)
-            {
-                for(int j = 0; j < currentMatrix.GetLength(1); j++)
-                {
-                    Console.Write(currentMatrix[i, j] + " ");
-                }
-                Console.WriteLine();
-            }
+            //   for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            //  {
+            //     for(int j = 0; j < currentMatrix.GetLength(1); j++)
+            //     {
+            //        Console.Write(currentMatrix[i, j] + " ");
+            //     }
+            //    Console.WriteLine();
+            // }
+
+            //int[] arrayWithNumbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+           // SortBuble(arrayWithNumbers);
+
+            StringBuilder sb = new StringBuilder();
+
+
+            //Testing MinPosFinderMethod
+           // Console.WriteLine(FindMinElementIndex(Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray(), 0));
+
+
+           // for(int i = 0; i < arrayWithNumbers.Length; i++)          // testing Buble sort
+           // {
+           //     sb.Append(arrayWithNumbers[i] + " ");
+          //  }
+          // Console.WriteLine(sb.ToString().Trim());
+           
+
+
 
         }
+
+
+
+
+        //Sorting Algorithms
+        //-----------------------------------------------------------
+
+            //Exchange Values in Array Method
+         private static void ExchangeValues(int[] array, int biggestValIndex, int lowestValIndex)
+        {
+            int temp = array[biggestValIndex];
+            array[biggestValIndex] = array[lowestValIndex];
+            array[lowestValIndex] = temp;
+
+        }
+
+
+            //Buble sort
+        private static void SortBuble(int[] arrayWithNumbers)
+        {
+            int Length = arrayWithNumbers.Length;
+
+            for(int i = Length - 1; i > 0; i--)     //we start from the last element to the first
+            {
+                for (int j = 0; j < i; j++)      //then we begin from the first to the last and swap the biggest of two to the right
+                {
+                    if (arrayWithNumbers[j] > arrayWithNumbers[j + 1])
+                    { 
+                    ExchangeValues(arrayWithNumbers, j, j + 1);
+                    }
+
+                }
+
+            }
+        }
+
+        private static int FindMinElementIndex(int[] array, int startFromIndex)
+        {
+            
+            int minPosIndex = startFromIndex;
+            for(int pos = startFromIndex += 1; pos < array.Length; pos++)
+            {
+                if (array[pos] < array[minPosIndex])
+                {
+                    minPosIndex = pos;
+                }
+            }
+
+            return minPosIndex;
+
+        }
+
+        private static void SelectionSortAlg(int[] arrayWithNumbers)
+        {
+
+
+        }
+
+            //---------------------------------------------------------
+
+
+
+
+        //Diagonals
+        //----------------------------------------------------------------------------
 
 
         private static void UpperRightDiagonal(int[,] currentMatrix, int[] location)
@@ -247,7 +331,7 @@ namespace SoftuniFundamentals
                 Console.Write(currentMatrix[currentLocation[0], currentLocation[1]]);
             } while (currentLocation[0] != currentMatrix.GetLength(1) && currentLocation[1] != 0);
         }
-
+        //-------------------------------------------------------------------------------------------
 
 
 

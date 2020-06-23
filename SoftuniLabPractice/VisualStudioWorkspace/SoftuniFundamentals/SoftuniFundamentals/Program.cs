@@ -239,23 +239,38 @@ namespace SoftuniFundamentals
             string enterName = Console.ReadLine();
             MuCharacter currentCharacter = new MuCharacter(enterName);
 
-            bool reachedAllDungeons = false;
-            int roomCounter = 0;
+           
+            
             string enterDungeons = Console.ReadLine();
             string[] currentDungeons = enterDungeons.Split("|").ToArray();
 
-            string currentDungeon;      //dungeon you reached // current
-
-            for(int i = 0; i < currentDungeons.Length; i++)
+            string currentDungeon=null;      //dungeon you reached // current
+            int roomCounter = 0;
+            string[] dungeonData;
+            while (currentCharacter.IsAlive)
             {
-                if (i == currentDungeons.Length - 1)
+                
+                dungeonData = currentDungeons[roomCounter].Split();
+                currentDungeon = dungeonData[0];
+                ExecuteMuQuestDungeonCommand(currentCharacter,dungeonData);
+                if (roomCounter == currentDungeons.Length - 1)
                 {
-                    reachedAllDungeons = true;
+                    break;
                 }
-                else
-                {
+                roomCounter++;
+            }
 
-                }
+            if(!currentCharacter.IsAlive && roomCounter == currentDungeons.Length - 1)
+            {
+                Console.WriteLine($"You died in the last room {currentDungeon}");
+            }
+            else if(currentCharacter.IsAlive && roomCounter == currentDungeons.Length - 1)
+            {
+                Console.WriteLine("You made it {0} hp with {1} in the bag", currentCharacter.Health, currentCharacter.Bitcoins);
+            }
+            else
+            {
+                Console.WriteLine("You made it to {0} room with the name {1}", roomCounter, currentDungeon);
             }
 
 
@@ -267,17 +282,47 @@ namespace SoftuniFundamentals
             private string name;
             private int health;
             private int bitcoins;
+            private bool isAlive;
 
             public MuCharacter(string name) : this()
             {
                 this.Health = 100;
                 this.Bitcoins = 0;
                 this.Name = name;
+                this.IsAlive = true;
             }
 
             public string Name { private set; get; }
             public int Health { private set; get; }
             public int Bitcoins { private set; get; }
+            public bool IsAlive { private set; get;}
+
+            public void IncreaseHealth(int healthPointsReceived,bool isOverHundred)
+            {
+                if (isOverHundred)
+                {
+                    this.Health = 100;
+                    return;
+                }
+                this.Health += healthPointsReceived;
+                
+   
+            }
+
+            public void AddBitcoinsToLoot(int bitCoinsReceived)
+            {
+                this.Bitcoins += bitCoinsReceived;
+
+            }
+
+            public void FightMonster(int monsterDamage)
+            {
+                this.Health -= monsterDamage;
+                if (this.Health <= 0)
+                {
+                    this.IsAlive = false;
+                }
+            }
 
         }
 
@@ -286,7 +331,22 @@ namespace SoftuniFundamentals
             switch (currentData[0].ToLower())
             {
                 case "potion":
+                    if (character.Health + int.Parse(currentData[1]) <= 100)
+                    {
+                        character.IncreaseHealth(int.Parse(currentData[1]),false);
+                    }
+                    else
+                    {
+                        character.IncreaseHealth(int.Parse(currentData[1]), true);
+                    }
+                    break;
 
+                case "chest":
+                    character.AddBitcoinsToLoot(int.Parse(currentData[1]));
+                    break;
+
+                default:
+                    character.FightMonster(int.Parse(currentData[1]));
                     break;
             }
         }

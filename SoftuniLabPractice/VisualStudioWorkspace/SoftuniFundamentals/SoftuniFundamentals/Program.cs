@@ -315,13 +315,18 @@ namespace SoftuniFundamentals
 
             }
 
-            public void FightMonster(int monsterDamage)
+            public void FightMonster(int monsterDamage, string monsterName)
             {
                 this.Health -= monsterDamage;
                 if (this.Health <= 0)
                 {
                     this.IsAlive = false;
+                    Console.WriteLine("You Died");
+                    return;
                 }
+
+                Console.WriteLine("You slayed {0}", monsterName);
+
             }
 
         }
@@ -334,19 +339,24 @@ namespace SoftuniFundamentals
                     if (character.Health + int.Parse(currentData[1]) <= 100)
                     {
                         character.IncreaseHealth(int.Parse(currentData[1]),false);
+                        Console.WriteLine("You healed for {0}", int.Parse(currentData[1]));
                     }
                     else
                     {
+                        Console.WriteLine("You healed for {0}", 100-character.Health);
                         character.IncreaseHealth(int.Parse(currentData[1]), true);
+                        
                     }
+                    
                     break;
 
                 case "chest":
                     character.AddBitcoinsToLoot(int.Parse(currentData[1]));
+                    Console.WriteLine("You looted {0}", int.Parse(currentData[1]));
                     break;
 
                 default:
-                    character.FightMonster(int.Parse(currentData[1]));
+                    character.FightMonster(int.Parse(currentData[1]),currentData[0]);
                     break;
             }
         }

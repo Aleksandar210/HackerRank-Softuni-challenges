@@ -234,6 +234,65 @@ namespace SoftuniFundamentals
 
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
+        public static void MuQuest()
+        {
+            string enterName = Console.ReadLine();
+            MuCharacter currentCharacter = new MuCharacter(enterName);
+
+            bool reachedAllDungeons = false;
+            int roomCounter = 0;
+            string enterDungeons = Console.ReadLine();
+            string[] currentDungeons = enterDungeons.Split("|").ToArray();
+
+            string currentDungeon;      //dungeon you reached // current
+
+            for(int i = 0; i < currentDungeons.Length; i++)
+            {
+                if (i == currentDungeons.Length - 1)
+                {
+                    reachedAllDungeons = true;
+                }
+                else
+                {
+
+                }
+            }
+
+
+
+        }
+
+        private  struct MuCharacter
+        {
+            private string name;
+            private int health;
+            private int bitcoins;
+
+            public MuCharacter(string name) : this()
+            {
+                this.Health = 100;
+                this.Bitcoins = 0;
+                this.Name = name;
+            }
+
+            public string Name { private set; get; }
+            public int Health { private set; get; }
+            public int Bitcoins { private set; get; }
+
+        }
+
+        private static void ExecuteMuQuestDungeonCommand(MuCharacter character, params string[] currentData)
+        {
+            switch (currentData[0].ToLower())
+            {
+                case "potion":
+
+                    break;
+            }
+        }
+
+
+
         public static void StudentBonuses()
         {
             int numberStudnets = int.Parse(Console.ReadLine());
@@ -257,8 +316,8 @@ namespace SoftuniFundamentals
             }
 
             // currentStudentData = currentStudentData.OrderByDescending(e => e.Value[1]).ToDictionary(e => e.Key, e => e.Value);
-            //var firstItem = currentStudentData.Max(e => e.Value[1]);
-            var max = currentStudentData.Aggregate((l, r) => l.Value[1] > r.Value[1] ? l : r);
+            //var firstItem = currentStudentData.Max(e => e.Value[1]);  //gets only double value 
+            var max = currentStudentData.Aggregate((l, r) => l.Value[1] > r.Value[1] ? l : r);      //works
             Console.Clear();
             //  foreach(var item in currentStudentData)
             // {

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Runtime.Intrinsics.X86;
@@ -18,7 +19,7 @@ namespace SoftuniFundamentals
     {
         static void Main(string[] args)
         {
-             SoftuniTasks currentTasks = new SoftuniTasks();
+            // SoftuniTasks currentTasks = new SoftuniTasks();
             //currentTasks.Rotation();
             //currentTasks.EqualSums();
             //currentTasks.KaminoFactory();
@@ -183,35 +184,176 @@ namespace SoftuniFundamentals
             //    Console.WriteLine();
             // }
 
-            //int[] arrayWithNumbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
-           // SortBuble(arrayWithNumbers);
-
-            StringBuilder sb = new StringBuilder();
+          //  int[] arrayWithNumbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            //, merge sort, quick sort, shell sort,
 
 
+            // SortBuble(arrayWithNumbers);
+            //SelectionSortAlg(arrayWithNumbers);
+            //CountingSort
+
+
+           // StringBuilder sb = new StringBuilder();
+
+
+            //TEST1 (MIN ELEM)
             //Testing MinPosFinderMethod
-           // Console.WriteLine(FindMinElementIndex(Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray(), 0));
+            // Console.WriteLine(FindMinElementIndex(Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray(), 0));
 
 
-           // for(int i = 0; i < arrayWithNumbers.Length; i++)          // testing Buble sort
-           // {
-           //     sb.Append(arrayWithNumbers[i] + " ");
-          //  }
-          // Console.WriteLine(sb.ToString().Trim());
-           
+            //Test(Count)
+            //CountingSort(arrayWithNumbers);
+            //int countingSum = arrayWithNumbers.Aggregate((a, b) => a + b);
+
+            //Console.WriteLine(countingSum);
 
 
+
+            //int[,] currentRanges = new int[numberBuckers,]
+
+
+
+            // for(int i = 0; i < currentRanges.Count - 1; i++)
+            //  {
+            //     Console.Write(currentRanges[i] + "," + currentRanges[i + 1] + "| ");
+            // }
+
+
+            //  for(int i = 0; i < arrayWithNumbers.Length; i++)          // testing Buble sort
+            //   {
+            //       sb.Append(arrayWithNumbers[i] + " ");
+            //  }
+            //  Console.WriteLine(sb.ToString().Trim());
+
+            //PolindromeWords();
+
+
+            StudentBonuses();
 
         }
 
+        //Softuni Fundamentals Exam Collection
+        //-----------------------------------------------------------------------------------------
+        public static void StudentBonuses()
+        {
+            int numberStudnets = int.Parse(Console.ReadLine());
+            int numberLectures = int.Parse(Console.ReadLine());
+            int initialBonus = int.Parse(Console.ReadLine());
+
+            //List<double[]> currentStudentData = new List<double[]>();
+            Dictionary<int, double[]> currentStudentData = new Dictionary<int, double[]>();
+            double enterAttendance;
+            for(int i =0; i < numberStudnets; i++)
+            {
+                enterAttendance = double.Parse(Console.ReadLine());
+                // enterAttendance = double.Parse(Console.ReadLine());
+                // currentStudentData.Add(new double[2]);
+                // currentStudentData[i][0] = enterAttendance;
+                // currentStudentData[i][1]= Math.Ceiling((enterAttendance / numberLectures) * (5 + initialBonus));
+
+                currentStudentData.Add(i, new double[2]);
+                currentStudentData[i][0] = enterAttendance;
+                currentStudentData[i][1] = Math.Ceiling((enterAttendance / numberLectures) * (5 + initialBonus));
+            }
+
+            // currentStudentData = currentStudentData.OrderByDescending(e => e.Value[1]).ToDictionary(e => e.Key, e => e.Value);
+            //var firstItem = currentStudentData.Max(e => e.Value[1]);
+            var max = currentStudentData.Aggregate((l, r) => l.Value[1] > r.Value[1] ? l : r);
+            Console.Clear();
+            //  foreach(var item in currentStudentData)
+            // {
+            //    Console.Write(item.Value[0] + "-> " + item.Value[1]);
+            //    break;
+            //
+            // }
+            Console.WriteLine("Attendance:"+ max.Value[0]+" Max Bonus: "+max.Value[1]);
+            
+            //currentStudentData = currentStudentData.OrderByDescending(e => e[1]).ToList();
+          //  Console.WriteLine($"Max Bonus:{currentStudentData[0][1]} Attendance: {currentStudentData[0][0]}");
+            
+        }
+
+
+
+
+        //------------------------------------------------------------------------------------------
+        private void EqualElemSequences(List<int> numbersArray)
+        {
+            int bestCount = 0;
+            int currentCount = 0;
+            int element = 0;
+
+            for (int i = 0; i < numbersArray.Count - 1; i++)
+            {
+                if (numbersArray[i] == numbersArray[i + 1])
+                {
+                    currentCount++;
+
+
+                    if (currentCount > bestCount)
+                    {
+                        bestCount = currentCount;
+                        element = numbersArray[i];
+                    }
+                }
+                else
+                {
+                    currentCount = 0;
+
+                }
+
+            }
+
+            List<int> currentSequenceElements = new List<int>(bestCount);
+            for(int i = 0; i < bestCount; i++)
+            {
+                currentSequenceElements.Add(element);
+            }
+
+            currentSequenceElements.ForEach(e => Console.Write(e + " "));
+          
+
+        }
+
+
+
+        private static void PolindromeWords()
+        {
+            string enterWord = Console.ReadLine();
+            char[] lettersInWord = enterWord.ToLower().ToCharArray();
+            
+            Queue<char> fromEndToBeginning = new Queue<char>(lettersInWord);
+            Stack<char> beginningToEnd = new Stack<char>(lettersInWord);
+            bool isPolindrome = true;
+            while (fromEndToBeginning.Count > 0)
+            {
+                if (fromEndToBeginning.Dequeue() != beginningToEnd.Pop())
+                {
+                    isPolindrome = false;
+                    break;
+                }
+            }
+
+            if (isPolindrome)
+            {
+                Console.WriteLine("Yes");
+            }
+            else
+            {
+                Console.WriteLine("No");
+            }
+        }
+
+
+       
 
 
 
         //Sorting Algorithms
         //-----------------------------------------------------------
 
-            //Exchange Values in Array Method
-         private static void ExchangeValues(int[] array, int biggestValIndex, int lowestValIndex)
+        //Exchange Values in Array Method
+        private static void ExchangeValues(int[] array, int biggestValIndex, int lowestValIndex)
         {
             int temp = array[biggestValIndex];
             array[biggestValIndex] = array[lowestValIndex];
@@ -239,6 +381,11 @@ namespace SoftuniFundamentals
             }
         }
 
+
+
+
+        //Method to find Min Pos required for SelectionSrot
+
         private static int FindMinElementIndex(int[] array, int startFromIndex)
         {
             
@@ -257,11 +404,76 @@ namespace SoftuniFundamentals
 
         private static void SelectionSortAlg(int[] arrayWithNumbers)
         {
+            int minElementIndex;
+            for(int i = 0; i < arrayWithNumbers.Length; i++)        // we strt for the begingin of the array
+            {
+                minElementIndex = FindMinElementIndex(arrayWithNumbers, i);     //we find the pos of min elem from i pos to end
+                if (i != minElementIndex)   //if its not the current start point we swap
+                {
+                    ExchangeValues(arrayWithNumbers, i, minElementIndex);
+                }
 
+            }
 
         }
 
-            //---------------------------------------------------------
+
+
+        //Insert Sort
+        private static void InsertSort(int[] arrayWithNumbers)
+        {
+            for(int i = 0; i < arrayWithNumbers.Length-1; i++)
+            {
+                for(int j = i + 1; j > 0; j--)      // if(the previous element is bigger swap them and so on if more)
+                {
+                    if (arrayWithNumbers[j - 1] > arrayWithNumbers[j])
+                    {
+                        ExchangeValues(arrayWithNumbers, j - 1, j);
+                    }
+                }
+            }
+
+        }
+
+        private static void CountingSort(int[] arrayWithNumbers) //Works only for ints or any other primitiveData 
+        {
+          
+            SortedDictionary<int, int> currentCountOfElements = new SortedDictionary<int, int>();
+            
+            foreach(var item in arrayWithNumbers)
+            {
+                if (currentCountOfElements.ContainsKey(item))
+                {
+                    currentCountOfElements[item]++;
+                }
+                else
+                {
+                    currentCountOfElements.Add(item, 1);
+                }
+                
+            }
+
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in currentCountOfElements)
+            {
+                for(int i = 0; i < item.Value; i++)
+                {
+                    sb.Append(item.Key + " ");
+                }
+            }
+
+            arrayWithNumbers = sb.ToString().Trim().Split().Select(e=>int.Parse(e)).ToArray();
+
+            
+
+        }
+
+       
+
+
+        
+
+            //-------------------------------------------------------------------------
 
 
 
@@ -974,3 +1186,8 @@ namespace SoftuniFundamentals
         public string ClusterBelongsTo { get;  private set; }
     }
 }
+
+
+
+
+

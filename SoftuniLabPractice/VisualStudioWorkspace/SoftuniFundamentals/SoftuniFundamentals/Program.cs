@@ -4,6 +4,7 @@ using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -184,7 +185,7 @@ namespace SoftuniFundamentals
             //    Console.WriteLine();
             // }
 
-          //  int[] arrayWithNumbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            //  int[] arrayWithNumbers = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
             //, merge sort, quick sort, shell sort,
 
 
@@ -193,7 +194,7 @@ namespace SoftuniFundamentals
             //CountingSort
 
 
-           // StringBuilder sb = new StringBuilder();
+            // StringBuilder sb = new StringBuilder();
 
 
             //TEST1 (MIN ELEM)
@@ -226,14 +227,120 @@ namespace SoftuniFundamentals
             //  Console.WriteLine(sb.ToString().Trim());
 
             //PolindromeWords();
+            // StudentBonuses();
 
+           
 
-            StudentBonuses();
 
         }
 
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
+
+        public static void ActivationKey()
+        {
+            string enterRawKey = Console.ReadLine();
+            StringBuilder sb = new StringBuilder(enterRawKey);
+
+
+            string enterCommands = Console.ReadLine();
+            while (!enterCommands.Equals("Generate!", StringComparison.OrdinalIgnoreCase))
+            {
+                ExecuteActivationKeyCommands(sb, enterCommands.Split(">>>"));
+                enterCommands = Console.ReadLine();
+            }
+
+            Console.WriteLine("Code generated: " + " " + sb.ToString());
+        }
+
+        private static void ExecuteActivationKeyCommands(StringBuilder sb, params string[] commands)
+        {
+            switch (commands[0].ToLower())
+            {
+                case "flip":
+                    var text = sb.ToString().Substring(int.Parse(commands[2]), int.Parse(commands[3]));
+                    switch (commands[1].ToLower())
+                    {
+                        case "upper":
+                            sb.Remove(int.Parse(commands[2]), int.Parse(commands[3]));
+                            sb.Insert(int.Parse(commands[2]), text.ToUpper());
+                            break;
+                        case "lower":
+                            sb.Remove(int.Parse(commands[2]), int.Parse(commands[3]));
+                            sb.Insert(int.Parse(commands[2]), text.ToLower());
+                            break;
+                    }
+
+                    Console.WriteLine(sb.ToString());
+
+                    break;
+                case "slice":
+                    sb.Remove(int.Parse(commands[1]), int.Parse(commands[2]));
+                    Console.WriteLine(sb.ToString());
+                    break;
+                case "contains":
+                    if (sb.ToString().Contains(commands[1]))
+                    {
+                        Console.WriteLine(sb.ToString() + "Contains " + commands[1]);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Substring not found");
+                    }
+                    break;
+            }
+        }
+
+        public static void InventorySystem()
+        {
+            List<string> currentInventory = new List<string>();
+            string[] enterInventoryDefault = Console.ReadLine().Split(", ");
+            currentInventory.AddRange(enterInventoryDefault);
+
+            string enterCommand = Console.ReadLine();
+            while (!enterCommand.Equals("Craft!", StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+
+
+        }
+        private static void ExecuteInventoryCommands(string[] commands, List<string> currentInventorty)
+        {
+            switch (commands[0].ToLower())
+            {
+                case "drop":
+                    if (currentInventorty.Contains(commands[1]))
+                        currentInventorty.Remove(commands[1]);
+
+                    break;
+                case "collect":
+                    if (!currentInventorty.Contains(commands[1]))
+                        currentInventorty.Add(commands[1]);
+                    break;
+                case "combine items":
+                    if (currentInventorty.Contains(commands[1].Split(":")[0]))
+                    {
+                        if(currentInventorty.IndexOf(commands[1].Split(":")[0])== currentInventorty.Count - 1)
+                        {
+                            currentInventorty.Add(commands[1].Split()[1]);
+                        }
+                        else if (currentInventorty.IndexOf(commands[1].Split()[0]) == 0)
+                        {
+                            currentInventorty.Insert(0, commands[1].Split()[1]);
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                    break;
+            }
+        }
+
+
+
+
         public static void MuQuest()
         {
             string enterName = Console.ReadLine();
@@ -361,6 +468,7 @@ namespace SoftuniFundamentals
             }
         }
 
+        
 
 
         public static void StudentBonuses()

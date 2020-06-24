@@ -68,7 +68,7 @@ namespace SoftuniFundamentals
 
             // currentTasks.Bombs();
 
-            //some algorithm 
+            //some algorithm for balaned paranthesis task ()->yes ({)->no
             //-------------------------------------------------------------------
             // string currentInput = Console.ReadLine();
             //  Regex currentRegex = new Regex("\\(");
@@ -230,7 +230,7 @@ namespace SoftuniFundamentals
             //PolindromeWords();
             // StudentBonuses();
             //EmojiFinder();
-
+            //Pirates();
           //  string currentString = "::Emoji:*:";
            
             //GET ASCI VALUES OF CAHR SUM

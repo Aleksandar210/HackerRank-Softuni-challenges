@@ -13,6 +13,7 @@ using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Transactions;
+using System.Xml.Schema;
 
 namespace SoftuniFundamentals
 {
@@ -228,7 +229,13 @@ namespace SoftuniFundamentals
 
             //PolindromeWords();
             // StudentBonuses();
+            //EmojiFinder();
 
+          //  string currentString = "::Emoji:*:";
+           
+            //GET ASCI VALUES OF CAHR SUM
+            //int result = currentString.ToCharArray().Select(e=>(int)e).Aggregate((a, b) => a + b);
+            //Console.WriteLine(result);
            
 
 
@@ -236,6 +243,60 @@ namespace SoftuniFundamentals
 
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
+        public static void EmojiFinder()
+        {
+            string enterString = Console.ReadLine();
+            var treshHoldSum = GetTreshHoldSum(enterString.Split().Where(e=>e.Any(char.IsDigit)).ToArray());
+            Regex currentRegex = new  Regex("[\\:|\\*]{2}(?<emoji>[A-Z][a-z]+)[\\:|\\*]{2}");
+            var results = currentRegex.Matches(enterString);
+            Dictionary<string, int> EmojiTresh = new Dictionary<string, int>(results.Count);
+
+            string currentEmojiFound;
+            foreach(Match item in results)
+            {
+                currentEmojiFound = item.Groups["emoji"].Value.Trim(new char[] { ':', '*' });
+                if (!EmojiTresh.ContainsKey(currentEmojiFound) && currentEmojiFound.Length>=3)
+                {
+                    EmojiTresh.Add(currentEmojiFound, GetEmojiTresh(currentEmojiFound));
+                }
+            }
+
+            EmojiTresh = EmojiTresh.Where(e => e.Value == treshHoldSum).ToDictionary(e=>e.Key,e=>e.Value);
+            foreach(var item in EmojiTresh)
+            {
+                Console.WriteLine(item.Key);
+            }
+                
+
+        }
+
+        private static int GetTreshHoldSum(string[] elements)
+        {
+            int treshHoldSum = 1;
+            foreach(var item in elements)
+            {
+                if(item.Length==1 && Char.IsDigit(item[0]))
+                {
+                    treshHoldSum *= int.Parse(item);
+                }
+                else if (item.Length > 1)
+                {
+                    foreach(var currentElement in item.ToCharArray())
+                    {
+                        if (Char.IsDigit(currentElement))
+                        {
+                            treshHoldSum *= currentElement-0;
+                        }
+                    }
+                }
+            }
+            return treshHoldSum;
+        }
+
+        private static int GetEmojiTresh(string currentEmoji)
+        {
+            return currentEmoji.ToCharArray().Select(e => (int)e).Aggregate((a, b) => a + b);
+        }
 
         public static void ActivationKey()
         {

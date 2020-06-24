@@ -243,6 +243,141 @@ namespace SoftuniFundamentals
 
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
+
+        public static void Pirates()
+        {
+            Console.Write("Enter Pirate Name: ");
+            Captain captain = new Captain(Console.ReadLine());
+            Console.Clear();
+            Dictionary<string, int[]> currentTowns = new Dictionary<string, int[]>();
+            string enterTownCommand = Console.ReadLine();
+            string[] townData;
+            while (!enterTownCommand.Equals("Sail", StringComparison.OrdinalIgnoreCase))
+            {
+                townData = enterTownCommand.Split("||");
+                if (!currentTowns.ContainsKey(townData[0]))
+                {
+                    currentTowns.Add(townData[0], new int[2]);
+                    currentTowns[townData[0]][0] = int.Parse(townData[1]);
+                    currentTowns[townData[0]][1] = int.Parse(townData[2]);
+                }
+                else
+                {
+                    currentTowns[townData[0]][0] += int.Parse(townData[1]);
+                    currentTowns[townData[0]][1] += int.Parse(townData[2]);
+                }
+
+                enterTownCommand = Console.ReadLine();
+            }
+
+
+            string enterEventCommand = Console.ReadLine();
+            string[] eventData;
+
+            while (enterEventCommand.Equals("End", StringComparison.OrdinalIgnoreCase))
+            {
+                eventData = enterEventCommand.Split("=>");
+                ExecutePirateEventCommand(captain, currentTowns, eventData);
+                enterEventCommand = Console.ReadLine();
+            }
+
+             if (currentTowns.Count == 0)
+             {
+              Console.WriteLine("No more towns");
+               Environment.Exit(0);
+             }
+            else 
+            {
+                Console.WriteLine("Towns Left: ");
+
+                foreach (var item in currentTowns)
+                {
+                    Console.WriteLine(item.Key + " People:" + item.Value[0] + "  Gold:" + item.Value[1]);
+                }
+
+            }
+            
+
+           
+
+
+        }
+
+        private static void ExecutePirateEventCommand(Captain currentCaptain, Dictionary<string,int[]> currentTowns,params string[] currentCommand)
+        {
+            switch (currentCommand[0].ToLower())
+            {
+                case "plunder":
+                    if (currentTowns.ContainsKey(currentCommand[1]))
+                    {
+
+                        if (int.Parse(currentCommand[2]) > currentTowns[currentCommand[1]][0])
+                        {
+                            currentCaptain.KillPeople(currentTowns[currentCommand[1]][0]);
+                            currentCaptain.IncreaseGold(currentTowns[currentCommand[1]][1]);
+                            currentTowns.Remove(currentCommand[1]);
+                            return;
+                        }
+                        
+                        currentTowns[currentCommand[1]][0] -= int.Parse(currentCommand[2]);     //people killed
+                        currentTowns[currentCommand[1]][1] -= int.Parse(currentCommand[3]);
+
+                        if(currentTowns[currentCommand[1]][0]<=0 || currentTowns[currentCommand[1]][1] <= 0)
+                        {
+                            currentTowns.Remove(currentCommand[1]);
+                        }
+                    }
+                    break;
+
+                case "prosper":
+                    if (int.Parse(currentCommand[2]) < 0)
+                    {
+                        Console.WriteLine("Gold cannot be negative");
+                        return;
+                    }
+
+                    currentTowns[currentCommand[1]][1] += int.Parse(currentCommand[2]);
+
+                    break;
+            }
+
+        }
+
+
+        private struct Captain
+        {
+            public string Name { private set; get; }
+            public int Gold { private set; get; }
+            public int PeopleKilled { private set; get; }
+
+            public Captain(string name): this()
+            {
+                this.Name = name;
+                this.Gold = 0;
+                this.PeopleKilled = 0;
+            }
+
+            public void IncreaseGold(int currentGoldPlundered)
+            {
+                if (currentGoldPlundered < 0)
+                {
+                    Console.WriteLine("Current Gold cannot be negative");
+                    return;
+                }
+
+                this.Gold += currentGoldPlundered;
+            }
+
+            public void KillPeople(int people)
+            {
+                this.PeopleKilled += people;
+            }
+
+
+        }
+
+
+
         public static void EmojiFinder()
         {
             string enterString = Console.ReadLine();

@@ -203,14 +203,16 @@ namespace SoftuniFundamentals
             // Console.WriteLine(FindMinElementIndex(Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray(), 0));
 
 
-            //Test(Count)
+            //Test(CountSort)
             //CountingSort(arrayWithNumbers);
+
+            //getting the sum of array
             //int countingSum = arrayWithNumbers.Aggregate((a, b) => a + b);
 
             //Console.WriteLine(countingSum);
 
 
-
+            //unfinishedCode
             //int[,] currentRanges = new int[numberBuckers,]
 
 
@@ -229,20 +231,103 @@ namespace SoftuniFundamentals
 
             //PolindromeWords();
             // StudentBonuses();
+            // ShopProducts();
             //EmojiFinder();
             //Pirates();
-          //  string currentString = "::Emoji:*:";
-           
+            //  string currentString = "::Emoji:*:";
+
             //GET ASCI VALUES OF CAHR SUM
             //int result = currentString.ToCharArray().Select(e=>(int)e).Aggregate((a, b) => a + b);
             //Console.WriteLine(result);
-           
+
+            //Algortihm Linq for adding key value with selet while creating array
+            // Dictionary<double, int> currentCountOfNumbers = new Dictionary<double, int>();
+            // var numbers = Console.ReadLine().Split()
+            //    .Select(e =>
+            //     {
+            //       double element = double.Parse(e);
+            //   if (currentCountOfNumbers.ContainsKey(element))
+            //   {
+            //       currentCountOfNumbers[element]++;
+            //   }
+            //   else
+            //   {
+            //       currentCountOfNumbers.Add(element, 1);
+            //    }
+
+            //   return element;
+            //   }
+
+            //  ).ToArray();
+
+
+
 
 
         }
 
+        //Softuni Advanced Sets and Dicts
+        //----------------------------------------------------------------------------------------
+
+        private static void ShopProducts()
+        {
+            Dictionary<string, Dictionary<string, double>> currentShops = new Dictionary<string, Dictionary<string, double>>();
+
+            string enterCommand = Console.ReadLine();
+            string[] commandData;
+            while (true)
+            {
+                if (enterCommand.Equals("End!", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+
+                commandData = enterCommand.Split();
+
+                if (!currentShops.ContainsKey(commandData[0]))
+                {
+                    currentShops.Add(commandData[0], new Dictionary<string, double>());
+                    currentShops[commandData[0]].Add(commandData[1], double.Parse(commandData[2]));
+                }
+                else
+                {
+                    currentShops[commandData[0]][commandData[1]] = double.Parse(commandData[2]);
+                    
+                }
+
+                enterCommand = Console.ReadLine();
+            }
+            Console.WriteLine();
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in currentShops)
+            {
+                sb.Append(item.Key + "->");
+                sb.Append(Environment.NewLine);
+                foreach(var products in item.Value)
+                {
+                    sb.Append(products.Key);
+                    sb.Append("->");
+                    sb.Append(String.Format($"{products.Value:F3}"));
+                    sb.Append(Environment.NewLine);
+                }
+                sb.Append("---------------------");
+                sb.Append(Environment.NewLine);
+            }
+
+            Console.WriteLine(sb.ToString());
+
+            
+        }
+
+
+            //---------------------------------------------------------------------------------
+
+
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
+
+
 
         public static void Pirates()
         {
@@ -372,6 +457,8 @@ namespace SoftuniFundamentals
             {
                 this.PeopleKilled += people;
             }
+
+
 
 
         }

@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reflection.PortableExecutable;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -376,6 +377,35 @@ namespace SoftuniFundamentals
             
         }
 
+
+        public void AverageGradesStudent()
+        {
+            Dictionary<string, List<double>> currentStudents = new Dictionary<string, List<double>>();
+            int enterNumberStudnets = int.Parse(Console.ReadLine());
+
+            string[] studentData;
+            while(enterNumberStudnets-- > 0)
+            {
+                studentData = Console.ReadLine().Split();
+                if (!currentStudents.ContainsKey(studentData[0]))
+                {
+                    currentStudents.Add(studentData[0], new List<double>());
+                }
+
+                currentStudents[studentData[0]].Add(double.Parse(studentData[1]));
+            }
+
+            StringBuilder sb = new StringBuilder();
+            currentStudents.Select(e =>
+            {
+                sb.Append(e.Key + "->");
+                sb.Append(String.Format($"{e.Value.Average():2F}"));
+                sb.Append(Environment.NewLine);
+                return 0;
+            });
+
+            Console.WriteLine(sb.ToString());
+        }
 
         private static void ShopProducts()
         {

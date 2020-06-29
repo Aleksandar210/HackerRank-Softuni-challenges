@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Diagnostics;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
@@ -265,13 +266,84 @@ namespace SoftuniFundamentals
             //  ).ToArray();
 
           
-           
 
 
         }
 
         //Softuni Advanced Sets and Dicts
         //----------------------------------------------------------------------------------------
+
+         public static void VlogerTask()
+        {
+            //the 0 index of the value is following
+            //the 1 index of the value is followers
+            Dictionary<string, HashSet<string>[]> currentVloger = new Dictionary<string, HashSet<string>[]>();
+
+            string enterCommand;
+            string[] currentCommands;
+            while (true)
+            {
+                try
+                {
+                    enterCommand = Console.ReadLine();
+
+                    currentCommands = enterCommand.Split();
+
+                    switch (currentCommands[1].ToLower())
+                    {
+                        case "joined":
+                            if (!currentVloger.ContainsKey(currentCommands[0]))
+                            {
+                                currentVloger.Add(currentCommands[0], new HashSet<string>[2]);
+
+                            }
+                            break;
+                        case "followed":
+                            if (currentVloger.ContainsKey(currentCommands[1]) && currentVloger.ContainsKey(currentCommands[0]))
+                            {
+                                currentVloger[currentCommands[1]][1].Add(currentCommands[0]);
+                                currentVloger[currentCommands[0]][0].Add(currentCommands[1]);
+                            }
+                            break;
+                    }
+                }
+                catch(IndexOutOfRangeException exc)
+                {
+                    goto printPhase;
+                }
+            }
+
+        printPhase:
+            currentVloger = currentVloger.OrderByDescending(e => e.Value[1]).ThenBy(e => e.Value[0]).ToDictionary(e => e.Key, e => e.Value);
+            StringBuilder sb = new StringBuilder();
+            string famouseVloger=" ";
+            foreach(var item in currentVloger)
+            {
+                sb.Append($"Most famous vloger: {item.Key} followers: {item.Value[1]} and {item.Value[0]} following");
+                sb.Append(Environment.NewLine);
+                famouseVloger = item.Key;
+                foreach(var follower in item.Value[1])
+                {
+                    sb.Append($"Follower: {follower}");
+                    sb.Append(Environment.NewLine);
+                }
+
+                break;
+            }
+
+            currentVloger.Remove(famouseVloger);
+            Console.WriteLine(sb.ToString());
+            sb.Clear();
+
+            int count = 2;
+            foreach(var item in currentVloger)
+            {
+                sb.Append($"{count}: {item.Key} Followers:{item.Value[1]} following {item.Value[0]}");
+                sb.Append(Environment.NewLine);
+            }
+            Console.WriteLine(sb.ToString());
+
+        }
 
         public static void SoftuniParty()
         {

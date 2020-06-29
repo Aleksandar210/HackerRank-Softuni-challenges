@@ -408,6 +408,31 @@ namespace SoftuniFundamentals
             Console.WriteLine(sb.ToString());
         }
 
+        public void CountSomeValues()
+        {
+            Dictionary<string, int> currentCountOfElements = new Dictionary<string, int>();
+            double[] numbers = Console.ReadLine().Split().Select(e =>
+           {
+               if (!currentCountOfElements.ContainsKey(e))
+               {
+                   currentCountOfElements.Add(e, 0);
+               }
+
+               currentCountOfElements[e]++;
+               return double.Parse(e);
+
+
+            }).ToArray();
+
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in currentCountOfElements)
+            {
+                sb.Append(item.Key + " ->" + item.Value + " Times");
+                sb.Append(Environment.NewLine);
+            }
+            Console.WriteLine("Average of the numbers is {0}", numbers.Average());
+        }
+
         private static void ShopProducts()
         {
             Dictionary<string, Dictionary<string, double>> currentShops = new Dictionary<string, Dictionary<string, double>>();

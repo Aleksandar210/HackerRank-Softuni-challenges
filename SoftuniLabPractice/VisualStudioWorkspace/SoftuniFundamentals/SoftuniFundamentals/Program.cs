@@ -398,8 +398,9 @@ namespace SoftuniFundamentals
             StringBuilder sb = new StringBuilder();
             currentStudents.Select(e =>
             {
-                sb.Append(e.Key + "->");
-                sb.Append(String.Format($"{e.Value.Average():2F}"));
+                sb.Append(e.Key + "-> ");
+                sb.Append(String.Join(" ", e.Value));
+                sb.Append(String.Format($" Average:{e.Value.Average():2F}"));
                 sb.Append(Environment.NewLine);
                 return 0;
             });

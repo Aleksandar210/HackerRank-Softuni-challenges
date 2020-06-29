@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
@@ -261,7 +263,7 @@ namespace SoftuniFundamentals
 
             //  ).ToArray();
 
-
+          
            
 
 
@@ -431,6 +433,123 @@ namespace SoftuniFundamentals
                 sb.Append(Environment.NewLine);
             }
             Console.WriteLine("Average of the numbers is {0}", numbers.Average());
+        }
+
+        public static void Ranking()
+        {
+            HashSet<string> currentContests = new HashSet<string>();
+            StringBuilder sb = new StringBuilder();
+            
+            string[] contestPasswords;
+            while (true)
+            {
+                try
+                {
+
+                    contestPasswords = Console.ReadLine().Split(":");
+                    sb.Append(contestPasswords[0] + " " + contestPasswords[1]);
+                    if (!currentContests.Contains(sb.ToString()))
+                    {
+                        currentContests.Add(sb.ToString());
+                        sb.Clear();
+                    }
+                    else
+                    {
+                        sb.Clear();
+                    }
+
+                }
+                catch(IndexOutOfRangeException exception)
+                {
+                    goto enterCandidatesPart;
+                }
+            }
+
+        enterCandidatesPart:
+
+            switch (sb.Length)      //clears if necessary
+            {
+                case 0:
+
+                    break;
+                default:
+                    sb.Clear();
+                    break;
+            }
+
+            Dictionary<string, Dictionary<string, int>> currentStudents = new Dictionary<string, Dictionary<string, int>>();
+            string[] studentData;
+            while (true)
+            {
+
+                try
+                {
+
+                    studentData = Console.ReadLine().Split("=>");
+                    sb.Append(studentData[0] + " " + studentData[1]);
+
+                    if (currentContests.Contains(sb.ToString()))
+                    {
+
+                        if (!currentStudents.ContainsKey(studentData[2]))
+                        {
+                            currentStudents.Add(studentData[2], new Dictionary<string, int>());
+                        }
+
+                        if (!currentStudents[studentData[2]].ContainsKey(studentData[0]))
+                        {
+                            currentStudents[studentData[2]].Add(studentData[0], int.Parse(studentData[3]));
+                        }
+                        else
+                        {
+                            if (int.Parse(studentData[3]) > currentStudents[studentData[2]][studentData[0]])
+                            {
+                                currentStudents[studentData[2]][studentData[0]] = int.Parse(studentData[3]);
+                            }
+                        }
+
+
+                        sb.Clear();
+
+                    }
+                    else
+                    {
+                        sb.Clear();
+                    }
+                }
+                catch (IndexOutOfRangeException exc)
+                {
+                    goto printValues;
+                }
+
+                }
+
+
+        printValues:
+            sb.Clear();
+            currentStudents = currentStudents.OrderBy(e => e.Value.Values.Sum()).ToDictionary(e=>e.Key,e=>e.Value);
+            string idealCandidate=null;
+            int points = 0;
+            foreach(var item in currentStudents)
+            {
+                idealCandidate = item.Key;
+                points = item.Value.Values.Sum();
+                break;
+            }
+
+            sb.Append($"Ideal candidate is {idealCandidate} with {points} points");
+            Console.WriteLine(sb.ToString());
+            sb.Clear();
+            foreach(var item in currentStudents)
+            {
+                sb.Append(item.Key);
+                sb.Append(Environment.NewLine);
+
+            }
+
+           
+
+
         }
 
         private static void ShopProducts()

@@ -4,6 +4,7 @@ using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Drawing;
@@ -544,10 +545,16 @@ namespace SoftuniFundamentals
             {
                 sb.Append(item.Key);
                 sb.Append(Environment.NewLine);
-
+                foreach(var currentCourseInCl in item.Value)
+                {
+                    sb.Append("# " + currentCourseInCl.Key + " ->" + currentCourseInCl.Value);
+                    sb.Append(Environment.NewLine);
+                }
             }
 
-           
+            Console.WriteLine(sb.ToString());
+            
+
 
 
         }

@@ -261,13 +261,56 @@ namespace SoftuniFundamentals
             //  ).ToArray();
 
 
-
+           
 
 
         }
 
         //Softuni Advanced Sets and Dicts
         //----------------------------------------------------------------------------------------
+
+        public static void SoftuniParty()
+        {
+            HashSet<string> regular = new HashSet<string>();
+            HashSet<string> vip = new HashSet<string>();
+
+
+            string enterCommand;
+            while (true)
+            {
+                enterCommand = Console.ReadLine();
+                if (enterCommand.Equals("Party", StringComparison.OrdinalIgnoreCase))
+                {
+                    goto commandForGuestsCome;
+                }
+                else
+                {
+                    if (Char.IsDigit(enterCommand[0]))
+                    {
+                        vip.Add(enterCommand);
+                    }
+                    else
+                    {
+                        regular.Add(enterCommand);
+                    }
+                }
+
+            }
+
+            commandForGuestsCome:
+            while (true)
+            {
+                enterCommand = Console.ReadLine();
+                if (enterCommand.Equals("End", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+
+            }
+        }
+
+
 
         private static void ShopProducts()
         {
@@ -277,7 +320,7 @@ namespace SoftuniFundamentals
             string[] commandData;
             while (true)
             {
-                if (enterCommand.Equals("End!", StringComparison.OrdinalIgnoreCase))
+                if (enterCommand.Equals("Revision", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
@@ -321,12 +364,17 @@ namespace SoftuniFundamentals
         }
 
 
+
+
             //---------------------------------------------------------------------------------
 
 
         //Softuni Fundamentals Exam Collection
         //-----------------------------------------------------------------------------------------
 
+
+
+            
 
 
         public static void Pirates()

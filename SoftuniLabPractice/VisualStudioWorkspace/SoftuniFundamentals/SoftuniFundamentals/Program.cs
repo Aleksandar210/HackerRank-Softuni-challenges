@@ -327,6 +327,54 @@ namespace SoftuniFundamentals
             }
         }
 
+        public static void ParkingLot()
+        {
+            HashSet<string> currentParkingLot = new HashSet<string>();
+            string enterCommand;
+            string[] commandsData;
+            while (true)
+            {
+                enterCommand = Console.ReadLine();
+                if (enterCommand.Equals("End"))
+                {
+                    break;
+                }
+
+                commandsData = enterCommand.Split(",");
+                switch (commandsData[0])
+                {
+                    case "OUT":
+                        if (currentParkingLot.Contains(commandsData[1]))
+                        {
+                            currentParkingLot.Remove(commandsData[1]);
+                        }
+                        break;
+
+                    case "IN":
+                        currentParkingLot.Add(commandsData[1]);
+
+                        break;
+                }
+
+                
+
+            }
+
+            switch (currentParkingLot.Count)
+            {
+                case 0:
+                    Console.WriteLine("No Cars left");
+                    break;
+                default:
+                    foreach (var item in currentParkingLot)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    break;
+            }
+
+            
+        }
 
 
         private static void ShopProducts()

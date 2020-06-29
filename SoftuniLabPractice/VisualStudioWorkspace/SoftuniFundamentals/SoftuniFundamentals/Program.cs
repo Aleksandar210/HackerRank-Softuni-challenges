@@ -297,7 +297,11 @@ namespace SoftuniFundamentals
 
             }
 
+
+           
             commandForGuestsCome:
+
+            HashSet<string> guestsWhoArrived = new HashSet<string>();
             while (true)
             {
                 enterCommand = Console.ReadLine();
@@ -306,7 +310,20 @@ namespace SoftuniFundamentals
                     break;
                 }
 
+                if (Char.IsDigit(enterCommand[0]) && vip.Contains(enterCommand))
+                {
+                    guestsWhoArrived.Add(enterCommand);
+                }
+                else if(!(Char.IsDigit(enterCommand[0]))&& regular.Contains(enterCommand))
+                {
+                    guestsWhoArrived.Add(enterCommand);
+                }
+            }
 
+            Console.WriteLine(guestsWhoArrived.Count);
+           foreach(var item  in guestsWhoArrived)
+            {
+                Console.WriteLine(item);
             }
         }
 

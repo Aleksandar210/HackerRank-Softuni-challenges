@@ -3,22 +3,11 @@ using SoftuniFundamentals.TelerikDefClassesPartTwo;
 using SoftuniFundamentals.TelerikGSMTask;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.Design;
-using System.Diagnostics;
-using System.Diagnostics.Tracing;
-using System.Drawing;
-using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection.PortableExecutable;
-using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Transactions;
-using System.Xml.Schema;
+
 
 namespace SoftuniFundamentals
 {
@@ -265,16 +254,65 @@ namespace SoftuniFundamentals
 
             //  ).ToArray();
 
-          //  VlogerTask();
-           // ParkingLot();
-          //  Ranking();
+            //  VlogerTask();
+            // ParkingLot();
+            //  Ranking();
 
-
-
+            ReadOddLines();
+            
+            
         }
+
+        //Files
+        //-------------------------------
+
+        public static void ReadOddLines()
+        {
+            FileStream file = new FileStream("TextFile.txt", FileMode.Open);
+            string[] dataInFile = Console.ReadLine().Split();
+
+            
+
+            using (var fileWriter = new StreamWriter(file,Encoding.UTF8))
+            {
+                for (int i = 0; i < dataInFile.Length; i++)
+                {
+                    fileWriter.WriteLine(dataInFile[i]);
+                }
+            }
+
+           
+            StringBuilder sb = new StringBuilder();
+            using (var fileReader = new StreamReader("TextFile.txt"))
+            {
+                int counter = 0;
+                while (!fileReader.EndOfStream)
+                {
+                    var readLine = fileReader.ReadLine();
+                    switch (counter % 2)
+                    {
+                        case 1:
+                            sb.Append(readLine);
+                            sb.Append(Environment.NewLine);
+                            counter++;
+                            break;
+                        default:
+                            counter++;
+                            break;
+                    }
+
+                }
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+
+
 
         //Softuni Advanced Sets and Dicts
         //----------------------------------------------------------------------------------------
+        
+
 
          public static void VlogerTask()
         {

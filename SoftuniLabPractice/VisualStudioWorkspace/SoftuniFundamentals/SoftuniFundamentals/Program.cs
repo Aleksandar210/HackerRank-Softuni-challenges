@@ -346,6 +346,8 @@ namespace SoftuniFundamentals
 
             Console.WriteLine(sb.ToString());
 
+            currentResult.Dispose();
+
         }
         public static void AddNumericsToFileLines()
         {

@@ -259,7 +259,7 @@ namespace SoftuniFundamentals
             //  Ranking();
 
             //ReadOddLines();
-            AddNumericsToFileLines();
+            //AddNumericsToFileLines();
             
             
         }

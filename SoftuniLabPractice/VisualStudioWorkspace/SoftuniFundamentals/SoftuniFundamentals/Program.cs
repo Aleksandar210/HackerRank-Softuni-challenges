@@ -266,6 +266,45 @@ namespace SoftuniFundamentals
 
         //Files
         //-------------------------------
+
+        public void WordsCount()
+        {
+            Console.Write("Enter string to enter it in file: ");
+            string[] currentWords = Console.ReadLine().Split();
+            var currentWriter = new StreamWriter("TextFile1.txt");      //file filled with sentences
+            using (currentWriter)
+            {
+                for(int i = 0; i < currentWords.Length; i++)
+                {
+                    currentWriter.WriteLine(currentWords[i]);
+                }
+            }
+                    
+            //the words we need to check for (adding them in array so that we can transfer data to file)
+                Console.Write("Enter words to find count: ");
+            string[] wordsToFind = Console.ReadLine().Split();
+
+
+            //the file which will contain the list fo words we need to check
+            currentWriter = new StreamWriter("TextFile.txt");
+            using (currentWriter)
+            {
+                for(int i =0;i<wordsToFind.Length;i++)
+                {
+                    currentWriter.WriteLine(wordsToFind[i]);
+                }
+            }
+
+            //current stream that is connected to file if exists or creates and opens it (this is used as first arg in stremW/R)
+            FileStream currentResult = new FileStream("WordsCountResult.txt",FileMode.OpenOrCreate);
+            currentWriter = new StreamWriter(currentResult);
+            using (currentWriter)
+            {
+
+
+            }
+
+        }
         public static void AddNumericsToFileLines()
         {
             //enter content from console

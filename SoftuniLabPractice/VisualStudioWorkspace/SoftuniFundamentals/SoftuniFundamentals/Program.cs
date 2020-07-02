@@ -288,14 +288,25 @@ namespace SoftuniFundamentals
 
             //display content of file on the console
             StringBuilder sb = new StringBuilder();
-            using (var fileReader = new StreamReader("TextFile.txt"))
-            {
-                while(!fileReader.EndOfStream)
-                {
-                    sb.Append(fileReader.ReadLine());
-                    sb.Append(Environment.NewLine);
 
-                }
+
+            //method1
+            // using (var fileReader = new StreamReader("TextFile.txt"))
+            // {
+            //     while(!fileReader.EndOfStream)
+            //    {
+            //        sb.Append(fileReader.ReadLine());
+            //        sb.Append(Environment.NewLine);
+
+            //    }
+            //  }
+
+
+            //method2
+            List<string> currentDataInFile = File.ReadAllLines("TextFile.txt").ToList();
+            for(int i = 0; i < currentDataInFile.Count - 1; i++)
+            {
+                sb.Append(currentDataInFile[i] + Environment.NewLine);
             }
 
             //display content on console

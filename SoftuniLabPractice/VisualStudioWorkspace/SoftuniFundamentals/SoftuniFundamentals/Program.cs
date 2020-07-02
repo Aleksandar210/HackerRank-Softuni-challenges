@@ -258,13 +258,52 @@ namespace SoftuniFundamentals
             // ParkingLot();
             //  Ranking();
 
-            ReadOddLines();
+            //ReadOddLines();
+            AddNumericsToFileLines();
             
             
         }
 
         //Files
         //-------------------------------
+        public static void AddNumericsToFileLines()
+        {
+            //enter content from console
+            int counter = 1;
+            string[] fileContent = Console.ReadLine().Split().Select(e=>
+            {
+                return $"{counter++}: {e} ";
+               
+            }).ToArray();
+
+            //add content to file
+            using (var writer = new StreamWriter("TextFile.txt"))
+            {
+                for(int i =0;i<fileContent.Length;i++)
+                {
+                    writer.WriteLine(fileContent[i]);
+                }
+            }
+
+
+            //display content of file on the console
+            StringBuilder sb = new StringBuilder();
+            using (var fileReader = new StreamReader("TextFile.txt"))
+            {
+                while(!fileReader.EndOfStream)
+                {
+                    sb.Append(fileReader.ReadLine());
+                    sb.Append(Environment.NewLine);
+
+                }
+            }
+
+            //display content on console
+            Console.WriteLine(sb.ToString());
+            
+
+        }
+
 
         public static void ReadOddLines()
         {

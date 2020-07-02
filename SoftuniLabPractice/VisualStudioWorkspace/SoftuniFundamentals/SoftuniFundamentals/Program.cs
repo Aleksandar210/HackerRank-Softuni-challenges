@@ -260,18 +260,20 @@ namespace SoftuniFundamentals
 
             //ReadOddLines();
             //AddNumericsToFileLines();
-            
+            WordsCount();
             
         }
 
         //Files
         //-------------------------------
 
-        public void WordsCount()
+        public static void WordsCount()
         {
             Console.Write("Enter string to enter it in file: ");
-            string[] currentWords = Console.ReadLine().Split();
+            string[] currentWords = Console.ReadLine().Split("|");
             var currentWriter = new StreamWriter("TextFile1.txt");      //file filled with sentences
+
+            string[] lineSentence;
             using (currentWriter)
             {
                 for(int i = 0; i < currentWords.Length; i++)

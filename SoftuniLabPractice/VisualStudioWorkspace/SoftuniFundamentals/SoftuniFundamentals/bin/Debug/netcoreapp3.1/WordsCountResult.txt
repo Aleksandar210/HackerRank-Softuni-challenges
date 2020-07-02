@@ -1,0 +1,4 @@
+alex->1
+beti->0
+beti->0
+agaga->1

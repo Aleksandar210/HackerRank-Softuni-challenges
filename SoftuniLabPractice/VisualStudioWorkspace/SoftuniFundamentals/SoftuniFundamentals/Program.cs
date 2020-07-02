@@ -298,9 +298,36 @@ namespace SoftuniFundamentals
             //current stream that is connected to file if exists or creates and opens it (this is used as first arg in stremW/R)
             FileStream currentResult = new FileStream("WordsCountResult.txt",FileMode.OpenOrCreate);
             currentWriter = new StreamWriter(currentResult);
+
+            string[] currentCount;          //array for gettng all equal words and getting their count
             using (currentWriter)
             {
+                var readerForListWords = new StreamReader("TextFile1.txt");
+                using (readerForListWords)
+                {
+                  
+                    while(!readerForListWords.EndOfStream)
+                    {
+                        var readWord = readerForListWords.ReadLine();
 
+                        // this works on the file with sentences
+                        var currentReaderForSentences = new StreamReader("TextFile.txt");
+                        using (currentReaderForSentences)
+                        {
+                            while(!currentReaderForSentences.EndOfStream)
+                            {
+                                currentCount = currentReaderForSentences.ReadLine().Split()
+                                .Where(e => !e.Equals(readWord, StringComparison.OrdinalIgnoreCase)).ToArray();
+                                currentWriter.WriteLine(readWord + "->" + currentCount.Length);
+                            }
+                             
+                        }
+
+                    }
+                    
+
+
+                }
 
             }
 

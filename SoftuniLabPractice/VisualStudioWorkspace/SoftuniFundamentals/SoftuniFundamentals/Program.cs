@@ -299,7 +299,7 @@ namespace SoftuniFundamentals
             FileStream currentResult = new FileStream("WordsCountResult.txt",FileMode.OpenOrCreate);
             currentWriter = new StreamWriter(currentResult);
 
-            string[] currentCount;          //array for gettng all equal words and getting their count
+            string[] currentCount=null;          //array for gettng all equal words and getting their count
             using (currentWriter)
             {
                 var readerForListWords = new StreamReader("TextFile1.txt");
@@ -318,9 +318,10 @@ namespace SoftuniFundamentals
                             {
                                 currentCount = currentReaderForSentences.ReadLine().Split()
                                 .Where(e => !e.Equals(readWord, StringComparison.OrdinalIgnoreCase)).ToArray();
-                                currentWriter.WriteLine(readWord + "->" + currentCount.Length);
+                               
                             }
-                             
+                            currentWriter.WriteLine(readWord + "->" + currentCount.Length);
+
                         }
 
                     }
@@ -330,6 +331,20 @@ namespace SoftuniFundamentals
                 }
 
             }
+
+
+            //readinf from the result file
+            var currentReaderResult = new StreamReader("WordsCountResult.txt");
+            StringBuilder sb = new StringBuilder();
+            using (currentReaderResult)
+            {
+                while(!currentReaderResult.EndOfStream)
+                {
+                    sb.Append(currentReaderResult.ReadLine() + Environment.NewLine);
+                }
+            }
+
+            Console.WriteLine(sb.ToString());
 
         }
         public static void AddNumericsToFileLines()

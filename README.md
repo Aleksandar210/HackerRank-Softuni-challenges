@@ -2,6 +2,7 @@
 
 * Regular-expressions.
 * Lists and Associate arrays.
+* Stacks, Queue
 * Basic Java core.
 * Text processing.
 * OOP basics - completed several exams with basic OOP concepts.

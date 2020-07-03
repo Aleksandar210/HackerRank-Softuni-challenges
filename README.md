@@ -7,5 +7,9 @@
 * OOP basics.
 * Loops and control structures(if-else, whiles).
 * Methods and parameters.
+* LINQ
+* Files, Streams
+* StringBuilder and manipulating Strings
+
 
 

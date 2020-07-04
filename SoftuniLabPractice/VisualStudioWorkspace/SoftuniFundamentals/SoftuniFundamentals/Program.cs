@@ -315,12 +315,51 @@ namespace SoftuniFundamentals
             //Console.WriteLine(sb.ToString());
 
             //UpperLowerBoundEvenOddLine();
+            //AppliedArithmetics();
         }
 
 
         //LINQ
 
             //-------------------------------
+        private static void AppliedArithmetics()
+        {
+            int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e))
+                .ToArray();
+
+            Action<string, int[]> currentActionUpponData = (e, elements) =>
+             {
+                 StringBuilder sb = new StringBuilder();
+                 switch (e.ToLower())
+                 {
+                     case "add":
+                         elements = elements.Select(e => e + 1).ToArray();
+                         break;
+                     case "multiply":
+                         elements = elements.Select(e => e * 2).ToArray();
+                         break;
+                     case "print":
+                         elements.Select(e => { sb.Append(e + " "); return e; });
+                         Console.WriteLine(sb.ToString().Trim());
+                         break;
+
+
+                 }
+             };
+
+            string enterCommand = Console.ReadLine();
+            while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                currentActionUpponData(enterCommand, elements);
+                enterCommand = Console.ReadLine();
+            }
+
+
+
+        }
+
+
          private static void EvenNumbersLinq()
         {
             Console.WriteLine(String.Join(",", Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries)

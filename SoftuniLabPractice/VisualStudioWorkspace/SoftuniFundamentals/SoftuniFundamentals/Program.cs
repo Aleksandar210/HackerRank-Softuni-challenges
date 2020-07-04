@@ -320,6 +320,7 @@ namespace SoftuniFundamentals
             //ReverseFilter()
             // CustomComparator();
             //DivisibleRangeOfSequeneLinq();
+            //PartyIvancho();
 
         }
 

@@ -335,7 +335,7 @@ namespace SoftuniFundamentals
             string enterCommand = Console.ReadLine();
 
 
-            Action<string[], List<int>> executeCommand = (a, b) =>
+            Action<string[], List<string>> executeCommand = (a, b) =>
              {
                  switch(a[0].ToLower())
                  {
@@ -343,25 +343,59 @@ namespace SoftuniFundamentals
                          switch(a[1].ToLower())
                          {
                              case "startswith":
+                                 b = b.Select(e =>
+                                  {
+                                      if (e.StartsWith(a[2]))
+                                      {
+                                          b.Add(e);
+                                      }
+                                      return e;
+                                  }
+                                  ).ToList();
+                                 break;
 
+                             case "endswith":
+                                 b = b.Select(e =>
+                                 {
+                                     if (e.EndsWith(a[2]))
+                                     {
+                                         b.Add(e);
+                                     }
+                                     return e;
+                                 }
+                                  ).ToList();
                                  break;
                          }
 
                          break;
 
                      case "remove":
+                         switch (a[1].ToLower())
+                         {
+                             case "startswith":
+                                 b = b.Where(e => !e.StartsWith(a[2])).ToList();
+                                 break;
+                             case "endswith":
+                                 b = b.Where(e => !e.EndsWith(a[2])).ToList();
+                                 break;
+                         }
+                         
+
                          break;
                  }
+
+
+
              };
 
             string[] commandData;
             while(!enterCommand.Equals("party!",StringComparison.OrdinalIgnoreCase))
             {
                 commandData = enterCommand.Split();
-               
 
-                        break;
-                }
+                executeCommand(commandData, currentGuests);
+                enterCommand = Console.ReadLine();
+                
             }
 
         }

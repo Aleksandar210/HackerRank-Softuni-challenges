@@ -443,9 +443,15 @@ namespace SoftuniFundamentals
                 case 0:
                     Console.WriteLine("No one will come");
                     break;
+
+                default:
+                    StringBuilder sb = new StringBuilder();
+                    people.Select(e => { sb.Append(e + Environment.NewLine); return e; });
+                    Console.WriteLine(sb.ToString());
+                    break;
             }
 
-            StringBuilder sb = new StringBuilder();
+          
 
         }
 

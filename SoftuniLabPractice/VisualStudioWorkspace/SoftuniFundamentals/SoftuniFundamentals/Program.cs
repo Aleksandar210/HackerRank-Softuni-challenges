@@ -300,13 +300,19 @@ namespace SoftuniFundamentals
             //FilterByAgeLinq()
 
             //print collection on new lines linq and action
+            // StringBuilder sb = new StringBuilder();
+            // Action<string> addCurrentNameToSb = name => sb.Append(name + Environment.NewLine);
+
+            // Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+            //    .Select(e => { addCurrentNameToSb(e); return e; });
+            // Console.WriteLine(sb.ToString());
+
+
+            //KnightsOfHonor
             StringBuilder sb = new StringBuilder();
-            Action<string> addCurrentNameToSb = name => sb.Append(name + Environment.NewLine);
-
-            Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                .Select(e => { addCurrentNameToSb(e); return e; });
+            Action<string> appendSir = e => sb.Append("sir " + e + Environment.NewLine);
+            Console.ReadLine().Split().ToList().ForEach(e => appendSir(e));
             Console.WriteLine(sb.ToString());
-
             
         }
 

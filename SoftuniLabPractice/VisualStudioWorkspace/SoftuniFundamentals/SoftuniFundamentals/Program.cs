@@ -353,13 +353,18 @@ namespace SoftuniFundamentals
 
         private static void  ForbidenWords()
         {
-            List<string> text = new List<string>();
-            string enter = Console.ReadLine();
-            while(!enter.Equals("*endtext*",StringComparison.OrdinalIgnoreCase))
+            List<string> text = new List<string>();     //create list to hold lines of sentences
+
+            string enter = Console.ReadLine();      //variable used to enter sentene per line
+
+            while(!enter.Equals("*endtext*",StringComparison.OrdinalIgnoreCase))        //adding sentence if not the end command
             {
                 text.Add(enter);
                 enter = Console.ReadLine();
             }
+
+
+            //add forbiden words
             string[] forbidenWords = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
             //func to censor
@@ -397,6 +402,7 @@ namespace SoftuniFundamentals
             
 
             StringBuilder currentText = new StringBuilder();
+
         }
 
         private static void NameSumChars(Func<string,int,bool> currentNameSum)

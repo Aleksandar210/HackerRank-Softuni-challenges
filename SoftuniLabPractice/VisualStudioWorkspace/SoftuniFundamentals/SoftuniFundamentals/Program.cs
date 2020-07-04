@@ -318,8 +318,8 @@ namespace SoftuniFundamentals
             //AppliedArithmetics();
             //PredicateByNames();
             //ReverseFilter()
-           // CustomComparator();
-
+            // CustomComparator();
+            //DivisibleRangeOfSequeneLinq();
 
         }
 
@@ -327,6 +327,44 @@ namespace SoftuniFundamentals
         //LINQ
 
         //-------------------------------
+
+         private static void PartyIvancho()
+        {
+            List<string> currentGuests = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .ToList();
+            string enterCommand = Console.ReadLine();
+
+
+            Action<string[], List<int>> executeCommand = (a, b) =>
+             {
+                 switch(a[0].ToLower())
+                 {
+                     case "double":
+                         switch(a[1].ToLower())
+                         {
+                             case "startswith":
+
+                                 break;
+                         }
+
+                         break;
+
+                     case "remove":
+                         break;
+                 }
+             };
+
+            string[] commandData;
+            while(!enterCommand.Equals("party!",StringComparison.OrdinalIgnoreCase))
+            {
+                commandData = enterCommand.Split();
+               
+
+                        break;
+                }
+            }
+
+        }
 
         private static void DivisibleRangeOfSequeneLinq()
         {

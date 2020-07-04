@@ -310,10 +310,11 @@ namespace SoftuniFundamentals
 
             //KnightsOfHonor
             //StringBuilder sb = new StringBuilder();
-           // Action<string> appendSir = e => sb.Append("sir " + e + Environment.NewLine);
+            // Action<string> appendSir = e => sb.Append("sir " + e + Environment.NewLine);
             //Console.ReadLine().Split().ToList().ForEach(e => appendSir(e));
             //Console.WriteLine(sb.ToString());
-            
+
+            //UpperLowerBoundEvenOddLine();
         }
 
 

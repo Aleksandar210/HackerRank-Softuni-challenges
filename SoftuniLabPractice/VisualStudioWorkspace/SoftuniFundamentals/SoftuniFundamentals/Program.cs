@@ -327,6 +327,15 @@ namespace SoftuniFundamentals
 
             //-------------------------------
 
+        private static void PredicateByNames()
+        {
+        Addlength:
+            Console.Clear();
+            Console.Write("Enter length: ");
+
+
+        }
+
         private static void ReverseFilter()
         {
         int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
@@ -334,6 +343,7 @@ namespace SoftuniFundamentals
 
             int elementToExclude;
         AddElementToExclude:
+            Console.Clear();
             try
             {
                 Console.Write("enter element to exclude: ");

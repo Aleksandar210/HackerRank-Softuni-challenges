@@ -323,23 +323,23 @@ namespace SoftuniFundamentals
             //PartyIvancho();
             //PartyFilterSoftware();
 
-            Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
-              {
-                  int sum = 0;
-                  foreach (var item in word.ToCharArray())
-                  {
-                      sum += item;
-                  }
+           // Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
+            //  {
+             //     int sum = 0;
+              //    foreach (var item in word.ToCharArray())
+               //   {
+               //       sum += item;
+               //   }
 
-                  if (sum >= targetSum)
-                  {
-                      return true;
-                  }
+                //  if (sum >= targetSum)
+                //  {
+                //      return true;
+                //  }
 
-                  return false;
-              };
+                //  return false;
+            //  };
 
-            NameSumChars(currentSumCharsFunc);
+           // NameSumChars(currentSumCharsFunc);
 
         }
 

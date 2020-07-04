@@ -284,13 +284,13 @@ namespace SoftuniFundamentals
             // Console.WriteLine(String.Join(" ", currentUpperFunc(Console.ReadLine())));
 
             //read data and add 0% VAT
-           // Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
+            // Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
             // .Select(e => double.Parse(e) * 1.2)
             // .ToArray();
 
 
-          //  StringBuilder sb = new StringBuilder();
-          // foreach(var item in currentVatFunc(Console.ReadLine()))
+            //  StringBuilder sb = new StringBuilder();
+            // foreach(var item in currentVatFunc(Console.ReadLine()))
             //{
             //    sb.Append(item + Environment.NewLine);
 
@@ -298,7 +298,14 @@ namespace SoftuniFundamentals
             //Console.WriteLine(sb.ToString());
 
             //FilterByAgeLinq()
-             
+
+            //print collection on new lines linq and action
+            StringBuilder sb = new StringBuilder();
+            Action<string> addCurrentNameToSb = name => sb.Append(name + Environment.NewLine);
+
+            Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => { addCurrentNameToSb(e); return e; });
+            Console.ReadLine(sb.ToString());
 
             
         }
@@ -349,7 +356,7 @@ namespace SoftuniFundamentals
                
                 case "younger":
                     filteredPeople = peopleData.Where(e => getCurrentAge(e) < ageFilter)
-                        .Select(e=> { sb.Append(e + Environment.NewLine); return e  })
+                        .Select(e=> { sb.Append(e + Environment.NewLine); return e;  })
                         .ToArray();
                     Console.WriteLine(sb.ToString());
             
@@ -357,14 +364,14 @@ namespace SoftuniFundamentals
 
                 case "older":
                     filteredPeople = peopleData.Where(e => getCurrentAge(e) > ageFilter)
-                       .Select(e => { sb.Append(e + Environment.NewLine); return e  })
+                       .Select(e => { sb.Append(e + Environment.NewLine); return e;  })
                        .ToArray();
                     Console.WriteLine(sb.ToString());
                     break;
            
             }
 
-
+           
         }
 
         

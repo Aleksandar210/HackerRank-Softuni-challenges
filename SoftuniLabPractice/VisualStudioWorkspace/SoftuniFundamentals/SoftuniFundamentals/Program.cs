@@ -351,15 +351,27 @@ namespace SoftuniFundamentals
         //-------------------------------
 
 
-        private static int MultWithoutI()
+        private static void  ForbidenWords()
         {
-            int result;
-            int[] numbers = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToArray();
+            List<string> text = new List<string>();
+            string enter = Console.ReadLine();
+            while(!enter.Equals("*endtext*",StringComparison.OrdinalIgnoreCase))
+            {
+                text.Add(enter);
+                enter = Console.ReadLine();
+            }
+            string[] forbidenWords = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
-            return result;
+            Action<List<string>, StringBuilder> mainLogic = (textLines, output) =>
+             {
+                 for(int i =0;i<textLines.Count;i++)
+                 {
 
+                 }
+             };
             
 
+            StringBuilder currentText = new StringBuilder();
         }
 
         private static void NameSumChars(Func<string,int,bool> currentNameSum)

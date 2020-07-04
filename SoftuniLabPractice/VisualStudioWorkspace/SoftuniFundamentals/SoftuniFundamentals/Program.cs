@@ -351,6 +351,17 @@ namespace SoftuniFundamentals
         //-------------------------------
 
 
+        private static int MultWithoutI()
+        {
+            int result;
+            int[] numbers = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToArray();
+
+            return result;
+
+            
+
+        }
+
         private static void NameSumChars(Func<string,int,bool> currentNameSum)
         {
             int number = int.Parse(Console.ReadLine());

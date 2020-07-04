@@ -419,7 +419,10 @@ namespace SoftuniFundamentals
             };
 
 
+            StringBuilder sb = new StringBuilder();
+            Action<int> addElementToStringBuilder = e => sb.Append(e + " ");
 
+            var result = currentFilteredResult(filterBy, enterBounds).Select(e=> { addElementToStringBuilder(e); return e; });
 
                 
 

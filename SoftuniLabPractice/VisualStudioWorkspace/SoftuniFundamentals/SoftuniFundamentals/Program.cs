@@ -316,7 +316,11 @@ namespace SoftuniFundamentals
 
             //UpperLowerBoundEvenOddLine();
             //AppliedArithmetics();
-        }
+
+        
+
+
+    }
 
 
         //LINQ
@@ -325,15 +329,33 @@ namespace SoftuniFundamentals
 
         private static void ReverseFilter()
         {
-            int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+        int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToArray();
-            int elementToExclude = int.Parse(Console.ReadLine());
+
+            int elementToExclude;
+        AddElementToExclude:
+            try
+            {
+                Console.Write("enter element to exclude: ");
+                elementToExclude = int.Parse(Console.ReadLine());
+            }
+            catch(InvalidCastException exc)
+            {
+                goto AddElementToExclude;
+            }
+
+           
+
+
             elements = elements.Where(e => e != elementToExclude).ToArray();
             Array.Reverse(elements);
-            Console.ReadLine(String.Join(",", elements));
-
-
+            Console.WriteLine(String.Join(",", elements));
+           
         }
+
+        
+
+
 
         private static void AppliedArithmetics()
         {

@@ -305,7 +305,7 @@ namespace SoftuniFundamentals
 
             Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(e => { addCurrentNameToSb(e); return e; });
-            Console.ReadLine(sb.ToString());
+            Console.WriteLine(sb.ToString());
 
             
         }

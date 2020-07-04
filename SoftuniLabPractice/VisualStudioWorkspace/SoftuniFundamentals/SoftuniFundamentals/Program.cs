@@ -323,6 +323,24 @@ namespace SoftuniFundamentals
             //PartyIvancho();
             //PartyFilterSoftware();
 
+            Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
+              {
+                  int sum = 0;
+                  foreach (var item in word.ToCharArray())
+                  {
+                      sum += item;
+                  }
+
+                  if (sum >= targetSum)
+                  {
+                      return true;
+                  }
+
+                  return false;
+              };
+
+            NameSumChars(currentSumCharsFunc);
+
         }
 
 
@@ -330,6 +348,14 @@ namespace SoftuniFundamentals
 
         //-------------------------------
 
+
+        private static void NameSumChars(Func<string,int,bool> currentNameSum)
+        {
+            int number = int.Parse(Console.ReadLine());
+            string[] currentNames = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            currentNames = currentNames.Where(currentNameSum).ToArray();
+
+        }
 
 
         private static void PartyFilterSoftware()

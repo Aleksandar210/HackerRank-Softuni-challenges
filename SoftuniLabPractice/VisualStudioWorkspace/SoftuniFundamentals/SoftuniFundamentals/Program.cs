@@ -325,24 +325,24 @@ namespace SoftuniFundamentals
 
 
             //function related to the last task of LINQ
-           // Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
+            // Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
             //  {
-             //     int sum = 0;
-              //    foreach (var item in word.ToCharArray())
-               //   {
-               //       sum += item;
-               //   }
+            //     int sum = 0;
+            //    foreach (var item in word.ToCharArray())
+            //   {
+            //       sum += item;
+            //   }
 
-                //  if (sum >= targetSum)
-                //  {
-                //      return true;
-                //  }
+            //  if (sum >= targetSum)
+            //  {
+            //      return true;
+            //  }
 
-                //  return false;
+            //  return false;
             //  };
 
-           // NameSumChars(currentSumCharsFunc);
-
+            // NameSumChars(currentSumCharsFunc);
+            //ForbidenWords();
         }
 
 

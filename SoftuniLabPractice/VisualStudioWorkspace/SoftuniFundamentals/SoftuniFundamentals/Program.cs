@@ -329,10 +329,27 @@ namespace SoftuniFundamentals
 
         private static void PredicateByNames()
         {
+
+            int length;
         Addlength:
             Console.Clear();
-            Console.Write("Enter length: ");
+            try
+            {
+                Console.Write("Enter length: ");
+                length = int.Parse(Console.ReadLine());
+            }
+            catch(InvalidCastException exc)
+            {
+                goto Addlength;
+            }
 
+            StringBuilder sb = new StringBuilder();
+            string[] names = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Where(n => n.Length <= length)
+                .Select(n=> { sb.Append(n + Environment.NewLine); return n; })
+                .ToArray();
+            Console.WriteLine();
+            Console.WriteLine(sb.ToString());
 
         }
 

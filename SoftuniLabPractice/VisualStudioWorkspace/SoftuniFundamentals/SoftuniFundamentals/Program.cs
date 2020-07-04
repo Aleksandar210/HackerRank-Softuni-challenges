@@ -328,7 +328,62 @@ namespace SoftuniFundamentals
 
         //-------------------------------
 
-            // custom comparator task scope of methods used together
+        private static void DivisibleRangeOfSequeneLinq()
+        {
+            int number;
+            enterRange:
+            try
+            {
+                Console.Write("Enter range: ");
+                number = int.Parse(Console.ReadLine());
+
+            }
+            catch(InvalidCastException exc)
+            {
+                goto enterRange;
+            }
+
+
+            int[] sequence = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+
+            Func<int, int[], bool> checkIfDivisible = (a, b) =>
+            {
+                bool isDivisible = true;
+                foreach (var item in b)
+                {
+                    if (a % item != 0)
+                    {
+                        isDivisible = false;
+                    }
+                }
+                return isDivisible;
+            };
+
+
+            StringBuilder sb = new StringBuilder();
+            Action<int, int[]> addElementsDivisibleSequence = (a, b) =>
+             {
+                 for (int i = 1; i <= a; i++)
+                 {
+                     if (checkIfDivisible(i, b))
+                     {
+                         sb.Append(i + " ");
+                     }
+                 }
+             };
+
+            addElementsDivisibleSequence(number, sequence);
+            Console.WriteLine(sb.ToString());
+                
+         
+        }
+
+
+      
+
+
+        // custom comparator task scope of methods used together
         private static void CustomComparator()
         {
             int[] numbers = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(int.Parse)

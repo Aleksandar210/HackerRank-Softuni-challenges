@@ -343,6 +343,9 @@ namespace SoftuniFundamentals
 
             // NameSumChars(currentSumCharsFunc);
             //ForbidenWords();
+            
+            
+            
         }
 
 
@@ -368,7 +371,16 @@ namespace SoftuniFundamentals
             string[] forbidenWords = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
             //func to censor
-            Func<string, string> censorWord = (a) => a.Replace("[a-zA-z]", "*");
+            Func<string, string> censorWord = (a) =>
+            {
+                StringBuilder sb = new StringBuilder();
+                for(int i = 0; i < a.Length; i++)
+                {
+                    sb.Append("*");
+                }
+                return sb.ToString();
+
+            }
 
 
             //func to censor all words in sentenes

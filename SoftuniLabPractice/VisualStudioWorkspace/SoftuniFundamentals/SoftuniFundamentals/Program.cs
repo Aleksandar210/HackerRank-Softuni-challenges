@@ -309,10 +309,10 @@ namespace SoftuniFundamentals
 
 
             //KnightsOfHonor
-            StringBuilder sb = new StringBuilder();
-            Action<string> appendSir = e => sb.Append("sir " + e + Environment.NewLine);
-            Console.ReadLine().Split().ToList().ForEach(e => appendSir(e));
-            Console.WriteLine(sb.ToString());
+            //StringBuilder sb = new StringBuilder();
+           // Action<string> appendSir = e => sb.Append("sir " + e + Environment.NewLine);
+            //Console.ReadLine().Split().ToList().ForEach(e => appendSir(e));
+            //Console.WriteLine(sb.ToString());
             
         }
 
@@ -380,16 +380,64 @@ namespace SoftuniFundamentals
            
         }
 
-        
+        private static void UpperLowerBoundEvenOddLine()
+        {
+            int[] enterBounds = Console.ReadLine().Split().Select(e => int.Parse(e)).ToArray();
+            string filterBy = Console.ReadLine();
+
+            //FuncToReturn array with range filtered by 
+            Func<string, int[], int[]> currentFilteredResult = (a, b) =>
+            {
+
+                int[] elementsToReturn;
+
+                StringBuilder sb = new StringBuilder();
+                switch (filterBy.ToLower())
+                {
+                    case "even":
+                        for (int i = b[0]; i <= b[1]; i++)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                sb.Append(i + " ");
+                            }
+                        }
+                        break;
+                    case "odd":
+                        for (int i = b[0]; i <= b[1]; i++)
+                        {
+                            if (i % 2 != 0)
+                            {
+                                sb.Append(i + " ");
+                            }
+                        }
+                        break;
+                }
+                elementsToReturn = sb.ToString().Trim().Split().Select(e => int.Parse(e)).ToArray();
+
+                return elementsToReturn;
+            };
 
 
 
-            //-------------------------------
 
-        //Files
-        //-------------------------------
+                
 
-        public static void WordsCount()
+            
+           
+            
+        }
+
+   
+
+
+
+    //-------------------------------
+
+    //Files
+    //-------------------------------
+
+    public static void WordsCount()
         {
             Console.Write("Enter string to enter it in file: ");
             string[] currentWords = Console.ReadLine().Split("|");
@@ -2371,6 +2419,7 @@ namespace SoftuniFundamentals
         public string ClusterBelongsTo { get;  private set; }
     }
 }
+
 
 
 

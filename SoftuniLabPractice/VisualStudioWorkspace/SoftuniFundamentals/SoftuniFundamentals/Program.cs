@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -283,11 +284,18 @@ namespace SoftuniFundamentals
             // Console.WriteLine(String.Join(" ", currentUpperFunc(Console.ReadLine())));
 
             //read data and add 0% VAT
-           // Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
-           //  .Select(e => double.Parse(e) * 1.2)
-           //  .ToArray();
+            Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
+             .Select(e => double.Parse(e) * 1.2)
+             .ToArray();
 
-           // Console.WriteLine(String.Join(", ", currentVatFunc(Console.ReadLine())));
+
+            StringBuilder sb = new StringBuilder();
+           foreach(var item in currentVatFunc(Console.ReadLine()))
+            {
+                sb.Append(item + Environment.NewLine);
+
+            }
+            Console.WriteLine(sb.ToString());
 
              
 

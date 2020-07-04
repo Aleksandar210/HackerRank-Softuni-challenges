@@ -316,8 +316,8 @@ namespace SoftuniFundamentals
 
             //UpperLowerBoundEvenOddLine();
             //AppliedArithmetics();
-
-        
+            //PredicateByNames();
+            //ReverseFilter()
 
 
     }

@@ -322,6 +322,19 @@ namespace SoftuniFundamentals
         //LINQ
 
             //-------------------------------
+
+        private static void ReverseFilter()
+        {
+            int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToArray();
+            int elementToExclude = int.Parse(Console.ReadLine());
+            elements = elements.Where(e => e != elementToExclude).ToArray();
+            Array.Reverse(elements);
+            Console.ReadLine(String.Join(",", elements));
+
+
+        }
+
         private static void AppliedArithmetics()
         {
             int[] elements = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)

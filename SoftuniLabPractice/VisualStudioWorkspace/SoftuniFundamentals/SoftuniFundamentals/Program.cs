@@ -318,14 +318,44 @@ namespace SoftuniFundamentals
             //AppliedArithmetics();
             //PredicateByNames();
             //ReverseFilter()
+           // CustomComparator();
 
 
-    }
+        }
 
 
         //LINQ
 
-            //-------------------------------
+        //-------------------------------
+
+            // custom comparator task scope of methods used together
+        private static void CustomComparator()
+        {
+            int[] numbers = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(int.Parse)
+                .ToArray();
+            Array.Sort(numbers,(a,b)=>customEvenComaprator(a,b));
+            Console.WriteLine(String.Join(",",numbers));
+
+        }
+
+        //custom func that works as comparator
+       private static Func<int, int, int> customEvenComaprator = (a, b) =>
+        {
+            if (a % 2 == 0 && b % 2 == 0)
+            {
+                return a.CompareTo(b);
+            }
+            else if (a % 2 != 0 && b % 2 == 0)
+            {
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
+        };
+        //-----------------------------
+       
 
         private static void PredicateByNames()
         {

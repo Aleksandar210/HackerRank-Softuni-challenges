@@ -267,13 +267,30 @@ namespace SoftuniFundamentals
             // EvenNumbersLinq();
 
             //func to parse all elements and return count and sum
-           // Func<string, int[]> currentFuncParseSum = elements =>
-           //  elements.Split(", ", StringSplitOptions.RemoveEmptyEntries).Select(elements => int.Parse(elements)).ToArray();
+            // Func<string, int[]> currentFuncParseSum = elements =>
+            //  elements.Split(", ", StringSplitOptions.RemoveEmptyEntries).Select(elements => int.Parse(elements)).ToArray();
             //int[] result = currentFuncParseSum(Console.ReadLine());
-           // int[] currentSumAndCount = new int[2];
-           //currentSumAndCount[0] = result.Sum();
+            // int[] currentSumAndCount = new int[2];
+            //currentSumAndCount[0] = result.Sum();
             //currentSumAndCount[1] = result.Length;
             //Console.WriteLine($"Sum {currentSumAndCount[0]} Count of elements {currentSumAndCount[1]}");
+
+            //Print upper words
+            // Func<string, string[]> currentUpperFunc = sentence => sentence.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+            //  .Where(w => char.IsUpper(w[0]))
+            // .ToArray();
+
+            // Console.WriteLine(String.Join(" ", currentUpperFunc(Console.ReadLine())));
+
+            //read data and add 0% VAT
+           // Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
+           //  .Select(e => double.Parse(e) * 1.2)
+           //  .ToArray();
+
+           // Console.WriteLine(String.Join(", ", currentVatFunc(Console.ReadLine())));
+
+             
+
             
         }
 

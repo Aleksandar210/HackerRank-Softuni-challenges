@@ -323,6 +323,8 @@ namespace SoftuniFundamentals
             //PartyIvancho();
             //PartyFilterSoftware();
 
+
+            //function related to the last task of LINQ
            // Func<string, int, bool> currentSumCharsFunc = (word, targetSum) =>
             //  {
              //     int sum = 0;

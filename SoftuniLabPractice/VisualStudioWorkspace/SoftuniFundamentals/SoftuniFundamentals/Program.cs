@@ -371,6 +371,7 @@ namespace SoftuniFundamentals
             Func<string, string> censorWord = (a) => a.Replace("[a-zA-z]", "*");
 
 
+            //func to censor all words in sentenes
             Action<List<string>, StringBuilder> mainLogic = (textLines, output) =>
              {
                  for(int i =0;i<textLines.Count;i++)
@@ -384,13 +385,13 @@ namespace SoftuniFundamentals
                          {
                              if(forbidenWords[i].Equals(e,StringComparison.OrdinalIgnoreCase))
                              {
-                                 output.Append(censorWord(e));
+                                 output.Append(censorWord(e)+" ");
                                  isForbiden = true;
                              }
                          }
                          if(!isForbiden)
                          {
-                             output.Append(e);
+                             output.Append(e+" ");
                          }
                          
                          return e;
@@ -401,8 +402,9 @@ namespace SoftuniFundamentals
              };
             
 
-            StringBuilder currentText = new StringBuilder();
-
+            StringBuilder currentText = new StringBuilder();        //main output will be here
+            mainLogic(text, currentText);
+            Console.WriteLine(currentText.ToString().Trim());
         }
 
         private static void NameSumChars(Func<string,int,bool> currentNameSum)

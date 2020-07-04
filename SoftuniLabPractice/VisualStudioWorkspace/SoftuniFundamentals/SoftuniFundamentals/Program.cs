@@ -329,6 +329,33 @@ namespace SoftuniFundamentals
 
         //-------------------------------
 
+
+
+        private static void PartyFilterSoftware()
+        {
+            //guest list
+            List<string> people = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            //contains history of filters and filtered data by them
+            Dictionary<string, List<string>> addedFilters = new Dictionary<string, List<string>>();
+
+            //FilterAction
+            Action<string, List<string>, Dictionary<string, List<string>>> currentFilterAction =
+                (filterCommand, guests, history) =>
+                {
+
+                };
+                
+
+        }
+
+
+
+
+
+
+
+
          private static void PartyIvancho()
         {
             List<string> currentGuests = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)

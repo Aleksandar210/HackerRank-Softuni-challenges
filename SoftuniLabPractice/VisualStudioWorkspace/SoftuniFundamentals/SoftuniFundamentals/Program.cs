@@ -321,6 +321,7 @@ namespace SoftuniFundamentals
             // CustomComparator();
             //DivisibleRangeOfSequeneLinq();
             //PartyIvancho();
+            //PartyFilterSoftware();
 
         }
 

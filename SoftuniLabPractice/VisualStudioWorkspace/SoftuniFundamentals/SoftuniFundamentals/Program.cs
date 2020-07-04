@@ -340,12 +340,101 @@ namespace SoftuniFundamentals
             Dictionary<string, List<string>> addedFilters = new Dictionary<string, List<string>>();
 
             //FilterAction
-            Action<string, List<string>, Dictionary<string, List<string>>> currentFilterAction =
+            Action<string[], List<string>, Dictionary<string, List<string>>> currentFilterAction =
                 (filterCommand, guests, history) =>
                 {
+                    switch(filterCommand[0].ToLower())
+                    {
+                        case "add filter":
 
+                            switch(filterCommand[1].ToLower())
+                            {
+                                case "starts with":
+                                    if(!history.ContainsKey(filterCommand[1]+" "+filterCommand[2]))
+                                    {
+                                        history.Add(filterCommand[1] + " " + filterCommand[2],new List<string>());
+                                        
+                                        //keeping the filtered values
+                                        history[filterCommand[1] + " " + filterCommand[2]] =
+                                        guests.Where(e => e.StartsWith(filterCommand[2])).ToList();
+
+                                        //keeping the elements which do not apply to the filter
+                                        guests = guests.Where(e => !e.StartsWith(filterCommand[2])).ToList();
+                                    }
+                                    break;
+
+                                case "ends with":
+
+                                    if (!history.ContainsKey(filterCommand[1] + " " + filterCommand[2]))
+                                    {
+                                        history.Add(filterCommand[1] + " " + filterCommand[2], new List<string>());
+
+                                        //keeping the filtered values
+                                        history[filterCommand[1] + " " + filterCommand[2]] =
+                                        guests.Where(e => e.EndsWith(filterCommand[2])).ToList();
+
+                                        //keeping the elements which do not apply to the filter
+                                        guests = guests.Where(e => !e.EndsWith(filterCommand[2])).ToList();
+                                    }
+
+                                    break;
+
+                                case "length":
+                                    if (!history.ContainsKey(filterCommand[1] + " " + filterCommand[2]))
+                                    {
+                                        history.Add(filterCommand[1] + " " + filterCommand[2], new List<string>());
+
+                                        //keeping the filtered values
+
+                                        int lengthFilter = int.Parse(filterCommand[2]);
+                                        history[filterCommand[1] + " " + filterCommand[2]] =
+                                        guests.Where(e => e.Length==lengthFilter).ToList();
+
+                                        //keeping the elements which do not apply to the filter
+                                        guests = guests.Where(e => e.Length!=lengthFilter).ToList();
+                                    }
+
+                                    break;
+
+                                case "contains":
+                                    if (!history.ContainsKey(filterCommand[1] + " " + filterCommand[2]))
+                                    {
+                                        history.Add(filterCommand[1] + " " + filterCommand[2], new List<string>());
+
+                                        //keeping the filtered values
+
+                                        int lengthFilter = int.Parse(filterCommand[2]);
+                                        history[filterCommand[1] + " " + filterCommand[2]] =
+                                        guests.Where(e => e.Contains(filterCommand[2])).ToList();
+
+                                        //keeping the elements which do not apply to the filter
+                                        guests = guests.Where(e => !e.Contains(filterCommand[2])).ToList();
+                                    }
+
+
+                                    break;
+                            }
+
+                            break;
+
+                        case "remove filter":
+                            if(history.ContainsKey(filterCommand[1] + " " + filterCommand[2]))
+                            {
+                                guests.AddRange(history[filterCommand[1] + " " + filterCommand[2]]);
+                                history.Remove(filterCommand[1] + " " + filterCommand[2]);
+                            }
+                            break;
+
+                           
+                    }
                 };
-                
+
+            string enterFilterCommand = Console.ReadLine();
+            while(!enterFilterCommand.Equals("print",StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+
 
         }
 

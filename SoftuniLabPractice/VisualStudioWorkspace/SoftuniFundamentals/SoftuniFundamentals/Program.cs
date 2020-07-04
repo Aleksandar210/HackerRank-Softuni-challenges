@@ -429,12 +429,23 @@ namespace SoftuniFundamentals
                     }
                 };
 
+            //adding commands unitl receive print
             string enterFilterCommand = Console.ReadLine();
             while(!enterFilterCommand.Equals("print",StringComparison.OrdinalIgnoreCase))
             {
-
+                currentFilterAction(enterFilterCommand.Split(","), people, addedFilters);
+                enterFilterCommand = Console.ReadLine();
             }
 
+            //printing guests
+            switch(people.Count)
+            {
+                case 0:
+                    Console.WriteLine("No one will come");
+                    break;
+            }
+
+            StringBuilder sb = new StringBuilder();
 
         }
 

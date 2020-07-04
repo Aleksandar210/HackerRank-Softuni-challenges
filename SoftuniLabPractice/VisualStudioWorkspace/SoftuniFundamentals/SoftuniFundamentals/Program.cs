@@ -362,11 +362,36 @@ namespace SoftuniFundamentals
             }
             string[] forbidenWords = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
+            //func to censor
+            Func<string, string> censorWord = (a) => a.Replace("[a-zA-z]", "*");
+
+
             Action<List<string>, StringBuilder> mainLogic = (textLines, output) =>
              {
                  for(int i =0;i<textLines.Count;i++)
                  {
-
+                     textLines[i].Split(" ",StringSplitOptions.RemoveEmptyEntries)
+                     .Select(e=>
+                     {
+                         bool isForbiden = false;
+                         e.Trim(new char[] { ' ', ',', '.', '-', '!', '?' });
+                         for(int i=0;i<forbidenWords.Length;i++)
+                         {
+                             if(forbidenWords[i].Equals(e,StringComparison.OrdinalIgnoreCase))
+                             {
+                                 output.Append(censorWord(e));
+                                 isForbiden = true;
+                             }
+                         }
+                         if(!isForbiden)
+                         {
+                             output.Append(e);
+                         }
+                         
+                         return e;
+                        } 
+                      );
+                     output.Append(Environment.NewLine);
                  }
              };
             

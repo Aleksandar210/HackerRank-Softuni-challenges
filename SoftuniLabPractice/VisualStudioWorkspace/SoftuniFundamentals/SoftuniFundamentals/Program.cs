@@ -284,18 +284,18 @@ namespace SoftuniFundamentals
             // Console.WriteLine(String.Join(" ", currentUpperFunc(Console.ReadLine())));
 
             //read data and add 0% VAT
-            Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
-             .Select(e => double.Parse(e) * 1.2)
-             .ToArray();
+           // Func<string, double[]> currentVatFunc = number => number.Split(", ", StringSplitOptions.RemoveEmptyEntries)
+            // .Select(e => double.Parse(e) * 1.2)
+            // .ToArray();
 
 
-            StringBuilder sb = new StringBuilder();
-           foreach(var item in currentVatFunc(Console.ReadLine()))
-            {
-                sb.Append(item + Environment.NewLine);
+          //  StringBuilder sb = new StringBuilder();
+          // foreach(var item in currentVatFunc(Console.ReadLine()))
+            //{
+            //    sb.Append(item + Environment.NewLine);
 
-            }
-            Console.WriteLine(sb.ToString());
+            //}
+            //Console.WriteLine(sb.ToString());
 
              
 
@@ -313,6 +313,57 @@ namespace SoftuniFundamentals
                 .Where(e => e % 2 == 0)
                 .OrderBy((e)=>e)).ToArray());
                        
+        }
+
+        public static void FilterByAgeLinq()
+        {
+            //func to return the parsed age
+            Func<string, int> getCurrentAge = e => int.Parse(e.Split(", ", StringSplitOptions.RemoveEmptyEntries)[1]);
+
+            int numberPeople=-1;
+            try
+            {
+                Console.Write("Enter number of people: ");
+                numberPeople = int.Parse(Console.ReadLine());
+            }
+            catch(InvalidCastException exc)
+            {
+                FilterByAgeLinq();
+            }
+
+            string[] peopleData = new string[numberPeople];
+            int counter = 0;
+            while(numberPeople-- >0)
+            {
+                peopleData[counter] = Console.ReadLine();
+                counter++;
+
+            }
+            string filterBy = Console.ReadLine();
+            int ageFilter = int.Parse(filterBy.Split()[1]);
+            string[] filteredPeople;
+            StringBuilder sb = new StringBuilder();
+            switch(filterBy.Split()[0].ToLower())
+            {
+               
+                case "younger":
+                    filteredPeople = peopleData.Where(e => getCurrentAge(e) < ageFilter)
+                        .Select(e=> { sb.Append(e + Environment.NewLine); return e  })
+                        .ToArray();
+                    Console.WriteLine(sb.ToString());
+            
+                    break;
+
+                case "older":
+                    filteredPeople = peopleData.Where(e => getCurrentAge(e) > ageFilter)
+                       .Select(e => { sb.Append(e + Environment.NewLine); return e  })
+                       .ToArray();
+                    Console.WriteLine(sb.ToString());
+                    break;
+           
+            }
+
+
         }
 
         

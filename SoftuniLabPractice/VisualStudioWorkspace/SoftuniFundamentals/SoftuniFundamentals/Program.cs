@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -260,9 +262,39 @@ namespace SoftuniFundamentals
 
             //ReadOddLines();
             //AddNumericsToFileLines();
-            WordsCount();
+            //WordsCount();
+
+            // EvenNumbersLinq();
+
+            //func to parse all elements and return count and sum
+           // Func<string, int[]> currentFuncParseSum = elements =>
+           //  elements.Split(", ", StringSplitOptions.RemoveEmptyEntries).Select(elements => int.Parse(elements)).ToArray();
+            //int[] result = currentFuncParseSum(Console.ReadLine());
+           // int[] currentSumAndCount = new int[2];
+           //currentSumAndCount[0] = result.Sum();
+            //currentSumAndCount[1] = result.Length;
+            //Console.WriteLine($"Sum {currentSumAndCount[0]} Count of elements {currentSumAndCount[1]}");
             
         }
+
+
+        //LINQ
+
+            //-------------------------------
+         private static void EvenNumbersLinq()
+        {
+            Console.WriteLine(String.Join(",", Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e))
+                .Where(e => e % 2 == 0)
+                .OrderBy((e)=>e)).ToArray());
+                       
+        }
+
+        
+
+
+
+            //-------------------------------
 
         //Files
         //-------------------------------

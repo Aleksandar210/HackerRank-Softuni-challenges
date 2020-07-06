@@ -459,8 +459,11 @@ namespace SoftuniFundamentals
                     case "u": currentLocation[1]++; break;
                     case "ul": currentLocation[1]++; currentLocation[0]--; break;
                     case "ur": currentLocation[1]++; currentLocation[0]++; break;
-                    case "d": currentLocation[1]--; break;
+                    case "d":  currentLocation[1]--; break;
+                    case "dr": currentLocation[1]--; currentLocation[0]++; break;
+                    case "dl": currentLocation[1]--; currentLocation[0]--; break;        
                     case "l": currentLocation[0]--; break;
+                    case "r": currentLocation[0]++; break;
                 }
             }
             

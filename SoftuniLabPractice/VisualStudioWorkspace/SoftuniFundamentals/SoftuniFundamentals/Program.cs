@@ -384,7 +384,7 @@ namespace SoftuniFundamentals
             currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
 
             //GameData[] 0->currentBombsDefused,  2-> currentLives 3-> currentBombsOnField
-            int[] gameData = new int[2] { 0, 0 };
+            int[] gameData = new int[3] { 0, 0, 0 };
 
             //assign bombs to building via number of bombs and random generating location on building
             AssignBombsToBuiding(currentBuilding,gameData ,currentLocation, width, height);
@@ -411,10 +411,14 @@ namespace SoftuniFundamentals
                 Console.Write("Enter: ");
                 string[] currentMoveLocation = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 MoveCurrentPositon(currentBuilding,currentLocation,gameData,currentMoveLocation);
-                if(gameData[0]==)
+                if(gameData[0]==gameData[2] || gameData[1]==0)
+                {
+                    break;
+                }
 
 
             }
+            Console.WriteLine("GameOver!");
 
 
 
@@ -448,6 +452,7 @@ namespace SoftuniFundamentals
                     else
                     {
                         currentBuilding[xLocation, yLocation] = 'B';
+                        gameData[2]++;
                         break;
                     }
                         

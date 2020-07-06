@@ -344,7 +344,7 @@ namespace SoftuniFundamentals
 
             // NameSumChars(currentSumCharsFunc);
             //ForbidenWords();
-            BombHostagesJoker();
+            //BombHostagesJoker();
             
             
         }

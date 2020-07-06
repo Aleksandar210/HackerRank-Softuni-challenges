@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.VisualBasic;
 using SoftuniFundamentals.TelerikDefClassesPartTwo;
 using SoftuniFundamentals.TelerikGSMTask;
 using System;
@@ -353,6 +354,13 @@ namespace SoftuniFundamentals
 
         //-------------------------------
 
+        private static void BombHostagesJoker()
+        {
+            Console.Write("Enter current coordinates: ");
+            int[] currentLocation = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries)
+                .Select(e=>int.Parse(e)).ToArray();
+
+        }
 
         private static void  ForbidenWords()
         {
@@ -374,13 +382,13 @@ namespace SoftuniFundamentals
             Func<string, string> censorWord = (a) =>
             {
                 StringBuilder sb = new StringBuilder();
-                for(int i = 0; i < a.Length; i++)
+                for (int i = 0; i < a.Length; i++)
                 {
                     sb.Append("*");
                 }
                 return sb.ToString();
 
-            }
+            };
 
 
             //func to censor all words in sentenes

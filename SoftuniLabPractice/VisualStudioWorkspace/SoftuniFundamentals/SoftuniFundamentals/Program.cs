@@ -356,14 +356,36 @@ namespace SoftuniFundamentals
 
         private static void BombHostagesJoker()
         {
+            //enter data of your location
             Console.Write("Enter current coordinates: ");
             int[] currentLocation = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries)
                 .Select(e=>int.Parse(e)).ToArray();
+
+            //enter building specs
             Console.Write("Enter width of builing: ");
             int width = int.Parse(Console.ReadLine());
             Console.Write("Enter height of building: ");
             int height = int.Parse(Console.ReadLine());
+            
+            //enter number of bombs to add 
+            Console.Write("Enter number of bombs: ");
+            int numberBombs = int.Parse(Console.ReadLine());
 
+
+            // generata building
+            char[,] currentBuilding = new char[height,width];
+            for(int i=0;i<height;i++)
+            {
+                for(int j=0;j<width;j++)
+                {
+                    currentBuilding[i, j] = '*';
+                }
+            }
+
+            //assigning your position on the map
+            currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
+
+           
         }
 
         private static void  ForbidenWords()

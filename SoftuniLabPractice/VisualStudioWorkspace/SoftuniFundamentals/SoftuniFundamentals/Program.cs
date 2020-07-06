@@ -383,11 +383,13 @@ namespace SoftuniFundamentals
             //assigning your position on the map
             currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
 
-            //assign bombs to building via number of bombs and random generating location on building
-            AssignBombsToBuiding(currentBuilding, currentLocation, width, height);
-
-            //GameData[] 0->currentBombsDefused,  2-> currentLives
+            //GameData[] 0->currentBombsDefused,  2-> currentLives 3-> currentBombsOnField
             int[] gameData = new int[2] { 0, 0 };
+
+            //assign bombs to building via number of bombs and random generating location on building
+            AssignBombsToBuiding(currentBuilding,gameData ,currentLocation, width, height);
+
+          
 
             //DisplayFiled with the StringBuilding becaue Console Output is a slow process
             StringBuilder sb = new StringBuilder();
@@ -408,8 +410,10 @@ namespace SoftuniFundamentals
                 Console.WriteLine("Enter Location separated by space examp u-up,d-down,l-left,r-right,dl,dr,ul,ur.");
                 Console.Write("Enter: ");
                 string[] currentMoveLocation = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                MoveCurrentPositon(currentBuilding,currentLocation,gameData,currentMoveLocation);
+                if(gameData[0]==)
 
-                
+
             }
 
 
@@ -417,7 +421,7 @@ namespace SoftuniFundamentals
            
         }
 
-        private static void AssignBombsToBuiding(char[,]currentBuilding,int[] currentLocation,params int[] buildingSpecs)
+        private static void AssignBombsToBuiding(char[,]currentBuilding,int[] gameData,int[] currentLocation,params int[] buildingSpecs)
         {
             //enter number of bombs to add 
             Console.Write("Enter number of bombs: ");
@@ -439,11 +443,12 @@ namespace SoftuniFundamentals
 
                     if(xLocation!=currentLocation[0] && yLocation!=currentLocation[1])
                     {
-                        break;
+                        
                     }
                     else
                     {
                         currentBuilding[xLocation, yLocation] = 'B';
+                        break;
                     }
                         
                 }

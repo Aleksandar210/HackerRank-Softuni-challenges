@@ -399,8 +399,14 @@ namespace SoftuniFundamentals
                     }
                     sb.Append(Environment.NewLine);
                 }
+                sb.Append(Environment.NewLine);
+                
                 Console.WriteLine(sb.ToString());
+                Console.WriteLine("Enter Location separated by space examp u-up,d-down,l-left,r-right,dl,dr,ul,ur.");
+                Console.Write("Enter: ");
+                string[] currentMoveLocation = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
+                
             }
 
 
@@ -441,6 +447,23 @@ namespace SoftuniFundamentals
                 
             }
 
+        }
+
+        private static void MoveCurrentPositon(char[] currentBuilding,int[] currentLocation,string[] moveCommands)
+        {
+            int[] resultLocation;
+            for(int i =0;i<moveCommands.Length;i++)
+            {
+            switch(moveCommands[i].ToLower())
+                {
+                    case "u": currentLocation[1]++; break;
+                    case "ul": currentLocation[1]++; currentLocation[0]--; break;
+                    case "ur": currentLocation[1]++; currentLocation[0]++; break;
+                    case "d": currentLocation[1]--; break;
+                    case "l": currentLocation[0]--; break;
+                }
+            }
+            
         }
 
 

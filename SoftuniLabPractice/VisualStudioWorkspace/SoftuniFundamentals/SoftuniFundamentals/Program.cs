@@ -386,6 +386,8 @@ namespace SoftuniFundamentals
             //assign bombs to building via number of bombs and random generating location on building
             AssignBombsToBuiding(currentBuilding, currentLocation, width, height);
 
+            //GameData[] 0->currentBombsDefused,  2-> currentStepsMade
+
             //DisplayFiled with the StringBuilding becaue Console Output is a slow process
             StringBuilder sb = new StringBuilder();
             while(true)
@@ -449,22 +451,44 @@ namespace SoftuniFundamentals
 
         }
 
-        private static void MoveCurrentPositon(char[] currentBuilding,int[] currentLocation,string[] moveCommands)
+        private static void MoveCurrentPositon(char[,] currentBuilding,int[] currentLocation,int[] gameData,string[] moveCommands)
         {
-            int[] resultLocation;
+            //using a dummy array for location so that when exception arrises we dont lose our loc
+            int[] resultLocation = new int[2];
+            resultLocation[0] = currentLocation[0];
+            resultLocation[1] = currentLocation[1];
+
+            //going trough each pos and executeing movement
             for(int i =0;i<moveCommands.Length;i++)
             {
             switch(moveCommands[i].ToLower())
                 {
-                    case "u": currentLocation[1]++; break;
-                    case "ul": currentLocation[1]++; currentLocation[0]--; break;
-                    case "ur": currentLocation[1]++; currentLocation[0]++; break;
-                    case "d":  currentLocation[1]--; break;
-                    case "dr": currentLocation[1]--; currentLocation[0]++; break;
-                    case "dl": currentLocation[1]--; currentLocation[0]--; break;        
-                    case "l": currentLocation[0]--; break;
-                    case "r": currentLocation[0]++; break;
+                    case "u": resultLocation[1]++; break;
+                    case "ul": resultLocation[1]++; resultLocation[0]--; break;
+                    case "ur": resultLocation[1]++; resultLocation[0]++; break;
+                    case "d":  resultLocation[1]--; break;
+                    case "dr": resultLocation[1]--; resultLocation[0]++; break;
+                    case "dl": resultLocation[1]--; resultLocation[0]--; break;        
+                    case "l": resultLocation[0]--; break;
+                    case "r": resultLocation[0]++; break;
                 }
+            }
+
+            try
+            {
+                if(currentBuilding[resultLocation[0],resultLocation[1]]=='B')
+                {
+                    gameData[0]++;
+                    currentBuilding[resultLocation[0], resultLocation[1]] = 'Y';
+                }
+                else
+                {
+                    currentBuilding[resultLocation[0], resultLocation[1]] = 'Y';
+                }
+            }
+            catch(IndexOutOfRangeException exc)
+            {
+
             }
             
         }

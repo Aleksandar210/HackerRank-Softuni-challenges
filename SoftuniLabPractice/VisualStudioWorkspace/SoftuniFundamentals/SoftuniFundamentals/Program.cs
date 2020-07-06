@@ -386,7 +386,8 @@ namespace SoftuniFundamentals
             //assign bombs to building via number of bombs and random generating location on building
             AssignBombsToBuiding(currentBuilding, currentLocation, width, height);
 
-            //GameData[] 0->currentBombsDefused,  2-> currentStepsMade
+            //GameData[] 0->currentBombsDefused,  2-> currentLives
+            int[] gameData = new int[2] { 0, 0 };
 
             //DisplayFiled with the StringBuilding becaue Console Output is a slow process
             StringBuilder sb = new StringBuilder();
@@ -488,7 +489,7 @@ namespace SoftuniFundamentals
             }
             catch(IndexOutOfRangeException exc)
             {
-
+                gameData[1]--;
             }
             
         }

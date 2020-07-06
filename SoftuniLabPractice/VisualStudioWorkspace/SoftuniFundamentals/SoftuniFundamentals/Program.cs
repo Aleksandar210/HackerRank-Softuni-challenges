@@ -367,7 +367,7 @@ namespace SoftuniFundamentals
 
             //enter data of your location
             Console.Write("Enter current coordinates: ");
-            int[] currentLocation = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+            int[] currentLocation = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(e => int.Parse(e)).ToArray();
 
             // generata building
@@ -384,7 +384,7 @@ namespace SoftuniFundamentals
             currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
 
             //GameData[] 0->currentBombsDefused,  2-> currentLives 3-> currentBombsOnField
-            int[] gameData = new int[3] { 0, 0, 0 };
+            int[] gameData = new int[3] { 0, 3, 0 };
 
             //assign bombs to building via number of bombs and random generating location on building
             AssignBombsToBuiding(currentBuilding,gameData ,currentLocation, width, height);
@@ -421,6 +421,7 @@ namespace SoftuniFundamentals
 
 
             }
+            Console.Clear();
             Console.WriteLine("GameOver!");
 
 
@@ -433,7 +434,7 @@ namespace SoftuniFundamentals
             //enter number of bombs to add 
             Console.Write("Enter number of bombs: ");
             int numberBombs = int.Parse(Console.ReadLine());
-
+            gameData[2] = numberBombs;
             Random randX = new Random();
             int xLocation = -1;
 
@@ -448,21 +449,21 @@ namespace SoftuniFundamentals
                     xLocation = randX.Next(0,buildingSpecs[0]);
                     yLocation  =   randY.Next(0, buildingSpecs[1]);
 
-                    if(xLocation!=currentLocation[0] && yLocation!=currentLocation[1])
+                    if(xLocation==currentLocation[0] && yLocation==currentLocation[1])
                     {
                         
                     }
                     else
                     {
                         currentBuilding[xLocation, yLocation] = 'B';
-                        gameData[2]++;
+                        
                         break;
                     }
                         
                 }
                 
             }
-
+            
         }
 
         private static void MoveCurrentPositon(char[,] currentBuilding,int[] currentLocation,int[] gameData,string[] moveCommands)
@@ -477,14 +478,16 @@ namespace SoftuniFundamentals
             {
             switch(moveCommands[i].ToLower())
                 {
-                    case "u": resultLocation[1]++; break;
-                    case "ul": resultLocation[1]++; resultLocation[0]--; break;
-                    case "ur": resultLocation[1]++; resultLocation[0]++; break;
-                    case "d":  resultLocation[1]--; break;
-                    case "dr": resultLocation[1]--; resultLocation[0]++; break;
-                    case "dl": resultLocation[1]--; resultLocation[0]--; break;        
-                    case "l": resultLocation[0]--; break;
-                    case "r": resultLocation[0]++; break;
+                    case "r": resultLocation[1]++; break;
+                    case "dl": resultLocation[0]++; resultLocation[1]--; break;
+                    case "dr": resultLocation[0]++; resultLocation[1]++; break;
+                    case "l":  resultLocation[1]--; break;
+                    case "ur": resultLocation[0]--; resultLocation[1]++; break;
+                    case "ul": resultLocation[0]--; resultLocation[1]--; break;        
+                    case "u": resultLocation[0]--; break;
+                    case "d": resultLocation[0]++; break;
+                    default:
+                        break;
                 }
             }
 
@@ -492,12 +495,21 @@ namespace SoftuniFundamentals
             {
                 if(currentBuilding[resultLocation[0],resultLocation[1]]=='B')
                 {
-                    gameData[0]++;
+                    
                     currentBuilding[resultLocation[0], resultLocation[1]] = 'Y';
+                    
+                    currentBuilding[currentLocation[0], currentLocation[1]] = '*';
+                    currentLocation[0] = resultLocation[0];
+                    currentLocation[1] = resultLocation[1];
+                    gameData[0] += 1;
                 }
                 else
                 {
+                    
                     currentBuilding[resultLocation[0], resultLocation[1]] = 'Y';
+                    currentBuilding[currentLocation[0], currentLocation[1]] = '*';
+                    currentLocation[0] = resultLocation[0];
+                    currentLocation[1] = resultLocation[1];
                 }
             }
             catch(IndexOutOfRangeException exc)

@@ -407,6 +407,7 @@ namespace SoftuniFundamentals
                 sb.Append(Environment.NewLine);
                 
                 Console.WriteLine(sb.ToString());
+                sb.Clear();
                 Console.WriteLine("Enter Location separated by space examp u-up,d-down,l-left,r-right,dl,dr,ul,ur.");
                 Console.Write("Enter: ");
                 string[] currentMoveLocation = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);

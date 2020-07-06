@@ -449,17 +449,13 @@ namespace SoftuniFundamentals
                     xLocation = randX.Next(0,buildingSpecs[0]);
                     yLocation  =   randY.Next(0, buildingSpecs[1]);
 
-                    if(xLocation==currentLocation[0] && yLocation==currentLocation[1])
-                    {
-                        
-                    }
-                    else
+                    if(xLocation!=currentLocation[0] && yLocation!=currentLocation[1])
                     {
                         currentBuilding[xLocation, yLocation] = 'B';
-                        
+
                         break;
                     }
-                        
+                                
                 }
                 
             }

@@ -367,9 +367,7 @@ namespace SoftuniFundamentals
             Console.Write("Enter height of building: ");
             int height = int.Parse(Console.ReadLine());
             
-            //enter number of bombs to add 
-            Console.Write("Enter number of bombs: ");
-            int numberBombs = int.Parse(Console.ReadLine());
+           
 
 
             // generata building
@@ -385,8 +383,42 @@ namespace SoftuniFundamentals
             //assigning your position on the map
             currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
 
+
+
            
         }
+
+        private static void AssignBombsToBuiding(char[,]currentBuilding,int[] currentLocation,params int[] buildingSpecs)
+        {
+            //enter number of bombs to add 
+            Console.Write("Enter number of bombs: ");
+            int numberBombs = int.Parse(Console.ReadLine());
+
+            Random randX = new Random();
+            int xLocation = -1;
+
+
+            Random randY = new Random();
+            int yLocation = -1;
+            while(numberBombs-- >0)
+            {
+                
+                while(true)
+                {
+                    xLocation = randX.Next(0,buildingSpecs[0]);
+                    yLocation  =   randY.Next(0, buildingSpecs[1]);
+
+                    if(xLocation!=currentLocation[0] && yLocation!=currentLocation[1])
+                    {
+                        break;
+                    }
+                        
+                }
+                
+            }
+
+        }
+
 
         private static void  ForbidenWords()
         {

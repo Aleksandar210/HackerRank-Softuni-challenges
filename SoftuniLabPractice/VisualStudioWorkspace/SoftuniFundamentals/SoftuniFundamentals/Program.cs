@@ -344,7 +344,7 @@ namespace SoftuniFundamentals
 
             // NameSumChars(currentSumCharsFunc);
             //ForbidenWords();
-           // BombHostagesJoker();
+            BombHostagesJoker();
             
             
         }
@@ -356,19 +356,19 @@ namespace SoftuniFundamentals
 
         private static void BombHostagesJoker()
         {
-            //enter data of your location
-            Console.Write("Enter current coordinates: ");
-            int[] currentLocation = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries)
-                .Select(e=>int.Parse(e)).ToArray();
+            
 
             //enter building specs
             Console.Write("Enter width of builing: ");
             int width = int.Parse(Console.ReadLine());
             Console.Write("Enter height of building: ");
             int height = int.Parse(Console.ReadLine());
-            
-           
 
+
+            //enter data of your location
+            Console.Write("Enter current coordinates: ");
+            int[] currentLocation = Console.ReadLine().Split(", ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e)).ToArray();
 
             // generata building
             char[,] currentBuilding = new char[height,width];

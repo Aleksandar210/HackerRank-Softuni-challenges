@@ -344,7 +344,7 @@ namespace SoftuniFundamentals
 
             // NameSumChars(currentSumCharsFunc);
             //ForbidenWords();
-            
+           // BombHostagesJoker();
             
             
         }
@@ -393,6 +393,8 @@ namespace SoftuniFundamentals
 
             //DisplayFiled with the StringBuilding becaue Console Output is a slow process
             StringBuilder sb = new StringBuilder();
+
+            //Game loop here
             while(true)
             {
                 Console.Clear();

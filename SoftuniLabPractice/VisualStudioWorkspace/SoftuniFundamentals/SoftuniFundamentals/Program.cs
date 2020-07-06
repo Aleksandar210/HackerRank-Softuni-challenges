@@ -359,6 +359,10 @@ namespace SoftuniFundamentals
             Console.Write("Enter current coordinates: ");
             int[] currentLocation = Console.ReadLine().Split(", ",StringSplitOptions.RemoveEmptyEntries)
                 .Select(e=>int.Parse(e)).ToArray();
+            Console.Write("Enter width of builing: ");
+            int width = int.Parse(Console.ReadLine());
+            Console.Write("Enter height of building: ");
+            int height = int.Parse(Console.ReadLine());
 
         }
 

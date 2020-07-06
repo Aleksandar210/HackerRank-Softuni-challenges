@@ -383,6 +383,26 @@ namespace SoftuniFundamentals
             //assigning your position on the map
             currentBuilding[currentLocation[0], currentLocation[1]] = 'Y';      //as YOU
 
+            //assign bombs to building via number of bombs and random generating location on building
+            AssignBombsToBuiding(currentBuilding, currentLocation, width, height);
+
+            //DisplayFiled with the StringBuilding becaue Console Output is a slow process
+            StringBuilder sb = new StringBuilder();
+            while(true)
+            {
+                Console.Clear();
+                for(int i=0;i<currentBuilding.GetLength(0);i++)
+                {
+                    for( int j=0;j<currentBuilding.GetLength(1);j++)
+                    {
+                        sb.Append(currentBuilding[i, j]+" ");
+                    }
+                    sb.Append(Environment.NewLine);
+                }
+                Console.WriteLine(sb.ToString());
+
+            }
+
 
 
            
@@ -411,6 +431,10 @@ namespace SoftuniFundamentals
                     if(xLocation!=currentLocation[0] && yLocation!=currentLocation[1])
                     {
                         break;
+                    }
+                    else
+                    {
+                        currentBuilding[xLocation, yLocation] = 'B';
                     }
                         
                 }

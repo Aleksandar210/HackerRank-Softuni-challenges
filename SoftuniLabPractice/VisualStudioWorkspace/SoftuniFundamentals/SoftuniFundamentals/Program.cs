@@ -370,7 +370,9 @@ namespace SoftuniFundamentals
                 enterCommand = Console.ReadLine();
             }
 
-
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Cars in parking lots:" + Environment.NewLine);
+            
               
         }
 

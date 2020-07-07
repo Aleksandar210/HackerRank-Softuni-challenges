@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -115,6 +117,18 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         {
             this.RemoveSetOfCars(currentSetOfNumbers, this.currentParking);
 
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            this.currentParking.Select(e =>
+            {
+                sb.Append(e.Key+Environment.NewLine);
+                return e;
+            });
+
+            return sb.ToString();
         }
     }
 }

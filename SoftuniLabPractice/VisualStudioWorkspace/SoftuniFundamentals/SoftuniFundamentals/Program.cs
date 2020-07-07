@@ -355,7 +355,12 @@ namespace SoftuniFundamentals
         //Defining classes
         private static void SoftuiParkingDefinignClasses()
         {
+            //current Parking lots created
             Dictionary<string, Parking> curentParkingLots = new Dictionary<string, Parking>();
+
+            //current cars who are not assigned to a parking lot
+            Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
+
             string enterCommand = Console.ReadLine();
             while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
             {
@@ -364,7 +369,7 @@ namespace SoftuniFundamentals
               
         }
 
-        private static void executeDefiningClassesParking()
+        private static void executeDefiningClassesParking(string[] commands,Dictionary<string,Parking> currentParkingLots)
         {
 
         }

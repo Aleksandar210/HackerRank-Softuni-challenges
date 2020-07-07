@@ -347,6 +347,7 @@ namespace SoftuniFundamentals
             // NameSumChars(currentSumCharsFunc);
             //ForbidenWords();
             //BombHostagesJoker();
+            //SoftuiParkingDefinignClasses();
             
             
         }
@@ -382,6 +383,8 @@ namespace SoftuniFundamentals
             {
                 sb.Append(item.Key + Environment.NewLine);
             }
+
+            Console.WriteLine(sb.ToString());
 
             
               

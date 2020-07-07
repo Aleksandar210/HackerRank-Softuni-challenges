@@ -146,6 +146,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
+
+        //adding behaviour
+        public void DriveCar(Car car)
+        {
+
+        }
         
 
         //override toString()

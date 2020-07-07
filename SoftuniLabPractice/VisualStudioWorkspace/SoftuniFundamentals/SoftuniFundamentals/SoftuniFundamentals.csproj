@@ -18,8 +18,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Csharp Advanced Classes\" />
-  </ItemGroup>
-
 </Project>

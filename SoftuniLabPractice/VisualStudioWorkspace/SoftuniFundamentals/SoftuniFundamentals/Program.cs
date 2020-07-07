@@ -357,7 +357,12 @@ namespace SoftuniFundamentals
             Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
 
             string enterCommand = Console.ReadLine();
-            while(!enterCommand.Equals())
+            string[] currentCommands;
+            while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                currentCommands = enterCommand.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                enterCommand = Console.ReadLine();
+            }
         }
 
         //Defining classes

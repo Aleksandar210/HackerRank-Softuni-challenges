@@ -70,6 +70,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         {
             private set
             {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Fuel cannot be 0 or below");
+                }
+
                 if(value>=this.FuelQuantity)
                 {
                     this.currentFuelAmount = this.FuelQuantity;

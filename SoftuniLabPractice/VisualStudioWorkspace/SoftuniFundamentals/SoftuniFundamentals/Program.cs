@@ -12,6 +12,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 
+//this will reference everything from that folder when used directly without specifing from where
+using SoftuniFundamentals.Csharp_Advanced_Classes;
 
 namespace SoftuniFundamentals
 {
@@ -352,9 +354,8 @@ namespace SoftuniFundamentals
 
         //Defining classes
         private static void SoftuiParkingDefinignClasses()
-        
-
-
+        {
+            Dictionary<string, Parking> curentParkingLots = new Dictionary<string, Parking>();
             string enterCommand = Console.ReadLine();
             while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
             {

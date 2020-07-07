@@ -9,6 +9,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
     {
         //adding constant for default values
         private const string DefaultRegistrationnumber = "Unknown";
+        private const int DefaultTravelledDistance = 0;
 
         //adding fields
         private string make;
@@ -16,11 +17,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         string registrationNumber;
         private int year;
         private double fuelQuantity;
+        private double currentFuelAmount;
         private double fuelConsumption;
+        private int travelledDistance;
 
         public Car() : this("VW", "Golf", 2025, 200, 10,DefaultRegistrationnumber)
         {
-
+            
         }
 
         public Car(string make,string model,int year)
@@ -28,6 +31,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Make = make;
             this.Model = model;
             this.Year = year;
+            this.TravelledDitance = DefaultTravelledDistance;
         }
 
         public Car(string make,string model,int year,double fuelQuantity,double fuelConsumption,string registrationNumber)
@@ -37,6 +41,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
             this.RegistrationNumber = registrationNumber;
+            
 
         }
 
@@ -60,6 +65,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 }
             }
         }
+
+        public double CurrentFuelAmount { private set; get }
+
+        public int TravelledDitance { private set; get; }
 
         public double FuelQuantity
         {

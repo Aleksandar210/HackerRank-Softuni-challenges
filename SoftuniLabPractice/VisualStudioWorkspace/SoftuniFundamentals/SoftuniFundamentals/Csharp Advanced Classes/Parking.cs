@@ -72,9 +72,24 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
+        public Car GetCar(string registrationNumber)
+        {
+            if(this.currentParking.ContainsKey(registrationNumber))
+            {
+                return this.currentParking[registrationNumber];
+            }
+            else
+            {
+                throw new ArgumentException("No such car found");
+            }
+            return null;
+        }
+
+
         //Action function used for RemoveSetOfRegistration just for practice.
         private Action<List<string>,Dictionary<string,Car>> RemoveSetOfCars = (sets,cars) =>
         {
+            
             for(int i =0;i<sets.Count;i++)
             {
                 if(cars.ContainsKey(sets[i]))

@@ -66,7 +66,30 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
-        public double CurrentFuelAmount { private set; get }
+        public double CurrentFuelAmount
+        {
+            private set
+            {
+                if(value>=this.FuelQuantity)
+                {
+                    this.currentFuelAmount = this.FuelQuantity;
+                }
+                else if(value<this.FuelQuantity)
+                {
+                    double neededFuel = this.FuelQuantity - this.CurrentFuelAmount;
+                    if(value>=neededFuel)
+                    {
+                        this.CurrentFuelAmount = this.FuelQuantity;
+                    }
+                    else
+                    {
+                        this.CurrentFuelAmount += neededFuel;
+                    }
+
+                }
+            }
+            get { return this.currentFuelAmount; }
+         }
 
         public int TravelledDitance { private set; get; }
 

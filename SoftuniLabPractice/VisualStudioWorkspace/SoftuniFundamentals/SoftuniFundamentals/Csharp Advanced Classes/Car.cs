@@ -10,6 +10,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         //adding fields
         private string make;
         private string model;
+        string registrationNumber;
         private int year;
         private double fuelQuantity;
         private double fuelConsumption;
@@ -84,6 +85,22 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 else
                 {
                     this.fuelConsumption = value;
+                }
+            }
+        }
+
+        public string RegistrationNumber
+        {
+            get { return this.registrationNumber; }
+            private set
+            {
+                if(value!=null)
+                {
+                    this.registrationNumber = value;
+                }
+                else
+                {
+                    throw new ArgumentException("No Data received for registration number");
                 }
             }
         }

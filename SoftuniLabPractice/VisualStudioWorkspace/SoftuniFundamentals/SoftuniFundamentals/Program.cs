@@ -367,14 +367,24 @@ namespace SoftuniFundamentals
             {
                 currentCommands = enterCommand.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 executeDefiningClassesParking(currentCommands, curentParkingLots, currentCars);
+                enterCommand = Console.ReadLine();
             }
+
+
               
         }
 
+        //execute commands for parking lots and cars with no parking lots
         private static void executeDefiningClassesParking(string[] commands,Dictionary<string,Parking> currentParkingLots,
             Dictionary<string,Car> currentCars)
         {
-
+           // switch(commands[0].ToLower())
+           // {
+              //  case "addcar":
+                //    if(currentParkingLots.ContainsKey(commands[]))
+                 //   break;
+           // }
+                
         }
 
 

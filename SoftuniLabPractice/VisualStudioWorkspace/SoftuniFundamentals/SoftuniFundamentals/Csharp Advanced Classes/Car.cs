@@ -7,6 +7,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
    public class Car
     {
+        //adding constant for default values
+        private const string DefaultRegistrationnumber = "Unknown";
+
         //adding fields
         private string make;
         private string model;
@@ -15,7 +18,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         private double fuelQuantity;
         private double fuelConsumption;
 
-        public Car() : this("VW", "Golf", 2025, 200, 10)
+        public Car() : this("VW", "Golf", 2025, 200, 10,DefaultRegistrationnumber)
         {
 
         }
@@ -104,6 +107,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                     throw new ArgumentException("No Data received for registration number");
                 }
             }
+        }
+
+        //override toString()
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Make: {this.Make} Model: {this.Model } Year: {this.Year}"+Environment.NewLine);
+            sb.Append($"FuelQuantity: {this.FuelQuantity} FuelConsumption: {this.FuelConsumption}"+Environment.NewLine);
+            sb.Append($"Plate: {this.RegistrationNumber}");
+
+            return sb.ToString();
         }
 
     }

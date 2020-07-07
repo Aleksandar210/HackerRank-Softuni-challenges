@@ -14,19 +14,25 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         private double fuelQuantity;
         private double fuelConsumption;
 
-        public Car()
+        public Car() : this("VW", "Golf", 2025, 200, 10)
         {
 
         }
 
         public Car(string make,string model,int year,double fuelQuantity,double fuelConsumption)
         {
+            this.Make = make;
+            this.Model = model;
+            this.Year = year;
+            this.FuelQuantity = fuelQuantity;
+            this.FuelConsumption = fuelConsumption;
 
         }
 
         //adding properties with validation
         public string Make { get; set; }
         public string Model { get; set; }
+
         public int Year
         {
              get { return this.year; }
@@ -35,7 +41,43 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             { 
                 if(value<=0 || value<=1950)
                 {
-                    throw new ArgumentException("yer cannot be les or equal to 0 or 1960");
+                    throw new ArgumentException("year cannot be les or equal to 0 or 1960");
+                }
+                else
+                {
+                    this.year = value;
+                }
+            }
+        }
+
+        public double FuelQuantity
+        {
+            get { return this.fuelQuantity; }
+            private set
+            {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Quantity has to above 0");
+                }
+                else
+                {
+                    this.fuelConsumption = value;
+                }
+            }
+        }
+
+        public double FuelConsumption
+        {
+            get { return this.fuelConsumption;  }
+            private set
+            {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Consumption has to be above 0");
+                }
+                else
+                {
+                    this.fuelConsumption = value;
                 }
             }
         }

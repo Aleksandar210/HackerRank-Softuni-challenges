@@ -54,7 +54,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             else
             {
                 this.currentParking.Add(car.RegistrationNumber, car);
+                Console.WriteLine($"Successfully added new car {car.Make} {car.RegistrationNumber}");
             }
+
+        }
+
+        public void RemoveCar()
+        {
 
         }
     }

@@ -352,6 +352,13 @@ namespace SoftuniFundamentals
             
         }
 
+        private static void CarDriveDistanceDefiningClases()
+        {
+            Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
+
+            string enterCommand = Console.ReadLine();
+            while(!enterCommand.Equals())
+        }
 
         //Defining classes
         private static void SoftuiParkingDefinignClasses()

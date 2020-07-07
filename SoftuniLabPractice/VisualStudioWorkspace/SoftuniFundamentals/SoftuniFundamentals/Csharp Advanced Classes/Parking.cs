@@ -71,5 +71,23 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 throw new ArgumentException("Car doesnt exist");
             }
         }
+
+        //Action function used for RemoveSetOfRegistration just for practice.
+        private Action<List<string>,Dictionary<string,Car>> RemoveSetOfCars = (sets,cars) =>
+        {
+            for(int i =0;i<sets.Count;i++)
+            {
+                if(cars.ContainsKey(sets[i]))
+                {
+                    cars.Remove(sets[i]);
+                }
+            }
+        };
+
+        public void RemoveSetOfRegistrationNumber(List<string> currentSetOfNumbers)
+        {
+            this.RemoveSetOfCars(currentSetOfNumbers, this.currentParking);
+
+        }
     }
 }

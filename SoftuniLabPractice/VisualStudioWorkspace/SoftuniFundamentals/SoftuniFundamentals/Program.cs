@@ -362,14 +362,17 @@ namespace SoftuniFundamentals
             Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
 
             string enterCommand = Console.ReadLine();
+            string[] currentCommands=null;
             while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
             {
-
+                currentCommands = enterCommand.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                executeDefiningClassesParking(currentCommands, curentParkingLots, currentCars);
             }
               
         }
 
-        private static void executeDefiningClassesParking(string[] commands,Dictionary<string,Parking> currentParkingLots)
+        private static void executeDefiningClassesParking(string[] commands,Dictionary<string,Parking> currentParkingLots,
+            Dictionary<string,Car> currentCars)
         {
 
         }

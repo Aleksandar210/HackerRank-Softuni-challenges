@@ -59,9 +59,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         }
 
-        public void RemoveCar()
+        public void RemoveCar(string registrationNumber)
         {
-
+            if(this.currentParking.ContainsKey(registrationNumber))
+            {
+                this.currentParking.Remove(registrationNumber);
+                Console.WriteLine($"Removed car with plate {registrationNumber}");
+            }
+            else
+            {
+                throw new ArgumentException("Car doesnt exist");
+            }
         }
     }
 }

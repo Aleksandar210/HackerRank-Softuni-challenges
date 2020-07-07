@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
@@ -8,18 +9,21 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
     {
         //adding fields
         private Dictionary<string, Car> currentParking;
-        private int capacity;           
+        private int capacity;
+        private string name;
         
 
         public Parking()
         {
             this.currentParking = new Dictionary<string, Car>();
             this.capacity = 0;
+
         }
 
-        public Parking(int capacity):this()
+        public Parking(int capacity,string name):this()
         {
             this.Capacity = capacity;
+            this.Name = name;
         }
 
         //adding prperties
@@ -38,6 +42,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                     this.capacity = value;
                 }
             }
+        }
+
+        public string Name { private set; get; }
+       
+
+        public int Count
+        {
+            get { return this.currentParking.Count; }
         }
 
         //adding Behavior
@@ -82,7 +94,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             {
                 throw new ArgumentException("No such car found");
             }
-            return null;
+            
         }
 
 

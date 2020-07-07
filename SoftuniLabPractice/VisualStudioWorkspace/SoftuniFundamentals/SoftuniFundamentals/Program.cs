@@ -351,7 +351,22 @@ namespace SoftuniFundamentals
 
 
         //Defining classes
+        private static void SoftuiParkingDefinignClasses()
+        
 
+
+            string enterCommand = Console.ReadLine();
+            while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+
+            }
+              
+        }
+
+        private static void executeDefiningClassesParking()
+        {
+
+        }
 
 
 

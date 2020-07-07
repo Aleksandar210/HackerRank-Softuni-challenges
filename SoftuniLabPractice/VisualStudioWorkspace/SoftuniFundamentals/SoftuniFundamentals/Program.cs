@@ -372,6 +372,17 @@ namespace SoftuniFundamentals
 
             StringBuilder sb = new StringBuilder();
             sb.Append("Cars in parking lots:" + Environment.NewLine);
+            foreach(var item in curentParkingLots)
+            {
+                sb.Append(item.Key + Environment.NewLine);
+                sb.Append(item.Value);
+            }
+            sb.Append("Cars outside parkings:"+Environment.NewLine);
+            foreach(var item in currentCars)
+            {
+                sb.Append(item.Key + Environment.NewLine);
+            }
+
             
               
         }

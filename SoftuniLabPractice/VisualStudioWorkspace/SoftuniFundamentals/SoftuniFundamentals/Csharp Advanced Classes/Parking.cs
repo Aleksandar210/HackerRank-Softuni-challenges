@@ -8,7 +8,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
     {
         //adding fields
         private Dictionary<string, Car> currentParking;
-        private int capacity;
+        private int capacity;           
+        
 
         public Parking()
         {
@@ -16,9 +17,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.capacity = 0;
         }
 
-        public Parking(int capacity)
+        public Parking(int capacity):this()
         {
-
+            this.Capacity = capacity;
         }
 
         //adding prperties
@@ -30,13 +31,31 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             {
                 if(value<=0)
                 {
-                    throw new ArgumentException("Space cannot be 0 or below that");
+                    throw new ArgumentException("Space cannot be 0 or below");
                 }
                 else
                 {
                     this.capacity = value;
                 }
             }
+        }
+
+        //adding Behavior
+        public void AddCar(Car car)
+        {
+            if(this.currentParking.ContainsKey(car.RegistrationNumber))
+            {
+                throw new ArgumentException($"Car with plate {car.RegistrationNumber} already is in");
+            }
+            else if(!this.currentParking.ContainsKey(car.RegistrationNumber) && this.Capacity==this.currentParking.Count)
+            {
+                throw new ArgumentException("Not enough spae in the prking lot");
+            }
+            else
+            {
+                this.currentParking.Add(car.RegistrationNumber, car);
+            }
+
         }
     }
 }

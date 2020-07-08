@@ -391,9 +391,34 @@ namespace SoftuniFundamentals
             }
 
             string filterBy = Console.ReadLine();
+            StringBuilder sb = new StringBuilder();
             switch(filterBy.ToLower())
             {
                 case "fragile":
+                    currentCars.Where(e =>
+                    {
+                        if(e.Cargo.Type.Equals("fragile",StringComparison.OrdinalIgnoreCase))
+                        {
+                            for(int i =0;i<e.Tires.Length;i++)
+                            {
+                                if(e.Tires[i].Pressure<1)
+                                {
+                                    sb.Append(e.Model + Environment.NewLine);
+                                    return true;
+                                    
+                                }
+                            }
+                        }
+
+                        return false;
+                        
+                    }
+                    );
+
+                    Console.WriteLine(sb.ToString());
+                    break;
+
+                case "famable":
 
                     break;
             }

@@ -419,7 +419,19 @@ namespace SoftuniFundamentals
                     break;
 
                 case "famable":
+                    currentCars.Where(e =>
+                    {
+                        if (e.Cargo.Type.Equals("flamable", StringComparison.OrdinalIgnoreCase) && e.Engine.EnginePower>250)
+                        {
+                            sb.Append(e.Model + Environment.NewLine);
+                            return true;
+                        }
 
+                        return false;
+
+                    }
+                   );
+                    Console.WriteLine(sb.ToString());
                     break;
             }
         }

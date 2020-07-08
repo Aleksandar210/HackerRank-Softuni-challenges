@@ -45,6 +45,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Tires[1] = new Tire(tire2P, tire2A);
             this.Tires[2] = new Tire(tire3P, tire3A);
             this.Tires[3] = new Tire(tire4P, tire4A);
+            this.Cargo = new Cargo(cargoType, cargoWeight);
 
         }
 

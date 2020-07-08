@@ -7,7 +7,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
        public  class Cargo
     {
         private string type;
-        private int weight;
+        private double weight;
 
         public Cargo()
         {
@@ -15,14 +15,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Type = "unknown";
         }
 
-        public Cargo(string type,int weight)
+        public Cargo(string type,double weight)
         {
             this.Weight = weight;
             this.Type = type;
         }
 
         //ading properties
-        public int Weight
+        public double Weight
         {
             private set
             {

@@ -368,12 +368,34 @@ namespace SoftuniFundamentals
             string enterData;
             string[] collectData;
 
+            Car currentCar = null;
+            int counter = numberCars;
             //adding car data
-            while (numberCars-- >0)
+            while (counter-- >0)
             {
                 enterData = Console.ReadLine();
                 collectData = enterData.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                try
+                {
+                    currentCar = new Car(collectData[0],int.Parse(collectData[1]),int.Parse(collectData[2]),
+                        double.Parse(collectData[3]),collectData[4],double.Parse(collectData[5]),
+                        int.Parse(collectData[6]),double.Parse(collectData[7]),int.Parse(collectData[8]),double.Parse(collectData[9]),
+                        int.Parse(collectData[10]),double.Parse(collectData[11]),int.Parse(collectData[12]));
+                    currentCars.Add(currentCar);
+                }
+                catch(ArgumentException exc)
+                {
+                    counter++;
+                    continue;
+                }
+            }
 
+            string filterBy = Console.ReadLine();
+            switch(filterBy.ToLower())
+            {
+                case "fragile":
+
+                    break;
             }
         }
 

@@ -39,6 +39,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             double tire1P, int tire1A, double tire2P, int tire2A, double tire3P, int tire3A, double tire4P, int tire4A)
             : this()
         {
+            this.Engine = new Engine(engineSpeed, enginePower);
 
         }
         

@@ -45,6 +45,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         }
 
+        public Car(string model,double currentFuel,double fuelConsumption):this()
+        {
+            this.Model = model;
+            this.CurrentFuelAmount = currentFuel;
+            this.FuelConsumption = fuelConsumption;
+
+        }
+
         //adding properties with validation
         public string Make { get; set; }
         public string Model { get; set; }
@@ -159,7 +167,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
             else
             {
-
+                throw new ArgumentException("Insuficent Fuel");
             }
 
         }

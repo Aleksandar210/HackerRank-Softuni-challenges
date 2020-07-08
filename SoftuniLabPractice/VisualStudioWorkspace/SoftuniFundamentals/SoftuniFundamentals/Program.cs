@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 
 //this will reference everything from that folder when used directly without specifing from where
 using SoftuniFundamentals.Csharp_Advanced_Classes;
+using System.Runtime.InteropServices;
 
 namespace SoftuniFundamentals
 {
@@ -358,6 +359,23 @@ namespace SoftuniFundamentals
         private static void CarDriveDistanceDefiningClases()
         {
             Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
+
+            //adding number of cars and adding them to the structure
+            int numberCars = int.Parse(Console.ReadLine());
+
+            string enterCarData;
+            string[] collectCarData;
+            while(numberCars-- >0)
+            {
+                enterCarData = Console.ReadLine();
+                collectCarData = enterCarData.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                if(!currentCars.ContainsKey(collectCarData[0]))
+                {
+                    currentCars.Add(collectCarData[0], new Car(collectCarData[0], double.Parse(collectCarData[1]),
+                        double.Parse(collectCarData[2])));
+                }
+
+            }
 
             string enterCommand = Console.ReadLine();
             string[] currentCommands;

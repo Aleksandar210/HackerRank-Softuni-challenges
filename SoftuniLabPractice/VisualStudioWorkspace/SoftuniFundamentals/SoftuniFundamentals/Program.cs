@@ -355,6 +355,13 @@ namespace SoftuniFundamentals
 
 
         //Defining classes
+        
+         public static void RawDataCarDefinignClasses()
+        {
+
+        }
+
+
 
         private static void CarDriveDistanceDefiningClases()
         {

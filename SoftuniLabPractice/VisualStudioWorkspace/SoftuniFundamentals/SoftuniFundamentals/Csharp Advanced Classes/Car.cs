@@ -200,7 +200,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         public void BalanceTirePressure()
         {
             double maxPressure = double.MinValue;
-            foreach(var item in this.currentTires)
+            foreach (var item in this.currentTires)
             {
                 if (item.Pressure > maxPressure)
                 {
@@ -208,7 +208,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 }
             }
 
-            this.currentTires = this.currentTires.Select(e => e.UpdatedPressure(maxPressure)).ToArray();
+            this.currentTires = this.currentTires.Select(e =>
+            {
+                e.UpdatedPressure(maxPressure);
+                return e;
+            }
+            ).ToArray();
         }
         
 

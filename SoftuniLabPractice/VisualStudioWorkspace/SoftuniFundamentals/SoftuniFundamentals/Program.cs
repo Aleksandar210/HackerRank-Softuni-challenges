@@ -389,9 +389,30 @@ namespace SoftuniFundamentals
 
             }
 
+            //function to add line separator for output
+            Func<int, string> currentFuncForAddingLine = e =>
+             {
+                 StringBuilder sb = new StringBuilder();
+                 for(int i =0;i<e;i++)
+                 {
+                     sb.Append("-");
+                 }
+
+                 return sb.ToString();
+             };
+
+
+            //Displaying all cars afterwards
             Console.WriteLine("Cars with fuel amount and travelled distance: ");
             StringBuilder sb = new StringBuilder();
-
+            currentCars.Select(e =>
+            {
+                sb.Append(e.Value + Environment.NewLine);
+                sb.Append(currentFuncForAddingLine(20)+Environment.NewLine);
+                return e;
+            }
+            );
+            Console.WriteLine()
         }
         private static void ExecuteSpeedDrivCommands(string[] commands,Dictionary<string,Car> currentCars)
         {

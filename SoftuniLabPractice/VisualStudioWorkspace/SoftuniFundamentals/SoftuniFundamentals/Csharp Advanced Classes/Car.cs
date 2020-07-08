@@ -174,7 +174,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         public void AddFuel(double amountFuel)
         {
+            double neededFuel = this.FuelQuantity - this.CurrentFuelAmount;
+            if(amountFuel==neededFuel)
+            {
 
+            }
         }
         
 

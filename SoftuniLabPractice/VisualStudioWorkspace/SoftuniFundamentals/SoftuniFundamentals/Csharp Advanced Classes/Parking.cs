@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
-    class Parking
+    public class Parking
     {
         //adding fields
         private Dictionary<string, Car> currentParking;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -14,17 +15,33 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         //adding fields
         private string make;
         private string model;
-        string registrationNumber;
+        private string registrationNumber;
         private int year;
+        private int travelledDistance;
         private double fuelQuantity;
         private double currentFuelAmount;
         private double fuelConsumption;
-        private int travelledDistance;
+        private Tire[] currentTires;
+        private Engine currentEngine;
+        
 
         public Car() : this("VW", "Golf", 2025, 200, 10,DefaultRegistrationnumber)
         {
-            
+            this.currentTires = new Tire[4];
         }
+
+        public Car(string model):this()
+        {
+            this.Model = model;
+        }
+
+        public Car(string model, int engineSpeed, int enginePower, double cargoWeight, string cargoType,
+            double tire1P, int tire1A, double tire2P, int tire2A, double tire3P, int tire3A, double tire4P, int tire4A)
+            : this()
+        {
+
+        }
+        
 
         public Car(string make,string model,int year)
         {
@@ -32,6 +49,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Model = model;
             this.Year = year;
             this.TravelledDitance = DefaultTravelledDistance;
+            this.currentTires = new Tire[4];
         }
 
         public Car(string make,string model,int year,double fuelQuantity,double fuelConsumption,string registrationNumber)
@@ -154,6 +172,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
+        public Engine Engine { private set; get; }
+
+
+
+       
+        
+
 
         //adding behaviour
         public void DriveCar(double kilometers)
@@ -170,6 +195,20 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 throw new ArgumentException("Insuficent Fuel");
             }
 
+        }
+
+        public void BalanceTirePressure()
+        {
+            double maxPressure = double.MinValue;
+            foreach(var item in this.currentTires)
+            {
+                if (item.Pressure > maxPressure)
+                {
+                    maxPressure = item.Pressure;
+                }
+            }
+
+            this.currentTires = this.currentTires.Select(e => e.UpdatedPressure(maxPressure)).ToArray();
         }
         
 

@@ -356,9 +356,25 @@ namespace SoftuniFundamentals
 
         //Defining classes
         
-         public static void RawDataCarDefinignClasses()
+        public static void RawDataCarDefinignClasses()
         {
+            
 
+            //adding number cars
+            int numberCars = int.Parse(Console.ReadLine());
+
+            List<Car> currentCars = new List<Car>(numberCars);
+
+            string enterData;
+            string[] collectData;
+
+            //adding car data
+            while (numberCars-- >0)
+            {
+                enterData = Console.ReadLine();
+                collectData = enterData.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+            }
         }
 
 

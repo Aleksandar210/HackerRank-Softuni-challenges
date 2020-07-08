@@ -4,13 +4,14 @@ using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
-    class Tire
+    public class Tire
     {
         //adding consts
         private const double DefaultPressure = 1;
 
         //adding fields
         double pressure;
+        int age;
 
 
         //adding constructors
@@ -40,6 +41,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
 
             get { return this.pressure; }
+        }
+
+        //adding behaviour
+        public void UpdatedPressure(double pressure)
+        {
+            this.Pressure = pressure;
         }
     }
 }

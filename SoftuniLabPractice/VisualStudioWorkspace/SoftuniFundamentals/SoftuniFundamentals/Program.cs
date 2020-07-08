@@ -384,14 +384,32 @@ namespace SoftuniFundamentals
             while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
             {
                 currentCommands = enterCommand.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                ExecuteSpeedDrivCommands(currentCommands, currentCars);
                 enterCommand = Console.ReadLine();
+
             }
+
+            Console.WriteLine("Cars with fuel amount and travelled distance: ");
+            StringBuilder sb = new StringBuilder();
+
         }
         private static void ExecuteSpeedDrivCommands(string[] commands,Dictionary<string,Car> currentCars)
         {
             switch(commands[0].ToLower())
             {
-                case ""
+                case "drive":
+                    if(currentCars.ContainsKey(commands[1]))
+                    {
+                        currentCars[commands[1]].DriveCar(double.Parse(commands[2]));
+                    }
+                   
+                    break;
+                case "refuel":
+                    if(currentCars.ContainsKey(commands[1]))
+                    {
+                        currentCars[commands[1]].AddFuel(double.Parse(commands[2]));
+                    }
+                    break;
             }
         }
 

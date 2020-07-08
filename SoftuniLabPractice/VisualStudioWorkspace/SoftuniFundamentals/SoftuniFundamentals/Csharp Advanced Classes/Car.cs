@@ -194,6 +194,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             StringBuilder sb = new StringBuilder();
             sb.Append($"Make: {this.Make} Model: {this.Model } Year: {this.Year}"+Environment.NewLine);
             sb.Append($"FuelQuantity: {this.FuelQuantity} FuelConsumption: {this.FuelConsumption}"+Environment.NewLine);
+            sb.Append($"Travelled Ditance: {this.TravelledDitance}"+Environment.NewLine);
             sb.Append($"Plate: {this.RegistrationNumber}");
 
             return sb.ToString();

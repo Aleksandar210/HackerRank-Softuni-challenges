@@ -171,13 +171,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
 
         }
+        
 
+        //method for re-fuelling
         public void AddFuel(double amountFuel)
         {
             double neededFuel = this.FuelQuantity - this.CurrentFuelAmount;
-            if(amountFuel==neededFuel)
+            if(amountFuel==neededFuel || amountFuel>neededFuel)
             {
-
+                this.CurrentFuelAmount = this.FuelQuantity;
+            }
+            else
+            {
+                this.currentFuelAmount += amountFuel;
             }
         }
         

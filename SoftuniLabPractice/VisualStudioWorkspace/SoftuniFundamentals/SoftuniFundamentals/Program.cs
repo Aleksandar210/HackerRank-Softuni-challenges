@@ -387,9 +387,12 @@ namespace SoftuniFundamentals
                 enterCommand = Console.ReadLine();
             }
         }
-        private static void ExecuteSpeedDrivCommands()
+        private static void ExecuteSpeedDrivCommands(string[] commands,Dictionary<string,Car> currentCars)
         {
-
+            switch(commands[0].ToLower())
+            {
+                case ""
+            }
         }
 
         

@@ -352,6 +352,9 @@ namespace SoftuniFundamentals
             
         }
 
+
+        //Defining classes
+
         private static void CarDriveDistanceDefiningClases()
         {
             Dictionary<string, Car> currentCars = new Dictionary<string, Car>();
@@ -365,7 +368,7 @@ namespace SoftuniFundamentals
             }
         }
 
-        //Defining classes
+        
         private static void SoftuiParkingDefinignClasses()
         {
             //current Parking lots created

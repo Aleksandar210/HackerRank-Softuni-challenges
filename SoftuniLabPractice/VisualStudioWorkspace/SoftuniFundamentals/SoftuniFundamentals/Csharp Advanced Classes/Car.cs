@@ -148,8 +148,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
 
         //adding behaviour
-        public void DriveCar(Car car)
+        public void DriveCar(double kilometers)
         {
+            double fuelConsumCalculation = (this.fuelConsumption * kilometers);
+            bool canDriveThisFar = fuelConsumCalculation<=this.CurrentFuelAmount;
+            if(canDriveThisFar)
+            {
+                this.CurrentFuelAmount -= fuelConsumCalculation;
+                this.TravelledDitance += (int)kilometers;
+            }
+            else
+            {
+
+            }
 
         }
         

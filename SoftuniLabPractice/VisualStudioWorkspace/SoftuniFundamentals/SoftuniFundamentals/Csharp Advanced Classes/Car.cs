@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
-   public class Car
+    public class Car
     {
         //adding constant for default values
         private const string DefaultRegistrationnumber = "Unknown";
@@ -23,14 +23,15 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         private double fuelConsumption;
         private Tire[] currentTires;
         private Engine currentEngine;
-        
+        private Cargo currentCargo;
 
-        public Car() : this("VW", "Golf", 2025, 200, 10,DefaultRegistrationnumber)
+
+        public Car() : this("VW", "Golf", 2025, 200, 10, DefaultRegistrationnumber)
         {
             this.currentTires = new Tire[4];
         }
 
-        public Car(string model):this()
+        public Car(string model) : this()
         {
             this.Model = model;
         }
@@ -40,11 +41,15 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             : this()
         {
             this.Engine = new Engine(engineSpeed, enginePower);
+            this.Tires[0] = new Tire(tire1P, tire1A);
+            this.Tires[1] = new Tire(tire2P, tire2A);
+            this.Tires[2] = new Tire(tire3P, tire3A);
+            this.Tires[3] = new Tire(tire4P, tire4A);
 
         }
-        
 
-        public Car(string make,string model,int year)
+
+        public Car(string make, string model, int year)
         {
             this.Make = make;
             this.Model = model;
@@ -53,18 +58,18 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.currentTires = new Tire[4];
         }
 
-        public Car(string make,string model,int year,double fuelQuantity,double fuelConsumption,string registrationNumber)
-            :this(make,model,year)
+        public Car(string make, string model, int year, double fuelQuantity, double fuelConsumption, string registrationNumber)
+            : this(make, model, year)
         {
-            
+
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
             this.RegistrationNumber = registrationNumber;
-            
+
 
         }
 
-        public Car(string model,double currentFuel,double fuelConsumption):this()
+        public Car(string model, double currentFuel, double fuelConsumption) : this()
         {
             this.Model = model;
             this.CurrentFuelAmount = currentFuel;
@@ -78,11 +83,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         public int Year
         {
-             get { return this.year; }
+            get { return this.year; }
 
             private set
-            { 
-                if(value<=0 || value<=1950)
+            {
+                if (value <= 0 || value <= 1950)
                 {
                     throw new ArgumentException("year cannot be les or equal to 0 or 1960");
                 }
@@ -97,19 +102,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         {
             private set
             {
-                if(value<=0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Fuel cannot be 0 or below");
                 }
 
-                if(value>=this.FuelQuantity)
+                if (value >= this.FuelQuantity)
                 {
                     this.currentFuelAmount = this.FuelQuantity;
                 }
-                else if(value<this.FuelQuantity)
+                else if (value < this.FuelQuantity)
                 {
                     double neededFuel = this.FuelQuantity - this.CurrentFuelAmount;
-                    if(value>=neededFuel)
+                    if (value >= neededFuel)
                     {
                         this.CurrentFuelAmount = this.FuelQuantity;
                     }
@@ -121,7 +126,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 }
             }
             get { return this.currentFuelAmount; }
-         }
+        }
 
         public int TravelledDitance { private set; get; }
 
@@ -130,7 +135,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             get { return this.fuelQuantity; }
             private set
             {
-                if(value<=0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Quantity has to above 0");
                 }
@@ -143,10 +148,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         public double FuelConsumption
         {
-            get { return this.fuelConsumption;  }
+            get { return this.fuelConsumption; }
             private set
             {
-                if(value<=0)
+                if (value <= 0)
                 {
                     throw new ArgumentException("Consumption has to be above 0");
                 }
@@ -162,7 +167,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             get { return this.registrationNumber; }
             private set
             {
-                if(value!=null)
+                if (value != null)
                 {
                     this.registrationNumber = value;
                 }
@@ -175,7 +180,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         public Engine Engine { private set; get; }
 
+        public Tire[] Tires { private set; get; }
 
+        public Cargo Cargo {private set; get;}
 
        
         

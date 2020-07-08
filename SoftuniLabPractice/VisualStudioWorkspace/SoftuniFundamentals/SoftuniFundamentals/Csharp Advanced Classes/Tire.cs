@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
@@ -20,9 +21,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Pressure = DefaultPressure;
         }
 
-        public Tire(double pressure)
+        public Tire(double pressure,int age)
         {
             this.Pressure = pressure;
+
         }
 
         //adding properties
@@ -41,6 +43,23 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
 
             get { return this.pressure; }
+        }
+
+        public int Age
+        {
+            private set
+            {
+                if(age<0)
+                {
+                    throw new ArgumentException("Age cannot be negative number");
+                }
+                else
+                {
+                    this.age = value;
+                }
+            }
+
+            get { return this.age; }
         }
 
         //adding behaviour

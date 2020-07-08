@@ -171,6 +171,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
 
         }
+
+        public void AddFuel(double amountFuel)
+        {
+
+        }
         
 
         //override toString()

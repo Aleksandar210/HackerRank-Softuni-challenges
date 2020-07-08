@@ -377,6 +377,8 @@ namespace SoftuniFundamentals
 
             }
 
+            //adding commands
+
             string enterCommand = Console.ReadLine();
             string[] currentCommands;
             while(!enterCommand.Equals("end",StringComparison.OrdinalIgnoreCase))
@@ -384,6 +386,10 @@ namespace SoftuniFundamentals
                 currentCommands = enterCommand.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 enterCommand = Console.ReadLine();
             }
+        }
+        private static void ExecuteSpeedDrivCommands()
+        {
+
         }
 
         

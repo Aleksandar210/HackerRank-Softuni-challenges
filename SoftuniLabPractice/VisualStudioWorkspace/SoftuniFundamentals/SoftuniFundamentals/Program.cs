@@ -349,7 +349,7 @@ namespace SoftuniFundamentals
             //ForbidenWords();
             //BombHostagesJoker();
             //SoftuiParkingDefinignClasses();
-            
+            //CarDriveDistanceDefiningClases();
             
         }
 
@@ -412,7 +412,7 @@ namespace SoftuniFundamentals
                 return e;
             }
             );
-            Console.WriteLine()
+            Console.WriteLine(sb.ToString());
         }
         private static void ExecuteSpeedDrivCommands(string[] commands,Dictionary<string,Car> currentCars)
         {

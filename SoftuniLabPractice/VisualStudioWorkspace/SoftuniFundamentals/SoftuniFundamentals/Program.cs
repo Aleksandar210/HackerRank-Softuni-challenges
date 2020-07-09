@@ -362,6 +362,30 @@ namespace SoftuniFundamentals
             //this will hold our items
             List<int> itemsObtained = new List<int>();
 
+            string[] boxes = GenerateBoxes(numberBoxes);
+
+            foreach (var item in boxes)
+            {
+                OpenBox(itemsObtained, item);
+            }
+
+            //checking items obtained  for type epic/poor
+            StringBuilder sb = new StringBuilder();
+            itemsObtained.Select(e =>
+            {
+                if(e>=100)
+                {
+                    sb.Append($"Epic item obtained value:{e}" + Environment.NewLine);
+                }
+                else
+                {
+                    sb.Append($"Poor item obtained value:{e}" + Environment.NewLine);
+                }
+                return e;
+            }
+            );
+
+            Console.WriteLine(sb.ToString());
 
         }
         private static void OpenBox(List<int> currentInventory,string item)
@@ -399,6 +423,8 @@ namespace SoftuniFundamentals
                     secondSequence.RemoveAt(secondSequence.Count - 1);
                 }
             }
+
+            currentInventory.Add(currentPartsFromSequences.Aggregate((a, b) => a + b));
         }
 
         private static string[] GenerateBoxes(int number)

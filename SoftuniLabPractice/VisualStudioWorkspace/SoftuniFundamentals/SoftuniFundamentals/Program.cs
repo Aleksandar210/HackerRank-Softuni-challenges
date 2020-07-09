@@ -366,14 +366,39 @@ namespace SoftuniFundamentals
         }
         private static void OpenBox(List<int> currentInventory,string item)
         {
-            string[] sequenes = item.Split("|");
+            string[] sequenes = item.Split("|");        //getting both sequences
 
+            //first sequence
             List<int> firstSequence = sequenes[0].Split(" ",StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToList();
 
-
+            //second sequence
             List<int> secondSequence = sequenes[1].Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse).ToList();
+
+
+            //we sum first form fristSeq and last from secondSeq
+            // int sum = firstSequence[0] + secondSequence[secondSequence.Count - 1];
+
+
+            List<int> currentPartsFromSequences = new List<int>();
+
+            int sum;
+            while (firstSequence.Count!=0 || secondSequence.Count!=0)
+            {
+                sum = firstSequence[0] + secondSequence[secondSequence.Count - 1];
+                if (sum%2==0)
+                {
+                    currentPartsFromSequences.Add(sum);
+                    firstSequence.RemoveAt(0);
+                    secondSequence.RemoveAt(secondSequence.Count-1);
+                }
+                else
+                {
+                    firstSequence.Add(secondSequence[secondSequence.Count - 1]);
+                    secondSequence.RemoveAt(secondSequence.Count - 1);
+                }
+            }
         }
 
         private static string[] GenerateBoxes(int number)

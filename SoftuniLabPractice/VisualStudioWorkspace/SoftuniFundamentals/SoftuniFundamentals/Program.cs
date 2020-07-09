@@ -359,6 +359,21 @@ namespace SoftuniFundamentals
             Console.Write("Enter number of boxes: ");
             int numberBoxes = int.Parse(Console.ReadLine());
 
+            //this will hold our items
+            List<int> itemsObtained = new List<int>();
+
+
+        }
+        private static void OpenBox(List<int> currentInventory,string item)
+        {
+            string[] sequenes = item.Split("|");
+
+            List<int> firstSequence = sequenes[0].Split(" ",StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
+
+
+            List<int> secondSequence = sequenes[1].Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse).ToList();
         }
 
         private static string[] GenerateBoxes(int number)
@@ -367,8 +382,9 @@ namespace SoftuniFundamentals
             int counter = 0;
             while(number-- >0)
             {
-
+                currentBoxes[counter++] = Console.ReadLine();
             }
+            return currentBoxes;
         }
 
             //--------------------------

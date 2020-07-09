@@ -353,6 +353,15 @@ namespace SoftuniFundamentals
             //RawDataCarDefinignClasses();
         }
 
+        //Generics
+
+
+
+
+
+
+        //------------------------------------------------
+
 
         //Defining classes
         

@@ -353,6 +353,27 @@ namespace SoftuniFundamentals
             //RawDataCarDefinignClasses();
         }
 
+        //Exam Tasks
+        private static void LootBox()
+        {
+            Console.Write("Enter number of boxes: ");
+            int numberBoxes = int.Parse(Console.ReadLine());
+
+        }
+
+        private static string[] GenerateBoxes(int number)
+        {
+            string[] currentBoxes = new string[number];
+            int counter = 0;
+            while(number-- >0)
+            {
+
+            }
+        }
+
+            //--------------------------
+
+
         //Generics
 
 

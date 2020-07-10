@@ -364,7 +364,7 @@ namespace SoftuniFundamentals
             int matrixData = int.Parse(Console.ReadLine());
 
             //initialising matrix
-            char[,] currentMatrix = new char[matrixData, matrixData];
+            char[][] currentMatrix = new char[matrixData][];
 
 
         }
@@ -372,6 +372,16 @@ namespace SoftuniFundamentals
         //fill matrix with content
         private static void GenerateMatrix(char[,] currentMatrix)
         {
+            //random generate row pos of player on start
+            Random playerRowPos = new Random();
+            int rosPosPlayer = playerRowPos.Next(0, currentMatrix.GetLength(0));
+
+            //random generate col pos player on start
+            Random playerColPos = new Random();
+            int colPosPlayer = playerColPos.Next(0,currentMatrix.GetLength(1));
+
+
+            //adding dashes (free space ) to the matrix;
             for(int i = 0; i < currentMatrix.GetLength(0); i++)
             {
                 for(int j=0;j<currentMatrix.GetLength(1);j++)
@@ -379,6 +389,10 @@ namespace SoftuniFundamentals
                     currentMatrix[i, j] = '-';
                 }
             }
+
+
+
+
         }
 
         private static void LootBox()

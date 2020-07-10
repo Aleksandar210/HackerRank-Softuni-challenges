@@ -372,21 +372,24 @@ namespace SoftuniFundamentals
         //fill matrix with content
         private static void GenerateMatrix(char[,] currentMatrix)
         {
-            //random generate row pos of player on start
-            Random playerRowPos = new Random();
-            int rosPosPlayer = playerRowPos.Next(0, currentMatrix.GetLength(0));
 
-            //random generate col pos player on start
-            Random playerColPos = new Random();
-            int colPosPlayer = playerColPos.Next(0,currentMatrix.GetLength(1));
-
-
-            //adding dashes (free space ) to the matrix;
+            string temp;
+            //adding dashes (free space and data) to the matrix;
             for(int i = 0; i < currentMatrix.GetLength(0); i++)
             {
-                for(int j=0;j<currentMatrix.GetLength(1);j++)
+                Console.Clear();
+                Console.Write($"Enter data for row: {i}: ");
+                temp = Console.ReadLine();
+                for (int j=0;j<currentMatrix.GetLength(1);j++)
                 {
-                    currentMatrix[i, j] = '-';
+                    if(temp.Length!=currentMatrix.GetLength(0))
+                    {
+                        i--;
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
 

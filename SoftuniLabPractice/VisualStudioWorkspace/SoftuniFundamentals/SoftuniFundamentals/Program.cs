@@ -351,6 +351,7 @@ namespace SoftuniFundamentals
             //SoftuiParkingDefinignClasses();
             //CarDriveDistanceDefiningClases();
             //RawDataCarDefinignClasses();
+            //ReVolt();
         }
 
 
@@ -368,13 +369,29 @@ namespace SoftuniFundamentals
 
             //initialising matrix
             char[][] currentMatrix = new char[matrixData][];
-            GenerateMatrix(currentMatrix);
+           int[] playerCoordinates =  GenerateMatrix(currentMatrix);
 
+            string enterCommand;
+            bool gameWon;
             while(numberCommands-- >0)
             {
-
+                enterCommand = Console.ReadLine();
+                gameWon = ReVoldCommands(currentMatrix, playerCoordinates,enterCommand);
+                if(gameWon)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Game over you WIN");
+                    break;
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Game over you Lose");
+                    break;
+                }
             }
 
+            
 
         }
 
@@ -412,12 +429,15 @@ namespace SoftuniFundamentals
 
         }               
 
-        private static void ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
+        private static bool ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
         {
+            bool wonGame = false;
 
             Action<char[][],string ,Func<int[],int>,Func<int[],int,int[]>,int[]> actUponEvent = (field,prevCommand,isOutside,rePosition,pos) =>
              {
-                 switch(field[pos[0]][pos[1]])
+                
+
+                 switch (field[pos[0]][pos[1]])
                  {
                      case 'B':
                          field[pos[0]][pos[1]] = '-';
@@ -462,6 +482,9 @@ namespace SoftuniFundamentals
                                  pos[1]++;
                                  break;
                          }
+                         break;
+                     case 'F':
+                         wonGame = true;
                          break;
                      default:
                           isOutsideResult = isOutside(pos);
@@ -518,31 +541,39 @@ namespace SoftuniFundamentals
              *5 - - - - - 
              */
 
+           
+
            switch(command.ToLower())
             {
                 case "up":
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[0]--;
                     actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
-                    break;
+                    return wonGame;
+                    
                 case "down":
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[0]++;
                     actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
-                    break;
+                    return wonGame;
+                    
                 case "right":
                     
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[1]++;
-                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
-                    break;
+                   actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
+                    return wonGame;
+                    
                 case "left":
                    
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[1]--;
-                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
-                    break;
+                     actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
+                    return wonGame;
+                    
             }
+
+            return false;
         }
 
         private static void LootBox()

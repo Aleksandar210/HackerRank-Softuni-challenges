@@ -370,7 +370,7 @@ namespace SoftuniFundamentals
         }
 
         //fill matrix with content
-        private static void GenerateMatrix(char[,] currentMatrix)
+        private static void GenerateMatrix(char[][] currentMatrix)
         {
 
             string temp;
@@ -380,16 +380,14 @@ namespace SoftuniFundamentals
                 Console.Clear();
                 Console.Write($"Enter data for row: {i}: ");
                 temp = Console.ReadLine();
-                for (int j=0;j<currentMatrix.GetLength(1);j++)
+                if(temp.Length!=currentMatrix.GetLength(0))
                 {
-                    if(temp.Length!=currentMatrix.GetLength(0))
-                    {
-                        i--;
-                    }
-                    else
-                    {
-
-                    }
+                    i--;
+                }
+                else
+                {
+                    currentMatrix[i] = new char[currentMatrix.GetLength(0)];
+                    currentMatrix[i] = temp.ToCharArray();
                 }
             }
 

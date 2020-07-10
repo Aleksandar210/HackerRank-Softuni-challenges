@@ -417,7 +417,12 @@ namespace SoftuniFundamentals
 
             Action<char[][], int[]> actUponEvent = (field, pos) =>
              {
-
+                 switch(field[pos[0]][pos[1]])
+                 {
+                     case 'B':
+                         
+                         break;
+                 }
              };
 
 
@@ -468,9 +473,26 @@ namespace SoftuniFundamentals
            switch(command.ToLower())
             {
                 case "up":
+                    
+                    upMovement:
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[0]--;
                 break;
+                case "down":
+                    downMovement:
+                    currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
+                    playerCoordinates[0]++;
+                    break;
+                case "right":
+                    rightMovement:
+                    currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
+                    playerCoordinates[1]++;
+                    break;
+                case "left":
+                    leftMovement:
+                    currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
+                    playerCoordinates[1]--;
+                    break;
             }
         }
 

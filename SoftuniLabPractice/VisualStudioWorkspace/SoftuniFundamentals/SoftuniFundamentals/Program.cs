@@ -424,16 +424,18 @@ namespace SoftuniFundamentals
                  }
                  else if (pos[0] > currentMatrix.GetLength(0))
                  {
-                     return true;
+                     return 1;
                  }
                  else if (pos[1] == -1)
                  {
-                     return true;
+                     return 2;
                  }
                  else if (pos[1] > currentMatrix.GetLength(0))
                  {
-                     return true;
+                     return 3;
                  }
+                 return -1;
+                 
              };
 
 

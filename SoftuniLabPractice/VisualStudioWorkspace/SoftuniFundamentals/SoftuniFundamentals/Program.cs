@@ -369,9 +369,11 @@ namespace SoftuniFundamentals
 
         }
 
-        //fill matrix with content
-        private static void GenerateMatrix(char[][] currentMatrix)
+        //fill matrix with content and return the player coordinates
+        private static int[] GenerateMatrix(char[][] currentMatrix)
         {
+            int[] playerCoordinates = new int[2];       //0 is the row pos and 1 is the col pos
+
 
             string temp;
             //adding dashes (free space and data) to the matrix;
@@ -388,6 +390,11 @@ namespace SoftuniFundamentals
                 {
                     currentMatrix[i] = new char[currentMatrix.GetLength(0)];
                     currentMatrix[i] = temp.ToCharArray();
+                    if(temp.Contains('f'))
+                    {
+                        playerCoordinates[0] = i;
+                        playerCoordinates[1] = temp.IndexOf('f');
+                    }
                 }
             }
 

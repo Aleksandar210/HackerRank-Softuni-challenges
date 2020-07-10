@@ -412,8 +412,13 @@ namespace SoftuniFundamentals
 
         }               
 
-        private static void ReVoldCommands(char[][] currentMatrix, string command)
+        private static void ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
         {
+
+            Action<char[][], int[]> actUponEvent = (field, pos) =>
+             {
+
+             };
 
 
             Func<int[], int> isOutsideField = pos =>
@@ -462,8 +467,9 @@ namespace SoftuniFundamentals
 
            switch(command.ToLower())
             {
-                case "up": 
-                 
+                case "up":
+                    currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
+                    playerCoordinates[0]--;
                 break;
             }
         }

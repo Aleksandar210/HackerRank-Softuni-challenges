@@ -446,7 +446,29 @@ namespace SoftuniFundamentals
                          break;
 
                      case 'T':
-
+                         field[pos[0]][pos[1]] = '-';
+                         switch(prevCommand.ToLower())
+                         {
+                             case "up":
+                                 pos[0]++;
+                                 break;
+                             case "down":
+                                 pos[0]--;
+                                 break;
+                             case "right":
+                                 pos[1]--;
+                                 break;
+                             case "left":
+                                 pos[1]++;
+                                 break;
+                         }
+                         break;
+                     default:
+                          isOutsideResult = isOutside(pos);
+                         if (isOutsideResult != -1)
+                         {
+                             pos = rePosition(pos, isOutsideResult);
+                         }
                          break;
                  }
              };
@@ -499,25 +521,26 @@ namespace SoftuniFundamentals
            switch(command.ToLower())
             {
                 case "up":
-                    
-                    upMovement:
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[0]--;
-                break;
+                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
+                    break;
                 case "down":
-                    downMovement:
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[0]++;
+                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
                     break;
                 case "right":
-                    rightMovement:
+                    
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[1]++;
+                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
                     break;
                 case "left":
-                    leftMovement:
+                   
                     currentMatrix[playerCoordinates[0]][playerCoordinates[1]] = '-';
                     playerCoordinates[1]--;
+                    actUponEvent(currentMatrix, command, isOutsideField, RePosition, playerCoordinates);
                     break;
             }
         }

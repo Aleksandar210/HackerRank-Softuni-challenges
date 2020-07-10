@@ -415,12 +415,38 @@ namespace SoftuniFundamentals
         private static void ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
         {
 
-            Action<char[][], int[]> actUponEvent = (field, pos) =>
+            Action<char[][],string ,Func<int[],int>,Func<int[],int,int[]>,int[]> actUponEvent = (field,prevCommand,isOutside,rePosition,pos) =>
              {
                  switch(field[pos[0]][pos[1]])
                  {
                      case 'B':
+                         field[pos[0]][pos[1]] = '-';
                          
+                         switch(prevCommand)
+                         {
+                             case "up":
+                                 pos[0]--;
+                                 break;
+                             case "down":
+                                 pos[0]++;
+                                 break;
+                             case "right":
+                                 pos[1]++;
+                                 break;
+                             case "left":
+                                 pos[1]--;
+                                 break;
+                         }
+                         //reposition again fi have to
+                         int isOutsideResult = isOutside(pos);
+                          if (isOutsideResult!=-1)
+                         {
+                             pos = rePosition(pos, isOutsideResult);
+                         }
+                         break;
+
+                     case 'T':
+
                          break;
                  }
              };

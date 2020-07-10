@@ -363,8 +363,17 @@ namespace SoftuniFundamentals
             Console.Write("Enter matrix data: ");
             int matrixData = int.Parse(Console.ReadLine());
 
+            Console.Write("Enter number commands: ");
+            int numberCommands = int.Parse(Console.ReadLine());
+
             //initialising matrix
             char[][] currentMatrix = new char[matrixData][];
+            GenerateMatrix(currentMatrix);
+
+            while(numberCommands-- >0)
+            {
+
+            }
 
 
         }
@@ -398,8 +407,13 @@ namespace SoftuniFundamentals
                 }
             }
 
+            Console.Clear();
+            return playerCoordinates;
 
+        }
 
+        private static void ReVoldCommands(char[][] currentMatrix, string command)
+        {
 
         }
 

@@ -410,11 +410,60 @@ namespace SoftuniFundamentals
             Console.Clear();
             return playerCoordinates;
 
-        }
+        }               
 
         private static void ReVoldCommands(char[][] currentMatrix, string command)
         {
 
+
+            Func<int[], int> isOutsideField = pos =>
+             {
+                 if (pos[0] == -1)
+                 {
+                     return 0;
+                 }
+                 else if (pos[0] > currentMatrix.GetLength(0))
+                 {
+                     return true;
+                 }
+                 else if (pos[1] == -1)
+                 {
+                     return true;
+                 }
+                 else if (pos[1] > currentMatrix.GetLength(0))
+                 {
+                     return true;
+                 }
+             };
+
+
+            Func<int[],int,int[]> RePosition = (pos,actionNumber) =>
+            {
+                switch(actionNumber)
+                {
+                    case 0: pos[0] = -1 + currentMatrix.GetLength(0) + 1; break;
+                    case 1: pos[0] -= currentMatrix.GetLength(0) + 1; break;
+                    case 2: pos[1] = -1 + currentMatrix.GetLength(0) + 1; break;
+                    case 3: pos[0] -= currentMatrix.GetLength(0) + 1; break;
+                    default: break;
+                }
+                return pos;
+            };
+            //-1
+            /*0 - - - - -
+             *1 - - - - -
+             *2 - - - - - 
+             *3 - - - - - 
+             *4 - - - - -
+             *5 - - - - - 
+             */
+
+           switch(command.ToLower())
+            {
+                case "up": 
+                 
+                break;
+            }
         }
 
         private static void LootBox()

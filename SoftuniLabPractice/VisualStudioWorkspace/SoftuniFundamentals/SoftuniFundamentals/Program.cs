@@ -353,7 +353,34 @@ namespace SoftuniFundamentals
             //RawDataCarDefinignClasses();
         }
 
+
+
         //Exam Tasks
+
+         private static void ReVolt()
+        {
+            //adding amtrix size rows and columns
+            Console.Write("Enter matrix data: ");
+            int matrixData = int.Parse(Console.ReadLine());
+
+            //initialising matrix
+            char[,] currentMatrix = new char[matrixData, matrixData];
+
+
+        }
+
+        //fill matrix with content
+        private static void GenerateMatrix(char[,] currentMatrix)
+        {
+            for(int i = 0; i < currentMatrix.GetLength(0); i++)
+            {
+                for(int j=0;j<currentMatrix.GetLength(1);j++)
+                {
+                    currentMatrix[i, j] = '-';
+                }
+            }
+        }
+
         private static void LootBox()
         {
             Console.Write("Enter number of boxes: ");

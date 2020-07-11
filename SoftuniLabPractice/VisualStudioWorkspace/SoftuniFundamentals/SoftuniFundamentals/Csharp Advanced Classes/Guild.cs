@@ -169,5 +169,24 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             else throw new ArgumentException("No uh player found");
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Players in {this.Name}: {this.index + 1}" + Environment.NewLine);
+            this.roster.Select(e =>
+            {
+                sb.Append(e.Value + Environment.NewLine);
+                return e;
+            }
+            );
+            return sb.ToString();
+        }
+
+        public string Report()
+        {
+            return this.ToString();
+        }
+
+
     }
 }

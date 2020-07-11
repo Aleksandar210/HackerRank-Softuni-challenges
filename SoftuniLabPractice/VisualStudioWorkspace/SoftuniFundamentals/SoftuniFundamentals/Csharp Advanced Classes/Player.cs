@@ -64,7 +64,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         }
 
 
-        public string Rank { private set; get; }
+        public string Rank { set; get; }
 
         public string Desicrption { set; get; }
 

@@ -61,6 +61,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             get { return this.capacity; }
         }
 
+        public int Count => this.index;
+        
+
 
         //adding behaviour
         public void AddPlayer(Player currentPlayer)
@@ -143,8 +146,28 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
                 return currentRemovedPlayers;
             }
+
+            return null;
         }
 
+
+        public void PromotePlayer(string name)
+        {
+            if (this.roster.ContainsKey(name))
+            {
+                this.roster[name].Rank = "Member";
+            }
+            else throw new ArgumentException("No uh player found");
+        }
+
+        public void DemotePlayer()
+        {
+            if (this.roster.ContainsKey(name))
+            {
+                this.roster[name].Rank = "Trial";
+            }
+            else throw new ArgumentException("No uh player found");
+        }
 
     }
 }

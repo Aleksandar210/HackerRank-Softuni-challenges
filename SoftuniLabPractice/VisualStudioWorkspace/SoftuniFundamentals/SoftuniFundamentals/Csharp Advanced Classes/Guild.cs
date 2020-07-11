@@ -9,7 +9,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         //adding fields;
         private string name;
         private int capacity;
-        
+        private int index = 0;
 
         private Player[] roster;
 
@@ -19,7 +19,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Name = name;
             this.Capacity = capacity;
             this.roster = new Player[this.Capacity];
-
+            this.index = -1;
         }
 
         //adding properties
@@ -60,6 +60,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
 
         //adding behaviour
-        
+        public void AddPlayer(Player currentPlayer)
+        {
+
+            if (this.index + 1 <= this.roster.Length)
+            {
+                this.roster[++this.index] = currentPlayer;
+            }
+            else
+            {
+
+            }
+
+        }
+
     }
 }

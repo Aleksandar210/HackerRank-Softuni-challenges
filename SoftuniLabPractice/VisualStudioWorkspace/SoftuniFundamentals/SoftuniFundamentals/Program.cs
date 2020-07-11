@@ -427,7 +427,13 @@ namespace SoftuniFundamentals
             Console.Clear();
             return playerCoordinates;
 
-        }               
+        }       
+        
+        private static void GuildWar()
+        {
+
+        } 
+           
 
         private static bool ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
         {

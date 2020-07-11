@@ -131,6 +131,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                     if(player.Value.Class.Equals(playerClass))
                     {
                         currentRemovedPlayers.Add(player.Value);
+                        this.index--;
                         this.roster.Remove(player.Key);
                         return false;
                     }
@@ -139,6 +140,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                         return true;
                     }
                 }).ToDictionary(e => e.Key, e=>e.Value);
+
+                return currentRemovedPlayers;
             }
         }
 

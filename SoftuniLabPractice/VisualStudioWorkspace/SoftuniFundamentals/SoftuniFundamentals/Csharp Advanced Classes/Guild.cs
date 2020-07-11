@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
@@ -12,6 +13,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         private int index = 0;
 
         private Dictionary<string,Player> roster;
+        HashSet<string> playerClassesInRoster;
 
         //adding constructors
         public Guild(string name,int capacity)
@@ -19,6 +21,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             this.Name = name;
             this.Capacity = capacity;
             this.roster = new Dictionary<string, Player>(capacity);
+            this.playerClassesInRoster = new HashSet<string>(capacity);
             this.index = -1;
         }
 
@@ -66,6 +69,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             if (this.index + 1 <= this.Capacity)
             {
                 this.index += 1;
+                
                 if(this.roster.ContainsKey(currentPlayer.Name))
                 {
                     this.index -= 1;
@@ -73,6 +77,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 else
                 {
                     this.roster.Add(currentPlayer.Name, currentPlayer);
+                    this.playerClassesInRoster.Add(currentPlayer.Class);
                 }
                 
             }
@@ -85,15 +90,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
         public void ExpandGuild(int number)
         {
-            if(number>this.roster.Length)
+            if(number>this.Capacity)
             {
-                Player[] tempRosterArray = new Player[number];
-                for(int i =0;i<this.roster.Length;i++)
-                {
-                    tempRosterArray[i] = this.roster[i];
-                }
-
-                this.roster = tempRosterArray;
+                this.Capacity = number;
             }
             else
             {
@@ -101,10 +100,48 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
-        public Player RemovePlayer()
+        public Player RemovePlayer(string name)
         {
-
+            if(this.roster.ContainsKey(name))
+            {
+                Player currentRemovedPlayer = this.roster[name];
+                this.roster.Remove(name);
+                this.index -= 1;
+                return currentRemovedPlayer;
+            }
+            else
+            {
+                throw new ArgumentException("No such player in the roster");
+            }
         }
+
+
+        public List<Player> KickPlayerByClass(string playerClass)
+        {
+            if(this.playerClassesInRoster.Contains(playerClass))
+            {
+                this.playerClassesInRoster.Remove(playerClass);
+
+                //Colletion of removed players with playerClass name
+                List<Player> currentRemovedPlayers = new List<Player>();
+
+                // get Dictionary without the players with the className
+                this.roster = this.roster.Where(player =>
+                {
+                    if(player.Value.Class.Equals(playerClass))
+                    {
+                        currentRemovedPlayers.Add(player.Value);
+                        this.roster.Remove(player.Key);
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }).ToDictionary(e => e.Key, e=>e.Value);
+            }
+        }
+
 
     }
 }

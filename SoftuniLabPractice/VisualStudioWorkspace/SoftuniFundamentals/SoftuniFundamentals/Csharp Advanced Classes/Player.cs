@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
-    class Player
+    class Player : IComparable<Player>
     {
         //adding consts
         private const string DefaultRank = "Trial";
@@ -68,6 +69,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         public string Desicrption { set; get; }
 
 
+        // add logic for comparing it with other objects of same type
+        public int CompareTo([AllowNull] Player other)
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -77,7 +84,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             {
                 sb.Append(this.Desicrption);
             }
-            Console.WriteLine(sb.ToString());
+            return sb.ToString();
             
         }
     }

@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
 {
-    class Guild
+    class Guild: IEnumerable<Player>
     {
         //adding fields;
         private string name;
@@ -188,5 +190,18 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         }
 
 
+        //Interface Enumerable implementation
+        public IEnumerator<Player> GetEnumerator()
+        {
+            foreach(var item in this.roster)
+            {
+                yield return item.Value;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

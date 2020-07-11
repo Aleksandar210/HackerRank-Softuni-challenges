@@ -11,14 +11,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         private int capacity;
         private int index = 0;
 
-        private Player[] roster;
+        private Dictionary<string,Player> roster;
 
         //adding constructors
         public Guild(string name,int capacity)
         {
             this.Name = name;
             this.Capacity = capacity;
-            this.roster = new Player[this.Capacity];
+            this.roster = new Dictionary<string, Player>(capacity);
             this.index = -1;
         }
 
@@ -63,14 +63,46 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
         public void AddPlayer(Player currentPlayer)
         {
 
-            if (this.index + 1 <= this.roster.Length)
+            if (this.index + 1 <= this.Capacity)
             {
-                this.roster[++this.index] = currentPlayer;
+                this.index += 1;
+                if(this.roster.ContainsKey(currentPlayer.Name))
+                {
+                    this.index -= 1;
+                }
+                else
+                {
+                    this.roster.Add(currentPlayer.Name, currentPlayer);
+                }
+                
             }
             else
             {
-
+                throw new IndexOutOfRangeException("Index out  of range or Roster already full");
             }
+
+        }
+
+        public void ExpandGuild(int number)
+        {
+            if(number>this.roster.Length)
+            {
+                Player[] tempRosterArray = new Player[number];
+                for(int i =0;i<this.roster.Length;i++)
+                {
+                    tempRosterArray[i] = this.roster[i];
+                }
+
+                this.roster = tempRosterArray;
+            }
+            else
+            {
+                throw new ArgumentException("Expand Count cannot be below or equal to current");
+            }
+        }
+
+        public Player RemovePlayer()
+        {
 
         }
 

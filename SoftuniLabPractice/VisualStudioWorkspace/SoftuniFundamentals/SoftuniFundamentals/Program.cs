@@ -431,10 +431,54 @@ namespace SoftuniFundamentals
         
         private static void GuildWar()
         {
+            //enter number of players
+            Console.Write("Enter number players: ");
+            int numberPlayers = int.Parse(Console.ReadLine());
+
+            List<Player> currentPlayersNotInGuild = new List<Player>(numberPlayers);
+
+            // keep enetring players n times
+            string[] playerData;
+            while(numberPlayers-- > 0)
+            {
+                playerData = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                currentPlayersNotInGuild.Add(new Player(playerData[0], playerData[1]));
+
+            }
+
+
+
+            while(true)
+            {
+
+            }
 
         } 
-           
+        private static Player SelectPlayer(List<Player> currentPlayers)
+        {
+            StringBuilder sb = new StringBuilder();
+            int index = 0;
+            currentPlayers.Select(p =>
+            {
+                sb.Append((index+1) +"| "+ p.Name + ": " + p.Class + Environment.NewLine);
+                return p;
+            }
+            );
+            
+            int selected;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Select player: ");
+                Console.WriteLine(sb.ToString());
+                Console.Write("Enter player number: ");
+                selected = int.Parse(Console.ReadLine());
+            } 
+            while ();
+        }
 
+        //PLAYERS
+        //---------------
         private static bool ReVoldCommands(char[][] currentMatrix,int[] playerCoordinates ,string command)
         {
             bool wonGame = false;

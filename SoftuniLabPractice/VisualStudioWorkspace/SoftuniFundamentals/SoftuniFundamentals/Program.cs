@@ -452,10 +452,18 @@ namespace SoftuniFundamentals
             generalActionsMenue.Append(2 + "| Select Guild"+Environment.NewLine);
             generalActionsMenue.Append(3 + "| Player Actions" + Environment.NewLine);
             generalActionsMenue.Append(4 + "| Guild Actions" + Environment.NewLine);
-            generalActionsMenue.Append()
+            generalActionsMenue.Append(5 + "| Exit" + Environment.NewLine);
+            int select;
+            Player selectedPlayer = null;
             while(true)
             {
-
+                Console.WriteLine(generalActionsMenue.ToString());
+                select = int.Parse(Console.ReadLine())
+                switch (select)
+                {
+                    case 1: selectedPlayer = SelectPlayer(currentPlayersNotInGuild) break;
+                        
+                }
             }
 
         } 

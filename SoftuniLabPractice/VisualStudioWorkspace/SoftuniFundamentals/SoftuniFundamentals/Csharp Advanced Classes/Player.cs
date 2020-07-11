@@ -78,7 +78,28 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                if(this.Rank.Equals("Trial",StringComparison.OrdinalIgnoreCase) &&
                     other.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase))
                 {
-
+                    compareResult = this.Class.CompareTo(other.Class);
+                    if(compareResult==0)
+                    {
+                        if(this.Rank.Equals(DefaultDescription, StringComparison.OrdinalIgnoreCase) &&
+                    other.Rank.Equals(DefaultDescription, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return 0;
+                        }
+                        else if(this.Rank.Equals(DefaultDescription, StringComparison.OrdinalIgnoreCase) &&
+                   !(other.Rank.Equals(DefaultDescription, StringComparison.OrdinalIgnoreCase)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return -1;
+                        }
+                    }
+                    else
+                    {
+                        return compareResult;
+                    }
                 }
                 else if(this.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase) &&
                     !(other.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase)))

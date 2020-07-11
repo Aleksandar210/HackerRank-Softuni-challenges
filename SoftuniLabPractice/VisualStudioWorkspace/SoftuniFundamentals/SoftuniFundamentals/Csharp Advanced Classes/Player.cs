@@ -70,9 +70,30 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
 
         // add logic for comparing it with other objects of same type
-        public int CompareTo([AllowNull] Player other)
+        public int CompareTo( Player other)
         {
-            throw new NotImplementedException();
+            var compareResult =this.Name.CompareTo(other.Name);
+            if(compareResult==0)
+            {
+               if(this.Rank.Equals("Trial",StringComparison.OrdinalIgnoreCase) &&
+                    other.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase))
+                {
+
+                }
+                else if(this.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase) &&
+                    !(other.Rank.Equals("Trial", StringComparison.OrdinalIgnoreCase)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return compareResult;
+            }
         }
 
         public override string ToString()

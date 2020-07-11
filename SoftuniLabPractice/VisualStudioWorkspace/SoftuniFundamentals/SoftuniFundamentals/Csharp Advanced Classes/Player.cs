@@ -117,6 +117,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
         }
 
+        public string IntroduceYourSelf()
+        {
+            return this.Name + " is the name!";
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

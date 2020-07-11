@@ -458,10 +458,10 @@ namespace SoftuniFundamentals
             while(true)
             {
                 Console.WriteLine(generalActionsMenue.ToString());
-                select = int.Parse(Console.ReadLine())
+                select = int.Parse(Console.ReadLine());
                 switch (select)
                 {
-                    case 1: selectedPlayer = SelectPlayer(currentPlayersNotInGuild) break;
+                    case 1: selectedPlayer = SelectPlayer(currentPlayersNotInGuild); break;
                         
                 }
             }

@@ -469,12 +469,19 @@ namespace SoftuniFundamentals
             do
             {
                 Console.Clear();
+                enterPhase:
                 Console.WriteLine("Select player: ");
                 Console.WriteLine(sb.ToString());
                 Console.Write("Enter player number: ");
                 selected = int.Parse(Console.ReadLine());
+                if(selected < 1 || selected > currentPlayers.Count - 1)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Invalid player number");
+                    goto enterPhase;
+                }
             } 
-            while ();
+            while (selected<1 || selected>currentPlayers.Count-1);
         }
 
         //PLAYERS

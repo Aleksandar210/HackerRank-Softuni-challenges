@@ -465,7 +465,7 @@ namespace SoftuniFundamentals
             }
             );
             
-            int selected;
+            int selected=-1;
             do
             {
                 Console.Clear();
@@ -482,6 +482,11 @@ namespace SoftuniFundamentals
                 }
             } 
             while (selected<1 || selected>currentPlayers.Count-1);
+
+            Player currentPlayerToReturn = currentPlayers[selected];
+            currentPlayers.RemoveAt(selected);
+            return currentPlayerToReturn;
+
         }
 
         //PLAYERS

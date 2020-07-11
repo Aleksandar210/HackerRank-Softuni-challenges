@@ -447,7 +447,12 @@ namespace SoftuniFundamentals
             }
 
 
-
+            StringBuilder generalActionsMenue = new StringBuilder();
+            generalActionsMenue.Append(1 + "| Select Player" + Environment.NewLine);
+            generalActionsMenue.Append(2 + "| Select Guild"+Environment.NewLine);
+            generalActionsMenue.Append(3 + "| Player Actions" + Environment.NewLine);
+            generalActionsMenue.Append(4 + "| Guild Actions" + Environment.NewLine);
+            generalActionsMenue.Append()
             while(true)
             {
 
@@ -488,6 +493,7 @@ namespace SoftuniFundamentals
             return currentPlayerToReturn;
 
         }
+
 
         //PLAYERS
         //---------------

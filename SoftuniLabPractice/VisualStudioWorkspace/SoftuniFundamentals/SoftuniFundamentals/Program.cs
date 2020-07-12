@@ -370,7 +370,67 @@ namespace SoftuniFundamentals
             //adding males
             List<int> males = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(e => int.Parse(e)).ToList();
+
+            //func delegate void to remove member of the lists depending on the gender
+            Action<List<int>, string> RemoveMemeberOfApp = (members, gender) =>
+             {
+                 switch(gender.ToLower())
+                 {
+                     case "females":
+                         members.RemoveAt(0);
+                         break;
+                     case "males":
+                         members.RemoveAt(members.Count - 1);
+                         break;
+                 }
+             };
+
+            while(females.Count!=0 || males.Count!=0)
+            {
+            
+            }
         }
+
+        private static void MatchAction(int male, int female,Action<List<int>,string> removeMale,Action<List<int>,string> removeFemale,List<int> males,List<int> females)
+        {
+            if(male%25==0)
+            {
+                for(int i=0;i<2;i++)
+                {
+                    removeMale(males, "males");
+                }
+                return;
+            }else if(female%25==0)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    removeFemale(females, "females");
+                }
+                return;
+            }
+            else if(female%25==0 && male%25==0)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    removeMale(males, "males");
+                    removeFemale(females, "females");
+                }
+                return;
+            }
+
+
+            if(female==male)
+            {
+                removeFemale(females, "females");
+                males[0] -= 2;
+                if(males[0]<=0)
+                {
+                    removeMale(males, "males");
+                }
+            }
+        }
+
+       
 
 
          private static void ReVolt()

@@ -415,7 +415,7 @@ namespace SoftuniFundamentals
             //game data: health, points etc
             int[] gameData = new int[2];        // 0-letters consumed, 1-times outside the field
 
-            while(true)
+            while(true)         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <----
             {
                 Console.Clear();
                 DisplayBookWormField(currentBook,enterWord);

@@ -360,6 +360,68 @@ namespace SoftuniFundamentals
 
         //Exam Tasks
 
+        private static void BookWormQuest()
+        {
+            Console.Write("Enter word or sentence: ");
+            string enter = Console.ReadLine();
+
+            string[] sentence = null;  //optional if its more than one word 
+            if (enter.Contains(" "))
+            {
+                sentence = enter.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            }
+            // paramaters for the book or matrix
+            int numberRows = int.Parse(Console.ReadLine());
+            //the field in which the worm wil be moving
+            char[][] currentBook = new char[numberRows][];
+
+            //player position
+            int[] playerCooridnates = new int[2];
+
+            //adding the data for the matrix like enemies, you etc
+            string enterRowData;
+            for(int i=0;i<numberRows;i++)
+            {
+                Console.Clear();
+                Console.WriteLine("Enter Data for row: {0}", i);
+                enterRowData = Console.ReadLine();
+                if(enterRowData.Length==numberRows)
+                {
+                    currentBook[i] = enterRowData.ToCharArray();
+                    if(enterRowData.Contains("P"))
+                    {
+                        playerCooridnates[0] = i;
+                        playerCooridnates[1] = enterRowData.IndexOf("P");
+                    }
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for(int i =0;i<currentBook.Length;i++)
+            {
+                for(int j=0;j<currentBook[i].Length;j++)
+                {
+                    sb.Append(currentBook[i][j]);
+                }
+                sb.Append(Environment.NewLine);
+            }
+            Console.WriteLine(sb.ToString());
+
+            //game data: health, points etc
+            int[] gameData = new int[3];        //0-health, 1-letters consumed, 2-times outside the field
+
+           // while(true)
+         //   {
+
+           // }
+    
+
+        }
+
         private static void DatingApp()
         {
             int[] matchesDone = new int[1];
@@ -404,8 +466,14 @@ namespace SoftuniFundamentals
 
             if(females.Count!=0)
             {
-
+                sb.Append($"Females left: {females.Count}" + Environment.NewLine);
             }
+            else
+            {
+                sb.Append($"Females left: none" + Environment.NewLine);
+            }
+
+            Console.WriteLine(sb.ToString());
             
         }
 

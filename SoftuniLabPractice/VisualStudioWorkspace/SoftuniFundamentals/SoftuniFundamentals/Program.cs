@@ -413,7 +413,7 @@ namespace SoftuniFundamentals
             //Console.WriteLine(sb.ToString());
 
             //game data: health, points etc
-            int[] gameData = new int[3];        //0-health, 1-letters consumed, 2-times outside the field
+            int[] gameData = new int[2];        // 0-letters consumed, 1-times outside the field
 
             while(true)
             {
@@ -456,6 +456,40 @@ namespace SoftuniFundamentals
            Console.WriteLine(sb.ToString());
         };
 
+        static StringBuilder bookWormTaskWordSb = new StringBuilder();
+        private static Action<char[][],string,int[],int[], int[]> ActUponBookEvent =(book,word,gameData,currentPosition,estimated) =>
+            {
+                if(currentPosition[0]<0 || currentPosition[0]>book.Length-1 )
+                {
+                    gameData[1]++;
+                    return;
+                }
+                else if(currentPosition[1]<0 || currentPosition[1]>book.Length-1)
+                {
+                    gameData[1]++;
+                    return;
+                }
+                else
+                {
+                    currentPosition = estimated;
+                }
+
+
+                bookWormTaskWordSb.Append(word);
+                switch (book[currentPosition[0]][currentPosition[1]])
+                {
+                    case '-':
+                        
+                        break;
+
+                    default:
+                        sb.Append(book[currentPosition[0]][currentPosition[1]]);
+                        gameData[0]++;
+                        word = sb.ToString();
+                        break;
+                }
+            };
+            
         private static void DatingApp()
         {
             int[] matchesDone = new int[1];

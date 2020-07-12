@@ -357,7 +357,21 @@ namespace SoftuniFundamentals
 
 
 
+
         //Exam Tasks
+
+        private static void DatingApp()
+        {
+            int matchesDone = 0;
+            //adding females
+            List<int> females = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e)).ToList();
+
+            //adding males
+            List<int> males = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e)).ToList();
+        }
+
 
          private static void ReVolt()
         {

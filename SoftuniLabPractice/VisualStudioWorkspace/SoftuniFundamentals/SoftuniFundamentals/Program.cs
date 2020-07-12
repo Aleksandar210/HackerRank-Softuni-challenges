@@ -362,7 +362,8 @@ namespace SoftuniFundamentals
 
         private static void DatingApp()
         {
-            int matchesDone = 0;
+            int[] matchesDone = new int[1];
+            matchesDone[0] = 0;
             //adding females
             List<int> females = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(e => int.Parse(e)).ToList();
@@ -387,24 +388,41 @@ namespace SoftuniFundamentals
 
             while(females.Count!=0 || males.Count!=0)
             {
-            
+                MatchAction(males[0], females[females.Count - 1], RemoveMemeberOfApp, males, females, matchesDone);
             }
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Matches: {matchesDone[0]}" + Environment.NewLine);
+            if(males.Count!=0)
+            {
+                sb.Append($"Males left: {males.Count}"+Environment.NewLine);
+            }
+            else
+            {
+                sb.Append($"Males left: none"+Environment.NewLine);
+            }
+
+            if(females.Count!=0)
+            {
+
+            }
+            
         }
 
-        private static void MatchAction(int male, int female,Action<List<int>,string> removeMale,Action<List<int>,string> removeFemale,List<int> males,List<int> females)
+        private static void MatchAction(int male, int female,Action<List<int>,string> removeMember,List<int> males,List<int> females,int[] matchesDone)
         {
             if(male%25==0)
             {
                 for(int i=0;i<2;i++)
                 {
-                    removeMale(males, "males");
+                    removeMember(males, "males");
                 }
                 return;
             }else if(female%25==0)
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    removeFemale(females, "females");
+                    removeMember(females, "females");
                 }
                 return;
             }
@@ -412,8 +430,8 @@ namespace SoftuniFundamentals
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    removeMale(males, "males");
-                    removeFemale(females, "females");
+                    removeMember(males, "males");
+                    removeMember(females, "females");
                 }
                 return;
             }
@@ -421,11 +439,17 @@ namespace SoftuniFundamentals
 
             if(female==male)
             {
-                removeFemale(females, "females");
+                removeMember(males, "males");
+                removeMember(females, "females");
+                matchesDone[0]++;
+            }
+            else
+            {
+                removeMember(females, "females");
                 males[0] -= 2;
-                if(males[0]<=0)
+                if (males[0] <= 0)
                 {
-                    removeMale(males, "males");
+                    removeMember(males, "males");
                 }
             }
         }

@@ -413,9 +413,11 @@ namespace SoftuniFundamentals
             //Console.WriteLine(sb.ToString());
 
             //game data: health, points etc
-            int[] gameData = new int[2];        // 0-letters consumed, 1-times outside the field
+            int[] gameData = new int[3];        // 0-letters consumed, 1-times outside the field, 2-letters on the field ,
+                                                 //   4(optional) -> out of field limit
 
-            while(true)         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <----
+            while(true)         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <---- and word in actuponevent REFERENCE problem
+                                //reference problem use the static sb to do sometihn may require some several validations
             {
                 Console.Clear();
                 DisplayBookWormField(currentBook,enterWord);
@@ -440,8 +442,8 @@ namespace SoftuniFundamentals
                         break;
                 }
             }
-    
-
+            
+            
         }
 
         private static Action<char[][],string> DisplayBookWormField = (currentBook,word) =>
@@ -488,9 +490,9 @@ namespace SoftuniFundamentals
                         break;
 
                     default:
-                        sb.Append(book[currentPosition[0]][currentPosition[1]]);
+                        bookWormTaskWordSb.Append(book[currentPosition[0]][currentPosition[1]]);
                         gameData[0]++;
-                        word = sb.ToString();
+                        word = bookWormTaskWordSb.ToString();
                         break;
                 }
             };

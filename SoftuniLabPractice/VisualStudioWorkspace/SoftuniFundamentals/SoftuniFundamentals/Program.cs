@@ -353,6 +353,7 @@ namespace SoftuniFundamentals
             //RawDataCarDefinignClasses();
             //ReVolt();
             //GuildWar();
+            BookWormQuest();
         }
 
 
@@ -363,12 +364,12 @@ namespace SoftuniFundamentals
         private static void BookWormQuest()
         {
             Console.Write("Enter word or sentence: ");
-            string enter = Console.ReadLine();
+            string enterWord = Console.ReadLine();
 
-            string[] sentence = null;  //optional if its more than one word 
-            if (enter.Contains(" "))
+            string[] sentence = null;  //optional if its more than one word         //currently not implemented to work with it
+            if (enterWord.Contains(" "))
             {
-                sentence = enter.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                sentence = enterWord.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             }
             // paramaters for the book or matrix
             int numberRows = int.Parse(Console.ReadLine());
@@ -400,27 +401,60 @@ namespace SoftuniFundamentals
                 }
             }
 
-            StringBuilder sb = new StringBuilder();
-            for(int i =0;i<currentBook.Length;i++)
-            {
-                for(int j=0;j<currentBook[i].Length;j++)
-                {
-                    sb.Append(currentBook[i][j]);
-                }
-                sb.Append(Environment.NewLine);
-            }
-            Console.WriteLine(sb.ToString());
+          //  StringBuilder sb = new StringBuilder();
+          //  for(int i =0;i<currentBook.Length;i++)
+          //  {
+           //     for(int j=0;j<currentBook[i].Length;j++)
+            //    {
+               //     sb.Append(currentBook[i][j]);
+              //  }
+               // sb.Append(Environment.NewLine);
+           // }
+            //Console.WriteLine(sb.ToString());
 
             //game data: health, points etc
             int[] gameData = new int[3];        //0-health, 1-letters consumed, 2-times outside the field
 
-           // while(true)
-         //   {
+            while(true)
+            {
+                Console.Clear();
+                DisplayBookWormField(currentBook,enterWord);
+                var keyPressed = Console.ReadKey(false).Key;
+                switch (keyPressed)
+                {
+                    case ConsoleKey.UpArrow:
+                        
+                        return;
+                    case ConsoleKey.DownArrow:
+                        
+                        break;
+                    case ConsoleKey.RightArrow:
+                        
+                        break;
+                    case ConsoleKey.LeftArrow:
 
-           // }
+                        break;
+                }
+            }
     
 
         }
+
+        private static Action<char[][],string> DisplayBookWormField = (currentBook,word) =>
+        {
+            
+              StringBuilder sb = new StringBuilder();
+              for(int i =0;i<currentBook.Length;i++)
+              {
+                 for(int j=0;j<currentBook[i].Length;j++)
+                {
+                 sb.Append(currentBook[i][j]);
+              }
+             sb.Append(Environment.NewLine);
+             }
+            Console.WriteLine(word+Environment.NewLine);
+           Console.WriteLine(sb.ToString());
+        };
 
         private static void DatingApp()
         {

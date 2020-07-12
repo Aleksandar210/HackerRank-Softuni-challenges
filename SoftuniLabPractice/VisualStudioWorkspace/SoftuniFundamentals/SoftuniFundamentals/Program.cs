@@ -423,16 +423,20 @@ namespace SoftuniFundamentals
                 switch (keyPressed)
                 {
                     case ConsoleKey.UpArrow:
-                        
+                        ActUponBookEvent(currentBook,enterWord,gameData,playerCooridnates,
+                            new int[] {playerCooridnates[0]-=1,playerCooridnates[1]});
                         return;
                     case ConsoleKey.DownArrow:
-                        
+                        ActUponBookEvent(currentBook, enterWord, gameData, playerCooridnates,
+                            new int[] { playerCooridnates[0] += 1, playerCooridnates[1] });
                         break;
                     case ConsoleKey.RightArrow:
-                        
+                        ActUponBookEvent(currentBook, enterWord, gameData, playerCooridnates,
+                            new int[] { playerCooridnates[0], playerCooridnates[1]+=1 });
                         break;
                     case ConsoleKey.LeftArrow:
-
+                        ActUponBookEvent(currentBook, enterWord, gameData, playerCooridnates,
+                            new int[] { playerCooridnates[0], playerCooridnates[1]-=1 });
                         break;
                 }
             }
@@ -456,7 +460,8 @@ namespace SoftuniFundamentals
            Console.WriteLine(sb.ToString());
         };
 
-        static StringBuilder bookWormTaskWordSb = new StringBuilder();
+        static StringBuilder bookWormTaskWordSb = new StringBuilder();  //used for the below delegate
+
         private static Action<char[][],string,int[],int[], int[]> ActUponBookEvent =(book,word,gameData,currentPosition,estimated) =>
             {
                 if(currentPosition[0]<0 || currentPosition[0]>book.Length-1 )

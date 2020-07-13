@@ -361,10 +361,11 @@ namespace SoftuniFundamentals
 
         //Exam Tasks
 
+        static string enterWord;        //relevant for WormBook
         private static void BookWormQuest()
         {
             Console.Write("Enter word or sentence: ");
-            string enterWord = Console.ReadLine();
+           enterWord = Console.ReadLine();
 
             string[] sentence = null;  //optional if its more than one word         //currently not implemented to work with it
             if (enterWord.Contains(" "))
@@ -484,7 +485,7 @@ namespace SoftuniFundamentals
            Console.WriteLine(sb.ToString());
         };
 
-        static StringBuilder bookWormTaskWordSb = new StringBuilder();  //used for the below delegate
+        static StringBuilder bookWormTaskWordSb = new StringBuilder(enterWord);  //used for the below delegate
 
         private static Action<char[][],string,int[],int[], int[]> ActUponBookEvent =(book,word,gameData,currentPosition,estimated) =>
             {
@@ -506,7 +507,7 @@ namespace SoftuniFundamentals
                 }
 
 
-                bookWormTaskWordSb.Append(word);
+                
                 switch (book[currentPosition[0]][currentPosition[1]])
                 {
                     case '-':

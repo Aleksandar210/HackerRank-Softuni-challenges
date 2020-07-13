@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Text;
 using System.Threading;
 
@@ -76,7 +77,85 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 }
                
             }
+            else
+            {
+                throw new IndexOutOfRangeException("Not enough space");
+            }
+                
         }
-        
+
+        public void RemoveRabbit(string name)
+        {
+            if(this.data.ContainsKey(name))
+            {
+                this.data.Remove(name);
+                this.currentCount -= 1;
+            }
+            else
+            {
+                throw new ArgumentException("No such rabbit found");
+            }
+        }
+
+
+        public void RemoveBySpecies(string species)
+        {
+            int numberRabbitsRemoved=0;
+            this.data.Select(r =>
+            {
+                if(r.Value.Species.Equals(species, StringComparison.OrdinalIgnoreCase))
+                {
+                numberRabbitsRemoved++;
+                this.data.Remove(r.Key);
+                }
+
+                return r;
+            }
+
+            );
+
+            this.currentCount -= numberRabbitsRemoved;
+        }
+
+        public void SellRabbit(string name)
+        {
+            if(this.data.ContainsKey(name))
+            {
+                this.data[name].Available = false;
+            }
+            else
+            {
+                throw new ArgumentException("No such rabbit found");
+            }
+        }
+
+        public void SellRabbitBySpecies(string species)
+        {
+            this.data.Select(r =>
+            {
+                if (r.Value.Species.Equals(species, StringComparison.OrdinalIgnoreCase))
+                {
+                    this.data[r.Key].Available = false;
+                    
+                }
+
+                return r;
+            }
+
+           );
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Rabbits in cage {this.Count}" + Environment.NewLine);
+            foreach(var item in this.data)
+            {
+                sb.Append(item + Environment.NewLine);
+            }
+
+            return sb.ToString();
+        }
+
     }
 }

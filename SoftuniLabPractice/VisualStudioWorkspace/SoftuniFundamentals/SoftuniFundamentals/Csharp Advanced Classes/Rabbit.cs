@@ -55,6 +55,18 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             get { return this.species; }
         }
 
+        public bool Available
+        {
+             set
+            {
+               
+                    this.available = value;
+             
+            }
+
+            get { return this.available; }
+        }
+
         public int CompareTo([AllowNull] Rabbit other)
         {
             var compareResult = this.Name.CompareTo(other.Name);

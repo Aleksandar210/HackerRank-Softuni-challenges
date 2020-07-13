@@ -353,7 +353,7 @@ namespace SoftuniFundamentals
             //RawDataCarDefinignClasses();
             //ReVolt();
             //GuildWar();
-            BookWormQuest();
+           // BookWormQuest();
         }
 
 
@@ -416,7 +416,7 @@ namespace SoftuniFundamentals
             int[] gameData = new int[3] { 0, 0,GetLetterCountInMatrix(currentBook)};        // 0-letters consumed, 1-times outside the field, 2-letters on the field ,
                                                  //   4(optional) -> out of field limit
 
-            while(true)         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <---- and word in actuponevent REFERENCE problem
+            while(gameData[0]!=gameData[2])         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <---- and word in actuponevent REFERENCE problem
                                 //reference problem use the static sb to do sometihn may require some several validations
             {
                 Console.Clear();
@@ -502,7 +502,7 @@ namespace SoftuniFundamentals
                 {
                     book[currentPosition[0]][currentPosition[1]] = '-';
                     currentPosition = estimated;
-                    book[currentPosition[0]][currentPosition[1]] = 'P';
+                   
                 }
 
 
@@ -510,13 +510,14 @@ namespace SoftuniFundamentals
                 switch (book[currentPosition[0]][currentPosition[1]])
                 {
                     case '-':
-                        
+                        book[currentPosition[0]][currentPosition[1]] = 'P';
                         break;
 
                     default:
                         bookWormTaskWordSb.Append(book[currentPosition[0]][currentPosition[1]]);
                         gameData[0]++;
                         word = bookWormTaskWordSb.ToString();
+                        book[currentPosition[0]][currentPosition[1]] = 'P';
                         break;
                 }
             };

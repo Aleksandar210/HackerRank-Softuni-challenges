@@ -66,6 +66,16 @@ namespace SoftuniFundamentals
             //SimpleStackCalc();
             //currentTasks.StackSum();
             //currentTasks.GetBracketContents();
+            // NameSumChars(currentSumCharsFunc);
+            //ForbidenWords();
+            //BombHostagesJoker();
+            //SoftuiParkingDefinignClasses();
+            //CarDriveDistanceDefiningClases();
+            //RawDataCarDefinignClasses();
+            //ReVolt();
+            //GuildWar();
+            // BookWormQuest();
+            //RabbitTask();
 
             // currentTasks.Bombs();
 
@@ -345,16 +355,12 @@ namespace SoftuniFundamentals
             //  return false;
             //  };
 
-            // NameSumChars(currentSumCharsFunc);
-            //ForbidenWords();
-            //BombHostagesJoker();
-            //SoftuiParkingDefinignClasses();
-            //CarDriveDistanceDefiningClases();
-            //RawDataCarDefinignClasses();
-            //ReVolt();
-            //GuildWar();
-           // BookWormQuest();
+
         }
+
+
+
+
 
 
 
@@ -364,6 +370,26 @@ namespace SoftuniFundamentals
 
         private static void RabitTask()
         {
+            Console.Write("Enter number of rabbits: ");
+            int numberRabbits =int.Parse(Console.ReadLine());
+
+            Cage currentCage = new Cage("theCage", numberRabbits);
+
+            Rabbit currentRabbit = null;
+            for(int i =0;i<numberRabbits;i++)
+            {
+                try
+                {
+                    currentRabbit = new Rabbit(Console.ReadLine(), Console.ReadLine());
+                    currentCage.AddRabbit(currentRabbit);
+                }
+                catch (Exception)
+                {
+                    i--;
+                }
+            }
+
+            
 
         }
 

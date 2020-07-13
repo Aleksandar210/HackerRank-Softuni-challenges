@@ -413,7 +413,7 @@ namespace SoftuniFundamentals
             //Console.WriteLine(sb.ToString());
 
             //game data: health, points etc
-            int[] gameData = new int[3];        // 0-letters consumed, 1-times outside the field, 2-letters on the field ,
+            int[] gameData = new int[3] { 0, 0,GetLetterCountInMatrix(currentBook)};        // 0-letters consumed, 1-times outside the field, 2-letters on the field ,
                                                  //   4(optional) -> out of field limit
 
             while(true)         // TO DO IMPLEMENT GAME END DATA IN GAMEDATA ARRAY <---- and word in actuponevent REFERENCE problem
@@ -444,6 +444,28 @@ namespace SoftuniFundamentals
             }
             
             
+        }
+
+        private static int GetLetterCountInMatrix(char[][] currentBook)
+        {
+            int numberLetters = 0;
+            for(int i =0;i<currentBook.Length;i++)
+            {
+                for(int j=0;j<currentBook[i].Length;j++)
+                {
+                    switch(currentBook[i][j])
+                    {
+                        case '-':
+                            break;
+                        case 'P':
+                            break;
+                        default:
+                            numberLetters++;
+                            break;
+                    }
+                }
+            }
+            return numberLetters;
         }
 
         private static Action<char[][],string> DisplayBookWormField = (currentBook,word) =>
@@ -478,7 +500,9 @@ namespace SoftuniFundamentals
                 }
                 else
                 {
+                    book[currentPosition[0]][currentPosition[1]] = '-';
                     currentPosition = estimated;
+                    book[currentPosition[0]][currentPosition[1]] = 'P';
                 }
 
 

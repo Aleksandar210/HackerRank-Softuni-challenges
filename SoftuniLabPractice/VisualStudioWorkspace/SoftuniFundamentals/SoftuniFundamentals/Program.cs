@@ -361,6 +361,13 @@ namespace SoftuniFundamentals
 
         //Exam Tasks
 
+
+        private static void RabitTask()
+        {
+
+        }
+
+
         static string enterWord;        //relevant for WormBook
         private static void BookWormQuest()
         {

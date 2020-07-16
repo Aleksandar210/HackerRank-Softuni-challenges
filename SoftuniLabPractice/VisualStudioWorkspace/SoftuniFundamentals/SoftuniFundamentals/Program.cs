@@ -366,8 +366,6 @@ namespace SoftuniFundamentals
 
 
         //Exam Tasks
-
-
         private static void RabitTask()
         {
             Console.Write("Enter number of rabbits: ");

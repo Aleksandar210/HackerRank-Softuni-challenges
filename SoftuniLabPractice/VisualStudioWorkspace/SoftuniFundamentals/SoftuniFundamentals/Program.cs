@@ -417,7 +417,30 @@ namespace SoftuniFundamentals
 
 
         //start JediGalaxyDataGather from matrix
+        private static void GatherStars(int[,]currentMatirx,int[], int[] playerCoordinates,int[]enemyCoordinates)
+        {
+            int[] results = new int[2] { 0, 0 };        //0-hero data gathered  1-enemy data gathered 
 
+            //move enemy to gather data
+            while(enemyCoordinates[0]!=-1 && enemyCoordinates[1]!=-1)
+            {
+                enemyCoordinates[0]--;
+                enemyCoordinates[1]--;
+
+                results[1] += currentMatirx[enemyCoordinates[0], enemyCoordinates[1]];
+                currentMatirx[enemyCoordinates[0], enemyCoordinates[1]] = -1;
+            }
+
+            //move player to gather data
+            while (playerCoordinates[0] != -1 && playerCoordinates[1] != -1)
+            {
+                enemyCoordinates[0]--;
+                enemyCoordinates[1]--;
+
+                results[1] += currentMatirx[enemyCoordinates[0], enemyCoordinates[1]];
+                currentMatirx[enemyCoordinates[0], enemyCoordinates[1]] = -1;
+            }
+        }
 
 
         //create 2d matrix with data from 0 to n

@@ -375,46 +375,21 @@ namespace SoftuniFundamentals
             CreateJediGalaxyMatrix(currentMatrix);
              
             //player coordinates
-            int[] playerCoordinates;      //to store coordinates
-            string enterPlayerCoordinates;                //to enter coordinates
+            int[] coordinates;      //to store coordinates
+            string enterCoordinates;                //to enter coordinates
 
-            int[] enemyCoordinates;
-            string enterEnemyCoordinates;
-            while(true)
+            List<int[]> currentEnteredCoordinates = new List<int[]>();
+
+            enterCoordinates = Console.ReadLine();
+            while(!enterCoordinates.Equals("Let the force be with you!",StringComparison.OrdinalIgnoreCase))
             {
-                Console.Clear();
-                Console.Write("Enter player coordinates: ");
-                enterPlayerCoordinates = Console.ReadLine();
-                playerCoordinates = enterPlayerCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                coordinates = enterCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();
-
-
-                Console.WriteLine();
-                Console.Write("Enter Enemy Coordintes: ");
-                enterEnemyCoordinates = Console.ReadLine();
-                enemyCoordinates = enterEnemyCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse).ToArray();
-
-
-
-                if(playerCoordinates.Length!=2 && enemyCoordinates.Length!=2)
+                if(coordinates.Length==2)
                 {
-                    continue;
+                    currentEnteredCoordinates.Add(coordinates);
                 }
-                else
-                {
-                   if(!IsInRightPlacePlayer(playerCoordinates,enterMatrixCoordinates) 
-                        && IsInRightPlaceEnemy(playerCoordinates,enterMatrixCoordinates))
-                    {
-                        continue;   
-                    }
-                    else
-                    {
-                        results = GatherStars(currentMatrix, playerCoordinates, enemyCoordinates);
-                        Console.WriteLine();
-                        Console.WriteLine($"Jedi Power: {results[0]} !" + Environment.NewLine + $"Sith Power: {results[1]} !");
-                    }
-                }
+                enterCoordinates = Console.ReadLine();
 
             }
            
@@ -423,9 +398,14 @@ namespace SoftuniFundamentals
 
 
         //start JediGalaxyDataGather from matrix
-        private static int[] GatherStars(int[,]currentMatirx,int[] playerCoordinates,int[]enemyCoordinates)
+
+        private static int[] GatherStars(int[,]currentMatirx,List<int[]> currentCoordinates)
+
         {
             int[] results = new int[2] { 0, 0 };        //0-hero data gathered  1-enemy data gathered 
+
+            int[] enemyCoordinates = currentCoordinates[currentCoordinates.Count - 1];
+            currentCoordinates.RemoveAt(currentCoordinates.Count - 1);
 
             //move enemy to gather data
             while(enemyCoordinates[0]!=-1 && enemyCoordinates[1]!=-1)
@@ -441,20 +421,49 @@ namespace SoftuniFundamentals
             //TO DO
             //modify to work with multiple
             //move player to gather data
-            while (playerCoordinates[0] != -1 && playerCoordinates[1] != -1)
-            {
-                playerCoordinates[0]--;
-                playerCoordinates[1]--;
+            int[] playerCoordiantes = new int[2];
+           for(int i =0;i<currentCoordinates.Count;i++)
+           {
+                    playerCoordiantes = currentCoordinates[i];
+                    if(playerCoordiantes[1]==-1)
+                    {
+                        goto outsideAproach;
+                    }
+                    else
+                    {
+                        goto inneAproach;
+                    }
+           }
 
-                if(currentMatirx[playerCoordinates[0], playerCoordinates[1]]!=-1)
+            return results; // method ends here the null part below is because of intelisense
+
+        outsideAproach:
+           while(playerCoordiantes[0]!=-1)
+            {
+                playerCoordiantes[0]--;
+                playerCoordiantes[1]++;
+
+                if(currentMatirx[playerCoordiantes[0],playerCoordiantes[1]]!=-1)
                 {
-                    results[0] += currentMatirx[playerCoordinates[0], playerCoordinates[1]];
+                    results[0] += currentMatirx[playerCoordiantes[0], playerCoordiantes[1]];
                 }
-                
-                
             }
 
-            return results;
+
+           inneAproach:
+            while (playerCoordiantes[0] != -1)
+            {
+             
+                if (currentMatirx[playerCoordiantes[0], playerCoordiantes[1]] != -1)
+                {
+                    results[0] += currentMatirx[playerCoordiantes[0], playerCoordiantes[1]];
+                }
+
+                playerCoordiantes[0]--;
+                playerCoordiantes[1]++;
+            }
+
+            return null;
         }
 
 

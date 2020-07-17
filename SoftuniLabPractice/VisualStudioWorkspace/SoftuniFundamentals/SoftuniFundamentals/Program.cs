@@ -437,6 +437,9 @@ namespace SoftuniFundamentals
                 currentMatirx[enemyCoordinates[0], enemyCoordinates[1]] = -1;
             }
 
+
+            //TO DO
+            //modify to work with multiple
             //move player to gather data
             while (playerCoordinates[0] != -1 && playerCoordinates[1] != -1)
             {
@@ -451,7 +454,7 @@ namespace SoftuniFundamentals
                 
             }
 
-            return resluts;
+            return results;
         }
 
 
@@ -470,10 +473,11 @@ namespace SoftuniFundamentals
         }
 
         //check if player is in correct position of start
-        private static bool IsInRightPlacePlayer(int[] playerCooridnates,int[] matrixData)
+        private static bool IsInRightPlacePlayer(int[] playerCoordinates,int[] matrixData)
         {
             bool isPlayerInPlace = true;
-           if(playerCooridnates[0]!=matrixData[0]+1 && playerCooridnates[1]!=-1)
+           if((playerCoordinates[0]> matrixData[0] + 1 || playerCoordinates[0]<=0)
+                && (playerCoordinates[1]<-1 || playerCoordinates[1]>=matrixData[1]))
             {
                 isPlayerInPlace = false;
             }

@@ -359,6 +359,26 @@ namespace SoftuniFundamentals
 
         }
 
+
+
+
+
+        //SneakySam
+        private static void SamSneak()
+        {
+            int numberRows = int.Parse(Console.ReadLine());
+            char[][] currentRoom = new char[numberRows][];
+
+            //creating room
+            string enterRowData;
+            for(int i =0;i<numberRows;i++)
+            {
+                enterRowData = Console.ReadLine();
+                currentRoom[i] = enterRowData.ToCharArray();
+            }
+        }
+
+
         //Hospital Task for abstraction slides
         private static void HospitalRegistration()
         {

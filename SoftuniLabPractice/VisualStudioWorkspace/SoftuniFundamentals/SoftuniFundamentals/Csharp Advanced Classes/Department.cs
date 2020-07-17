@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes
@@ -37,6 +38,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
 
             get { return this.name; }
         }
+
+        public int FreeRooms => this.currentRooms.Count;
+       
 
 
         public void AddPatient(string name)
@@ -94,6 +98,22 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
                 sb.Append(item + Environment.NewLine);
             }
             sb.Append(Environment.NewLine);
+            return sb.ToString();
+        }
+
+        public string DisplayRoom(int roomNumber)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"Patietns in room {roomNumber + 1}"+Environment.NewLine);
+            foreach(var item in this.currentRooms[roomNumber])
+            {
+                if(item!=null)
+                {
+                    sb.Append(item + Environment.NewLine);
+                }
+               
+            }
+
             return sb.ToString();
         }
     }

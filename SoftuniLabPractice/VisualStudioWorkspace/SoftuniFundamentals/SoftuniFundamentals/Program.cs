@@ -78,6 +78,7 @@ namespace SoftuniFundamentals
             //RabbitTask();
             //JediGlaxy();
             // currentTasks.Bombs();
+           // HospitalRegistration();
 
             //some algorithm for balaned paranthesis task ()->yes ({)->no
             //-------------------------------------------------------------------
@@ -399,6 +400,11 @@ namespace SoftuniFundamentals
                 if(enterOutputRequest.Contains(" "))
                 {
                     getRequestData = enterOutputRequest.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                    int room = int.Parse(getRequestData[1]);
+                    if(room-1>=0 && room-1<=currentDepartments[getRequestData[0]].FreeRooms)
+                    {
+                        Console.WriteLine(currentDepartments[getRequestData[0]].DisplayRoom(room - 1));
+                    }
                 }
                 else
                 {
@@ -408,7 +414,7 @@ namespace SoftuniFundamentals
                     }
                     else if(currentDoctorPatient.ContainsKey(enterOutputRequest))
                     {
-
+                        Console.WriteLine(PatientsHealedByDoctor(enterOutputRequest, currentDoctorPatient[enterOutputRequest]));
                     }
                 }
                 enterOutputRequest = Console.ReadLine();
@@ -416,7 +422,7 @@ namespace SoftuniFundamentals
 
         }
 
-        private string PatientsHeledByDoctor(string doctor, List<string> currentPatients)
+        private static string PatientsHealedByDoctor(string doctor, List<string> currentPatients)
         {
             currentPatients.Sort();
             StringBuilder sb = new StringBuilder();

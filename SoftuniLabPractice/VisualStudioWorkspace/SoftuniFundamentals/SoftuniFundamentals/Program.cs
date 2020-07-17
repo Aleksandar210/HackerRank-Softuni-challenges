@@ -358,9 +358,33 @@ namespace SoftuniFundamentals
 
         }
 
+        //Hospital Task for abstraction slides
+        private static void HospitalRegistration()
+        {
+            //current Doctors and patients assigned to them
+            Dictionary<string, List<string>> currentDoctorPatient = new Dictionary<string, List<string>>();
+
+            //Collection of all Departments
+            Dictionary<string, Department> currentDepartments = new Dictionary<string, Department>();
+
+            string enterData=Console.ReadLine();
+            string[] gatherData;
+            while(!enterData.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                gatherData = enterData.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                
+                if(!currentDepartments.ContainsKey(gatherData[0]))
+                {
+
+                }
+
+                enterData = Console.ReadLine();
+            }
+        }
 
 
 
+        //jedi galaxy task from OOP basics
         private static void JediGlaxy()
         {
             //game results after the game
@@ -381,7 +405,7 @@ namespace SoftuniFundamentals
             List<int[]> currentEnteredCoordinates = new List<int[]>();
 
             enterCoordinates = Console.ReadLine();
-            while(!enterCoordinates.Equals("Let the force be with you!",StringComparison.OrdinalIgnoreCase))
+            while(!enterCoordinates.Equals("Let the force be with you",StringComparison.OrdinalIgnoreCase))
             {
                 coordinates = enterCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse).ToArray();

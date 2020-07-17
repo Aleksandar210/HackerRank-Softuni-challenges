@@ -363,6 +363,9 @@ namespace SoftuniFundamentals
 
         private static void JediGlaxy()
         {
+            //game results after the game
+            int[] results;
+
             //adding matrix coordinates
             int[] enterMatrixCoordinates = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
                 .Select(e => int.Parse(e)).ToArray();
@@ -407,17 +410,20 @@ namespace SoftuniFundamentals
                     }
                     else
                     {
-
+                        results = GatherStars(currentMatrix, playerCoordinates, enemyCoordinates);
+                        Console.WriteLine();
+                        Console.WriteLine($"Jedi Power: {results[0]} !" + Environment.NewLine + $"Sith Power: {results[1]} !");
                     }
                 }
 
             }
+           
 
         }
 
 
         //start JediGalaxyDataGather from matrix
-        private static void GatherStars(int[,]currentMatirx,int[], int[] playerCoordinates,int[]enemyCoordinates)
+        private static int[] GatherStars(int[,]currentMatirx,int[] playerCoordinates,int[]enemyCoordinates)
         {
             int[] results = new int[2] { 0, 0 };        //0-hero data gathered  1-enemy data gathered 
 
@@ -434,12 +440,18 @@ namespace SoftuniFundamentals
             //move player to gather data
             while (playerCoordinates[0] != -1 && playerCoordinates[1] != -1)
             {
-                enemyCoordinates[0]--;
-                enemyCoordinates[1]--;
+                playerCoordinates[0]--;
+                playerCoordinates[1]--;
 
-                results[1] += currentMatirx[enemyCoordinates[0], enemyCoordinates[1]];
-                currentMatirx[enemyCoordinates[0], enemyCoordinates[1]] = -1;
+                if(currentMatirx[playerCoordinates[0], playerCoordinates[1]]!=-1)
+                {
+                    results[0] += currentMatirx[playerCoordinates[0], playerCoordinates[1]];
+                }
+                
+                
             }
+
+            return resluts;
         }
 
 

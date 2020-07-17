@@ -392,6 +392,20 @@ namespace SoftuniFundamentals
                 enterCoordinates = Console.ReadLine();
 
             }
+
+            if(currentEnteredCoordinates.Count<2)
+            {
+                Console.Clear();
+                Console.WriteLine("Player Paths not detected!");
+                Console.WriteLine("Please Note that the last or only path entered is always the enemy!");
+                return;
+            }
+            else
+            {
+                results = GatherStars(currentMatrix, currentEnteredCoordinates);
+                Console.WriteLine($"Jedi Power: {results[0]}" + Environment.NewLine +
+                    $"Sith Power{results[1]}");
+            }
            
 
         }

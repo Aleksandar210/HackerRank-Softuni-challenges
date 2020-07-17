@@ -369,17 +369,63 @@ namespace SoftuniFundamentals
 
             string enterData=Console.ReadLine();
             string[] gatherData;
-            while(!enterData.Equals("end",StringComparison.OrdinalIgnoreCase))
+            while(!enterData.Equals("output",StringComparison.OrdinalIgnoreCase))
             {
                 gatherData = enterData.Split(" ", StringSplitOptions.RemoveEmptyEntries);
                 
                 if(!currentDepartments.ContainsKey(gatherData[0]))
                 {
+                    currentDepartments.Add(gatherData[0], new Department(gatherData[0]));
 
+                }
+
+                if(!currentDoctorPatient.ContainsKey(gatherData[1]+" "+ gatherData[2]))
+                {
+                    currentDoctorPatient.Add(gatherData[1] + " " + gatherData[2], new List<string>());
+                    currentDoctorPatient[gatherData[1] + " " + gatherData[2]].Add(gatherData[3]);
+                }
+                else
+                {
+                    currentDoctorPatient[gatherData[1] + " " + gatherData[2]].Add(gatherData[3]);
                 }
 
                 enterData = Console.ReadLine();
             }
+
+            string enterOutputRequest = Console.ReadLine();
+            string[] getRequestData;
+            while(!enterOutputRequest.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                if(enterOutputRequest.Contains(" "))
+                {
+                    getRequestData = enterOutputRequest.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                }
+                else
+                {
+                    if(currentDepartments.ContainsKey(enterOutputRequest))
+                    {
+                        Console.WriteLine(currentDepartments[enterOutputRequest].DiplayRegiteredPatients());
+                    }
+                    else if(currentDoctorPatient.ContainsKey(enterOutputRequest))
+                    {
+
+                    }
+                }
+                enterOutputRequest = Console.ReadLine();
+            }
+
+        }
+
+        private string PatientsHeledByDoctor(string doctor, List<string> currentPatients)
+        {
+            currentPatients.Sort();
+            StringBuilder sb = new StringBuilder();
+            sb.Append(doctor + " Healed:" + Environment.NewLine);
+            foreach(var item in currentPatients)
+            {
+                sb.Append(item + Environment.NewLine);
+            }
+            return sb.ToString();
         }
 
 

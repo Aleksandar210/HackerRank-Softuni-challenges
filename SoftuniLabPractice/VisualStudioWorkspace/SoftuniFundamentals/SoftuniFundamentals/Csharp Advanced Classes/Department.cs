@@ -85,5 +85,16 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
             return isEmptyRoom;
         }
+
+        public string DiplayRegiteredPatients()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in this.patientsRegistered)
+            {
+                sb.Append(item + Environment.NewLine);
+            }
+            sb.Append(Environment.NewLine);
+            return sb.ToString();
+        }
     }
 }

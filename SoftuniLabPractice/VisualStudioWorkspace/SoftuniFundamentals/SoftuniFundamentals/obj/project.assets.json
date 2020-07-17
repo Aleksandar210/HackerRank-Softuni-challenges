@@ -1041,11 +1041,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
+      "projectUniqueName": "D:\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
       "projectName": "SoftuniFundamentals",
-      "projectPath": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
+      "projectPath": "D:\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
       "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\obj\\",
+      "outputPath": "D:\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",

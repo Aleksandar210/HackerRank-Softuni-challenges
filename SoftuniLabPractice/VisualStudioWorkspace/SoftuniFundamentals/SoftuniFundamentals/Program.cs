@@ -361,9 +361,101 @@ namespace SoftuniFundamentals
 
 
 
+        private static void JediGlaxy()
+        {
+            //adding matrix coordinates
+            int[] enterMatrixCoordinates = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                .Select(e => int.Parse(e)).ToArray();
+
+            //create matrix
+            int[,] currentMatrix = new int[enterMatrixCoordinates[0], enterMatrixCoordinates[1]];
+            CreateJediGalaxyMatrix(currentMatrix);
+             
+            //player coordinates
+            int[] playerCoordinates;      //to store coordinates
+            string enterPlayerCoordinates;                //to enter coordinates
+
+            int[] enemyCoordinates;
+            string enterEnemyCoordinates;
+            while(true)
+            {
+                Console.Clear();
+                Console.Write("Enter player coordinates: ");
+                enterPlayerCoordinates = Console.ReadLine();
+                playerCoordinates = enterPlayerCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
+
+
+                Console.WriteLine();
+                Console.Write("Enter Enemy Coordintes: ");
+                enterEnemyCoordinates = Console.ReadLine();
+                enemyCoordinates = enterEnemyCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
 
 
 
+                if(playerCoordinates.Length!=2 && enemyCoordinates.Length!=2)
+                {
+                    continue;
+                }
+                else
+                {
+                   if(!IsInRightPlacePlayer(playerCoordinates,enterMatrixCoordinates) 
+                        && IsInRightPlaceEnemy(playerCoordinates,enterMatrixCoordinates))
+                    {
+                        continue;   
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+            }
+
+        }
+
+
+        //start JediGalaxyDataGather from matrix
+
+
+
+        //create 2d matrix with data from 0 to n
+        private static void CreateJediGalaxyMatrix(int[,] currentMatrix)
+        {
+            int counter = -1;
+            for(int i =0;i<currentMatrix.GetLength(0);i++)
+            {
+                for(int j=0;j<currentMatrix.GetLength(1);j++)
+                {
+                    counter++;
+                    currentMatrix[i, j] = counter;
+                }
+            }
+        }
+
+        //check if player is in correct position of start
+        private static bool IsInRightPlacePlayer(int[] playerCooridnates,int[] matrixData)
+        {
+            bool isPlayerInPlace = true;
+           if(playerCooridnates[0]!=matrixData[0]+1 && playerCooridnates[1]!=-1)
+            {
+                isPlayerInPlace = false;
+            }
+
+            return isPlayerInPlace;
+        }
+
+        //check if enemy is in right place
+        private static bool IsInRightPlaceEnemy(int[] enemyCoordinates,int[] matrixData)
+        {
+            bool isEnemyInPlace = true;
+            if(enemyCoordinates[0]!=matrixData[0]+1 && enemyCoordinates[1]!=matrixData[1]+1)
+            {
+                isEnemyInPlace = false;
+            }
+            return isEnemyInPlace;
+        }
 
         //Exam Tasks
         private static void RabitTask()

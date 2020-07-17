@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftuniFundamentals", "SoftuniFundamentals\SoftuniFundamentals.csproj", "{A31DABF8-EBD6-4B11-B2E7-EAC677A6BB0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftuniFundamentals", "SoftuniFundamentals\SoftuniFundamentals.csproj", "{A31DABF8-EBD6-4B11-B2E7-EAC677A6BB0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatWebApp", "CatWebApp\CatWebApp.csproj", "{DF03A1D9-8DAE-443F-97E0-D9C7AC7595D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A31DABF8-EBD6-4B11-B2E7-EAC677A6BB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A31DABF8-EBD6-4B11-B2E7-EAC677A6BB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A31DABF8-EBD6-4B11-B2E7-EAC677A6BB0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF03A1D9-8DAE-443F-97E0-D9C7AC7595D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF03A1D9-8DAE-443F-97E0-D9C7AC7595D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF03A1D9-8DAE-443F-97E0-D9C7AC7595D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF03A1D9-8DAE-443F-97E0-D9C7AC7595D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

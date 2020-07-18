@@ -400,23 +400,92 @@ namespace SoftuniFundamentals
 
         private static void ExecuteSamCommandMovement(string commands)
         {
+            for(int i=0;i<commands.Length;i++)
+            {
+                switch(commands[i])
+                {
+                    case 'U':
 
+                        break;
+                }
+            }
+        }
+
+        private static bool IsSamSpoted(int[] samCoordiantes, List<int[]> npcCoordinates,char[][]currentRoom)
+        {
+
+            for (int i = 0; i < npcCoordinates.Count; i++)
+            {
+                if (npcCoordinates[i][0] == samCoordiantes[0])
+                {
+                    switch (currentRoom[npcCoordinates[i][0]][npcCoordinates[i][1]])
+                    {
+                        case 'b':
+                            if (samCoordiantes[1] > npcCoordinates[i][1])
+                            {
+
+                                return true;
+                            }
+                            break;
+                        case 'd':
+                            if(samCoordiantes[1]< npcCoordinates[i][1])
+                            {
+                                return true;
+                            }
+                            break;
+                    }
+                }
+
+            }
+
+
+
+            return false;
         }
 
         private static void MoveEnemies(List<int[]> currentNPC,char[][] currentRoom)
         {
-           // Func<int[], bool> isEnemyOnEdge = enemy =>
-           //  {
-                 //if(enemy[1]==currentRoom[0])
-            // };
+            Func<int[], bool> IsEnemyOnEdge = enemy =>
+             {
+                 if(enemy[1]==currentRoom[0].Length-1|| enemy[1]==0)
+                 {
+                     return true;
+                 }
+                 else
+                 {
+                     return false;
+                 }
+             };
 
             for(int i =0;i<currentNPC.Count;i++)
             {
                 switch(currentRoom[currentNPC[i][0]][currentNPC[i][1]])
                 {
                     case 'd':
+                        if(IsEnemyOnEdge(currentNPC[i]))
+                        {
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1]]='b';
+                            continue;
+                        }
+                        else
+                        {
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1]] = '.';
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1] - 1] = 'd';
+                        }
+
                         break;
                     case 'b':
+                        if (IsEnemyOnEdge(currentNPC[i]))
+                        {
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1]] = 'd';
+                            continue;
+                        }
+                        else
+                        {
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1]] = '.';
+                            currentRoom[currentNPC[i][0]][currentNPC[i][1] + 1] = 'b';
+                        }
+
                         break;
                 }
             }

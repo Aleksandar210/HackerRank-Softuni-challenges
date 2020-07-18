@@ -356,6 +356,9 @@ namespace SoftuniFundamentals
             //  return false;
             //  };
 
+            int[][] currentMatrix = new int[3][];
+            currentMatrix[0] = new int[4];
+            Console.WriteLine(currentMatrix[0].Length);
            
         }
 
@@ -402,6 +405,11 @@ namespace SoftuniFundamentals
 
         private static void MoveEnemies(List<int[]> currentNPC,char[][] currentRoom)
         {
+           // Func<int[], bool> isEnemyOnEdge = enemy =>
+           //  {
+                 //if(enemy[1]==currentRoom[0])
+            // };
+
             for(int i =0;i<currentNPC.Count;i++)
             {
                 switch(currentRoom[currentNPC[i][0]][currentNPC[i][1]])

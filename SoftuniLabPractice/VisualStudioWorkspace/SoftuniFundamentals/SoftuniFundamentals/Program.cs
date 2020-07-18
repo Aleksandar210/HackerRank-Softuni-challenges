@@ -394,7 +394,7 @@ namespace SoftuniFundamentals
             Console.Clear();
             Console.Write("Enter Commands: ");
             string enterCommands = Console.ReadLine();
-
+            ExecuteSamCommandMovement(enterCommands,currentRoom,currentNpcCoordinates,samCoordinates,mainEnemyCoordinates);
 
         }
 

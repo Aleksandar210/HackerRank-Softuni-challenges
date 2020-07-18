@@ -356,7 +356,7 @@ namespace SoftuniFundamentals
             //  return false;
             //  };
 
-            Console.WriteLine("Hello World");
+           
         }
 
 
@@ -369,13 +369,37 @@ namespace SoftuniFundamentals
             int numberRows = int.Parse(Console.ReadLine());
             char[][] currentRoom = new char[numberRows][];
 
+            //Coordinates of NPC   
+            List<int[]> currentNpcCoordinates = new List<int[]>();      //all npc minion coordinates
+
+            //main character coordinates
+            int[] samCoordinates = new int[2];
+
+            //main enemy cooridnates
+            int[] mainEnemyCoordinates = new int[2];
+
             //creating room
             string enterRowData;
             for(int i =0;i<numberRows;i++)
             {
                 enterRowData = Console.ReadLine();
+                
                 currentRoom[i] = enterRowData.ToCharArray();
             }
+        }
+
+        private static void PinPointCoordinates(int row,string currentLine,List<int[]> npcCoordiantes, int[] sam,int[] mainEnemy)
+        {
+            for(int i =0;i<currentLine.Length;i++)
+            {
+                switch(currentLine[i])
+                {
+                    case 'b':
+                        npcCoordiantes.Add(new int[] { row, i });
+                        break;
+                }
+            }
+
         }
 
 

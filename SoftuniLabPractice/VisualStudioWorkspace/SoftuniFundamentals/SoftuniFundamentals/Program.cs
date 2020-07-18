@@ -398,22 +398,107 @@ namespace SoftuniFundamentals
 
         }
 
-        private static void ExecuteSamCommandMovement(string commands,char[][] currentRoom,List<int[]> currentNpc)
+
+        //kill npc
+       static Action<List<int[]>, int[]> KillNPC = (npc, sam) =>
         {
-            Action<int[], char[][], List<int[]>, int[]> SamAction = (sam, room, npc, nik) =>
+            npc = npc.Where(n => n[0] != sam[0] && n[1] != sam[1]).ToList();
+        };
+
+
+        //Execute Commands 
+        private static void ExecuteSamCommandMovement(string commands,char[][] currentRoom,List<int[]> currentNpc,int[] sam,int[] nik)
+        {
+            bool isSamDead = false;
+            bool isNikDead = false;
+           
+            Action<char,int[], char[][], List<int[]>, int[]> SamAction = (dir,sam, room, npc, nik) =>
                {
+                   room[sam[0]][sam[1]] = '.';
+                   switch (dir)
+                   {
+                       case 'U': 
+                           sam[0] -= 1;
+                           if(sam[0]==nik[0])
+                           {
+                               Console.WriteLine("Sam Wins");
+                               isNikDead = true;
+                               
+                           }
+                           room[sam[0]][sam[1]] = 'S';
+                           KillNPC(currentNpc, sam);
+                           if(IsSamSpoted(sam,currentNpc,currentRoom))
+                           {
+                               Console.WriteLine("Game Over Sma Was Killed!");
+                               isSamDead = true;
+                           }
+                           break;
+
+                       case 'D':
+                           sam[0] += 1;
+                           if (sam[0] == nik[0])
+                           {
+                               Console.WriteLine("Sam Wins");
+                               isNikDead = true;
+
+                           }
+                           room[sam[0]][sam[1]] = 'S';
+                           KillNPC(currentNpc, sam);
+                           if (IsSamSpoted(sam, currentNpc, currentRoom))
+                           {
+                               Console.WriteLine("Game Over Sma Was Killed!");
+                               isSamDead = true;
+                           }
+                           break;
+
+                       case 'W':
+                          
+                           break;
+                       case 'L':
+                           if (IsSamSpoted(sam, currentNpc, currentRoom))
+                           {
+                               Console.WriteLine("Game Over Sma Was Killed!");
+                               isSamDead = true;
+                           }
+                           else
+                           {
+                               sam[1] -= 1;
+                               room[sam[0]][sam[1]] = 'S';
+                               KillNPC(currentNpc, sam);
+                           }
+                           break;
+
+
+                       case 'R':
+                           if (IsSamSpoted(sam, currentNpc, currentRoom))
+                           {
+                               Console.WriteLine("Game Over Sma Was Killed!");
+                               isSamDead = true;
+                           }
+                           else
+                           {
+                               sam[1] += 1;
+                               room[sam[0]][sam[1]] = 'S';
+                               KillNPC(currentNpc, sam);
+                           }
+                           break;
+
+
+                   }
 
                };
 
             for(int i=0;i<commands.Length;i++)
             {
-                switch(commands[i])
+                MoveEnemies(currentNpc, currentRoom);
+                SamAction(commands[i], sam, currentRoom, currentNpc, nik);
+                if(isSamDead || isNikDead)
                 {
-                    case 'U':
-                        MoveEnemies(currentNpc, currentRoom);
-                        break;
+                    break;
                 }
             }
+
+        
         }
 
         private static bool IsSamSpoted(int[] samCoordiantes, List<int[]> npcCoordinates,char[][]currentRoom)

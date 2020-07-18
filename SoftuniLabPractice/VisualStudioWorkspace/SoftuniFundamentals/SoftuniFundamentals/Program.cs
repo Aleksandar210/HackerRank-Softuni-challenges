@@ -398,14 +398,19 @@ namespace SoftuniFundamentals
 
         }
 
-        private static void ExecuteSamCommandMovement(string commands)
+        private static void ExecuteSamCommandMovement(string commands,char[][] currentRoom,List<int[]> currentNpc)
         {
+            Action<int[], char[][], List<int[]>, int[]> SamAction = (sam, room, npc, nik) =>
+               {
+
+               };
+
             for(int i=0;i<commands.Length;i++)
             {
                 switch(commands[i])
                 {
                     case 'U':
-
+                        MoveEnemies(currentNpc, currentRoom);
                         break;
                 }
             }

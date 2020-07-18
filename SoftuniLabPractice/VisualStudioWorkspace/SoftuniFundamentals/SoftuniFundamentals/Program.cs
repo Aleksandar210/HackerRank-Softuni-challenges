@@ -383,7 +383,7 @@ namespace SoftuniFundamentals
             for(int i =0;i<numberRows;i++)
             {
                 enterRowData = Console.ReadLine();
-                
+                PinPointCoordinates(i, enterRowData, currentNpcCoordinates, samCoordinates, mainEnemyCoordinates);
                 currentRoom[i] = enterRowData.ToCharArray();
             }
         }
@@ -396,6 +396,17 @@ namespace SoftuniFundamentals
                 {
                     case 'b':
                         npcCoordiantes.Add(new int[] { row, i });
+                        break;
+                    case 'd':
+                        npcCoordiantes.Add(new int[] { row, i });
+                        break;
+                    case 'S':
+                        sam[0] = row;
+                        sam[1] = i;
+                        break;
+                    case 'N':
+                        mainEnemy[0] = row;
+                        mainEnemy[1] = i;
                         break;
                 }
             }

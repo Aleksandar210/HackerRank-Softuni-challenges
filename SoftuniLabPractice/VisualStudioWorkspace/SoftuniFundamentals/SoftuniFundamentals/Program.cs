@@ -357,15 +357,33 @@ namespace SoftuniFundamentals
             //  return false;
             //  };
 
-            int[][] currentMatrix = new int[3][];
-            currentMatrix[0] = new int[4];
-            Console.WriteLine(currentMatrix[0].Length);
+           
            
         }
 
 
 
+        //GreedyTimes
+        public static void GreedyTimes()
+        {
+            //entering capacity
+            int bagCapacity = int.Parse(Console.ReadLine());
 
+            //entering content of safe
+            string enterContentOfSafe = Console.ReadLine();
+
+            Dictionary<string, int> currentInventoryOfSpace = new Dictionary<string, int>();
+
+            //split data and add it to the collection
+            string[] safeContentData = enterContentOfSafe.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            for(int i =0;i<safeContentData.Length;i++)
+            {
+
+            }
+
+          
+
+        }
 
         //SneakySam
         private static void SamSneak()

@@ -79,6 +79,7 @@ namespace SoftuniFundamentals
             //JediGlaxy();
             // currentTasks.Bombs();
             // HospitalRegistration();
+            //SamSneak();
 
             //some algorithm for balaned paranthesis task ()->yes ({)->no
             //-------------------------------------------------------------------

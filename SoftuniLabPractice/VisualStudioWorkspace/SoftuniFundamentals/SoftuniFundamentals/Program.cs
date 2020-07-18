@@ -386,6 +386,32 @@ namespace SoftuniFundamentals
                 PinPointCoordinates(i, enterRowData, currentNpcCoordinates, samCoordinates, mainEnemyCoordinates);
                 currentRoom[i] = enterRowData.ToCharArray();
             }
+
+            //enter Commands;
+            Console.Clear();
+            Console.Write("Enter Commands: ");
+            string enterCommands = Console.ReadLine();
+
+
+        }
+
+        private static void ExecuteSamCommandMovement(string commands)
+        {
+
+        }
+
+        private static void MoveEnemies(List<int[]> currentNPC,char[][] currentRoom)
+        {
+            for(int i =0;i<currentNPC.Count;i++)
+            {
+                switch(currentRoom[currentNPC[i][0]][currentNPC[i][1]])
+                {
+                    case 'd':
+                        break;
+                    case 'b':
+                        break;
+                }
+            }
         }
 
         private static void PinPointCoordinates(int row,string currentLine,List<int[]> npcCoordiantes, int[] sam,int[] mainEnemy)

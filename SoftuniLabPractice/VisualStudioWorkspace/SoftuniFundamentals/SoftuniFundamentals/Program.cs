@@ -78,7 +78,7 @@ namespace SoftuniFundamentals
             //RabbitTask();
             //JediGlaxy();
             // currentTasks.Bombs();
-           // HospitalRegistration();
+            // HospitalRegistration();
 
             //some algorithm for balaned paranthesis task ()->yes ({)->no
             //-------------------------------------------------------------------
@@ -356,7 +356,7 @@ namespace SoftuniFundamentals
             //  return false;
             //  };
 
-
+            Console.WriteLine("Hello World");
         }
 
 

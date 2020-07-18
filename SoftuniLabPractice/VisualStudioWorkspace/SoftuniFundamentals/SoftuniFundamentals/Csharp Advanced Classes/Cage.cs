@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -157,5 +158,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             return sb.ToString();
         }
 
+        public IEnumerator<Rabbit> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

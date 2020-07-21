@@ -368,9 +368,29 @@ namespace SoftuniFundamentals
 
             while(!command.Equals("end",StringComparison.OrdinalIgnoreCase))
             {
+                gatherCommandData = command.Split(";", StringSplitOptions.RemoveEmptyEntries);
+                try
+                {
+                    ExecuteFootballTeamCommand(teams, gatherCommandData);
+                }
+                catch(ArgumentException exc)
+                {
+                    if (exc.Message.StartsWith("Player"))
+                    {
+                        Console.WriteLine(exc.Message);
+                        continue;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                }
                 
                 command = Console.ReadLine();
             }
+
+
         }
 
         private static void ExecuteFootballTeamCommand(Dictionary<string,FootballTeam> teams,string[] data)

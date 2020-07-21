@@ -74,7 +74,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes
             }
             else
             {
-                throw new ArgumentException("Player not found");
+                throw new ArgumentException($"Player {player} not found in {this.Name}");
             }
         }
 

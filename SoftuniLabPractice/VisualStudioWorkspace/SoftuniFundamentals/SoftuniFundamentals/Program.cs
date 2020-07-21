@@ -358,7 +358,83 @@ namespace SoftuniFundamentals
             
         }
 
+        //FootbalPlyersTask
+        private static void FootballTask()
+        {
+            Dictionary<string, FootballTeam> teams = new Dictionary<string, FootballTeam>();
+            string command = Console.ReadLine();
 
+            string[] gatherCommandData;
+
+            while(!command.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                
+                command = Console.ReadLine();
+            }
+        }
+
+        private static void ExecuteFootballTeamCommand(Dictionary<string,FootballTeam> teams,string[] data)
+        {
+            FootBallPlayer player = null;
+            int[] playerStats;
+
+            switch(data[0].ToLower())
+            {
+                case "team":
+                    if(!teams.ContainsKey(data[1]))
+                    {
+                        teams.Add(data[0], new FootballTeam(data[0]));
+                    }
+                   
+                    break;
+                case "add":
+                    if(!teams.ContainsKey(data[1]))
+                    {
+                        Console.WriteLine($"Team {data[1]} does not exist.");
+                    }
+                    else
+                    {
+                        if(!teams.ContainsKey(data[2]))
+                        {
+                            playerStats = new int[5];
+                            int counter = 0;
+                            for (int i = 3; i <= 7; i++)
+                            {
+                                playerStats[counter] = int.Parse(data[i]);
+                                counter++;
+                            }
+                            player = new FootBallPlayer(data[2], playerStats);
+                            teams[data[1]].AddPlayer(player);
+                        }
+
+                       
+
+                    }
+                    break;
+
+
+                case "remove":
+                    if(teams.ContainsKey(data[1]))
+                    {
+                        teams[data[1]].RemovePlayer(data[2]);
+                    }
+                    
+                    break;
+                case "rating":
+                    if(teams.ContainsKey(data[1]))
+                    {
+                        Console.WriteLine($"{data[1]} - {teams[data[1]].Rating}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Team {data[1]} does not exist");
+                    }
+                    break;
+                default:
+
+                    break;
+            }
+        }
 
 
 

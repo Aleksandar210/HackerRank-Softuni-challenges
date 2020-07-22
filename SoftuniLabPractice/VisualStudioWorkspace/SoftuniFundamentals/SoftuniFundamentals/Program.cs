@@ -77,6 +77,7 @@ namespace SoftuniFundamentals
             // currentTasks.Bombs();
             // HospitalRegistration();
             //SamSneak();
+            //FootballTask();
 
             //some algorithm for balaned paranthesis task ()->yes ({)->no
             //-------------------------------------------------------------------

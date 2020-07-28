@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 //this will reference everything from that folder when used directly without specifing from where
 using SoftuniFundamentals.Csharp_Advanced_Classes;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace SoftuniFundamentals
 {
@@ -356,10 +357,15 @@ namespace SoftuniFundamentals
             //  };
 
 
-            
+           
+
+            SandClockTelerikAlgo();
+
         }
 
-        //Telerik Algo Numbers task
+        //Telerik Algo
+        //-----------------------------------------------------------------------------------
+        //Numbers task
         private static void Numbers()
         {
             const int Limit = 10000000;
@@ -398,6 +404,56 @@ namespace SoftuniFundamentals
             Console.WriteLine("The numbers are: {0}", String.Join(",", numbersDivisiblBy));
 
         }
+
+        private static void SandClockTelerikAlgo()
+        {
+            StringBuilder sb = new StringBuilder();
+            int enterNumber = int.Parse(Console.ReadLine());
+
+            Console.Clear();
+            int counter = enterNumber;
+            int lineNumber = 0;
+            while(counter>0)
+            {
+                switch(lineNumber)
+                {
+                    case 0:
+                        sb.Append(drawStars(counter));
+                        
+                        sb.Append(Environment.NewLine);
+                        lineNumber++;
+                        counter -= 2;
+                        break;
+                    default:
+                        sb.Append(drawDots(lineNumber) + drawStars(counter) + drawDots(lineNumber));
+                        sb.Append(Environment.NewLine);
+                        lineNumber++;
+                        counter -= 2;
+                        break;
+                }
+            }
+            var result = sb.ToString().Split(Environment.NewLine, StringSplitOptions.None);
+
+            Array.Reverse(result);
+            for (int i = 2; i < result.Length; i++)
+            {
+                sb.Append(result[i]);
+                sb.Append(Environment.NewLine);
+            }
+
+            Console.WriteLine(sb.ToString());
+        }
+
+        private static Func<int, string> drawStars = (numberStars) =>
+         {
+             return new String('*', numberStars);
+         };
+
+        private static Func<int, string> drawDots = (numberDots) =>
+         {
+             return new String('.', numberDots);
+         };
+        //------------------------------------------------------------------------------------
 
         //FootbalPlyersTask
         private static void FootballTask()

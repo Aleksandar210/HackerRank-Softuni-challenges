@@ -153,6 +153,7 @@ namespace Red_vs_Green
                     greenNegihbourCount += this.LeftNeighbour(field);
                     greenNegihbourCount += this.DownLeftNeighbour(field);
                     greenNegihbourCount += this.UpperLeftNeighbour(field);
+                    greenNegihbourCount += this.UpperNeighbour(field);
 
                 }
 
@@ -162,7 +163,9 @@ namespace Red_vs_Green
 
                 if (this.ColPosition == 0)
                 {
-
+                    greenNegihbourCount += this.UpperNeighbour(field);
+                    greenNegihbourCount += this.UpperRightNeighbour(field);
+                    greenNegihbourCount += this.RightNeighbour(field);
                 }
                 else if (this.ColPosition > 0 && this.ColPosition < field.GetLength(1) - 1)
                 {

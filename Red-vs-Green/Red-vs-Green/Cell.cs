@@ -77,6 +77,7 @@ namespace Red_vs_Green
             get { return this.futureState; }
         }
 
+        public int TimesGreen => this.timesGreen;
 
        
 

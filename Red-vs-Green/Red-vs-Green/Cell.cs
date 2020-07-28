@@ -25,10 +25,10 @@ namespace Red_vs_Green
         {
             this.RowPosition = x;
             this.ColPosition = y;
-            this.currentState = current;
+            this.CurrentState = current;
             this.timesGreen = DefaultTimesGreenVal;
             this.greenNegihbourCount = DefaultNeighbourCount;
-            this.CountColorOnStart(current);
+            this.IncreaseIfGreen();
         }
 
         //properties
@@ -81,9 +81,9 @@ namespace Red_vs_Green
        
 
         //behaviour
-        private void CountColorOnStart(int startingState)
+        private void IncreaseIfGreen()
         {
-            if(startingState==1)
+            if(this.CurrentState==1)
             {
                 this.IncreaseTimesGreen();
             }
@@ -94,6 +94,49 @@ namespace Red_vs_Green
             this.timesGreen += 1;
         }
 
+        //Update current state with future state
+        private void UpdateState()
+        {
+            this.CurrentState = FutureState;
+            this.IncreaseIfGreen();
+
+        }
+
+        
+
+        //Determine Future State by the rules
+        private void DetermineFutureState()
+        {
+            switch(this.CurrentState)
+            {
+                case 1:
+                    switch(this.greenNegihbourCount)
+                    {
+                        case 2:
+                        case 3:
+                        case 6:
+                            this.FutureState = 1;
+                            break;
+                        default:
+                            this.FutureState = 0;
+                            break;
+                    }
+                    break;
+                case 0:
+                    switch(this.greenNegihbourCount)
+                    {
+                        case 3:
+                        case 6:
+                            this.FutureState = 1;
+                            break;
+                        default:
+                            this.FutureState = 0;
+                            break;
+                    }
+                    break;
+
+            }
+        }
         
         //Get Number of green neighbours
         private void CountGreenNeighbours(Cell[,] field)
@@ -104,24 +147,24 @@ namespace Red_vs_Green
             {
                 if (this.ColPosition == 0)
                 {
-                    greenNegihbourCount += this.RightNeighbour(field);
-                    greenNegihbourCount += this.DownRightNeighbour(field);
-                    greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
+                    this.greenNegihbourCount += this.DownRightNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
                 }
                 else if (this.ColPosition > 0 && this.ColPosition < field.GetLength(1) - 1)
                 {
-                    greenNegihbourCount += this.DownNeighbour(field);
-                    greenNegihbourCount += this.DownRightNeighbour(field);
-                    greenNegihbourCount += this.DownLeftNeighbour(field);
-                    greenNegihbourCount += this.RightNeighbour(field);
-                    greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.DownRightNeighbour(field);
+                    this.greenNegihbourCount += this.DownLeftNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
                    
                 }
                 else if (this.ColPosition == field.GetLength(1) - 1)
                 {
-                    greenNegihbourCount += this.DownLeftNeighbour(field);
-                    greenNegihbourCount += this.DownNeighbour(field);
-                    greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownLeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
                 }
             }
             else if (this.RowPosition > 0 && this.RowPosition < field.GetLength(0) - 1)
@@ -129,31 +172,31 @@ namespace Red_vs_Green
 
                 if (this.ColPosition == 0)
                 {
-                    greenNegihbourCount += this.DownNeighbour(field);
-                    greenNegihbourCount += this.UpperNeighbour(field);
-                    greenNegihbourCount += this.RightNeighbour(field);
-                    greenNegihbourCount += this.DownRightNeighbour(field);
-                    greenNegihbourCount += this.UpperRightNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
+                    this.greenNegihbourCount += this.DownRightNeighbour(field);
+                    this.greenNegihbourCount += this.UpperRightNeighbour(field);
 
                 }
                 else if (this.ColPosition > 0 && this.ColPosition < field.GetLength(1) - 1)
                 {
-                    greenNegihbourCount += this.RightNeighbour(field);
-                    greenNegihbourCount += this.LeftNeighbour(field);
-                    greenNegihbourCount += this.DownRightNeighbour(field);
-                    greenNegihbourCount += this.DownLeftNeighbour(field);
-                    greenNegihbourCount += this.DownNeighbour(field);
-                    greenNegihbourCount += this.UpperRightNeighbour(field);
-                    greenNegihbourCount += this.UpperNeighbour(field);
-                    greenNegihbourCount += this.UpperLeftNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownRightNeighbour(field);
+                    this.greenNegihbourCount += this.DownLeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.UpperRightNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
+                    this.greenNegihbourCount += this.UpperLeftNeighbour(field);
                 }
                 else if (this.ColPosition == field.GetLength(1) - 1)
                 {
-                    greenNegihbourCount += this.DownNeighbour(field);
-                    greenNegihbourCount += this.LeftNeighbour(field);
-                    greenNegihbourCount += this.DownLeftNeighbour(field);
-                    greenNegihbourCount += this.UpperLeftNeighbour(field);
-                    greenNegihbourCount += this.UpperNeighbour(field);
+                    this.greenNegihbourCount += this.DownNeighbour(field);
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.DownLeftNeighbour(field);
+                    this.greenNegihbourCount += this.UpperLeftNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
 
                 }
 
@@ -163,19 +206,26 @@ namespace Red_vs_Green
 
                 if (this.ColPosition == 0)
                 {
-                    greenNegihbourCount += this.UpperNeighbour(field);
-                    greenNegihbourCount += this.UpperRightNeighbour(field);
-                    greenNegihbourCount += this.RightNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
+                    this.greenNegihbourCount += this.UpperRightNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
                 }
                 else if (this.ColPosition > 0 && this.ColPosition < field.GetLength(1) - 1)
                 {
-
+                    this.greenNegihbourCount += this.UpperRightNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
+                    this.greenNegihbourCount += this.UpperLeftNeighbour(field);
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.RightNeighbour(field);
                 }
                 else if (this.ColPosition == field.GetLength(1) - 1)
                 {
-
+                    this.greenNegihbourCount += this.LeftNeighbour(field);
+                    this.greenNegihbourCount += this.UpperLeftNeighbour(field);
+                    this.greenNegihbourCount += this.UpperNeighbour(field);
                 }
 
+               
             }
         }
 

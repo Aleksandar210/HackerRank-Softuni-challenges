@@ -359,6 +359,46 @@ namespace SoftuniFundamentals
             
         }
 
+        //Telerik Algo Numbers task
+        private static void Numbers()
+        {
+            const int Limit = 10000000;
+
+            int start;
+            int end;
+            int divisibleBy;
+            int leftover;
+
+            int[] input;
+            do
+            {
+                Console.Clear();
+                Console.Write("Enter: ");
+                input = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
+                start = input[0];
+                end = input[1];
+                divisibleBy = input[2];
+                leftover = input[3];
+            }
+            while ((end <= Limit && (start <= 1 && start <= end)) && (leftover <= Limit &&(divisibleBy <= 0 && divisibleBy < leftover)));
+
+            List<int> numbersDivisiblBy = new List<int>();
+
+            for(int i= start;i<end;i++)
+            {
+                if(i%divisibleBy==leftover)
+                {
+                    numbersDivisiblBy.Add(i);
+                }
+            }
+
+            Console.Clear();
+            Console.WriteLine(numbersDivisiblBy.Count);
+            Console.WriteLine("The numbers are: {0}", String.Join(",", numbersDivisiblBy));
+
+        }
+
         //FootbalPlyersTask
         private static void FootballTask()
         {

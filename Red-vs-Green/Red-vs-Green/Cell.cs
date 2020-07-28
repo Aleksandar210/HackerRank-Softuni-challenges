@@ -26,9 +26,10 @@ namespace Red_vs_Green
             this.RowPosition = x;
             this.ColPosition = y;
             this.CurrentState = current;
+            this.FutureState = 0;
             this.timesGreen = DefaultTimesGreenVal;
             this.greenNegihbourCount = DefaultNeighbourCount;
-            this.IncreaseIfGreen();
+            
         }
 
         //properties
@@ -96,7 +97,7 @@ namespace Red_vs_Green
         }
 
         //Update current state with future state
-        private void UpdateState()
+        public void UpdateState()
         {
             this.CurrentState = FutureState;
             this.IncreaseIfGreen();
@@ -140,7 +141,7 @@ namespace Red_vs_Green
 
             }
 
-            this.UpdateState();
+            
         }
         
         //Get Number of green neighbours

@@ -105,8 +105,10 @@ namespace Red_vs_Green
         
 
         //Determine Future State by the rules
-        private void DetermineFutureState()
+        public void DetermineFutureState(Cell[,] field)
         {
+            this.CountGreenNeighbours(field);
+
             switch(this.CurrentState)
             {
                 case 1:
@@ -136,6 +138,8 @@ namespace Red_vs_Green
                     break;
 
             }
+
+            this.UpdateState();
         }
         
         //Get Number of green neighbours

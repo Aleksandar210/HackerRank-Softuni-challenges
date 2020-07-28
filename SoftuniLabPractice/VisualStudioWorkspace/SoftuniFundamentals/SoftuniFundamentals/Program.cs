@@ -357,9 +357,9 @@ namespace SoftuniFundamentals
             //  };
 
 
-           
 
-            SandClockTelerikAlgo();
+            //Numbers();
+            //SandClockTelerikAlgo();
 
         }
 

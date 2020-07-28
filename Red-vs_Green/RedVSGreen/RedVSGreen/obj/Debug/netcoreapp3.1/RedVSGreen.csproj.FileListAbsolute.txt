@@ -1,7 +1,0 @@
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\bin\Debug\netcoreapp3.1\RedVSGreen.exe
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.csproj.CoreCompileInputs.cache
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.AssemblyInfoInputs.cache
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.AssemblyInfo.cs
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.dll
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.pdb
-D:\HackerRank-Softuni-challenges\Red-vs_Green\RedVSGreen\RedVSGreen\obj\Debug\netcoreapp3.1\RedVSGreen.csprojAssemblyReference.cache

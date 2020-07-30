@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using SoftuniFundamentals.Csharp_Advanced_Classes;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks.Dataflow;
 
 namespace SoftuniFundamentals
 {
@@ -360,11 +361,31 @@ namespace SoftuniFundamentals
 
             //Numbers();
             //SandClockTelerikAlgo();
+            List<int[]> currentSquare = new List<int[]>(4);
+            for(int i =0;i<4;i++)
+            {
+                currentSquare.Add(Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray());
+            }
+
+            int[] temp = new int[] { 6, 4 };
+            for(int i =0;i<currentSquare.Count;i++)
+            {
+                Console.WriteLine
+                    ($"From {currentSquare[i][0] + "," + currentSquare[i][1]} is " +
+                    $"{GetEuclidianDistance(currentSquare[i], temp)}");
+            }
 
         }
 
         //Telerik Algo
         //-----------------------------------------------------------------------------------
+
+
+        private static int GetEuclidianDistance(int[] firstPair, int[] secondPair)
+        {
+            return (int)Math.Round(Math.Sqrt(Math.Pow(firstPair[0] - secondPair[0], 2) + Math.Pow(firstPair[1] - secondPair[1], 2)));
+        }
 
         //Shepard Task
         private static void ShepardTask()

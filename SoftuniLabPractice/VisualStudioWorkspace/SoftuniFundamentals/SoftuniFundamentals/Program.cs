@@ -365,6 +365,26 @@ namespace SoftuniFundamentals
 
         //Telerik Algo
         //-----------------------------------------------------------------------------------
+
+        //Shepard Task
+        private static void ShepardTask()
+        {
+            int[] enterFencesAndSheeps;
+            do
+            {
+                Console.Clear();
+                enterFencesAndSheeps = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray();
+            } while ((enterFencesAndSheeps[0] > 0 && enterFencesAndSheeps[0] < 101) &&
+            enterFencesAndSheeps[1] > 0 && enterFencesAndSheeps[1] < 101);
+
+            for(int i =0;i<enterFencesAndSheeps[0];i++)
+            {
+
+            }
+        }
+
+
         //Numbers task
         private static void Numbers()
         {

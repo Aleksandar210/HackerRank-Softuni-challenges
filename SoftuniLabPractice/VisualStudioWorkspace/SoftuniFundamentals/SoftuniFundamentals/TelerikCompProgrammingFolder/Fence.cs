@@ -13,6 +13,8 @@ namespace SoftuniFundamentals.TelerikCompProgrammingFolder
         private readonly int[] bottomLeftAngle;
         private readonly int[] topRightAngle;
         private readonly int[] bottomRightAngle;
+        private List<int[]> currentSheeps;
+        
 
         //constructors
         public Fence(int[] bottomLeft, int[] topLeft, int[] topRight, int[] bottomRight)
@@ -25,6 +27,7 @@ namespace SoftuniFundamentals.TelerikCompProgrammingFolder
                 this.bottomRightAngle = bottomRight;
             }
 
+            this.currentSheeps = new List<int[]>();
         }
 
         //properties
@@ -69,8 +72,23 @@ namespace SoftuniFundamentals.TelerikCompProgrammingFolder
 
         public bool IsSheepInside(int[] sheepCoordinates)
         {
+            if((sheepCoordinates[0]<this.TopLeftAngle[0] && sheepCoordinates[0]>this.BottomLeftAgle[0])
+                && (sheepCoordinates[1]>this.topLeftAngle[1]&&sheepCoordinates[1]<this.topLeftAngle[1]))
+            {
+               
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
 
-            return false;
+        public void AddSheepInsideFence(string sheepCoordinates,Dictionary<string,int[]> sheeps)
+        {
+            this.currentSheeps.Add(sheeps[sheepCoordinates]);
+            sheeps.Remove(sheepCoordinates);
         }
 
     }

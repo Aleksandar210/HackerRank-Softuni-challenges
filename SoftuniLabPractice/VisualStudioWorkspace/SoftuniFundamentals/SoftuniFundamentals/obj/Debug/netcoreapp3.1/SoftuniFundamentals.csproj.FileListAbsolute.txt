@@ -20,3 +20,11 @@ D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\Softun
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.AssemblyInfo.cs
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.dll
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\TextFile.txt
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\TextFile1.txt
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.deps.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.runtimeconfig.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.runtimeconfig.dev.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.genruntimeconfig.cache

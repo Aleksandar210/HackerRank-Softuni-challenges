@@ -14,6 +14,7 @@ using SoftuniFundamentals.Csharp_Advanced_Classes;
 using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks.Dataflow;
+using SoftuniFundamentals.TelerikCompProgrammingFolder;
 
 namespace SoftuniFundamentals
 {
@@ -361,20 +362,7 @@ namespace SoftuniFundamentals
 
             //Numbers();
             //SandClockTelerikAlgo();
-            List<int[]> currentSquare = new List<int[]>(4);
-            for(int i =0;i<4;i++)
-            {
-                currentSquare.Add(Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse).ToArray());
-            }
-
-            int[] temp = new int[] { 6, 4 };
-            for(int i =0;i<currentSquare.Count;i++)
-            {
-                Console.WriteLine
-                    ($"From {currentSquare[i][0] + "," + currentSquare[i][1]} is " +
-                    $"{GetEuclidianDistance(currentSquare[i], temp)}");
-            }
+            
 
         }
 
@@ -382,9 +370,9 @@ namespace SoftuniFundamentals
         //-----------------------------------------------------------------------------------
 
 
-        private static int GetEuclidianDistance(int[] firstPair, int[] secondPair)
+        private static double GetEuclidianDistance(int[] firstPair, int[] secondPair)
         {
-            return (int)Math.Round(Math.Sqrt(Math.Pow(firstPair[0] - secondPair[0], 2) + Math.Pow(firstPair[1] - secondPair[1], 2)));
+            return Math.Sqrt(Math.Pow(firstPair[0] - secondPair[0], 2) + Math.Pow(firstPair[1] - secondPair[1], 2));
         }
 
         //Shepard Task
@@ -399,10 +387,52 @@ namespace SoftuniFundamentals
             } while ((enterFencesAndSheeps[0] > 0 && enterFencesAndSheeps[0] < 101) &&
             enterFencesAndSheeps[1] > 0 && enterFencesAndSheeps[1] < 101);
 
+            List<Fence> fences = new List<Fence>();
+
+            Fence currentFence = null;
+            int[] enterCoordinates;
             for(int i =0;i<enterFencesAndSheeps[0];i++)
             {
-
+                enterCoordinates = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                     .Select(int.Parse).ToArray();
+                currentFence = new Fence(new int[] { enterCoordinates[0], enterCoordinates[1] },
+                    new int[] { enterCoordinates[2], enterCoordinates[1] }, new int[] { enterCoordinates[2], enterCoordinates[3] },
+                    new int[] { enterCoordinates[0], enterCoordinates[3] });
+                fences.Add(currentFence);
+                
             }
+
+            Dictionary<string, int[]> currentSheeps = new Dictionary<string, int[]>();
+            string enterSheepCoordinates;
+            for(int i =0;i<enterFencesAndSheeps[1];i++)
+            {
+                enterSheepCoordinates = Console.ReadLine();
+                currentSheeps.TryAdd(enterSheepCoordinates, enterSheepCoordinates.Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                    .Select(int.Parse).ToArray());
+            }
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Sheeps outside teh fences");
+            bool hasBeenAddedToFence;
+            foreach(var item in currentSheeps)
+            {
+                hasBeenAddedToFence = false;
+                foreach(var fence in fences)
+                {
+                    if(fence.IsSheepInside(item.Value))
+                    {
+                        fence.AddSheepInsideFence(item.Key,currentSheeps);
+                        hasBeenAddedToFence = true;
+                        break;
+                    }
+                }
+                if(!hasBeenAddedToFence)
+                {
+                    sb.Append(item.Key + Environment.NewLine);
+                }
+            }
+
+            Console.WriteLine(sb.ToString());
+           
         }
 
 

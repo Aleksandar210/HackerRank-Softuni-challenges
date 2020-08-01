@@ -15,6 +15,8 @@ using System.Runtime.InteropServices;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks.Dataflow;
 using SoftuniFundamentals.TelerikCompProgrammingFolder;
+using System.Net.Sockets;
+using System.Xml.Serialization;
 
 namespace SoftuniFundamentals
 {
@@ -362,6 +364,7 @@ namespace SoftuniFundamentals
 
             //Numbers();
             //SandClockTelerikAlgo();
+            //ShepardTask();
             
 
         }
@@ -369,10 +372,69 @@ namespace SoftuniFundamentals
         //Telerik Algo
         //-----------------------------------------------------------------------------------
 
-
+            //for experiments
         private static double GetEuclidianDistance(int[] firstPair, int[] secondPair)
         {
             return Math.Sqrt(Math.Pow(firstPair[0] - secondPair[0], 2) + Math.Pow(firstPair[1] - secondPair[1], 2));
+        }
+
+        //LightCalculator
+        private static void LightCalcTask()
+        {
+            Dictionary<string,int> currentSegmentCombinations = new Dictionary<string,int>();
+            AddSegmentCombinations(currentSegmentCombinations);
+            int enterNumberOfSegments = int.Parse(Console.ReadLine());
+            string[] segmentsEntered = new string[enterNumberOfSegments];
+            for(int i =0;i<enterNumberOfSegments;i++)
+            {
+                segmentsEntered[i] = Console.ReadLine();
+            }
+            
+        }
+
+        private static bool EnterSegmentInArray(string[] segments,int index)
+        {
+            string segment = Console.ReadLine();
+            if(segment.Length==7)
+            {
+                bool isAllDigits = true;
+                for(int i=0;i<segment.Length;i++)
+                {
+                    if(!Char.IsDigit(segment[i]))
+                    {
+                        isAllDigits = false;
+                        break;
+                    }
+                }
+
+                if(isAllDigits)
+                {
+                    segments[index] = segment; 
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static void AddSegmentCombinations(Dictionary<string,int> currentDict)
+        {
+            currentDict.Add("1111110",0);
+            currentDict.Add("0110000",1);
+            currentDict.Add("1101101",2);
+            currentDict.Add("1111001",3);
+            currentDict.Add("0110011",4);
+            currentDict.Add("1011011",5);
+            currentDict.Add("1011111",6);
+            currentDict.Add("1110000",7);
+            currentDict.Add("1111111",8);
+            currentDict.Add("1111011",9);
         }
 
         //Shepard Task

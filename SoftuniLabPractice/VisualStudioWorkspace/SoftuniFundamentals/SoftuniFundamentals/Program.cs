@@ -388,14 +388,18 @@ namespace SoftuniFundamentals
             int[][] enteredSegments = new int[enterNumberOfSegments][];
             for(int i =0;i<enterNumberOfSegments;i++)
             {
-                EnterSegmentInArray(enteredSegments, i);
+                Console.Clear();
+                if(!EnterSegmentInArray(enteredSegments, i))
+                {
+                    i--;
+                }
             }
             
         }
 
         private static bool EnterSegmentInArray(int[][] segments,int index)
         {
-            Console.Write("Enter segments: ")
+            Console.Write("Enter segments: ");
             int[] segment = Console.ReadLine().Select(e=>(int)e-'0').ToArray();
            if(segment.Length==7)
             {

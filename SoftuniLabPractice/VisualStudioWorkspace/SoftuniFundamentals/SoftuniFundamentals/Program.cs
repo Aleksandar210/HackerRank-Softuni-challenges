@@ -365,8 +365,9 @@ namespace SoftuniFundamentals
             //Numbers();
             //SandClockTelerikAlgo();
             //ShepardTask();
-            
 
+            int[] segment = Console.ReadLine().Select(e => (int)e - '0').ToArray();
+            Console.WriteLine(segment.Aggregate((a, b) => a + b));
         }
 
         //Telerik Algo
@@ -384,32 +385,23 @@ namespace SoftuniFundamentals
             Dictionary<string,int> currentSegmentCombinations = new Dictionary<string,int>();
             AddSegmentCombinations(currentSegmentCombinations);
             int enterNumberOfSegments = int.Parse(Console.ReadLine());
-            string[] segmentsEntered = new string[enterNumberOfSegments];
+            int[][] enteredSegments = new int[enterNumberOfSegments][];
             for(int i =0;i<enterNumberOfSegments;i++)
             {
-                segmentsEntered[i] = Console.ReadLine();
+                EnterSegmentInArray(enteredSegments, i);
             }
             
         }
 
-        private static bool EnterSegmentInArray(string[] segments,int index)
+        private static bool EnterSegmentInArray(int[][] segments,int index)
         {
-            string segment = Console.ReadLine();
-            if(segment.Length==7)
+            Console.Write("Enter segments: ")
+            int[] segment = Console.ReadLine().Select(e=>(int)e-'0').ToArray();
+           if(segment.Length==7)
             {
-                bool isAllDigits = true;
-                for(int i=0;i<segment.Length;i++)
+               if(segment.Aggregate((a,b)=>a+b)<=7)
                 {
-                    if(!Char.IsDigit(segment[i]))
-                    {
-                        isAllDigits = false;
-                        break;
-                    }
-                }
-
-                if(isAllDigits)
-                {
-                    segments[index] = segment; 
+                    segments[index] = segment;
                     return true;
                 }
                 else

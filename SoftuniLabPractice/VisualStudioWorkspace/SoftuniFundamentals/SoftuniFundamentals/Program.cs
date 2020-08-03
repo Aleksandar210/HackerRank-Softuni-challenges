@@ -387,6 +387,14 @@ namespace SoftuniFundamentals
                 sumSoFar += int.Parse(Console.ReadLine());
             }
 
+            if(sumSoFar==21)
+            {
+                Console.WriteLine("DOSTA");
+                return;
+            }
+
+
+
         }
 
         private static void GenerateDeck(Dictionary<int,List<char>> currentDeck)

@@ -370,6 +370,49 @@ namespace SoftuniFundamentals
             Console.WriteLine(segment.Aggregate((a, b) => a + b));
         }
 
+        //CesarBlackJack
+        private static void CesarBlackJack()
+        {
+            Dictionary<int, List<char>> currentCardsInDeck = new Dictionary<int, List<char>>();
+            for(int i=2;i<11;i++)
+            {
+                currentCardsInDeck.Add(i, new List<char>());
+            }
+            GenerateDeck(currentCardsInDeck);
+
+            int numberDrewnSoFar = int.Parse(Console.ReadLine());
+            int sumSoFar = 0;
+            for(int i =0;i<numberDrewnSoFar;i++)
+            {
+                sumSoFar += int.Parse(Console.ReadLine());
+            }
+
+        }
+
+        private static void GenerateDeck(Dictionary<int,List<char>> currentDeck)
+        {
+            for(int i =0;i<4;i++)
+            {
+                for(int j=2;j<=11;j++)
+                {
+                    switch(j)
+                    {
+                        case 10:
+                            currentDeck[i].Add('J');
+                            currentDeck[i].Add('Q');
+                            currentDeck[i].Add('K');
+                            break;
+                        case 11:
+                            currentDeck[i].Add('A');
+                            break;
+                        default:
+                            currentDeck[i].Add(i.ToString()[0]);
+                            break;
+                    }
+                }
+            }
+        }
+
         //Telerik Algo
         //-----------------------------------------------------------------------------------
 
@@ -393,6 +436,11 @@ namespace SoftuniFundamentals
                 {
                     i--;
                 }
+            }
+
+            for(int i =0;i<enteredSegments.Length;i++)
+            {
+               int[] temp =  enteredSegments[i];
             }
             
         }

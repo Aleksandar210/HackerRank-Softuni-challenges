@@ -368,6 +368,29 @@ namespace SoftuniFundamentals
             //SandClockTelerikAlgo();
             //ShepardTask();
 
+            int number = 15;
+            char[] letters = new char[] { 'D', 'T', 'Z' };
+            int sum = 0;
+            int numberItterations = number / letters.Length;
+            StringBuilder sb = new StringBuilder();
+            List<string> labledBoxes = new List<string>();
+            for(int i =0;i<numberItterations;i++)
+            {
+                switch(labledBoxes.Count)
+                {
+                    case 0:
+                        for (int z = 0; z < letters.Length; z++)
+                        {
+                            labledBoxes.Add(letters[i].ToString());
+                        }
+                        break;
+                    default:
+                        sb.Clear();
+
+                        break;
+                }
+            }
+
         }
         //Facebook hackerCup 
         //LableMaker
@@ -383,7 +406,11 @@ namespace SoftuniFundamentals
 
         private void ExecuteTestCase(string letters, int boxes)
         {
+            char[] lettersAvailable = letters.ToCharArray();
+            Array.Sort<char>(lettersAvailable);
             string[] lablesOnBoxes = new string[boxes];
+
+
         }
        
         

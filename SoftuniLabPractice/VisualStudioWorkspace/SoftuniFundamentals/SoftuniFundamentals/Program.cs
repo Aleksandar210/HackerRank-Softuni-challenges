@@ -17,6 +17,8 @@ using System.Threading.Tasks.Dataflow;
 using SoftuniFundamentals.TelerikCompProgrammingFolder;
 using System.Net.Sockets;
 using System.Xml.Serialization;
+using MoreLinq;
+using MoreLinq.Extensions;
 
 namespace SoftuniFundamentals
 {
@@ -366,9 +368,27 @@ namespace SoftuniFundamentals
             //SandClockTelerikAlgo();
             //ShepardTask();
 
-            int[] segment = Console.ReadLine().Select(e => (int)e - '0').ToArray();
-            Console.WriteLine(segment.Aggregate((a, b) => a + b));
         }
+        //Facebook hackerCup 
+        //LableMaker
+        private static void LableMaker()
+        {
+            int testCases = int.Parse(Console.ReadLine());
+            string enter;
+            string letters;
+            int numberBoxes;
+
+
+        }
+
+        private void ExecuteTestCase(string letters, int boxes)
+        {
+            string[] lablesOnBoxes = new string[boxes];
+        }
+       
+        
+
+        
 
         //CesarBlackJack
         private static void CesarBlackJack()
@@ -396,6 +416,8 @@ namespace SoftuniFundamentals
 
 
         }
+
+        
 
         private static void GenerateDeck(Dictionary<int,List<char>> currentDeck)
         {

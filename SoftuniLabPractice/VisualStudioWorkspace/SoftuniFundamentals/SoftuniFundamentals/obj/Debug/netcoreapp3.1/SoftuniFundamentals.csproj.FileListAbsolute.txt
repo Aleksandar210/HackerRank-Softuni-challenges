@@ -15,7 +15,6 @@ D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netco
 D:\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\TextFile1.txt
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.exe
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csprojAssemblyReference.cache
-D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csproj.CoreCompileInputs.cache
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.AssemblyInfoInputs.cache
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.AssemblyInfo.cs
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.dll
@@ -28,3 +27,6 @@ D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\Softun
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.dll
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\SoftuniFundamentals.pdb
 D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.genruntimeconfig.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\bin\Debug\netcoreapp3.1\MoreLinq.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csproj.CoreCompileInputs.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\VisualStudioWorkspace\SoftuniFundamentals\SoftuniFundamentals\obj\Debug\netcoreapp3.1\SoftuniFundamentals.csproj.CopyComplete

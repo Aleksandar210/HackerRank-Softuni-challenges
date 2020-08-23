@@ -397,10 +397,11 @@ namespace SoftuniFundamentals
             do
             {
                 Console.Clear();
-                Console.WriteLine("Entered so far: ");
-                Console.WriteLine(sb.ToString());
-                Console.WriteLine();
-                Console.WriteLine($"Enter data for line {index}: ");
+                if(sb.Capacity>0)
+                {
+                    Console.WriteLine(sb.ToString());
+                }
+                
                 currentLandData = Console.ReadLine();
             } while (currentLandData.Length != land.GetLength(1));
 
@@ -408,6 +409,7 @@ namespace SoftuniFundamentals
             {
                 land[index, i] = currentLandData[i];
             }
+            sb.Append(currentLandData + Environment.NewLine);
         }
 
         //Telerik Algo

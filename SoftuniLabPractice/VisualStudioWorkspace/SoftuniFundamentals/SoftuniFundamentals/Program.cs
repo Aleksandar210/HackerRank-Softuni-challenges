@@ -390,13 +390,29 @@ namespace SoftuniFundamentals
             Dictionary<string, char> currentCheckPointLocations = new Dictionary<string, char>();
             for(int i =0;i<row;i++)
             {
-                FillCurrentRow(i, currentLand, sb);
+                FillCurrentRow(i, currentLand, sb,currentCheckPointLocations,notCheckPointChars);
             }
+
+            Console.Clear();
+            sb.Clear();
+            if (currentCheckPointLocations.Count < numberCheckpoints)
+            {
+                Console.WriteLine("Not achievable");
+            }
+            else
+            {
+
+            }
+
         }
 
+        private static void FindPath(char[,] currentLand,Dictionary<string,char> currentCheckPoints)        //reverse the Dictionary
+        {
+
+        }
 
         //sb is for build so far
-        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<string,char>checkpoints)
+        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<string,char>checkpoints,HashSet<char> notCheckpointChars)
         {
             string currentLandData;
             do
@@ -412,6 +428,7 @@ namespace SoftuniFundamentals
             for(int i=0;i<currentLandData.Length;i++)
             {
                 land[index, i] = currentLandData[i];
+                AddCheckPoint(currentLandData[i],notCheckpointChars,$"{index} {i}",checkpoints);
             }
             sb.Append(currentLandData + Environment.NewLine);
         }

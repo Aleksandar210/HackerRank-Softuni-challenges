@@ -382,12 +382,9 @@ namespace SoftuniFundamentals
             int row = initialInput[0];
             int col = initialInput[1];
             int numberCheckpoints = initialInput[2];
-
             char[,] currentLand = new char[row,col];
-
-
-            
-            Dictionary<string, char> currentCheckPointLocations = new Dictionary<string, char>();
+          
+            Dictionary<char, string> currentCheckPointLocations = new Dictionary<char, string>();
             for(int i =0;i<row;i++)
             {
                 FillCurrentRow(i, currentLand, sb,currentCheckPointLocations,notCheckPointChars);
@@ -412,7 +409,7 @@ namespace SoftuniFundamentals
         }
 
         //sb is for build so far
-        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<string,char>checkpoints,HashSet<char> notCheckpointChars)
+        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<char,string>checkpoints,HashSet<char> notCheckpointChars)
         {
             string currentLandData;
             do
@@ -433,11 +430,11 @@ namespace SoftuniFundamentals
             sb.Append(currentLandData + Environment.NewLine);
         }
 
-        private static void AddCheckPoint(char currentChar,HashSet<char> notCheckpoints,string coordinates,Dictionary<string,char> checkpoints)
+        private static void AddCheckPoint(char currentChar,HashSet<char> notCheckpoints,string coordinates,Dictionary<char,string> checkpoints)
         {
             if(isCheckPoint(currentChar,notCheckpoints))
             {
-                checkpoints.Add(coordinates, currentChar);
+                checkpoints.Add(currentChar, coordinates);
             }
         }
 

@@ -379,6 +379,16 @@ namespace SoftuniFundamentals
             int row = initialInput[0];
             int col = initialInput[1];
             int numberCheckpoints = initialInput[2];
+
+            char[,] currentLand = new char[row,col];
+
+            for(int i =0;i<row;i++)
+            {
+                for(int j=0;j<col;j++)
+                {
+
+                }
+            }
         }
 
 

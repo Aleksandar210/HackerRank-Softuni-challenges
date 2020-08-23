@@ -368,122 +368,20 @@ namespace SoftuniFundamentals
             //SandClockTelerikAlgo();
             //ShepardTask();
 
-            int number = int.Parse(Console.ReadLine());
-            char[] letters = Console.ReadLine().ToCharArray();
-            Array.Sort<char>(letters);
-            int numberItterations = number / letters.Length;
-            List<string> labledBoxes = new List<string>();
-
-            int numberLettersToLable = 1;
-            for(int i =0;i<numberItterations;i++)
-            {
-                switch(labledBoxes.Count)
-                {
-                    case 0:
-                        for (int z = 0; z < letters.Length; z++)
-                        {
-                            labledBoxes.Add(letters[z].ToString());
-                        }
-                        numberLettersToLable++;
-                        
-                        break;
-                    default:
-                        for(int f =0;f<letters.Length;f++)
-                        {
-                            for(int j=0;j<letters.Length;j++)
-                            {
-                                labledBoxes.Add(letters[f] + AddNTimeLetter(numberLettersToLable, letters[j]));
-                            }
-                        }
-                        numberLettersToLable++;
-
-                        break;
-                }
-            }
-
-            Console.WriteLine(String.Join(Environment.NewLine, labledBoxes));
+            
         }
-        private static string AddNTimeLetter(int times,char letter)
+      
+        //an amazing race task
+        private static void AnAmazingRace()
         {
-            return new String(letter, times - 1);
-        }
-        //Facebook hackerCup 
-        //LableMaker
-        private static void LableMaker()
-        {
-            int testCases = int.Parse(Console.ReadLine());
-            string enter;
-            string letters;
-            int numberBoxes;
+            int[] initialInput = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
-
+            int row = initialInput[0];
+            int col = initialInput[1];
+            int numberCheckpoints = initialInput[2];
         }
 
-        private void ExecuteTestCase(string letters, int boxes)
-        {
-            char[] lettersAvailable = letters.ToCharArray();
-            Array.Sort<char>(lettersAvailable);
-            string[] lablesOnBoxes = new string[boxes];
 
-
-        }
-       
-        
-
-        
-
-        //CesarBlackJack
-        private static void CesarBlackJack()
-        {
-            Dictionary<int, List<char>> currentCardsInDeck = new Dictionary<int, List<char>>();
-            for(int i=2;i<11;i++)
-            {
-                currentCardsInDeck.Add(i, new List<char>());
-            }
-            GenerateDeck(currentCardsInDeck);
-
-            int numberDrewnSoFar = int.Parse(Console.ReadLine());
-            int sumSoFar = 0;
-            for(int i =0;i<numberDrewnSoFar;i++)
-            {
-                sumSoFar += int.Parse(Console.ReadLine());
-            }
-
-            if(sumSoFar==21)
-            {
-                Console.WriteLine("DOSTA");
-                return;
-            }
-
-
-
-        }
-
-        
-
-        private static void GenerateDeck(Dictionary<int,List<char>> currentDeck)
-        {
-            for(int i =0;i<4;i++)
-            {
-                for(int j=2;j<=11;j++)
-                {
-                    switch(j)
-                    {
-                        case 10:
-                            currentDeck[i].Add('J');
-                            currentDeck[i].Add('Q');
-                            currentDeck[i].Add('K');
-                            break;
-                        case 11:
-                            currentDeck[i].Add('A');
-                            break;
-                        default:
-                            currentDeck[i].Add(i.ToString()[0]);
-                            break;
-                    }
-                }
-            }
-        }
 
         //Telerik Algo
         //-----------------------------------------------------------------------------------

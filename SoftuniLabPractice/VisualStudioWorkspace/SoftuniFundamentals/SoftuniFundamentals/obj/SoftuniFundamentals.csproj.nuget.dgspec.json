@@ -10,11 +10,11 @@
         "projectUniqueName": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
         "projectName": "SoftuniFundamentals",
         "projectPath": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\SoftuniFundamentals.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "D:\\HackerRank-Softuni-challenges\\SoftuniLabPractice\\VisualStudioWorkspace\\SoftuniFundamentals\\SoftuniFundamentals\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

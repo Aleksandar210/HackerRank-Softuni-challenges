@@ -374,24 +374,29 @@ namespace SoftuniFundamentals
         //an amazing race task
         private static void AnAmazingRace()
         {
+            HashSet<char> notCheckPointChars = new HashSet<char>(new char[] { '~', '#' }); 
+           
             StringBuilder sb = new StringBuilder();
             int[] initialInput = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
-
+            
             int row = initialInput[0];
             int col = initialInput[1];
             int numberCheckpoints = initialInput[2];
 
             char[,] currentLand = new char[row,col];
 
+
+            
+            Dictionary<string, char> currentCheckPointLocations = new Dictionary<string, char>();
             for(int i =0;i<row;i++)
             {
-               
+                FillCurrentRow(i, currentLand, sb);
             }
         }
 
 
         //sb is for build so far
-        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb)
+        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<string,char>checkpoints)
         {
             string currentLandData;
             do
@@ -401,7 +406,6 @@ namespace SoftuniFundamentals
                 {
                     Console.WriteLine(sb.ToString());
                 }
-                
                 currentLandData = Console.ReadLine();
             } while (currentLandData.Length != land.GetLength(1));
 
@@ -410,6 +414,26 @@ namespace SoftuniFundamentals
                 land[index, i] = currentLandData[i];
             }
             sb.Append(currentLandData + Environment.NewLine);
+        }
+
+        private static void AddCheckPoint(char currentChar,HashSet<char> notCheckpoints,string coordinates,Dictionary<string,char> checkpoints)
+        {
+            if(isCheckPoint(currentChar,notCheckpoints))
+            {
+                checkpoints.Add(coordinates, currentChar);
+            }
+        }
+
+        private static bool isCheckPoint(char current,HashSet<char> notCheckpoontsChars)
+        {
+            if (notCheckpoontsChars.Contains(current))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         //Telerik Algo

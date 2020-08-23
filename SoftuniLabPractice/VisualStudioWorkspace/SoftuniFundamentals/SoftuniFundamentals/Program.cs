@@ -403,7 +403,7 @@ namespace SoftuniFundamentals
 
         }
 
-        private static void FindPath(char[,] currentLand,Dictionary<string,char> currentCheckPoints)        //reverse the Dictionary
+        private static void FindPath(char[,] currentLand,Dictionary<char,string> currentCheckPoints)        //reverse the Dictionary
         {
 
         }

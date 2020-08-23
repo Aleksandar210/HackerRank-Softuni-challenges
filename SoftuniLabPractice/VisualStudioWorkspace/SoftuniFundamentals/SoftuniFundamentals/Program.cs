@@ -374,6 +374,7 @@ namespace SoftuniFundamentals
         //an amazing race task
         private static void AnAmazingRace()
         {
+            StringBuilder sb = new StringBuilder();
             int[] initialInput = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
 
             int row = initialInput[0];
@@ -384,14 +385,30 @@ namespace SoftuniFundamentals
 
             for(int i =0;i<row;i++)
             {
-                for(int j=0;j<col;j++)
-                {
-
-                }
+               
             }
         }
 
 
+        //sb is for build so far
+        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb)
+        {
+            string currentLandData;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Entered so far: ");
+                Console.WriteLine(sb.ToString());
+                Console.WriteLine();
+                Console.WriteLine($"Enter data for line {index}: ");
+                currentLandData = Console.ReadLine();
+            } while (currentLandData.Length != land.GetLength(1));
+
+            for(int i=0;i<currentLandData.Length;i++)
+            {
+                land[index, i] = currentLandData[i];
+            }
+        }
 
         //Telerik Algo
         //-----------------------------------------------------------------------------------

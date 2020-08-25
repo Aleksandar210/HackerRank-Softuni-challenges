@@ -6,16 +6,33 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 {
     public class Present : IPresent
     {
+        private string name;
+        private int energyRequired;
+        private bool isDone;
 
-        public string Name => throw new NotImplementedException();
+        public Present(string name, int energy)
+        {
 
-        public int EnergyRequired => throw new NotImplementedException();
+        }
 
-        public bool IsDone => throw new NotImplementedException();
+        public string Name
+        {
+
+        }
+
+        public int EnergyRequired
+        {
+
+        }
+
+        public bool IsDone
+        {
+
+        }
 
         public void GetCrafted()
         {
-            throw new NotImplementedException();
+           
         }
     }
 }

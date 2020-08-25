@@ -14,11 +14,15 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             this.dwarfs = new Dictionary<string, Dwarf>();
         }
 
+
+        //has to return an object of type IEnumerator 
         public IEnumerator<IDwarf> GetEnumerator()
         {
             return new  DwarfRepoEnumerator(dwarfs);
         }
 
+
+        //Legacy
         IEnumerator IEnumerable.GetEnumerator()
         {
             return (IEnumerator)GetEnumerator();

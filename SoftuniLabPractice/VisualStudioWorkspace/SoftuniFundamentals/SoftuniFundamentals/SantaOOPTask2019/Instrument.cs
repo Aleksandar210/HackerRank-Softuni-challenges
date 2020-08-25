@@ -7,11 +7,11 @@ namespace SoftuniFundamentals.SantaOOPTask2019
     public class Instrument : IInstrument
     {
         private int power;
-        private bool isBroekn;
+        private bool isBroken;
 
         public Instrument(int power)
         {
-            this.isBroekn = false;
+            this.isBroken = false;
         }
         public int Power
         {
@@ -21,13 +21,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 if(value<=0)
                 {
                     this.power = 0;
-                    this.isBroekn = true;
+                    this.isBroken = true;
                 }
             }
             get { return this.power; }
         }
 
-        public bool IsBroken => this.IsBroken;
+        public bool IsBroken => this.isBroken;
 
         public void Use()
         {

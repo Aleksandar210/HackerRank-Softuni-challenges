@@ -8,10 +8,11 @@ namespace SoftuniFundamentals.SantaOOPTask2019
     {
         protected string name;
         protected int energy;
-        protected Dictionary<string, Instrument> instruments;
+        protected List<Instrument> instruments;
 
         public Dwarf(string name, int energy)
         {
+            this.instruments = new List<Instrument>();
             this.Name = name;
             this.Energy = energy;
         }
@@ -46,16 +47,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
             get { return this.energy; }
         }
-        public Dictionary<string, Instrument> Instruments
-        {
-            get => throw new NotImplementedException(); set => throw new NotImplementedException();
-        }
+        
 
         public abstract void Work();
 
-        public void AddInstrument()
+        public void AddInstrument(Instrument currentInstrument)
         {
-            throw new NotImplementedException();
+            this.instruments.Add(currentInstrument);
         }
     }
 }

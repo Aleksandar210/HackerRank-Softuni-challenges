@@ -363,7 +363,7 @@ namespace SoftuniFundamentals
             //  };
 
 
-
+            AnAmazingRace();
             //Numbers();
             //SandClockTelerikAlgo();
             //ShepardTask();
@@ -383,24 +383,13 @@ namespace SoftuniFundamentals
             int col = initialInput[1];
             int numberCheckpoints = initialInput[2];
             char[,] currentLand = new char[row,col];
-          
-            Dictionary<char, string> currentCheckPointLocations = new Dictionary<char, string>();
-            for(int i =0;i<row;i++)
+            
+            for(int i =0;i<currentLand.GetLength(0);i++)
             {
-                FillCurrentRow(i, currentLand, sb,currentCheckPointLocations,notCheckPointChars);
+                EnterDataLand(i, sb, currentLand);
             }
-
             Console.Clear();
-            sb.Clear();
-            if (currentCheckPointLocations.Count < numberCheckpoints)
-            {
-                Console.WriteLine("Not achievable");
-            }
-            else
-            {
-
-            }
-
+            Console.WriteLine(sb.ToString());       //for find path
         }
 
         private static void FindPath(char[,] currentLand,Dictionary<char,string> currentCheckPoints)        //reverse the Dictionary
@@ -408,47 +397,29 @@ namespace SoftuniFundamentals
 
         }
 
-        //sb is for build so far
-        private static void FillCurrentRow(int index,char[,] land,StringBuilder sb,Dictionary<char,string>checkpoints,HashSet<char> notCheckpointChars)
+        private static void EnterDataLand(int row,StringBuilder sb, char[,] land)
         {
-            string currentLandData;
+            string enterData;
             do
             {
                 Console.Clear();
-                if(sb.Capacity>0)
+                if(sb.Length>0)
                 {
                     Console.WriteLine(sb.ToString());
                 }
-                currentLandData = Console.ReadLine();
-            } while (currentLandData.Length != land.GetLength(1));
-
-            for(int i=0;i<currentLandData.Length;i++)
-            {
-                land[index, i] = currentLandData[i];
-                AddCheckPoint(currentLandData[i],notCheckpointChars,$"{index} {i}",checkpoints);
+                enterData = Console.ReadLine();
             }
-            sb.Append(currentLandData + Environment.NewLine);
+            while (enterData.Length!=land.GetLength(1));
+
+
+            for(int i =0;i<land.GetLength(1);i++)
+            {
+                land[row, i] = enterData[i];
+            }
+            sb.Append(enterData + Environment.NewLine);
         }
 
-        private static void AddCheckPoint(char currentChar,HashSet<char> notCheckpoints,string coordinates,Dictionary<char,string> checkpoints)
-        {
-            if(isCheckPoint(currentChar,notCheckpoints))
-            {
-                checkpoints.Add(currentChar, coordinates);
-            }
-        }
-
-        private static bool isCheckPoint(char current,HashSet<char> notCheckpoontsChars)
-        {
-            if (notCheckpoontsChars.Contains(current))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+       
 
         //Telerik Algo
         //-----------------------------------------------------------------------------------

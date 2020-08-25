@@ -31,7 +31,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void Use()
         {
-            
+            this.Power -= 10;
         }
     }
 }

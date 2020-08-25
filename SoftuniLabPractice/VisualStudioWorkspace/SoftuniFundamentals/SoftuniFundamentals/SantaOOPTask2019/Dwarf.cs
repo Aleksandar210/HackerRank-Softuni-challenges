@@ -13,7 +13,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         {
            private set
             {
-
+                if(String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Dwarf name cannot be null or empty.");
+                }
+                else
+                {
+                    this.name = value;
+                }
             }
             get { return this.name; }
         }

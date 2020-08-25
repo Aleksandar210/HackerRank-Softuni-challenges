@@ -54,7 +54,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void GetCrafted()
         {
-           
+            this.EnergyRequired -= 10;
         }
     }
 }

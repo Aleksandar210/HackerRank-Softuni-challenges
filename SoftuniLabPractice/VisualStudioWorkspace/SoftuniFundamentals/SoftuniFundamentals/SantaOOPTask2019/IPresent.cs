@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SoftuniFundamentals.SantaOOPTask2019
 {
-    public interface IPresnet
+    public interface IPresent
     {
         string Name { get; }
         int EnergyRequired { get; }

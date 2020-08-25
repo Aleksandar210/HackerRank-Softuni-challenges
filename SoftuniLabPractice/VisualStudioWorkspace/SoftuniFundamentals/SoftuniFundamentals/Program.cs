@@ -394,7 +394,7 @@ namespace SoftuniFundamentals
 
         private static void FindPath(char[,] currentLand,Dictionary<char,string> currentCheckPoints)        //reverse the Dictionary
         {
-
+            //use algorithm for maze tracking maybe
         }
 
         private static void EnterDataLand(int row,StringBuilder sb, char[,] land)

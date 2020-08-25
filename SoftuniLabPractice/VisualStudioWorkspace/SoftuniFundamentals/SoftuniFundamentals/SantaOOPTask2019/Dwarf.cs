@@ -19,7 +19,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         
         public string Name 
         {
-           private set
+           protected set
             {
                 if(String.IsNullOrEmpty(value) || String.IsNullOrWhiteSpace(value))
                 {
@@ -34,7 +34,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         }
         public int Energy
         { 
-            private set
+            protected set
             {
                 this.energy = value;
 
@@ -47,9 +47,10 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
             get { return this.energy; }
         }
-        
+
 
         public abstract void Work();
+        
 
         public void AddInstrument(Instrument currentInstrument)
         {

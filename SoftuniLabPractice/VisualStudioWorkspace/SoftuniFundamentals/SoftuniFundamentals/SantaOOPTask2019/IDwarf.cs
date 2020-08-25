@@ -10,5 +10,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         string Name { get;  }
         int Energy { get; }
         Dictionary<string, Instrument> Instruments { get;}
+
+        void AddInstrument();
     }
 }

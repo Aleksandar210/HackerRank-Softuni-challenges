@@ -9,6 +9,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         protected string name;
         protected int energy;
         protected Dictionary<string, Instrument> instruments;
+
+        public Dwarf(string name, int energy)
+        {
+            this.Name = name;
+            this.Energy = energy;
+        }
+        
         public string Name 
         {
            private set
@@ -42,6 +49,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         public Dictionary<string, Instrument> Instruments
         {
             get => throw new NotImplementedException(); set => throw new NotImplementedException();
+        }
+
+        public abstract void Work();
+
+        public void AddInstrument()
+        {
+            throw new NotImplementedException();
         }
     }
 }

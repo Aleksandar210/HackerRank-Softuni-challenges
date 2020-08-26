@@ -36,7 +36,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 }
             }
 
-            return null;
+            throw new NullReferenceException($"No Present with the name {name} was found.");
             
         }
 

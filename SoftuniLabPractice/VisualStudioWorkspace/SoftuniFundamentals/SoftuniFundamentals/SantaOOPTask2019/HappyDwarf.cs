@@ -31,9 +31,6 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 throw new InvalidOperationException("Dwarf is not ready for work.");
             }
 
-
-
-
         }
     }
 }

@@ -63,26 +63,34 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         {
             Dwarf dwarfToCraftIt;
             Present presentToCraft;
+
+            //get availabel dwarfs for the present
             var availableDwarfs = this.currentDwarfs.Where(dwarf => dwarf.IsReady).ToList();
+            //if no dwarfs
             if(availableDwarfs.Count==0)
             {
-                Console.WriteLine("No Available Dwarfs");
+                Console.WriteLine("No Available Dwarfs.");
                 return;
             }
-            dwarfToCraftIt = (Dwarf)availableDwarfs[0];
-            try
+            else //if it has dwarfs get the first
             {
-                presentToCraft = (Present)this.currentPresents.FindByName(presentName);
-                this.currentWorkshop.Craft(presentToCraft, dwarfToCraftIt);
+                dwarfToCraftIt = (Dwarf)availableDwarfs[0];
+
+                //find the present in the repo
+                try
+                {
+                    presentToCraft = (Present)this.currentPresents.FindByName(presentName);
+                }
+                catch(NullReferenceException exc)
+                {
+                    Console.WriteLine(exc.Message);
+                    return;
+                }
+                
             }
-            catch(NullReferenceException exc)
-            {
-                return;
-            }
-            catch(InvalidOperationException exce)
-            {
-                // ??
-            }
+            
+
+
             
             
         }

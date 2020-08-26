@@ -17,6 +17,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             {
                 dwarf.Work();
                 present.GetCrafted();
+                if(!dwarf.IsReady)
+                {
+                    break;
+                }
+                else if(present.IsDone)
+                {
+                    break;
+                }
             }
            
         }

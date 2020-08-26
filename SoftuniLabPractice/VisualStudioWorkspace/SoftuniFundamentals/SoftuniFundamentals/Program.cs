@@ -389,7 +389,7 @@ namespace SoftuniFundamentals
         private static void SantaShopTask()
         {
            
-            SantaOOPTask2019.Engine currentEngine = null;
+            SantaOOPTask2019.Engine currentEngine = new SantaOOPTask2019.Engine();
 
             while(!currentEngine.IsExit)
             {

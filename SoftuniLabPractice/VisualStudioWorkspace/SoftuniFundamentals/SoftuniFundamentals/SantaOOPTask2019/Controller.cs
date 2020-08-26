@@ -21,7 +21,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void AddInstrumentToDwarf(string name, int power)
         {
-            throw new NotImplementedException();
+            this.currentDwarfs.FindByName(name).AddInstrument(power);
         }
 
         public void AddPresent(string name, int energy)

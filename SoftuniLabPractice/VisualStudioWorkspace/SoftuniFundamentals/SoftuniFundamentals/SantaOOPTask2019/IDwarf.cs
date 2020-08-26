@@ -9,7 +9,6 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         
         string Name { get;  }
         int Energy { get; }
-    
-        void AddInstrument();
+        void AddInstrument(int power);
     }
 }

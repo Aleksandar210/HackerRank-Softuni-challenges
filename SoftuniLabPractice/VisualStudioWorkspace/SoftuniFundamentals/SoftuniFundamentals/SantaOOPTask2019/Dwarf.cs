@@ -50,16 +50,10 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
 
         public abstract void Work();
-        
 
-        public void AddInstrument(Instrument currentInstrument)
+        public void AddInstrument(int power)
         {
-            this.instruments.Add(currentInstrument);
-        }
-
-        public void AddInstrument()
-        {
-            throw new NotImplementedException();
+            this.instruments.Add(new Instrument(power));
         }
     }
 }

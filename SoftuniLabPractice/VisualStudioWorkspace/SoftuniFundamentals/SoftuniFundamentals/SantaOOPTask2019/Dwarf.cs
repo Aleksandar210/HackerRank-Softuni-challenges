@@ -9,12 +9,15 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         protected string name;
         protected int energy;
         protected List<Instrument> instruments;
+        protected Instrument currentInstrumentUsed;
+        protected bool isReady;
 
         public Dwarf(string name, int energy)
         {
             this.instruments = new List<Instrument>();
             this.Name = name;
             this.Energy = energy;
+            
         }
         
         public string Name 
@@ -48,6 +51,30 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             get { return this.energy; }
         }
 
+        public bool IsReady
+        {
+            set
+            {
+                if(this.instruments.Count>0 && this.Energy>=50)
+                {
+                    this.isReady = true;
+                }
+                else if(this.instruments.Count==0 && this.Energy>=50)
+                {
+                    this.isReady = false;
+                }
+                else if(this.instruments.Count == 0 && this.Energy < 50)
+                {
+                    this.isReady = false;
+                }
+                
+            }
+            get 
+            {
+                this.IsReady = true;
+                return this.isReady; 
+            }
+        }
 
         public abstract void Work();
 

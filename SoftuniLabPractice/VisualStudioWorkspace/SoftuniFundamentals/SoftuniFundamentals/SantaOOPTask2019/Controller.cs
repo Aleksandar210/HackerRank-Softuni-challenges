@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SoftuniFundamentals.SantaOOPTask2019
@@ -13,10 +14,12 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         private int presentsCrafted;
         private DwarfRepository currentDwarfs;
         private PresentRepository currentPresents;
+        private Workshop currentWorkshop;
         public Controller()
         {
             this.currentDwarfs = new DwarfRepository();
             this.currentPresents = new PresentRepository();
+            this.currentWorkshop = new Workshop();
         }
 
         public void AddDwarf(string type, string name)
@@ -54,7 +57,30 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void CraftPresent(string presentName)
         {
-            //implement
+            Dwarf dwarfToCraftIt;
+            Present presentToCraft;
+            var availableDwarfs = this.currentDwarfs.Where(dwarf => dwarf.IsReady).ToList();
+            if(availableDwarfs.Count==0)
+            {
+                Console.WriteLine("No Available Dwarfs");
+                return;
+            }
+            dwarfToCraftIt = (Dwarf)availableDwarfs[0];
+            try
+            {
+                presentToCraft = (Present)this.currentPresents.FindByName(presentName);
+                this.currentWorkshop.Craft(presentToCraft, dwarfToCraftIt);
+            }
+            catch(NullReferenceException exc)
+            {
+                return;
+            }
+            catch(InvalidOperationException exce)
+            {
+                // ??
+            }
+            
+            
         }
     }
 }

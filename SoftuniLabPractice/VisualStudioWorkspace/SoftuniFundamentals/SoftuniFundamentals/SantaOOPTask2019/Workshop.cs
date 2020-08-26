@@ -13,7 +13,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         }
         public void Craft(IPresent present, IDwarf dwarf)
         {
-           //calculate if everything will be ok.
+            while(true)
+            {
+                dwarf.Work();
+                present.GetCrafted();
+            }
+           
         }
+
+        
     }
 }

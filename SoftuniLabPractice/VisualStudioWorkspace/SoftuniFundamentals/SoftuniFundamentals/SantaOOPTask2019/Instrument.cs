@@ -31,7 +31,19 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void Use()
         {
-            this.Power -= 10;
+            if(this.IsBroken)
+            {
+                throw new InvalidOperationException("Tool Is Broken.");
+            }
+            else
+            {
+                this.Power -= 10;
+                if (this.Power <= 0)
+                {
+                    this.isBroken = true;
+                }
+            }
+            
         }
     }
 }

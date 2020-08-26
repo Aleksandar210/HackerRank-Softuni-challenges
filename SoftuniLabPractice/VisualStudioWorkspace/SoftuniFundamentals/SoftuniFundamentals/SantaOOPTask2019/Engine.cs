@@ -6,6 +6,8 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 {
    public class Engine:IEngine
     {
+        //resources
+        private string[] temp;
         //fields
         private Controller currentController;
         private bool isExit;
@@ -20,7 +22,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void ReadInput(string input)
         {
-            string[] temp = input.Split(" ",StringSplitOptions.RemoveEmptyEntries);
+             this.temp = input.Split(" ",StringSplitOptions.RemoveEmptyEntries);
             switch(input.ToLower())
             {
                 case "adddwarf":

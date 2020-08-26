@@ -35,6 +35,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             }
             get { return this.name; }
         }
+
         public int Energy
         { 
             protected set
@@ -81,13 +82,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         public void AddInstrument(int power)
         {
             this.instruments.Add(new Instrument(power));
+            this.IsReady = true;
         }
 
         public override string ToString()
         {
             string dwarfInfo = $"Name: {this.Name}" + Environment.NewLine + $"Energy: {this.Energy}"
                 + Environment.NewLine + $"Instruments : {this.instruments.Count} not broken left."
-            +Environment.NewLine;
+                +Environment.NewLine;
             return dwarfInfo;
         }
     }

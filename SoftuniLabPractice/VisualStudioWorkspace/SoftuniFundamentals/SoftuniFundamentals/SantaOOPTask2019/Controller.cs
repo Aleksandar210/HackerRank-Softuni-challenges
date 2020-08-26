@@ -62,8 +62,8 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void CraftPresent(string presentName)
         {
-            Dwarf dwarfToCraftIt;
-            Present presentToCraft;
+            Dwarf dwarfToCraftIt = null;        //unitl they get assigned
+            Present presentToCraft= null;
 
             //get availabel dwarfs for the present
             var availableDwarfs = this.currentDwarfs.Where(dwarf => dwarf.IsReady).ToList();
@@ -87,11 +87,6 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                         this.presentsCrafted++;
                     }
 
-                    if(!dwarfToCraftIt.IsReady) //not sure if it will be executed
-                    {
-                        this.currentDwarfs.Remove(dwarfToCraftIt);
-                    }
-
                 }
                 catch(NullReferenceException exc) //if present is not found display error message and continue
                 {
@@ -101,6 +96,11 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 catch(InvalidOperationException ex)
                 {
                     this.currentDwarfs.Remove(dwarfToCraftIt);
+                    if (presentToCraft.IsDone)
+                    {
+                        this.presentsCrafted++;
+                    }
+                    return;
                 }
                 
             }            

@@ -386,6 +386,20 @@ namespace SoftuniFundamentals
 
         }
 
+        private static void SantaShopTask()
+        {
+           
+            SantaOOPTask2019.Engine currentEngine = null;
+
+            while(!currentEngine.IsExit)
+            {
+                currentEngine.ReadInput(Console.ReadLine());
+            }
+
+
+        }
+        
+
         //experiment
         private static bool RemoveDwarf(List<IDwarf> currentDwarfs,IDwarf toRemove)
         {

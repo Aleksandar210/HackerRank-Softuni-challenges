@@ -20,6 +20,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         private Workshop currentWorkshop;
         public Controller()
         {
+            this.presentsCrafted = StartingCount;
             this.currentDwarfs = new DwarfRepository();
             this.currentPresents = new PresentRepository();
             this.currentWorkshop = new Workshop();

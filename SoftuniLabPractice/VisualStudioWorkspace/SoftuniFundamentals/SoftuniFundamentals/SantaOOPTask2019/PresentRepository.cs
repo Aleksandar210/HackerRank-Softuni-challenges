@@ -17,7 +17,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         public PresentRepository()
         {
             this.presentList = new List<IPresent>();
-            
+            this.currentPressnts = new List<IPresent>();
         }
 
         public void AddPresent(IPresent presentToAdd)
@@ -44,6 +44,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         {
             if(this.currentPressnts.Contains(presentToRemove))
             {
+                this.currentPressnts.Remove(presentToRemove);
                 return true;
             }
             else

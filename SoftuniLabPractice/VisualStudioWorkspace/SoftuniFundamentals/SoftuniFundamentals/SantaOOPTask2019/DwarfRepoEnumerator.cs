@@ -9,13 +9,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
     class DwarfRepoEnumerator : IEnumerator<Dwarf>
     {
         private int index = -1;
-        private List<Dwarf> dwarfCollection;
+        private List<IDwarf> dwarfCollection;
 
         public DwarfRepoEnumerator(Dictionary<string,IDwarf> dwarfCollection)
         {
-            //this.dwarfCollection = dwarfCollection.Values.ToList();
+            this.dwarfCollection = dwarfCollection.Values.ToList();
         }
-        public Dwarf Current => this.dwarfCollection[index];
+        public Dwarf Current => (Dwarf)this.dwarfCollection[index];
 
         object IEnumerator.Current => this.Current;
 

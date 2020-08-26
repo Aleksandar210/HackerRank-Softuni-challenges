@@ -16,8 +16,25 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void AddDwarf(string type, string name)
         {
-            throw new NotImplementedException();
+            Dwarf currentDwarfToAdd = null;
+            switch(type.ToLower())
+            {
+                case "sleepydwarf":
+                    this.currentDwarfs.Add(currentDwarfToAdd = new SleepyDwarf(name));
+                    Console.WriteLine($"Successfully added {type} named {name}.");
+                break;
+
+                case "happydwarf":
+                    this.currentDwarfs.Add(currentDwarfToAdd = new HappyDwarf(name));
+                    Console.WriteLine($"Successfully added {type} named {name}.");
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid dwarf type.");
+                    
+            }
         }
+
+        
 
         public void AddInstrumentToDwarf(string name, int power)
         {

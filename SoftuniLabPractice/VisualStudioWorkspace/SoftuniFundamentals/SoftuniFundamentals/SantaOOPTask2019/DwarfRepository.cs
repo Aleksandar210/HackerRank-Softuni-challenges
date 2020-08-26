@@ -20,6 +20,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             {
                 this.dwarfs.Add(dwarfToAdd.Name, dwarfToAdd);
             }
+            
         }
 
         public IDwarf FindByName(string name)

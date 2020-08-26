@@ -6,6 +6,11 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 {
     class Controller:IController
     {
+        //consts
+        private const int StartingCount = 0;
+
+        //fields
+        private int presentsCrafted;
         private DwarfRepository currentDwarfs;
         private PresentRepository currentPresents;
         public Controller()
@@ -43,12 +48,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public void AddPresent(string name, int energy)
         {
-            throw new NotImplementedException();
+            Present currentPresentToAdd;
+            this.currentPresents.AddPresent(currentPresentToAdd = new Present(name,energy));
         }
 
         public void CraftPresent(string presentName)
         {
-            throw new NotImplementedException();
+            //implement
         }
     }
 }

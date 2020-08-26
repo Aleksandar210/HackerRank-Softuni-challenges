@@ -6,6 +6,8 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 {
     interface IDwarfRepo
     {
-
+        void Add(IDwarf dwarfToAdd);
+        bool Remove(IDwarf dwarfToRemove);
+        IDwarf FindByName(string name);
     }
 }

@@ -11,7 +11,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         private int index = -1;
         private List<Dwarf> dwarfCollection;
 
-        public DwarfRepoEnumerator(Dictionary<string,Dwarf> dwarfCollection)
+        public DwarfRepoEnumerator(Dictionary<string,IDwarf> dwarfCollection)
         {
             this.dwarfCollection = dwarfCollection.Values.ToList();
         }

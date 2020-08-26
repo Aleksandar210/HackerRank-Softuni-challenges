@@ -417,6 +417,12 @@ namespace SoftuniFundamentals
             }
         }
       
+        //StorageMaster task
+        private static void StorageMasterTask2019OOP()
+        {
+
+        }
+
         //an amazing race task
         private static void AnAmazingRace()
         {

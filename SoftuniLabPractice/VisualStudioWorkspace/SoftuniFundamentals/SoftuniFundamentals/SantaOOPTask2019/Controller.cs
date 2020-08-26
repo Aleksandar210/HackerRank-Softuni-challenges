@@ -98,18 +98,15 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                     return;
                 }
                 
-            }
-            
-
-
-            
+            }            
             
         }
 
         public void Report()
         {
             this.sb.Clear();
-            this.sb.Append("Presents Crafted" + ": " + this.presentsCrafted + Environment.NewLine);
+            this.sb.Append("Presents crafted" + ": " + this.presentsCrafted + Environment.NewLine);
+            this.sb.Append(new String('-', 10) + Environment.NewLine);
             this.currentDwarfs.ForEach(e => this.sb.Append(e + Environment.NewLine));
             Console.WriteLine(this.sb.ToString());
         }

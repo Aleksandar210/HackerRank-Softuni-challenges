@@ -80,7 +80,16 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 try
                 {
                     presentToCraft = (Present)this.currentPresents.FindByName(presentName);
+                    this.currentWorkshop.Craft(presentToCraft,dwarfToCraftIt);
+                    if(presentToCraft.IsDone)
+                    {
+                        this.presentsCrafted++;
+                    }
 
+                    if(!dwarfToCraftIt.IsReady)
+                    {
+                        this.currentDwarfs.Remove(dwarfToCraftIt);
+                    }
 
                 }
                 catch(NullReferenceException exc) //if present is not found display error message and continue

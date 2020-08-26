@@ -80,8 +80,10 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 try
                 {
                     presentToCraft = (Present)this.currentPresents.FindByName(presentName);
+
+
                 }
-                catch(NullReferenceException exc)
+                catch(NullReferenceException exc) //if present is not found display error message and continue
                 {
                     Console.WriteLine(exc.Message);
                     return;

@@ -369,17 +369,17 @@ namespace SoftuniFundamentals
             //SandClockTelerikAlgo();
             //ShepardTask();
 
-            Dwarf current = new SleepyDwarf("Sashko");
-            Dwarf anotherCurrent = new SleepyDwarf("Stamat");
-            Dwarf anotherMoreCurrent = new HappyDwarf("Nasko");
-            Dwarf moreDwarfs = new HappyDwarf("bAGO");
-            List<IDwarf> currentDwarfs = new List<IDwarf>();
-            currentDwarfs.Add(current);
-            currentDwarfs.Add(anotherCurrent);
+            //Dwarf current = new SleepyDwarf("Sashko");
+            //Dwarf anotherCurrent = new SleepyDwarf("Stamat");
+            //Dwarf anotherMoreCurrent = new HappyDwarf("Nasko");
+            //Dwarf moreDwarfs = new HappyDwarf("bAGO");
+            //List<IDwarf> currentDwarfs = new List<IDwarf>();
+            //currentDwarfs.Add(current);
+            //currentDwarfs.Add(anotherCurrent);
 
-            Console.WriteLine(RemoveDwarf(currentDwarfs, current));
-            Console.WriteLine(RemoveDwarf(currentDwarfs, moreDwarfs));
-            Console.WriteLine(RemoveDwarf(currentDwarfs, anotherCurrent));      //works
+            //Console.WriteLine(RemoveDwarf(currentDwarfs, current));
+            //Console.WriteLine(RemoveDwarf(currentDwarfs, moreDwarfs));
+            //Console.WriteLine(RemoveDwarf(currentDwarfs, anotherCurrent));      //works
 
 
 

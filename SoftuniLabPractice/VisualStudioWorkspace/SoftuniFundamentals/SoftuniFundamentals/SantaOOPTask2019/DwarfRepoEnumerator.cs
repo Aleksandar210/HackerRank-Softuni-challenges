@@ -13,7 +13,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public DwarfRepoEnumerator(Dictionary<string,IDwarf> dwarfCollection)
         {
-            this.dwarfCollection = dwarfCollection.Values.ToList();
+            //this.dwarfCollection = dwarfCollection.Values.ToList();
         }
         public Dwarf Current => this.dwarfCollection[index];
 

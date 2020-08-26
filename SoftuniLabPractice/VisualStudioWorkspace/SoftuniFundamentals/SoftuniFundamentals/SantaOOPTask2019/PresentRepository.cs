@@ -42,7 +42,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public bool RemovePresent(IPresent presentToRemove)
         {
-            
+            if(this.currentPressnts.Contains(presentToRemove))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

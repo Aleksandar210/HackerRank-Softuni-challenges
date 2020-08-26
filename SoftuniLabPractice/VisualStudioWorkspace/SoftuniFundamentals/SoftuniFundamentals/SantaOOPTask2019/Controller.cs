@@ -7,7 +7,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
     class Controller
     {
         private DwarfRepository currentDwarfs;
-        private PresentRpository currentPresents;
+        private PresentRepository currentPresents;
         public Controller()
         {
 

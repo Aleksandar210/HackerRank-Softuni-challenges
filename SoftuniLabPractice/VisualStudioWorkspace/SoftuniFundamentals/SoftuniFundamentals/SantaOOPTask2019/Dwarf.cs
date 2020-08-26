@@ -56,5 +56,10 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         {
             this.instruments.Add(currentInstrument);
         }
+
+        public void AddInstrument()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,6 +19,7 @@ using System.Net.Sockets;
 using System.Xml.Serialization;
 using MoreLinq;
 using MoreLinq.Extensions;
+using SoftuniFundamentals.SantaOOPTask2019;
 
 namespace SoftuniFundamentals
 {
@@ -363,12 +364,39 @@ namespace SoftuniFundamentals
             //  };
 
 
-            AnAmazingRace();
+            //AnAmazingRace();      //work in progress
             //Numbers();
             //SandClockTelerikAlgo();
             //ShepardTask();
 
-            
+            Dwarf current = new SleepyDwarf("Sashko");
+            Dwarf anotherCurrent = new SleepyDwarf("Stamat");
+            Dwarf anotherMoreCurrent = new HappyDwarf("Nasko");
+            Dwarf moreDwarfs = new HappyDwarf("bAGO");
+            List<IDwarf> currentDwarfs = new List<IDwarf>();
+            currentDwarfs.Add(current);
+            currentDwarfs.Add(anotherCurrent);
+
+            Console.WriteLine(RemoveDwarf(currentDwarfs, current));
+            Console.WriteLine(RemoveDwarf(currentDwarfs, moreDwarfs));
+            Console.WriteLine(RemoveDwarf(currentDwarfs, anotherCurrent));      //works
+
+
+
+
+        }
+
+        //experiment
+        private static bool RemoveDwarf(List<IDwarf> currentDwarfs,IDwarf toRemove)
+        {
+            if(currentDwarfs.Contains(toRemove))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
       
         //an amazing race task

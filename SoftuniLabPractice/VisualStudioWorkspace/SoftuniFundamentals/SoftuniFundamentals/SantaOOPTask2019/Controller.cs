@@ -87,7 +87,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                         this.presentsCrafted++;
                     }
 
-                    if(!dwarfToCraftIt.IsReady)
+                    if(!dwarfToCraftIt.IsReady) //not sure if it will be executed
                     {
                         this.currentDwarfs.Remove(dwarfToCraftIt);
                     }
@@ -97,6 +97,10 @@ namespace SoftuniFundamentals.SantaOOPTask2019
                 {
                     Console.WriteLine(exc.Message);
                     return;
+                }
+                catch(InvalidOperationException ex)
+                {
+                    this.currentDwarfs.Remove(dwarfToCraftIt);
                 }
                 
             }            
@@ -108,6 +112,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             this.sb.Clear();
             this.sb.Append("Presents crafted" + ": " + this.presentsCrafted + Environment.NewLine);
             this.sb.Append(new String('-', 10) + Environment.NewLine);
+            this.sb.Append("Dwarf info: " + Environment.NewLine);
             this.currentDwarfs.ForEach(e => this.sb.Append(e + Environment.NewLine));
             Console.WriteLine(this.sb.ToString());
         }

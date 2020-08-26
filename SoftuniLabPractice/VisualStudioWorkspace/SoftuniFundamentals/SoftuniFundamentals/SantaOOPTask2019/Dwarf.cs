@@ -86,7 +86,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         public override string ToString()
         {
             string dwarfInfo = $"Name: {this.Name}" + Environment.NewLine + $"Energy: {this.Energy}"
-                + Environment.NewLine + $"Instruments avaialable: {this.instruments.Count}"
+                + Environment.NewLine + $"Instruments : {this.instruments.Count} not broken left."
             +Environment.NewLine;
             return dwarfInfo;
         }

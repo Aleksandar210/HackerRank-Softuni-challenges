@@ -368,6 +368,9 @@ namespace SoftuniFundamentals
             //Numbers();
             //SandClockTelerikAlgo();
             //ShepardTask();
+            //SantaShopTask();
+
+            //EXPERIMENT FOR SANTA TASK
 
             //Dwarf current = new SleepyDwarf("Sashko");
             //Dwarf anotherCurrent = new SleepyDwarf("Stamat");
@@ -380,7 +383,9 @@ namespace SoftuniFundamentals
             //Console.WriteLine(RemoveDwarf(currentDwarfs, current));
             //Console.WriteLine(RemoveDwarf(currentDwarfs, moreDwarfs));
             //Console.WriteLine(RemoveDwarf(currentDwarfs, anotherCurrent));      //works
-            //SantaShopTask();
+
+
+
 
 
 

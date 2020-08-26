@@ -27,7 +27,6 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public IPresent FindByName(string name)
         {
-            
             this.presentList = this.currentPressnts.Where(e => e.Name.Length==name.Length).ToList();
             for(int i =0;i<this.presentList.Count;i++)
             {
@@ -43,7 +42,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public bool RemovePresent(IPresent presentToRemove)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

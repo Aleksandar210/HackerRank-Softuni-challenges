@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace SoftuniFundamentals.SantaOOPTask2019
@@ -16,6 +17,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         public PresentRepository()
         {
             this.presentList = new List<IPresent>();
+            
         }
 
         public void AddPresent(IPresent presentToAdd)
@@ -25,7 +27,17 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 
         public IPresent FindByName(string name)
         {
-            int index;
+            
+            this.presentList = this.currentPressnts.Where(e => e.Name.Length==name.Length).ToList();
+            for(int i =0;i<this.presentList.Count;i++)
+            {
+                if(name.Equals(this.presentList[i].Name,StringComparison.OrdinalIgnoreCase))
+                {
+                    return this.presentList[i];
+                }
+            }
+
+            return null;
             
         }
 

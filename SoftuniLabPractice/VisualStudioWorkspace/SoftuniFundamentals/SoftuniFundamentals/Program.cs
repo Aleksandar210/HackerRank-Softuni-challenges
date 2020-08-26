@@ -380,6 +380,7 @@ namespace SoftuniFundamentals
             //Console.WriteLine(RemoveDwarf(currentDwarfs, current));
             //Console.WriteLine(RemoveDwarf(currentDwarfs, moreDwarfs));
             //Console.WriteLine(RemoveDwarf(currentDwarfs, anotherCurrent));      //works
+            //SantaShopTask();
 
 
 

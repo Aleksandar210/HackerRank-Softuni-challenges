@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,8 @@ namespace SoftuniFundamentals.SantaOOPTask2019
 {
     class Controller:IController
     {
+        //resources
+        StringBuilder sb;
         //consts
         private const int StartingCount = 0;
 
@@ -20,6 +23,7 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             this.currentDwarfs = new DwarfRepository();
             this.currentPresents = new PresentRepository();
             this.currentWorkshop = new Workshop();
+            this.sb = new StringBuilder();
         }
 
         public void AddDwarf(string type, string name)
@@ -81,6 +85,14 @@ namespace SoftuniFundamentals.SantaOOPTask2019
             }
             
             
+        }
+
+        public void Report()
+        {
+            this.sb.Clear();
+            this.sb.Append("Presents Crafted" + ": " + this.presentsCrafted + Environment.NewLine);
+            this.currentDwarfs.ForEach(e => this.sb.Append(e + Environment.NewLine));
+            Console.WriteLine(this.sb.ToString());
         }
     }
 }

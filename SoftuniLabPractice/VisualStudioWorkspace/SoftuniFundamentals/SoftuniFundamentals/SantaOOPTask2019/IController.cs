@@ -10,6 +10,6 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         void AddInstrumentToDwarf(string name, int power);
         void AddPresent(string name, int energy);
         void CraftPresent(string presentName);
-        
+        void Report();
     }
 }

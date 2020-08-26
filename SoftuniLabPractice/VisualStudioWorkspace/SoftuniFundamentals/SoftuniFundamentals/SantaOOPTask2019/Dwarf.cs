@@ -82,5 +82,13 @@ namespace SoftuniFundamentals.SantaOOPTask2019
         {
             this.instruments.Add(new Instrument(power));
         }
+
+        public override string ToString()
+        {
+            string dwarfInfo = $"Name: {this.Name}" + Environment.NewLine + $"Energy: {this.Energy}"
+                + Environment.NewLine + $"Instruments avaialable: {this.instruments.Count}"
+            +Environment.NewLine;
+            return dwarfInfo;
+        }
     }
 }

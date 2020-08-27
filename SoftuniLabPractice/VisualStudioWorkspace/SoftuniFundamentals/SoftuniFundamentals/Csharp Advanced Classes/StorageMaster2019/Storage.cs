@@ -18,6 +18,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
+        protected Dictionary<string, int> currentCountOfProduct;
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
@@ -31,6 +32,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
+            this.currentCountOfProduct = new Dictionary<string, int>();
             this.sb = new StringBuilder();
 
         }
@@ -91,7 +93,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             {
                 //if()
                // {
-
+                //implement it
                // }
             }
             get
@@ -145,7 +147,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public override string ToString()
         {
-            
+            this.sb.Clear();
+
         }
     }
 }

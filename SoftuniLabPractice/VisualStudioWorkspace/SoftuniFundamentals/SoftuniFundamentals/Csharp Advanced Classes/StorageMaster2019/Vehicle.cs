@@ -109,6 +109,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
             return sum;
         }
-           
+        
+
     }
 }

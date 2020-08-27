@@ -5,11 +5,11 @@ using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
-    public class ProductCountComparer : IComparer<Product>
+    public class ProductCountComparer : IComparer<List<Product>>
     {
-        public int Compare([AllowNull] Product x, [AllowNull] Product y)
+        public int Compare([AllowNull] List<Product> first, [AllowNull] List<Product> second)
         {
-            throw new NotImplementedException();
+            return second.Count - first.Count;
         }
     }
 }

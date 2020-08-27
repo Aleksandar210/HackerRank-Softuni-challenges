@@ -123,12 +123,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public int SendVehicleTo(int garageNumber, Storage storageToSend)
         {
-            throw new NotImplementedException();
+            //implment
+            return 0;
         }
 
         public int UnloadVehicle(int garageNumber)
-        {
-            throw new NotImplementedException();
+        { 
+          //implement
+            return 0;
         }
 
         private decimal GetStorageCurrentWeight()

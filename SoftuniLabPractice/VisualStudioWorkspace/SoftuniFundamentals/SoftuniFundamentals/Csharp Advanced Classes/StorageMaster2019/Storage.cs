@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
@@ -118,7 +120,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         private decimal GetStorageCurrentWeight()
         {
             decimal sum = 0;
-            sum = this.products.Aggregate((a, b) => (decimal)a.+ (decimal)b.);
+            sum = this.products.Select(pr => Convert.ToDecimal(pr.Weight)).Aggregate((a,b)=>a+b);
+            return sum;
         }
     }
 }

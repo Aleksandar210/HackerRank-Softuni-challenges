@@ -30,16 +30,31 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             private set
             {
-                //if()
-               // {
-
-               // }
+                if(this.SumOfProductWeight()>=this.Capacity)
+                {
+                    this.isFull = true;
+                }
+                else
+                {
+                    this.isFull = false;
+                }
             }
             get { return this.isFull; }
         }
 
         public bool IsEmpty
         {
+            private set
+            {
+                if(this.currentTrunkCollection.Count==0)
+                {
+                    this.isEmpty = true;
+                }
+                else
+                {
+                    this.isEmpty = false;
+                }
+            }
             get { return this.isEmpty; } 
         }
 
@@ -86,12 +101,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
         }
 
-        private double SumOfProductWeight()
+        private decimal SumOfProductWeight()
         {
-            double sum = 0;
+            decimal sum = 0;
             foreach(var item in this.Trunk)
             {
-                sum += item.Weight;
+                sum += (decimal)item.Weight;
             }
             return sum;
         }

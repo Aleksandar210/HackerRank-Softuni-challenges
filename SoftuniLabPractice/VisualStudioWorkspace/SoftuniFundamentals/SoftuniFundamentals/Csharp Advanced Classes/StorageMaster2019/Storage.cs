@@ -114,6 +114,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 {
                     throw new InvalidOperationException($"No vehicle found in {garageNumber}");
                 }
+                else
+                {
+                    return this.garageCollection[garageNumber];
+                }
             }
         }
 

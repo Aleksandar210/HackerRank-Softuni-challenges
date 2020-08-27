@@ -16,9 +16,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
-        protected IReadOnlyCollection<Product> products;
+        protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
-        protected IReadOnlyCollection<Vehicle> garage;
+        protected ReadOnlyCollection<Vehicle> garage;
 
         public Storage(string name,int capacity,int garageSlots)
         {
@@ -98,9 +98,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
         }
 
-        public ReadOnlyCollection<Vehicle> Garage => throw new NotImplementedException();
+        public ReadOnlyCollection<Vehicle> Garage => this.garage;
 
-        public ReadOnlyCollection<Product> Products => throw new NotImplementedException();
+        public ReadOnlyCollection<Product> Products => this.products;
 
         public Vehicle GetVehicle(int garageNumber)
         {
@@ -110,13 +110,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
             else
             {
-                if(this.garageCollection[garageNumber] is null)
+                if(this.garage[garageNumber] is null)
                 {
                     throw new InvalidOperationException($"No vehicle found in {garageNumber}");
                 }
                 else
                 {
-                    return this.garageCollection[garageNumber];
+                    return this.garage[garageNumber];
                 }
             }
         }

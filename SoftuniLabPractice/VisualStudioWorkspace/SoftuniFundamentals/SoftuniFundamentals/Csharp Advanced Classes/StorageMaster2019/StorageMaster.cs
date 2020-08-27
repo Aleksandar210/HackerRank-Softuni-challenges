@@ -82,7 +82,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                    
             }
 
-            return $
+            return $"Registered {name}.";
         }
 
         private bool DoesNameExistInPool(string name)

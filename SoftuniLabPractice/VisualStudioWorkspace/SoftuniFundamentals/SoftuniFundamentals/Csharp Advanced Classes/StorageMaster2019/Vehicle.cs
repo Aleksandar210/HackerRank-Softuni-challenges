@@ -7,6 +7,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
     public abstract class Vehicle : IVehicle
     {
+
+        //consts 
+        private const int StartingSumWeight = 0;
+
+        //fields
         private bool isFull;
         private bool isEmpty;
         private int capacity;
@@ -17,6 +22,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public Vehicle(int capacity)
         {
             this.Capacity = capacity;
+            this.currentTrunkCollection = new List<Product>();
+            this.trunk = new ReadOnlyCollection<Product>(this.currentTrunkCollection);
         }
 
         public bool IsFull
@@ -57,12 +64,26 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public void LoadProduct(Product product)
         {
-            throw new NotImplementedException();
+            if(this.IsFull)
+            {
+                throw new InvalidOperationException("Vehicle is full.");
+            }
+            else
+            {
+                this.currentTrunkCollection.Add(product);
+            }
         }
 
         public void Unlaod()
         {
-            throw new NotImplementedException();
+            if(this.IsEmpty)
+            {
+                throw new InvalidOperationException("No products left in vehicle!");
+            }
+            else
+            {
+                this.currentTrunkCollection.RemoveAt(this.currentTrunkCollection.Count - 1);
+            }
         }
 
         private double SumOfProductWeight()

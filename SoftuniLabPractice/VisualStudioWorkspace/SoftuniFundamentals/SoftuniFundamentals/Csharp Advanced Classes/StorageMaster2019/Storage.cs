@@ -25,6 +25,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.GarageSlots = garageSlots;
             this.productCollection = new List<Product>();
             this.products = new ReadOnlyCollection<Product>(productCollection);
+            this.garageCollection = new Vehicle[this.GarageSlots];
+            this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
 
         }
 
@@ -82,10 +84,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             private set
             {
-                if()
-                {
+                //if()
+               // {
 
-                }
+               // }
             }
             get
             {

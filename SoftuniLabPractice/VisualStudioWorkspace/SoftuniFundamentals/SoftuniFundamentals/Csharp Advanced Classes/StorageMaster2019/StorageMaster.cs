@@ -1,14 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
     public class StorageMaster : IStorageMaster
     {
+        //fields
+        List<Product> productPool;
+        public StorageMaster()
+        {
+            this.productPool = new List<Product>();
+        }
+
         public string AddProduct(string type, double price)
         {
-            throw new NotImplementedException();
+            switch(type.ToLower())
+            {
+                case "ram":
+                    this.productPool.Add(new Ram(price));
+                    break;
+                case "gpu":
+                    this.productPool.Add(new Gpu(price));
+                    break;
+                case "harddrive":
+                    this.productPool.Add(new HardDrive(price));
+                    break;
+                case "solidstatedrive":
+                    this.productPool.Add(new SolidStateDrive(price));
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid product type!");
+                    
+            }
+
+            return $"Added {type} to pool".;
         }
 
         public string GetStorageStatus(string storageName)

@@ -20,6 +20,7 @@ using System.Xml.Serialization;
 using MoreLinq;
 using MoreLinq.Extensions;
 using SoftuniFundamentals.SantaOOPTask2019;
+using System.Collections.ObjectModel;
 
 namespace SoftuniFundamentals
 {
@@ -386,7 +387,11 @@ namespace SoftuniFundamentals
 
 
 
-
+            List<int> numbers = new List<int>();        //this is the inner collection of the class
+            numbers.Add(100);
+            ReadOnlyCollection<int> current = new ReadOnlyCollection<int>(numbers);
+            var item = current[0];
+            Console.WriteLine(item);
 
 
 

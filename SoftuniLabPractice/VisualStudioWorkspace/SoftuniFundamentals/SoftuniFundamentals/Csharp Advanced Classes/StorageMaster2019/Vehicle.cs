@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
@@ -9,7 +10,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         private bool isFull;
         private bool isEmpty;
         private int capacity;
-        private IReadOnlyCollection<Product> trunk;
+        private List<Product> currentTrunkCollection;
+        private ReadOnlyCollection<Product> trunk;
         private double sumOfProductWeight;
 
         public Vehicle(int capacity)
@@ -50,10 +52,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             get { return this.capacity; }
         }
 
-        public IReadOnlyCollection<Product> Trunk
-        {
+        public ReadOnlyCollection<Product> Trunk => this.trunk;
+        
 
-            get { return this.trunk; }
+        public void LoadProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Unlaod()
+        {
+            throw new NotImplementedException();
         }
 
         private double SumOfProductWeight()

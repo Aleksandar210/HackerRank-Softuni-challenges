@@ -43,7 +43,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string GetStorageStatus(string storageName)
         {
-            
+            //implement logic in tostring for the needed stuff
+            return null;
         }
 
         public string GetSummary()

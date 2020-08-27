@@ -76,7 +76,6 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public ReadOnlyCollection<Product> Trunk => this.trunk;
         
-
         public void LoadProduct(Product product)
         {
             if(this.IsFull)

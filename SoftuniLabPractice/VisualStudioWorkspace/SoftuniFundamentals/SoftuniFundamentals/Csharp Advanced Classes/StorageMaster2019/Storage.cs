@@ -10,6 +10,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
     public abstract class Storage : IStorage
     {
+        //resources
+        StringBuilder sb;
         //fields
         protected string name;
         protected int capacity;
@@ -29,6 +31,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
+            this.sb = new StringBuilder();
 
         }
 
@@ -138,6 +141,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             decimal sum = 0;
             sum = this.products.Select(pr => Convert.ToDecimal(pr.Weight)).Aggregate((a,b)=>a+b);
             return sum;
+        }
+
+        public override string ToString()
+        {
+            
         }
     }
 }

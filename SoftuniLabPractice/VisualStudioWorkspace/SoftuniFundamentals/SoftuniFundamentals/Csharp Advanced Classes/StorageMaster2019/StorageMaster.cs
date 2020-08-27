@@ -43,7 +43,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string GetStorageStatus(string storageName)
         {
-            throw new NotImplementedException();
+            
         }
 
         public string GetSummary()

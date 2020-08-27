@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -19,6 +20,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public Storage(string name,int capacity,int garageSlots)
         {
+            this.Name = name;
+            this.Capacity = capacity;
+            this.GarageSlots = garageSlots;
+            this.productCollection = new List<Product>();
+            this.products = new ReadOnlyCollection<Product>(productCollection);
 
         }
 
@@ -40,11 +46,53 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         }
 
-        public int Capacity => throw new NotImplementedException();
+        public int Capacity
+        {
+            private set
+            {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Invalid storage value.");
+                }
+                else
+                {
+                    this.capacity = value;
+                }
+            }
+            get => this.capacity;
+        }
 
-        public int GarageSlots => throw new NotImplementedException();
+        public int GarageSlots
+        {
+            private set
+            {
+                if(value<=0)
+                {
+                    throw new ArgumentException("Invalid garage slot value.");
+                }
+                else
+                {
+                    this.garageSlots = value;
+                }
+            }
+            get => this.garageSlots;
+        }
 
-        public bool IsFull => throw new NotImplementedException();
+        public bool IsFull
+        {
+            private set
+            {
+                if()
+                {
+
+                }
+            }
+            get
+            {
+                this.IsFull = true;
+                return this.isFull;
+            }
+        }
 
         public ReadOnlyCollection<Vehicle> Garage => throw new NotImplementedException();
 
@@ -63,6 +111,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public int UnloadVehicle(int garageNumber)
         {
             throw new NotImplementedException();
+        }
+
+        private decimal GetStorageCurrentWeight()
+        {
+            decimal sum = 0;
+            sum = this.products.Aggregate((a, b) => (decimal)a.+ (decimal)b.);
         }
     }
 }

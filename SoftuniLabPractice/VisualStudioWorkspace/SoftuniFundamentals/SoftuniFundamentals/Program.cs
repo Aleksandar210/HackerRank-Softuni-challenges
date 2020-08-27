@@ -401,6 +401,13 @@ namespace SoftuniFundamentals
 
         }
 
+        //StorageMaster task
+        private static void StorageMasterTask2019OOP()
+        {
+
+        }
+
+        //Santa Shop task
         private static void SantaShopTask()
         {
             SantaOOPTask2019.Engine currentEngine = new SantaOOPTask2019.Engine();
@@ -426,11 +433,7 @@ namespace SoftuniFundamentals
             }
         }
       
-        //StorageMaster task
-        private static void StorageMasterTask2019OOP()
-        {
-
-        }
+       
 
         //an amazing race task
         private static void AnAmazingRace()

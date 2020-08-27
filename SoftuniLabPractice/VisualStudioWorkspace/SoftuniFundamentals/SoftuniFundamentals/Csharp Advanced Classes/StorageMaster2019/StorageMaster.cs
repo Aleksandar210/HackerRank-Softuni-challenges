@@ -109,7 +109,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 else
                 {
                     this.currentVehicle = this.storagePool[storageName].GetVehicle(garageSlot);
-                    return $"Selected {currentVehicle.GetType().ToString()}.";
+                    return $"Selected {currentVehicle.GetType().Name}.";
                 }
             }
             else

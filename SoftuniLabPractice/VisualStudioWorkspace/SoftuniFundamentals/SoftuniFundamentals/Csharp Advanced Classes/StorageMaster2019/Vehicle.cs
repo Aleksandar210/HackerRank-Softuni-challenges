@@ -12,12 +12,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         private const int StartingSumWeight = 0;
 
         //fields
-        private bool isFull;
-        private bool isEmpty;
-        private int capacity;
-        private List<Product> currentTrunkCollection;
-        private ReadOnlyCollection<Product> trunk;
-        private double sumOfProductWeight;
+        protected bool isFull;
+        protected bool isEmpty;
+        protected int capacity;
+        protected List<Product> currentTrunkCollection;
+        protected ReadOnlyCollection<Product> trunk;
+           
 
         public Vehicle(int capacity)
         {

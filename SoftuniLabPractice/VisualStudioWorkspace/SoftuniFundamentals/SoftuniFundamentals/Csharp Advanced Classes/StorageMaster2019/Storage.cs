@@ -18,7 +18,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
-        protected Dictionary<string, int> currentCountOfProduct;
+        protected SortedDictionary<string, int> currentCountOfProduct;
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
@@ -32,7 +32,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
-            this.currentCountOfProduct = new Dictionary<string, int>();
+            this.currentCountOfProduct = new SortedDictionary<string, int>();
             this.sb = new StringBuilder();
 
         }

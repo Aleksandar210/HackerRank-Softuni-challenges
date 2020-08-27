@@ -10,6 +10,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         //fields
         private List<Product> productPool;
         private Dictionary<string, Storage> storagePool;
+        private Vehicle currentVehicle;
         public StorageMaster()
         {
             this.productPool = new List<Product>();
@@ -99,7 +100,21 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string SelectVehicle(string storageName, int garageSlot)
         {
-            throw new NotImplementedException();
+            if(this.storagePool.ContainsKey(storageName))
+            {
+               if(this.storagePool[storageName].Garage[garageSlot] is null)
+                {
+                    throw new InvalidOperationException($"No vehicle found in {garageSlot} garage slot");
+                }
+                else
+                {
+                    this.currentVehicle = this.storagePool[storageName].GetVehicle(garageSlot);
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Storage not found.");
+            }
         }
 
         public string SendVehicleTo(string sourceName, int sourceGarageSlot, string destinationName)

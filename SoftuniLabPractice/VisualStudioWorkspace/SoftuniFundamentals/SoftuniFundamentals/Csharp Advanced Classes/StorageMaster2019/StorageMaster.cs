@@ -8,10 +8,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
     public class StorageMaster : IStorageMaster
     {
         //fields
-        List<Product> productPool;
+        private List<Product> productPool;
+        private Dictionary<string, Storage> storagePool;
         public StorageMaster()
         {
             this.productPool = new List<Product>();
+            this.storagePool = new Dictionary<string, Storage>();
         }
 
         public string AddProduct(string type, double price)
@@ -55,7 +57,44 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string RegisterStorage(string type, string name)
         {
-            throw new NotImplementedException();
+            switch(type.ToLower())
+            {
+                case "warehouse":
+                    if(!this.DoesNameExistInPool(name))
+                    {
+                        this.storagePool.Add(name, new Warehouse(name));
+                    }
+                    break;
+                case "automatedwarehouse":
+                    if (!this.DoesNameExistInPool(name))
+                    {
+                        this.storagePool.Add(name, new AutomatedWarehouse(name));
+                    }
+                    break;
+                case "distributioncenter":
+                    if (!this.DoesNameExistInPool(name))
+                    {
+                        this.storagePool.Add(name, new DistributionCenter(name));
+                    }
+                    break;
+                default:
+                    throw new InvalidOperationException("Invalid type.");
+                   
+            }
+
+            return $
+        }
+
+        private bool DoesNameExistInPool(string name)
+        {
+            if(this.storagePool.ContainsKey(name))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public string SelectVehicle(string storageName, int garageSlot)

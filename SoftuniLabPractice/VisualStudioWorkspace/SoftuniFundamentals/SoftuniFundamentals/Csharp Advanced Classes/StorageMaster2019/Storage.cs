@@ -104,7 +104,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public Vehicle GetVehicle(int garageNumber)
         {
-            throw new NotImplementedException();
+            if(garageNumber<0 || garageNumber>this.GarageSlots-1)
+            {
+                throw new InvalidOperationException("Invalid garae slot.");
+            }
+            else
+            {
+                if(this.garageCollection[garageNumber] is null)
+                {
+                    throw new InvalidOperationException($"No vehicle found in {garageNumber}");
+                }
+            }
         }
 
         public int SendVehicleTo(int garageNumber, Storage storageToSend)

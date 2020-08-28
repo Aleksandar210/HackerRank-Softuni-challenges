@@ -148,6 +148,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public override string ToString()
         {
             this.sb.Clear();
+            this.sb.Append($"Stock: {this.GetStorageCurrentWeight}/{this.Capacity}" + Environment.NewLine);
+            this.sb.Append();
 
         }
     }

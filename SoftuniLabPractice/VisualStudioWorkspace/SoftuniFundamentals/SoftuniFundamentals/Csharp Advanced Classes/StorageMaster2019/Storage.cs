@@ -11,15 +11,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
     public abstract class Storage : IStorage
     {
+
         //resources
         StringBuilder sb;
+        
         //fields
         protected string name;
         protected int capacity;
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
-        protected SortedDictionary<string, List<Product>> currentCountOfProduct;
+        protected Dictionary<string, int> currentProductsCount;
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
@@ -33,7 +35,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
-            this.currentCountOfProduct = new SortedDictionary<string, List<Product>>(Comparer<string>.Create((a,b)=>int.Parse(b).CompareTo(int.Parse(a))));
+            this.currentProductsCount = new Dictionary<string,int>();
             this.sb = new StringBuilder();
 
         }
@@ -146,12 +148,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             return sum;
         }
 
-        private void OrderByDescendingName()
+        private void SortProductsForDisplay()
         {
-            foreach(var item in this.currentCountOfProduct)
-            {
-                item.Value.Sort(Comparer<Product>.Create((a,b)=>a.Name.Equals(b.Name)));        //FIX THE SORTED LIST THE STRING IS THE TYPE
-            }
+            this.currentProductsCount = this.currentProductsCount.OrderByDescending(e => e.Value).ToDictionary(e => e.Key, e => e.Value);
+
         }
 
         public override string ToString()

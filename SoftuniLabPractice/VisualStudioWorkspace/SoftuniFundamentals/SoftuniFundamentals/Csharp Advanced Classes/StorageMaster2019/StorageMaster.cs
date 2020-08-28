@@ -75,7 +75,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string LoadVehicle(IEnumerable<Product> products)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public string RegisterStorage(string type, string name)

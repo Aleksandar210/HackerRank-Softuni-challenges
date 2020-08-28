@@ -404,7 +404,17 @@ namespace SoftuniFundamentals
         //StorageMaster task
         private static void StorageMasterTask2019OOP()
         {
+            StorageMaster currentMaster = new StorageMaster();
+            string enterInput;
+            string[] temp;
 
+            enterInput = Console.ReadLine();
+            while(!enterInput.Equals("End",StringComparison.OrdinalIgnoreCase))
+            {
+
+
+                enterInput = Console.ReadLine();
+            }
         }
 
         //Santa Shop task

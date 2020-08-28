@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MoreLinq;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
@@ -57,7 +59,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string GetSummary()
         {
-           
+            this.storagePool = this.storagePool.OrderByDescending(item => item.Value.GetStorageTotalPrice).ToDictionary(e=>e.Key,e=>e.Value);
+
+            return null;
         }
 
         public string LoadVehicle(IEnumerable<Product> products)

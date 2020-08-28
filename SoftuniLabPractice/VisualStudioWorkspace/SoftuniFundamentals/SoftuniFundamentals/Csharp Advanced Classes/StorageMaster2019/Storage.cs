@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.ExceptionServices;
 using System.Text;
 
 namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
@@ -18,7 +19,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
-        protected SortedDictionary<string, int> currentCountOfProduct;
+        protected SortedDictionary<string, List<Product>> currentCountOfProduct;
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
@@ -32,7 +33,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
-            this.currentCountOfProduct = new SortedDictionary<string, int>();
+            this.currentCountOfProduct = new SortedDictionary<string, List<Product>>(Comparer<string>.Create((a,b)=>int.Parse(b).CompareTo(int.Parse(a))));
             this.sb = new StringBuilder();
 
         }
@@ -148,8 +149,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public override string ToString()
         {
             this.sb.Clear();
-            this.sb.Append($"Stock: {this.GetStorageCurrentWeight}/{this.Capacity}" + Environment.NewLine);
+            this.sb.Append($"Stock: {this.GetStorageCurrentWeight()}/{this.Capacity}" + Environment.NewLine);
             this.sb.Append();
+
+            return this.sb.ToString();
 
         }
     }

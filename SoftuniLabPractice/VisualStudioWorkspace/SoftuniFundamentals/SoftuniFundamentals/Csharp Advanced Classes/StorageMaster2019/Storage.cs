@@ -108,7 +108,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public ReadOnlyCollection<Vehicle> Garage => this.garage;
 
-        public ReadOnlyCollection<Product> Products => this.products;
+        public ReadOnlyCollection<Product> Products
+        {
+            private set
+            {
+
+            }
+            get => this.products;
+        }
 
         public Vehicle GetVehicle(int garageNumber)
         {

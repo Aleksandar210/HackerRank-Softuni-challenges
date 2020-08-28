@@ -157,8 +157,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public override string ToString()
         {
+            this.SortProductsForDisplay();
             this.sb.Clear();
-            this.sb.Append($"Stock: {this.GetStorageCurrentWeight()}/{this.Capacity}" + Environment.NewLine);
+            this.sb.Append($"Stock: {this.GetStorageCurrentWeight()}/{this.Capacity}" + "[");
             var countOfProducts = this.currentProductsCount.Count;
             var counter = -1;
             foreach(var item in this.currentProductsCount)
@@ -166,7 +167,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 counter++;
                 if(counter==countOfProducts-1)
                 {
-                    this.sb.Append(item.Key + $" ({item.Value.Count})");
+                    this.sb.Append(item.Key + $" ({item.Value.Count})]");
                 }
                 else
                 {
@@ -174,8 +175,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 }
                 
             }
-                  
-
+                 
             return this.sb.ToString();
 
         }

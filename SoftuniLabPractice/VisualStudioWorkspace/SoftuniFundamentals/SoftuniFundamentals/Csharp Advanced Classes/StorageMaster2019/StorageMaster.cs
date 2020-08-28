@@ -70,7 +70,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 this.sb.Append($"{item.Key}" + Environment.NewLine + $"Storage worth: ${item.Value.GetStorageTotalPrice}");
             }
 
-            return null;
+            return this.sb.ToString();
         }
 
         public string LoadVehicle(IEnumerable<Product> products)

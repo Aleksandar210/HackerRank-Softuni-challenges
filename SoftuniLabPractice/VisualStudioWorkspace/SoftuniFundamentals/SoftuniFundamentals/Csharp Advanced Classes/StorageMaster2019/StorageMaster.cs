@@ -9,6 +9,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 {
     public class StorageMaster : IStorageMaster
     {
+        //resources
+        StringBuilder sb;
+
         //fields
         private List<Product> productPool;
         private Dictionary<string, Storage> storagePool;
@@ -59,6 +62,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string GetSummary()
         {
+            
             this.storagePool = this.storagePool.OrderByDescending(item => item.Value.GetStorageTotalPrice).ToDictionary(e=>e.Key,e=>e.Value);
 
             return null;

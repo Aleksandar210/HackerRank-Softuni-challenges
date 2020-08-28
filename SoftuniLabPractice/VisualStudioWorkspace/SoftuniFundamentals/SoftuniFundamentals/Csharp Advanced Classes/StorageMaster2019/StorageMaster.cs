@@ -20,6 +20,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             this.productPool = new List<Product>();
             this.storagePool = new Dictionary<string, Storage>();
+            this.sb = new StringBuilder();
         }
 
         public string AddProduct(string type, double price)
@@ -64,6 +65,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             
             this.storagePool = this.storagePool.OrderByDescending(item => item.Value.GetStorageTotalPrice).ToDictionary(e=>e.Key,e=>e.Value);
+            foreach(var item in this.storagePool)
+            {
+                this.sb.Append($"{item.Key}" + Environment.NewLine + $"Storage worth: ${item.Value.GetStorageTotalPrice}");
+            }
 
             return null;
         }

@@ -21,7 +21,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
-        protected Dictionary<string, int> currentProductsCount;
+        protected Dictionary<string, List<Product>> currentProductsCount;
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
@@ -35,7 +35,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             this.products = new ReadOnlyCollection<Product>(productCollection);
             this.garageCollection = new Vehicle[this.GarageSlots];
             this.garage = new ReadOnlyCollection<Vehicle>(this.garageCollection);
-            this.currentProductsCount = new Dictionary<string,int>();
+            this.currentProductsCount = new Dictionary<string,List<Product>>();
             this.sb = new StringBuilder();
 
         }
@@ -150,15 +150,31 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         private void SortProductsForDisplay()
         {
-            this.currentProductsCount = this.currentProductsCount.OrderByDescending(e => e.Value).ToDictionary(e => e.Key, e => e.Value);
-
+            this.currentProductsCount = this.currentProductsCount.OrderByDescending(e => e.Value.Count)
+                .ThenBy(e=>e.Key)
+                .ToDictionary(e => e.Key, e => e.Value);
         }
 
         public override string ToString()
         {
             this.sb.Clear();
             this.sb.Append($"Stock: {this.GetStorageCurrentWeight()}/{this.Capacity}" + Environment.NewLine);
-            this.sb.Append();       //Fix the sorted list to be by count and then by name;
+            var countOfProducts = this.currentProductsCount.Count;
+            var counter = -1;
+            foreach(var item in this.currentProductsCount)
+            {
+                counter++;
+                if(counter==countOfProducts-1)
+                {
+                    this.sb.Append(item.Key + $" ({item.Value.Count})");
+                }
+                else
+                {
+                    this.sb.Append(item.Key+$" ({item.Value.Count}), ");
+                }
+                
+            }
+                  
 
             return this.sb.ToString();
 

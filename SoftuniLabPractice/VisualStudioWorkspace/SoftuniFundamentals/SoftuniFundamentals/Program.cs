@@ -412,8 +412,15 @@ namespace SoftuniFundamentals
             while(!enterInput.Equals("End",StringComparison.OrdinalIgnoreCase))
             {
 
-
                 enterInput = Console.ReadLine();
+            }
+        }
+        private static void ExecuteStorageCommand(params string[] currentData)
+        {
+            switch(currentData[0].ToLower())
+            {
+                case "addproduct":
+                    break;
             }
         }
 

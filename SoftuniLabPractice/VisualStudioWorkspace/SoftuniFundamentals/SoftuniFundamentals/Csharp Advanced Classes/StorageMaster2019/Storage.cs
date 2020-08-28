@@ -18,6 +18,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         //fields
         protected string name;
         protected int capacity;
+        protected decimal totalPrice;
         protected int garageSlots;
         protected bool isFull;
         protected List<Product> productCollection;
@@ -112,7 +113,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             private set
             {
-
+                this.totalPrice = this.products.Select(e=>Convert.ToDecimal(e.Price)).Aggregate((a, b) => a + b);
             }
             get => this.products;
         }
@@ -134,6 +135,16 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     return this.garage[garageNumber];
                 }
             }
+        }
+
+        public Decimal GetStorageTotalPrice
+        {
+            private set
+            {
+
+            }
+
+            get => this.totalPrice;
         }
 
         public int SendVehicleTo(int garageNumber, Storage storageToSend)
@@ -162,6 +173,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 .ToDictionary(e => e.Key, e => e.Value);
         }
 
+        
         public override string ToString()
         {
             this.SortProductsForDisplay();
@@ -179,6 +191,32 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 else
                 {
                     this.sb.Append(item.Key+$" ({item.Value.Count}), ");
+                }
+                
+            }
+
+            this.sb.Append(Environment.NewLine);
+            this.sb.Append("[");
+            counter = -1;
+            foreach(var item in this.garageCollection)
+            {
+                counter++;
+                
+                if(counter==this.GarageSlots-1 && item is null)
+                {
+                    this.sb.Append("Empty]");
+                }
+                else if(counter != this.GarageSlots - 1 && item is null)
+                {
+                    this.sb.Append("Empty|");
+                }
+                else if(counter != this.GarageSlots - 1 && !(item is null))
+                {
+                    this.sb.Append("Empty|");
+                }
+                else
+                {
+                    this.sb.Append($"{item.GetType().Name}|");
                 }
                 
             }

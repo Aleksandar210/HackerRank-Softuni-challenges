@@ -43,13 +43,21 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string GetStorageStatus(string storageName)
         {
-            //implement logic in tostring for the needed stuff
-            return null;
+            if(this.storagePool.ContainsKey(storageName))
+            {
+                return this.storagePool[storageName].ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Storage not foudn in pool.");
+            }
+            
+
         }
 
         public string GetSummary()
         {
-            throw new NotImplementedException();
+           
         }
 
         public string LoadVehicle(IEnumerable<Product> products)

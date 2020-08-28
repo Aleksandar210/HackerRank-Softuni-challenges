@@ -146,11 +146,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             return sum;
         }
 
+        private void OrderByDescendingName()
+        {
+            foreach(var item in this.currentCountOfProduct)
+            {
+                item.Value.Sort(Comparer<Product>.Create((a,b)=>a.Name.Equals(b.Name)));        //FIX THE SORTED LIST THE STRING IS THE TYPE
+            }
+        }
+
         public override string ToString()
         {
             this.sb.Clear();
             this.sb.Append($"Stock: {this.GetStorageCurrentWeight()}/{this.Capacity}" + Environment.NewLine);
-            this.sb.Append();
+            this.sb.Append();       //Fix the sorted list to be by count and then by name;
 
             return this.sb.ToString();
 

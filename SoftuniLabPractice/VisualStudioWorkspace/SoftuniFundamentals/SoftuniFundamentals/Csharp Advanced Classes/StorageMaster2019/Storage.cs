@@ -26,6 +26,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         protected ReadOnlyCollection<Product> products;
         protected Vehicle[] garageCollection;
         protected ReadOnlyCollection<Vehicle> garage;
+    
 
         public Storage(string name,int capacity,int garageSlots)
         {
@@ -147,6 +148,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 }
                 else
                 {
+                    
                     return this.garage[garageNumber];
                 }
             }
@@ -164,9 +166,11 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public int SendVehicleTo(int garageNumber, Storage storageToSend)
         {
-            //implment
+            //this.sends the current vehicl in the garage slots to the storageToSend
             return 0;
         }
+
+        
 
         public int UnloadVehicle(int garageNumber)
         { 
@@ -187,6 +191,30 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 .ThenBy(e=>e.Key)
                 .ToDictionary(e => e.Key, e => e.Value);
         }
+
+        public void ReceiveVehicle(Vehicle vehicle)
+        {
+
+        }
+
+        private bool IsThereSpaceInGarege()
+        {
+            bool free = false;
+            this.garage.Select(e=>
+            {
+                switch(e)
+                {
+                    case null:
+                        free = true;
+                        break;
+                }
+                return e;
+            }
+            );
+
+            return free;
+        }
+
 
         
         public override string ToString()

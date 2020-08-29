@@ -142,11 +142,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string SendVehicleTo(string sourceName, int sourceGarageSlot, string destinationName)
         {
+            string vehicleType = null;
             if(this.storagePool.ContainsKey(sourceName))
             {
                 if(this.storagePool.ContainsKey(destinationName))
                 {
-
+                   this.storagePool[sourceName].SendVehicleTo(sourceGarageSlot,this.storagePool[destinationName]);
+                    return $"{} send from {} to {}";
                 }
                 else
                 {

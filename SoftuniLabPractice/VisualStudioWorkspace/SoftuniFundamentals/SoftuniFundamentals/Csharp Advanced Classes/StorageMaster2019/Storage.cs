@@ -166,8 +166,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public int SendVehicleTo(int garageNumber, Storage storageToSend)
         {
-            //this.sends the current vehicl in the garage slots to the storageToSend
-            return 0;
+            return storageToSend.ReceiveVehicle(this.GetVehicle(garageNumber));
+            
         }
 
         
@@ -192,8 +192,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 .ToDictionary(e => e.Key, e => e.Value);
         }
 
-        public void ReceiveVehicle(Vehicle vehicle)
+        public int ReceiveVehicle(Vehicle vehicle)
         {
+            int garageSlotAddedTo=-1;
             if(this.IsThereSpaceInGarege())
             {
                 for(int i=0;i<this.garageCollection.Length;i++)
@@ -202,14 +203,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     {
                         case null:
                             this.garageCollection[i] = vehicle;
+                            garageSlotAddedTo = i;
                             goto exitLoop;
                             
                     }
                 }
             }
+            else
+            {
+                throw new InvalidOperationException($"No free space in {this.Name} storage");
+            }
 
         exitLoop:
-            return;
+            return garageSlotAddedTo;
 
         }
 

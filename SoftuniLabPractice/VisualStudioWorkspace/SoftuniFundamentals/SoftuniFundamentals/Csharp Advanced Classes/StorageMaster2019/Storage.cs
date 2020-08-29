@@ -167,7 +167,6 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public int SendVehicleTo(int garageNumber, Storage storageToSend)
         {
             return storageToSend.ReceiveVehicle(this.GetVehicle(garageNumber));
-            
         }
 
         

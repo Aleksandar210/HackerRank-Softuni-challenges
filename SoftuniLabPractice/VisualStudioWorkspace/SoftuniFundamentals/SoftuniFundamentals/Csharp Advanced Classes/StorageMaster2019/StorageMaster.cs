@@ -144,28 +144,22 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             if(this.storagePool.ContainsKey(sourceName))
             {
-                if(!this.storagePool.ContainsKey(destinationName))
+                if(this.storagePool.ContainsKey(destinationName))
                 {
-                    throw new InvalidOperationException("Invalid destination.")
+
                 }
                 else
                 {
-                    this.SelectVehicle(sourceName, sourceGarageSlot);
-                    this.
+                    throw new InvalidOperationException($"No storage found by the name {destinationName}");
                 }
-               
-                
             }
             else
             {
-                throw new InvalidOperationException("Invalid source storage.");
+                throw new InvalidOperationException($"No storage found by the name {sourceName}");
             }
         }
 
-        private void SendVehicleToStorageGarage(string storageName)
-        {
-            this.storagePool[storageName].
-        }
+       
 
         public string UnloadVehicle(string storageName, int garageSlot)
         {

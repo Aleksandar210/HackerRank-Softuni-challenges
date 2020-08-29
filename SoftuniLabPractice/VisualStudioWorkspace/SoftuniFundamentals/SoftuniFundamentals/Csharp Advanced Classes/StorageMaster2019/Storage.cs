@@ -194,7 +194,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public void ReceiveVehicle(Vehicle vehicle)
         {
+            if(this.IsThereSpaceInGarege())
+            {
+                for(int i=0;i<this.garageCollection.Length;i++)
+                {
 
+                }
+            }
         }
 
         private bool IsThereSpaceInGarege()

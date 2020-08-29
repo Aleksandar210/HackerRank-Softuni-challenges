@@ -198,9 +198,19 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             {
                 for(int i=0;i<this.garageCollection.Length;i++)
                 {
-
+                    switch(this.garageCollection[i])
+                    {
+                        case null:
+                            this.garageCollection[i] = vehicle;
+                            goto exitLoop;
+                            break;
+                    }
                 }
             }
+
+        exitLoop:
+            return;
+
         }
 
         private bool IsThereSpaceInGarege()

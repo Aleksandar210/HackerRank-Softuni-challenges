@@ -142,7 +142,15 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string SendVehicleTo(string sourceName, int sourceGarageSlot, string destinationName)
         {
-            throw new NotImplementedException();
+            if(this.storagePool.ContainsKey(sourceName))
+            {
+                this.SelectVehicle(sourceName, sourceGarageSlot);
+
+            }
+            else
+            {
+                throw new InvalidOperationException("Invalid destination.");
+            }
         }
 
         public string UnloadVehicle(string storageName, int garageSlot)

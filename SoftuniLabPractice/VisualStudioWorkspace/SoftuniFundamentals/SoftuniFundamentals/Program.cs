@@ -411,8 +411,8 @@ namespace SoftuniFundamentals
             enterInput = Console.ReadLine();
             while(!enterInput.Equals("End",StringComparison.OrdinalIgnoreCase))
             {
-
                 enterInput = Console.ReadLine();
+                temp = enterInput.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
             }
         }
         private static void ExecuteStorageCommand(params string[] currentData)
@@ -420,6 +420,14 @@ namespace SoftuniFundamentals
             switch(currentData[0].ToLower())
             {
                 case "addproduct":
+                    break;
+                case "registerstorage":
+                    break;
+                case "selectvehicle":
+                    break;
+                case "sendvehiclto":
+                    break;
+                case "unloadvehicle":
                     break;
             }
         }

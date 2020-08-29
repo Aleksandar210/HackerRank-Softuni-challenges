@@ -203,7 +203,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                         case null:
                             this.garageCollection[i] = vehicle;
                             goto exitLoop;
-                            break;
+                            
                     }
                 }
             }

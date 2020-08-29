@@ -95,10 +95,25 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             private set
             {
-                //if()
-               // {
-                //implement it
-               // }
+                    bool isThereFreeSpace = false;
+                    foreach(var item in this.garage)
+                    {
+                        if(item is null)
+                        {
+                            isThereFreeSpace = true;
+                            break;
+                        }
+                    }
+
+                if(isThereFreeSpace)
+                {
+                    this.isFull = false;
+                }
+                else
+                {
+                    this.isFull = true;
+                }
+
             }
             get
             {
@@ -141,7 +156,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             private set
             {
-
+                this.totalPrice = this.products.Select(a=>Convert.ToDecimal(a)).Aggregate((a, b) => a + b);
             }
 
             get => this.totalPrice;

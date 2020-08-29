@@ -148,13 +148,23 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 {
                     throw new InvalidOperationException("Invalid destination.")
                 }
-                this.SelectVehicle(sourceName, sourceGarageSlot);
+                else
+                {
+                    this.SelectVehicle(sourceName, sourceGarageSlot);
+                    this.
+                }
+               
                 
             }
             else
             {
                 throw new InvalidOperationException("Invalid source storage.");
             }
+        }
+
+        private void SendVehicleToStorageGarage(string storageName)
+        {
+            this.storagePool[storageName].
         }
 
         public string UnloadVehicle(string storageName, int garageSlot)

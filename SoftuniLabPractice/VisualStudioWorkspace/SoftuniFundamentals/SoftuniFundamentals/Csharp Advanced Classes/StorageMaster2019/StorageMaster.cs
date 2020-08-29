@@ -144,12 +144,16 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         {
             if(this.storagePool.ContainsKey(sourceName))
             {
+                if(!this.storagePool.ContainsKey(destinationName))
+                {
+                    throw new InvalidOperationException("Invalid destination.")
+                }
                 this.SelectVehicle(sourceName, sourceGarageSlot);
-
+                
             }
             else
             {
-                throw new InvalidOperationException("Invalid destination.");
+                throw new InvalidOperationException("Invalid source storage.");
             }
         }
 

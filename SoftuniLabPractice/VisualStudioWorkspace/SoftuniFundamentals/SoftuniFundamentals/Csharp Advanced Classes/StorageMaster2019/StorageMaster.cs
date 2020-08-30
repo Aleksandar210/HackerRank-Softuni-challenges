@@ -174,9 +174,6 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             {
                 numberProductsUnlaoded = this.storagePool[storageName].UnloadVehicle(garageSlot);
                 return $"Unloaded {numberProductsUnlaoded}/{this.storagePool[storageName].GetVehicle(garageSlot).Trunk.Count} products at { storageName}";
-
-
-
             }
             else
             {

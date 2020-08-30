@@ -415,13 +415,15 @@ namespace SoftuniFundamentals
                 temp = enterInput.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
             }
         }
-        private static void ExecuteStorageCommand(params string[] currentData)
+        private static void ExecuteStorageCommand(StorageMaster master,params string[] currentData)
         {
             switch(currentData[0].ToLower())
             {
                 case "addproduct":
+                    master.AddProduct(currentData[1], double.Parse(currentData[2]));
                     break;
                 case "registerstorage":
+                    master.RegisterStorage(currentData[1], currentData[2]);
                     break;
                 case "selectvehicle":
                     break;

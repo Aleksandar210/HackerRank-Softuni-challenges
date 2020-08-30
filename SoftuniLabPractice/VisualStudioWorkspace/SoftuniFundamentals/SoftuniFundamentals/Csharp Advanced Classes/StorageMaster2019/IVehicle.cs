@@ -12,7 +12,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         int Capacity { get; }
         ReadOnlyCollection<Product> Trunk { get; }        //it will use a list
         void LoadProduct(Product product);
-        void Unlaod();      //unloads the last product if passed if it has no products exc
+        Product Unlaod();      //unloads the last product if passed if it has no products exc
 
 
     }

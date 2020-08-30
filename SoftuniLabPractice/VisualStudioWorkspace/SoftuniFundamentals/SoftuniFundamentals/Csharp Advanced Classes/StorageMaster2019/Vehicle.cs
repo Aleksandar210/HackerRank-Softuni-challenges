@@ -11,6 +11,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         //consts 
         private const int StartingSumWeight = 0;
 
+        //resources
+        private Product productWhenUnloading;
+
         //fields
         protected bool isFull;
         protected bool isEmpty;
@@ -88,15 +91,17 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
         }
 
-        public void Unlaod()
+        public Product Unlaod()
         {
+            
             if(this.IsEmpty)
             {
                 throw new InvalidOperationException("No products left in vehicle!");
             }
             else
             {
-                this.currentTrunkCollection.RemoveAt(this.currentTrunkCollection.Count - 1);
+                this.productWhenUnloading = this.currentTrunkCollection[this.currentTrunkCollection.Count - 1];
+                 this.currentTrunkCollection.RemoveAt(this.currentTrunkCollection.Count - 1);
             }
         }
 

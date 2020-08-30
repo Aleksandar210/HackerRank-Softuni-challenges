@@ -13,12 +13,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         StringBuilder sb;
 
         //fields
-        private List<Product> productPool;
+       // private List<Product> productPool;
+        Dictionary<string, List<Product>> productPool;
         private Dictionary<string, Storage> storagePool;
         private Vehicle currentVehicle;
         public StorageMaster()
         {
-            this.productPool = new List<Product>();
+            this.productPool = new Dictionary<string, List<Product>>();
             this.storagePool = new Dictionary<string, Storage>();
             this.sb = new StringBuilder();
         }
@@ -28,13 +29,13 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             switch(type.ToLower())
             {
                 case "ram":
-                    this.productPool.Add(new Ram(price));
+                    this.productPool[type].Add(new Ram(price));
                     break;
                 case "gpu":
-                    this.productPool.Add(new Gpu(price));
+                    this.productPool[type].Add(new Gpu(price));
                     break;
                 case "harddrive":
-                    this.productPool.Add(new HardDrive(price));
+                    this.productPool[type].Add(new HardDrive(price));
                     break;
                 case "solidstatedrive":
                     this.productPool.Add(new SolidStateDrive(price));
@@ -75,7 +76,34 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string LoadVehicle(IEnumerable<Product> products)
         {
-            return null;
+            if(this.currentVehicle is null)
+            {
+                throw new InvalidOperationException("No vehicle selected.");
+            }
+            else
+            {
+                foreach(var item in products)
+                {
+                    try
+                    {
+                        this.currentVehicle.LoadProduct(item);
+                    }
+                    catch(InvalidOperationException exc)
+                    {
+                        break;
+                    }
+                }
+                
+            }
+            
+        }
+
+        private Product GetProductFromThePool(string type)
+        {
+            if(this.productPool.Contains())
+            {
+
+            }
         }
 
         public string RegisterStorage(string type, string name)

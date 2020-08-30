@@ -100,8 +100,10 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             }
             else
             {
-                this.productWhenUnloading = this.currentTrunkCollection[this.currentTrunkCollection.Count - 1];
+                 this.productWhenUnloading = this.currentTrunkCollection[this.currentTrunkCollection.Count - 1];
                  this.currentTrunkCollection.RemoveAt(this.currentTrunkCollection.Count - 1);
+                 return this.productWhenUnloading;
+
             }
         }
 

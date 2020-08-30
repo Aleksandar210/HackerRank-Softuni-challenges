@@ -77,6 +77,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string LoadVehicle(IEnumerable<Product> products)
         {
+            int numberProductsLoaded = 0;
             if(this.currentVehicle is null)
             {
                 throw new InvalidOperationException("No vehicle selected.");
@@ -88,6 +89,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     try
                     {
                         this.currentVehicle.LoadProduct(this.GetProductFromThePool(item.GetType().Name));
+                        numberProductsLoaded += 1;
                     }
                     catch(InvalidOperationException exc)
                     {
@@ -95,7 +97,8 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     }
                 }
 
-                return null;
+                return $"Loaded {numberProductsLoaded}/{products.Count} products into {this.currentVehicle.GetType().Name}";
+                
             }
             
         }

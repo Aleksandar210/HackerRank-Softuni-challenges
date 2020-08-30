@@ -434,7 +434,7 @@ namespace SoftuniFundamentals
                     master.RegisterStorage(currentData[1], currentData[2]);
                     break;
                 case "selectvehicle":
-                    master.SelectVehicle(currentData[1], int.Parse(currentData[2]));
+                    Console.WriteLine(master.SelectVehicle(currentData[1], int.Parse(currentData[2])));
                     break;
                 case "sendvehiclto":
                    Console.WriteLine(master.SendVehicleTo(currentData[1], int.Parse(currentData[2]), currentData[3]));

@@ -420,6 +420,7 @@ namespace SoftuniFundamentals
                 catch(Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    continue;
                 }
             }
         }

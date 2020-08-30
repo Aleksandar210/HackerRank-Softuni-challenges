@@ -97,7 +97,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     }
                 }
 
-                return $"Loaded {numberProductsLoaded}/{products.Count} products into {this.currentVehicle.GetType().Name}";
+                return $"Loaded {numberProductsLoaded}/{products.ToList().Count} products into {this.currentVehicle.GetType().Name}";
                 
             }
             

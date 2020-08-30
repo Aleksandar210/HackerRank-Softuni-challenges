@@ -147,8 +147,12 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
             {
                 if(this.storagePool.ContainsKey(destinationName))
                 {
+                    if((this.storagePool[sourceName].Garage[sourceGarageSlot] is null))
+                    {
+                        vehicleType = this.storagePool[sourceName].Garage[sourceGarageSlot].GetType().Name;
+                    }
                    this.storagePool[sourceName].SendVehicleTo(sourceGarageSlot,this.storagePool[destinationName]);
-                    return $"{} send from {} to {}";
+                    return $"{vehicleType} send from {sourceName} to {destinationName}";
                 }
                 else
                 {

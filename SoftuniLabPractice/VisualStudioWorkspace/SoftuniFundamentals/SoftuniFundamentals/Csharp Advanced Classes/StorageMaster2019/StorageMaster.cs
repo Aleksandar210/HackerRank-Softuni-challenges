@@ -11,7 +11,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
     {
         //resources
         StringBuilder sb;
-        Product tempProductObject;
+        
 
         //fields
        // private List<Product> productPool;
@@ -101,7 +101,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         private Product GetProductFromThePool(string type)
         {
-            
+            Product temp;
             if(this.productPool.ContainsKey(type))
             {
                 if(this.productPool[type].Count==0)
@@ -110,9 +110,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                 }
                 else
                 {
-                    this.tempProductObject = this.productPool[type][this.productPool[type].Count - 1];
+                    temp = this.productPool[type][this.productPool[type].Count - 1];
                     this.productPool[type].RemoveAt(this.productPool[type].Count - 1);
-                    return this.tempProductObject;
+                    return temp;
                 }
             }
             else

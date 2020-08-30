@@ -441,7 +441,7 @@ namespace SoftuniFundamentals
                    Console.WriteLine(master.SendVehicleTo(currentData[1], int.Parse(currentData[2]), currentData[3]));
                     break;
                 case "unloadvehicle":
-                    master.UnloadVehicle(currentData[1], int.Parse(currentData[2]));
+                    Console.WriteLine(master.UnloadVehicle(currentData[1], int.Parse(currentData[2])));
                     break;
             }
         }

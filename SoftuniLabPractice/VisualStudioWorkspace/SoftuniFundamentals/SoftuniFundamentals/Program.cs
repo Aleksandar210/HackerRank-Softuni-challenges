@@ -413,6 +413,14 @@ namespace SoftuniFundamentals
             {
                 enterInput = Console.ReadLine();
                 temp = enterInput.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                try
+                {
+                    ExecuteStorageCommand(currentMaster, temp);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
         private static void ExecuteStorageCommand(StorageMaster master,params string[] currentData)
@@ -426,10 +434,13 @@ namespace SoftuniFundamentals
                     master.RegisterStorage(currentData[1], currentData[2]);
                     break;
                 case "selectvehicle":
+                    master.SelectVehicle(currentData[1], int.Parse(currentData[2]));
                     break;
                 case "sendvehiclto":
+                   Console.WriteLine(master.SendVehicleTo(currentData[1], int.Parse(currentData[2]), currentData[3]));
                     break;
                 case "unloadvehicle":
+                    master.UnloadVehicle(currentData[1], int.Parse(currentData[2]));
                     break;
             }
         }

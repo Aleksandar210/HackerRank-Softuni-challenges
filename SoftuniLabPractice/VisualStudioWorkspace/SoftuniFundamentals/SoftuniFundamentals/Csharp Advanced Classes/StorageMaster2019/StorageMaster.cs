@@ -169,23 +169,9 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string UnloadVehicle(string storageName, int garageSlot)
         {
-            int numberProductsUnloaded = 0;
+           
             if(this.storagePool.ContainsKey(storageName))
             {
-                while(true)
-                {
-                    try
-                    {
-                        this.storagePool[storageName].UnloadVehicle(garageSlot);
-                        numberProductsUnloaded += 1;
-                    }
-                    catch(InvalidOperationException exc)
-                    {
-
-                    }
-                   
-                    
-                }
                
             }
             else

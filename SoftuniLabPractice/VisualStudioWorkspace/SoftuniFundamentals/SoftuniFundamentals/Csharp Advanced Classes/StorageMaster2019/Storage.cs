@@ -177,8 +177,20 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
         public int UnloadVehicle(int garageNumber)
         {
             int numberOfProductsBeforeUnlaod = this.productCollection.Count;
-            this.productCollection.Add(this.garage[garageNumber].Unlaod());
-            return 0;
+            while(true)
+            {
+                try
+                {
+                    this.productCollection.Add(this.garage[garageNumber].Unlaod());
+                }
+                catch(InvalidOperationException exc)
+                {
+                    break;
+                }
+                
+            }
+            return this.productCollection.Count - numberOfProductsBeforeUnlaod;
+            
         }
 
         private decimal GetStorageCurrentWeight()

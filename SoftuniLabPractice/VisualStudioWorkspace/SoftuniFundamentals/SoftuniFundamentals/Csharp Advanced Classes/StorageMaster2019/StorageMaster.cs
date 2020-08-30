@@ -169,10 +169,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string UnloadVehicle(string storageName, int garageSlot)
         {
-           
+            int numberProductsUnlaoded = 0;
             if(this.storagePool.ContainsKey(storageName))
             {
-               
+                numberProductsUnlaoded = this.storagePool[storageName].UnloadVehicle(garageSlot);
+                return $"Unloaded {numberProductsUnlaoded}/{this.storagePool[storageName].GetVehicle(garageSlot).Trunk.Count} products at { storageName}";
+
+
+
             }
             else
             {

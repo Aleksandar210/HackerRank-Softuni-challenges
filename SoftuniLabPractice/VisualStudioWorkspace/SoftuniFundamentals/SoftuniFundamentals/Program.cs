@@ -371,6 +371,7 @@ namespace SoftuniFundamentals
             //SandClockTelerikAlgo();
             //ShepardTask();
             //SantaShopTask();
+            //StorageMasterTask2019OOP();
 
             //EXPERIMENT FOR SANTA TASK
 

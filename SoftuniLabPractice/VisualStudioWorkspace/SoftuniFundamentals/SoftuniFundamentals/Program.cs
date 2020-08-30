@@ -404,6 +404,9 @@ namespace SoftuniFundamentals
         //StorageMaster task
         private static void StorageMasterTask2019OOP()
         {
+            Console.WriteLine("Enter name: ");
+            string storageMasterUser = Console.ReadLine();
+
             StorageMaster currentMaster = new StorageMaster();
             string enterInput;
             string[] temp;
@@ -423,6 +426,8 @@ namespace SoftuniFundamentals
                     continue;
                 }
             }
+            Console.WriteLine($"Have a nice day {storageMasterUser}");
+
         }
         private static void ExecuteStorageCommand(StorageMaster master,params string[] currentData)
         {

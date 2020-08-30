@@ -169,7 +169,14 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         public string UnloadVehicle(string storageName, int garageSlot)
         {
-            throw new NotImplementedException();
+            if(this.storagePool.ContainsKey(storageName))
+            {
+                this.storagePool[storageName].UnloadVehicle(garageSlot);
+            }
+            else
+            {
+                throw new InvalidOperationException($"No storage with name {storageName} was found.");
+            }
         }
     }
 }

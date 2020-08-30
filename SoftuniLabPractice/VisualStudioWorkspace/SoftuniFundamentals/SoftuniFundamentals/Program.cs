@@ -429,10 +429,10 @@ namespace SoftuniFundamentals
             switch(currentData[0].ToLower())
             {
                 case "addproduct":
-                    master.AddProduct(currentData[1], double.Parse(currentData[2]));
+                    Console.WriteLine(master.AddProduct(currentData[1], double.Parse(currentData[2])));
                     break;
                 case "registerstorage":
-                    master.RegisterStorage(currentData[1], currentData[2]);
+                   Console.WriteLine(master.RegisterStorage(currentData[1], currentData[2]));
                     break;
                 case "selectvehicle":
                     Console.WriteLine(master.SelectVehicle(currentData[1], int.Parse(currentData[2])));

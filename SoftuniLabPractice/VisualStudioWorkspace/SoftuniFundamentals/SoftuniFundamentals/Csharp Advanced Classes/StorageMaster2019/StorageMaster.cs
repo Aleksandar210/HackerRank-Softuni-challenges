@@ -11,6 +11,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
     {
         //resources
         StringBuilder sb;
+        Product tempProductObject;
 
         //fields
        // private List<Product> productPool;
@@ -38,7 +39,7 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
                     this.productPool[type].Add(new HardDrive(price));
                     break;
                 case "solidstatedrive":
-                    this.productPool.Add(new SolidStateDrive(price));
+                    this.productPool[type].Add(new SolidStateDrive(price));
                     break;
                 default:
                     throw new InvalidOperationException("Invalid product type!");
@@ -100,9 +101,23 @@ namespace SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019
 
         private Product GetProductFromThePool(string type)
         {
-            if(this.productPool.Contains())
+            
+            if(this.productPool.ContainsKey(type))
             {
-
+                if(this.productPool[type].Count==0)
+                {
+                    throw new InvalidOperationException($"No more products of type {type} left in the pool.");
+                }
+                else
+                {
+                    this.tempProductObject = this.productPool[type][this.productPool[type].Count - 1];
+                    this.productPool[type].RemoveAt(this.productPool[type].Count - 1);
+                    return this.tempProductObject;
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException($"No product of type {type} was found in the pool. ");
             }
         }
 

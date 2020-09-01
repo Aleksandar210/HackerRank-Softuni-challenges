@@ -60,10 +60,26 @@ public class GridController {
 
     //can take right,left,upper-right,down-right,upper,down and so on
     private int[] selectNeighbours(int[] start,String...directions){
+        int currentIndex = 0;
         int[] currentNeighbourStatesColl = new int[directions.length];
         for(String dir : directions){
             switch(dir.toLowerCase()){
                 case"upper":
+                   currentNeighbourStatesColl[currentIndex] = this.field[start[0]+1][start[1]];
+                    break;
+                case "down":
+                    break;
+                case"right":
+                    break;
+                case "left":
+                    break;
+                case "upper-right":
+                    break;
+                case "upper-left":
+                    break;
+                case "down-right":
+                    break;
+                case "down-left":
                     break;
             }
         }

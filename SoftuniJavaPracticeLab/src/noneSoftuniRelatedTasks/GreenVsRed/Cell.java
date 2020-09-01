@@ -25,6 +25,9 @@ public class Cell {
             throw new IllegalArgumentException("Invalid state format must be [0,1]");
         }
     }
+    public int getCurrentState(){
+        return this.currentState;
+    }
 
     public void updateState(){
         this.currentState = this.futureState;

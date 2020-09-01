@@ -7,12 +7,20 @@ public class Cell {
 
 
     public Cell(char initialState){
-
+    this.setCurrentState(initialState);
     }
 
     public void setFutureState(char state){
         if(state=='1' || state=='0'){
             this.futureState = state;
+        }else{
+            throw new IllegalArgumentException("Invalid state format must be [0,1]");
+        }
+    }
+
+    private void setCurrentState(char state){
+        if(state=='1' || state=='0'){
+            this.currentState = state;
         }else{
             throw new IllegalArgumentException("Invalid state format must be [0,1]");
         }

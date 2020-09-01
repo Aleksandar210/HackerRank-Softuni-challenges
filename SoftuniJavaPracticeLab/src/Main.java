@@ -8,32 +8,31 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args){
         //greenVsRedTask();
-
     }
 
 
     //Intern task made in java
     private static void greenVsRedTask(){
-        String[] enterInitalInput;
+        String[] enterInitialInput=null;
         //entering grid details
-        while(true){        //this needs fixin
-            try{
                 do{
-                    enterInitalInput = scan.nextLine().split("\\s+");
-                    if(Integer.parseInt(enterInitalInput[0])>Integer.parseInt(enterInitalInput[1]) ||
-                            Integer.parseInt(enterInitalInput[1])>1000){
-                        throw new IllegalArgumentException("Entered data must be in rage x<=y<1000");
+                    try{
+                        enterInitialInput = scan.nextLine().split("\\s+");
+                        if(Integer.parseInt(enterInitialInput[0])>Integer.parseInt(enterInitialInput[1]) ||
+                                Integer.parseInt(enterInitialInput[1])>1000){
+                            throw new IllegalArgumentException("Entered data must be in rage x<=y<1000");
+                        }
+                    }catch(IllegalArgumentException exc){
+                        System.out.println(exc.getMessage());
                     }
-                }while(Integer.parseInt(enterInitalInput[0])>Integer.parseInt(enterInitalInput[1]) ||
-                        Integer.parseInt(enterInitalInput[1])>=1000);
-                break;
-            }catch(IllegalArgumentException exc){
-                System.out.println(exc.getMessage());
-            }
-        }
+
+                }while(Integer.parseInt(enterInitialInput[0])>Integer.parseInt(enterInitialInput[1]) ||
+                        Integer.parseInt(enterInitialInput[1])>=1000);
+
+
         //grid details
-        int row = Integer.parseInt(enterInitalInput[0]);
-        int col = Integer.parseInt(enterInitalInput[1]);
+        int row = Integer.parseInt(enterInitialInput[0]);
+        int col = Integer.parseInt(enterInitialInput[1]);
 
         Cell[][] grid = new Cell[row][col];
         GridController master = new GridController(grid);

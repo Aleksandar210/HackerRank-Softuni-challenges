@@ -1,5 +1,7 @@
 package noneSoftuniRelatedTasks.GreenVsRed;
 
+import java.util.Arrays;
+import java.util.OptionalInt;
 import java.util.Scanner;
 
 public class GridController {
@@ -51,11 +53,14 @@ public class GridController {
     }
 
     private int getNeighboursForCell(int[] cellLocation){
+        OptionalInt numberGreenNeighbours = null;
         if(cellLocation[0]==0){
             if(cellLocation[1]==0){
-
+            numberGreenNeighbours = Arrays.stream(this.selectNeighbours(cellLocation,"right","down","down-right"))
+            .reduce((a,b)->a+b);
             }
         }
+        return numberGreenNeighbours.getAsInt();
     }
 
     //can take right,left,upper-right,down-right,upper,down and so on

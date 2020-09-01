@@ -37,6 +37,8 @@ public class Main {
         master.buildGrid();
         String[] enterFinalInput = scan.nextLine().split("\\s+");
         int[] resultCellLocation = {Integer.parseInt(enterFinalInput[0]),Integer.parseInt(enterFinalInput[1])};
+        int numberGenIterations = Integer.parseInt(enterFinalInput[2]);
+
 
     }
 }

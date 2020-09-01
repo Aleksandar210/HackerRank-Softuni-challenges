@@ -63,7 +63,13 @@ public class Cell {
 
     @Override
     public String toString(){
-        return String.valueOf(this.getCurrentState());
+        if(this.currentState==1){
+           return String.format("Cell was green: %d in totall%nIts current state is:%s",this.timesGreenState,"green");
+        }else{
+            return String.format("Cell was green: %d in totall%nIts current state is:%s",this.timesGreenState,"red");
+        }
+
+
     }
 
 }

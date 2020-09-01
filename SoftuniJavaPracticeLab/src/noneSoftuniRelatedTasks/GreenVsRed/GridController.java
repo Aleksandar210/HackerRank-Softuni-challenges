@@ -50,4 +50,19 @@ public class GridController {
 
     }
 
+    private int getNeighboursForCell(int[] cellLocation){
+        if(cellLocation[0]==0){
+            if(cellLocation[1]==0){
+
+            }
+        }
+    }
+
+    //can take right,left,upper-right,down-right,upper,down and so on
+    private int[] selectNeighbours(int[] start,String...directions){
+
+
+        return null;
+    }
+
 }

@@ -25,28 +25,25 @@ public class GridController {
     public void buildGrid(){
         char[] enterRowCells;
         for(int i =0;i<this.rows;i++){
-            while(true){
-                try{
                     do{
                         enterRowCells = this.scan.nextLine().toCharArray();
-                        if(enterRowCells.length!=this.columns){
-                            throw new IllegalArgumentException(String.format("Error: entered data'slength %d/%d",
+                        if(enterRowCells.length!=this.columns && !this.areCellValuesValid(enterRowCells)){
+                            throw new IllegalArgumentException(String.format("Error: entered data length %d/%d",
                                     enterRowCells.length,this.columns));
                         }
-                    }while(enterRowCells.length!=this.columns);
-                    break;
-                }catch(IllegalArgumentException exc){
-                    System.out.println(exc.getMessage());
-                    continue;
-                }
-
-            }
-
+                    }while(enterRowCells.length!=this.columns && !this.areCellValuesValid(enterRowCells));
           for(int j=0;j<enterRowCells.length;j++){
               this.field[i][j] = new Cell(enterRowCells[j]);
           }
         }
         this.scan.close();  //dispose of scanner after work
+    }
+    private boolean areCellValuesValid(char[] values){
+        if(new String(values).chars().allMatch(e->e=='1'||e=='0')){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void determineFutureGenStateCell(){

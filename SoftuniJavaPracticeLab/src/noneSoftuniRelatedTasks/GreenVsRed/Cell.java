@@ -8,6 +8,7 @@ public class Cell {
 
     public Cell(char initialState){
     this.setCurrentState(initialState);
+
     }
 
     public void setFutureState(char state){

@@ -46,6 +46,7 @@ public class GridController {
               this.field[i][j] = new Cell(enterRowCells[j]);
           }
         }
+        this.scan.close();  //dispose of scanner after work
     }
 
     public void determineFutureGenStateCell(){
@@ -57,8 +58,14 @@ public class GridController {
 
     }
 
-    public void goThroughGen(){
 
+
+    public void goThroughGen(){
+    for(int i=0;i<this.field.length;i++){
+        for(int j =0;j<this.field[0].length;j++){
+            this.field[i][j].updateState();
+        }
+    }
     }
 
 

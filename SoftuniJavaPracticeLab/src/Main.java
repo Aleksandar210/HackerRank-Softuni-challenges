@@ -39,6 +39,11 @@ public class Main {
         int[] resultCellLocation = {Integer.parseInt(enterFinalInput[0]),Integer.parseInt(enterFinalInput[1])};
         int numberGenIterations = Integer.parseInt(enterFinalInput[2]);
 
+        for(int i=0;i<numberGenIterations;i++){
+            master.determineFutureGenStateCell();
+            master.goThroughGen();
+        }
+        System.out.println(grid[resultCellLocation[0]][resultCellLocation[1]]);
 
     }
 }

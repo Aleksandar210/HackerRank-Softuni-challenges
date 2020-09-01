@@ -10,7 +10,7 @@ public class Cell {
     this.setCurrentState(initialState);
     }
 
-    public void setFutureState(char state){
+    private void setFutureState(char state){
         if(state=='1' || state=='0'){
             this.futureState = state;
         }else{
@@ -31,6 +31,10 @@ public class Cell {
 
     public void updateState(){
         this.currentState = this.futureState;
+    }
+
+    public void determineFutureState(int numberGreenNeighbours){
+        //implement logic
     }
 
 }

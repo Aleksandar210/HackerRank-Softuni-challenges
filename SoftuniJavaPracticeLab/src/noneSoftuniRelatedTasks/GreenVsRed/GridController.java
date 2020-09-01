@@ -48,9 +48,17 @@ public class GridController {
         }
     }
 
-    public void determineFutureGenStateCell(int neighbours){
+    public void determineFutureGenStateCell(){
+    for(int i=0;i<this.field.length;i++){
 
     }
+
+    }
+
+    public void goThroughGen(){
+
+    }
+
 
     private int getNeighboursForCell(int[] cellLocation){
 

@@ -7,11 +7,13 @@ import java.util.*;
 public class Main {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args){
-        //greenVsRedTask();
+       //greenVsRedTask();
     }
 
 
+
     //Intern task made in java
+    //------------------------------------------------------------------------------------------------------
     private static void greenVsRedTask(){
         String[] enterInitialInput=null;
         //entering grid details
@@ -48,4 +50,6 @@ public class Main {
         System.out.println(grid[resultCellLocation[0]][resultCellLocation[1]]);
 
     }
+    //------------------------------------------------------------------------------------------------------
+
 }

@@ -38,6 +38,7 @@ public class GridController {
         }
         this.scan.close();  //dispose of scanner after work
     }
+
     private boolean areCellValuesValid(char[] values){
         if(new String(values).chars().allMatch(e->e=='1'||e=='0')){
             return true;

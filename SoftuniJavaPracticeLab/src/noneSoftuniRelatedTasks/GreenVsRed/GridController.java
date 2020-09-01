@@ -50,7 +50,9 @@ public class GridController {
 
     public void determineFutureGenStateCell(){
     for(int i=0;i<this.field.length;i++){
+        for(int j=0;j<this.field[0].length;j++){
 
+        }
     }
 
     }

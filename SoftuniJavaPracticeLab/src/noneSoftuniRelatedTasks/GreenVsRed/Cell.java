@@ -10,13 +10,16 @@ public class Cell {
 
     }
 
-    public void determineFutureGenState(int neighbours){
-
+    public void setFutureState(char state){
+        if(state=='1' || state=='0'){
+            this.futureState = state;
+        }else{
+            throw new IllegalArgumentException("Invalid state format must be [0,1]");
+        }
     }
 
-    public void updatedState(){
-
+    public void updateState(){
+        this.currentState = this.futureState;
     }
-
 
 }

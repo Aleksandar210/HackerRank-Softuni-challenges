@@ -46,4 +46,8 @@ public class GridController {
         }
     }
 
+    public void determineFutureGenStateCell(int neighbours){
+
+    }
+
 }

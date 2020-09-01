@@ -41,7 +41,7 @@ public class GridController {
             }
 
           for(int j=0;j<enterRowCells.length;j++){
-              this.field[i][j] = new Cell();
+              this.field[i][j] = new Cell(enterRowCells[j]);
           }
         }
     }

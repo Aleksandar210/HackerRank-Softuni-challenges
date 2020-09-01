@@ -10,6 +10,8 @@ public class Main {
         //greenVsRedTask();
     }
 
+
+    //Intern task made in java
     private static void greenVsRedTask(){
         String[] enterInitalInput;
         //entering grid details

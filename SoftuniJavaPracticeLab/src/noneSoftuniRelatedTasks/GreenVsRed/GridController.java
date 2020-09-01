@@ -65,22 +65,40 @@ public class GridController {
         for(String dir : directions){
             switch(dir.toLowerCase()){
                 case"upper":
-                   currentNeighbourStatesColl[currentIndex] = this.field[start[0]+1][start[1]];
+                   currentNeighbourStatesColl[currentIndex] = this.field[start[0]+1][start[1]].getCurrentState();
+                   currentIndex++;
                     break;
                 case "down":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]-1][start[1]].getCurrentState();
+                    currentIndex++;
                     break;
                 case"right":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]][start[1]+1].getCurrentState();
+                    currentIndex++;
                     break;
                 case "left":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]][start[1]-1].getCurrentState();
+                    currentIndex++;
                     break;
                 case "upper-right":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]-1][start[1]+1].getCurrentState();
+                    currentIndex++;
                     break;
                 case "upper-left":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]-1][start[1]-1].getCurrentState();
+                    currentIndex++;
                     break;
                 case "down-right":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]+1][start[1]+1].getCurrentState();
+                    currentIndex++;
                     break;
                 case "down-left":
+                    currentNeighbourStatesColl[currentIndex] = this.field[start[0]+1][start[1]-1].getCurrentState();
+                    currentIndex++;
                     break;
+                default:
+                    throw new IllegalArgumentException(String.format("Invalid dir value: %s",dir));
+
             }
         }
         return null;

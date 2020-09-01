@@ -51,7 +51,7 @@ public class GridController {
     public void determineFutureGenStateCell(){
     for(int i=0;i<this.field.length;i++){
         for(int j=0;j<this.field[0].length;j++){
-
+        this.field[i][j].determineFutureState(this.getGreenNeighboursForCell(i,j));
         }
     }
 
@@ -62,7 +62,7 @@ public class GridController {
     }
 
 
-    private int getNeighboursForCell(int[] cellLocation){
+    private int getGreenNeighboursForCell(int...cellLocation){
 
         if(cellLocation[0]==0){
             if(cellLocation[1]==0){

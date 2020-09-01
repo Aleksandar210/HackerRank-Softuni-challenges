@@ -1,4 +1,6 @@
 import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
+import noneSoftuniRelatedTasks.GreenVsRed.Cell;
+import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
 import java.util.Scanner;
 
@@ -30,7 +32,11 @@ public class Main {
         int row = Integer.parseInt(enterInitalInput[0]);
         int col = Integer.parseInt(enterInitalInput[1]);
 
-        Character[][] grid = new Character[row][col];
+        Cell[][] grid = new Cell[row][col];
+        GridController master = new GridController(grid);
+        master.buildGrid();
+        String[] enterFinalInput = scan.nextLine().split("\\s+");
+        int[] resultCellLocation = {Integer.parseInt(enterFinalInput[0]),Integer.parseInt(enterFinalInput[1])};
 
     }
 }

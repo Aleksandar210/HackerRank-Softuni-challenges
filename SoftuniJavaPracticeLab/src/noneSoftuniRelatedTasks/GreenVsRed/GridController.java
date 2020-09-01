@@ -53,13 +53,18 @@ public class GridController {
     }
 
     private int getNeighboursForCell(int[] cellLocation){
-        OptionalInt numberGreenNeighbours = null;
+
         if(cellLocation[0]==0){
             if(cellLocation[1]==0){
-            numberGreenNeighbours = Arrays.stream(this.selectNeighbours(cellLocation,"right","down","down-right"))
-            .reduce((a,b)->a+b);
+            return this.returnReduceNeighbourStateRes(cellLocation,"down","down-right");
             }
         }
+
+    }
+    private int returnReduceNeighbourStateRes(int[] cellLocation, String...dir){
+        OptionalInt numberGreenNeighbours = null;
+        numberGreenNeighbours = Arrays.stream(this.selectNeighbours(cellLocation,dir))
+                .reduce((a,b)->a+b);
         return numberGreenNeighbours.getAsInt();
     }
 

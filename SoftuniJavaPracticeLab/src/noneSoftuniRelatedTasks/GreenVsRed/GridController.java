@@ -64,13 +64,22 @@ public class GridController {
             }
         }else if(cellLocation[0]>0 && cellLocation[0]<this.field.length-1){
             if(cellLocation[1]==0){
-                return this.returnReduceNeighbourStateRes(cellLocation,"down","upper","down-right");
+                return this.returnReduceNeighbourStateRes(cellLocation,"down","upper","down-right","upper-right","right");
             }else if(cellLocation[1]>0 && cellLocation[1]<this.field[0].length-1){
-                return this.returnReduceNeighbourStateRes(cellLocation,"down","down-right","down-left","left","right");
+                return this.returnReduceNeighbourStateRes(cellLocation,"down","down-right","down-left","left","right","upper","upper-right","upper-left");
             }else{
-                return this.returnReduceNeighbourStateRes(cellLocation,"down","down-left","left");
+                return this.returnReduceNeighbourStateRes(cellLocation,"down","down-left","left","upper-left","upper");
+            }
+        }else if(cellLocation[0]==this.field.length-1){
+            if(cellLocation[1]==0){
+                return this.returnReduceNeighbourStateRes(cellLocation,"upper","upper-right","right");
+            }else if(cellLocation[1]>0 && cellLocation[1]<this.field[0].length-1){
+                return this.returnReduceNeighbourStateRes(cellLocation,"left","right","upper","upper-right","upper-left");
+            }else{
+                return this.returnReduceNeighbourStateRes(cellLocation,"left","upper-left","upper");
             }
         }
+        return 0;       //never comes
 
     }
     private int returnReduceNeighbourStateRes(int[] cellLocation, String...dir){

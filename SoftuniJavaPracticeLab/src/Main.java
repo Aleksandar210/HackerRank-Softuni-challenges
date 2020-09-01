@@ -2,12 +2,13 @@ import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
     public static void main(String[] args){
         //greenVsRedTask();
+
     }
 
 
@@ -15,7 +16,7 @@ public class Main {
     private static void greenVsRedTask(){
         String[] enterInitalInput;
         //entering grid details
-        while(true){
+        while(true){        //this needs fixin
             try{
                 do{
                     enterInitalInput = scan.nextLine().split("\\s+");

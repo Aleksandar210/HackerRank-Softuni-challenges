@@ -1,3 +1,4 @@
+import SoftuniRelatedExercises.Fundamental;
 import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
@@ -11,6 +12,9 @@ public class Main {
     public static void main(String[] args){
        //greenVsRedTask();
 
+        //Fundamentals
+        Fundamental fund = new Fundamental();
+        //fund.countCharsInString();
     }
 
 

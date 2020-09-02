@@ -15,6 +15,7 @@ public class Main {
         //Fundamentals
         Fundamental fund = new Fundamental();
         //fund.countCharsInString();
+        //fund.minerTask();
     }
 
 

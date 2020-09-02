@@ -56,6 +56,11 @@ this.scan = new Scanner(System.in);
             counter++;
             enterData = this.scan.nextLine();
         }
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<String,Integer> item:currentResources.entrySet()){
+            sb.append(String.format("Resource:%s amount:%d%n",item.getKey(),item.getValue()));
+        }
+        System.out.println(sb.toString());
 
 
     }

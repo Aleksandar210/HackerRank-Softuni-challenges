@@ -61,7 +61,9 @@ this.scan = new Scanner(System.in);
             sb.append(String.format("Resource:%s amount:%d%n",item.getKey(),item.getValue()));
         }
         System.out.println(sb.toString());
+    }
 
+    public void legendaryFarming(){
 
     }
 

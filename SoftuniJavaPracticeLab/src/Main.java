@@ -16,6 +16,18 @@ public class Main {
         Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
+
+        //test
+//        StringBuilder sb = new StringBuilder();
+//        String enter = scan.nextLine();
+//        while(!enter.equalsIgnoreCase("end")){
+//            sb.append(enter+ System.lineSeparator());
+//            enter = scan.nextLine();
+//        }
+//        String[] allLines = sb.toString().split(System.getProperty("line.separator"));
+//        for(String item:allLines){
+//            System.out.println(item);
+//        }
     }
 
 

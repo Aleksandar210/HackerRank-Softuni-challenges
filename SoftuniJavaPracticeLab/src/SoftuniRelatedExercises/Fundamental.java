@@ -41,5 +41,25 @@ this.scan = new Scanner(System.in);
 
     }
 
+    public void minerTask(){
+        HashMap<String,Integer> currentResources = new HashMap<>();
+        int counter =0;
+        String enterData = this.scan.nextLine();
+        String lastEnteredResource=" ";
+        while(!enterData.equalsIgnoreCase("end")){
+            if(counter%2==0){
+            currentResources.putIfAbsent(enterData,0);
+            lastEnteredResource = enterData;
+            }else{
+                currentResources.put(lastEnteredResource,currentResources.get(lastEnteredResource)+Integer.parseInt(enterData));
+            }
+            counter++;
+            enterData = this.scan.nextLine();
+        }
+
+
+    }
+
+
     //------------------------------
 }

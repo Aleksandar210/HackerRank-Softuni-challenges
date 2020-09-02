@@ -2,7 +2,7 @@ import jdk.nashorn.internal.runtime.OptimisticReturnFilters;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -12,7 +12,7 @@ public class Main {
 
 
 
-    //Intern task made in java
+    //Intern task
     //------------------------------------------------------------------------------------------------------
     private static void greenVsRedTask(){
         String[] enterInitialInput=null;

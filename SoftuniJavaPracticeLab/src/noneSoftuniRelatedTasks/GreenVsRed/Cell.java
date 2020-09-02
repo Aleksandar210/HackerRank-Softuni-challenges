@@ -1,6 +1,6 @@
 package noneSoftuniRelatedTasks.GreenVsRed;
 
-public class Cell {
+public class Cell  {
 
     //finals
     private final int DEFAULT_TIMESGREEN=0;
@@ -30,6 +30,7 @@ public class Cell {
             throw new IllegalArgumentException("Invalid state format must be [0,1]");
         }
     }
+
     public int getCurrentState(){
         return this.currentState;
     }

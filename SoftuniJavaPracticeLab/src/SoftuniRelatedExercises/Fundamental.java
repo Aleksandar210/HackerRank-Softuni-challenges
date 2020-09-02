@@ -64,6 +64,11 @@ this.scan = new Scanner(System.in);
     }
 
     public void legendaryFarming(){
+        HashMap<String,String> currentShop =new HashMap<>();
+        currentShop.put("250 shards","Shadowmourne");       //some item names
+        currentShop.put("250 fragments","Valanyr");
+        currentShop.put("250 motes","Dragonwrath");
+    HashMap<String,Integer> currentLoot = new HashMap<>();
 
     }
 

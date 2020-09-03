@@ -9,12 +9,12 @@ public class Department {
     //fields
     String name;
     private double averageSalary;
-    private Employe currentTopEmployee;
-    List<Employe> currentEmployes;
+    private Employee currentTopEmployee;
+    List<Employee> currentEmployees;
 
     //constr
     private Department(){
-        this.currentEmployes = new ArrayList<>();
+        this.currentEmployees = new ArrayList<>();
     }
     public Department(String name){
         this();
@@ -51,7 +51,7 @@ public class Department {
        // int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
 
         //incorrect way
-        Optional<Double> currentAverageSum = this.currentEmployes.stream()
+        Optional<Double> currentAverageSum = this.currentEmployees.stream()
                .map(person->person.getSalary())
                 .reduce((a,b)->(a+b));
         this.averageSalary = currentAverageSum.get();
@@ -70,30 +70,11 @@ public class Department {
         }
     }
     //behaviours only
-    public void addEmployee(Employe employeeToAdd){
-        this.currentEmployes.add(employeeToAdd);
+    public void addEmployee(Employee employeeToAdd){
+        this.currentEmployees.add(employeeToAdd);
 
         //incorrect way to do it
         this.averageSalary+=employeeToAdd.getSalary();
-        this.assignTopEmployee();
-    }
-
-
-
-    private void assignTopEmployee(){
-
-        if(this.currentEmployes==null){
-            Employe current = this.currentEmployes.get(0);
-        for(int i =1;i<this.currentEmployes.size();i++){
-            if(this.currentEmployes.get(i).getSalary()>current.getSalary()){
-                current=this.currentEmployes.get(i);
-            }
-        }
-        }else{
-            if(this.currentEmployes.get(this.currentEmployes.size()-1).getSalary()>this.currentTopEmployee.getSalary()){
-            this.currentTopEmployee= this.currentEmployes.get(this.currentEmployes.size()-1);
-            }
-        }
 
     }
 

@@ -1,8 +1,10 @@
 import SoftuniRelatedExercises.Fundamental;
+import SoftuniRelatedExercises.OOP_Basics_Classes.Department;
+import SoftuniRelatedExercises.OOP_Basics_Classes.Employee;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -74,4 +76,51 @@ public class Main {
     }
     //------------------------------------------------------------------------------------------------------
 
+    //OOP Basics tasks
+    //------------------------------------------------------------------------------------------------------
+    private static void companyRosterTask(){
+        HashMap<String, Department> currentDepartments = new HashMap<>();
+        int numberEmployees = Integer.parseInt(scan.nextLine());
+        String enterEmployeeData;
+        String[] temp;
+        for(int i =0;i<numberEmployees;i++){
+            enterEmployeeData = scan.nextLine();
+            temp = enterEmployeeData.split("\\s+");
+
+        }
+    }
+    private static Employee createEmployeObject(String...data){
+        switch(data.length){
+            case 6:
+                return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]));
+            case 5:
+                if(isInteger(data[4])){
+                    return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],Integer.parseInt(data[4]));
+                }else{
+                    return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4]);
+                }
+            case 4:
+                return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3]);
+        }
+
+        return null;
+    }
+
+    //------------------------------------------------------------------------------------------------------
+
+
+
+    //General use algorithms
+    //------------------------------------------------------------------------------------------------------
+    public static boolean isInteger(String s) {
+        try {
+            Integer.parseInt(s);
+        } catch(NumberFormatException e) {
+            return false;
+        } catch(NullPointerException e) {
+            return false;
+        }
+        // only got here if we didn't return false
+        return true;
+    }
 }

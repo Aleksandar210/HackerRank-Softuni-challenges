@@ -1,12 +1,13 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class Person {
     //fields
     private String name;
     private String email;
-    private String positon;
+    private String position;
     private String department;
     private int age;
     double salary;
@@ -73,23 +74,39 @@ public abstract class Person {
     private void setEmail(String email) {
         String validPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(validPattern);
-        this.email = email;
+        Matcher m = pattern.matcher(email);
+        if(m.find()){
+            this.email = email;
+        }else{
+            throw new IllegalArgumentException("Illegal E-mail state");
+        }
+
     }
 
-    public String getPositon() {
-        return positon;
+    public String getPosition() {
+        return position;
     }
 
-    private void setPositon(String positon) {
-        this.positon = positon;
+    private void setPosition(String position) {
+        if(position!=null && !position.trim().isEmpty()){
+            this.position = position;
+        }else{
+            throw new IllegalArgumentException("Illegal name state");
+        }
     }
 
     public String getDepartment() {
+
         return department;
     }
 
     private void setDepartment(String department) {
-        this.department = department;
+        if(Department.currentDepartments.contains(department.toLowerCase())){
+            this.department = department;
+        }else{
+            throw new IllegalArgumentException("No such department found.");
+        }
+
     }
 
     public int getAge() {
@@ -97,7 +114,18 @@ public abstract class Person {
     }
 
     private void setAge(int age) {
-        this.age = age;
+        if(age<=0){
+            throw new IllegalArgumentException("Illegal age state.");
+        }else{
+            this.age = age;
+        }
+
+    }
+
+    @Override
+    public String toString(){
+
+        return null;
     }
 
 

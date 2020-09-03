@@ -2,6 +2,7 @@ import SoftuniRelatedExercises.Fundamental;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class Main {
@@ -25,6 +26,11 @@ public class Main {
 //        for(String item:allLines){
 //            System.out.println(item);
 //        }
+
+        HashSet<String> current = new HashSet<>();      //works fine
+        current.add("Alex");
+        current.add("Alex");
+        System.out.println(current.size());
     }
 
 

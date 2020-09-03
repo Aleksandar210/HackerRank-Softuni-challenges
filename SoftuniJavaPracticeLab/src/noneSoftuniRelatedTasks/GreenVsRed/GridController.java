@@ -1,5 +1,7 @@
 package noneSoftuniRelatedTasks.GreenVsRed;
 
+import noneSoftuniRelatedTasks.GreenVsRed.Cell;
+
 import java.util.Arrays;
 import java.util.OptionalInt;
 import java.util.Scanner;

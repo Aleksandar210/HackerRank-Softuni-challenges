@@ -22,7 +22,11 @@ public abstract class Person {
     }
 
     public Person(String name,double salary,String pos,String department,String email){
-
+    this(email);
+    this.setName(name);
+    this.setSalary(salary);
+    this.setPosition(pos);
+    this.setDepartment(department);
     }
 
     public Person(String name,double salary,String pos,String department,int age){

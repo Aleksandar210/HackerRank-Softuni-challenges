@@ -9,7 +9,7 @@ public class Department {
     //fields
     String name;
     private double averageSalary;
-    private
+    private Employe currentTopEmployee;
     List<Employe> currentEmployes;
 
     //constr
@@ -20,6 +20,8 @@ public class Department {
         this();
         this.setName(name);
     }
+
+    //behaviour and properties
 
     private static void enterDepartmentNameInPool(String name){
         currentDepartments.add(name.toLowerCase()); //do with lower for character difference
@@ -66,6 +68,33 @@ public class Department {
         }else{
             throw new IllegalArgumentException("Illegal name state");
         }
+    }
+    //behaviours only
+    public void addEmployee(Employe employeeToAdd){
+        this.currentEmployes.add(employeeToAdd);
+
+        //incorrect way to do it
+        this.averageSalary+=employeeToAdd.getSalary();
+        this.assignTopEmployee();
+    }
+
+
+
+    private void assignTopEmployee(){
+
+        if(this.currentEmployes==null){
+            Employe current = this.currentEmployes.get(0);
+        for(int i =1;i<this.currentEmployes.size();i++){
+            if(this.currentEmployes.get(i).getSalary()>current.getSalary()){
+                current=this.currentEmployes.get(i);
+            }
+        }
+        }else{
+            if(this.currentEmployes.get(this.currentEmployes.size()-1).getSalary()>this.currentTopEmployee.getSalary()){
+            this.currentTopEmployee= this.currentEmployes.get(this.currentEmployes.size()-1);
+            }
+        }
+
     }
 
 }

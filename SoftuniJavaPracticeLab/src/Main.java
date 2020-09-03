@@ -89,7 +89,7 @@ public class Main {
 
         }
     }
-    private static Employee createEmployeObject(String...data){
+    private static Employee createEmployeeObject(String...data){
         switch(data.length){
             case 6:
                 return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]));
@@ -101,9 +101,10 @@ public class Main {
                 }
             case 4:
                 return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3]);
+            default:
+                throw new IllegalArgumentException("Illegal data or not full data passed");
         }
 
-        return null;
     }
 
     //------------------------------------------------------------------------------------------------------

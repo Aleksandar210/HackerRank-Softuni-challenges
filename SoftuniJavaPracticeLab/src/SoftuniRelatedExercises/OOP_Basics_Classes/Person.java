@@ -42,15 +42,16 @@ public abstract class Person {
     }
 
     private Person(String email,int age){
-
+    this.setEmail(email);
+    this.setAge(age);
     }
 
-    private Person(String name){
-
+    private Person(String email){
+    this.setEmail(email);
     }
 
     private Person(int age){
-
+    this.setAge(age);
     }
 
     public double getSalary() {

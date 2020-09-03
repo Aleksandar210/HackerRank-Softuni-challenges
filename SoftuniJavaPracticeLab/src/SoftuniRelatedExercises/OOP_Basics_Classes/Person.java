@@ -1,5 +1,7 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes;
 
+import java.util.regex.Pattern;
+
 public abstract class Person {
     //fields
     private String name;
@@ -43,7 +45,12 @@ public abstract class Person {
     }
 
     private void setSalary(double salary) {
-        this.salary = salary;
+        if(salary<=0){
+            throw new IllegalArgumentException("Illegal salary value");
+        }else{
+            this.salary = salary;
+        }
+
     }
 
     public String getName() {
@@ -51,7 +58,12 @@ public abstract class Person {
     }
 
     private void setName(String name) {
-        this.name = name;
+        if(name!=null && !name.trim().isEmpty()){
+            this.name = name;
+        }else{
+            throw new IllegalArgumentException("Illegal name state");
+        }
+
     }
 
     public String getEmail() {
@@ -59,6 +71,8 @@ public abstract class Person {
     }
 
     private void setEmail(String email) {
+        String validPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(validPattern);
         this.email = email;
     }
 

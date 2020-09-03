@@ -5,6 +5,7 @@ import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -78,17 +79,44 @@ public class Main {
 
     //OOP Basics tasks
     //------------------------------------------------------------------------------------------------------
+
     private static void companyRosterTask(){
         HashMap<String, Department> currentDepartments = new HashMap<>();
         int numberEmployees = Integer.parseInt(scan.nextLine());
         String enterEmployeeData;
         String[] temp;
+        Employee currentEmployeeCreated = null;
         for(int i =0;i<numberEmployees;i++){
+
             enterEmployeeData = scan.nextLine();
             temp = enterEmployeeData.split("\\s+");
+            currentEmployeeCreated = createEmployeeObject(temp);
 
+            if(currentDepartments.containsKey(currentEmployeeCreated.getDepartment().toUpperCase())){
+                currentDepartments.get(currentEmployeeCreated.getDepartment().toUpperCase()).addEmployee(currentEmployeeCreated);
+            }else{
+                currentDepartments.put(currentEmployeeCreated.getDepartment().toUpperCase(),
+                        new Department(currentEmployeeCreated.getDepartment().toUpperCase()));
+                currentDepartments.get(currentEmployeeCreated.getDepartment().toUpperCase()).addEmployee(currentEmployeeCreated);
+            }
         }
+
+        //get the department with the largest averageSalary
+        Department currentLargestSalaryDep = null;
+        for(Map.Entry<String,Department> item:currentDepartments.entrySet()){
+            if(currentLargestSalaryDep==null){
+                currentLargestSalaryDep = item.getValue();
+            }else{
+                if(currentLargestSalaryDep.getAverageSalary()<item.getValue().getAverageSalary()){
+                    currentLargestSalaryDep = item.getValue();
+                }
+            }
+        }
+        System.out.println(currentLargestSalaryDep);        //override to string to do
+
     }
+
+
     private static Employee createEmployeeObject(String...data){
         switch(data.length){
             case 6:

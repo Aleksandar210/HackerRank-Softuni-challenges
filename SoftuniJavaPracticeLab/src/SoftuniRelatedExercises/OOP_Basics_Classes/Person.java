@@ -64,10 +64,24 @@ public abstract class Person {
     }
 
     private void setSalary(double salary) {
+
+        String doubleAsText = String.valueOf(salary);
+        //double number = Double.parseDouble(doubleAsText);
+        int decimal = Integer.parseInt(doubleAsText.split("\\.")[0]);
+        int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
+
         if(salary<=0){
             throw new IllegalArgumentException("Illegal salary value");
         }else{
-            this.salary = salary;
+            if(fractional>99){
+                int increaseBy = Integer.parseInt(Integer.toString(fractional).substring(0, 1));
+                decimal+=increaseBy;
+                fractional -= increaseBy*100;
+                this.salary = Double.parseDouble(decimal+"."+fractional);
+            }else{
+                this.salary = salary;
+            }
+
         }
 
     }

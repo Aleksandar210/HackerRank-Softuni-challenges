@@ -34,11 +34,14 @@ public class Department {
     }
 
     private void setAverageSalary(){
-        String doubleAsText = "12345.6789";
-        double number = Double.parseDouble(doubleAsText);
-        int decimal = Integer.parseInt(doubleAsText.split("\\.")[0]);
-        int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
-
+        this.currentEmployes.stream().reduce((a,b)-> {
+           //implement money operations here
+            return null;
+        });
+        //String doubleAsText = String.valueOf();
+        //double number = Double.parseDouble(doubleAsText);
+        //int decimal = Integer.parseInt(doubleAsText.split("\\.")[0]);
+       // int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
     }
 
 }

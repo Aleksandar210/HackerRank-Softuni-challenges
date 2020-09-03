@@ -14,7 +14,11 @@ public abstract class Person {
 
     //constr
     public Person(String name,double salary,String pos,String department,String email,int age){
-
+        this(email,age);
+    this.setName(name);
+    this.setSalary(salary);
+    this.setPosition(pos);
+    this.setDepartment(department);
     }
 
     public Person(String name,double salary,String pos,String department,String email){

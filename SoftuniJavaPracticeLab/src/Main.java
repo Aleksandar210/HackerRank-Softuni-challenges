@@ -27,10 +27,9 @@ public class Main {
 //            System.out.println(item);
 //        }
 
-        HashSet<String> current = new HashSet<>();      //works fine
-        current.add("Alex");
-        current.add("Alex");
-        System.out.println(current.size());
+        double sum = 0;
+
+
     }
 
 

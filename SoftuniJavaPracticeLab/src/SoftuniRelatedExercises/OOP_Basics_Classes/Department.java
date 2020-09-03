@@ -1,8 +1,6 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Department {
     //static fields and constants
@@ -30,18 +28,33 @@ public class Department {
     }
 
     public double getAverageSalary(){
+        //implement it so that every time you add an employee you ad to the average
+
+        //incorrect way
+        this.setAverageSalary();
         return this.averageSalary;
     }
 
+    //implement getting average salary correctly for  now it will work with basics adds
     private void setAverageSalary(){
-        this.currentEmployes.stream().reduce((a,b)-> {
+
+        //implement correct way here
+       // this.currentEmployes.stream().reduce((a,b)-> {
            //implement money operations here
-            return null;
-        });
+          //  return null;
+       // });
+
+        //some hints
         //String doubleAsText = String.valueOf();
         //double number = Double.parseDouble(doubleAsText);
         //int decimal = Integer.parseInt(doubleAsText.split("\\.")[0]);
        // int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
+
+        //incorrect way
+        Optional<Double> currentAverageSum = this.currentEmployes.stream()
+               .map(person->person.getSalary())
+                .reduce((a,b)->(a+b));
+        this.averageSalary = currentAverageSum.get();
     }
 
 }

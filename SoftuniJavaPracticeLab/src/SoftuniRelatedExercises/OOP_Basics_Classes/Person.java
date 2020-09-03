@@ -38,7 +38,10 @@ public abstract class Person {
     }
 
     public Person(String name,double salary,String pos,String department){
-
+    this.setName(name);
+    this.setSalary(salary);
+    this.setPosition(pos);
+    this.setDepartment(department);
     }
 
     private Person(String email,int age){
@@ -54,6 +57,8 @@ public abstract class Person {
     this.setAge(age);
     }
 
+
+    //properties
     public double getSalary() {
         return salary;
     }

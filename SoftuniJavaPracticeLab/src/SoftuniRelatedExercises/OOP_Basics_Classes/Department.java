@@ -12,15 +12,13 @@ public class Department {
     private
     List<Employe> currentEmployes;
 
-
     //constr
     private Department(){
         this.currentEmployes = new ArrayList<>();
     }
     public Department(String name){
         this();
-        enterDepartmentNameInPool(name);
-
+        this.setName(name);
     }
 
     private static void enterDepartmentNameInPool(String name){
@@ -55,6 +53,19 @@ public class Department {
                .map(person->person.getSalary())
                 .reduce((a,b)->(a+b));
         this.averageSalary = currentAverageSum.get();
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    private void setName(String name){
+        if(name!=null && !name.trim().isEmpty()){
+            this.name = name;
+            enterDepartmentNameInPool(name);
+        }else{
+            throw new IllegalArgumentException("Illegal name state");
+        }
     }
 
 }

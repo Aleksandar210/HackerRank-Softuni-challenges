@@ -80,60 +80,11 @@ public class Main {
     //OOP Basics tasks
     //------------------------------------------------------------------------------------------------------
 
-    private static void companyRosterTask(){
-        HashMap<String, Department> currentDepartments = new HashMap<>();
-        int numberEmployees = Integer.parseInt(scan.nextLine());
-        String enterEmployeeData;
-        String[] temp;
-        Employee currentEmployeeCreated = null;
-        for(int i =0;i<numberEmployees;i++){
-
-            enterEmployeeData = scan.nextLine();
-            temp = enterEmployeeData.split("\\s+");
-            currentEmployeeCreated = createEmployeeObject(temp);
-
-            if(currentDepartments.containsKey(currentEmployeeCreated.getDepartment().toUpperCase())){
-                currentDepartments.get(currentEmployeeCreated.getDepartment().toUpperCase()).addEmployee(currentEmployeeCreated);
-            }else{
-                currentDepartments.put(currentEmployeeCreated.getDepartment().toUpperCase(),
-                        new Department(currentEmployeeCreated.getDepartment().toUpperCase()));
-                currentDepartments.get(currentEmployeeCreated.getDepartment().toUpperCase()).addEmployee(currentEmployeeCreated);
-            }
-        }
-
-        //get the department with the largest averageSalary
-        Department currentLargestSalaryDep = null;
-        for(Map.Entry<String,Department> item:currentDepartments.entrySet()){
-            if(currentLargestSalaryDep==null){
-                currentLargestSalaryDep = item.getValue();
-            }else{
-                if(currentLargestSalaryDep.getAverageSalary()<item.getValue().getAverageSalary()){
-                    currentLargestSalaryDep = item.getValue();
-                }
-            }
-        }
-        System.out.println(currentLargestSalaryDep);        //override to string to do
-
+    private static void companyRosterTask() {
     }
 
 
-    private static Employee createEmployeeObject(String...data){
-        switch(data.length){
-            case 6:
-                return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4],Integer.parseInt(data[5]));
-            case 5:
-                if(isInteger(data[4])){
-                    return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],Integer.parseInt(data[4]));
-                }else{
-                    return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3],data[4]);
-                }
-            case 4:
-                return new Employee(data[0],Double.parseDouble(data[1]),data[2],data[3]);
-            default:
-                throw new IllegalArgumentException("Illegal data or not full data passed");
-        }
 
-    }
 
     //------------------------------------------------------------------------------------------------------
 

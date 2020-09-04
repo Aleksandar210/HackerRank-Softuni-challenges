@@ -1,5 +1,6 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class Department {
@@ -28,33 +29,21 @@ public class Department {
     }
 
     public double getAverageSalary(){
-        //implement it so that every time you add an employee you ad to the average
-
-        //incorrect way
-        this.setAverageSalary();
         return this.averageSalary;
     }
 
     //implement getting average salary correctly for  now it will work with basics adds
     private void setAverageSalary(){
-
-        //implement correct way here
-       // this.currentEmployes.stream().reduce((a,b)-> {
-           //implement money operations here
-          //  return null;
-       // });
-
-        //some hints
-        //String doubleAsText = String.valueOf();
-        //double number = Double.parseDouble(doubleAsText);
-        //int decimal = Integer.parseInt(doubleAsText.split("\\.")[0]);
-       // int fractional = Integer.parseInt(doubleAsText.split("\\.")[1]);
-
-        //incorrect way
-        Optional<Double> currentAverageSum = this.currentEmployees.stream()
-               .map(person->person.getSalary())
-                .reduce((a,b)->(a+b));
-        this.averageSalary = currentAverageSum.get();
+    if(this.currentEmployees.size()==1){
+        this.averageSalary = this.currentEmployees.get(this.currentEmployees.size()-1).getSalary();
+    }else{
+        BigDecimal resultRounded = new BigDecimal(this.currentEmployees.get(this.currentEmployees.size()-1).getSalary())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal averageSalarySum = new BigDecimal(this.averageSalary)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        averageSalarySum.add(resultRounded);
+        this.averageSalary = averageSalarySum.doubleValue();
+    }
     }
 
     public String getName(){
@@ -72,10 +61,7 @@ public class Department {
     //behaviours only
     public void addEmployee(Employee employeeToAdd){
         this.currentEmployees.add(employeeToAdd);
-
-        //incorrect way to do it
-        this.averageSalary+=employeeToAdd.getSalary();
-
+        this.setAverageSalary();
     }
 
 }

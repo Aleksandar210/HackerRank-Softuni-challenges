@@ -61,4 +61,10 @@ public class Employee extends Person {
     private void setEmail(String email) {
         this.email = email;
     }
+
+    //overriden toString
+    @Override
+    public String toString(){
+        return String.format("Name:%s Position:%s Salary:%.2f",this.getName(),this.getPosition(),this.getSalary());
+    }
 }

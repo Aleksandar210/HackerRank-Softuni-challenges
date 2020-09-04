@@ -89,10 +89,14 @@ public class Main {
         addCompanyRosterEmployee(departments,employeeData);
         }
 
-        BigDecimal depA;
-        BigDecimal depB;
+
         List<Department> departmentsOrderedBySalaryDescending = new ArrayList<Department>(departments.values());
         departmentsOrderedBySalaryDescending.sort(new SalaryComparator());
+        StringBuilder sb = new StringBuilder();
+        for(Department item:departmentsOrderedBySalaryDescending){
+            sb.append(item+System.lineSeparator());
+        }
+        System.out.println(sb.toString());
 
 
     }

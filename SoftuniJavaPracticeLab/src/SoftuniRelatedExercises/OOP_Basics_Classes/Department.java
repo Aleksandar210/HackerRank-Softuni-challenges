@@ -65,6 +65,7 @@ public class Department {
     public void addEmployee(Employee employeeToAdd){
         this.currentEmployees.add(employeeToAdd);
         this.setAverageSalary();
+        this.sb.append(employeeToAdd+System.lineSeparator());
     }
 
     //toString overriden

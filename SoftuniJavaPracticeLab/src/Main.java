@@ -13,6 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
         //greenVsRedTask();
+        //companyRosterTask();
 
         //Fundamentals
         Fundamental fund = new Fundamental();
@@ -31,7 +32,7 @@ public class Main {
 //            System.out.println(item);
 //        }
 
-        double sum = 0;
+
 
 
     }

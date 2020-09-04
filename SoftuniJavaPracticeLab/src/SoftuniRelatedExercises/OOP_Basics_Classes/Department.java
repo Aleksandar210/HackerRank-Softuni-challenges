@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.*;
 
 public class Department {
+    //resources
+    StringBuilder sb;
     //static fields and constants
     public static HashSet<String> currentDepartments = new HashSet<>();
 
@@ -15,6 +17,7 @@ public class Department {
 
     //constr
     private Department(){
+        this.sb = new StringBuilder();
         this.currentEmployees = new ArrayList<>();
     }
     public Department(String name){
@@ -63,5 +66,13 @@ public class Department {
         this.currentEmployees.add(employeeToAdd);
         this.setAverageSalary();
     }
+
+    //toString overriden
+    @Override
+    public String toString(){
+       String avgSalary =  String.format("Average salary:%.2f%n",this.averageSalary);
+        return avgSalary+this.sb.toString();
+    }
+
 
 }

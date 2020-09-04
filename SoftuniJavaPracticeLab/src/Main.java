@@ -1,12 +1,12 @@
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Department;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Employee;
+import SoftuniRelatedExercises.OOP_Basics_Classes.SalaryComparator;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.math.BigDecimal;
+import java.util.*;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -83,9 +83,17 @@ public class Main {
     private static void companyRosterTask() {
         HashMap<String,Department> departments = new HashMap<>();
         int numberEmployees = Integer.parseInt(scan.nextLine());
+        String[] employeeData;
         for(int i =0;i<numberEmployees;i++){
-
+        employeeData = scan.nextLine().split("\\s+");
+        addCompanyRosterEmployee(departments,employeeData);
         }
+
+        BigDecimal depA;
+        BigDecimal depB;
+        List<Department> departmentsOrderedBySalaryDescending = new ArrayList<Department>(departments.values());
+        departmentsOrderedBySalaryDescending.sort(new SalaryComparator());
+
 
     }
 

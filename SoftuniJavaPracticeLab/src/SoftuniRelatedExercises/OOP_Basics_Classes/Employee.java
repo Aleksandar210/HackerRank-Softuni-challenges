@@ -21,6 +21,10 @@ public class Employee extends Person {
         super(name,age);
     }
 
+    public Employee(String name,double salary,String department,String position){
+        super(name);
+    }
+
 
     //properties
     public double getSalary() {

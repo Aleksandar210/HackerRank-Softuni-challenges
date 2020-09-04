@@ -16,7 +16,7 @@ public class Main {
         //companyRosterTask();
 
         //Fundamentals
-        Fundamental fund = new Fundamental();
+        //Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
 
@@ -98,8 +98,6 @@ public class Main {
             sb.append(item+System.lineSeparator());
         }
         System.out.println(sb.toString());
-
-
     }
 
     private static void addCompanyRosterEmployee(HashMap<String,Department> dep,String...data){

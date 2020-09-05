@@ -13,19 +13,35 @@ public class Employee extends Person {
 
     public Employee(String name,double salary,String department,String position,String email,int age){
         super(name,age);
+        this.setSalary(salary);
+        this.setDepartment(department);
+        this.setPosition(position);
+        this.setEmail(email);
 
     }
 
     public Employee(String name,double salary,String department,String position,String email){
         super(name);
+        this.setSalary(salary);
+        this.setDepartment(department);
+        this.setPosition(position);
+        this.setEmail(email);
     }
 
     public Employee(String name,double salary,String department,String position,int age){
         super(name,age);
+        this.setSalary(salary);
+        this.setDepartment(department);
+        this.setPosition(position);
+
     }
 
     public Employee(String name,double salary,String department,String position){
         super(name);
+        this.setSalary(salary);
+        this.setDepartment(department);
+        this.setPosition(position);
+        
     }
 
 
@@ -69,7 +85,6 @@ public class Employee extends Person {
         }else{
             throw new IllegalArgumentException("Illegal e-mail state");
         }
-
     }
 
     //overriden toString method

@@ -12,10 +12,11 @@ public class Main {
     static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        //Local tasks ->this class only
         //greenVsRedTask();
         //companyRosterTask();
 
-        //Fundamentals exercises
+        //Fundamentals exercises -> Fundamentals class methods(tasks)
         Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();

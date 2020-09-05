@@ -9,15 +9,16 @@ public abstract class Person {
     private int age;
 
     public Person(String name,int age){
-
+    this.setName(name);
+    this.setAge(age);
     }
 
     public Person(String name){
-
+    this.setName(name);
     }
 
     public Person(int age){
-
+    this.setAge(age);
     }
 
     //properties

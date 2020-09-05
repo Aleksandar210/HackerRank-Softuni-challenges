@@ -1,5 +1,8 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Employee extends Person {
 
     //fields
@@ -59,10 +62,17 @@ public class Employee extends Person {
     }
 
     private void setEmail(String email) {
-        this.email = email;
+        Pattern pattern = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher m = pattern.matcher(email);
+        if(m.find()){
+            this.email = email;
+        }else{
+            throw new IllegalArgumentException("Illegal e-mail state");
+        }
+
     }
 
-    //overriden toString
+    //overriden toString method
     @Override
     public String toString(){
         return String.format("Name:%s Position:%s Salary:%.2f",this.getName(),this.getPosition(),this.getSalary());

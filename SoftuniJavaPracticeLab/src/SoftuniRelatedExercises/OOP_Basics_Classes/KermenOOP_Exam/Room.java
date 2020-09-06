@@ -17,5 +17,7 @@ private void setElectricityCost(double electricityCost){
     }
 }
 
+public double getElectricityCost() {return this.electricityCost;}
+
 
 }

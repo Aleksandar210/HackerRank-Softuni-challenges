@@ -41,7 +41,7 @@ public class Employee extends Person {
         this.setSalary(salary);
         this.setDepartment(department);
         this.setPosition(position);
-        
+
     }
 
 

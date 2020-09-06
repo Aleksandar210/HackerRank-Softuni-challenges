@@ -16,7 +16,7 @@ public class Main {
         //greenVsRedTask();
         //companyRosterTask();
 
-        //Fundamentals exercises -> Fundamentals class methods(tasks)
+        //Fundamentals exercises -> Fundamentals class methods(tasks),
         Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();

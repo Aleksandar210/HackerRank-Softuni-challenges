@@ -58,6 +58,8 @@ public class SongArtist {
 
         //d valdiation here
 
+        return false;
+
     }
 
     public void addSong(String songName, String duration){

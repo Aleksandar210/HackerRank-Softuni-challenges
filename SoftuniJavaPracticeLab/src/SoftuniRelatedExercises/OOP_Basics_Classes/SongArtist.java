@@ -33,7 +33,9 @@ public class SongArtist {
     }
 
     public String getTotalTimeOfSongs(){
-        return this.totalTimeOfSongs;
+        //return this.totalTimeOfSongs;
+        return null;
+
     }
 
     private boolean validateSongName(String songName){
@@ -41,7 +43,7 @@ public class SongArtist {
             if(name.length()>=3 && name.length()<=30){
             return true;
             }else{
-                throw new IllegalArgumentException("Illegal name length.")
+                throw new IllegalArgumentException("Illegal name length.");
             }
         }else{
             throw new NullPointerException("Illegal name state.");

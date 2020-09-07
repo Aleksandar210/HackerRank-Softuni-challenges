@@ -1,6 +1,7 @@
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Department;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Employee;
+import SoftuniRelatedExercises.OOP_Basics_Classes.Gandalf;
 import SoftuniRelatedExercises.OOP_Basics_Classes.SalaryComparator;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
@@ -117,7 +118,15 @@ public class Main {
     }
 
 
+    private static void simpleGandalfTask(){
+        String[] enterFoodSupply = scan.nextLine().split("\\s+");
+        Gandalf theGrey = new Gandalf();
+        theGrey.takeFoodBag(enterFoodSupply);
+        System.out.println(theGrey.getHappinessPoints());
+        System.out.println(theGrey.getMood());
+        System.out.println("Food eaten by the Grey:"+System.lineSeparator()+theGrey.getFoodEaten());
 
+    }
 
     //------------------------------------------------------------------------------------------------------
 

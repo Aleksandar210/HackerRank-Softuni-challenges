@@ -75,6 +75,10 @@ public class Gandalf {
         return this.mood;
     }
 
+    public int getHappinessPoints(){
+        return this.happinessPoints;
+    }
+
     public String getFoodEaten(){
         return this.sb.toString();
     }

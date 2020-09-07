@@ -2,14 +2,13 @@ package SoftuniRelatedExercises.OOP_Basics_Classes;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.IllformedLocaleException;
 
 public class SongArtist {
 
-    private final String Default_Song_Time = "00:00:00";
-
     //fields
     private String name;
-    private String totalTimeOfSongs;
+    private int[] totalTimeOfSongs;     //hour:minutes:seconds
     private HashMap<String,String> currentSongs;        //with duration in String
 
     public SongArtist(String name){
@@ -22,7 +21,7 @@ public class SongArtist {
             if(name.length()>=3 && name.length()<=20){
                 this.name = name;
             }else{
-                throw new IllegalArgumentException("Illegal name length.")
+                throw new IllegalArgumentException("Illegal name length.");
             }
         }else{
             throw new NullPointerException("Illegal name state.");
@@ -63,6 +62,16 @@ public class SongArtist {
     }
 
     public void addSong(String songName, String duration){
+    if(this.validateSongName(songName)){
+
+    }else{
+        throw new IllegalArgumentException("Illegal song state.");
+    }
+
+
+    }
+
+    private void addToTotalTime(int...hourMinuteSecond){
 
     }
 

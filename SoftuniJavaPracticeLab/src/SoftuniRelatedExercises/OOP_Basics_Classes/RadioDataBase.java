@@ -31,14 +31,32 @@ public class RadioDataBase {
         }
     }
 
-    private void removeEntry(String artistName){
+    public void removeSongEntry(String artistName,String songName){
         if(this.currentArtistsInDataBase.containsKey(artistName)){
-            this.currentArtistsInDataBase.get(artistName).removeSong();
+            this.currentArtistsInDataBase.get(artistName).removeSong(songName);
+        }
+    }
+
+    public void removeArtistEntry(String artistName){
+        if(this.currentArtistsInDataBase.containsKey(artistName)){
+            this.currentArtistsInDataBase.remove(artistName);
         }
     }
 
     private String getArtistPlaylist(String artistName){
+        if(this.currentArtistsInDataBase.containsKey(artistName)){
+            return this.currentArtistsInDataBase.get(artistName).toString();
+        }else{
+            throw new IllegalArgumentException("No artist found.");
+        }
 
-        return null;
+    }
+
+    @Override
+    public String toString(){
+        for(SongArtist artist:this.currentArtistsInDataBase.values()){
+            this.sb.append(artist);
+        }
+        return this.sb.toString();
     }
 }

@@ -90,6 +90,14 @@ public class SongArtist {
     this.sb.append(songName+" - "+duration+System.lineSeparator());
     }
 
+    public void removeSong(String songName){
+        if(this.currentSongs.containsKey(songName)){
+            this.currentSongs.remove(songName);
+        }else{
+            throw new IllegalArgumentException("No song found.");
+        }
+    }
+
     private void addToTotalTime(int...hourMinuteSecond){
         if(hourMinuteSecond[2]+this.totalTimeOfSongs[2]>59){
             this.totalTimeOfSongs[2]=hourMinuteSecond[2]-this.totalTimeOfSongs[2];
@@ -109,7 +117,7 @@ public class SongArtist {
 
     @Override
     public String toString(){
-        return null;
+        return this.sb.toString();
     }
 
 

@@ -29,18 +29,23 @@ public class RadioDataBase {
             currentArtistToAdd = new SongArtist(artistName);
             this.currentArtistsInDataBase.get(artistName).addSong(songName,duration);
         }
+        this.numberSongs++;
+        this.numberArtists++;
     }
 
     public void removeSongEntry(String artistName,String songName){
         if(this.currentArtistsInDataBase.containsKey(artistName)){
             this.currentArtistsInDataBase.get(artistName).removeSong(songName);
         }
+        this.numberSongs--;
     }
 
     public void removeArtistEntry(String artistName){
+        this.numberSongs-=this.currentArtistsInDataBase.get(artistName).getNumberSongs();
         if(this.currentArtistsInDataBase.containsKey(artistName)){
             this.currentArtistsInDataBase.remove(artistName);
         }
+        this.numberArtists--;
     }
 
     private String getArtistPlaylist(String artistName){

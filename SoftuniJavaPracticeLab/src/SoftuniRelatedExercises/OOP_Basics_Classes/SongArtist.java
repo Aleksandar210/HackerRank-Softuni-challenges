@@ -8,12 +8,17 @@ public class SongArtist {
     //resources
     private StringBuilder sb;
 
+    //constants
+    private final int Default_Number_Songs = 0;
+
     //fields
     private String name;
+    private int numberOfSongs;
     private int[] totalTimeOfSongs;     //hour:minutes:seconds
     private HashMap<String,String> currentSongs;        //with duration in String
 
     public SongArtist(String name){
+        this.numberOfSongs = this.Default_Number_Songs;
     this.currentSongs = new HashMap<>();
     this.sb = new StringBuilder();
     this.setName(name);
@@ -33,6 +38,10 @@ public class SongArtist {
 
     public String getName(){
         return this.name;
+    }
+
+    public int getNumberSongs(){
+        return this.numberOfSongs;
     }
 
     public String getTotalTimeOfSongs(){

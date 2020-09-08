@@ -128,6 +128,11 @@ public class Main {
 
     }
 
+    private static void radioDataBaseTask(){
+        //number songs to enter;
+        int numberEntries = Integer.parseInt(scan.nextLine());
+    }
+
     //------------------------------------------------------------------------------------------------------
 
 

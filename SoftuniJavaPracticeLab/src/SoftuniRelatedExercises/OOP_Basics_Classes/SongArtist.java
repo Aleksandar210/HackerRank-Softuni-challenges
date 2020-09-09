@@ -62,10 +62,24 @@ public class SongArtist {
     }
 
     private boolean validateDuration(String duration){
+        int hour;
+        int minutes;
+        int seconds;
         int[] timeParts = Arrays.stream(duration.split(":")).mapToInt(Integer::parseInt).toArray();
-        int hour = timeParts[0];
-        int minutes = timeParts[1];
-        int seconds = timeParts[2];
+        if(timeParts.length==2){
+            minutes = timeParts[0];
+            seconds = timeParts[1];
+            hour = 0;
+        }else if(timeParts.length==3){
+            minutes = timeParts[1];
+            seconds = timeParts[2];
+            hour = timeParts[0];
+        }else{
+            seconds= timeParts[0];
+            minutes = 0;
+            hour = 0;
+        }
+
         if(hour<0 || (minutes<0 || minutes>59) || (seconds<0|| seconds>59)){
             throw new IllegalArgumentException("Illegal length state.");
         }else{
@@ -75,28 +89,43 @@ public class SongArtist {
     }
 
     private int[] getTimePartsOfDuration(String duration){
+        int hour;
+        int minutes;
+        int seconds;
         int[] timeParts = Arrays.stream(duration.split(":")).mapToInt(Integer::parseInt).toArray();
-        int hour = timeParts[0];
-        int minutes = timeParts[1];
-        int seconds = timeParts[2];
+        if(timeParts.length==2){
+            minutes = timeParts[0];
+            seconds = timeParts[1];
+            hour = 0;
+        }else if(timeParts.length==3){
+            minutes = timeParts[1];
+            seconds = timeParts[2];
+            hour = timeParts[0];
+        }else{
+            seconds= timeParts[0];
+            minutes = 0;
+            hour = 0;
+        }
+
         return timeParts;
     }
 
     public void addSong(String songName, String duration){
     if(this.validateSongName(songName)){
     if(this.validateDuration(duration)){
-        this.addToTotalTime(this.getTimePartsOfDuration(duration));
         if(this.currentSongs.containsKey(songName)){
             throw new IllegalArgumentException("Song already in playlist.");
         }else{
             this.currentSongs.put(songName,duration);
+            this.addToTotalTime(this.getTimePartsOfDuration(duration));
+            this.sb.append(songName+" - "+duration+System.lineSeparator());
         }
 
     }
     }else{
         throw new IllegalArgumentException("Illegal song state.");
     }
-    this.sb.append(songName+" - "+duration+System.lineSeparator());
+
     }
 
     public void removeSong(String songName){

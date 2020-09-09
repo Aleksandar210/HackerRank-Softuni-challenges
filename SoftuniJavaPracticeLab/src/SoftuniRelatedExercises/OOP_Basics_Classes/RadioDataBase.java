@@ -21,7 +21,7 @@ public class RadioDataBase {
         this.currentArtistsInDataBase = new HashMap<>();
     }
 
-    private void addEntry(String artistName,String songName,String duration){
+    public void addEntry(String artistName,String songName,String duration){
         SongArtist currentArtistToAdd;
         if(this.currentArtistsInDataBase.containsKey(artistName)){
             this.currentArtistsInDataBase.get(artistName).addSong(songName,duration);
@@ -32,6 +32,8 @@ public class RadioDataBase {
         this.numberSongs++;
         this.numberArtists++;
     }
+
+
 
     public void removeSongEntry(String artistName,String songName){
         if(this.currentArtistsInDataBase.containsKey(artistName)){
@@ -48,18 +50,23 @@ public class RadioDataBase {
         this.numberArtists--;
     }
 
-    private String getArtistPlaylist(String artistName){
+    public String getArtistPlaylist(String artistName){
         if(this.currentArtistsInDataBase.containsKey(artistName)){
             return this.currentArtistsInDataBase.get(artistName).toString();
         }else{
             throw new IllegalArgumentException("No artist found.");
         }
-
     }
+
+
+
+
 
     @Override
     public String toString(){
         for(SongArtist artist:this.currentArtistsInDataBase.values()){
+            this.sb.append(artist.getName()+"'s playlist length is: "+artist.getTotalTimeOfSongs()+
+                    System.lineSeparator()+"Songs: "+System.lineSeparator());
             this.sb.append(artist);
         }
         return this.sb.toString();

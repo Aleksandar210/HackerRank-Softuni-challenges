@@ -1,8 +1,5 @@
 import SoftuniRelatedExercises.Fundamental;
-import SoftuniRelatedExercises.OOP_Basics_Classes.Department;
-import SoftuniRelatedExercises.OOP_Basics_Classes.Employee;
-import SoftuniRelatedExercises.OOP_Basics_Classes.Gandalf;
-import SoftuniRelatedExercises.OOP_Basics_Classes.SalaryComparator;
+import SoftuniRelatedExercises.OOP_Basics_Classes.*;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 
@@ -129,8 +126,21 @@ public class Main {
     }
 
     private static void radioDataBaseTask(){
+        RadioDataBase currentDataBase = new RadioDataBase();
         //number songs to enter;
         int numberEntries = Integer.parseInt(scan.nextLine());
+        String enterData;
+        String[] gatheredData;
+        for(int i=0;i<numberEntries;i++){
+        enterData = scan.nextLine();
+        gatheredData = enterData.split(";");
+        try{
+            currentDataBase.addEntry(gatheredData[0],gatheredData[1],gatheredData[2]);
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        }
+        System.out.println(currentDataBase);
     }
 
     //------------------------------------------------------------------------------------------------------

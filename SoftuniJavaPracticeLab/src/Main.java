@@ -2,6 +2,7 @@ import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
+import sun.security.util.ArrayUtil;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -15,8 +16,13 @@ public class Main {
         //companyRosterTask();
         //radioDataBaseTask();
 
+
+
+
+
+
         //Fundamentals exercises -> Fundamentals class methods(tasks),
-        Fundamental fund = new Fundamental();
+        //Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
 
@@ -27,34 +33,29 @@ public class Main {
             grid[i] = currentRowData;
         }
 
-        System.out.println("Enter rows and cols for the subArrays: ");
-        int rows = Integer.parseInt(scan.nextLine());           //lets say 3by3 validations will be ignored!!
-        int cols = Integer.parseInt(scan.nextLine());
-
-        int numberSubArrays = (grid.length-(grid.length/rows))*(grid[0].length-(grid[0].length/cols));
-
-        List<int[][]> currentSubGrids = new ArrayList<int[][]>(numberSubArrays);
-        while(true){
-
+        int[][] current = new int[3][3];
+        for(int i =0;i<3;i++){
+            current[i] = Arrays.copyOfRange(grid[i],0,4);
         }
-
-
-    }
-
-    private static void addSubArraysToList(List<int[][]> currentList,int[][] mainGrid){
-
-    }
-
-    private static int[][] createSubAArrayTempMain(int[][] mainGrid,int rowAt,int columnAt, int desiredRows, int desiredColumns){
-        int[][] temp = new int[desiredRows][desiredColumns];
-        for(int i =rowAt;i<desiredRows;i++){
-            for(int j=columnAt;j<desiredColumns;j++){
-                temp[i][j] = mainGrid[rowAt][columnAt];
+        StringBuilder sb = new StringBuilder();
+        for(int i =0;i<current.length;i++){
+            for(int j =0;j<current[0].length;j++){
+                sb.append(current[i][j]);
             }
+            sb.append(System.lineSeparator());
         }
+        System.out.println(sb.toString());
 
-        return temp;
     }
+
+private static void addAllSubArraysToList(List<int[][]> list){
+        //get the constraints and do a for loop for the rows and
+    // the next for is for the columns
+
+}
+
+
+
 
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------

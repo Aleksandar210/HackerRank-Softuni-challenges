@@ -13,6 +13,15 @@ public abstract class Person {
     this.setAge(age);
     }
 
+    public Person(String firstName,String secondName, int age){
+        this.setName(firstName+" "+secondName);
+        this.setAge(age);
+    }
+
+    public Person(String firstName,String secondName){
+        this.setName(firstName+" "+secondName);
+    }
+
     public Person(String name){
     this.setName(name);
     }
@@ -22,7 +31,6 @@ public abstract class Person {
     }
 
     //properties
-
 
     public String getName() {
         return this.name;

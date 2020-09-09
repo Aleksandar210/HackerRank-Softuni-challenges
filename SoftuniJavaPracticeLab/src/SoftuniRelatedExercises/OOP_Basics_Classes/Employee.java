@@ -17,7 +17,6 @@ public class Employee extends Person {
         this.setDepartment(department);
         this.setPosition(position);
         this.setEmail(email);
-
     }
 
     public Employee(String name,double salary,String department,String position,String email){

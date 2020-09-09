@@ -19,7 +19,79 @@ public class Main {
         Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
+
+
+        int[] currentRowData = {0,1,0,1,0,1};
+        int[][] grid = new int[6][6];
+        for(int i=0;i<grid.length;i++){
+            grid[i] = currentRowData;
+        }
+
+        System.out.println("Enter rows and cols for the subArrays: ");
+        int rows = Integer.parseInt(scan.nextLine());           //lets say 3by3 validations will be ignored!!
+        int cols = Integer.parseInt(scan.nextLine());
+
+        int numberSubArrays = (grid.length-(grid.length/rows))*(grid[0].length-(grid[0].length/cols));
+
+        List<int[][]> currentSubGrids = new ArrayList<int[][]>(numberSubArrays);
+        while(true){
+
+        }
+
+
     }
+
+    private static void addSubArraysToList(List<int[][]> currentList,int[][] mainGrid){
+
+    }
+
+    private static int[][] createSubAArrayTempMain(int[][] mainGrid,int rowAt,int columnAt, int desiredRows, int desiredColumns){
+        int[][] temp = new int[desiredRows][desiredColumns];
+        for(int i =rowAt;i<desiredRows;i++){
+            for(int j=columnAt;j<desiredColumns;j++){
+                temp[i][j] = mainGrid[rowAt][columnAt];
+            }
+        }
+
+        return temp;
+    }
+
+    //Sudden tasks
+    //--------------------------------------------------------------------------------------------------------
+    private static void hourglass2dArray(){
+        int rows = 5;
+        int cols = 6;
+        int[][] grid = new  int[rows][cols];
+        for(int i=0;i<rows;i++){
+         grid[i] = createArrayForRow();
+        }
+
+        System.out.printf("Largest sum of hour glass is %d",getLargestSumGlass(grid));
+
+    }
+    private static int[] createArrayForRow(){
+        String currentInput;
+        do{
+         currentInput = scan.nextLine();
+        }while(currentInput.length()!=6);
+        int[] currentArray = Arrays.stream(currentInput.chars().toArray()).map(e->e-'0').toArray();
+        return currentArray;
+    }
+
+    private static int getLargestSumGlass(int[][] grid){
+        int largestSum =0;
+        int[][] gridWithTheLargestSum;
+
+        return -1;
+    }
+
+    private List<int[][]> getSubGrids(int[][]mainGrid,int row, int col){
+        List<int[][]> currentSubGrids = new ArrayList<int[][]>();
+
+        return null;
+    }
+    //--------------------------------------------------------------------------------------------------------
+
 
 
     //Intern task

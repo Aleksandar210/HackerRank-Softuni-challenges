@@ -26,12 +26,11 @@ public abstract class Person {
     this.setName(name);
     }
 
-    public Person(int age){
+    private Person(int age){
     this.setAge(age);
     }
 
     //properties
-
     public String getName() {
         return this.name;
     }

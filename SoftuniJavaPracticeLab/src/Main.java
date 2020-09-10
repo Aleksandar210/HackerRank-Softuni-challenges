@@ -15,7 +15,7 @@ public class Main {
         //greenVsRedTask();
         //companyRosterTask();
         //radioDataBaseTask();
-
+        //hourglass2dArray();
 
 
 
@@ -25,6 +25,18 @@ public class Main {
         //Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
+
+
+
+    }
+
+
+
+
+
+    //Sudden tasks
+    //--------------------------------------------------------------------------------------------------------
+    private static void hourglass2dArray(){
 
         int[][] arr = new int[6][6];
 
@@ -43,15 +55,14 @@ public class Main {
         List<int[][]> currentList = new ArrayList<int[][]>();
         for(int i =0;i<4;i++){
             for(int j=0;j<4;j++){
-            currentList.add(buildSubArray(arr,i,j));
+                currentList.add(buildSubArray(arr,i,j));
             }
         }
 
         currentList.sort(Comparator.comparingInt(Main::getHourGlassSum));
-       System.out.println(displayHourGlass(currentList.get(currentList.size()-1)));
-
-
+        System.out.println(displayHourGlass(currentList.get(currentList.size()-1)));
     }
+
 
     private static int[][]buildSubArray(int[][] arr,int rowAt, int colAt){
         int[][] subArray = new int[3][3];
@@ -82,7 +93,8 @@ public class Main {
 
     private static String displayHourGlass(int[][] hourGlass){
         StringBuilder sb = new StringBuilder();
-        sb.append(getHourGlassSum())
+        sb.append(getHourGlassSum(hourGlass)+System.lineSeparator());
+        sb.append(System.lineSeparator());
         for(int i=0;i<hourGlass.length;i++){
             for(int j=0;j<hourGlass[0].length;j++){
                 if((i==1 && j==0) || (i==1&&j==2)){
@@ -98,17 +110,6 @@ public class Main {
         return sb.toString();
     }
 
-
-
-
-
-
-    //Sudden tasks
-    //--------------------------------------------------------------------------------------------------------
-    private static void hourglass2dArray(){
-
-
-    }
 
 
     //--------------------------------------------------------------------------------------------------------

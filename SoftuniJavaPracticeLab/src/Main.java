@@ -6,6 +6,8 @@ import sun.security.util.ArrayUtil;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
@@ -34,10 +36,24 @@ public class Main {
 
 
 
-    
+
 
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
+
+   private static void flattenArray(){
+        List<List<Integer>> nestedList = new LinkedList<>();
+        String enterInput = scan.nextLine();
+        enterInput.replaceAll("\\[","");
+        enterInput.replaceAll("\\]","");
+        List<Integer> flattenList = Arrays.stream(enterInput.split(","))
+                .filter(e->!e.equalsIgnoreCase("null"))
+                .map(e->Integer.parseInt(e))
+                .collect(Collectors.toList());
+        System.out.p
+   }
+
+
     private static void hourglass2dArray(){
 
         int[][] arr = new int[6][6];

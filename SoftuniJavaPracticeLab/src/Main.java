@@ -26,33 +26,79 @@ public class Main {
         //fund.countCharsInString();
         //fund.minerTask();
 
+        int[][] arr = new int[6][6];
 
-        int[] currentRowData = {0,1,0,1,0,1};
-        int[][] grid = new int[6][6];
-        for(int i=0;i<grid.length;i++){
-            grid[i] = currentRowData;
-        }
+        for (int i = 0; i < 6; i++) {
+            String[] arrRowItems = scan.nextLine().split(" ");
+            scan.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        int[][] current = new int[3][3];
-        for(int i =0;i<3;i++){
-            current[i] = Arrays.copyOfRange(grid[i],0,4);
-        }
-        StringBuilder sb = new StringBuilder();
-        for(int i =0;i<current.length;i++){
-            for(int j =0;j<current[0].length;j++){
-                sb.append(current[i][j]);
+            for (int j = 0; j < 6; j++) {
+                int arrItem = Integer.parseInt(arrRowItems[j]);
+                arr[i][j] = arrItem;
             }
-            sb.append(System.lineSeparator());
         }
-        System.out.println(sb.toString());
+
+
+
+        List<int[][]> currentList = new ArrayList<int[][]>();
+        for(int i =0;i<4;i++){
+            for(int j=0;j<4;j++){
+            currentList.add(buildSubArray(arr,i,j));
+            }
+        }
+
+        currentList.sort(Comparator.comparingInt(Main::getHourGlassSum));
+       System.out.println(displayHourGlass(currentList.get(currentList.size()-1)));
+
 
     }
 
-private static void addAllSubArraysToList(List<int[][]> list){
-        //get the constraints and do a for loop for the rows and
-    // the next for is for the columns
+    private static int[][]buildSubArray(int[][] arr,int rowAt, int colAt){
+        int[][] subArray = new int[3][3];
+        subArray[0][0] = arr[rowAt][colAt];
+        subArray[0][1] = arr[rowAt][colAt+1];
+        subArray[0][2] = arr[rowAt][colAt+2];
 
-}
+        subArray[1][0] = arr[rowAt+1][colAt];
+        subArray[1][1] = arr[rowAt+1][colAt+1];
+        subArray[1][2] = arr[rowAt+1][colAt+2];
+
+        subArray[2][0] = arr[rowAt+2][colAt];
+        subArray[2][1] = arr[rowAt+2][colAt+1];
+        subArray[2][2] = arr[rowAt+2][colAt+2];
+
+        return subArray;
+    }
+
+
+
+    private static int getHourGlassSum(int[][] hourGlass){
+        int sum=0;
+        sum+= Arrays.stream(hourGlass[0]).reduce((a,b)->a+b).getAsInt();
+        sum+=hourGlass[1][1];
+        sum+=Arrays.stream(hourGlass[2]).reduce((a,b)->a+b).getAsInt();
+        return sum;
+    }
+
+    private static String displayHourGlass(int[][] hourGlass){
+        StringBuilder sb = new StringBuilder();
+        sb.append(getHourGlassSum())
+        for(int i=0;i<hourGlass.length;i++){
+            for(int j=0;j<hourGlass[0].length;j++){
+                if((i==1 && j==0) || (i==1&&j==2)){
+                    sb.append(" ");
+                }else{
+                    sb.append(hourGlass[i][j]);
+                }
+
+            }
+            sb.append(System.lineSeparator());
+        }
+
+        return sb.toString();
+    }
+
+
 
 
 
@@ -60,37 +106,11 @@ private static void addAllSubArraysToList(List<int[][]> list){
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
     private static void hourglass2dArray(){
-        int rows = 5;
-        int cols = 6;
-        int[][] grid = new  int[rows][cols];
-        for(int i=0;i<rows;i++){
-         grid[i] = createArrayForRow();
-        }
 
-        System.out.printf("Largest sum of hour glass is %d",getLargestSumGlass(grid));
 
     }
-    private static int[] createArrayForRow(){
-        String currentInput;
-        do{
-         currentInput = scan.nextLine();
-        }while(currentInput.length()!=6);
-        int[] currentArray = Arrays.stream(currentInput.chars().toArray()).map(e->e-'0').toArray();
-        return currentArray;
-    }
 
-    private static int getLargestSumGlass(int[][] grid){
-        int largestSum =0;
-        int[][] gridWithTheLargestSum;
 
-        return -1;
-    }
-
-    private List<int[][]> getSubGrids(int[][]mainGrid,int row, int col){
-        List<int[][]> currentSubGrids = new ArrayList<int[][]>();
-
-        return null;
-    }
     //--------------------------------------------------------------------------------------------------------
 
 

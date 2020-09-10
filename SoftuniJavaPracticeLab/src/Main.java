@@ -34,6 +34,8 @@ public class Main {
 
 
 
+    
+
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
     private static void hourglass2dArray(){

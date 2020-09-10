@@ -19,7 +19,7 @@ public class Main {
         //radioDataBaseTask();
         //hourglass2dArray();
 
-
+        flattenArray();
 
 
 
@@ -42,15 +42,20 @@ public class Main {
     //--------------------------------------------------------------------------------------------------------
 
    private static void flattenArray(){
-        List<List<Integer>> nestedList = new LinkedList<>();
         String enterInput = scan.nextLine();
         enterInput.replaceAll("\\[","");
+        for(int i=0;i<enterInput.toCharArray().length;i++){
+            System.out.print(enterInput.charAt(i));
+        }
         enterInput.replaceAll("\\]","");
-        List<Integer> flattenList = Arrays.stream(enterInput.split(","))
-                .filter(e->!e.equalsIgnoreCase("null"))
-                .map(e->Integer.parseInt(e))
-                .collect(Collectors.toList());
-        System.out.p
+       for(int i=0;i<enterInput.toCharArray().length;i++){
+           System.out.print(enterInput.charAt(i));
+       }
+//        List<Integer> flattenList = Arrays.stream(enterInput.split(","))
+//                .filter(e->!e.equalsIgnoreCase("null"))
+//                .map(e->Integer.parseInt(e))
+//                .collect(Collectors.toList());
+       // System.out.println(flattenList);
    }
 
 

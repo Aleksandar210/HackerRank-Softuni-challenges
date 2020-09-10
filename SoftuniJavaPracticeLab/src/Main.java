@@ -43,19 +43,13 @@ public class Main {
 
    private static void flattenArray(){
         String enterInput = scan.nextLine();
-        enterInput.replaceAll("\\[","");
-        for(int i=0;i<enterInput.toCharArray().length;i++){
-            System.out.print(enterInput.charAt(i));
-        }
-        enterInput.replaceAll("\\]","");
-       for(int i=0;i<enterInput.toCharArray().length;i++){
-           System.out.print(enterInput.charAt(i));
-       }
-//        List<Integer> flattenList = Arrays.stream(enterInput.split(","))
-//                .filter(e->!e.equalsIgnoreCase("null"))
-//                .map(e->Integer.parseInt(e))
-//                .collect(Collectors.toList());
-       // System.out.println(flattenList);
+        enterInput = enterInput.replaceAll("\\[","");
+        enterInput = enterInput.replaceAll("\\]","");
+        List<Integer> flattenList = Arrays.stream(enterInput.split(","))
+                .filter(e->!e.equalsIgnoreCase("null"))
+                .map(e->Integer.parseInt(e))
+                .collect(Collectors.toList());
+        System.out.println(flattenList);
    }
 
 

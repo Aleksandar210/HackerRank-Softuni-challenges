@@ -7,7 +7,10 @@ public abstract class StrengthHero extends Hero {
         super(name, magicka, fatigue, health);
         this.setType(type);
         this.setMagicDamage();
-        this.setOffense();      //implement logic
+
+        this.setOffense(((120*this.getFatigue())*0.01)
+        +((30*this.getHealth())*0.01)+this.getMagicDamage());
+
         this.setDefense(); //implement logic
     }
 

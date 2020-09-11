@@ -2,7 +2,7 @@ package SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls;
 
 import java.util.Arrays;
 
-public abstract class Hero implements IHero {       //implement birthSign interfaces
+public abstract class Hero  {       //implement birthSign interfaces
 
     //fields
     private String name;
@@ -17,7 +17,9 @@ public abstract class Hero implements IHero {       //implement birthSign interf
     this.isHeroDead = false;
     }
 
-    //properties
+
+    public String getName() {return this.name;}
+
     private void setName(String name){
         if(name!=null && name.trim().isEmpty()){
             this.name = name;
@@ -25,6 +27,8 @@ public abstract class Hero implements IHero {       //implement birthSign interf
             throw new IllegalArgumentException("Illegal name state.");
         }
     }
+
+    public int getMagicka() {return this.magicka;}
 
     private void setMagicka(int magickaValue){
         if(magickaValue<0){
@@ -34,7 +38,7 @@ public abstract class Hero implements IHero {       //implement birthSign interf
         }
     }
 
-    protected int getMagicka() {return this.magicka;}
+    public int getFatigue() {return this.fatigue;}
 
     private void setFatigue(int fatigueValue){
         if(fatigueValue<0){
@@ -44,6 +48,9 @@ public abstract class Hero implements IHero {       //implement birthSign interf
         }
     }
 
+
+    public int getHealth() {return this.health;}
+
     protected void setHealth(int value){
         if(value<0){
             throw new IllegalArgumentException("Illegal health state");
@@ -52,7 +59,11 @@ public abstract class Hero implements IHero {       //implement birthSign interf
         }
     }
 
-    public String getName() {return this.name;}
+
+
+    protected String getHeroDescription(){
+        return this.description;
+    }
 
     protected void setDescription(String description){
         if(description.contains("|")){
@@ -63,14 +74,14 @@ public abstract class Hero implements IHero {       //implement birthSign interf
 
     }
 
-    protected String getHeroDescription(){
-        return this.description;
-    }
-
-    protected int getFatigue() {return this.fatigue;}
 
     public boolean isDead(){
         return this.isHeroDead;
+    }
+
+    @Override
+    public String toString(){
+        return this.getHeroDescription();
     }
 
 

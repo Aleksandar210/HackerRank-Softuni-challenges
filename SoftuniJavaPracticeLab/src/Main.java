@@ -23,9 +23,13 @@ public class Main {
 
 
         //Fundamentals exercises -> Fundamentals class methods(tasks),
-          Fundamental fund = new Fundamental();
+          //Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
+        String Entereddescription = scan.nextLine();
+        Entereddescription = Entereddescription.replaceAll("\\|",System.lineSeparator());
+
+       System.out.print(Entereddescription);
 
 
 

@@ -12,6 +12,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     private String description;
     private double offense;
     private double defense;
+    private int totalPoints;
     private int magicka;
     private int fatigue;
     private int health;
@@ -23,6 +24,7 @@ public abstract class Hero  {       //implement birthSign interfaces
         this.setFatigue(fatigue);
         this.setHealth(health);
         this.isHeroDead = false;
+        this.totalPoints = 0;
     }
 
     public String getName() {return this.name;}
@@ -45,7 +47,7 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     protected String getType() {return this.type;}
 
-    public int getMagicka() {return this.magicka;}
+    protected int getMagicka() {return this.magicka;}
 
     protected void setMagicka(int magickaValue){
         if(magickaValue<0){
@@ -55,7 +57,7 @@ public abstract class Hero  {       //implement birthSign interfaces
         }
     }
 
-    public int getFatigue() {return this.fatigue;}
+    protected int getFatigue() {return this.fatigue;}
 
     protected void setFatigue(int fatigueValue){
         if(fatigueValue<0){
@@ -121,6 +123,10 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     public boolean isDead(){
         return this.isHeroDead;
+    }
+
+    public double getTotalPoints(){
+        return this.totalPoints;
     }
 
     @Override

@@ -4,7 +4,8 @@ public abstract class WillpowerHero extends Hero {
     private double spellPenetration;
 
     public WillpowerHero(String name, int magicka, int fatigue, int health, String type) {
-        super(name, magicka, fatigue, health, type);
+        super(name, magicka, fatigue, health);
+        this.setType(type);
         this.setSpellPenetration();
     }
 

@@ -7,6 +7,8 @@ public abstract class StrengthHero extends Hero {
         super(name, magicka, fatigue, health);
         this.setType(type);
         this.setMagicDamage();
+        this.setOffense();      //implement logic
+        this.setDefense(); //implement logic
     }
 
     protected double getMagicDamage() {

@@ -8,4 +8,6 @@ public class Breton extends WillpowerHero {
         super(name, magicka, fatigue, health,"BRETON");
         this.setDescription(BRETON_DESCRIPTION);
     }
+
+
 }

@@ -39,6 +39,16 @@ public abstract class Hero implements IHero {       //implement birthSign interf
         }
     }
 
+    protected void setHealth(int value){
+        if(value<0){
+            throw new IllegalArgumentException("Illegal health state");
+        }else{
+            this.health = value;
+        }
+    }
+
+
+
     protected int getFatigue() {return this.fatigue;}
 
 

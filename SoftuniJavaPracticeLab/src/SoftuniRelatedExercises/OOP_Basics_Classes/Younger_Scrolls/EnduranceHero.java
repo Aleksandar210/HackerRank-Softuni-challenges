@@ -4,7 +4,7 @@ public abstract class EnduranceHero extends Hero {
     private double magicResistance;
 
     public EnduranceHero(String name, int magicka, int fatigue, int health, String type) {
-        super(name, magicka, fatigue, health, type);
+        super(name, magicka, fatigue, health+health, type);
         this.setMagicResistance();
     }
 
@@ -15,6 +15,7 @@ public abstract class EnduranceHero extends Hero {
             this.magicResistance =0;
         }
     }
+
 
     protected double getMagicResistance(){return this.magicResistance;}
 }

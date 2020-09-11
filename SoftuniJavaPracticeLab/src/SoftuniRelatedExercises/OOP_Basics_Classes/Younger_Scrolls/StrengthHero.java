@@ -5,15 +5,16 @@ public abstract class StrengthHero extends Hero {
 
     public StrengthHero(String name, int magicka, int fatigue, int health, String type) {
         super(name, magicka, fatigue, health, type);
+        this.setMagicDamage();
     }
 
     protected double getMagicDamage() {return this.magicDamage;}
 
-
-
     private void setMagicDamage(){
         if(this.getMagicka()!=0){
             this.magicDamage = (this.getMagicka()*50)*0.01;
+        }else{
+            this.magicDamage = 0;
         }
     }
 }

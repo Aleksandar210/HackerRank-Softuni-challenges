@@ -11,7 +11,7 @@ public abstract class StrengthHero extends Hero {
         this.setOffense(((120*this.getFatigue())*0.01)
         +((30*this.getHealth())*0.01)+this.getMagicDamage());
 
-        this.setDefense(); //implement logic
+        this.setDefense(this.getHealth()+((this.getFatigue()*10)*0.01)); //implement logic
     }
 
     protected double getMagicDamage() {

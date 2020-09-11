@@ -8,7 +8,9 @@ public abstract class StrengthHero extends Hero {
         this.setMagicDamage();
     }
 
-    protected double getMagicDamage() {return this.magicDamage;}
+    protected double getMagicDamage() {
+        return this.magicDamage;
+    }
 
     private void setMagicDamage(){
         if(this.getMagicka()!=0){

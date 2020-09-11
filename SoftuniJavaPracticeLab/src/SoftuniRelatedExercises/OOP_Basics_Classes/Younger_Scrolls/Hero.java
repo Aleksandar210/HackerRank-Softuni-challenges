@@ -1,5 +1,7 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls;
 
+import sun.text.resources.de.FormatData_de_AT;
+
 import java.util.Arrays;
 
 public abstract class Hero  {       //implement birthSign interfaces
@@ -15,10 +17,13 @@ public abstract class Hero  {       //implement birthSign interfaces
     private int health;
     private boolean isHeroDead;
 
-    public Hero(String name, int magicka, int fatigue,int health,String type){
-    this.isHeroDead = false;
+    public Hero(String name, int magicka, int fatigue,int health){
+        this.setName(name);
+        this.setMagicka(magicka);
+        this.setFatigue(fatigue);
+        this.setHealth(health);
+        this.isHeroDead = false;
     }
-
 
     public String getName() {return this.name;}
 
@@ -30,9 +35,19 @@ public abstract class Hero  {       //implement birthSign interfaces
         }
     }
 
+    protected void setType(String type){
+        if(type!=null && type.trim().isEmpty()){
+            this.type = type;
+        }else{
+            throw new IllegalArgumentException("Illegal type state.");
+        }
+    }
+
+    protected String getType() {return this.type;}
+
     public int getMagicka() {return this.magicka;}
 
-    private void setMagicka(int magickaValue){
+    protected void setMagicka(int magickaValue){
         if(magickaValue<0){
             throw new IllegalArgumentException("Illegal magicka state.");
         }else{
@@ -42,7 +57,7 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     public int getFatigue() {return this.fatigue;}
 
-    private void setFatigue(int fatigueValue){
+    protected void setFatigue(int fatigueValue){
         if(fatigueValue<0){
             throw new IllegalArgumentException("Illegal fatigue state");
         }else{
@@ -62,7 +77,6 @@ public abstract class Hero  {       //implement birthSign interfaces
     }
 
 
-
     protected String getHeroDescription(){
         return this.description;
     }
@@ -78,7 +92,7 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     public double getOffense(){return this.offense;}
 
-    private void setOffense(double amount){
+    protected void setOffense(double amount){
         if(amount<0){
             throw new IllegalArgumentException("Illegal offense state.");
         }else{
@@ -87,9 +101,9 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     }
 
-    private double getDefense(){return this.defense;}
+    public double getDefense(){return this.defense;}
 
-    private void setDefense(double amount){
+    protected void setDefense(double amount){
         if(amount<0){
             throw new IllegalArgumentException("Illegal defense state.");
         }else{

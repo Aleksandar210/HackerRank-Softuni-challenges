@@ -16,6 +16,5 @@ public abstract class EnduranceHero extends Hero {
         }
     }
 
-
     protected double getMagicResistance(){return this.magicResistance;}
 }

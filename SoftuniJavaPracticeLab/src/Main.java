@@ -18,13 +18,12 @@ public class Main {
         //companyRosterTask();
         //radioDataBaseTask();
         //hourglass2dArray();
-
-        flattenArray();
+        // flattenArray();
 
 
 
         //Fundamentals exercises -> Fundamentals class methods(tasks),
-        //Fundamental fund = new Fundamental();
+          Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
 
@@ -47,9 +46,10 @@ public class Main {
         enterInput = enterInput.replaceAll("\\]","");
         List<Integer> flattenList = Arrays.stream(enterInput.split(","))
                 .filter(e->!e.equalsIgnoreCase("null"))
-                .map(e->Integer.parseInt(e))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
         System.out.println(flattenList);
+
    }
 
 

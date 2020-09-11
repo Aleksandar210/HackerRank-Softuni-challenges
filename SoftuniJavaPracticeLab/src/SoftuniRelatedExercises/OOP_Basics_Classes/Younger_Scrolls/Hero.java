@@ -8,6 +8,8 @@ public abstract class Hero  {       //implement birthSign interfaces
     private String name;
     private String type;
     private String description;
+    private double offense;
+    private double defense;
     private int magicka;
     private int fatigue;
     private int health;
@@ -51,7 +53,7 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     public int getHealth() {return this.health;}
 
-    protected void setHealth(int value){
+    private void setHealth(int value){
         if(value<0){
             throw new IllegalArgumentException("Illegal health state");
         }else{
@@ -74,6 +76,25 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     }
 
+    public double getOffense(){return this.offense;}
+
+    private void setOffense(double amount){
+        this.offense = amount;
+    }
+
+    private double getDefense(){return this.defense;}
+
+    private void setDefense(double amount){
+
+    }
+
+    public void attackHero(Hero hero){
+
+    }
+
+    public void receiveDamage(double amount){
+        this.setHealth(this.getHealth()-(int)amount);
+    }
 
     public boolean isDead(){
         return this.isHeroDead;

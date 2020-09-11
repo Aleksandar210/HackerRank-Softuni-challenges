@@ -7,39 +7,4 @@ public class Redguard extends Hero {
         super(name, magicka, fatigue, health, type);
     }
 
-    @Override
-    public int getHealth() {
-        return 0;
-
-    }
-
-    @Override
-    public double getOffense() {
-        return 0;
-    }
-
-    @Override
-    public double getDefense() {
-        return 0;
-    }
-
-    @Override
-    public double getTotalPoints() {
-        return 0;
-    }
-
-    @Override
-    public boolean isDead() {
-        return false;
-    }
-
-    @Override
-    public void attack(Hero hero) {
-
-    }
-
-    @Override
-    public void receiveDamage(double amount) {
-
-    }
 }

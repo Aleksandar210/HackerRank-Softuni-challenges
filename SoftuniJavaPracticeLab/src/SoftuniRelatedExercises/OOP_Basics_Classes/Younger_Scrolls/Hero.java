@@ -79,13 +79,22 @@ public abstract class Hero  {       //implement birthSign interfaces
     public double getOffense(){return this.offense;}
 
     private void setOffense(double amount){
-        this.offense = amount;
+        if(amount<0){
+            throw new IllegalArgumentException("Illegal offense state.");
+        }else{
+            this.offense = amount;
+        }
+
     }
 
     private double getDefense(){return this.defense;}
 
     private void setDefense(double amount){
-
+        if(amount<0){
+            throw new IllegalArgumentException("Illegal defense state.");
+        }else{
+            this.defense = amount;
+        }
     }
 
     public void attackHero(Hero hero){

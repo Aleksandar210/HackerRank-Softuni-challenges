@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class YoungerSoulsController implements IRunnable {
 
 private Scanner scan;
+private Province currentlySelectedProvince;
 private HashMap<String,Province> provinces;
 private HashSet<String> availableHeroTypes;
 
@@ -28,6 +29,28 @@ public YoungerSoulsController(){
         while(!enterCommand.equalsIgnoreCase("end")){
 
         }
+    }
+
+    private void createProvince(String name){
+    if(this.validateStringName(name)){
+
+        if(this.provinces.containsKey(name)){
+            System.out.printf("Province %s already exists.",name);
+        }else{
+            this.provinces.put(name,new Province(name));
+        }
+
+    }
+
+
+    }
+
+    private boolean validateStringName(String stringName){
+    if(stringName!=null && stringName.trim().isEmpty()){
+        return true;
+    }else{
+        return false;
+    }
     }
 
 

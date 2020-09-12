@@ -27,15 +27,24 @@ public class Guild {
     public String addHero(Hero hero){
         if(this.heroes.containsKey(hero.getName())){
             if(hero.getTotalPoints()<=this.heroes.get(hero.getName()).getTotalPoints()){
-                return String.format("Hero %s cannot be replaced by a weaker one",hero.getName());
+                return String.format("Hero [ %s ] cannot be replaced by a weaker one",hero.getName());
             }else{
                 this.heroes.put(hero.getName(),hero);
-                return String.format("Updated hero: %s",hero.getName());
+                return String.format("Updated hero: [ %s ]",hero.getName());
             }
         }else{
             this.heroes.put(hero.getName(),hero);
-            return String.format("Added hero: %s",hero.getName());
+            return String.format("Added hero: [ %s ]",hero.getName());
         }
+    }
+
+    public String removeHero(String heroName){
+    if(this.heroes.containsKey(heroName)){
+        this.heroes.remove(heroName);
+        return String.format("Removed Hero [ %s ]",heroName);
+    }else{
+        return "";
+    }
     }
 
 

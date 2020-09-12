@@ -47,6 +47,16 @@ public class Guild {
     }
     }
 
+    public Hero getHeroByName(String heroName){
+        if(this.heroes.containsKey(heroName)){
+            return this.heroes.get(heroName);
+        }else{
+            return null;
+        }
+    }
+
+    public int getGuildSize() {return this.heroes.size();}
+
 
 
 

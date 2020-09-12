@@ -98,6 +98,14 @@ public class Guild {
         }
     }
 
+    public boolean containsHero(String name){
+        if(this.heroes.containsKey(name)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public double getGuildPower() {return this.guildPower;}
 
     public long getGuildSize() {return this.heroes.size();}

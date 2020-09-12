@@ -152,11 +152,15 @@ public YoungerSoulsController(){
             }else{
                 System.out.println("Guild doesn't exist");
             }
-
-
             break;
         case 2:
-
+            if(this.currentlySelectedProvince.containsGuild(params[0])){
+                if(this.currentlySelectedProvince.getGuildByName(params[0]).containsHero(params[1])){
+                    System.out.println(this.currentlySelectedProvince.getGuildByName(params[0]).getHeroByName(params[1]));
+                }
+            }else{
+                System.out.println("Guild doesn't exist");
+            }
             break;
         default:
 

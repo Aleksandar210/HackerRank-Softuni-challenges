@@ -37,6 +37,7 @@ public class Guild {
         BigDecimal currentGuildPower = new BigDecimal(this.guildPower).setScale(2);
         BigDecimal currentHeroAddedPower =new BigDecimal(this.heroes.get(heroName).getTotalPoints())
                 .setScale(2);
+        this.guildPower = currentGuildPower.subtract(currentHeroAddedPower).doubleValue();
     }
 
 

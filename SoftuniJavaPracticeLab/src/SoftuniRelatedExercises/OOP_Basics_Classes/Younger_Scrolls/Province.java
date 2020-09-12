@@ -5,18 +5,10 @@ import java.util.HashSet;
 
 public class Province {
     private String name;
-    private HashSet<String> availableHeroTypes;
     private HashMap<String,Guild> guilds;
 
     public Province(String name){
         this.setName(name);
-        this.availableHeroTypes = new HashSet<String>();
-        this.availableHeroTypes.add("DUNMER");
-        this.availableHeroTypes.add("NORD");
-        this.availableHeroTypes.add("BRETON");
-        this.availableHeroTypes.add("ORSIMER");
-        this.availableHeroTypes.add("KHAJIIT");
-        this.availableHeroTypes.add("REDGUARD");
         this.guilds = new HashMap<String,Guild>();
     }
 

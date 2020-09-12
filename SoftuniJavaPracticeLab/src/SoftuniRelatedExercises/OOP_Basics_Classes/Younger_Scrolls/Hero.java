@@ -154,7 +154,7 @@ public abstract class Hero implements Comparable<Hero>  {       //implement birt
 
     @Override
     public String toString(){
-        return this.getHeroDescription();
+        return String.format("Hero: %s, Offense: %.2f, Defense: %.2f",this.getName(),this.getOffense(),this.getDefense());
     }
 
 

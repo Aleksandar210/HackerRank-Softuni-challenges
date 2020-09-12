@@ -103,7 +103,9 @@ public class Guild {
     public long getGuildSize() {return this.heroes.size();}
 
     private Map getSortedMapOfHeroes(){
-        return null;
+        TreeMap<String,Hero> sortedHeroes = new TreeMap<>();
+        sortedHeroes.putAll(this.heroes);
+        return sortedHeroes;
     }
 
     @Override
@@ -114,7 +116,7 @@ public class Guild {
             this.sb.append("###Heroes: None"+System.lineSeparator());
         }else{
             this.sb.append("###Heroes:"+System.lineSeparator());
-            this.heroes.forEach((k,v)->this.sb.append(v+System.lineSeparator()));
+            this.getSortedMapOfHeroes().forEach((k,v)->this.sb.append(v+System.lineSeparator()));
         }
         return this.sb.toString();
     }

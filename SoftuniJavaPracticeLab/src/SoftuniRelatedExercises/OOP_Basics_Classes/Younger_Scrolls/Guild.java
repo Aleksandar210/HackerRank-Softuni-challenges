@@ -1,8 +1,8 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Guild {
 
@@ -11,8 +11,8 @@ public class Guild {
     private String name;
     private String guildSpecialization;
     private HashMap<String,Integer> specializationCount;
-    double guildPower;
     private HashMap<String,Hero> heroes;
+    double guildPower;
 
     public Guild(String name){
     this.setName(name);
@@ -102,6 +102,10 @@ public class Guild {
 
     public long getGuildSize() {return this.heroes.size();}
 
+    private Map getSortedMapOfHeroes(){
+        return null;
+    }
+
     @Override
     public String toString(){
         this.sb = new StringBuilder();
@@ -110,7 +114,7 @@ public class Guild {
             this.sb.append("###Heroes: None"+System.lineSeparator());
         }else{
             this.sb.append("###Heroes:"+System.lineSeparator());
-            this.heroes.forEach(e->this.sb.append(e+System.lineSeparator()));
+            this.heroes.forEach((k,v)->this.sb.append(v+System.lineSeparator()));
         }
         return this.sb.toString();
     }

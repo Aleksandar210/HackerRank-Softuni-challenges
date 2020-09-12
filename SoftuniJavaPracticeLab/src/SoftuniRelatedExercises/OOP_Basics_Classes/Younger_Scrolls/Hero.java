@@ -4,7 +4,7 @@ import sun.text.resources.de.FormatData_de_AT;
 
 import java.util.Arrays;
 
-public abstract class Hero  {       //implement birthSign interfaces
+public abstract class Hero implements Comparable<Hero>  {       //implement birthSign interfaces
 
     //fields
     private String name;
@@ -140,6 +140,15 @@ public abstract class Hero  {       //implement birthSign interfaces
             this.specialization = spec;
         }else{
             throw new IllegalArgumentException("Illegal specializations tate.");
+        }
+    }
+
+    @Override
+    public int compareTo(Hero otherHero) {
+        if(otherHero.getTotalPoints()-this.getTotalPoints()==0){
+            return otherHero.getName().compareTo(this.getName());
+        }else{
+            return (int)otherHero.getTotalPoints()-(int)this.getTotalPoints();
         }
     }
 

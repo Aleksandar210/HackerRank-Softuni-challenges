@@ -7,8 +7,8 @@ public abstract class WillpowerHero extends Hero {
         super(name, magicka, fatigue, health);
         this.setType(type);
         this.setSpellPenetration();
-        this.setOffense();
-        this.setDefense();
+        this.setOffense(((this.getMagicka()*180)*0.01)+this.getSpellPenetration());
+        this.setDefense(this.getHealth());
     }
 
     private void setSpellPenetration(){

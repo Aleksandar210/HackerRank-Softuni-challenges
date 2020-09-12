@@ -8,5 +8,6 @@ public class Orc extends EnduranceHero {
     public Orc(String name, int magicka, int fatigue, int health) {
         super(name, magicka, fatigue, health, "ORSIMER");
         this.setDescription(ORC_DESCRIPTION);
+        this.setDefense(this.getDefense()+((this.getDefense()*10)*0.01));
     }
 }

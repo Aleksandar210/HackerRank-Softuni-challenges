@@ -51,4 +51,21 @@ public class Province {
         return String.format("No guild with the name %s exists in %S province",guild.getName(),this.getName());
     }
     }
+
+
+    public Guild getGuildByName(String name){
+        if(this.guilds.containsKey(name)){
+            return this.guilds.get(name);
+        }else{
+            return null;
+        }
+    }
+
+    public boolean containsGuild(String name){
+        if(this.guilds.containsKey(name)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

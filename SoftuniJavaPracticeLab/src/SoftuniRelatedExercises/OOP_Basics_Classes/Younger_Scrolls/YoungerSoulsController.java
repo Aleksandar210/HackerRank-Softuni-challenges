@@ -61,5 +61,60 @@ public YoungerSoulsController(){
     }
     }
 
+    private void addHero(String...params){
+    Hero currentHeroCreated;
+    if(this.currentlySelectedProvince.containsGuild(params[0])){
+
+    if(this.availableHeroTypes.contains(params[1].toUpperCase())){
+
+    }else{
+        System.out.println("Type doesn't exist");
+    }
+
+    }else{
+        if(this.validateStringName(params[0])){
+            Guild currentCreatedGuild = new Guild(params[0]);
+            this.currentlySelectedProvince.addGuild(currentCreatedGuild);
+        }else{
+            throw new IllegalArgumentException("Illegal guild name");
+        }
+
+    }
+    }
+
+    private Hero createHero(String...params){
+    Hero currentHeroCreated;
+    switch(params[0]){
+        case "BRETON":
+        currentHeroCreated = new Breton(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                Integer.valueOf(params[4]));
+        return currentHeroCreated;
+        case "NORD":
+            currentHeroCreated = new Nord(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                    Integer.valueOf(params[4]));
+            return currentHeroCreated;
+        case "REDGUARD":
+            currentHeroCreated = new Redguard(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                    Integer.valueOf(params[4]));
+            return currentHeroCreated;
+        case "ORSIMER":
+            currentHeroCreated = new Orc(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                    Integer.valueOf(params[4]));
+            return currentHeroCreated;
+        case "DUNMER":
+            currentHeroCreated = new Dunmer(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                    Integer.valueOf(params[4]));
+            return currentHeroCreated;
+        case "KHAJIIT":
+            currentHeroCreated = new Khajiit(params[1],Integer.valueOf(params[2]),Integer.valueOf(params[3]),
+                    Integer.valueOf(params[4]));
+            return currentHeroCreated;
+        default:
+            return null;
+    }
+    }
+
+
+
 
 }

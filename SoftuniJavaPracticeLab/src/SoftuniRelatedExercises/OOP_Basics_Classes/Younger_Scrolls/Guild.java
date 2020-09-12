@@ -7,12 +7,14 @@ import java.util.List;
 public class Guild {
     private String name;
     private String guildSpecialization;
+    private String[] specializationCount;
     double guildPower;
     private HashMap<String,Hero> heroes;
 
     public Guild(String name){
     this.setName(name);
     this.heroes = new HashMap<String,Hero>();
+    this.specializationCount = new String[3];
     this.guildPower = 0;
     }
 

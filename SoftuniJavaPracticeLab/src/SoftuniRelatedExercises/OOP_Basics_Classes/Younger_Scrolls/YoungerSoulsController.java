@@ -27,7 +27,15 @@ public YoungerSoulsController(){
         String enterCommand = this.scan.nextLine();
         String[] commandParts;
         while(!enterCommand.equalsIgnoreCase("end")){
-
+        commandParts = enterCommand.split(":");
+        switch(commandParts[0]){
+            case "ADD_GUILD":
+                this.addGuild(commandParts[1]);
+                break;
+            case "ADD_HERO":
+                this.addHero(commandParts[1].split("\\s+"));
+                break;
+        }
         }
     }
 

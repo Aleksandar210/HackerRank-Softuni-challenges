@@ -38,6 +38,7 @@ public YoungerSoulsController(){
             System.out.printf("Province %s already exists.",name);
         }else{
             this.provinces.put(name,new Province(name));
+            System.out.printf("Province %s created.",name);
         }
 
     }

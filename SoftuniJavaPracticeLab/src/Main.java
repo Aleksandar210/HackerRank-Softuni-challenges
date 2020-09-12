@@ -1,5 +1,6 @@
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
+import SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls.YoungerSoulsController;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
 import sun.security.util.ArrayUtil;
@@ -22,14 +23,11 @@ public class Main {
 
 
 
+
         //Fundamentals exercises -> Fundamentals class methods(tasks),
-          //Fundamental fund = new Fundamental();
+          Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
-        String Entereddescription = scan.nextLine();
-        Entereddescription = Entereddescription.replaceAll("\\|",System.lineSeparator());
-
-       System.out.print(Entereddescription);
 
 
 
@@ -179,6 +177,11 @@ public class Main {
 
     //OOP Basics tasks
     //------------------------------------------------------------------------------------------------------
+
+    private static void youngerSoulsTask(){
+        YoungerSoulsController controller = new YoungerSoulsController();
+        controller.run();
+    }
 
     private static void companyRosterTask() {
         HashMap<String,Department> departments = new HashMap<>();

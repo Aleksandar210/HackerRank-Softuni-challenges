@@ -36,7 +36,10 @@ public YoungerSoulsController(){
                 this.addHero(commandParts[1].split("\\s+"));
                 break;
         }
+        enterCommand = this.scan.nextLine();
         }
+        this.scan.close();
+
     }
 
     private void createProvince(String name){

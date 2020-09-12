@@ -47,6 +47,7 @@ public class Guild {
                 return String.format("Hero [ %s ] cannot be replaced by a weaker one",hero.getName());
             }else{
                 this.heroes.put(hero.getName(),hero);
+                this.updatedGuildPower(hero);
                 return String.format("Updated hero: [ %s ]",hero.getName());
             }
         }else{
@@ -57,6 +58,7 @@ public class Guild {
 
     public String removeHero(String heroName){
     if(this.heroes.containsKey(heroName)){
+        this.updatedGuildPower(heroName);
         this.heroes.remove(heroName);
         return String.format("Removed Hero [ %s ]",heroName);
     }else{

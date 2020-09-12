@@ -5,11 +5,13 @@ import java.util.List;
 
 public class Guild {
     private String name;
+    double guildPower;
     private HashMap<String,Hero> heroes;
 
     public Guild(String name){
     this.setName(name);
     this.heroes = new HashMap<String,Hero>();
+    this.guildPower = 0;
     }
 
     public String getName(){
@@ -23,6 +25,15 @@ public class Guild {
             throw new IllegalArgumentException("Illegal name state.");
         }
     }
+
+    private void updatedGuildPower(Hero hero){      //for adding
+
+    }
+
+    private void updatedGuildPower(String heroName){        //for removing
+
+    }
+
 
     public String addHero(Hero hero){
         if(this.heroes.containsKey(hero.getName())){
@@ -55,7 +66,7 @@ public class Guild {
         }
     }
 
-    public int getGuildSize() {return this.heroes.size();}
+    public long getGuildSize() {return this.heroes.size();}
 
 
 

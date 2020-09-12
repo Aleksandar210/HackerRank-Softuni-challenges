@@ -66,7 +66,11 @@ public YoungerSoulsController(){
     if(this.currentlySelectedProvince.containsGuild(params[0])){
 
     if(this.availableHeroTypes.contains(params[1].toUpperCase())){
+    try{
 
+    }catch(Exception exc){
+
+    }
     }else{
         System.out.println("Type doesn't exist");
     }

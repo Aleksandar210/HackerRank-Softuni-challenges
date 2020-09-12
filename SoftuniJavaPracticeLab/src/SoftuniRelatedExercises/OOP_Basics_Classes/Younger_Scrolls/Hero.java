@@ -49,7 +49,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     protected int getMagicka() {return this.magicka;}
 
     protected void setMagicka(int magickaValue){
-        if(magickaValue<0){
+        if(magickaValue<1){
             throw new IllegalArgumentException("Illegal magicka state.");
         }else{
             this.magicka = magickaValue;
@@ -59,7 +59,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     protected int getFatigue() {return this.fatigue;}
 
     protected void setFatigue(int fatigueValue){
-        if(fatigueValue<0){
+        if(fatigueValue<1){
             throw new IllegalArgumentException("Illegal fatigue state");
         }else{
             this.fatigue = fatigueValue;
@@ -70,7 +70,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     public int getHealth() {return this.health;}
 
     private void setHealth(int value){
-        if(value<0){
+        if(value<1){
             throw new IllegalArgumentException("Illegal health state");
         }else{
             this.health = value;
@@ -94,7 +94,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     public double getOffense(){return this.offense;}
 
     protected void setOffense(double amount){
-        if(amount<0){
+        if(amount<1){
             throw new IllegalArgumentException("Illegal offense state.");
         }else{
             this.offense = amount;

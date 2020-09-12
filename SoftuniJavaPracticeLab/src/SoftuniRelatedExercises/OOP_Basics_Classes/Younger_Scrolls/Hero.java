@@ -116,7 +116,13 @@ public abstract class Hero  {       //implement birthSign interfaces
     }
 
     public void receiveDamage(double amount){
-        this.setHealth(this.getHealth()-(int)amount);
+        if(this.getHealth()-(int)amount<=0){
+            this.isHeroDead = true;
+            return;
+        }else{
+            this.setHealth(this.getHealth()-(int)amount);       //check for correct calculations in books
+        }
+
     }
 
     public boolean isDead(){

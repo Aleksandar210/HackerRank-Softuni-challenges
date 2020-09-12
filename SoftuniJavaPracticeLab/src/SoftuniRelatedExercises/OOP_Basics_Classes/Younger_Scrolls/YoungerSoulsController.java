@@ -41,10 +41,16 @@ public YoungerSoulsController(){
             this.currentlySelectedProvince = provinceCreated;
             System.out.printf("Province %s created.",name);
         }
-
+    }
     }
 
-
+    public void selectProvince(String name){
+    if(this.provinces.containsKey(name)){
+        this.currentlySelectedProvince = this.provinces.get(name);
+        System.out.printf("Province %s selected.",name);
+    }else{
+        System.out.printf("No province by the name %s was found.",name);
+    }
     }
 
     private boolean validateStringName(String stringName){

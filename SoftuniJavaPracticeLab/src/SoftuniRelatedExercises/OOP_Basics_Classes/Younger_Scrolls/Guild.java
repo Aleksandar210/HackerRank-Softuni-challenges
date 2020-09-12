@@ -1,5 +1,6 @@
 package SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,11 +28,15 @@ public class Guild {
     }
 
     private void updatedGuildPower(Hero hero){      //for adding
-
+    BigDecimal currentGuildPower = new BigDecimal(this.guildPower).setScale(2);
+    BigDecimal currentHeroAddedPower =new BigDecimal(hero.getTotalPoints()).setScale(2);
+    this.guildPower = currentGuildPower.add(currentHeroAddedPower).doubleValue();
     }
 
     private void updatedGuildPower(String heroName){        //for removing
-
+        BigDecimal currentGuildPower = new BigDecimal(this.guildPower).setScale(2);
+        BigDecimal currentHeroAddedPower =new BigDecimal(this.heroes.get(heroName).getTotalPoints())
+                .setScale(2);
     }
 
 

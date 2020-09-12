@@ -147,11 +147,12 @@ public YoungerSoulsController(){
     private void details(String...params){
     switch(params.length){
         case 1:
-            try{
-               System.out.println(this.currentlySelectedProvince.getGuildByName(params[0]));
-            }catch(NullPointerException exc){
-
+            if(this.currentlySelectedProvince.containsGuild(params[0])){
+                System.out.println(this.currentlySelectedProvince.getGuildByName(params[0]));
+            }else{
+                System.out.println("Guild doesn't exist");
             }
+
 
             break;
         case 2:

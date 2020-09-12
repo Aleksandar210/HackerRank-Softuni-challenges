@@ -7,7 +7,7 @@ public class YoungerSoulsController implements IRunnable {
 
 private Scanner scan;
 private HashMap<String,Province> provinces;
-private
+
 
 public YoungerSoulsController(){
     this.scan = new Scanner(System.in);

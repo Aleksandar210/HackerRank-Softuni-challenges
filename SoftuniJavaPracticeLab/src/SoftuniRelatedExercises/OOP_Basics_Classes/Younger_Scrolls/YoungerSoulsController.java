@@ -112,6 +112,16 @@ public YoungerSoulsController(){
     }
     }
 
+
+    public String removeGuild(String name){
+    if(this.currentlySelectedProvince.containsGuild(name)){
+        this.currentlySelectedProvince.removeGuild(this.currentlySelectedProvince.getGuildByName(name));
+        return String.format("Removed guild: %s",name);
+    }
+    return null;
+    }
+
+
     private Hero createHero(String...params){
     Hero currentHeroCreated;
     switch(params[0]){
@@ -163,8 +173,8 @@ public YoungerSoulsController(){
             }
             break;
         default:
+            throw new IllegalArgumentException("Illegal number or params");
 
-            break;
     }
     }
 

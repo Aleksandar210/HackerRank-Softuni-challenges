@@ -12,7 +12,6 @@ public abstract class Hero  {       //implement birthSign interfaces
     private String description;
     private double offense;
     private double defense;
-    private int totalPoints;
     private int magicka;
     private int fatigue;
     private int health;
@@ -24,7 +23,6 @@ public abstract class Hero  {       //implement birthSign interfaces
         this.setFatigue(fatigue);
         this.setHealth(health);
         this.isHeroDead = false;
-        this.totalPoints = 0;
     }
 
     public String getName() {return this.name;}
@@ -126,7 +124,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     }
 
     public double getTotalPoints(){
-        return this.totalPoints;
+        return this.getDefense()+this.getOffense();
     }
 
     @Override

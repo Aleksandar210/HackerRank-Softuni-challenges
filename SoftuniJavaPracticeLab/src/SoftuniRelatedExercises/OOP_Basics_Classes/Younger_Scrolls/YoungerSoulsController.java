@@ -67,9 +67,10 @@ public YoungerSoulsController(){
 
     if(this.availableHeroTypes.contains(params[1].toUpperCase())){
     try{
-
+        currentHeroCreated = this.createHero(params[1],params[2],params[3],params[4]);
+    this.currentlySelectedProvince.getGuildByName(params[0]).addHero(currentHeroCreated);
     }catch(Exception exc){
-
+    System.out.println(exc.getMessage());
     }
     }else{
         System.out.println("Type doesn't exist");
@@ -79,6 +80,7 @@ public YoungerSoulsController(){
         if(this.validateStringName(params[0])){
             Guild currentCreatedGuild = new Guild(params[0]);
             this.currentlySelectedProvince.addGuild(currentCreatedGuild);
+            this.addHero(params);
         }else{
             throw new IllegalArgumentException("Illegal guild name");
         }

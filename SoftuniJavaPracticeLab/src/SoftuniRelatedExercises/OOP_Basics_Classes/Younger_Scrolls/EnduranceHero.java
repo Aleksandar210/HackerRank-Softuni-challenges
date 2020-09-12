@@ -6,6 +6,7 @@ public abstract class EnduranceHero extends Hero {
     public EnduranceHero(String name, int magicka, int fatigue, int health, String type) {
         super(name, magicka, fatigue, health+health);
         this.setType(type);
+        this.setSpecialization("Endurance");
         this.setMagicResistance();
         this.setOffense(this.getFatigue());
         this.setDefense(this.getHealth()+((this.getFatigue()*60)*0.01)+this.getMagicResistance());

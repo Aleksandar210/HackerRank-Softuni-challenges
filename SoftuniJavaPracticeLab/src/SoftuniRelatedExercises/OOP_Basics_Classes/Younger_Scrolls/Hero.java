@@ -10,6 +10,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     private String name;
     private String type;
     private String description;
+    private String specialization;
     private double offense;
     private double defense;
     private int magicka;
@@ -131,6 +132,15 @@ public abstract class Hero  {       //implement birthSign interfaces
 
     public double getTotalPoints(){
         return this.getDefense()+this.getOffense();
+    }
+
+    public String getSpecialization() {return this.specialization;}
+    protected void setSpecialization(String spec){
+        if(spec!=null && spec.trim().isEmpty()){
+            this.specialization = spec;
+        }else{
+            throw new IllegalArgumentException("Illegal specializations tate.");
+        }
     }
 
     @Override

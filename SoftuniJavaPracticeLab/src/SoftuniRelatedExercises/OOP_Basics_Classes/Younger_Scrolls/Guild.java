@@ -74,6 +74,8 @@ public class Guild {
         }
     }
 
+    public double getGuildPower() {return this.guildPower;}
+
     public long getGuildSize() {return this.heroes.size();}
 
 

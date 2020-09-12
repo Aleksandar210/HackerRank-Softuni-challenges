@@ -66,12 +66,14 @@ public YoungerSoulsController(){
     if(this.currentlySelectedProvince.containsGuild(params[0])){
 
     if(this.availableHeroTypes.contains(params[1].toUpperCase())){
+
     try{
         currentHeroCreated = this.createHero(params[1],params[2],params[3],params[4]);
     this.currentlySelectedProvince.getGuildByName(params[0]).addHero(currentHeroCreated);
     }catch(Exception exc){
-    System.out.println(exc.getMessage());
+    System.out.printf("Invalid stats %s",exc.getMessage());
     }
+
     }else{
         System.out.println("Type doesn't exist");
     }

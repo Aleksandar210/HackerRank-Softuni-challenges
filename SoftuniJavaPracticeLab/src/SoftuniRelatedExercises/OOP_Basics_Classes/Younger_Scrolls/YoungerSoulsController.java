@@ -33,11 +33,12 @@ public YoungerSoulsController(){
 
     private void createProvince(String name){
     if(this.validateStringName(name)){
-
+        Province provinceCreated = new Province(name);
         if(this.provinces.containsKey(name)){
             System.out.printf("Province %s already exists.",name);
         }else{
-            this.provinces.put(name,new Province(name));
+            this.provinces.put(name,provinceCreated);
+            this.currentlySelectedProvince = provinceCreated;
             System.out.printf("Province %s created.",name);
         }
 

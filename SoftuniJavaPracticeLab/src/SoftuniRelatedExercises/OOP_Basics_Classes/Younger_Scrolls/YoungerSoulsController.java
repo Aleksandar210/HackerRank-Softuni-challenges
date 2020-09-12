@@ -144,6 +144,25 @@ public YoungerSoulsController(){
     }
     }
 
+    private void details(String...params){
+    switch(params.length){
+        case 1:
+            try{
+               System.out.println(this.currentlySelectedProvince.getGuildByName(params[0]));
+            }catch(NullPointerException exc){
+
+            }
+
+            break;
+        case 2:
+
+            break;
+        default:
+
+            break;
+    }
+    }
+
 
 
 

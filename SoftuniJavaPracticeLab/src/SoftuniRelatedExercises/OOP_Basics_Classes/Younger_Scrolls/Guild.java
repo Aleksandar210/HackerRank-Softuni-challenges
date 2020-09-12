@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Guild {
+
+    //resources
+    private StringBuilder sb;
     private String name;
     private String guildSpecialization;
     private HashMap<String,Integer> specializationCount;
@@ -99,6 +102,18 @@ public class Guild {
 
     public long getGuildSize() {return this.heroes.size();}
 
+    @Override
+    public String toString(){
+        this.sb = new StringBuilder();
+        this.sb.append(String.format("Guild: [%s]",this.getName())+System.lineSeparator());
+        if(this.heroes.isEmpty()){
+            this.sb.append("###Heroes: None"+System.lineSeparator());
+        }else{
+            this.sb.append("###Heroes:"+System.lineSeparator());
+            this.heroes.forEach(e->this.sb.append(e+System.lineSeparator()));
+        }
+        return this.sb.toString();
+    }
 
 
 

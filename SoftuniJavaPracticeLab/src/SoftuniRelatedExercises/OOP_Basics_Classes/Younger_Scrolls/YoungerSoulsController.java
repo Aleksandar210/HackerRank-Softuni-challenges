@@ -117,8 +117,9 @@ public YoungerSoulsController(){
     if(this.currentlySelectedProvince.containsGuild(name)){
         this.currentlySelectedProvince.removeGuild(this.currentlySelectedProvince.getGuildByName(name));
         return String.format("Removed guild: %s",name);
+    }else{
+        return String.format("Guild: %s doesn't exist");
     }
-    return null;
     }
 
 

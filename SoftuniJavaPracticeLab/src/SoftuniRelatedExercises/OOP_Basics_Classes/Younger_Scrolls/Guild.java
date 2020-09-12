@@ -8,7 +8,7 @@ public class Guild {
     private HashMap<String,Hero> heroes;
 
     public Guild(String name){
-
+    this.setName(name);
     this.heroes = new HashMap<String,Hero>();
     }
 
@@ -23,6 +23,17 @@ public class Guild {
             throw new IllegalArgumentException("Illegal name state.");
         }
     }
+
+    public String addHero(Hero hero){
+        if(this.heroes.containsKey(hero.getName())){
+
+        }else{
+            this.heroes.put(hero.getName(),hero);
+        }
+        return null;
+    }
+
+
 
 
 }

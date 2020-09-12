@@ -90,6 +90,20 @@ public YoungerSoulsController(){
     }
     }
 
+    public void addGuild(String guildName){
+    if(this.currentlySelectedProvince.containsGuild(guildName)){
+        System.out.println("Guild already exists");
+    }else{
+       try{
+           Guild currentGuildCreated = new Guild(guildName);
+           System.out.printf("Guild %s added",guildName);
+       }catch(Exception exc){
+           System.out.println(exc.getMessage());
+       }
+
+    }
+    }
+
     private Hero createHero(String...params){
     Hero currentHeroCreated;
     switch(params[0]){

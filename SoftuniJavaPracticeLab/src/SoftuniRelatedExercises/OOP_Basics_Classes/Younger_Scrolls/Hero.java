@@ -112,7 +112,7 @@ public abstract class Hero  {       //implement birthSign interfaces
     }
 
     public void attackHero(Hero hero){
-
+    hero.receiveDamage(Math.floor(this.getOffense()));
     }
 
     public void receiveDamage(double amount){

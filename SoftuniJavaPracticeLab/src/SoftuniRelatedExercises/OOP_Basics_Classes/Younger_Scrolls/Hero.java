@@ -120,7 +120,7 @@ public abstract class Hero  {       //implement birthSign interfaces
             this.isHeroDead = true;
             return;
         }else{
-            this.setHealth(this.getHealth()-(int)amount);       //check for correct calculations in books
+            this.setHealth(this.getHealth()-(int)Math.floor(amount));       //check for correct calculations in books
         }
 
     }

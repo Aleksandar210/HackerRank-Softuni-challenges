@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Guild {
     private String name;
+    private String guildSpecialization;
     double guildPower;
     private HashMap<String,Hero> heroes;
 

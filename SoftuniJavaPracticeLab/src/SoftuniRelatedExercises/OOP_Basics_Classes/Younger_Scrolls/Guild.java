@@ -7,14 +7,17 @@ import java.util.List;
 public class Guild {
     private String name;
     private String guildSpecialization;
-    private String[] specializationCount;
+    private HashMap<String,Integer> specializationCount;
     double guildPower;
     private HashMap<String,Hero> heroes;
 
     public Guild(String name){
     this.setName(name);
     this.heroes = new HashMap<String,Hero>();
-    this.specializationCount = new String[3];
+    this.specializationCount = new HashMap<>();
+    this.specializationCount.put("Willpower",0);
+    this.specializationCount.put("Endurance",0);
+    this.specializationCount.put("Strength",0);
     this.guildPower = 0;
     }
 
@@ -30,17 +33,27 @@ public class Guild {
         }
     }
 
-    private void updatedGuildPower(Hero hero){      //for adding
+    private void updateGuildPower(Hero hero){      //for adding
     BigDecimal currentGuildPower = new BigDecimal(this.guildPower).setScale(2);
     BigDecimal currentHeroAddedPower =new BigDecimal(hero.getTotalPoints()).setScale(2);
     this.guildPower = currentGuildPower.add(currentHeroAddedPower).doubleValue();
     }
 
-    private void updatedGuildPower(String heroName){        //for removing
+    private void updateGuildPower(String heroName){        //for removing
         BigDecimal currentGuildPower = new BigDecimal(this.guildPower).setScale(2);
         BigDecimal currentHeroAddedPower =new BigDecimal(this.heroes.get(heroName).getTotalPoints())
                 .setScale(2);
         this.guildPower = currentGuildPower.subtract(currentHeroAddedPower).doubleValue();
+    }
+
+    private void updateSpecialization(Hero hero){
+        this.specializationCount.put(hero.getSpecialization(),this.specializationCount
+                .get(hero.getSpecialization())+1);
+    }
+
+    private void updateSpecialization(String heroName){
+        this.specializationCount.put(this.heroes.get(heroName).getSpecialization(),this.specializationCount
+                .get(this.heroes.get(heroName).getSpecialization())-1);
     }
 
 
@@ -49,19 +62,24 @@ public class Guild {
             if(hero.getTotalPoints()<=this.heroes.get(hero.getName()).getTotalPoints()){
                 return String.format("Hero [ %s ] cannot be replaced by a weaker one",hero.getName());
             }else{
+                this.updateGuildPower(hero.getName());      //remove if necessary
                 this.heroes.put(hero.getName(),hero);
-                this.updatedGuildPower(hero);
+                this.updateGuildPower(hero);
+                this.updateGuildPower(hero);
                 return String.format("Updated hero: [ %s ]",hero.getName());
             }
         }else{
             this.heroes.put(hero.getName(),hero);
+            this.updateGuildPower(hero);
+            this.updateSpecialization(hero);
             return String.format("Added hero: [ %s ]",hero.getName());
         }
     }
 
     public String removeHero(String heroName){
     if(this.heroes.containsKey(heroName)){
-        this.updatedGuildPower(heroName);
+        this.updateGuildPower(heroName);
+        this.updateSpecialization(heroName);
         this.heroes.remove(heroName);
         return String.format("Removed Hero [ %s ]",heroName);
     }else{

@@ -69,7 +69,7 @@ public abstract class Hero implements Comparable<Hero>  {       //implement birt
 
     public int getHealth() {return this.health;}
 
-    private void setHealth(int value){ 
+    private void setHealth(int value){
         if(value<1){
             throw new IllegalArgumentException("Illegal health state");
         }else{

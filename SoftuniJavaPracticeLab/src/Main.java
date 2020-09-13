@@ -136,7 +136,22 @@ public class Main {
 
 
     //Intern task
-    //------------------------------------------------------------------------------------------------------
+    //--------------------------------------------------------------------------------------------------------
+
+    private static void flowerWreaths(){
+        List<Integer> lilies = Arrays.stream(scan.nextLine().split(",")).map(Integer::parseInt)
+                .collect(Collectors.toList());
+        List<Integer> roses = Arrays.stream(scan.nextLine().split(",")).map(Integer::parseInt)
+                .collect(Collectors.toList());
+        int leftOverFlowers = 0;
+        int numberWreaths =0;
+
+        while(lilies.size()>0 && roses.size()>0){
+
+        }
+
+    }
+
     private static void greenVsRedTask() {
         String[] enterInitialInput = null;
         //entering grid details

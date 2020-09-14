@@ -1,5 +1,6 @@
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
+import SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask.Bag;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls.YoungerSoulsController;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
@@ -20,12 +21,14 @@ public class Main {
         //radioDataBaseTask();
         //hourglass2dArray();
         // flattenArray();
+        //flowerWreaths();
+        test();
 
 
 
 
         //Fundamentals exercises -> Fundamentals class methods(tasks),
-          Fundamental fund = new Fundamental();
+          //Fundamental fund = new Fundamental();
         //fund.countCharsInString();
         //fund.minerTask();
 
@@ -41,6 +44,34 @@ public class Main {
 
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
+
+    private static void greedyIsGood(){
+
+        int bagSize = Integer.valueOf(scan.nextLine());
+        Bag currentBag = new Bag(bagSize);
+
+        String[] enterItemsForLooting = scan.nextLine().split("\\s+");
+        String[] gathered = new String[enterItemsForLooting.length/2];
+
+        for (int i = 1; i < enterItemsForLooting.length; i+=2) {
+            gathered[i-1] = enterItemsForLooting[i-1]+" "+enterItemsForLooting[i];
+        }
+
+        for (int i =0;i<gathered.length;i++){
+            currentBag.addItem(gathered[i]);
+        }
+
+        System.out.println(currentBag);
+    }
+
+    private static void test(){
+        String[] entered = scan.nextLine().split("\\s+");
+        String[] gathered = new String[entered.length/2];
+        for (int i = 1; i < entered.length; i+=2) {
+            gathered[i-1] = entered[i-1]+" "+entered[i];
+        }
+    }
+
 
    private static void flattenArray(){
         String enterInput = scan.nextLine();

@@ -2,6 +2,7 @@ package SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask;
 
 import java.util.HashMap;
 import java.util.IllformedLocaleException;
+import java.util.Map;
 
 public class Bag {
     //resources.
@@ -46,6 +47,15 @@ public class Bag {
         }
         }
 
+    }
+
+    @Override
+    public String toString(){
+        String currentItems= "Looted Items: "+System.lineSeparator();
+        for (Map.Entry<String,Integer> items:this.currentLootAmount.entrySet()){
+            currentItems+=items.getKey()+" "+items.getValue()+System.lineSeparator();
+        }
+        return currentItems;
     }
 
 }

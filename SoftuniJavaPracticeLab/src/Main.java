@@ -45,10 +45,6 @@ public class Main {
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
 
-    private static void jediGalaxy(){
-        
-    }
-
 
     private static void greedyIsGood(){
 

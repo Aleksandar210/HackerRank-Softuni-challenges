@@ -45,6 +45,11 @@ public class Main {
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
 
+    private static void jediGalaxy(){
+        
+    }
+
+
     private static void greedyIsGood(){
 
         int bagSize = Integer.valueOf(scan.nextLine());

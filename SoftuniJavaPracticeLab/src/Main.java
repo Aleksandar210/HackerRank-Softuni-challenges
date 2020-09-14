@@ -22,7 +22,7 @@ public class Main {
         //hourglass2dArray();
         // flattenArray();
         //flowerWreaths();
-        test();
+        //greedyIsGood();
 
 
 

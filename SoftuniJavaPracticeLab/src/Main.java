@@ -147,7 +147,34 @@ public class Main {
         int numberWreaths =0;
 
         while(lilies.size()>0 && roses.size()>0){
+        if(lilies.get(lilies.size()-1)+roses.get(0)==15){
+            numberWreaths++;
+            lilies.remove(lilies.size()-1);
+            roses.remove(0);
+        }else if(lilies.get(lilies.size()-1)+roses.get(0)>15){
+            lilies.set(lilies.size()-1,lilies.get(lilies.size()-1)-2);
+        }else{
+            leftOverFlowers += roses.get(0);
+            roses.remove(0);
+            leftOverFlowers+=lilies.get(lilies.size()-1);
+            lilies.remove(lilies.size()-1);
+        }
+        }
 
+        if(leftOverFlowers>0){
+            int timesAddedToWreths= (leftOverFlowers - leftOverFlowers % 15) / 15;
+            numberWreaths+=timesAddedToWreths;
+            leftOverFlowers-=(15*timesAddedToWreths);
+        }
+
+        if(numberWreaths>=5 && leftOverFlowers>0){
+            System.out.printf("Congratulations you are going to teh contest with %d and you have %d flowers left"
+                    ,numberWreaths,leftOverFlowers);
+        }else if(numberWreaths>=5 && leftOverFlowers==0){
+            System.out.printf("Congratulations you are going to teh contest with %d and you have no leftover flowers"
+                    ,numberWreaths);
+        }else if(numberWreaths<5){
+            System.out.printf("Sorry not enough wreths you have %d",numberWreaths);
         }
 
     }

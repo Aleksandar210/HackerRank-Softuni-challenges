@@ -45,6 +45,18 @@ public class Main {
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
 
+    private static void jediGalaxyTask(){
+        String enterCoordinates = scan.nextLine();
+        int[] coordinates;
+        while(!enterCoordinates.equalsIgnoreCase("Let the force be with you!")){
+            coordinates = Arrays.stream(enterCoordinates.split("\\s+")).mapToInt(Integer::parseInt)
+                    .toArray();
+            //implement logic here wiht classes
+
+            enterCoordinates = scan.nextLine();
+
+        }
+    }
 
     private static void greedyIsGood(){
 

@@ -1,6 +1,7 @@
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
 import SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask.Bag;
+import SoftuniRelatedExercises.OOP_Basics_Classes.JediGalaxy.Galaxy;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls.YoungerSoulsController;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
@@ -46,6 +47,7 @@ public class Main {
     //--------------------------------------------------------------------------------------------------------
 
     private static void jediGalaxyTask(){
+        Galaxy currentGalaxy = new Galaxy();
         String enterCoordinates = scan.nextLine();
         int[] coordinates;
         while(!enterCoordinates.equalsIgnoreCase("Let the force be with you!")){

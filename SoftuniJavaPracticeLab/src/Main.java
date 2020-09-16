@@ -46,6 +46,12 @@ public class Main {
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
 
+    //HackerRank Gridland Metro task
+    private static void gridlandMetroTask(){
+
+    }
+
+    //TO DO - Finish this task
     private static void jediGalaxyTask(){
         int[] galaxyParameters = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt)
                 .toArray();

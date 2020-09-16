@@ -7,8 +7,9 @@ public class Galaxy {
     public Galaxy(int rows, int cols){
         if(this.validateGalaxyParameters(rows,cols)){
             this.field = new int[5][5];
+            this.initialiseValuesInThField();
         }
-        this.initialiseValuesInThField();
+
     }
 
     private void initialiseValuesInThField(){
@@ -29,7 +30,13 @@ public class Galaxy {
         }
     }
 
-    public void doGalaxyRun(int[] coordinates){
+    public void doGalaxyRunJedi(int[] coordinates){
+    while(true){
+
+    }
+    }
+
+    private void doGalaxyRunSith(int[] coordinates){
 
     }
 

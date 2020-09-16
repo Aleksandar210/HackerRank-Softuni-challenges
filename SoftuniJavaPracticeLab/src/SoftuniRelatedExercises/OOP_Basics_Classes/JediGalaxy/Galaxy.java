@@ -4,8 +4,10 @@ public class Galaxy {
     //fields
     private int[][] field;
 
-    public Galaxy(){
-        this.field = new int[5][5];
+    public Galaxy(int rows, int cols){
+        if(this.validateGalaxyParameters(rows,cols)){
+            this.field = new int[5][5];
+        }
         this.initialiseValuesInThField();
     }
 
@@ -16,6 +18,14 @@ public class Galaxy {
                 this.field[i][j] = counter;
                 counter++;
             }
+        }
+    }
+
+    private boolean validateGalaxyParameters(int...params){
+        if(params[0]<=0 || params[1]<=0){
+            throw new IllegalArgumentException("Illegal galaxy params");
+        }else{
+            return true;
         }
     }
 

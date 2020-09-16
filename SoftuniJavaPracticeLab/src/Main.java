@@ -47,13 +47,15 @@ public class Main {
     //--------------------------------------------------------------------------------------------------------
 
     private static void jediGalaxyTask(){
-        Galaxy currentGalaxy = new Galaxy();
+        int[] galaxyParameters = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt)
+                .toArray();
+
+        Galaxy currentGalaxy = new Galaxy(galaxyParameters[0],galaxyParameters[1]);
         String enterCoordinates = scan.nextLine();
         int[] coordinates;
         while(!enterCoordinates.equalsIgnoreCase("Let the force be with you!")){
             coordinates = Arrays.stream(enterCoordinates.split("\\s+")).mapToInt(Integer::parseInt)
                     .toArray();
-            //implement logic here wiht classes
 
             enterCoordinates = scan.nextLine();
 

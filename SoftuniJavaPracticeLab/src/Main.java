@@ -1,4 +1,6 @@
 import OOP_Advanced_Classes.Hero.DarkKnight;
+import OOP_Advanced_Classes.NFS.SportsCar;
+import OOP_Advanced_Classes.NFS.Vehicle;
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
 import SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask.Bag;
@@ -33,8 +35,15 @@ public class Main {
         //fund.countCharsInString();
         //fund.minerTask();
 
-        DarkKnight currentKnight = new DarkKnight("Aleksandar",50);
-        System.out.println(currentKnight);
+        //DarkKnight currentKnight = new DarkKnight("Aleksandar",50);
+        //System.out.println(currentKnight);
+
+        SportsCar car = new SportsCar(100,50);
+        System.out.println(car.getFuel());
+        car.drive(20);
+        System.out.println(car.getFuel());
+        SportsCar.
+
 
     }
 

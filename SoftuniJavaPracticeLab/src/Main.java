@@ -1,7 +1,7 @@
+import OOP_Advanced_Classes.Hero.DarkKnight;
 import SoftuniRelatedExercises.Fundamental;
 import SoftuniRelatedExercises.OOP_Basics_Classes.*;
 import SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask.Bag;
-import SoftuniRelatedExercises.OOP_Basics_Classes.JediGalaxy.Galaxy;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls.YoungerSoulsController;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
@@ -33,13 +33,18 @@ public class Main {
         //fund.countCharsInString();
         //fund.minerTask();
 
-
+        DarkKnight currentKnight = new DarkKnight("Aleksandar",50);
+        System.out.println(currentKnight);
 
     }
 
 
 
+//Hero menu task
+    private static void heroMenu(){
+        HashMap<Integer,String> optionMenu = new HashMap<>();
 
+    }
 
 
 
@@ -51,24 +56,7 @@ public class Main {
 
     }
 
-    //TO DO - Finish this task
-    private static void jediGalaxyTask(){
-        int[] galaxyParameters = Arrays.stream(scan.nextLine().split("\\s+")).mapToInt(Integer::parseInt)
-                .toArray();
-
-        Galaxy currentGalaxy = new Galaxy(galaxyParameters[0],galaxyParameters[1]);
-
-        String enterCoordinates = scan.nextLine();
-        int[] coordinates;
-        int counter =0;
-        while(!enterCoordinates.equalsIgnoreCase("Let the force be with you!")){
-            coordinates = Arrays.stream(enterCoordinates.split("\\s+")).mapToInt(Integer::parseInt)
-                    .toArray();
-
-            enterCoordinates = scan.nextLine();
-
-        }
-    }
+    
 
     private static void greedyIsGood(){
 

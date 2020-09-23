@@ -38,6 +38,9 @@ public class Main {
         //DarkKnight currentKnight = new DarkKnight("Aleksandar",50);
         //System.out.println(currentKnight);
 
+        SportsCar car = new SportsCar(100,50);
+        car.drive(20);
+        System.out.println(car.getFuel());
 
     }
 

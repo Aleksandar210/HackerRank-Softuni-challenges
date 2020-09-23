@@ -12,10 +12,10 @@ public abstract class Vehicle {
     private int horsePower;
 
     public Vehicle(double fuel,int horsePower){
-        DEFAULT_FUEL_CONSUMPTION = 1.25;
-    this.setFuel(fuel);
-    this.setHorsePower(horsePower);
-    this.fuelConsumption =DEFAULT_FUEL_CONSUMPTION;
+        this.setFuelConsumption(1.25);
+        this.setFuel(fuel);
+        this.setHorsePower(horsePower);
+        DEFAULT_FUEL_CONSUMPTION = this.getFuelConsumption();
     }
 
 
@@ -51,7 +51,7 @@ public abstract class Vehicle {
     }
 
     public void drive(double kilometers){
-    double fuelConsumed = kilometers*this.fuelConsumption;
+    double fuelConsumed = kilometers*this.getFuelConsumption();
     if(fuelConsumed<this.getFuel()){
         this.setFuel(this.getFuel()-fuelConsumed);
     }else if(fuelConsumed>=this.getFuel()){

@@ -1,28 +1,29 @@
 package OOP_Advanced_Classes.NFS;
 
+import SoftuniRelatedExercises.OOP_Basics_Classes.Department;
+
 import java.sql.SQLInvalidAuthorizationSpecException;
 
 public abstract class Vehicle {
-    public final static double DEFAULT_FUEL_CONSUMPTION =1.25;
+    public final  double DEFAULT_FUEL_CONSUMPTION;
 
     private double fuelConsumption;
     private double fuel;
     private int horsePower;
 
-    public Vehicle(double fuel,int horsePower){
+    public Vehicle(double fuel,int horsePower,double DEF_CONS){
+        DEFAULT_FUEL_CONSUMPTION = DEF_CONS;
     this.setFuel(fuel);
     this.setHorsePower(horsePower);
-    this.fuelConsumption = DEFAULT_FUEL_CONSUMPTION;
-
+    this.fuelConsumption =DEFAULT_FUEL_CONSUMPTION;
     }
-
 
 
 
     public double getFuel(){return this.fuel;}
 
     private void setFuel(double fuel){
-        if(fuel<1){
+        if(fuel<0){
             throw new IllegalArgumentException("Illegal fuel state.");
         }else{
             this.fuel = fuel;

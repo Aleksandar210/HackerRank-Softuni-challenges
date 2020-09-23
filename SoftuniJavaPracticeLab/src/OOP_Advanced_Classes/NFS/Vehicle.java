@@ -11,8 +11,8 @@ public abstract class Vehicle {
     private double fuel;
     private int horsePower;
 
-    public Vehicle(double fuel,int horsePower,double DEF_CONS){
-        DEFAULT_FUEL_CONSUMPTION = DEF_CONS;
+    public Vehicle(double fuel,int horsePower){
+        DEFAULT_FUEL_CONSUMPTION = 1.25;
     this.setFuel(fuel);
     this.setHorsePower(horsePower);
     this.fuelConsumption =DEFAULT_FUEL_CONSUMPTION;
@@ -37,6 +37,16 @@ public abstract class Vehicle {
             throw new IllegalArgumentException("Illegal fuel state.");
         }else{
             this.horsePower = horsePower;
+        }
+    }
+
+    public double getFuelConsumption(){return this.fuelConsumption;}
+
+    protected void setFuelConsumption(double value){
+        if(value<=0){
+            throw new IllegalArgumentException("Illegal fuel consumption state.");
+        }else{
+            this.fuelConsumption = value;
         }
     }
 

@@ -74,9 +74,15 @@ public class Main {
     private Track createTrack(){
         int[]rowAndCol = enterData();
         Track currentTrack = new Track(rowAndCol[0],rowAndCol[1]);
-        int count =1;
-        while(count<=currentTrack.getRow()){
-
+        int counter =1;
+        int[] directionsForRailWay;
+        while(counter<=currentTrack.getRow()){
+        directionsForRailWay = Arrays.stream(scan.nextLine().split("\\s+"))
+                .mapToInt(Integer::parseInt).toArray();
+        if(validateEnteredDirections(rowAndCol,directionsForRailWay)){
+            currentTrack.placeRailWay(directionsForRailWay[0],directionsForRailWay[1],directionsForRailWay[2]);
+            counter++;
+        }
         }
 
         return currentTrack;

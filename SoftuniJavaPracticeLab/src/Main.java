@@ -46,12 +46,6 @@ public class Main {
 
 
 
-//Hero menu task
-    private static void heroMenu(){
-        HashMap<Integer,String> optionMenu = new HashMap<>();
-
-    }
-
 
 
     //Sudden tasks
@@ -59,6 +53,27 @@ public class Main {
 
     //HackerRank Gridland Metro task
     private static void gridlandMetroTask(){
+        int[] current = enterData();
+        System.out.println(current[0] +" "+ current[1]);
+    }
+
+    private static int[] enterData(){
+        int[] enteredData = new int[2];  //0 is row and 1 is col
+    do {
+        System.out.print("Enter Row: ");
+        enteredData[0] = Integer.parseInt(scan.nextLine());
+        System.out.print("Enter Col: ");
+        enteredData[1] = Integer.parseInt(scan.nextLine());
+    }while(!validateRowAndCol(enteredData));
+
+    return enteredData;
+    }
+    private static boolean validateRowAndCol(int...entered){
+        if((entered[0]>=1 && entered[0]<=Math.pow(10,9)) && ((entered[1]>=1 && entered[1]<=Math.pow(10,9)))){
+        return true;
+        }else{
+            return false;
+        }
 
     }
 

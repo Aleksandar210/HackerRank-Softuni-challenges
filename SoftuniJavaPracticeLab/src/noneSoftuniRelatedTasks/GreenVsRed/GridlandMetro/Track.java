@@ -1,6 +1,7 @@
 package noneSoftuniRelatedTasks.GreenVsRed.GridlandMetro;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Track {
     private StringBuilder sb;
@@ -67,17 +68,28 @@ public class Track {
         this.stringBuilderChangeTracker++;
     }
 
-    public void undoRailWay(int row, int start, int finish){
+    private void undoRailWay(int row, int start, int finish){
         for(int i=start;i<=finish;i++){
             this.array[row][i] = 0;
         }
         this.stringBuilderChangeTracker++;
     }
 
+    private void determineNumberLampPosts(){
+        int railWaysPlaced=0;
+        for(Map.Entry<Integer,int[]> currentRailWay:this.currentRaiWaysPlaced.entrySet()){
+            railWaysPlaced+=(currentRailWay.getValue()[1]-currentRailWay.getValue()[0])+1;
+        }
+        this.numberLamPostsToBePlaced = (this.row*this.col)-railWaysPlaced;
+    }
+
     @Override
     public String toString() {
+
         if(this.currentStringBuilderChangeNumber!=this.stringBuilderChangeTracker){
+            this.determineNumberLampPosts();
             this.sb = new StringBuilder();
+            this.sb.append("Number lamp posts to be placed: "+this.numberLamPostsToBePlaced+System.lineSeparator());
             this.currentStringBuilderChangeNumber = this.stringBuilderChangeTracker;
             for(int i=0;i<this.array.length;i++){
                 for(int j=0;j<this.array[0].length;j++){

@@ -44,8 +44,8 @@ public class Track {
         }
         if((start>=this.currentRaiWaysPlaced.get(row)[0] && finish<this.currentRaiWaysPlaced.get(row)[1])
         ||(start>this.currentRaiWaysPlaced.get(row)[0] && finish<=this.currentRaiWaysPlaced.get(row)[1])){
-
-        }else if(start<this.currentRaiWaysPlaced.get(row)[0]){
+        this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
+        }else if(start<this.currentRaiWaysPlaced.get(row)[0]&&){
 
         }
 

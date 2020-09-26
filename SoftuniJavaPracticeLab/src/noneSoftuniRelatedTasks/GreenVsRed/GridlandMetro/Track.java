@@ -43,8 +43,14 @@ public class Track {
         if(this.currentStringBuilderChangeNumber!=this.stringBuilderChangeTracker){
             this.sb = new StringBuilder();
             this.currentStringBuilderChangeNumber = this.stringBuilderChangeTracker;
-        }else{
-
+            for(int i=0;i<this.array.length;i++){
+                for(int j=0;j<this.array[0].length;j++){
+                    this.sb.append(this.array[i][j]);
+                }
+                this.sb.append(System.lineSeparator());
+            }
         }
+
+        return this.sb.toString();
     }
 }

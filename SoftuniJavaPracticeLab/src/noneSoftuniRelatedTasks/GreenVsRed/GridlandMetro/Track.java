@@ -47,20 +47,25 @@ public class Track {
             start =a;
             finish = b;
         }
-        if((start>=this.currentRaiWaysPlaced.get(row)[0] && finish<this.currentRaiWaysPlaced.get(row)[1])
-        ||(start>this.currentRaiWaysPlaced.get(row)[0] && finish<=this.currentRaiWaysPlaced.get(row)[1])){
-        this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
-            this.currentRaiWaysPlaced.get(row)[0] = start;
-            this.currentRaiWaysPlaced.get(row)[1] = finish;
-        }else if((start<this.currentRaiWaysPlaced.get(row)[0]&& finish<=this.currentRaiWaysPlaced.get(row)[1])
-        ||(start>=this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1])){
-        this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
-            this.currentRaiWaysPlaced.get(row)[0] = start;
-            this.currentRaiWaysPlaced.get(row)[1] = finish;
-        }else if(start<this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1]){
-            this.currentRaiWaysPlaced.get(row)[0] = start;
-            this.currentRaiWaysPlaced.get(row)[1] = finish;
+        if(this.currentRaiWaysPlaced.containsKey(row)){
+            if((start>=this.currentRaiWaysPlaced.get(row)[0] && finish<this.currentRaiWaysPlaced.get(row)[1])
+                    ||(start>this.currentRaiWaysPlaced.get(row)[0] && finish<=this.currentRaiWaysPlaced.get(row)[1])){
+                this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
+                this.currentRaiWaysPlaced.get(row)[0] = start;
+                this.currentRaiWaysPlaced.get(row)[1] = finish;
+            }else if((start<this.currentRaiWaysPlaced.get(row)[0]&& finish<=this.currentRaiWaysPlaced.get(row)[1])
+                    ||(start>=this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1])){
+                this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
+                this.currentRaiWaysPlaced.get(row)[0] = start;
+                this.currentRaiWaysPlaced.get(row)[1] = finish;
+            }else if(start<this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1]){
+                this.currentRaiWaysPlaced.get(row)[0] = start;
+                this.currentRaiWaysPlaced.get(row)[1] = finish;
+            }
+        }else{
+
         }
+
 
         for(int i=start;i<=finish;i++){
             this.array[row][i] = 1;

@@ -63,29 +63,32 @@ public class Main {
         numberTracks = Integer.parseInt(scan.nextLine());
         }while(numberTracks<0 || numberTracks>1000);
 
-
         Track[] currentTracks = new Track[numberTracks];
-
-
-
+        for(int i=0;i< currentTracks.length;i++){
+            currentTracks[i] = createTrack();
+            enterTrackDirections(currentTracks[i]);
+        }
 
     }
 
-    private Track createTrack(){
+    private static Track createTrack(){
         int[]rowAndCol = enterData();
         Track currentTrack = new Track(rowAndCol[0],rowAndCol[1]);
+        return currentTrack;
+    }
+
+    private static void enterTrackDirections(Track currentTrack){
+        int[] rowAndCol = new int[]{currentTrack.getRow(), currentTrack.getCol()};
         int counter =1;
         int[] directionsForRailWay;
         while(counter<=currentTrack.getRow()){
-        directionsForRailWay = Arrays.stream(scan.nextLine().split("\\s+"))
-                .mapToInt(Integer::parseInt).toArray();
-        if(validateEnteredDirections(rowAndCol,directionsForRailWay)){
-            currentTrack.placeRailWay(directionsForRailWay[0],directionsForRailWay[1],directionsForRailWay[2]);
-            counter++;
+            directionsForRailWay = Arrays.stream(scan.nextLine().split("\\s+"))
+                    .mapToInt(Integer::parseInt).toArray();
+            if(validateEnteredDirections(rowAndCol,directionsForRailWay)){
+                currentTrack.placeRailWay(directionsForRailWay[0],directionsForRailWay[1],directionsForRailWay[2]);
+                counter++;
+            }
         }
-        }
-
-        return currentTrack;
     }
 
     private static int[] enterData(){

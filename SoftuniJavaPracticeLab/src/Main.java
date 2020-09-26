@@ -43,7 +43,8 @@ public class Main {
 
         //gridlandMetroTask();      //DEPRICATED
 
-        EncapsulationClassTest current = new EncapsulationClassTest();
+        EncapsulationClassTest encapstasks = new EncapsulationClassTest();
+        encapstasks.salaryIncrease();
 
 
 

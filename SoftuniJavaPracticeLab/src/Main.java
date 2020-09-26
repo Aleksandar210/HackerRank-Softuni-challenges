@@ -7,6 +7,7 @@ import SoftuniRelatedExercises.OOP_Basics_Classes.GreedyTask.Bag;
 import SoftuniRelatedExercises.OOP_Basics_Classes.Younger_Scrolls.YoungerSoulsController;
 import noneSoftuniRelatedTasks.GreenVsRed.Cell;
 import noneSoftuniRelatedTasks.GreenVsRed.GridController;
+import noneSoftuniRelatedTasks.GreenVsRed.GridlandMetro.Track;
 import sun.security.util.ArrayUtil;
 
 import java.math.BigDecimal;
@@ -39,7 +40,7 @@ public class Main {
         //System.out.println(currentKnight);
 
 
-        //gridlandMetroTask();
+        gridlandMetroTask();
 
 
     }
@@ -52,12 +53,22 @@ public class Main {
     //--------------------------------------------------------------------------------------------------------
 
     //HackerRank Gridland Metro task
+    //enter k and for each k do the thing with row and col but place them in Track as fields
+
+    //remeber that the data gien by the input is not programmer counting
     private static void gridlandMetroTask(){
         //int numberTracks; do later
         int[]rowAndCol = enterData();
-        int[] gatherDirections;     //maybe implement classed for the tracks
-        for(int i=0;i<rowAndCol[0];i++){
 
+        Track currentTrack = new Track(rowAndCol[0],rowAndCol[1]);
+
+        int temp[];
+        for(int i=0;i<rowAndCol[0];i++){
+            temp = Arrays.stream(scan.nextLine().split("\\s+"))
+                    .mapToInt(Integer::parseInt).toArray();
+                if(validateEnteredDirections(rowAndCol,temp)){
+                    currentTrack.placeRailWay(temp[0],temp[1],temp[2]);
+                }
         }
 
     }
@@ -79,7 +90,20 @@ public class Main {
         }else{
             return false;
         }
+    }
 
+    //rowAndCol Will be the track object
+    private static boolean validateEnteredDirections(int[]rowAndCol, int[] enteredDirections){
+        if(enteredDirections[0]<0 || enteredDirections[0]>rowAndCol[0]-1){
+            return false;
+        }else{
+            if((enteredDirections[1]<0 && enteredDirections[1]>rowAndCol[1]-1)
+                    &&((enteredDirections[2]<0 && enteredDirections[2]>rowAndCol[1]-1))){
+            return false;
+            }else{
+                return true;
+            }
+        }
     }
 
     

@@ -38,9 +38,9 @@ public class Main {
         //DarkKnight currentKnight = new DarkKnight("Aleksandar",50);
         //System.out.println(currentKnight);
 
-        SportsCar car = new SportsCar(100,50);
-        car.drive(20);
-        System.out.println(car.getFuel());
+
+        //gridlandMetroTask();
+
 
     }
 
@@ -53,8 +53,13 @@ public class Main {
 
     //HackerRank Gridland Metro task
     private static void gridlandMetroTask(){
-        int[] current = enterData();
-        System.out.println(current[0] +" "+ current[1]);
+        //int numberTracks; do later
+        int[]rowAndCol = enterData();
+        int[] gatherDirections;     //maybe implement classed for the tracks
+        for(int i=0;i<rowAndCol[0];i++){
+
+        }
+
     }
 
     private static int[] enterData(){

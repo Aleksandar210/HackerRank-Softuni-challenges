@@ -57,20 +57,29 @@ public class Main {
 
     //remeber that the data gien by the input is not programmer counting
     private static void gridlandMetroTask(){
-        //int numberTracks; do later
+        int numberTracks;
+        do{
+            System.out.print("Enter number tracks: ");
+        numberTracks = Integer.parseInt(scan.nextLine());
+        }while(numberTracks<0 || numberTracks>1000);
+
+
+        Track[] currentTracks = new Track[numberTracks];
+
+
+
+
+    }
+
+    private Track createTrack(){
         int[]rowAndCol = enterData();
-
         Track currentTrack = new Track(rowAndCol[0],rowAndCol[1]);
+        int count =1;
+        while(count<=currentTrack.getRow()){
 
-        int temp[];
-        for(int i=0;i<rowAndCol[0];i++){
-            temp = Arrays.stream(scan.nextLine().split("\\s+"))
-                    .mapToInt(Integer::parseInt).toArray();
-                if(validateEnteredDirections(rowAndCol,temp)){
-                    currentTrack.placeRailWay(temp[0],temp[1],temp[2]);
-                }
         }
 
+        return currentTrack;
     }
 
     private static int[] enterData(){

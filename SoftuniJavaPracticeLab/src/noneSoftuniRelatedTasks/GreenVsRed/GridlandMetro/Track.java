@@ -63,7 +63,7 @@ public class Track {
                 this.currentRaiWaysPlaced.get(row)[1] = finish;
             }
         }else{
-
+        this.currentRaiWaysPlaced.put(row,new int[]{start, finish});
         }
 
 

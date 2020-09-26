@@ -1,3 +1,4 @@
+import OOP_Advanced_Classes.Encapsulation.EncapsulationClassTest;
 import OOP_Advanced_Classes.Hero.DarkKnight;
 import OOP_Advanced_Classes.NFS.SportsCar;
 import OOP_Advanced_Classes.NFS.Vehicle;
@@ -41,6 +42,9 @@ public class Main {
 
 
         //gridlandMetroTask();      //DEPRICATED
+
+        EncapsulationClassTest current = new EncapsulationClassTest();
+
 
 
     }

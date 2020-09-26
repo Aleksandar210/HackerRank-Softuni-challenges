@@ -35,18 +35,30 @@ public class Track {
         }
     }
 
-    public void placeRailWay(int row, int start, int finish){
-        if(start>finish){
-            int temp =0;
-            temp = start;
-            start = finish;
-            finish = temp;
+    public void placeRailWay(int row, int a, int b){
+        int start;
+        int finish;
+        if(a>b){
+           start = b;
+           finish = a;
+        }else
+        {
+            start =a;
+            finish = b;
         }
         if((start>=this.currentRaiWaysPlaced.get(row)[0] && finish<this.currentRaiWaysPlaced.get(row)[1])
         ||(start>this.currentRaiWaysPlaced.get(row)[0] && finish<=this.currentRaiWaysPlaced.get(row)[1])){
         this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
-        }else if(start<this.currentRaiWaysPlaced.get(row)[0]&&){
-
+            this.currentRaiWaysPlaced.get(row)[0] = start;
+            this.currentRaiWaysPlaced.get(row)[1] = finish;
+        }else if((start<this.currentRaiWaysPlaced.get(row)[0]&& finish<=this.currentRaiWaysPlaced.get(row)[1])
+        ||(start>=this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1])){
+        this.undoRailWay(row,this.currentRaiWaysPlaced.get(row)[0],this.currentRaiWaysPlaced.get(row)[1]);
+            this.currentRaiWaysPlaced.get(row)[0] = start;
+            this.currentRaiWaysPlaced.get(row)[1] = finish;
+        }else if(start<this.currentRaiWaysPlaced.get(row)[0] && finish>this.currentRaiWaysPlaced.get(row)[1]){
+            this.currentRaiWaysPlaced.get(row)[0] = start;
+            this.currentRaiWaysPlaced.get(row)[1] = finish;
         }
 
         for(int i=start;i<=finish;i++){

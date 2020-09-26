@@ -40,7 +40,7 @@ public class Main {
         //System.out.println(currentKnight);
 
 
-        gridlandMetroTask();
+        //gridlandMetroTask();      //DEPRICATED
 
 
     }

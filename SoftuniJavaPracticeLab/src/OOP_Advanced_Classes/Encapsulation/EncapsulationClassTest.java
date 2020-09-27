@@ -10,6 +10,10 @@ private Scanner scan;
     this.scan = new Scanner(System.in);
     }
 
+
+
+
+    //Salary increase task
     public void salaryIncrease(){
     int numberPersons = Integer.parseInt(this.scan.nextLine());
     Person[] persons = new Person[numberPersons];
@@ -29,5 +33,6 @@ private Scanner scan;
         person.increaseSalary(percentageIncrease);
         System.out.println(person);
     }
+    this.scan.close();
     }
 }

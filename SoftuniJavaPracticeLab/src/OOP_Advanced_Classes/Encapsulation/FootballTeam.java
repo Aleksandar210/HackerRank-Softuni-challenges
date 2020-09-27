@@ -25,17 +25,22 @@ public class FootballTeam {
             throw new IllegalArgumentException(String.format("Player %s already in team",player.getName()));
         }else{
             this.currentPlayers.put(player.getName(),player);
+            this.teamRating+=player.overallStatLevel();
         }
+
     }
 
     public void removePlayer(String name){
         if(this.currentPlayers.containsKey(name)){
+            this.teamRating-=this.currentPlayers.get(name).overallStatLevel();
             this.currentPlayers.remove(name);
         }else{
-            throw new IllegalArgumentException(String.format("Player %s is not in %s",name,this.))
+            throw new IllegalArgumentException(String.format("Player %s is not in %s",name,this.getName()));
         }
 
     }
+
+    public double getTeamRating(){return this.teamRating/this.currentPlayers.size();}
 
 }
 

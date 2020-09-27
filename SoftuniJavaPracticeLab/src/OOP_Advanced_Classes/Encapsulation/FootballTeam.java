@@ -40,7 +40,7 @@ public class FootballTeam {
 
     }
 
-    public double getTeamRating(){return this.teamRating/this.currentPlayers.size();}
+    public double getRating(){return this.teamRating/this.currentPlayers.size();}
 
 }
 

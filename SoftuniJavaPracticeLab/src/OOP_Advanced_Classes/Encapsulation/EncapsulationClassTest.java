@@ -2,6 +2,7 @@ package OOP_Advanced_Classes.Encapsulation;
 
 import sun.misc.Perf;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class EncapsulationClassTest {
@@ -38,6 +39,14 @@ private Scanner scan;
 
 
     public void footballTeamGenerator(){
+        HashMap<String,FootballTeam> currentTeams = new HashMap<>();
+    String enterCommand = this.scan.nextLine();
+    String[] splitCommand;
+    while(!enterCommand.equalsIgnoreCase("End")){
+        splitCommand = enterCommand.split("\\s+");
+    }
+    }
+    private void executeFootballTeamCommand(){
 
     }
 }

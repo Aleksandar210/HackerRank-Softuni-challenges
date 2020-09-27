@@ -35,4 +35,9 @@ private Scanner scan;
     }
     this.scan.close();
     }
+
+
+    public void footballTeamGenerator(){
+
+    }
 }

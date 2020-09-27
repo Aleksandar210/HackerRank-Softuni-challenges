@@ -46,7 +46,10 @@ private Scanner scan;
         splitCommand = enterCommand.split("\\s+");
     }
     }
-    private void executeFootballTeamCommand(){
-
+    private void executeFootballTeamCommand(HashMap<String,FootballTeam>teams,String...command){
+    switch(command[0]){
+        case "":
+            break;
+    }
     }
 }

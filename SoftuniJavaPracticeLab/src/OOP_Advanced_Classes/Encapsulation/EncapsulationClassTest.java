@@ -15,6 +15,7 @@ private Scanner scan;
 
 
     //Salary increase task
+    //---------------------------------------------------------------
     public void salaryIncrease(){
     int numberPersons = Integer.parseInt(this.scan.nextLine());
     Person[] persons = new Person[numberPersons];
@@ -36,15 +37,21 @@ private Scanner scan;
     }
     this.scan.close();
     }
+    //-----------------------------------------------------------------
 
 
+    //FootballTeamGenerator task
+//-----------------------------------------------------------------
     public void footballTeamGenerator(){
         HashMap<String,FootballTeam> currentTeams = new HashMap<>();
     String enterCommand = this.scan.nextLine();
     String[] splitCommand;
     while(!enterCommand.equalsIgnoreCase("End")){
-        splitCommand = enterCommand.split("\\s+");
+        splitCommand = enterCommand.split(";");
+        this.executeFootballTeamCommand(currentTeams,splitCommand);
+        enterCommand = this.scan.nextLine();
     }
+    this.scan.close();
     }
     private void executeFootballTeamCommand(HashMap<String,FootballTeam>teams,String...command){
 
@@ -94,7 +101,6 @@ private Scanner scan;
                 System.out.printf("Team %s does not exist",command[1]);
             }
             break;
-
     }
     }
 
@@ -105,4 +111,7 @@ private Scanner scan;
             return false;
         }
     }
+    //-----------------------------------------------------------------------------------
+
+
 }

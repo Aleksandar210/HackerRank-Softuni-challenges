@@ -71,8 +71,30 @@ private Scanner scan;
                 }catch(IllegalArgumentException exc){
                     System.out.println(exc.getMessage());
                 }
+            }else{
+                System.out.printf("Team %s does not exist.",command[1]);
             }
             break;
+        case "Remove":
+            if(this.doesTeamExist(command[1],teams)) {
+                try{
+                    teams.get(command[1]).removePlayer(command[2]);
+                }catch(IllegalArgumentException exc){
+                    System.out.println(exc.getMessage());
+                }
+
+            }else{
+            System.out.printf("Team %s does not exist",command[1]);
+            }
+            break;
+        case "Rating":
+            if(doesTeamExist(command[1],teams)){
+                System.out.println(teams.get(command[1]).getRating());
+            }else{
+                System.out.printf("Team %s does not exist",command[1]);
+            }
+            break;
+
     }
     }
 

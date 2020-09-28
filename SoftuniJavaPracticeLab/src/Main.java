@@ -44,7 +44,8 @@ public class Main {
         //gridlandMetroTask();      //DEPRICATED
 
         EncapsulationClassTest encapstasks = new EncapsulationClassTest();
-        encapstasks.salaryIncrease();
+        //encapstasks.salaryIncrease();
+        //encapstasks.footballTeamGenerator();
 
 
 

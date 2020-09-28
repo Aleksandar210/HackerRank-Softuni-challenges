@@ -47,9 +47,37 @@ private Scanner scan;
     }
     }
     private void executeFootballTeamCommand(HashMap<String,FootballTeam>teams,String...command){
+
     switch(command[0]){
-        case "":
+        case "Team":
+            if(!doesTeamExist(command[1],teams)){
+                try{
+                    teams.put(command[1],new FootballTeam(command[1]));
+                }catch(IllegalAccessError exc){
+                    System.out.println(exc.getMessage());
+                }
+            }
+            break;
+        case "Add":
+            if(this.doesTeamExist(command[1],teams)){
+                try{
+                    int[] stats = {Integer.valueOf(command[3]),Integer.valueOf(command[4])
+                    ,Integer.valueOf(command[5]),Integer.valueOf(command[6]),Integer.valueOf(command[7])};
+                    teams.get(command[1]).addPlayer(new FootballPlayer(command[2],stats[0],stats[1],stats[2]
+                    ,stats[3],stats[4]));
+                }catch(IllegalArgumentException exc){
+                    System.out.println(exc.getMessage());
+                }
+            }
             break;
     }
+    }
+
+    private boolean doesTeamExist(String name, HashMap<String,FootballTeam>teams){
+        if(teams.containsKey(name)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

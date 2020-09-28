@@ -9,7 +9,12 @@ public class FootballPlayer {
     private int passing;
 
     public FootballPlayer(String name,int endurance, int sprint, int dribble,int shooting, int passing){
-
+    this.setName(name);
+    this.setEndurance(endurance);
+    this.setShooting(sprint);
+    this.setDribble(dribble);
+    this.setShooting(shooting);
+    this.setPassing(passing);
     }
 
     public String getName(){return this.name;}

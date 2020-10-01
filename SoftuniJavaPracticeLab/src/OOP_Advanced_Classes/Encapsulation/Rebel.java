@@ -4,17 +4,20 @@ import java.util.IllformedLocaleException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Rebel implements Buyer,FoodShortagePerson {
+abstract class FoodShortagePerson implements Buyer {
     private String name;
     private int age;
     private String id;
     private String birthDate;
     private int food;
 
-    public Rebel(String name, int age, String id, String birthDate){
+    public FoodShortagePerson(String name, int age, String id, String birthDate){
     this.food = 0;
+    this.setName(name);
+    this.setAge(age);
+    this.setId(id);
+    this.setBirthDate(birthDate);
     }
-
 
     public String getBirthDate(){return this.birthDate;}
 
@@ -42,7 +45,7 @@ public class Rebel implements Buyer,FoodShortagePerson {
         }
   }
 
-    @Override
+
     public String getName() {
         return this.name;
     }
@@ -55,7 +58,7 @@ public class Rebel implements Buyer,FoodShortagePerson {
         }
     }
 
-    @Override
+
     public int getAge() {
         return this.age;
     }
@@ -68,15 +71,5 @@ public class Rebel implements Buyer,FoodShortagePerson {
         }
     }
 
-
-    @Override
-    public void buyFood() {
-        this.food+=10;
-    }
-
-    @Override
-    public int getFood() {
-        return this.food;
-    }
 
 }

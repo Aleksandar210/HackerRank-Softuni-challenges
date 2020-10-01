@@ -13,6 +13,8 @@ import sun.security.util.ArrayUtil;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -47,6 +49,9 @@ public class Main {
         //encapstasks.salaryIncrease();
         //encapstasks.footballTeamGenerator();
 
+        //upperLowerVolew();
+        equalSidesOfAnArray();
+
 
 
     }
@@ -57,6 +62,78 @@ public class Main {
 
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------
+
+    //Telerik Set Tasks
+    private static void upperLowerVolew(){
+        String enterPhrase = scan.nextLine();
+        String[] words = enterPhrase.split("\\s+");
+        for(int i =0;i<words.length;i++){
+            if(isVowel(words[i].charAt(0))){
+            words[i] = "che"+((words[i]+words[i].charAt(0)).substring(1));
+            }else {
+                words[i] = words[i]+"che";
+            }
+
+            if(words[i].length()%2==0){
+                words[i]=words[i]+"e";
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(String word:words){
+            sb.append(word+" ");
+        }
+        System.out.println(sb.toString().trim());
+    }
+    private static boolean isVowel(char firstLetter){
+        switch(firstLetter){
+            case 'a':
+            case 'A':
+            case 'O':
+            case 'o':
+            case 'I':
+            case 'i':
+            case 'E':
+            case 'e':
+            case 'U':
+            case 'u':
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private static void equalSidesOfAnArray(){
+        int[] array = Arrays.stream(scan.nextLine().split(",")).mapToInt(Integer::parseInt).toArray();
+       // List<Integer> indexesWithEqualSides = new ArrayList<Integer>();
+
+        reverse(array,array.length);
+
+        //starting with the firstNumber
+        //int[] firstToLast = intSubArray(1,array.length,array);
+
+       // if(Arrays.stream(firstToLast).sum()==array[0]){
+        //   indexesWithEqualSides.add(0);
+       // }
+
+
+    }
+
+
+    private static int[] intSubArray(int beg,int end,int[] array){
+        return Arrays.copyOfRange(array,beg,end);
+    }
+
+    static int[] reverse(int a[], int n)
+    {
+        int[] b = new int[n];
+        int j = n;
+        for (int i = 0; i < n; i++) {
+            b[j - 1] = a[i];
+            j = j - 1;
+        }
+        return b;
+    }
 
     //HackerRank Gridland Metro task
     //enter k and for each k do the thing with row and col but place them in Track as fields

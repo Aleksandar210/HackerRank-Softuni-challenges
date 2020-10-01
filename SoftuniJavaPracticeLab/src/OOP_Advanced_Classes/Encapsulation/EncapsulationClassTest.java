@@ -12,8 +12,6 @@ private Scanner scan;
     }
 
 
-
-
     //Salary increase task
     //---------------------------------------------------------------
     public void salaryIncrease(){
@@ -112,6 +110,22 @@ private Scanner scan;
         }
     }
     //-----------------------------------------------------------------------------------
+
+    //Phone Tasks
+    public void phoneTask(){
+        String name = "Iphone 4";
+        SmartPhone phone = new SmartPhone(name);
+        String[] phones = this.scan.nextLine().split("\\s+");
+        String[] links  = this.scan.nextLine().split("\\s+");
+
+        for(String number:phones){
+            try{
+                System.out.println()
+            }catch(IllegalArgumentException exc){
+                System.out.println(exc.getMessage());
+            }
+        }
+    }
 
 
 }

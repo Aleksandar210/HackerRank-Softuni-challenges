@@ -45,20 +45,16 @@ public class Main {
 
         //gridlandMetroTask();      //DEPRICATED
 
-        EncapsulationClassTest encapstasks = new EncapsulationClassTest();
+        //EncapsulationClassTest encapstasks = new EncapsulationClassTest();
         //encapstasks.salaryIncrease();
         //encapstasks.footballTeamGenerator();
 
         //upperLowerVolew();
-        equalSidesOfAnArray();
+        //equalSidesOfAnArray();
 
 
 
     }
-
-
-
-
 
     //Sudden tasks
     //--------------------------------------------------------------------------------------------------------

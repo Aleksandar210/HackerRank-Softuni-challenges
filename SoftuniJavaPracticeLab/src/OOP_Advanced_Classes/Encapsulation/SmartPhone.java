@@ -1,5 +1,6 @@
 package OOP_Advanced_Classes.Encapsulation;
 
+import java.util.IllformedLocaleException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,10 +36,11 @@ public class SmartPhone implements Callable, Browsable {
 
     @Override
     public String call(String phoneNumber) {
-        if(phoneNumber.length()!=11){
-            throw new IllegalArgumentException("Number is not valid");
-        }else{
+        if(phoneNumber.matches("^[0-9]+$") && phoneNumber.length() ==11){
             return String.format("Calling: %s",phoneNumber);
+        }else{
+            throw new IllegalArgumentException("Invalid phone");
         }
+
     }
 }

@@ -120,7 +120,15 @@ private Scanner scan;
 
         for(String number:phones){
             try{
-                System.out.println()
+                System.out.println(phone.call(number));
+            }catch(IllegalArgumentException exc){
+                System.out.println(exc.getMessage());
+            }
+        }
+
+        for(String link:links){
+            try{
+                System.out.println(phone.browse(link));
             }catch(IllegalArgumentException exc){
                 System.out.println(exc.getMessage());
             }

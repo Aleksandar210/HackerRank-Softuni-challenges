@@ -126,10 +126,17 @@ public class Main {
         //rest of the indexes between
         for(int i=1;i<=array.length-2;i++){
             if(Arrays.stream(intSubArray(0,array[i]-1,array)).sum()==
-                    Arrays.stream(intSubArray(array[i],array.length,array)).sum())
+                    Arrays.stream(intSubArray(array[i],array.length,array)).sum()){
+                indexesWithEqualSides.add(i);
+            }
         //System.out.println(array[i]+"->  left: "+displayArray(intSubArray(0,array[i]-1,array)) +"  right:"+displayArray(intSubArray(array[i],array.length,array)));
         }
 
+        if(indexesWithEqualSides.size()==0){
+            System.out.println(-1);
+        }else{
+            System.out.println(indexesWithEqualSides);
+        }
 
     }
 

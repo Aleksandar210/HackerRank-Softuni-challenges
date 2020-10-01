@@ -28,6 +28,20 @@ public class Rebel implements Buyer,FoodShortagePerson {
         }
   }
 
+  public String getId(){
+        return this.id;
+  }
+
+  private void setId(String id){
+        Pattern pattern = Pattern.compile("[0-9]+");
+        Matcher matcher = pattern.matcher(id);
+        if(matcher.find()){
+            this.id = id;
+        }else{
+            throw new IllegalArgumentException("INVALID ID");
+        }
+  }
+
     @Override
     public String getName() {
         return this.name;

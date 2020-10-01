@@ -105,16 +105,25 @@ public class Main {
 
     private static void equalSidesOfAnArray(){
         int[] array = Arrays.stream(scan.nextLine().split(",")).mapToInt(Integer::parseInt).toArray();
-       // List<Integer> indexesWithEqualSides = new ArrayList<Integer>();
+        List<Integer> indexesWithEqualSides = new ArrayList<Integer>();
 
-        reverse(array,array.length);
 
         //starting with the firstNumber
-        //int[] firstToLast = intSubArray(1,array.length,array);
+        int[] firstToLast = intSubArray(1,array.length,array);
+        if(Arrays.stream(firstToLast).sum()==0){
+           indexesWithEqualSides.add(0);
+        }
 
-       // if(Arrays.stream(firstToLast).sum()==array[0]){
-        //   indexesWithEqualSides.add(0);
-       // }
+        //lastNumber
+        int[] lastToFirst = reverse(array,array.length);
+        if(Arrays.stream(lastToFirst).sum()==0){
+            indexesWithEqualSides.add(array.length-1);
+        }
+
+        //rest of the indexes between
+        for(int i=1;i<=array.length-2;i++){
+        System.out.println(array[i]+"-> right:"+displayArray(intSubArray(array[i],array.length,array)));
+        }
 
 
     }
@@ -133,6 +142,13 @@ public class Main {
             j = j - 1;
         }
         return b;
+    }
+    private static String displayArray(int[] array){
+       StringBuilder sb = new StringBuilder();
+       for(int i=0;i<array.length;i++){
+           sb.append(array[i]+" ");
+       }
+       return sb.toString().trim();
     }
 
     //HackerRank Gridland Metro task

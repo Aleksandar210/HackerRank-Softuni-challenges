@@ -120,6 +120,9 @@ public class Main {
             indexesWithEqualSides.add(array.length-1);
         }
 
+        //TO DO it works fine for the right part now do the left with reverse array
+        // find a faster wat to transform an array to string and maybe reverse an array
+
         //rest of the indexes between
         for(int i=1;i<=array.length-2;i++){
         System.out.println(array[i]+"-> right:"+displayArray(intSubArray(array[i],array.length,array)));

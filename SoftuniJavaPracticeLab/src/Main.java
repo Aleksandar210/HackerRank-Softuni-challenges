@@ -125,7 +125,9 @@ public class Main {
 
         //rest of the indexes between
         for(int i=1;i<=array.length-2;i++){
-        System.out.println(array[i]+"-> right:"+displayArray(intSubArray(array[i],array.length,array)));
+            if(Arrays.stream(intSubArray(0,array[i]-1,array)).sum()==
+                    Arrays.stream(intSubArray(array[i],array.length,array)).sum())
+        //System.out.println(array[i]+"->  left: "+displayArray(intSubArray(0,array[i]-1,array)) +"  right:"+displayArray(intSubArray(array[i],array.length,array)));
         }
 
 

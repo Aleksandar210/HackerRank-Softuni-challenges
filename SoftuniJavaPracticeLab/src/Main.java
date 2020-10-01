@@ -64,6 +64,7 @@ public class Main {
     //--------------------------------------------------------------------------------------------------------
 
     //Telerik Set Tasks
+    //-------------------------------------
     private static void upperLowerVolew(){
         String enterPhrase = scan.nextLine();
         String[] words = enterPhrase.split("\\s+");
@@ -162,6 +163,8 @@ public class Main {
        }
        return sb.toString().trim();
     }
+
+    //--------------------------------------------------------
 
     //HackerRank Gridland Metro task
     //enter k and for each k do the thing with row and col but place them in Track as fields

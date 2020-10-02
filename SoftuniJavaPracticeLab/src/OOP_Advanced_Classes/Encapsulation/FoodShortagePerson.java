@@ -11,46 +11,14 @@ abstract class FoodShortagePerson implements Buyer {
     private String birthDate;
     private int food;
 
-    protected FoodShortagePerson(String name, int age, String id, String birthDate){
+    protected FoodShortagePerson(String name, int age){
     this.food = 0;
     this.setName(name);
     this.setAge(age);
-    this.setId(id);
-    this.setBirthDate(birthDate);
     }
 
-    protected FoodShortagePerson(String name, int age, String birthDate){
-        this.food = 0;
-        this.setName(name);
-        this.setAge(age);
-        this.setBirthDate(birthDate);
-    }
 
-    public String getBirthDate(){return this.birthDate;}
 
-  private void setBirthDate(String birthDate){
-        Pattern pattern = Pattern.compile("[[0-9]{2}|[0-9]{1}]/[[0-9]{2}|[0-9]{1}]/[0-9]+");
-        Matcher matcher = pattern.matcher(birthDate);
-        if(matcher.find()){
-            this.birthDate = birthDate;
-        }else{
-            throw new IllegalArgumentException("Invalid birthdate");
-        }
-  }
-
-  public String getId(){
-        return this.id;
-  }
-
-  private void setId(String id){
-        Pattern pattern = Pattern.compile("[0-9]+");
-        Matcher matcher = pattern.matcher(id);
-        if(matcher.find()){
-            this.id = id;
-        }else{
-            throw new IllegalArgumentException("INVALID ID");
-        }
-  }
 
 
     public String getName() {

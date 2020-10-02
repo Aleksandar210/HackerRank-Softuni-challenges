@@ -2,8 +2,9 @@ package OOP_Advanced_Classes.Encapsulation;
 
 public class Rebel extends FoodShortagePerson {
     private String groupName;
-    public Rebel(String name, int age, String group, String birthDate) {
-        super(name, age, birthDate);
+    public Rebel(String name, int age, String group) {
+        super(name, age);
+        this.setGroup(groupName);
     }
 
     private void setGroup(String groupName){
@@ -14,10 +15,7 @@ public class Rebel extends FoodShortagePerson {
         }
     }
 
-    @Override
-    public String getId() {
-        return this.groupName;
-    }
+    public String getGroup(){return this.groupName;}
 
     @Override
     public void buyFood() {

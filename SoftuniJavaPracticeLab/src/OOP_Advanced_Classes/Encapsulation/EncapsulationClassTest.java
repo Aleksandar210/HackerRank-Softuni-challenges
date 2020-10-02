@@ -2,7 +2,9 @@ package OOP_Advanced_Classes.Encapsulation;
 
 import sun.misc.Perf;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class EncapsulationClassTest {
@@ -140,7 +142,31 @@ private Scanner scan;
     //-------------------------------------------------------------------------------------
     public void foodShortageTask(){
         int numberPeople = Integer.parseInt(scan.nextLine());
-        FoodShortagePerson current;
+
+        Rebel currentRebel;
+        Citizen currentCitizen;
+        HashMap<String,FoodShortagePerson> currentPeople = new HashMap<String,FoodShortagePerson>();
+        String enterData;
+        String[] splitData;
+        for(int i=0;i<numberPeople;i++){
+            enterData = this.scan.nextLine();
+            splitData = enterData.split("\\+");
+            switch(splitData.length){
+                case 4:
+                    try{
+                        currentCitizen = new Citizen(splitData[0],Integer.valueOf(splitData[1]),splitData[2],
+                                splitData[3]);
+                    }catch(IllegalArgumentException exc){
+                        System.out.println(exc.getMessage());
+                    }
+
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     //---------------------------------------------------------------------------------
 

@@ -142,6 +142,7 @@ private Scanner scan;
     //FoodShortagePersonTask
     //-------------------------------------------------------------------------------------
     public void foodShortageTask(){
+        System.out.print("Enter number people");
         int numberPeople = Integer.parseInt(scan.nextLine());
 
         Rebel currentRebel;
@@ -150,6 +151,7 @@ private Scanner scan;
         String enterData;
         String[] splitData;
         for(int i=0;i<numberPeople;i++){
+            System.out.print("Enter person data: ");
             enterData = this.scan.nextLine();
             splitData = enterData.split("\\+");
             switch(splitData.length){
@@ -179,11 +181,13 @@ private Scanner scan;
             }
         }
 
+        System.out.print("Enter name: ");
         String enterName = this.scan.nextLine();
         while(!enterName.equalsIgnoreCase("End")){
             if(currentPeople.containsKey(enterName)){
                 currentPeople.get(enterName).buyFood();
             }
+            System.out.print("Enter name: ");
             enterName = this.scan.nextLine();
         }
     }

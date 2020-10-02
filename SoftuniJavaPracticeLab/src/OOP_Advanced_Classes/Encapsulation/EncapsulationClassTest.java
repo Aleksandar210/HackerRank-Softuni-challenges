@@ -136,4 +136,12 @@ private Scanner scan;
     }
 //------------------------------------------------------------------------------------------
 
+    //FoodShortagePersonTask
+    //-------------------------------------------------------------------------------------
+    public void foodShortageTask(){
+        int numberPeople = Integer.parseInt(scan.nextLine());
+        FoodShortagePerson current;
+    }
+    //---------------------------------------------------------------------------------
+
 }

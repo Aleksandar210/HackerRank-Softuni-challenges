@@ -8,7 +8,8 @@ public class Citizen extends FoodShortagePerson {
 
     @Override
     public void buyFood() {
-        super.buyFood();
-        super.buyFood();
+        for(int i=0;i<2;i++){
+            super.buyFood();
+        }
     }
 }

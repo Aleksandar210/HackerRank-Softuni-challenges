@@ -11,12 +11,19 @@ abstract class FoodShortagePerson implements Buyer {
     private String birthDate;
     private int food;
 
-    public FoodShortagePerson(String name, int age, String id, String birthDate){
+    protected FoodShortagePerson(String name, int age, String id, String birthDate){
     this.food = 0;
     this.setName(name);
     this.setAge(age);
     this.setId(id);
     this.setBirthDate(birthDate);
+    }
+
+    protected FoodShortagePerson(String name, int age, String birthDate){
+        this.food = 0;
+        this.setName(name);
+        this.setAge(age);
+        this.setBirthDate(birthDate);
     }
 
     public String getBirthDate(){return this.birthDate;}

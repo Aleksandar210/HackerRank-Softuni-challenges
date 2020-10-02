@@ -49,6 +49,7 @@ public class Main {
         //encapstasks.salaryIncrease();
         //encapstasks.footballTeamGenerator();
         //encapstasks.phoneTask();
+       // encapstasks.footballTeamGenerator();
 
         //upperLowerVolew();
         //equalSidesOfAnArray();

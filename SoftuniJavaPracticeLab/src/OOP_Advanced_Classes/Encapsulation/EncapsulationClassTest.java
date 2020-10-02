@@ -154,14 +154,24 @@ private Scanner scan;
             switch(splitData.length){
                 case 4:
                     try{
-                        currentCitizen = new Citizen(splitData[0],Integer.valueOf(splitData[1]),splitData[2],
-                                splitData[3]);
+                        if(!currentPeople.containsKey(splitData[0])){
+                            currentCitizen = new Citizen(splitData[0],Integer.valueOf(splitData[1]),splitData[2],
+                                    splitData[3]);
+                            currentPeople.put(splitData[0],currentCitizen);
+                        }
                     }catch(IllegalArgumentException exc){
                         System.out.println(exc.getMessage());
                     }
-
                     break;
                 case 3:
+                    try{
+                        if(!currentPeople.containsKey(splitData[0])){
+                            currentRebel = new Rebel(splitData[0],Integer.valueOf(splitData[1]),splitData[2]);
+                            currentPeople.put(splitData[0],currentRebel);
+                        }
+                    }catch(IllegalArgumentException exc){
+                        System.out.println(exc.getMessage());
+                    }
                     break;
                 default:
                     break;

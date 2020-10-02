@@ -8,11 +8,7 @@ public class Rebel extends FoodShortagePerson {
 
     @Override
     public void buyFood() {
-
+    super.buyFood();
     }
 
-    @Override
-    public int getFood() {
-        return 0;
-    }
 }

@@ -3,10 +3,7 @@ package OOP_Advanced_Classes.Encapsulation;
 import com.sun.javafx.scene.EnteredExitedHandler;
 import sun.misc.Perf;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class EncapsulationClassTest {
 private Scanner scan;
@@ -142,19 +139,30 @@ private Scanner scan;
     //FoodShortagePersonTask
     //-------------------------------------------------------------------------------------
     public void foodShortageTask(){
+        //Enter number of people objects to create.
         System.out.print("Enter number people");
         int numberPeople = Integer.parseInt(scan.nextLine());
 
+        //Different Object type.
         Rebel currentRebel;
         Citizen currentCitizen;
+
+        //the collection to store them its map since we are looking by names in the final
         HashMap<String,FoodShortagePerson> currentPeople = new HashMap<String,FoodShortagePerson>();
+
         String enterData;
         String[] splitData;
+
+        //create number of objects
         for(int i=0;i<numberPeople;i++){
             System.out.print("Enter person data: ");
-            enterData = this.scan.nextLine();
-            splitData = enterData.split("\\+");
+            enterData = this.scan.nextLine();   //enter object  parameters separated by space
+            splitData = enterData.split("\\+"); //get the parameters
+
+            //check which object to create.
             switch(splitData.length){
+
+                //Citizen creation
                 case 4:
                     try{
                         if(!currentPeople.containsKey(splitData[0])){
@@ -166,6 +174,8 @@ private Scanner scan;
                         System.out.println(exc.getMessage());
                     }
                     break;
+
+                    //Rebel creation
                 case 3:
                     try{
                         if(!currentPeople.containsKey(splitData[0])){
@@ -181,6 +191,7 @@ private Scanner scan;
             }
         }
 
+        //Enter names until End is entered and for each name call the buyFood Method.
         System.out.print("Enter name: ");
         String enterName = this.scan.nextLine();
         while(!enterName.equalsIgnoreCase("End")){
@@ -190,7 +201,16 @@ private Scanner scan;
             System.out.print("Enter name: ");
             enterName = this.scan.nextLine();
         }
+
+        //print total food bought
+        int totalFood =0;       //the old fashioned way
+        for(Map.Entry<String,FoodShortagePerson> currentPerson:currentPeople.entrySet()){
+            totalFood+= currentPerson.getValue().getFood();
+        }
+        System.out.println(totalFood);
     }
+
+
     //---------------------------------------------------------------------------------
 
 }

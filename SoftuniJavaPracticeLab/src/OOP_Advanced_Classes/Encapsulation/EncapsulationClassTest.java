@@ -1,5 +1,6 @@
 package OOP_Advanced_Classes.Encapsulation;
 
+import com.sun.javafx.scene.EnteredExitedHandler;
 import sun.misc.Perf;
 
 import java.util.ArrayList;
@@ -176,6 +177,14 @@ private Scanner scan;
                 default:
                     break;
             }
+        }
+
+        String enterName = this.scan.nextLine();
+        while(!enterName.equalsIgnoreCase("End")){
+            if(currentPeople.containsKey(enterName)){
+                currentPeople.get(enterName).buyFood();
+            }
+            enterName = this.scan.nextLine();
         }
     }
     //---------------------------------------------------------------------------------

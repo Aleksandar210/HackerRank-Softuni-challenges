@@ -402,6 +402,34 @@ namespace SoftuniFundamentals
 
         }
 
+        private static void DoSomethingForTestWithDictionaries()
+        {
+            
+            Dictionary<string, int> currentNamesAges = new Dictionary<string, int>();
+            Console.Write("Enter name/age: ");
+            string enterNameAge = Console.ReadLine();
+            while (enterNameAge.Equals("End", StringComparison.OrdinalIgnoreCase))
+            {
+                string[] getNameAge = enterNameAge.Split(" ",StringSplitOptions.RemoveEmptyEntries);
+                if (!currentNamesAges.ContainsKey(getNameAge[0]))
+                {
+                    currentNamesAges.Add(getNameAge[0], int.Parse(getNameAge[1]));
+                }
+                else
+                {
+                    currentNamesAges[getNameAge[0]] = int.Parse(getNameAge[1]);
+                }
+                Console.WriteLine("Enter name/age: ");
+                enterNameAge = Console.ReadLine();
+            }
+
+            Console.Clear();
+            foreach( var item in currentNamesAges)
+            {
+                Console.WriteLine(item.Key + " " + item.Value);
+            }
+        }
+
         //StorageMaster task
         private static void StorageMasterTask2019OOP()
         {

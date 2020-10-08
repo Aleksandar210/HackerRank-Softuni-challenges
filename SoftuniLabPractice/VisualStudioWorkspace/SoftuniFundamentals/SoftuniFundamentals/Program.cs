@@ -428,6 +428,54 @@ namespace SoftuniFundamentals
             {
                 Console.WriteLine(item.Key + " " + item.Value);
             }
+
+            //The part to test with stacks and Sets
+            HashSet<string> currentEnteredNames = new HashSet<string>();
+            Stack<string> currentEnteredNamesStack = new Stack<string>();
+            String name = Console.ReadLine();
+            
+            while(!name.Equals("End",StringComparison.OrdinalIgnoreCase))
+            {
+                if(IsNameValid(name))
+                {
+                    if(!currentEnteredNames.Contains(name))
+                    {
+                        currentEnteredNames.Add(name);
+                        currentEnteredNamesStack.Push(name);
+                    }
+                    
+                }
+
+                name = Console.ReadLine();
+            }
+
+
+            //The part to test LINQ stuff
+            string enterBunchOfNumers = Console.ReadLine();
+
+            //this will collect the numbers equal to 5 or less than 5 but not below or equal to 0
+            int[] numbersCollected = enterBunchOfNumers.Split(" ", StringSplitOptions.RemoveEmptyEntries).
+                Select(e => int.Parse(e)).Where(e => e <= 5 && e>0).ToArray();
+
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in numbersCollected)
+            {
+                sb.Append(item + " ");
+            }
+
+            Console.WriteLine(sb.ToString().Trim());
+
+        }
+        private static bool IsNameValid(string name)
+        {
+            if(!String.IsNullOrEmpty(name) && !String.IsNullOrWhiteSpace(name))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //StorageMaster task

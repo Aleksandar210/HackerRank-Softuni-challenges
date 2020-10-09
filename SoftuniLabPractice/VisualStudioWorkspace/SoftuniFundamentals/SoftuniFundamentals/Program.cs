@@ -402,6 +402,21 @@ namespace SoftuniFundamentals
 
         }
 
+        private static void StudentExamArrivalTask()
+        {
+            int[] hourMinuteExam = 
+        }
+        private static int[] EnterHourAndMinutes()
+        {
+            int[] enteredValues;
+            do
+            {
+                Console.Clear();
+                enteredValues = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToArray();
+            }
+            while ((enteredValues[0] < 0 || enteredValues[0] > 23) || (enteredValues[1] < 0 || enteredValues[1] > 59));
+        }
+
         private static void DoSomethingForTestWithDictionaries()
         {
             

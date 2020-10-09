@@ -398,6 +398,8 @@ namespace SoftuniFundamentals
             //var item = new Warehouse("Hello");
             //to get type name GetType().Name
 
+            //StudentExamArrivalTask();
+
 
 
         }

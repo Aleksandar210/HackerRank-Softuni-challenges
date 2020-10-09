@@ -404,15 +404,15 @@ namespace SoftuniFundamentals
 
         private static void StudentExamArrivalTask()
         {
-            int[] hourMinuteExam = EnterHourAndMinutes();
-            int[] hourMinutesStudentArrival = EnterHourAndMinutes();
+            int[] hourMinuteExam = EnterHourAndMinutes();   //entering exam data
+            int[] hourMinutesStudentArrival = EnterHourAndMinutes();        //entering student arrival info
 
-            Console.WriteLine();    //result goes here.
+            Console.WriteLine(StudentArrivalResult(hourMinuteExam,hourMinutesStudentArrival));    //result goes here.
         }
 
-        private static int[] EnterHourAndMinutes()
+        private static int[] EnterHourAndMinutes()  //the function that is responsible for the entering of data
         {
-            int[] enteredValues;
+            int[] enteredValues;    //declaring a int array but not initialising it or filling it with data yet.
             do
             {
                 Console.Clear();
@@ -424,7 +424,7 @@ namespace SoftuniFundamentals
             return enteredValues;
         }
 
-        private static string StudentArrialResult(int[] examTimeData, int[] studentArrivalData)
+        private static string StudentArrivalResult(int[] examTimeData, int[] studentArrivalData)
         {
             int hourDifference = examTimeData[0] - studentArrivalData[0];
             int minuteDifference = examTimeData[1] - studentArrivalData[1];

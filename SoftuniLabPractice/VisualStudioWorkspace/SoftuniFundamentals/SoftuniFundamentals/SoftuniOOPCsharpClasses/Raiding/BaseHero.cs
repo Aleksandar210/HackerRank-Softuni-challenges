@@ -46,7 +46,11 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.Raiding
         }
 
         public abstract string CastAbility();
-        
+
+        public override string ToString()
+        {
+            return $"{this.GetType().Name}: {this.Name} with {this.Power} power.";
+        }
 
     }
 }

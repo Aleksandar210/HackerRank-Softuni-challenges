@@ -406,7 +406,10 @@ namespace SoftuniFundamentals
         {
             int[] hourMinuteExam = EnterHourAndMinutes();
             int[] hourMinutesStudentArrival = EnterHourAndMinutes();
+
+            Console.WriteLine();    //result goes here.
         }
+
         private static int[] EnterHourAndMinutes()
         {
             int[] enteredValues;
@@ -420,6 +423,24 @@ namespace SoftuniFundamentals
 
             return enteredValues;
         }
+
+        private static string StudentArrialResult(int[] examTimeData, int[] studentArrivalData)
+        {
+            int hourDifference = examTimeData[0] - studentArrivalData[0];
+            int minuteDifference = examTimeData[1] - studentArrivalData[1];
+            string result = "Student has arrived";
+            if(examTimeData[0]!=studentArrivalData[0])
+            {
+                if(hourDifference<0)
+                {
+                    result += $" too early with {Math.Abs(hourDifference)} hours and {Math.Abs(minuteDifference)} minutes to spend";
+                }
+            }
+
+            return result;
+        }
+
+        //--------------------------------------------------------------------------------------------------------------------------------
 
         private static void DoSomethingForTestWithDictionaries()
         {

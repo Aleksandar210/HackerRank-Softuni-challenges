@@ -404,7 +404,8 @@ namespace SoftuniFundamentals
 
         private static void StudentExamArrivalTask()
         {
-            int[] hourMinuteExam = 
+            int[] hourMinuteExam = EnterHourAndMinutes();
+            int[] hourMinutesStudentArrival = EnterHourAndMinutes();
         }
         private static int[] EnterHourAndMinutes()
         {
@@ -412,9 +413,12 @@ namespace SoftuniFundamentals
             do
             {
                 Console.Clear();
+                Console.Write("Enter hours and minutes: ");
                 enteredValues = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToArray();
             }
             while ((enteredValues[0] < 0 || enteredValues[0] > 23) || (enteredValues[1] < 0 || enteredValues[1] > 59));
+
+            return enteredValues;
         }
 
         private static void DoSomethingForTestWithDictionaries()

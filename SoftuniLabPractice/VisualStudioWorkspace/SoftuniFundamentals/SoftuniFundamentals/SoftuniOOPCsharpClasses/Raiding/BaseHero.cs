@@ -9,7 +9,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.Raiding
         private string name;
         private int power;
 
-        public BaseHero(string name, int power)
+        protected BaseHero(string name, int power)
         {
             this.Name = name;
             this.Power = power;

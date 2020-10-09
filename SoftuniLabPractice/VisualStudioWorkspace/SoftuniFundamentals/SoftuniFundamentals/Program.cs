@@ -431,7 +431,7 @@ namespace SoftuniFundamentals
             string result = "Student has arrived";
             if(hourDifference!=0)
             {
-                if(hourDifference<0)
+                if(hourDifference>0)
                 {
                     result += $" too early with {Math.Abs(hourDifference)} hours and {Math.Abs(minuteDifference)} minutes to spend";
                 }
@@ -442,7 +442,19 @@ namespace SoftuniFundamentals
             }
             else
             {
-
+                if(minuteDifference>0 && minuteDifference<=30)
+                {
+                    result += $" on time with {minuteDifference} minutes to prepare for the exam even more.";
+                }
+                else if(minuteDifference<0)
+                {
+                    result += $" late for the exam with {minuteDifference} minutes";
+                }
+                else
+                {
+                    result += $" early with {minuteDifference} minutes to prepare for the exam even more.";
+                }
+                
             }
 
             return result;

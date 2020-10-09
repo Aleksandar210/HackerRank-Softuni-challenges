@@ -429,12 +429,20 @@ namespace SoftuniFundamentals
             int hourDifference = examTimeData[0] - studentArrivalData[0];
             int minuteDifference = examTimeData[1] - studentArrivalData[1];
             string result = "Student has arrived";
-            if(examTimeData[0]!=studentArrivalData[0])
+            if(hourDifference!=0)
             {
                 if(hourDifference<0)
                 {
                     result += $" too early with {Math.Abs(hourDifference)} hours and {Math.Abs(minuteDifference)} minutes to spend";
                 }
+                else
+                {
+                    result += $" too late with {Math.Abs(hourDifference)} hours and {Math.Abs(minuteDifference)} minutes to do whatever";
+                }
+            }
+            else
+            {
+
             }
 
             return result;

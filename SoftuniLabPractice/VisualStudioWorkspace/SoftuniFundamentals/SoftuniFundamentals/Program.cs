@@ -22,6 +22,8 @@ using MoreLinq.Extensions;
 using SoftuniFundamentals.SantaOOPTask2019;
 using System.Collections.ObjectModel;
 using SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019;
+using SoftuniFundamentals.SoftuniOOPCsharpClasses.Raiding;
+using System.Collections.Concurrent;
 
 namespace SoftuniFundamentals
 {
@@ -402,10 +404,85 @@ namespace SoftuniFundamentals
 
 
             //OOP  takss from polymorphism ot Nth end
-
+            //Raiding();
 
 
         }
+
+
+        //Raiding task
+        private static void Raiding()
+        {
+            Console.Write("Enter number heros: ");
+            int numberHeros = int.Parse(Console.ReadLine());
+            BaseHero[] currentHeroes = new BaseHero[numberHeros];
+            int sumOfHerosPower = 0;
+            for (int i=0;i<numberHeros;i++)
+            {
+                Console.Clear();
+                string enterName = Console.ReadLine();
+                try
+                {
+                    currentHeroes[i] = CreateHeroForRaid(enterName);
+                    sumOfHerosPower += currentHeroes[i].Power;
+                }
+                catch(NullReferenceException exc)
+                {
+                    Console.WriteLine(exc.Message);
+                    i--;
+                }
+                catch(ArgumentException exc)
+                {
+                    Console.WriteLine(exc.Message);
+                    i--;
+                }
+
+            }
+
+            Console.Write("Enter Boss Health");
+            int bossHealth = int.Parse(Console.ReadLine());
+
+           if(sumOfHerosPower>=bossHealth)
+            {
+                Console.WriteLine("You Win!");
+            }
+            else
+            {
+                Console.WriteLine("Defeat!");
+            }
+
+
+        }
+
+        private static BaseHero CreateHeroForRaid(String name)
+        {
+            BaseHeroFactory currentFactory = null;
+            BaseHero currentHero = null;
+            string selectedHeroType = Console.ReadLine();
+            switch(name.ToLower())
+            {
+                case "paladin":
+                    currentFactory = new PaladinFactory();
+                    break;
+                case "warrior":
+                    currentFactory = new WarriorFactory();
+                    break;
+                case "rogue":
+                    currentFactory = new RogueFactory();
+                    break;
+                case "druid":
+                    currentFactory = new DruidFactory();
+                    break;
+                default:
+                    throw new NullReferenceException("Invalid Type");
+                    
+            }
+
+            return currentFactory.GetHero(name);
+            
+        }
+
+        //--------------------------------------------
 
         private static void StudentExamArrivalTask()
         {

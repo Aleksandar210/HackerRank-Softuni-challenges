@@ -420,10 +420,10 @@ namespace SoftuniFundamentals
             for (int i=0;i<numberHeros;i++)
             {
                 Console.Clear();
-                string enterName = Console.ReadLine();
+                string enterTypeAndName = Console.ReadLine();
                 try
                 {
-                    currentHeroes[i] = CreateHeroForRaid(enterName);
+                    currentHeroes[i] = CreateHeroForRaid(enterTypeAndName);
                     sumOfHerosPower += currentHeroes[i].Power;
                 }
                 catch(NullReferenceException exc)
@@ -458,8 +458,8 @@ namespace SoftuniFundamentals
         {
             BaseHeroFactory currentFactory = null;
             BaseHero currentHero = null;
-            string selectedHeroType = Console.ReadLine();
-            switch(name.ToLower())
+            string[] heroData = name.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+            switch (heroData[0].ToLower())
             {
                 case "paladin":
                     currentFactory = new PaladinFactory();
@@ -478,7 +478,7 @@ namespace SoftuniFundamentals
                     
             }
 
-            return currentFactory.GetHero(name);
+            return currentFactory.GetHero(heroData[1]);
             
         }
 

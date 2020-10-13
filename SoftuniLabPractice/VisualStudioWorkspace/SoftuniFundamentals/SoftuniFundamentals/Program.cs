@@ -24,6 +24,7 @@ using System.Collections.ObjectModel;
 using SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019;
 using SoftuniFundamentals.SoftuniOOPCsharpClasses.Raiding;
 using System.Collections.Concurrent;
+using SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm;
 
 namespace SoftuniFundamentals
 {
@@ -409,6 +410,21 @@ namespace SoftuniFundamentals
 
         }
 
+        //Wild Farm task
+
+        private static void WildFarm()
+        {
+            AnimalFactoryBase currentAnimalFactory = new AnimalFactoryBase();
+            FoodFactory foodFactory = new FoodFactory();
+
+            string enter;
+            while (true)
+            {
+                //do logic or else infinite loop
+            }
+        }
+
+        //---------------
 
         //Raiding task
         private static void Raiding()

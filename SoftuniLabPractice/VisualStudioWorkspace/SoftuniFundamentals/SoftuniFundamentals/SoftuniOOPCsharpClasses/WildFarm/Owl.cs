@@ -23,7 +23,8 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
             }
         }
 
-        public  string Talk()
+
+        public override string Talk()
         {
             return "Hoot Hoot!";
         }

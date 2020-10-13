@@ -23,7 +23,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
                 throw new ArgumentException($"{this.GetType().Name} cannot eat {food.GetType().Name}");
             }
         }
-        public override string ToString()
+        public override string Talk()
         {
             return "Mew!";
         }

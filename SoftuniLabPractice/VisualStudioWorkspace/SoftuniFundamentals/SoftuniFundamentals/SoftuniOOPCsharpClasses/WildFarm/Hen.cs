@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
@@ -16,7 +17,8 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
             this.Weight += (food.Quantity * 0.35);
         }
 
-        public override string ToString()
+
+        public override string Talk()
         {
             return "Cluck Cluck";
         }

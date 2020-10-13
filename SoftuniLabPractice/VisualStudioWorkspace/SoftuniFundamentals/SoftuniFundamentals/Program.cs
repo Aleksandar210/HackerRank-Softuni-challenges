@@ -407,6 +407,8 @@ namespace SoftuniFundamentals
             //OOP  takss from polymorphism ot Nth end
             //Raiding();
 
+        
+           
 
         }
 
@@ -414,6 +416,7 @@ namespace SoftuniFundamentals
 
         private static void WildFarm()
         {
+            StringBuilder sb = new StringBuilder();
             AnimalFactoryBase currentAnimalFactory = new AnimalFactoryBase();
             FoodFactory foodFactory = new FoodFactory();
             List<Animal> currentAnimals = new List<Animal>();
@@ -445,8 +448,11 @@ namespace SoftuniFundamentals
                     {
                         try
                         {
-                            currentAnimals[currentAnimals.Count - 1].EatFood(foodFactory.GetFood(enter.Split(" ", StringSplitOptions.RemoveEmptyEntries)));
                             
+                            currentAnimals[currentAnimals.Count - 1].EatFood(foodFactory.GetFood(enter.Split(" ", StringSplitOptions.RemoveEmptyEntries)));
+                            sb.Append(currentAnimals[currentAnimals.Count - 1]);
+                            sb.AppendLine();
+                            Console.WriteLine(currentAnimals[currentAnimals.Count - 1].Talk());
                         }
                         catch(NullReferenceException exc)
                         {

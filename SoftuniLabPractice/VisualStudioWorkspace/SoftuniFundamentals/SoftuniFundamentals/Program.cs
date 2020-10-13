@@ -406,6 +406,7 @@ namespace SoftuniFundamentals
 
             //OOP  takss from polymorphism ot Nth end
             //Raiding();
+            //WildFarm();
 
         
            
@@ -464,6 +465,9 @@ namespace SoftuniFundamentals
                 enter = Console.ReadLine();
             }
 
+            Console.Clear();
+            Console.WriteLine("Animals Created:");
+            Console.WriteLine(sb.ToString());
 
         }
 

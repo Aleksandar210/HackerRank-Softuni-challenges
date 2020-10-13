@@ -416,13 +416,70 @@ namespace SoftuniFundamentals
         {
             AnimalFactoryBase currentAnimalFactory = new AnimalFactoryBase();
             FoodFactory foodFactory = new FoodFactory();
+            List<Animal> currentAnimals = new List<Animal>();
 
-            string enter;
-            while (true)
+            string enter = Console.ReadLine();
+            int counter = 2;
+            while (!enter.Equals("End",StringComparison.OrdinalIgnoreCase))
             {
-                //do logic or else infinite loop
+               if(counter%2==0)
+                {
+                    try
+                    {
+                        currentAnimals.Add(CreateAnimal(currentAnimalFactory, enter.Split(" ", StringSplitOptions.RemoveEmptyEntries)));
+                    }
+                    catch(ArgumentException exc)
+                    {
+                        Console.WriteLine(exc.Message);
+                    }
+                    
+                    counter++;
+                }
+                else
+                {
+                    if(currentAnimals.Count==0)
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            currentAnimals[currentAnimals.Count - 1].EatFood(foodFactory.GetFood(enter.Split(" ", StringSplitOptions.RemoveEmptyEntries)));
+                            
+                        }
+                        catch(NullReferenceException exc)
+                        {
+                            Console.WriteLine(exc.Message);
+                        }
+                        counter++; 
+                    }
+                }
+                enter = Console.ReadLine();
             }
+
+
         }
+
+        private static Animal CreateAnimal(AnimalFactoryBase currentFactory,string[] animalDataEntered)
+        {
+            switch(animalDataEntered[0])
+            {
+                case "Tiger":
+                case "Cat":
+                    return currentFactory.GetFeline(animalDataEntered);
+                case "Owl":
+                case "Hen":
+                    return currentFactory.GetBird(animalDataEntered);
+                case "Mouse":
+                case "Dog":
+                    return currentFactory.GetMammal(animalDataEntered);
+                    default:
+                    throw new ArgumentException("Invalid or unknown animal type");
+            }
+            
+        }
+
 
         //---------------
 

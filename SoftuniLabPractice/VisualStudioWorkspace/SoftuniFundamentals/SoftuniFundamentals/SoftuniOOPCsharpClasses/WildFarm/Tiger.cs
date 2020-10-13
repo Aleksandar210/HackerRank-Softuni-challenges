@@ -19,8 +19,13 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
             }
             else
             {
-                throw new ArgumentException($"Tiger cannot eat {food.GetType().Name}");
+                throw new ArgumentException($"{this.GetType().Name} cannot eat {food.GetType().Name}");
             }
+        }
+
+        public override string ToString()
+        {
+            return "Roar!!!";
         }
     }
 }

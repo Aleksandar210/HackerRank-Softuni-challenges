@@ -12,7 +12,20 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 
         public override void EatFood(Food food)
         {
-            throw new System.NotImplementedException();
+
+            if (food is Meat || food is Vegetable)
+            {
+                this.FoodEaten += food.Quantity;
+                this.Weight += (food.Quantity * 0.30);
+            }
+            else
+            {
+                throw new ArgumentException($"{this.GetType().Name} cannot eat {food.GetType().Name}");
+            }
+        }
+        public override string ToString()
+        {
+            return "Mew!";
         }
     }
 }

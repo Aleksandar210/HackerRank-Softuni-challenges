@@ -63,5 +63,9 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
         }
 
         public abstract void EatFood(Food food);
+        public override string ToString()
+        {
+            return $"{this.GetType().Name}";
+        }
     }
 }

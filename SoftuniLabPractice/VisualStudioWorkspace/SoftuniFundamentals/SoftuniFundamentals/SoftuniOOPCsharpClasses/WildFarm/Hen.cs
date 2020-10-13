@@ -6,7 +6,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 {
     public class Hen : Bird
     {
-        public Hen(string name, double wingSize) : base(name, wingSize)
+        public Hen(string name,double weight,double wingSize) : base(name,weight,wingSize)
         {
         }
 

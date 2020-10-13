@@ -51,7 +51,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
         }
         public int FoodEaten
         {
-            private set
+            protected set
             {
                 if(value<0)
                 {

@@ -8,7 +8,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
     public abstract class Mammal : Animal
     {
         private string livingRegion;
-        protected Mammal(string name,string livingRegion) : base(name)
+        protected Mammal(string name,double weight,string livingRegion) : base(name,weight)
         {
             this.LivingRegion = livingRegion;
         }

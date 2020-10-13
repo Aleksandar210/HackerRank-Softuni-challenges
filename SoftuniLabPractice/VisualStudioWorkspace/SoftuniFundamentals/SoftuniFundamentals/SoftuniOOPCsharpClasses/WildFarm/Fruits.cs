@@ -4,7 +4,10 @@ using System.Text;
 
 namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 {
-    class Fruits
+    public class Fruits : Food
     {
+        public Fruits(int quantity) : base(quantity)
+        {
+        }
     }
 }

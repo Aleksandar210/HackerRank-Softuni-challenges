@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 {
-    class FelineFactory
+    public class FelineFactory
     {
     }
 }

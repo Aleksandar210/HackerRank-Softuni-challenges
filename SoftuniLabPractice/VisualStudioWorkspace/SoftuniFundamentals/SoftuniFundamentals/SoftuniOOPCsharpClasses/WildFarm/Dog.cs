@@ -6,7 +6,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 {
     public class Dog : Mammal
     {
-        public Dog(string name, string livingRegion) : base(name, livingRegion)
+        public Dog(string name,double weight,string livingRegion) : base(name,weight,livingRegion)
         {
         }
 

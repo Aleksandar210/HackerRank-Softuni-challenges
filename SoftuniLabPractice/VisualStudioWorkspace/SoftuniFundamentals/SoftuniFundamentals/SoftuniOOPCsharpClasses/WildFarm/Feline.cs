@@ -7,7 +7,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
     public abstract class Feline : Mammal
     {
         string breed;
-        protected Feline(string name, string livingRegion,string breed) : base(name, livingRegion)
+        protected Feline(string name,double weight,string livingRegion,string breed) : base(name, weight,livingRegion)
         {
         }
 

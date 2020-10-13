@@ -6,7 +6,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 {
     public class Owl : Bird
     {
-        public Owl(string name, double wingSize) : base(name, wingSize) { }
+        public Owl(string name,double weight,double wingSize) : base(name,weight,wingSize) { }
         
 
         public override void EatFood(Food food)

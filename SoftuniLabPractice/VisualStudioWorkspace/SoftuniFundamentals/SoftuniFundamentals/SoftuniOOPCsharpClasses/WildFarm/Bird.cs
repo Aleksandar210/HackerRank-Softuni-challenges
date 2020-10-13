@@ -8,9 +8,10 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
     {
         private double wingSize;
         
-        protected Bird(string name,double wingSize):base(name)
+        protected Bird(string name,double wingSize, double weight,int foodEaten) :base(name,weight)
         {
             this.WingSize = wingSize;
+            this.FoodEaten = foodEaten;
         }
 
         public double WingSize

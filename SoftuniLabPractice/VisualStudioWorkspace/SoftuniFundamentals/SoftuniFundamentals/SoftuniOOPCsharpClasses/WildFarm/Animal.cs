@@ -10,11 +10,11 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
         double weight;
         int foodEaten;
 
-        protected Animal(string name)
+        protected Animal(string name,double weight)
         {
             this.Name = name;
-            this.Weight = 1;
-            this.foodEaten = 0;
+            this.Weight = weight;
+            this.FoodEaten = 0;
         }
 
         public string Name
@@ -49,7 +49,18 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 
             get => this.weight;
         }
-        public int FoodEaten => this.foodEaten;
+        public int FoodEaten
+        {
+            private set
+            {
+                if(value<0)
+                {
+                    throw new ArgumentException("Food eaten cannot be negative number.");
+                }
+            }
+
+            get => this.foodEaten;
+        }
 
         public abstract void EatFood(Food food);
     }

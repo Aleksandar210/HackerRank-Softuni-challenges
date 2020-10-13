@@ -35,7 +35,7 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 
         public double Weight
         {
-            private set
+            protected set
             {
                 if(value<=0)
                 {

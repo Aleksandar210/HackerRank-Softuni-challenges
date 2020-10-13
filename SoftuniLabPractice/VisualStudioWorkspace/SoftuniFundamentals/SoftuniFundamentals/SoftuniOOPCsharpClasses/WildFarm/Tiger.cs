@@ -12,7 +12,15 @@ namespace SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm
 
         public override void EatFood(Food food)
         {
-            throw new NotImplementedException();
+           if(food is Meat)
+            {
+                this.FoodEaten += food.Quantity;
+                this.Weight += (food.Quantity * 1.00);
+            }
+            else
+            {
+                throw new ArgumentException($"Tiger cannot eat {food.GetType().Name}");
+            }
         }
     }
 }

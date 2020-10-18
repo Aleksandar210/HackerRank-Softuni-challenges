@@ -408,10 +408,48 @@ namespace SoftuniFundamentals
             //Raiding();
             //WildFarm();
 
-        
+           // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
            
 
         }
+
+        //biggest number javascript nbut in C#
+        private static void JavaScriptBiggestNumber()
+        {
+            string enterNumbers = Console.ReadLine();
+
+            //first method with LINQ
+            int biggestNumber1=0;
+            int[] numbersArray1 = enterNumbers.Split(",").Select(e =>
+            {
+                int a = int.Parse(e);
+                if(a>biggestNumber1)
+                {
+                    biggestNumber1 = a;
+                }
+
+                return a;
+            }).ToArray();
+
+            Console.WriteLine(biggestNumber1);
+
+            //second method basic for-loop
+            int[] numbersArray2 = enterNumbers.Split(",").Select(number => int.Parse(number)).ToArray();
+            int biggestNumber2 = numbersArray2[0];
+            for(int i =1;i<numbersArray2.Length;i++)
+            {
+                if(numbersArray2[i]>biggestNumber2)
+                {
+                    biggestNumber2 = numbersArray2[i];
+                }
+            }
+
+            Console.WriteLine(biggestNumber2);
+        }
+
+        
+
+
 
         //Wild Farm task
 

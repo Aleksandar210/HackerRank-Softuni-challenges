@@ -423,6 +423,21 @@ namespace SoftuniFundamentals
             }
         }
 
+        private static void ArrayOfMaxElementsOfArrays(int[][] arrays)
+        {
+            StringBuilder sb = new StringBuilder();
+            int[] maxElementsOfArrays = new int[arrays.Length];
+            int maxElem;
+            for(int i =0;i<maxElementsOfArrays.Length;i++)
+            {
+                maxElem = arrays[i].Max();
+                maxElementsOfArrays[i] = maxElem;
+                sb.Append(maxElem+" ");
+                
+            }
+            Console.WriteLine(sb.ToString().Trim());
+        }
+
         private static void FindBomb()
         {
             Regex currentBombRegex = new Regex("[b|B][o|O][m|M][B|b]+");
@@ -441,6 +456,7 @@ namespace SoftuniFundamentals
                 }
                 enterSentance = Console.ReadLine();
             }
+            
         }
 
         //-----------

@@ -438,6 +438,29 @@ namespace SoftuniFundamentals
             Console.WriteLine(sb.ToString().Trim());
         }
 
+
+        private static void SemetricNumber()
+        {
+            int n, reverse = 0, rem;
+            Console.Write("Enter a number: ");
+            n = int.Parse(Console.ReadLine());
+            while (n != 0)
+            {
+                rem = n % 10;
+                reverse = reverse * 10 + rem;
+                n /= 10;
+            }
+
+            if (n == reverse)
+            {
+                Console.WriteLine(true);
+            }
+            else
+            {
+                Console.WriteLine(false);
+            }
+        }
+
         private static void FindBomb()
         {
             Regex currentBombRegex = new Regex("[b|B][o|O][m|M][B|b]+");

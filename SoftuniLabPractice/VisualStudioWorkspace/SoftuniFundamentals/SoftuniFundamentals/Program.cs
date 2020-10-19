@@ -413,6 +413,38 @@ namespace SoftuniFundamentals
 
         }
 
+        //edabit tasks
+        private static void ParseIntegersToString(Object[] array)
+        {
+            string[] resultArray = array.Select(e =>Convert.ToString(e)).ToArray();
+            foreach(var item in resultArray)
+            {
+                Console.Write(item + " ");
+            }
+        }
+
+        private static void FindBomb()
+        {
+            Regex currentBombRegex = new Regex("[b|B][o|O][m|M][B|b]+");
+            Match matcher;
+            string enterSentance = Console.ReadLine();
+            while(!enterSentance.Equals("end",StringComparison.OrdinalIgnoreCase))
+            {
+                matcher = currentBombRegex.Match(enterSentance);
+                if(matcher.Success)
+                {
+                    Console.WriteLine("Duck!!!");
+                }
+                else
+                {
+                    Console.WriteLine("No Bombs");
+                }
+                enterSentance = Console.ReadLine();
+            }
+        }
+
+        //-----------
+
         //biggest number javascript nbut in C#
         private static void JavaScriptBiggestNumber()
         {

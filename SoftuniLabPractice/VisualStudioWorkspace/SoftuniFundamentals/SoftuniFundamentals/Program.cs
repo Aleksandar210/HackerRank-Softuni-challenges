@@ -408,12 +408,82 @@ namespace SoftuniFundamentals
             //Raiding();
             //WildFarm();
 
-           // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
-           
+            // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
+          
 
         }
 
         //edabit tasks
+
+        private static void EdabitParanthesisTest()
+        {
+            string current = "( ( ( ) ) )";
+            string[] paranthesis = current.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0, j = paranthesis.Length - 1; i < paranthesis.Length / 2; i++, j--)
+            {
+                Console.Write(paranthesis[i] + " ");
+                sb.Append(paranthesis[j] + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine(sb.ToString().Trim());
+        }
+
+        private static void BracketsEdabit(string enteredValue)
+        {
+
+            string[] paranthesis = Regex.Replace(enteredValue, "[^\\(|\\)|\\{|\\}|\\[|\\]]", " ").Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            int numberParanthesis = paranthesis.Length;
+
+            //the stack data structure method of doing it
+            Stack<char> leftSideParanthesis = new Stack<char>();
+            Stack<char> rightSideParanthesis = new Stack<char>();
+            if (numberParanthesis % 2 == 0)
+            {
+                for (int i = 0, j = paranthesis.Length - 1; i < paranthesis.Length / 2; i++, j--)
+                {
+                    leftSideParanthesis.Push(char.Parse(paranthesis[i]));
+                    rightSideParanthesis.Push(char.Parse(paranthesis[j]));
+                }
+
+                // and for loop over the stacks with poping and compare them and if there arent the same return false
+
+                //-----------
+
+                //the fastest way of doing it
+                int left;
+                int right;
+                int result;
+                bool resultOfChecking = true;
+
+               
+                for (int i = 0, j = paranthesis.Length - 1; i < paranthesis.Length / 2; i++, j--)
+                {
+                    left = Convert.ToInt32(char.Parse(paranthesis[i]));
+                   right = Convert.ToInt32(char.Parse(paranthesis[j]));
+                    result = left - right;
+                    switch(result)
+                    {
+                        case 0:
+                            break;
+                        default:
+                            resultOfChecking = false;
+                            goto ShowResult;
+                           
+                    }
+                }
+
+            ShowResult:
+                Console.WriteLine(resultOfChecking);
+
+            }
+            else
+            {
+                Console.WriteLine(false);
+            }
+        }
+
+
         private static void ParseIntegersToString(Object[] array)
         {
             string[] resultArray = array.Select(e =>Convert.ToString(e)).ToArray();
@@ -460,6 +530,8 @@ namespace SoftuniFundamentals
                 Console.WriteLine(false);
             }
         }
+
+    
 
         private static void FindBomb()
         {

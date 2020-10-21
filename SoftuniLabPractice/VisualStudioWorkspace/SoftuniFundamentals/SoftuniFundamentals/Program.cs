@@ -415,32 +415,76 @@ namespace SoftuniFundamentals
 
             //обхождане на матрица Демо
             //---------------------------
+           int[,] myMatrix =  CreateMatrixDemo();         
 
-
+            for(int i=0;i<myMatrix.GetLength(0);i++)
+            {
+                for(int j=0;j<myMatrix.GetLength(1);j++)
+                {
+                   
+                }
+            }
             //---------------------------
-          
+
+            
+           
+
 
         }
+
+
 
         //Matrix related for обхождане демо
         //-------------------------------
-        private static int[][] CreateMatrixJagedDemo()
-        {
-            int[][] currentMatrix;
-            Console.Write("Enter number rows: ");
-            int numberRows = int.Parse(Console.ReadLine());
-            Console.Write("Enter nubmer columns: ");
-            int numberColumns = int.Parse(Console.ReadLine());
-            currentMatrix = new int[numberRows][];
-            return null;
-        }
 
         private static int[,] CreateMatrixDemo()
         {
+            Console.Write("Enter rows: ");
+            int numberRows = int.Parse(Console.ReadLine());
+            Console.Write("Enter columns: ");
+            int numberColumns = int.Parse(Console.ReadLine());
 
-            return null;
+            int[,] currentMatrix = new int[numberRows, numberColumns];  
+
+            
+            for(int i=0;i<numberRows;i++)
+            {
+                Console.Clear();
+                Console.Write("Enter row data: ");
+               var matrixData = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToArray();
+                if(!EnterRowDataMatrixDemo(currentMatrix,matrixData,i))
+                {
+                    i--;
+                }
+            }
+            return currentMatrix;
         }
+
+        private static bool EnterRowDataMatrixDemo(int[,] currentMatrix, int[] matrixRowData,int rowNumber)
+        {
+            if(currentMatrix.GetLength(1)==matrixRowData.Length)
+            {
+                for (int i = 0; i < currentMatrix.GetLength(1); i++)
+                {
+                    currentMatrix[rowNumber, i] = matrixRowData[i];
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            
+        }
+
         //-------------------------------
+
+
+
+
+
+
 
         //edabit tasks
 

@@ -409,9 +409,38 @@ namespace SoftuniFundamentals
             //WildFarm();
 
             // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
+
+
+
+
+            //обхождане на матрица Демо
+            //---------------------------
+
+
+            //---------------------------
           
 
         }
+
+        //Matrix related for обхождане демо
+        //-------------------------------
+        private static int[][] CreateMatrixJagedDemo()
+        {
+            int[][] currentMatrix;
+            Console.Write("Enter number rows: ");
+            int numberRows = int.Parse(Console.ReadLine());
+            Console.Write("Enter nubmer columns: ");
+            int numberColumns = int.Parse(Console.ReadLine());
+            currentMatrix = new int[numberRows][];
+            return null;
+        }
+
+        private static int[,] CreateMatrixDemo()
+        {
+
+            return null;
+        }
+        //-------------------------------
 
         //edabit tasks
 

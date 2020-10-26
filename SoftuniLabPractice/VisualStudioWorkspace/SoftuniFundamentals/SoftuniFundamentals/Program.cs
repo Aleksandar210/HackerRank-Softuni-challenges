@@ -25,6 +25,7 @@ using SoftuniFundamentals.Csharp_Advanced_Classes.StorageMaster2019;
 using SoftuniFundamentals.SoftuniOOPCsharpClasses.Raiding;
 using System.Collections.Concurrent;
 using SoftuniFundamentals.SoftuniOOPCsharpClasses.WildFarm;
+using System.Reflection.PortableExecutable;
 
 namespace SoftuniFundamentals
 {
@@ -411,9 +412,9 @@ namespace SoftuniFundamentals
             // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
 
 
-           // SmoothSentance();
-           
+            // SmoothSentance();
 
+            ReplaceNumbersWithPositionInAlphpabet();
 
         }
 
@@ -472,6 +473,39 @@ namespace SoftuniFundamentals
 
 
         //edabit tasks
+
+        private static void ReplaceNumbersWithPositionInAlphpabet()
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+
+            //Letters in the alphabet
+            char[] az = Enumerable.Range('a', 'z' - 'a' + 1).Select(i => (Char)i).ToArray();
+
+            //entering custom sentance
+            Console.Write("Enter sentance: ");
+            string enterSentance = RemoveSpecialCharacters(Console.ReadLine());
+            string[] words = enterSentance.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+            foreach(var item in words)
+            {
+                AssignPositionInAlphabet(sb, az, item.ToLower());
+            }
+
+            Console.WriteLine(sb.ToString().Trim());
+           
+
+
+        }
+
+        private static void AssignPositionInAlphabet(StringBuilder sb, char[] alphabetLetters,string word)
+        {
+            foreach(var item in word.ToCharArray())
+            {
+                sb.Append((Array.IndexOf(alphabetLetters, item) + 1) + " ");
+            }
+        }
 
         private static void SmoothSentance()
         {

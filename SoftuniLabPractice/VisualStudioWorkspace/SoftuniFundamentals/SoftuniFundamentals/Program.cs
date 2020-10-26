@@ -411,22 +411,7 @@ namespace SoftuniFundamentals
             // JavaScriptBiggestNumber(); - doest count as a task it was instant for roomate to see how its done.
 
 
-
-
-            //обхождане на матрица Демо
-            //---------------------------
-           int[,] myMatrix =  CreateMatrixDemo();         
-
-            for(int i=0;i<myMatrix.GetLength(0);i++)
-            {
-                for(int j=0;j<myMatrix.GetLength(1);j++)
-                {
-                   
-                }
-            }
-            //---------------------------
-
-            
+           // SmoothSentance();
            
 
 
@@ -487,6 +472,33 @@ namespace SoftuniFundamentals
 
 
         //edabit tasks
+
+        private static void SmoothSentance()
+        {
+            Console.Write("Enter Sentance: ");
+            string sentance = RemoveSpecialCharacters(Console.ReadLine());
+            //string sentance = Console.ReadLine();
+            string[] words = sentance.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            bool isLastIdenticalToFirst = true;
+            for(int i=0;i<words.Length-1;i++)
+            {
+               if (words[i].ToLower().Last()!=words[i+1].ToLower().First())
+               {
+                    isLastIdenticalToFirst = false;
+               }
+            }
+
+            Console.WriteLine(isLastIdenticalToFirst);
+            
+        }
+
+        private static string RemoveSpecialCharacters(string enteredString)
+        {
+            return Regex.Replace(enteredString, "[^a-zA-Z ]+", "", RegexOptions.Compiled);
+        }
+
+       
+
 
         private static void EdabitParanthesisTest()
         {

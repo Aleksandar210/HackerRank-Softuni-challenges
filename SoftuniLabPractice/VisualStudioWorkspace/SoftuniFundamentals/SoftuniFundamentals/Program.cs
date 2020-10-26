@@ -413,8 +413,7 @@ namespace SoftuniFundamentals
 
 
             // SmoothSentance();
-
-            ReplaceNumbersWithPositionInAlphpabet();
+            // ReplaceNumbersWithPositionInAlphpabet();
 
         }
 

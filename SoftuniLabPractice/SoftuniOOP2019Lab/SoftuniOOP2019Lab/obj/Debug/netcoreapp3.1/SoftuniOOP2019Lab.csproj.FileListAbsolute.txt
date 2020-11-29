@@ -1,0 +1,13 @@
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.exe
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.deps.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.runtimeconfig.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.runtimeconfig.dev.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\bin\Debug\netcoreapp3.1\SoftuniOOP2019Lab.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.csprojAssemblyReference.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.AssemblyInfoInputs.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.AssemblyInfo.cs
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.csproj.CoreCompileInputs.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\SoftuniOOP2019Lab\SoftuniOOP2019Lab\obj\Debug\netcoreapp3.1\SoftuniOOP2019Lab.genruntimeconfig.cache

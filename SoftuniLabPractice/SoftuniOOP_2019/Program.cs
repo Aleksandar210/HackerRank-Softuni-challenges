@@ -8,11 +8,11 @@ namespace SoftuniOOP_2019
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine("Hello World");
             //test
-          List<int> currentListOne = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(e=>int.Parse(e)).ToList();
-          List<int> currentListTwo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToList();
-            Console.WriteLine(GetSmallestNumberInList(currentListOne) + GetSmallestNumberInList(currentListTwo));
+          //List<int> currentListOne = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries).Select(e=>int.Parse(e)).ToList();
+          //List<int> currentListTwo = Console.ReadLine().Split(" ", StringSplitOptions.RemoveEmptyEntries).Select(e => int.Parse(e)).ToList();
+           // Console.WriteLine(GetSmallestNumberInList(currentListOne) + GetSmallestNumberInList(currentListTwo));
         }
 
         private static int GetSmallestNumberInList(List<int> currentList)

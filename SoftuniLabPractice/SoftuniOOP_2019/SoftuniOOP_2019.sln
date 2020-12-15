@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MatchingGame", "..\Matching
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreedyTimes", "..\GreedyTimes\GreedyTimes.csproj", "{BF5F40CE-5F3C-49C1-A76C-101F50F97971}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalElectronicRegister", "..\HospitalElectronicRegister\HospitalElectronicRegister.csproj", "{7E852730-5E41-4EE0-8EED-DD2FEDE9DADF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BF5F40CE-5F3C-49C1-A76C-101F50F97971}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF5F40CE-5F3C-49C1-A76C-101F50F97971}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF5F40CE-5F3C-49C1-A76C-101F50F97971}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E852730-5E41-4EE0-8EED-DD2FEDE9DADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E852730-5E41-4EE0-8EED-DD2FEDE9DADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E852730-5E41-4EE0-8EED-DD2FEDE9DADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E852730-5E41-4EE0-8EED-DD2FEDE9DADF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

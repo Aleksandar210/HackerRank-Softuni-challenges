@@ -1,0 +1,13 @@
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.exe
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.deps.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.runtimeconfig.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.runtimeconfig.dev.json
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\bin\Debug\netcoreapp3.1\GreedyTimes.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.csprojAssemblyReference.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.AssemblyInfoInputs.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.AssemblyInfo.cs
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.csproj.CoreCompileInputs.cache
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.dll
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.pdb
+D:\HackerRank-Softuni-challenges\SoftuniLabPractice\GreedyTimes\obj\Debug\netcoreapp3.1\GreedyTimes.genruntimeconfig.cache

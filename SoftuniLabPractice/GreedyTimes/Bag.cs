@@ -56,7 +56,7 @@ namespace GreedyTimes
 
             if(this.CheckCapacity(itemValue)== true && this.CheckItemRules(itemType,itemValue)==true)
             {
-                this.currentItemsinBag[itemType.ToLower()] += itemValue;
+                this.currentItemsinBag[this.FindOutItemType(itemType)] += itemValue;
             }
 
 
@@ -78,12 +78,13 @@ namespace GreedyTimes
         //checks the rules for each item to be puted in
         private bool CheckItemRules(string itemType, int itemValue)
         {
-            switch(itemType.ToLower())
+          
+            switch(this.FindOutItemType(itemType))
             {
                 case "gold":
                     return true;  // the gold amount should always be high in the bag
                 case "money":
-                    if((itemValue+this.currentItemsinBag["Money"])>this.currentItemsinBag["Gems"])
+                    if((itemValue+this.currentItemsinBag["money"])>this.currentItemsinBag["gem"])
                     {
                         return false;
                     }
@@ -92,7 +93,7 @@ namespace GreedyTimes
                         return true;
                     }
                 case "gem":
-                    if((itemValue+this.currentItemsinBag["Gems"])>this.currentItemsinBag["Gold"])
+                    if((itemValue+this.currentItemsinBag["gem"])>this.currentItemsinBag["gold"])
                     {
                         return false;
                     }
@@ -104,6 +105,25 @@ namespace GreedyTimes
 
             return false;
 
+        }
+
+        private string FindOutItemType(string itemType)
+        {
+            string type;
+            if (itemType.Length == 3)
+            {
+                type = "money";
+            }
+            else if (itemType.Equals("Gold", StringComparison.OrdinalIgnoreCase))
+            {
+                type = "gold";
+            }
+            else
+            {
+                type = "gem";
+            }
+
+            return type;
         }
 
         public override string ToString()

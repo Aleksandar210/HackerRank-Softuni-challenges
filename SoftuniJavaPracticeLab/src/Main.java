@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) {
         //Local tasks ->this class only
         //greenVsRedTask();
-        //companyRosterTask();
+        companyRosterTask();
         //radioDataBaseTask();
         //hourglass2dArray();
         // flattenArray();
@@ -45,7 +45,7 @@ public class Main {
 
         //gridlandMetroTask();      //DEPRICATED
 
-        EncapsulationClassTest encapstasks = new EncapsulationClassTest();
+        //EncapsulationClassTest encapstasks = new EncapsulationClassTest();
         //encapstasks.salaryIncrease();
         //encapstasks.footballTeamGenerator();
         //encapstasks.phoneTask();

@@ -7,6 +7,6 @@ namespace HospitalElectronicRegister
     public class Department
     {
         private string dpeartmentName;
-        private Dictionary<int,Room> rooms
+       // private Dictionary<int,Room> rooms
     }
 }

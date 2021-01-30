@@ -415,6 +415,10 @@ namespace SoftuniFundamentals
             // SmoothSentance();
             // ReplaceNumbersWithPositionInAlphpabet();
 
+            ArraysMethodsLists currentTasksWithListsArrays = new ArraysMethodsLists();
+            //currentTasksWithListsArrays.ThereIsNoSpoonTask();
+           
+
         }
 
 

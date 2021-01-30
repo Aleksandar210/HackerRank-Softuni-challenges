@@ -88,7 +88,7 @@ namespace HospitalElectronicRegister
             {
                 if(value<0)
                 {
-                    throw new ArgumentException("Patient's age cannot be negative")
+                    throw new ArgumentException("Patient's age cannot be negative");
                 }
                 else
                 {

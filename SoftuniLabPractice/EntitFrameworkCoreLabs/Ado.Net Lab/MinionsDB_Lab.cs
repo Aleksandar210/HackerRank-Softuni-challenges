@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace EntitFrameworkCoreLabs.Ado.Net_Lab
 {
@@ -119,7 +120,106 @@ namespace EntitFrameworkCoreLabs.Ado.Net_Lab
             {
                 minionsDBConnection.Open();
 
+                string[] currentMinionDataEntered = InsertMinionData();
+
+                if(!this.CheckTownNameDB(currentMinionDataEntered[2],minionsDBConnection))
+                {
+                    SqlCommand insertTownName = new SqlCommand("INSERT INTO Towns(TownName,CountryCode) VALUES(@TownNameEntered,dbo.GenerateRandomNumberBetween1and50(1,50))");
+                    insertTownName.Parameters.AddWithValue("@TownNameEntered", currentMinionDataEntered[2]);
+                    insertTownName.ExecuteNonQuery();
+                }
+                else
+                {
+                    SqlCommand InsertMinion = new SqlCommand("INSERT INTO Minions([Name],Age,TownId ) VALUES ('@MinionName',@Age,@Town)");
+                    InsertMinion.Parameters.AddWithValue("@MinionName", currentMinionDataEntered[0]);
+                    InsertMinion.Parameters.AddWithValue("@Age", int.Parse(currentMinionDataEntered[1]));
+
+                    //Finding town id by name of town
+                    SqlCommand currentCommandToFindIDOfCity = new SqlCommand("SELECT Id FROM Towns WHERE TownName LIKE('@TownNameFind')");
+                    currentCommandToFindIDOfCity.Parameters.AddWithValue("@TownNameFind", currentMinionDataEntered[2]);
+                    int townID;
+                    using (SqlDataReader townIDReader = currentCommandToFindIDOfCity.ExecuteReader())
+                    {
+                        townIDReader.Read();
+                        townID = (int)townIDReader["Id"];
+                    }
+
+                        InsertMinion.Parameters.AddWithValue("@Town",townID);
+
+                    InsertMinion.ExecuteNonQuery();
+                }
+
+                SqlCommand checkVillainNameDB = new SqlCommand("SELECT COUNT(*) FROM Villains WHERE [Name] LIKE '@[VillainName]'", minionsDBConnection);
+                if((int)checkVillainNameDB.ExecuteScalar()==0)
+                {
+                    //inserting VillainName
+                    SqlCommand insertVillain = new SqlCommand("INSERT INTO Villains([Name],EvilnessFactor) VALUES(@VillainName,'evil')");
+                    insertVillain.Parameters.AddWithValue("@VillainName", currentMinionDataEntered[3]);
+                    insertVillain.ExecuteNonQuery();
+                }
+                else
+                {
+                    int villainID;
+
+                    SqlCommand currentReadVillainiDcommand = new SqlCommand("SELECT Id FROM Villains WHERE [Name] LIEK('@VillainNmae')");
+                    currentReadVillainiDcommand.Parameters.AddWithValue("@VillainNmae", currentMinionDataEntered[3]);
+                    using (SqlDataReader villainIDReader = currentReadVillainiDcommand.ExecuteReader())
+                    {
+                        villainIDReader.Read();
+                        villainID = (int)
+                    }
+                }
+
             }
+        }
+
+        private string[] InsertMinionData()
+        {
+            string[] minionData = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries);
+            
+            if (!this.VerifyMinionNmae(minionData[1]))
+            {
+                InsertMinionData();
+            }
+            else if(int.Parse(minionData[2]) <= 5)
+            {
+                InsertMinionData();
+            }
+
+            string villainName = Console.ReadLine().Split(" ",StringSplitOptions.RemoveEmptyEntries)[1];
+         
+            return new string[] { minionData[1], minionData[2], minionData[3], villainName };
+           
+        }
+
+        private bool VerifyMinionNmae(string minionName)
+        {
+            string correctMinionNameRegex = @"(([A-Z][a-z]+) ([A-z][a-z]+))|([A-z]+)";
+            Regex regex = new Regex(correctMinionNameRegex);
+
+            if(regex.IsMatch(minionName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CheckTownNameDB(string townName,SqlConnection connectionDB)
+        {
+            SqlCommand currentCountOfTownsByThisName = new SqlCommand("SELECT COUNT(*) FROM Towns WHERE TownName LIKE('@TownName')", connectionDB);
+            currentCountOfTownsByThisName.Parameters.AddWithValue("@TownNmae", townName);
+
+            int numberOfTownsWithThatName = (int)currentCountOfTownsByThisName.ExecuteScalar();
+
+            if(numberOfTownsWithThatName>=1)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

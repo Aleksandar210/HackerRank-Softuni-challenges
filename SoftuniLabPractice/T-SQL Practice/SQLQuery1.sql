@@ -347,367 +347,6 @@ RETURN @Result
 END;
 
 
-GO
-INSERT INTO Minions([Name],Age,TownID)
-	SELECT value,dbo.GenerateRandomAge(),dbo.GenerateTownID()
-	FROM 
-	STRING_SPLIT(N'Ache,
-Aches,
-Azi,
-Bhavin,
-Bark,
-Basher,
-Bedlam,
-Beef,
-Belch,
-Bellow,
-Berserk,
-Bill,
-Bitey,
-Bloat,
-Blob,
-Blump,
-Blunt,
-Blurt,
-Bobba,
-Bones,
-Bonce,
-Bones,
-Boog,
-Boot,
-Boxer,
-Bracket,
-Brash,
-Brawly,
-Brawn,
-Brick,
-Bruise,
-Brunt,
-Brute,
-Buba,
-Bumps,
-Burly,
-Cackle,
-Canis,
-Chaff,
-Cheese,
-Chewy,
-Chops,
-Chuckles,
-Chunk,
-Clank,
-Clash,
-Claws,
-Clay,
-Cliffy,
-Cleft,
-Clobber,
-Clod,
-Clog,
-Clogg,
-Clot,
-Clout,
-Clunk,
-Colon,
-Conk,
-Cragg,
-Crbbage,
-Crank,
-Crash,
-Crawb,
-Cribble,
-Crivice,
-Crot,
-Crummy,
-Crunchy,
-Crusher,
-Crusty,
-Curly,
-Cyst,
-Daft,
-Daks,
-Dave,
-Deek,
-Dirt,
-Doog,
-Dookie,
-Drag,
-Drag,
-Dribble,
-Dringe,
-Drivel,
-Drob,
-Drogan,
-Drongo,
-Drot,
-Drozz,
-Drub,
-Duggs,
-Duh,
-Dusty,
-Dweeb,
-Ears,
-Egg,
-Fatso,
-Fearless,
-Feral,
-Fidget,
-Flakes,
-Flaky,
-Flange,
-Flarbic,
-Fleas,
-Flibble,
-Flint,
-Flub,
-Flumber,
-Flummox,
-Flunk,
-Frack,
-Frebb,
-Frenzy,
-Frothmouth,
-Footrot,
-Fury,
-Glob,
-Gloob,
-Glottis,
-Gnarf,
-Gnash,
-Gnat,
-Gobble,
-Gobbler,
-Gonk,
-Goober,
-Goulash,
-Grabber,
-Grapple,
-Graves,
-Gribble,
-Grime,
-Grimm,
-Grinder,
-Grit,
-Groan,
-Groat,
-Grockle,
-Grody,
-Grot,
-Grotty,
-Grouch,
-Grout,
-Grub,
-Grug,
-Gruff,
-Grump,
-Grunt,
-Gubbin,
-Gunk,
-Gurk,
-Gusto,
-Havoc,
-Heabag,
-Headcase,
-Herc,
-Hinge,
-Hobble,
-Hog,
-Hooter,
-Howler,
-Huffy,
-Hunt,
-Hurtle,
-Husk,
-Huso,
-Itchy,
-Kenny,
-Khan,
-Klepto,
-Klutts,
-Kniff,
-Knobbly,
-Knotts,
-Knud,
-Krudster,
-Krug,
-Krumb,
-Krump,
-Lacky,
-Lard,
-Lash,
-Len,
-Lestek,
-Limp,
-Lix,
-Loafer,
-Lobe,
-Loob,
-Loon,
-Loony,
-Louse,
-Ludz,
-Lug,
-Lumber,
-Lumper,
-Lumpy,
-Maaka,
-Mac,
-Maggot,
-Mangle,
-Manky,
-Manny,
-Maul,
-McGee,
-Meph,
-Midge,
-Migs,
-Migsy,
-Minc,
-Mite,
-Moldy,
-Moloch,
-Mooker,
-Moxy,
-Muck,
-Muckle,
-Mud,
-Muggins,
-Mugsy,
-Murf,
-Murk,
-Murry,
-Musher,
-Musty,
-Nails,
-Nerc,
-Nibbles,
-Nip,
-Nit,
-Nokk,
-Nork,
-Nub,
-Nubbage,
-Nubbin,
-Nud,
-Nudge,
-Nug,
-Numpty,
-Nutter,
-Nutts,
-Odd,
-Omph,
-Orl,
-Pants,
-Pest,
-Pigpen,
-Pimples,
-Plunk,
-Podge,
-Pounder,
-Psycho,
-Pudge,
-Pug,
-Puke,
-Pummel,
-Punchy,
-Pus,
-Rabid,
-Raglam,
-Rags,
-Raider,
-Ramshackle,
-Rascal,
-Rasp,
-Rat,
-Ravage,
-Raw,
-Reggie,
-Ricket,
-Riggs,
-Rocky,
-Rootle,
-Rubble,
-Rumpus,
-Runt,
-Ruttle,
-Scabby,
-Scabies,
-Scars,
-Schlump,
-Scrappings,
-Scraps,
-Scroop,
-Scrot,
-Scrub,
-Scrum,
-Scrunch,
-Scrunge,
-Scrunt,
-Scuffle,
-Scum,
-Scuz,
-Scuzzy,
-Shabby,
-Shaktor,
-Shotter,
-Shub,
-Sins,
-Skank,
-Skritch,
-Skum,
-Skull,
-Slab,
-Slain,
-Slasher,
-Sleaver,
-Slog,
-Sloth,
-Sloot,
-Slurp,
-Smasher,
-Smear,
-Smidge,
-Smirk,
-Smoosh,
-Snelp,
-Snort,
-Snotter,
-Snub,
-Snubbly,
-Snurt,
-Soiled,
-Sores,
-Spasm,
-Spink,
-Splitter,
-Spod,
-Spoon,
-Sporker,
-Sprocket,
-Squabble,
-Squat,
-Squib,
-Squiggle,
-Stig,
-Stomped,
-Stomper,
-Stones,
-Stonk,
-Stoop,
-Stout,
-Straggle,
-Striker,
-Strut,
-Stripe,
-Stubby,
-Stump,
-Sug,
-Sulks,
-Swat,
-Toady',',')
-
-SELECT * FROM Minions
-
 --The rest insert with ADO.NET
 
 --for minions
@@ -754,6 +393,14 @@ RETURN @Result
 END;
 
 GO
+ALTER TABLE MinionsVillains
+ADD IsStillValid BIT DEFAULT(1)
+
+GO
+UPDATE MinionsVillains
+SET IsStillValid = 1
+
+SELECT * FROM MinionsVillains
 
 
 
@@ -773,6 +420,16 @@ Select dbo.GenerateRandomMinionID(),dbo.GenerateRandomVillainID()
 SELECT * FROM MinionsVillains
 	
 
+
+--Updating Town names as I broke the table
+
+CREATE TABLE TemporaryTownNames(
+Id INT PRIMARY KEY IDENTITY NOT NULL,
+[Name] VARCHAR(50) NOT NULL
+)
+
+INSERT INTO TemporaryTownNames([Name])
+SELECT VALUE FROM STRING_SPLIT('Tallcaster,Starkarta,Cloudley,South Northham,New Hamburgh,Mansside,Elstead,Buoybrough,West Springworth,West Emerworth,Hapview,Jultown Hills,New Fairford,Lexingwich,Auside,Cloudness,Rockworth Falls,North Daywich,Gilside,Oakton,Hamfolk,Farmstead Falls,East Manview,Sayhampton,North Waterham,Great Freeside,Freeside,Wheelburg Park,New Hamburgh,Bayness,Westdale,Starmouth,Strongbrough,Emerbury,Auburgh,Gilfield,Rockville,New Manshampton,Griffinview,Lawby,Parkview,South Waltfolk,Mannorbrough,Sweetwich,Wingland,Kingstead,New Richford,Southingtown,Riverham,Chatham,Buoyville,Hogtown,Princeview,Angertown,Kingley,Strongmouth,Hollowfolk,Pinestead,Emerness Park,Waltfolk,Eggwich,North Mansborough,Aelkarta,Wheelmouth,Norton,Springbury,Freefolk,Highstead,Emergrad,Eastby,Norland,Hallside,Applemouth,Golddale,Readingborough,Sageburg,Skillwich,Valenness,Fairwich,Great Kettleworth,Lexingkarta,Backstead,Waltby,Parkburg,Highside,Manshampton,Weirburgh,Medstead,Massfield,Chatby,Wingside,Costsbrough,Mannorhampton,Highborough Falls,South Mayhampton,Hapgrad,Fortport,Lunburgh,Richstead,East Cruxburgh,Lexingcaster,Massfolk,Lexingbrough,Middleworth Park,Sandstead Beach,North Bellfolk,Applehampton,North Ashfield,Costsville,Halltown,Waterdol,North Sweetburgh,Bridgeford,Duckdale,Fishby,Hosborough Island,Buoyby,Hosside,Highford,Auford,Haphampton,East Kettleport,Buoymouth,Seaham,Dodgekarta,Valenburgh,South Emerburgh,North Profolk,Postley,Pailtown,Cloudland,Parktown,Snowwich Falls,Starcaster,North Pailville,South Costsness,Hostown,Millport,Seadale,South Luncester,Tallton,Dodgepool,Lexingkarta,Hamwich,Jamestown,DuckfieldEast Queensdol,Factburg,Freeside,Winstead City,Capport,Fortton,Rockstead,Starville Beach,Farmingness,Waltfield,Emerbury,Southhampton City,Beachport,Massbrough,Stonekarta,South Eastley,Richside,Hollowborough,Griffinstead,Snowfield,Passhampton,Seadol,South Rosecaster,Farmingstead City,Fauxhampton,Tallley Hills,Tallkarta,Farmingham,Ashcaster,East Sandbrough,Gilfield Beach,Angerfolk,Hapgrad Island,Medbrough,Snowham,Great Lunness,Lawby,Strongmouth,Haphampton,Lawburg,New Normouth,New Emerland,Melworth,New Lexingness,Bellport,Beachkarta,Bridgeham,Holtsfield,Buoycester,Dayview,East Fauxford,Eggton,East Mayfield,Talldale,Winwich,Northland,Grat Oakfolk,Medbrough,Lunby,Millworth,Aelview Falls,Summerbury,West Hogburg,Winterley,Posthampton,Capport,Highpool Falls,Pailtown,New Cruxby,Julland,Lunside,Foxford,Sagecaster,Tallside,Springfolk,Sagemouth,Manskarta,Pailness,Hallbrough,Beachdol,Weirwich,Greenborough,Bellbury,East Farmingport,Southfield,Saltham,Factpool,New Kettleburg,Jamesville,Forthampton,Hoshampton,Middleburg,West Fortness,Winfolk,Fortwich,Hamtown,Redburg,Dodgefield Park,Stonewich,Hapness,Middlegrad Park,Hosbury,Mayworth Park,East Hapton,Seaview,Mannordol,Elhampton,Winburgh,Windale,Lunabrough City,Greenland,Weststead,Stonebrough,Hollowley,Capbrough,Strongley,Nortown,Waltdol,Farmingview,Fauxland Park,Auport,Beachton,Roseland,Southingpool,Richness,Appleport,Sandton,Emerport,Southdale,Buoymouth,Bannbrough,Reddol,Greendale,Saltcester,Fauxham Park,Hogdale,Mannorside,Redstead,Rockgrad,Kingwich,Lexingpool,New Kettlecaster,Griffinby,Halldale,South Weirfield,Northcaster,Lunworth,New Hogland,West Posthampton,Weirstead,North Wingstead,Summerton,Duckborough,Bridgewich,New Aelburg,Fayham,Waltfolk,Medcester,Bridgeworth,Clamburgh Park,Emerbury,Hosburgh,Farmingbrough,Appleport,Buoymouth,Wheelbrough,Fairmouth,Hapwich,Ashtown,Chatstead,Proham,Jamesdale,Winby,West Foxbury,Cruxley,Lunafolk,West Norley,Lexington,Readingfield,Bayton,Jamesbrough Island,Strongcaster,Northfield,Lawwich,Fairside,New Cruxburgh,Foxhampton,Hogdale,Julborough,Bannborough,Hardley,Rockview,Masshampton,Fairfolk,Maywich,Pinetown,Great Tallport,Hollowtown,Bannport,Lawland,Oakborough,Stonekarta,Mannorworth,Richmouth,Winterdol,Hamside,Summerdol Island,Sayby Park,Farmkarta,Aufield,Bridgewich,Redness,Sayport,Dodgekarta,Fauxton,Richford,West Hamcaster,Hogburgh,Appleland Hills,Queensborough,Hallham Hills,Hosburg Falls,Cruxstead,Transpool,Norburg,Pailness,Rockpool,Lawcester,Hollowbrough,Transness,Hardport,Farmingford,Wheelfield,East Sandbrough,Mandol Island,Farmingdol,Wheelley Hills,Eggness,Manham,Factham,Summerborough,Cruxburg,Oakbrough,Costscester,Northland,Princeland,Redness,Costshampton,Skillborough,Mancaster,Saykarta,Springley Beach,Highview,Wingness,Norpool Island,Fortland Falls,Tallness,Manspool,Cruxstead,Beachhampton,Norford,Middleburg,Southfield Hills,Fauxpool,Sweetburg Falls,Summerfield Park,New Saltley,Southborough,Freecaster,Readingland,Sageview,East Beachville,Ashdol,Rosekarta Park,Queenscester,New Fairdol,Emerburgh,Freeness,Dayley,Jamesport Falls,Cruxburg Beach,Elbury,Lawbury,West Frostbrough,Buoydol,North Hamhampton,South Weirkarta,Hapville,Fauxkarta Island,Valentown,Strongburgh,Lawworth,Appleburgh,West Eastwich,Wincester,Lunmouth,Hogbrough,Fortside,Aufield,Winton,Millpool',',')
 
 
 --Function to select random country code between 1 and 50
@@ -817,4 +474,60 @@ JOIN Minions ON Minions.Id = MinionsVillains.MinionID
 JOIN Villains ON Villains.Id = VillainID
 WHERE VillainID = 38
 
+EXECUTE  pr_AssignCityName
 
+SELECT * FROM Towns
+
+GO
+CREATE PROCEDURE pr_AssignCityName
+AS
+BEGIN
+
+DECLARE @Start INT
+SET @Start = 1
+
+DECLARE @End INT
+SET @End = 446
+
+DECLARE @TownIdFromTemp INT
+
+WHILE @Start<=@End
+BEGIN
+
+SET @TownIdFromTemp = dbo.GenerateRandomTownIdFromTempNames();
+
+UPDATE Towns
+SET TownName = (SELECT [Name] FROM TemporaryTownNames WHERE Id = @TownIdFromTemp)
+WHERE Id = @TownIdFromTemp
+
+DELETE FROM TemporaryTownNames WHERE Id = @TownIdFromTemp
+
+SET @Start = @Start +1
+
+END
+
+END
+
+
+SELECT COUNT(*) FROM TemporaryTownNames
+
+
+GO
+CREATE VIEW vw_getRandTownIdFromTempNames
+AS
+(SELECT ABS(CHECKSUM(NEWID()) % ((SELECT TOP 1 Id from TemporaryTownNames ORDER BY Id DESC)  - (SELECT TOP 1 Id from TemporaryTownNames ORDER BY Id) - 1)) + 
+(SELECT TOP 1 Id from TemporaryTownNames ORDER BY Id) as value)  
+
+GO
+CREATE OR ALTER FUNCTION dbo.GenerateRandomTownIdFromTempNames()
+RETURNS INT
+AS
+BEGIN
+
+DECLARE @Result INT
+SET @Result = (SELECT * FROM vw_getRANDVillainID)
+
+RETURN @Result
+END
+
+SELECT dbo.GenerateRandomTownIdFromTempNames()

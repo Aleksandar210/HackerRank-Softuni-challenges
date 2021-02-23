@@ -1,0 +1,261 @@
+[
+  {
+    "Name": "DekstopDevs",
+    "Cells": [
+      {
+        "CellNumber": 101,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 102,
+        "HasWindow": false
+      }
+    ]
+  },
+  {
+    "Name": "CSSHtml",
+    "Cells": [
+      {
+        "CellNumber": 201,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 202,
+        "HasWindow": false
+      }
+    ]
+  },
+  {
+    "Name": "CryptographyPriosners",
+    "Cells": [
+      {
+        "CellNumber": 301,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 302,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 303,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 304,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 305,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "Cybersecurity",
+    "Cells": [
+      {
+        "CellNumber": 401,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 402,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 403,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 404,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 405,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "StackOverflow",
+    "Cells": [
+      {
+        "CellNumber": 501,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 502,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 503,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 504,
+        "HasWindow": false
+      }
+    ]
+  },
+  {
+    "Name": "Blockchain",
+    "Cells": [
+      {
+        "CellNumber": 601,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 602,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 603,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 604,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 605,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 606,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 607,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "WebSecurity",
+    "Cells": [
+      {
+        "CellNumber": 701,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 702,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 703,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 704,
+        "HasWindow": false
+      }
+    ]
+  },
+  {
+    "Name": "ArtificialIntelligence",
+    "Cells": [
+      {
+        "CellNumber": 801,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 802,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 803,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 804,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 805,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 806,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "PythonDevs",
+    "Cells": [
+      {
+        "CellNumber": 901,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 902,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 903,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 904,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 905,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 906,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "DeepWeb",
+    "Cells": [
+      {
+        "CellNumber": 1001,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1002,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 1003,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1004,
+        "HasWindow": false
+      },
+      {
+        "CellNumber": 1005,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1006,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1007,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1008,
+        "HasWindow": true
+      }
+    ]
+  },
+  {
+    "Name": "RoboticsWeb",
+    "Cells": [
+      {
+        "CellNumber": 1101,
+        "HasWindow": true
+      },
+      {
+        "CellNumber": 1102,
+        "HasWindow": false
+      }
+    ]
+  }
+]

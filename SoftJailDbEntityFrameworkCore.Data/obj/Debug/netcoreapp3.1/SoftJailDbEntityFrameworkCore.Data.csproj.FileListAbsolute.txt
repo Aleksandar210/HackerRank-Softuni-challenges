@@ -1,0 +1,12 @@
+D:\SoftJailDbEntityFrameworkCore.Data\bin\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.deps.json
+D:\SoftJailDbEntityFrameworkCore.Data\bin\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.dll
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.csprojAssemblyReference.cache
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.AssemblyInfoInputs.cache
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.AssemblyInfo.cs
+D:\SoftJailDbEntityFrameworkCore.Data\bin\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.runtimeconfig.json
+D:\SoftJailDbEntityFrameworkCore.Data\bin\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.runtimeconfig.dev.json
+D:\SoftJailDbEntityFrameworkCore.Data\bin\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.pdb
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.dll
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.pdb
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.genruntimeconfig.cache
+D:\SoftJailDbEntityFrameworkCore.Data\obj\Debug\netcoreapp3.1\SoftJailDbEntityFrameworkCore.Data.csproj.CoreCompileInputs.cache

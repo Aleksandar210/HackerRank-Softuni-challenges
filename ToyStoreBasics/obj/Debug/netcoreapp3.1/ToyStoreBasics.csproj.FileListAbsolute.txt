@@ -1,0 +1,13 @@
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.exe
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.deps.json
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.runtimeconfig.json
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.runtimeconfig.dev.json
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.dll
+D:\ToyStoreBasics\bin\Debug\netcoreapp3.1\ToyStoreBasics.pdb
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.csprojAssemblyReference.cache
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.AssemblyInfoInputs.cache
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.AssemblyInfo.cs
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.csproj.CoreCompileInputs.cache
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.dll
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.pdb
+D:\ToyStoreBasics\obj\Debug\netcoreapp3.1\ToyStoreBasics.genruntimeconfig.cache
